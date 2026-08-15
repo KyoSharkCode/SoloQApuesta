@@ -11,7 +11,7 @@ JUGADORES = [
     {"name": "Pinea",          "tag": "Pinea"},
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito",   "tag": "KyA"},
-    {"name": "ゆうき まこと",    "tag": "1411"},
+    {"name": "ゆうき まこと",     "tag": "1411"},
 ]
 
 def obtener_datos():
@@ -24,6 +24,7 @@ def obtener_datos():
         "X-Riot-Token": API_KEY
     }
 
+    # Leer datos anteriores para mantener el historial de la gráfica
     datos_antiguos = {}
     if os.path.exists("datos.json"):
         try:
@@ -36,30 +37,28 @@ def obtener_datos():
             pass
 
     lista_final = []
-    # Usamos formato ISO 8601 para que Chart.js entienda las fechas reales
-    fecha_actual = datetime.now().isoformat()
+    fecha_actual = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
     for jugador in JUGADORES:
         nombre_completo = f"{jugador['name']}#{jugador['tag']}"
         print(f"🔍 Consultando: {nombre_completo}")
 
         try:
+            # 1. Obtener PUUID
             name_enc = quote(jugador["name"])
             tag_enc  = quote(jugador["tag"])
-            
-            # 1. PUUID
             url_account = f"https://{REGION_API}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{name_enc}/{tag_enc}"
             r = requests.get(url_account, headers=headers, timeout=15)
             r.raise_for_status()
             puuid = r.json()["puuid"]
 
-            # 2. Icono de perfil (Summoner v4)
+            # 2. Obtener Icono de Perfil
             url_summoner = f"https://{REGION_GAME}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{puuid}"
-            rs = requests.get(url_summoner, headers=headers, timeout=15)
-            rs.raise_for_status()
-            icono_id = rs.json().get("profileIconId", 1)
+            r_summ = requests.get(url_summoner, headers=headers, timeout=15)
+            r_summ.raise_for_status()
+            icono_id = r_summ.json().get("profileIconId", 1)
 
-            # 3. Rangos y LP
+            # 3. Obtener Rango y LP
             url_league = f"https://{REGION_GAME}.api.riotgames.com/lol/league/v4/entries/by-puuid/{puuid}"
             rl = requests.get(url_league, headers=headers, timeout=15)
             rl.raise_for_status()
@@ -79,10 +78,11 @@ def obtener_datos():
                     winrate  = f"{round(mode['wins'] / total * 100)}%" if total > 0 else "0%"
                     break
 
+            # Actualizar historial LP
             historial_lp_jugador = datos_antiguos.get(nombre_completo, [])
             historial_lp_jugador.append({"fecha": fecha_actual, "lp": lp})
 
-            # 4. Historial SoloQ
+            # 4. Últimas 10 partidas SoloQ
             url_ids = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&start=0&count=10"
             ids = requests.get(url_ids, headers=headers, timeout=15).json()
 
@@ -97,6 +97,7 @@ def obtener_datos():
                 if pp:
                     k, d, a = pp["kills"], pp["deaths"], pp["assists"]
                     kda = "Perfect" if d == 0 else f"{round((k+a)/d, 2)}"
+                    
                     rol_api = pp.get("teamPosition", "")
                     if rol_api in roles_count:
                         roles_count[rol_api] += 1
