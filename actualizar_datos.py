@@ -7,6 +7,7 @@ from datetime import datetime
 REGION_API  = "americas"   
 REGION_GAME = "la1"        
 
+# Añade a todos tus amigos aquí (pueden ser los 8 o más)
 JUGADORES = [
     {"name": "Pinea",          "tag": "Pinea"},
     {"name": "Galactic Shark", "tag": "AYK"},
@@ -15,6 +16,7 @@ JUGADORES = [
 ]
 
 def obtener_datos():
+    # 1. Obtener la API Key
     API_KEY = os.getenv("RIOT_API_KEY", "").strip()
     if not API_KEY:
         raise ValueError("🚨 No se encontró RIOT_API_KEY en los Secrets de GitHub.")
@@ -24,12 +26,18 @@ def obtener_datos():
         "X-Riot-Token": API_KEY
     }
 
-    # 1. Obtener diccionario de campeones (para las maestrías)
-    print("📚 Descargando diccionario de campeones...")
-    url_ddragon = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/champion.json"
-    champ_data = requests.get(url_ddragon).json()["data"]
-    diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
+    # 2. Descargar diccionarios de Data Dragon (Campeones y Hechizos)
+    print("📚 Descargando diccionarios de Data Dragon...")
+    url_champ = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/champion.json"
+    champ_data = requests.get(url_champ).json()["data"]
+    diccionario_campeones = {int(info["key"]): info["id"] for _, info in champ_data.items()}
+    diccionario_nombres = {int(info["key"]): info["name"] for _, info in champ_data.items()}
 
+    url_spells = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/summoner.json"
+    spell_data = requests.get(url_spells).json()["data"]
+    diccionario_hechizos = {int(info["key"]): info["id"] for _, info in spell_data.items()}
+
+    # 3. Cargar historial antiguo de LP si existe
     datos_antiguos = {}
     if os.path.exists("datos.json"):
         try:
@@ -44,22 +52,24 @@ def obtener_datos():
     lista_final = []
     fecha_actual = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
+    # 4. Consultar a cada jugador
     for jugador in JUGADORES:
         nombre_completo = f"{jugador['name']}#{jugador['tag']}"
         print(f"🔍 Consultando: {nombre_completo}")
 
         try:
-            # PUUID
+            # Obtener PUUID
             name_enc = quote(jugador["name"])
             tag_enc  = quote(jugador["tag"])
             url_account = f"https://{REGION_API}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{name_enc}/{tag_enc}"
             puuid = requests.get(url_account, headers=headers, timeout=15).json()["puuid"]
 
-            # Icono
+            # Obtener Icono
             url_summoner = f"https://{REGION_GAME}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{puuid}"
-            icono_id = requests.get(url_summoner, headers=headers, timeout=15).json().get("profileIconId", 1)
+            summoner_data = requests.get(url_summoner, headers=headers, timeout=15).json()
+            icono_id = summoner_data.get("profileIconId", 1)
 
-            # Rango y LP
+            # Obtener Rango y LP
             url_league = f"https://{REGION_GAME}.api.riotgames.com/lol/league/v4/entries/by-puuid/{puuid}"
             league_data = requests.get(url_league, headers=headers, timeout=15).json()
 
@@ -73,81 +83,61 @@ def obtener_datos():
                     winrate  = f"{round(mode['wins'] / total * 100)}%" if total > 0 else "0%"
                     break
 
+            # Guardar historial de LP
             historial_lp_jugador = datos_antiguos.get(nombre_completo, [])
             historial_lp_jugador.append({"fecha": fecha_actual, "lp": lp})
 
-            # Top 3 Maestrías
-            url_mast = f"https://{REGION_GAME}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}"
-            mast_data = requests.get(url_mast, headers=headers, timeout=15).json()
-            maestrias = []
-            for m in mast_data[:3]: # Tomamos solo las 3 primeras
-                c_nombre = diccionario_campeones.get(m["championId"], "Desconocido")
-                maestrias.append({
-                    "campeon": c_nombre,
-                    "nivel": m["championLevel"],
-                    "puntos": f"{m['championPoints']:,}".replace(",", ".")
-                })
-
-            # Últimas 10 partidas
-            url_ids = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&start=0&count=10"
-            ids = requests.get(url_ids, headers=headers, timeout=15).json()
-
-            historial = []
-            roles_count = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
-            campeones_count = {}
+            # Comprobar PARTIDA EN VIVO (Spectator)
+            url_spectator = f"https://{REGION_GAME}.api.riotgames.com/lol/spectator/v5/active-games/by-puuid/{puuid}"
+            resp_spectator = requests.get(url_spectator, headers=headers, timeout=15)
             
-            for match_id in ids:
-                url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
-                md = requests.get(url_match, headers=headers, timeout=15).json()
-                pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
-                
-                if pp:
-                    k, d, a = pp["kills"], pp["deaths"], pp["assists"]
-                    kda = "Perfect" if d == 0 else f"{round((k+a)/d, 2)}"
-                    campeon_jugado = pp["championName"]
-                    
-                    rol_api = pp.get("teamPosition", "")
-                    if rol_api in roles_count:
-                        roles_count[rol_api] += 1
-                    
-                    campeones_count[campeon_jugado] = campeones_count.get(campeon_jugado, 0) + 1
+            en_partida = False
+            datos_partida = None
 
-                    historial.append({
-                        "campeon":   campeon_jugado,
-                        "kda":       f"{k}/{d}/{a} ({kda})",
-                        "resultado": "Victoria" if pp["win"] else "Derrota",
-                        "duracion":  f"{md['info']['gameDuration'] // 60}min",
+            if resp_spectator.status_code == 200:
+                en_partida = True
+                s_data = resp_spectator.json()
+                participantes = []
+                
+                for part in s_data.get("participants", []):
+                    c_id = part.get("championId")
+                    s1_id = part.get("spell1Id")
+                    s2_id = part.get("spell2Id")
+                    
+                    participantes.append({
+                        "nombre": part.get("riotId", part.get("summonerName", "Desconocido")),
+                        "campeon_img": diccionario_campeones.get(c_id, "Desconocido"),
+                        "campeon_nombre": diccionario_nombres.get(c_id, "Desconocido"),
+                        "equipo": "Azul" if part.get("teamId") == 100 else "Rojo",
+                        "hechizo1": diccionario_hechizos.get(s1_id, "SummonerFlash"),
+                        "hechizo2": diccionario_hechizos.get(s2_id, "SummonerFlash")
                     })
 
-            mapa_roles = {"TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid", "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"}
-            
-            # Calcular Top 2 Roles
-            roles_ordenados = sorted(roles_count.items(), key=lambda x: x[1], reverse=True)
-            top_2_roles = [{"rol": mapa_roles.get(r[0]), "cantidad": r[1]} for r in roles_ordenados if r[1] > 0][:2]
-            rol_mas_jugado = top_2_roles[0]["rol"] if top_2_roles else "Desconocido"
+                datos_partida = {
+                    "modo": s_data.get("gameMode", "Desconocido"),
+                    "duracion_inicio": s_data.get("gameLength", 0),
+                    "participantes": participantes
+                }
 
-            # Calcular Top 3 Campeones (Recientes)
-            campeones_ordenados = sorted(campeones_count.items(), key=lambda x: x[1], reverse=True)[:3]
-            top_3_recientes = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ordenados]
-
+            # Añadir a la lista final
             lista_final.append({
+                "id":               nombre_completo,
                 "nombre":           nombre_completo,
                 "icono":            icono_id,
                 "rango":            f"{rango} {division}".strip(),
                 "lp":               lp,
                 "winrate":          winrate,
-                "rol_principal":    rol_mas_jugado,
-                "top_roles":        top_2_roles,
-                "top_recientes":    top_3_recientes,
-                "maestrias":        maestrias,
+                "rol":              "N/A", 
+                "en_partida":       en_partida,
+                "datos_partida":    datos_partida,
                 "progreso_lp":      historial_lp_jugador,
-                "historial":        historial,
             })
-            print(f"  ✓ {nombre_completo} actualizado correctamente.")
+            print(f"  ✓ {nombre_completo} actualizado. En partida: {en_partida}")
 
         except Exception as e:
             print(f"🚨 Error con {nombre_completo}: {e}")
 
+    # 5. Exportar a JSON
     datos_exportar = {
         "ultimaActualizacion": datetime.now().isoformat(),
         "jugadores": lista_final
@@ -155,7 +145,7 @@ def obtener_datos():
 
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(datos_exportar, f, indent=2, ensure_ascii=False)
-    print("\n✅ datos.json actualizado correctamente con maestrías y perfiles.")
+    print("\n✅ datos.json actualizado correctamente.")
 
 if __name__ == "__main__":
     obtener_datos()
