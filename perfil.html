@@ -25,8 +25,12 @@
   }
   .wrap{ max-width:900px; margin:0 auto; padding:40px 20px 80px; }
   
-  .back-btn { display: inline-flex; align-items: center; color: var(--accent-soft); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 30px; transition: color 0.2s; }
+  .topbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:30px; }
+  .back-btn { display: inline-flex; align-items: center; color: var(--accent-soft); text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
   .back-btn:hover { color: #ffffff; }
+  .live-indicator{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); padding:6px 12px; border-radius:999px; }
+  .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse-live 2.2s infinite; }
+  @keyframes pulse-live{ 0%{box-shadow:0 0 0 0 rgba(139,92,246,.35);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
 
   /* HEADER PERFIL */
   .profile-header { display: flex; align-items: center; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
@@ -79,7 +83,13 @@
 <body>
 
 <div class="wrap">
-  <a href="index.html" class="back-btn">← Volver al Ranking</a>
+  <div class="topbar">
+    <a href="index.html" class="back-btn">← Volver al Ranking</a>
+    <div class="live-indicator" id="live-indicator">
+      <span class="pulse-dot"></span>
+      <span id="live-indicator-text">Cargando…</span>
+    </div>
+  </div>
 
   <div id="error-msg">Jugador no encontrado.</div>
 
@@ -127,25 +137,59 @@
 </div>
 
 <script>
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
   const params = new URLSearchParams(window.location.search);
   const jugadorId = params.get('jugador');
+
+  const REFRESH_MS = 30000; // frecuencia de auto-actualización (30s)
+  let lastUpdate = null;
+  let loadedOnce = false;
+
+  const liveIndicatorTextEl = document.getElementById('live-indicator-text');
 
   if (!jugadorId) {
     document.getElementById('error-msg').style.display = 'block';
     return;
   }
 
+  init();
+
+  function init(){
+    refreshAll();
+    setInterval(refreshAll, REFRESH_MS);
+    setInterval(tickLiveIndicator, 1000);
+
+    // Si el usuario vuelve a la pestaña, refresca al instante en vez de esperar el intervalo
+    document.addEventListener('visibilitychange', () => {
+      if(!document.hidden) refreshAll();
+    });
+  }
+
+  async function refreshAll(){
+    await Promise.all([ loadProfileData(), checkLiveStatus() ]);
+    lastUpdate = Date.now();
+    tickLiveIndicator();
+  }
+
+  function tickLiveIndicator(){
+    if(!liveIndicatorTextEl) return;
+    if(!lastUpdate){ liveIndicatorTextEl.textContent = 'Cargando…'; return; }
+    const secs = Math.floor((Date.now() - lastUpdate) / 1000);
+    if(secs < 5) liveIndicatorTextEl.textContent = 'Actualizado ahora';
+    else if(secs < 60) liveIndicatorTextEl.textContent = `Actualizado hace ${secs}s`;
+    else liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
+  }
+
   // --- LÓGICA DE ESTADO (OFFLINE / EN PARTIDA) ---
-  const checkLiveStatus = async () => {
+  async function checkLiveStatus() {
     try {
-      const liveRes = await fetch('live_data.json', { cache: 'no-store' });
+      const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache: 'no-store' });
       if (!liveRes.ok) return;
       const liveData = await liveRes.json();
       const liveStatus = liveData[jugadorId];
-      
+
       const statusBadge = document.getElementById('p-status');
-      
+
       if (liveStatus && liveStatus.en_partida) {
         statusBadge.textContent = 'En Partida';
         statusBadge.className = 'status-badge ingame';
@@ -156,92 +200,97 @@ window.addEventListener('load', async () => {
     } catch (e) {
       console.log("Error verificando estado en vivo:", e);
     }
-  };
+  }
 
   // --- LÓGICA DE DATOS DEL JUGADOR ---
-  try {
-    const res = await fetch('datos.json', { cache: 'no-store' });
-    const data = await res.json();
-    const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
-    const p = jugadores.find(j => j.nombre === jugadorId);
-    if (!p) throw new Error("No encontrado");
+  async function loadProfileData() {
+    try {
+      const res = await fetch(`datos.json?t=${Date.now()}`, { cache: 'no-store' });
+      if(!res.ok) throw new Error();
+      const data = await res.json();
+      const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
+      const p = jugadores.find(j => j.nombre === jugadorId);
+      if (!p) throw new Error("No encontrado");
 
-    const formatImg = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
+      const formatImg = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
 
-    // HEADER
-    document.getElementById('p-avatar').src = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-    document.getElementById('p-name').innerText = p.nombre.split('#')[0]; 
-    document.getElementById('p-tier').innerText = p.rango;
-    document.getElementById('p-lp').innerText = `${p.lp} LP`;
-    document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
+      // HEADER
+      document.getElementById('p-avatar').src = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
+      document.getElementById('p-name').innerText = p.nombre.split('#')[0]; 
+      document.getElementById('p-tier').innerText = p.rango;
+      document.getElementById('p-lp').innerText = `${p.lp} LP`;
+      document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
 
-    // MAESTRÍAS
-    const boxMastery = document.getElementById('box-mastery');
-    if(p.maestrias && p.maestrias.length > 0) {
-      boxMastery.innerHTML = p.maestrias.map(m => `
-        <div class="list-item">
-          <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(m.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="item-title">${m.campeon}</div>
-            <div class="item-sub">Nivel ${m.nivel} • ${m.puntos} pts</div>
+      // MAESTRÍAS
+      const boxMastery = document.getElementById('box-mastery');
+      if(p.maestrias && p.maestrias.length > 0) {
+        boxMastery.innerHTML = p.maestrias.map(m => `
+          <div class="list-item">
+            <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(m.campeon)}.png" onerror="this.style.visibility='hidden'">
+            <div>
+              <div class="item-title">${m.campeon}</div>
+              <div class="item-sub">Nivel ${m.nivel} • ${m.puntos} pts</div>
+            </div>
           </div>
-        </div>
-      `).join('');
-    } else { boxMastery.innerHTML = '<span class="item-sub">Sin datos</span>'; }
+        `).join('');
+      } else { boxMastery.innerHTML = '<span class="item-sub">Sin datos</span>'; }
 
-    // CAMPEONES RECIENTES
-    const boxChamps = document.getElementById('box-champs');
-    if(p.top_recientes && p.top_recientes.length > 0) {
-      boxChamps.innerHTML = p.top_recientes.map(c => `
-        <div class="list-item">
-          <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(c.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="item-title">${c.campeon}</div>
-            <div class="item-sub">${c.cantidad} partidas recientes</div>
+      // CAMPEONES RECIENTES
+      const boxChamps = document.getElementById('box-champs');
+      if(p.top_recientes && p.top_recientes.length > 0) {
+        boxChamps.innerHTML = p.top_recientes.map(c => `
+          <div class="list-item">
+            <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(c.campeon)}.png" onerror="this.style.visibility='hidden'">
+            <div>
+              <div class="item-title">${c.campeon}</div>
+              <div class="item-sub">${c.cantidad} partidas recientes</div>
+            </div>
           </div>
-        </div>
-      `).join('');
-    } else { boxChamps.innerHTML = '<span class="item-sub">No ha jugado recientemente.</span>'; }
+        `).join('');
+      } else { boxChamps.innerHTML = '<span class="item-sub">No ha jugado recientemente.</span>'; }
 
-    // ROLES RECIENTES
-    const boxRoles = document.getElementById('box-roles');
-    if(p.top_roles && p.top_roles.length > 0) {
-      boxRoles.innerHTML = p.top_roles.map(r => `
-        <div class="list-item">
-          <div class="champ-img" style="display:flex; align-items:center; justify-content:center; background: rgba(139,92,246,0.2); color: #a78bfa; font-weight:bold; font-size:20px;">
-            ✦
+      // ROLES RECIENTES
+      const boxRoles = document.getElementById('box-roles');
+      if(p.top_roles && p.top_roles.length > 0) {
+        boxRoles.innerHTML = p.top_roles.map(r => `
+          <div class="list-item">
+            <div class="champ-img" style="display:flex; align-items:center; justify-content:center; background: rgba(139,92,246,0.2); color: #a78bfa; font-weight:bold; font-size:20px;">
+              ✦
+            </div>
+            <div>
+              <div class="item-title">${r.rol}</div>
+              <div class="item-sub">${r.cantidad} veces jugado</div>
+            </div>
           </div>
-          <div>
-            <div class="item-title">${r.rol}</div>
-            <div class="item-sub">${r.cantidad} veces jugado</div>
+        `).join('');
+      } else { boxRoles.innerHTML = '<span class="item-sub">Sin roles detectados.</span>'; }
+
+      // HISTORIAL
+      const boxHistory = document.getElementById('box-history');
+      if(p.historial && p.historial.length > 0) {
+        boxHistory.innerHTML = p.historial.map(h => `
+          <div class="match">
+            <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(h.campeon)}.png" onerror="this.style.visibility='hidden'">
+            <div>
+              <div class="match-champ">${h.campeon}</div>
+              <div class="match-kda">${h.kda} KDA • ${h.duracion}</div>
+            </div>
+            <div class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</div>
           </div>
-        </div>
-      `).join('');
-    } else { boxRoles.innerHTML = '<span class="item-sub">Sin roles detectados.</span>'; }
+        `).join('');
+      } else { boxHistory.innerHTML = '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>'; }
 
-    // HISTORIAL
-    const boxHistory = document.getElementById('box-history');
-    if(p.historial && p.historial.length > 0) {
-      boxHistory.innerHTML = p.historial.map(h => `
-        <div class="match">
-          <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(h.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="match-champ">${h.campeon}</div>
-            <div class="match-kda">${h.kda} KDA • ${h.duracion}</div>
-          </div>
-          <div class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</div>
-        </div>
-      `).join('');
-    } else { boxHistory.innerHTML = '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>'; }
+      document.getElementById('profile-content').style.display = 'block';
+      document.getElementById('error-msg').style.display = 'none';
+      loadedOnce = true;
 
-    document.getElementById('profile-content').style.display = 'block';
-    
-    // Verificamos el estado en vivo
-    checkLiveStatus();
-
-  } catch (error) {
-    document.getElementById('error-msg').style.display = 'block';
-    console.error(error);
+    } catch (error) {
+      // Solo mostramos el error si nunca cargó exitosamente (evita parpadeos por un fallo de red puntual)
+      if(!loadedOnce){
+        document.getElementById('error-msg').style.display = 'block';
+      }
+      console.error(error);
+    }
   }
 });
 </script>
