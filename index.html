@@ -3,338 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil del Jugador</title>
+<title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type=image/x.icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <style>
   :root{
     --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
     --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
     --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --accent-glow:rgba(139,92,246,.35); --gold:#fbbf24;
     --win:#34d399; --win-bg:rgba(52,211,153,.12);
     --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
-    --gold:#fbbf24;
     --radius:14px;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
-    margin:0; background: radial-gradient(800px 400px at 50% 0%, rgba(139,92,246,.15), transparent), var(--bg);
+    margin:0; background: radial-gradient(1200px 500px at 50% -10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
     color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
   }
-  .wrap{ max-width:900px; margin:0 auto; padding:40px 20px 80px; }
-  
-  .back-btn { display: inline-flex; align-items: center; color: var(--accent-soft); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 30px; transition: color 0.2s; }
-  .back-btn:hover { color: #ffffff; }
+  button { font-family: inherit; color: var(--text); }
+  .wrap{ max-width:960px; margin:0 auto; padding:48px 20px 80px; }
 
-  /* HEADER PERFIL */
-  .profile-header { display: flex; align-items: center; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-  .profile-avatar { width: 100px; height: 100px; border-radius: 20px; border: 3px solid var(--accent); object-fit: cover; }
-  .profile-info h1 { margin: 0 0 5px 0; font-size: 32px; font-weight: 900; }
-  .profile-info p { margin: 0; color: var(--text-faint); font-size: 16px; font-weight: 500; }
-  .profile-rank { margin-left: auto; text-align: right; }
-  .profile-rank h2 { margin: 0; font-size: 28px; color: var(--gold); font-weight: 800; }
-  .profile-rank span { color: var(--text-faint); font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;}
+  header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:30px; padding-bottom:24px; border-bottom:1px solid var(--border); }
+  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color: #ffffff;}
+  
+  .top1-card { display: flex; align-items: center; gap: 20px; background: var(--panel); border: 1px solid var(--accent); padding: 24px; border-radius: var(--radius); margin-bottom: 50px; box-shadow: 0 0 30px var(--accent-glow); position: relative; overflow: hidden;}
+  .top1-badge { position: absolute; top: 0; left: 0; background: var(--accent); color: white; font-weight: 800; font-size: 11px; padding: 4px 12px; border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .top1-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent-soft); object-fit: cover; }
+  .top1-info h3 { margin: 0 0 4px 0; font-size: 22px; font-weight: 800; color: #ffffff;}
+  .top1-info p { margin: 0; color: var(--text-faint); font-size: 14px; font-weight: 500; }
+  .top1-stats { margin-left: auto; text-align: right; }
+  .top1-stats .lp { font-size: 28px; font-weight: 900; color: var(--gold); margin: 0 0 4px 0; }
+  .top1-stats .tier { font-size: 14px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; }
 
-  /* CAJA DE PARTIDA EN VIVO */
-  .live-game-box { background: var(--panel); border: 1px solid #ef4444; border-radius: var(--radius); padding: 24px; margin-bottom: 40px; box-shadow: 0 0 20px rgba(239,68,68,0.15); display: none; }
-  .live-game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;}
-  .live-title-wrap { display: flex; align-items: center; gap: 10px; }
-  .live-game-header h3 { margin: 0; font-size: 20px; color: #ef4444; font-weight: 900; text-transform: uppercase; }
-  .live-game-header .dot { width: 14px; height: 14px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
-  .live-meta { text-align: right; font-size: 13px; color: var(--text-faint); font-weight: 600; }
-  .live-meta span { color: #fff; font-weight: 800; background: var(--panel-2); padding: 6px 10px; border-radius: 8px; margin-left: 8px; border: 1px solid var(--border); }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); } 70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
+  .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
+  .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
   
-  .teams-container { display: flex; gap: 20px; flex-wrap: wrap; }
-  .team-box { flex: 1; min-width: 280px; background: var(--panel-2); border-radius: 12px; padding: 15px; border-top: 4px solid; }
-  .team-box.blue { border-color: #3b82f6; }
-  .team-box.red { border-color: #ef4444; }
-  .team-title { font-size: 14px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
-  .team-box.blue .team-title { color: #3b82f6; }
-  .team-box.red .team-title { color: #ef4444; }
-  
-  .live-player { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-  .live-player:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .live-champ { width: 44px; height: 44px; border-radius: 8px; border: 2px solid var(--border); background: #111;}
-  
-  .live-spells, .live-runes { display: flex; flex-direction: column; gap: 2px; }
-  .live-spells img { width: 21px; height: 21px; border-radius: 4px; }
-  .live-runes img { width: 21px; height: 21px; border-radius: 50%; background: #000; border: 1px solid var(--border);}
-  
-  .live-info { display: flex; flex-direction: column; justify-content: center; overflow: hidden; margin-left: 4px; }
-  .live-name { font-size: 14px; font-weight: 600; color: var(--text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
-  .live-name.is-me { color: var(--gold); font-weight: 900; font-size: 15px; }
-  .live-rank { font-size: 11px; color: var(--text-dim); font-weight: 700; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color: #ffffff;}
+  .section-title span{ font-size:12px; color:var(--text-faint); }
+  section{margin-bottom:52px;}
 
-  /* GRID DE ESTADÍSTICAS */
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px; }
-  .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-  .stat-card h3 { margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; color: var(--text-faint); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+  .ranking{ display:flex; flex-direction:column; gap:6px; }
+  .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 100px 120px 90px 120px; gap:12px; align-items:center; }
+  .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
   
-  .list-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .list-item:last-child { margin-bottom: 0; }
-  .champ-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: #1d1d24; }
-  .item-title { font-weight: 700; font-size: 14px; }
-  .item-sub { font-size: 12px; color: var(--text-dim); }
+  .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color: var(--text); text-align: left; }
+  .rank-row:hover{ border-color:#33333c; transform:translateY(-1px); }
+  .rank-row.active{ border-color:var(--accent); background:linear-gradient(180deg, rgba(139,92,246,.10), rgba(139,92,246,.03)); }
   
-  /* HISTORIAL */
-  .history-section h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+  .rank-pos{ font-size:13px; font-weight:700; color:var(--text-faint); text-align:center; }
+  .player-cell{ display:flex; align-items:center; gap:12px; }
+  .avatar{ width:34px; height:34px; border-radius:9px; border:1px solid var(--border); object-fit:cover; }
+  
+  .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
+  .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
+  
+  .role-badge{ font-size:12px; color:#ffffff; font-weight: 700; background: rgba(139,92,246,0.3); padding: 4px 8px; border-radius: 6px; text-align: center; }
+  .tier-badge{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color: #ffffff;}
+  .tier-crest{ width:16px; height:16px; transform:rotate(45deg); border-radius:4px; background:#5b5c63; }
+  .lp-cell{ font-size:13px; font-weight:600; color:#ffffff; }
+  
+  .wr-cell{ display:flex; flex-direction:column; gap:5px; }
+  .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-faint); }
+  .wr-bar{ height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
+  .wr-fill{ height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
+
+  .tier-iron .tier-crest{background:#5b5c63;} .tier-bronze .tier-crest{background:#a9754f;} .tier-silver .tier-crest{background:#9fb0c2;}
+  .tier-gold .tier-crest{background:#d8ad3d;} .tier-platinum .tier-crest{background:#3fc6b6;} .tier-emerald .tier-crest{background:#3fcf7f;}
+  .tier-diamond .tier-crest{background:#6f8bff;} .tier-master .tier-crest{background:#b154e8;} .tier-grandmaster .tier-crest{background:#e5484d;}
+  .tier-challenger .tier-crest{background:linear-gradient(135deg,#8ce6e0,#f4d160);}
+
+  .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
-  .match{ display:grid; grid-template-columns:48px 1fr auto; align-items:center; gap:14px; padding:12px 16px; border-radius:12px; background:var(--panel); border:1px solid var(--border); }
-  .match-champ-img { width: 48px; height: 48px; border-radius: 10px; }
-  .match-champ{ font-size:15px; font-weight:700; color: #ffffff;}
-  .match-kda{ font-size:13px; color:var(--text-faint); margin-top: 3px;}
-  .result-chip{ font-size:12px; font-weight:800; padding:6px 14px; border-radius:99px; text-transform:uppercase; text-align: center; }
-  .result-chip.victoria{ color:var(--win); background:var(--win-bg); border: 1px solid rgba(52,211,153,.3); }
-  .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); border: 1px solid rgba(248,113,113,.3); }
+  .match{ display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
+  .champ-icon{ width:36px; height:36px; border-radius:8px; object-fit:cover; background:#1d1d24; }
+  .match-champ{ font-size:13px; font-weight:700; color: #ffffff;}
+  .match-kda{ font-size:12px; color:var(--text-faint); }
+  .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align: center; }
+  .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
+  .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
+  .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
+  .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:350px; }
+  .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
+  .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
+  .timer-boxes { display: flex; justify-content: center; gap: 15px; }
+  .timer-box { background: var(--panel-2); border: 1px solid var(--border); padding: 15px 20px; border-radius: 12px; min-width: 90px; }
+  .timer-val { font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 5px; color: #ffffff; }
+  .timer-label { font-size: 11px; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; }
 
-  #error-msg { text-align: center; padding: 50px; color: var(--loss); font-weight: bold; display: none;}
+  /* NUEVO: ESTILOS PARA INDICADOR DE ESTADO EN PARTIDA/OFFLINE */
+  .status-chip { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; letter-spacing: 0.05em; }
+  .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
+  .status-chip.offline { background: rgba(161, 161, 170, 0.1); color: #a1a1aa; border: 1px solid rgba(161, 161, 170, 0.2); }
+
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <a href="index.html" class="back-btn">← Volver al Ranking</a>
-
-  <div id="error-msg">Jugador no encontrado.</div>
-
-  <div id="profile-content" style="display: none;">
-    <div class="profile-header">
-      <img id="p-avatar" class="profile-avatar" src="" alt="Avatar">
-      <div class="profile-info">
-        <h1 id="p-name">Cargando...</h1>
-        <p id="p-winrate">Winrate</p>
-      </div>
-      <div class="profile-rank">
-        <h2 id="p-lp">0 LP</h2>
-        <span id="p-tier">Rango</span>
-      </div>
+  <header>
+    <div>
+      <h1 id="titulo">Torneo entre Amigos</h1>
     </div>
+  </header>
 
-    <!-- CONTENEDOR PARTIDA EN VIVO -->
-    <div id="live-game-container" class="live-game-box"></div>
+  <div id="top1-container"></div>
 
-    <div class="stats-grid">
-      <!-- Top 3 Maestrías -->
-      <div class="stat-card">
-        <h3>Top 3 Maestrías</h3>
-        <div id="box-mastery"></div>
+  <section id="seccion-ranking">
+    <div class="filter-bar">
+      <div class="section-title" style="margin:0;">
+        <h2>Ranking Global</h2>
       </div>
-      
-      <!-- Top 3 Campeones (10 partidas) -->
-      <div class="stat-card">
-        <h3>Top Campeones (SoloQ)</h3>
-        <div id="box-champs"></div>
-      </div>
-
-      <!-- Top Roles -->
-      <div class="stat-card">
-        <h3>Roles Más Jugados</h3>
-        <div id="box-roles"></div>
-      </div>
+      <select id="elo-filter">
+        <option value="ALL">Todos los Elos</option>
+        <option value="CHALLENGER">Challenger</option>
+        <option value="GRANDMASTER">Grandmaster</option>
+        <option value="MASTER">Master</option>
+        <option value="DIAMOND">Diamond</option>
+        <option value="EMERALD">Emerald</option>
+        <option value="PLATINUM">Platinum</option>
+        <option value="GOLD">Gold</option>
+        <option value="SILVER">Silver</option>
+        <option value="BRONZE">Bronze</option>
+        <option value="IRON">Iron</option>
+      </select>
     </div>
+    <div class="rank-head">
+      <span>#</span> <span>Jugador</span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
+    </div>
+    <div class="ranking" id="ranking-list"></div>
+  </section>
 
-    <div class="history-section">
-      <h3>Últimas Partidas (Solo/Duo)</h3>
-      <div class="matches" id="box-history"></div>
+  <section id="seccion-historial">
+    <div class="section-title">
+      <h2>Historial Individual</h2>
+      <span>Últimas 10 partidas Solo/Duo</span>
+    </div>
+    <div class="history-panel" id="history-panel">
+      <p class="empty-state">Haz clic en la fila de un jugador para ver su historial rápido.</p>
+    </div>
+  </section>
+
+  <section id="seccion-grafica">
+    <div class="section-title">
+      <h2>Progreso General de LPs</h2>
+      <span>29 Jul 2026 - 1 Ene 2027</span>
+    </div>
+    <div class="chart-panel">
+      <canvas id="lp-chart"></canvas>
+    </div>
+  </section>
+
+  <div class="countdown-container">
+    <h2>⏳ Fin de Temporada</h2>
+    <div class="timer-boxes" id="countdown">
+      <div class="timer-box"><div class="timer-val" id="cd-days">0</div><div class="timer-label">Días</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-hours">0</div><div class="timer-label">Horas</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-mins">0</div><div class="timer-label">Min</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-secs">0</div><div class="timer-label">Seg</div></div>
     </div>
   </div>
 </div>
 
 <script>
-window.addEventListener('load', async () => {
-  const params = new URLSearchParams(window.location.search);
-  const jugadorId = params.get('jugador');
+window.addEventListener('load', () => {
+  const TIER_ORDER = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
+  const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
 
-  if (!jugadorId) {
-    document.getElementById('error-msg').style.display = 'block';
-    return;
+  // NUEVO: Agregamos liveData al estado
+  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', chart: null };
+
+  const top1ContainerEl = document.getElementById('top1-container');
+  const rankingListEl = document.getElementById('ranking-list');
+  const historyPanelEl = document.getElementById('history-panel');
+  const eloFilterEl = document.getElementById('elo-filter');
+  
+  init();
+  startCountdown();
+
+  async function init(){
+    try{
+      const res = await fetch('datos.json', { cache: 'no-store' });
+      if(!res.ok) throw new Error();
+      const rawData = await res.json();
+      const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
+      
+      // NUEVO: Intentar cargar los datos en vivo
+      try {
+        const liveRes = await fetch('live_data.json', { cache: 'no-store' });
+        if(liveRes.ok) state.liveData = await liveRes.json();
+      } catch(e) { console.log("No hay datos en vivo aún."); }
+
+      state.players = rawPlayers.map(p => {
+        const rankParts = (p.rango || 'Unranked').split(' ');
+        return {
+          id: p.nombre, nombre: p.nombre, icono: p.icono || 1,
+          rango: rankParts[0], division: rankParts.slice(1).join(' '),
+          lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, rol: p.rol_principal || 'N/A',
+          partidas: (p.historial || []).map(h => ({
+            campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion
+          })),
+          historialLP: p.progreso_lp || []
+        };
+      }).sort((a,b) => rankScore(b) - rankScore(a));
+
+      eloFilterEl.addEventListener('change', (e) => {
+        state.filterElo = e.target.value;
+        renderRanking();
+      });
+
+      renderTop1();
+      renderRanking();
+      buildChart();
+      if(state.players.length) selectPlayer(state.players[0].id);
+
+    }catch(err){
+      rankingListEl.innerHTML = `<p class="empty-state">Espera a que el bot recolecte la información en un par de minutos y recarga la página.</p>`;
+    }
   }
 
-  // --- LÓGICA DE PARTIDA EN VIVO ---
-  const loadLiveGame = async () => {
-    try {
-      const liveRes = await fetch('live_data.json', { cache: 'no-store' });
-      if (!liveRes.ok) return;
-      const liveData = await liveRes.json();
-      const liveStatus = liveData[jugadorId];
-      
-      if (liveStatus && liveStatus.en_partida) {
-        const liveBox = document.getElementById('live-game-container');
-        
-        // Función para nombres de las colas
-        const getQueueName = (id) => {
-          const queues = {420: 'Ranked Solo/Duo', 440: 'Ranked Flex', 400: 'Normal Draft', 430: 'Normal Blind', 450: 'ARAM', 1700: 'Arena'};
-          return queues[id] || 'Partida Normal';
-        };
+  function rankScore(p){
+    const ti = TIER_ORDER.indexOf((p.rango || '').toUpperCase());
+    if(DIVISIONLESS.includes((p.rango || '').toUpperCase())) return ti * 100000 + (p.lp || 0);
+    const divNum = { 'IV':1,'III':2,'II':3,'I':4 }[p.division] || 0;
+    return ti * 100000 + divNum * 2000 + (p.lp || 0);
+  }
 
-        // Formateador de tiempo a minutos y segundos (MM:SS)
-        const formatDuration = (secs) => {
-          if (!secs) return "00:00";
-          const m = Math.floor(secs / 60);
-          const s = secs % 60;
-          return `${m}:${s < 10 ? '0' : ''}${s}`;
-        };
+  function getAvatarUrl(iconId) { return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
 
-        const queueName = getQueueName(liveStatus.cola || 420);
-        let gameSeconds = liveStatus.tiempo || 0; // Si tu python envía el tiempo
-        
-        const buildTeamHtml = (team, isBlue) => {
-          const color = isBlue ? 'blue' : 'red';
-          const title = isBlue ? 'Lado Azul' : 'Lado Rojo';
-          
-          const playersHtml = team.map(p => {
-            const currentName = jugadorId.split('#')[0].toLowerCase();
-            const pName = p.nombre.split('#')[0].toLowerCase();
-            const isMe = currentName === pName;
-            const nameClass = isMe ? 'live-name is-me' : 'live-name';
-            
-            // Fallbacks de estilos e imágenes si la API no los tiene listos
-            const rank = p.rango || 'Unranked';
-            
-            // Las URL de runas son de la API de DDragon
-            // Nota: El backend en python deberá mandar 'runa1_img' y 'runa2_img', pero ponemos placeholders si faltan.
-            const rune1Img = p.runa1_img ? `https://ddragon.leagueoflegends.com/cdn/img/${p.runa1_img}` : `https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png`;
-            const rune2Img = p.runa2_img ? `https://ddragon.leagueoflegends.com/cdn/img/${p.runa2_img}` : `https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7201_Precision.png`;
+  function renderTop1() {
+    if (state.players.length === 0) return;
+    const topPlayer = state.players[0]; 
+    const tierPretty = topPlayer.rango.charAt(0) + topPlayer.rango.slice(1).toLowerCase();
+    const rankDisplay = DIVISIONLESS.includes((topPlayer.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${topPlayer.division}`;
 
-            return `
-              <div class="live-player">
-                <img class="live-champ" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${p.campeon_img}.png" onerror="this.src=''">
-                <div class="live-spells">
-                  <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${p.spell1}.png" title="Hechizo 1">
-                  <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${p.spell2}.png" title="Hechizo 2">
-                </div>
-                <div class="live-runes">
-                  <img src="${rune1Img}" title="Runa Principal">
-                  <img src="${rune2Img}" title="Runa Secundaria" style="transform: scale(0.85);">
-                </div>
-                <div class="live-info">
-                  <span class="${nameClass}">${p.nombre.split('#')[0]}</span>
-                  <span class="live-rank">${rank}</span>
-                </div>
-              </div>
-            `;
-          }).join('');
-          
-          return `<div class="team-box ${color}"> <div class="team-title">${title}</div> ${playersHtml} </div>`;
-        };
+    top1ContainerEl.innerHTML = `
+      <div class="top1-card">
+        <div class="top1-badge">Top 1 Actual</div>
+        <img class="top1-avatar" src="${getAvatarUrl(topPlayer.icono)}" alt="Avatar">
+        <div class="top1-info">
+          <h3><a href="perfil.html?jugador=${encodeURIComponent(topPlayer.id)}" class="profile-link" style="padding:0;">${topPlayer.nombre}</a></h3>
+          <p>Dominando la grieta como ${topPlayer.rol}</p>
+        </div>
+        <div class="top1-stats">
+          <p class="lp">${topPlayer.lp} LP</p>
+          <p class="tier">${rankDisplay}</p>
+        </div>
+      </div>
+    `;
+  }
 
-        liveBox.innerHTML = `
-          <div class="live-game-header">
-            <div class="live-title-wrap">
-              <div class="dot"></div>
-              <h3>Jugando Ahora</h3>
-            </div>
-            <div class="live-meta">
-              Cola: <span>${queueName}</span> 
-              Duración: <span id="live-time-val">${formatDuration(gameSeconds)}</span>
-            </div>
-          </div>
-          <div class="teams-container">
-            ${buildTeamHtml(liveStatus.equipo_azul || [], true)}
-            ${buildTeamHtml(liveStatus.equipo_rojo || [], false)}
-          </div>
-        `;
-        liveBox.style.display = 'block';
+  function renderRanking(){
+    rankingListEl.innerHTML = '';
+    const filtrados = state.players.filter(p => state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo);
 
-        // Actualizar el reloj cada segundo
-        setInterval(() => {
-          gameSeconds++;
-          const timeEl = document.getElementById('live-time-val');
-          if(timeEl) timeEl.innerText = formatDuration(gameSeconds);
-        }, 1000);
-      }
-    } catch (e) {
-      console.log("Error cargando partida en vivo:", e);
+    if(filtrados.length === 0){
+      rankingListEl.innerHTML = `<p class="empty-state">Nadie está en este elo todavía.</p>`;
+      return;
     }
-  };
 
-  // --- LÓGICA DE DATOS DEL JUGADOR ---
-  try {
-    const res = await fetch('datos.json', { cache: 'no-store' });
-    const data = await res.json();
-    const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
-    const p = jugadores.find(j => j.nombre === jugadorId);
-    if (!p) throw new Error("No encontrado");
+    filtrados.forEach((p, i) => {
+      const row = document.createElement('button');
+      row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
+      
+      // Al hacer click en la FILA muestra el historial rápido
+      row.addEventListener('click', (e) => {
+        // Evitamos que active el historial si hicieron click justo en el enlace del nombre
+        if (e.target.tagName.toLowerCase() !== 'a') { selectPlayer(p.id); }
+      });
 
-    const formatImg = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
+      const tierPretty = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
+      const rankDisplay = DIVISIONLESS.includes((p.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
 
-    // HEADER
-    document.getElementById('p-avatar').src = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-    document.getElementById('p-name').innerText = p.nombre.split('#')[0]; 
-    document.getElementById('p-tier').innerText = p.rango;
-    document.getElementById('p-lp').innerText = `${p.lp} LP`;
-    document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
+      // NUEVO: Calculamos si está en partida leyendo del JSON liveData
+      const liveStatus = state.liveData[p.id] || { en_partida: false };
+      const statusHtml = liveStatus.en_partida 
+          ? `<span class="status-chip in-game">En Partida</span>` 
+          : `<span class="status-chip offline">Offline</span>`;
 
-    // MAESTRÍAS
-    const boxMastery = document.getElementById('box-mastery');
-    if(p.maestrias && p.maestrias.length > 0) {
-      boxMastery.innerHTML = p.maestrias.map(m => `
-        <div class="list-item">
-          <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(m.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="item-title">${m.campeon}</div>
-            <div class="item-sub">Nivel ${m.nivel} • ${m.puntos} pts</div>
-          </div>
-        </div>
-      `).join('');
-    } else { boxMastery.innerHTML = '<span class="item-sub">Sin datos</span>'; }
+      // Inyectamos el statusHtml en el player-cell
+      row.innerHTML = `
+        <span class="rank-pos">${i + 1}</span>
+        <span class="player-cell">
+          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
+          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre}</a>
+          ${statusHtml}
+        </span>
+        <span class="role-badge">${p.rol}</span>
+        <span class="tier-badge tier-${(p.rango || '').toLowerCase()}">
+          <span class="tier-crest"></span> <span class="tier-label">${rankDisplay}</span>
+        </span>
+        <span class="lp-cell">${p.lp} LP</span>
+        <span class="wr-cell">
+          <span class="wr-top"><span>${p.winrate}% WR</span></span>
+          <span class="wr-bar"><span class="wr-fill" style="width:${p.winrate}%"></span></span>
+        </span>
+      `;
+      rankingListEl.appendChild(row);
+    });
+  }
 
-    // CAMPEONES RECIENTES
-    const boxChamps = document.getElementById('box-champs');
-    if(p.top_recientes && p.top_recientes.length > 0) {
-      boxChamps.innerHTML = p.top_recientes.map(c => `
-        <div class="list-item">
-          <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(c.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="item-title">${c.campeon}</div>
-            <div class="item-sub">${c.cantidad} partidas recientes</div>
-          </div>
-        </div>
-      `).join('');
-    } else { boxChamps.innerHTML = '<span class="item-sub">No ha jugado recientemente.</span>'; }
+  function selectPlayer(id){
+    state.selectedId = id;
+    renderRanking();
+    const player = state.players.find(p => p.id === id);
+    const matchesHtml = player.partidas.map(m => `
+      <div class="match">
+        <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+        <span>
+          <div class="match-champ">${m.campeon}</div>
+          <div class="match-kda">${m.kda} KDA</div>
+        </span>
+        <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
+      </div>
+    `).join('');
+    historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
+  }
 
-    // ROLES RECIENTES
-    const boxRoles = document.getElementById('box-roles');
-    if(p.top_roles && p.top_roles.length > 0) {
-      boxRoles.innerHTML = p.top_roles.map(r => `
-        <div class="list-item">
-          <div class="champ-img" style="display:flex; align-items:center; justify-content:center; background: rgba(139,92,246,0.2); color: #a78bfa; font-weight:bold; font-size:20px;">
-            ✦
-          </div>
-          <div>
-            <div class="item-title">${r.rol}</div>
-            <div class="item-sub">${r.cantidad} veces jugado</div>
-          </div>
-        </div>
-      `).join('');
-    } else { boxRoles.innerHTML = '<span class="item-sub">Sin roles detectados.</span>'; }
+  function buildChart(){
+    const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
+    const datasets = state.players.map((p, i) => {
+      const dataPoints = p.historialLP.filter(pt => pt.fecha).map(pt => ({ x: new Date(pt.fecha).getTime(), y: pt.lp }));
+      return {
+        label: p.nombre, data: dataPoints, borderColor: palette[i % palette.length],
+        backgroundColor: palette[i % palette.length], borderWidth: 2, tension: 0.3, spanGaps: true
+      };
+    });
 
-    // HISTORIAL
-    const boxHistory = document.getElementById('box-history');
-    if(p.historial && p.historial.length > 0) {
-      boxHistory.innerHTML = p.historial.map(h => `
-        <div class="match">
-          <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${formatImg(h.campeon)}.png" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="match-champ">${h.campeon}</div>
-            <div class="match-kda">${h.kda} KDA • ${h.duracion}</div>
-          </div>
-          <div class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</div>
-        </div>
-      `).join('');
-    } else { boxHistory.innerHTML = '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>'; }
+    new Chart(document.getElementById('lp-chart').getContext('2d'), {
+      type: 'line', data: { datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { color: '#ffffff' } } },
+        scales: {
+          x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } }, min: '2026-07-29T00:00:00', max: '2027-01-01T23:59:59', grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
+          y: { grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
+        },
+      },
+    });
+  }
 
-    document.getElementById('profile-content').style.display = 'block';
-    
-    // Llamamos a cargar la partida en vivo después de mostrar el perfil base
-    loadLiveGame();
-
-  } catch (error) {
-    document.getElementById('error-msg').style.display = 'block';
-    console.error(error);
+  function startCountdown() {
+    const targetDate = new Date('2027-01-01T00:00:00').getTime();
+    function update() {
+      const distance = targetDate - new Date().getTime();
+      if (distance < 0) return;
+      document.getElementById('cd-days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById('cd-hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById('cd-mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('cd-secs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+    update(); setInterval(update, 1000);
   }
 });
 </script>
