@@ -1,16 +1,54 @@
 {
-  "ultimaActualizacion": "2026-08-15T15:47:10.540597",
+  "ultimaActualizacion": "2026-08-15T16:18:40.235983",
   "jugadores": [
     {
-      "id": "Pinea#Pinea",
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
       "lp": 58,
       "winrate": "52%",
-      "rol": "N/A",
-      "en_partida": false,
-      "datos_partida": null,
+      "rol_principal": "Top",
+      "top_roles": [
+        {
+          "rol": "Top",
+          "cantidad": 5
+        },
+        {
+          "rol": "Mid",
+          "cantidad": 2
+        }
+      ],
+      "top_recientes": [
+        {
+          "campeon": "Ekko",
+          "cantidad": 3
+        },
+        {
+          "campeon": "Fiora",
+          "cantidad": 3
+        },
+        {
+          "campeon": "Pyke",
+          "cantidad": 1
+        }
+      ],
+      "maestrias": [
+        {
+          "campeon": "Fiora",
+          "nivel": 25,
+          "puntos": "248.487"
+        },
+        {
+          "campeon": "Irelia",
+          "nivel": 16,
+          "puntos": "150.131"
+        },
+        {
+          "campeon": "Nasus",
+          "nivel": 14,
+          "puntos": "121.335"
+        }
+      ],
       "progreso_lp": [
         58,
         {
@@ -36,19 +74,123 @@
         {
           "fecha": "2026-08-15T15:47:07",
           "lp": 58
+        },
+        {
+          "fecha": "2026-08-15T16:18:27",
+          "lp": 58
+        }
+      ],
+      "historial": [
+        {
+          "campeon": "Ekko",
+          "kda": "12/13/8 (1.54)",
+          "resultado": "Derrota",
+          "duracion": "39min"
+        },
+        {
+          "campeon": "Ekko",
+          "kda": "12/8/8 (2.5)",
+          "resultado": "Victoria",
+          "duracion": "31min"
+        },
+        {
+          "campeon": "Pyke",
+          "kda": "11/10/5 (1.6)",
+          "resultado": "Derrota",
+          "duracion": "35min"
+        },
+        {
+          "campeon": "Corki",
+          "kda": "5/8/3 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "25min"
+        },
+        {
+          "campeon": "Irelia",
+          "kda": "6/15/8 (0.93)",
+          "resultado": "Victoria",
+          "duracion": "45min"
+        },
+        {
+          "campeon": "Fiora",
+          "kda": "10/11/8 (1.64)",
+          "resultado": "Derrota",
+          "duracion": "34min"
+        },
+        {
+          "campeon": "Fiora",
+          "kda": "17/12/13 (2.5)",
+          "resultado": "Victoria",
+          "duracion": "47min"
+        },
+        {
+          "campeon": "Jayce",
+          "kda": "7/5/10 (3.4)",
+          "resultado": "Victoria",
+          "duracion": "22min"
+        },
+        {
+          "campeon": "Ekko",
+          "kda": "17/5/13 (6.0)",
+          "resultado": "Derrota",
+          "duracion": "38min"
+        },
+        {
+          "campeon": "Fiora",
+          "kda": "4/4/8 (3.0)",
+          "resultado": "Victoria",
+          "duracion": "32min"
         }
       ]
     },
     {
-      "id": "Galactic Shark#AYK",
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver II",
       "lp": 55,
       "winrate": "53%",
-      "rol": "N/A",
-      "en_partida": false,
-      "datos_partida": null,
+      "rol_principal": "Mid",
+      "top_roles": [
+        {
+          "rol": "Mid",
+          "cantidad": 5
+        },
+        {
+          "rol": "Jungla",
+          "cantidad": 4
+        }
+      ],
+      "top_recientes": [
+        {
+          "campeon": "Lillia",
+          "cantidad": 4
+        },
+        {
+          "campeon": "Aurora",
+          "cantidad": 4
+        },
+        {
+          "campeon": "Akali",
+          "cantidad": 1
+        }
+      ],
+      "maestrias": [
+        {
+          "campeon": "Akali",
+          "nivel": 31,
+          "puntos": "330.654"
+        },
+        {
+          "campeon": "Poppy",
+          "nivel": 19,
+          "puntos": "202.300"
+        },
+        {
+          "campeon": "Katarina",
+          "nivel": 15,
+          "puntos": "143.015"
+        }
+      ],
       "progreso_lp": [
         55,
         {
@@ -74,19 +216,123 @@
         {
           "fecha": "2026-08-15T15:47:07",
           "lp": 55
+        },
+        {
+          "fecha": "2026-08-15T16:18:27",
+          "lp": 55
+        }
+      ],
+      "historial": [
+        {
+          "campeon": "Lillia",
+          "kda": "6/5/8 (2.8)",
+          "resultado": "Derrota",
+          "duracion": "34min"
+        },
+        {
+          "campeon": "Lillia",
+          "kda": "1/1/5 (6.0)",
+          "resultado": "Victoria",
+          "duracion": "16min"
+        },
+        {
+          "campeon": "Lillia",
+          "kda": "9/4/13 (5.5)",
+          "resultado": "Victoria",
+          "duracion": "37min"
+        },
+        {
+          "campeon": "Aurora",
+          "kda": "4/8/8 (1.5)",
+          "resultado": "Derrota",
+          "duracion": "32min"
+        },
+        {
+          "campeon": "Aurora",
+          "kda": "2/6/6 (1.33)",
+          "resultado": "Victoria",
+          "duracion": "31min"
+        },
+        {
+          "campeon": "Akali",
+          "kda": "5/2/6 (5.5)",
+          "resultado": "Victoria",
+          "duracion": "25min"
+        },
+        {
+          "campeon": "Aurora",
+          "kda": "9/2/5 (7.0)",
+          "resultado": "Victoria",
+          "duracion": "21min"
+        },
+        {
+          "campeon": "Lillia",
+          "kda": "2/3/0 (0.67)",
+          "resultado": "Derrota",
+          "duracion": "15min"
+        },
+        {
+          "campeon": "Maokai",
+          "kda": "0/0/0 (Perfect)",
+          "resultado": "Derrota",
+          "duracion": "1min"
+        },
+        {
+          "campeon": "Aurora",
+          "kda": "3/12/10 (1.08)",
+          "resultado": "Derrota",
+          "duracion": "33min"
         }
       ]
     },
     {
-      "id": "El Buñuelito#KyA",
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver II",
       "lp": 57,
       "winrate": "49%",
-      "rol": "N/A",
-      "en_partida": false,
-      "datos_partida": null,
+      "rol_principal": "Mid",
+      "top_roles": [
+        {
+          "rol": "Mid",
+          "cantidad": 5
+        },
+        {
+          "rol": "ADC",
+          "cantidad": 3
+        }
+      ],
+      "top_recientes": [
+        {
+          "campeon": "Zoe",
+          "cantidad": 4
+        },
+        {
+          "campeon": "Lux",
+          "cantidad": 2
+        },
+        {
+          "campeon": "Camille",
+          "cantidad": 1
+        }
+      ],
+      "maestrias": [
+        {
+          "campeon": "Seraphine",
+          "nivel": 22,
+          "puntos": "227.209"
+        },
+        {
+          "campeon": "Zoe",
+          "nivel": 23,
+          "puntos": "222.975"
+        },
+        {
+          "campeon": "Lux",
+          "nivel": 21,
+          "puntos": "218.743"
+        }
+      ],
       "progreso_lp": [
         57,
         {
@@ -112,19 +358,119 @@
         {
           "fecha": "2026-08-15T15:47:07",
           "lp": 57
+        },
+        {
+          "fecha": "2026-08-15T16:18:27",
+          "lp": 57
+        }
+      ],
+      "historial": [
+        {
+          "campeon": "Zoe",
+          "kda": "4/3/3 (2.33)",
+          "resultado": "Derrota",
+          "duracion": "32min"
+        },
+        {
+          "campeon": "Lux",
+          "kda": "13/8/17 (3.75)",
+          "resultado": "Derrota",
+          "duracion": "41min"
+        },
+        {
+          "campeon": "Zoe",
+          "kda": "1/4/1 (0.5)",
+          "resultado": "Derrota",
+          "duracion": "17min"
+        },
+        {
+          "campeon": "Camille",
+          "kda": "2/15/15 (1.13)",
+          "resultado": "Derrota",
+          "duracion": "31min"
+        },
+        {
+          "campeon": "Caitlyn",
+          "kda": "7/7/7 (2.0)",
+          "resultado": "Victoria",
+          "duracion": "30min"
+        },
+        {
+          "campeon": "Xayah",
+          "kda": "14/9/11 (2.78)",
+          "resultado": "Derrota",
+          "duracion": "31min"
+        },
+        {
+          "campeon": "Zoe",
+          "kda": "3/9/7 (1.11)",
+          "resultado": "Derrota",
+          "duracion": "32min"
+        },
+        {
+          "campeon": "Zoe",
+          "kda": "5/2/1 (3.0)",
+          "resultado": "Victoria",
+          "duracion": "15min"
+        },
+        {
+          "campeon": "Lux",
+          "kda": "4/10/9 (1.3)",
+          "resultado": "Victoria",
+          "duracion": "36min"
+        },
+        {
+          "campeon": "Jinx",
+          "kda": "5/12/11 (1.33)",
+          "resultado": "Derrota",
+          "duracion": "39min"
         }
       ]
     },
     {
-      "id": "ゆうき まこと#1411",
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold IV",
       "lp": 75,
       "winrate": "57%",
-      "rol": "N/A",
-      "en_partida": false,
-      "datos_partida": null,
+      "rol_principal": "Top",
+      "top_roles": [
+        {
+          "rol": "Top",
+          "cantidad": 4
+        }
+      ],
+      "top_recientes": [
+        {
+          "campeon": "Poppy",
+          "cantidad": 2
+        },
+        {
+          "campeon": "Nasus",
+          "cantidad": 1
+        },
+        {
+          "campeon": "Sion",
+          "cantidad": 1
+        }
+      ],
+      "maestrias": [
+        {
+          "campeon": "Poppy",
+          "nivel": 80,
+          "puntos": "852.082"
+        },
+        {
+          "campeon": "Teemo",
+          "nivel": 34,
+          "puntos": "342.353"
+        },
+        {
+          "campeon": "Morgana",
+          "nivel": 28,
+          "puntos": "274.711"
+        }
+      ],
       "progreso_lp": [
         75,
         {
@@ -150,23 +496,36 @@
         {
           "fecha": "2026-08-15T15:47:07",
           "lp": 75
-        }
-      ]
-    },
-    {
-      "id": "adrianNOOBYT#LAN",
-      "nombre": "adrianNOOBYT#LAN",
-      "icono": 6503,
-      "rango": "Unranked",
-      "lp": 0,
-      "winrate": "0%",
-      "rol": "N/A",
-      "en_partida": false,
-      "datos_partida": null,
-      "progreso_lp": [
+        },
         {
-          "fecha": "2026-08-15T15:47:07",
-          "lp": 0
+          "fecha": "2026-08-15T16:18:27",
+          "lp": 75
+        }
+      ],
+      "historial": [
+        {
+          "campeon": "Nasus",
+          "kda": "7/4/15 (5.5)",
+          "resultado": "Victoria",
+          "duracion": "50min"
+        },
+        {
+          "campeon": "Poppy",
+          "kda": "2/6/5 (1.17)",
+          "resultado": "Derrota",
+          "duracion": "27min"
+        },
+        {
+          "campeon": "Poppy",
+          "kda": "17/5/15 (6.4)",
+          "resultado": "Victoria",
+          "duracion": "43min"
+        },
+        {
+          "campeon": "Sion",
+          "kda": "2/11/4 (0.55)",
+          "resultado": "Derrota",
+          "duracion": "32min"
         }
       ]
     }
