@@ -1,0 +1,31 @@
+name: Actualizar Tabla de LoL de forma Automatica
+
+on:
+  schedule:
+    # Se ejecuta de forma automatica cada 3 horas
+    - cron: '0 */3 * * *'
+  workflow_dispatch: # Esto te permite activar la actualización manualmente cuando quieras
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-packages: 'urllib'
+
+    - name: Ejecutar script de Riot API
+      env:
+        RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }} # Aquí saca la clave de tu caja fuerte
+      run: python actualizar_datos.py
+
+    - name: Guardar cambios en GitHub
+      run: |
+        git config --global user.name 'RiotBot'
+        git config --global user.email 'riotbot@github.com'
+        git add datos.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de rangos" && git push)
