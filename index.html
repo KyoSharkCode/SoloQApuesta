@@ -6,14 +6,16 @@
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- LIBRERÍAS DE CHART.JS Y ADAPTADOR DE FECHAS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <style>
   :root{
     --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
-    --border:#232329; --text:#f2f2f5; --text-dim:#9a9aa3;
-    --text-faint:#5c5c66; --accent:#8b5cf6; --accent-soft:#a78bfa;
-    --accent-glow:rgba(139,92,246,.35);
+    --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
+    --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --accent-glow:rgba(139,92,246,.35); --gold:#fbbf24;
     --win:#34d399; --win-bg:rgba(52,211,153,.12);
     --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
     --radius:14px;
@@ -24,37 +26,49 @@
     margin:0; background: radial-gradient(1200px 500px at 50% -10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
     color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
   }
+  button { font-family: inherit; color: var(--text); }
   .wrap{ max-width:960px; margin:0 auto; padding:48px 20px 80px; }
 
-  header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:40px; padding-bottom:24px; border-bottom:1px solid var(--border); }
-  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; }
+  header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:30px; padding-bottom:24px; border-bottom:1px solid var(--border); }
+  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color: #ffffff;}
   
+  /* TOP 1 CARD */
+  .top1-card { display: flex; align-items: center; gap: 20px; background: var(--panel); border: 1px solid var(--accent); padding: 24px; border-radius: var(--radius); margin-bottom: 50px; box-shadow: 0 0 30px var(--accent-glow); position: relative; overflow: hidden;}
+  .top1-badge { position: absolute; top: 0; left: 0; background: var(--accent); color: white; font-weight: 800; font-size: 11px; padding: 4px 12px; border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .top1-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent-soft); object-fit: cover; }
+  .top1-info h3 { margin: 0 0 4px 0; font-size: 22px; font-weight: 800; color: #ffffff;}
+  .top1-info p { margin: 0; color: var(--text-faint); font-size: 14px; font-weight: 500; }
+  .top1-stats { margin-left: auto; text-align: right; }
+  .top1-stats .lp { font-size: 28px; font-weight: 900; color: var(--gold); margin: 0 0 4px 0; }
+  .top1-stats .tier { font-size: 14px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; }
+
   .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
   .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
-  .filter-bar select:focus { border-color: var(--accent); }
   
-  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; }
+  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color: #ffffff;}
+  .section-title span{ font-size:12px; color:var(--text-faint); }
   section{margin-bottom:52px;}
 
   .ranking{ display:flex; flex-direction:column; gap:6px; }
   .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 100px 120px 90px 120px; gap:12px; align-items:center; }
   .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
-  .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; }
+  
+  .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color: var(--text); text-align: left; }
   .rank-row:hover{ border-color:#33333c; transform:translateY(-1px); }
   .rank-row.active{ border-color:var(--accent); background:linear-gradient(180deg, rgba(139,92,246,.10), rgba(139,92,246,.03)); }
   
   .rank-pos{ font-size:13px; font-weight:700; color:var(--text-faint); text-align:center; }
   .player-cell{ display:flex; align-items:center; gap:12px; }
-  .avatar{ width:34px; height:34px; border-radius:9px; background:var(--panel-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:var(--text-dim); }
-  .player-name{ font-size:14px; font-weight:600; }
+  .avatar{ width:34px; height:34px; border-radius:9px; border:1px solid var(--border); object-fit:cover; }
+  .player-name{ font-size:14px; font-weight:600; color: #ffffff;}
   
-  .role-badge{ font-size:12px; color:var(--accent-soft); font-weight: 600; background: rgba(139,92,246,0.1); padding: 4px 8px; border-radius: 6px; text-align: center; }
-  .tier-badge{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; }
+  .role-badge{ font-size:12px; color:#ffffff; font-weight: 700; background: rgba(139,92,246,0.3); padding: 4px 8px; border-radius: 6px; text-align: center; }
+  .tier-badge{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color: #ffffff;}
   .tier-crest{ width:16px; height:16px; transform:rotate(45deg); border-radius:4px; background:#5b5c63; }
-  .lp-cell{ font-size:13px; font-weight:600; color:var(--text-dim); }
+  .lp-cell{ font-size:13px; font-weight:600; color:#ffffff; }
   
   .wr-cell{ display:flex; flex-direction:column; gap:5px; }
-  .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-dim); }
+  .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-faint); }
   .wr-bar{ height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
   .wr-fill{ height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
 
@@ -66,23 +80,26 @@
 
   /* History */
   .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
-  .history-head{ display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border); }
-  .history-head h3{ margin:0; font-size:17px; font-weight:700; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
-  .match{ display:grid; grid-template-columns:44px 1fr auto auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
+  .match{ display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
   .champ-icon{ width:36px; height:36px; border-radius:8px; object-fit:cover; background:#1d1d24; }
-  .match-champ{ font-size:13px; font-weight:600; }
-  .match-kda{ font-size:12px; color:var(--text-dim); }
-  .lp-diff { font-size:12px; font-weight: 700; text-align: right; margin-right: 10px; }
-  .lp-diff.victoria { color: var(--win); }
-  .lp-diff.derrota { color: var(--loss); }
-  .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; }
+  .match-champ{ font-size:13px; font-weight:700; color: #ffffff;}
+  .match-kda{ font-size:12px; color:var(--text-faint); }
+  .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align: center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
 
   /* Chart */
   .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:350px; }
+
+  /* Countdown */
+  .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
+  .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
+  .timer-boxes { display: flex; justify-content: center; gap: 15px; }
+  .timer-box { background: var(--panel-2); border: 1px solid var(--border); padding: 15px 20px; border-radius: 12px; min-width: 90px; }
+  .timer-val { font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 5px; color: #ffffff; }
+  .timer-label { font-size: 11px; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; }
 
 </style>
 </head>
@@ -94,6 +111,9 @@
       <h1 id="titulo">Torneo entre Amigos</h1>
     </div>
   </header>
+
+  <!-- SECCIÓN TOP 1 -->
+  <div id="top1-container"></div>
 
   <section id="seccion-ranking">
     <div class="filter-bar">
@@ -133,12 +153,23 @@
   <section id="seccion-grafica">
     <div class="section-title">
       <h2>Progreso General de LPs</h2>
-      <span>Todos los jugadores al mismo tiempo</span>
+      <span>29 Jul 2026 - 1 Ene 2027</span>
     </div>
     <div class="chart-panel">
       <canvas id="lp-chart"></canvas>
     </div>
   </section>
+
+  <!-- TEMPORIZADOR -->
+  <div class="countdown-container">
+    <h2>⏳ Fin de Temporada</h2>
+    <div class="timer-boxes" id="countdown">
+      <div class="timer-box"><div class="timer-val" id="cd-days">0</div><div class="timer-label">Días</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-hours">0</div><div class="timer-label">Horas</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-mins">0</div><div class="timer-label">Min</div></div>
+      <div class="timer-box"><div class="timer-val" id="cd-secs">0</div><div class="timer-label">Seg</div></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -148,11 +179,13 @@ window.addEventListener('load', () => {
 
   const state = { players: [], selectedId: null, filterElo: 'ALL', chart: null };
 
+  const top1ContainerEl = document.getElementById('top1-container');
   const rankingListEl = document.getElementById('ranking-list');
   const historyPanelEl = document.getElementById('history-panel');
   const eloFilterEl = document.getElementById('elo-filter');
   
   init();
+  startCountdown();
 
   async function init(){
     try{
@@ -165,6 +198,7 @@ window.addEventListener('load', () => {
         const rankParts = (p.rango || 'Unranked').split(' ');
         return {
           id: p.nombre, nombre: p.nombre,
+          icono: p.icono || 1, // Se extrae el icono de datos.json
           rango: rankParts[0], division: rankParts.slice(1).join(' '),
           lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, 
           rol: p.rol_principal || 'N/A',
@@ -181,12 +215,13 @@ window.addEventListener('load', () => {
         renderRanking();
       });
 
+      renderTop1();
       renderRanking();
       buildChart();
       if(state.players.length) selectPlayer(state.players[0].id);
 
     }catch(err){
-      rankingListEl.innerHTML = `<p class="empty-state">Error cargando datos.json</p>`;
+      rankingListEl.innerHTML = `<p class="empty-state">Espera a que el bot recolecte la información en un par de minutos y recarga la página.</p>`;
     }
   }
 
@@ -197,10 +232,35 @@ window.addEventListener('load', () => {
     return ti * 100000 + divNum * 2000 + (p.lp || 0);
   }
 
+  function getAvatarUrl(iconId) {
+    return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`;
+  }
+
+  function renderTop1() {
+    if (state.players.length === 0) return;
+    const topPlayer = state.players[0]; // Como ya están ordenados por rankScore, el 0 es el mejor
+    const tierPretty = topPlayer.rango.charAt(0) + topPlayer.rango.slice(1).toLowerCase();
+    const rankDisplay = DIVISIONLESS.includes((topPlayer.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${topPlayer.division}`;
+
+    top1ContainerEl.innerHTML = `
+      <div class="top1-card">
+        <div class="top1-badge">Top 1 Actual</div>
+        <img class="top1-avatar" src="${getAvatarUrl(topPlayer.icono)}" alt="Avatar">
+        <div class="top1-info">
+          <h3>${topPlayer.nombre}</h3>
+          <p>Dominando la grieta como ${topPlayer.rol}</p>
+        </div>
+        <div class="top1-stats">
+          <p class="lp">${topPlayer.lp} LP</p>
+          <p class="tier">${rankDisplay}</p>
+        </div>
+      </div>
+    `;
+  }
+
   function renderRanking(){
     rankingListEl.innerHTML = '';
     
-    // Filtro por ELO
     const filtrados = state.players.filter(p => 
       state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo
     );
@@ -221,6 +281,7 @@ window.addEventListener('load', () => {
       row.innerHTML = `
         <span class="rank-pos">${i + 1}</span>
         <span class="player-cell">
+          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
           <span class="player-name">${p.nombre}</span>
         </span>
         <span class="role-badge">${p.rol}</span>
@@ -249,7 +310,6 @@ window.addEventListener('load', () => {
           <div class="match-champ">${m.campeon}</div>
           <div class="match-kda">${m.kda} KDA</div>
         </span>
-        <span class="lp-diff ${m.resultado}">${m.resultado === 'victoria' ? '(+? LP)' : '(-? LP)'}</span>
         <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
       </div>
     `).join('');
@@ -258,35 +318,73 @@ window.addEventListener('load', () => {
   }
 
   function buildChart(){
-    const allDates = new Set();
-    state.players.forEach(p => p.historialLP.forEach(pt => allDates.add(pt.fecha || 'Inicio')));
-    const labels = [...allDates];
-
     const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
 
     const datasets = state.players.map((p, i) => {
-      const byDate = new Map(p.historialLP.map(pt => [pt.fecha || 'Inicio', pt.lp]));
+      const dataPoints = p.historialLP
+          .filter(pt => pt.fecha) 
+          .map(pt => ({ x: new Date(pt.fecha).getTime(), y: pt.lp }));
+
       return {
         label: p.nombre,
-        data: labels.map(d => byDate.has(d) ? byDate.get(d) : null),
+        data: dataPoints,
         borderColor: palette[i % palette.length],
         backgroundColor: palette[i % palette.length],
         borderWidth: 2, tension: 0.3, spanGaps: true
       };
     });
 
-    // Ahora la gráfica nunca opaca a los demás, siempre se ven todos
     new Chart(document.getElementById('lp-chart').getContext('2d'), {
-      type: 'line', data: { labels, datasets },
+      type: 'line', 
+      data: { datasets },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom', labels:{color:'#9a9aa3'} } },
+        plugins: { 
+          legend: { position: 'bottom', labels: { color: '#ffffff' } } 
+        },
         scales: {
-          x: { grid: { color: '#1c1c22' }, ticks: { color: '#5c5c66' } },
-          y: { grid: { color: '#1c1c22' }, ticks: { color: '#5c5c66' } },
+          x: { 
+            type: 'time',
+            time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } },
+            min: '2026-07-29T00:00:00', // Límite inferior forzado
+            max: '2027-01-01T23:59:59', // Límite superior forzado
+            grid: { color: '#232329' }, 
+            ticks: { color: '#a1a1aa' } 
+          },
+          y: { 
+            grid: { color: '#232329' }, 
+            ticks: { color: '#a1a1aa' } 
+          },
         },
       },
     });
+  }
+
+  function startCountdown() {
+    const targetDate = new Date('2027-01-01T00:00:00').getTime();
+    
+    const cdDays = document.getElementById('cd-days');
+    const cdHours = document.getElementById('cd-hours');
+    const cdMins = document.getElementById('cd-mins');
+    const cdSecs = document.getElementById('cd-secs');
+
+    function update() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = '<div class="timer-val">¡La temporada ha terminado!</div>';
+        return;
+      }
+
+      cdDays.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      cdHours.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      cdMins.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      cdSecs.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+    
+    update();
+    setInterval(update, 1000);
   }
 });
 </script>
