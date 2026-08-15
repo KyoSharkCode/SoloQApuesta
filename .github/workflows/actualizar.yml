@@ -2,7 +2,7 @@ name: Actualizar Tabla de LoL de forma Automatica
 
 on:
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
