@@ -15,6 +15,7 @@
     --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
     --win:#34d399; --win-bg:rgba(52,211,153,.12);
     --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
+    --gold:#fbbf24;
     --radius:14px;
   }
   *{box-sizing:border-box;}
@@ -33,8 +34,39 @@
   .profile-info h1 { margin: 0 0 5px 0; font-size: 32px; font-weight: 900; }
   .profile-info p { margin: 0; color: var(--text-faint); font-size: 16px; font-weight: 500; }
   .profile-rank { margin-left: auto; text-align: right; }
-  .profile-rank h2 { margin: 0; font-size: 28px; color: #fbbf24; font-weight: 800; }
+  .profile-rank h2 { margin: 0; font-size: 28px; color: var(--gold); font-weight: 800; }
   .profile-rank span { color: var(--text-faint); font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;}
+
+  /* CAJA DE PARTIDA EN VIVO */
+  .live-game-box { background: var(--panel); border: 1px solid #ef4444; border-radius: var(--radius); padding: 24px; margin-bottom: 40px; box-shadow: 0 0 20px rgba(239,68,68,0.15); display: none; }
+  .live-game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;}
+  .live-title-wrap { display: flex; align-items: center; gap: 10px; }
+  .live-game-header h3 { margin: 0; font-size: 20px; color: #ef4444; font-weight: 900; text-transform: uppercase; }
+  .live-game-header .dot { width: 14px; height: 14px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+  .live-meta { text-align: right; font-size: 13px; color: var(--text-faint); font-weight: 600; }
+  .live-meta span { color: #fff; font-weight: 800; background: var(--panel-2); padding: 6px 10px; border-radius: 8px; margin-left: 8px; border: 1px solid var(--border); }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); } 70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
+  
+  .teams-container { display: flex; gap: 20px; flex-wrap: wrap; }
+  .team-box { flex: 1; min-width: 280px; background: var(--panel-2); border-radius: 12px; padding: 15px; border-top: 4px solid; }
+  .team-box.blue { border-color: #3b82f6; }
+  .team-box.red { border-color: #ef4444; }
+  .team-title { font-size: 14px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+  .team-box.blue .team-title { color: #3b82f6; }
+  .team-box.red .team-title { color: #ef4444; }
+  
+  .live-player { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .live-player:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .live-champ { width: 44px; height: 44px; border-radius: 8px; border: 2px solid var(--border); background: #111;}
+  
+  .live-spells, .live-runes { display: flex; flex-direction: column; gap: 2px; }
+  .live-spells img { width: 21px; height: 21px; border-radius: 4px; }
+  .live-runes img { width: 21px; height: 21px; border-radius: 50%; background: #000; border: 1px solid var(--border);}
+  
+  .live-info { display: flex; flex-direction: column; justify-content: center; overflow: hidden; margin-left: 4px; }
+  .live-name { font-size: 14px; font-weight: 600; color: var(--text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
+  .live-name.is-me { color: var(--gold); font-weight: 900; font-size: 15px; }
+  .live-rank { font-size: 11px; color: var(--text-dim); font-weight: 700; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
 
   /* GRID DE ESTADÍSTICAS */
   .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px; }
@@ -81,6 +113,9 @@
       </div>
     </div>
 
+    <!-- CONTENEDOR PARTIDA EN VIVO -->
+    <div id="live-game-container" class="live-game-box"></div>
+
     <div class="stats-grid">
       <!-- Top 3 Maestrías -->
       <div class="stat-card">
@@ -110,7 +145,6 @@
 
 <script>
 window.addEventListener('load', async () => {
-  // Extraer el nombre del jugador de la URL (ej: perfil.html?jugador=Pinea#Pinea)
   const params = new URLSearchParams(window.location.search);
   const jugadorId = params.get('jugador');
 
@@ -119,21 +153,117 @@ window.addEventListener('load', async () => {
     return;
   }
 
+  // --- LÓGICA DE PARTIDA EN VIVO ---
+  const loadLiveGame = async () => {
+    try {
+      const liveRes = await fetch('live_data.json', { cache: 'no-store' });
+      if (!liveRes.ok) return;
+      const liveData = await liveRes.json();
+      const liveStatus = liveData[jugadorId];
+      
+      if (liveStatus && liveStatus.en_partida) {
+        const liveBox = document.getElementById('live-game-container');
+        
+        // Función para nombres de las colas
+        const getQueueName = (id) => {
+          const queues = {420: 'Ranked Solo/Duo', 440: 'Ranked Flex', 400: 'Normal Draft', 430: 'Normal Blind', 450: 'ARAM', 1700: 'Arena'};
+          return queues[id] || 'Partida Normal';
+        };
+
+        // Formateador de tiempo a minutos y segundos (MM:SS)
+        const formatDuration = (secs) => {
+          if (!secs) return "00:00";
+          const m = Math.floor(secs / 60);
+          const s = secs % 60;
+          return `${m}:${s < 10 ? '0' : ''}${s}`;
+        };
+
+        const queueName = getQueueName(liveStatus.cola || 420);
+        let gameSeconds = liveStatus.tiempo || 0; // Si tu python envía el tiempo
+        
+        const buildTeamHtml = (team, isBlue) => {
+          const color = isBlue ? 'blue' : 'red';
+          const title = isBlue ? 'Lado Azul' : 'Lado Rojo';
+          
+          const playersHtml = team.map(p => {
+            const currentName = jugadorId.split('#')[0].toLowerCase();
+            const pName = p.nombre.split('#')[0].toLowerCase();
+            const isMe = currentName === pName;
+            const nameClass = isMe ? 'live-name is-me' : 'live-name';
+            
+            // Fallbacks de estilos e imágenes si la API no los tiene listos
+            const rank = p.rango || 'Unranked';
+            
+            // Las URL de runas son de la API de DDragon
+            // Nota: El backend en python deberá mandar 'runa1_img' y 'runa2_img', pero ponemos placeholders si faltan.
+            const rune1Img = p.runa1_img ? `https://ddragon.leagueoflegends.com/cdn/img/${p.runa1_img}` : `https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7200_Domination.png`;
+            const rune2Img = p.runa2_img ? `https://ddragon.leagueoflegends.com/cdn/img/${p.runa2_img}` : `https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7201_Precision.png`;
+
+            return `
+              <div class="live-player">
+                <img class="live-champ" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${p.campeon_img}.png" onerror="this.src=''">
+                <div class="live-spells">
+                  <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${p.spell1}.png" title="Hechizo 1">
+                  <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${p.spell2}.png" title="Hechizo 2">
+                </div>
+                <div class="live-runes">
+                  <img src="${rune1Img}" title="Runa Principal">
+                  <img src="${rune2Img}" title="Runa Secundaria" style="transform: scale(0.85);">
+                </div>
+                <div class="live-info">
+                  <span class="${nameClass}">${p.nombre.split('#')[0]}</span>
+                  <span class="live-rank">${rank}</span>
+                </div>
+              </div>
+            `;
+          }).join('');
+          
+          return `<div class="team-box ${color}"> <div class="team-title">${title}</div> ${playersHtml} </div>`;
+        };
+
+        liveBox.innerHTML = `
+          <div class="live-game-header">
+            <div class="live-title-wrap">
+              <div class="dot"></div>
+              <h3>Jugando Ahora</h3>
+            </div>
+            <div class="live-meta">
+              Cola: <span>${queueName}</span> 
+              Duración: <span id="live-time-val">${formatDuration(gameSeconds)}</span>
+            </div>
+          </div>
+          <div class="teams-container">
+            ${buildTeamHtml(liveStatus.equipo_azul || [], true)}
+            ${buildTeamHtml(liveStatus.equipo_rojo || [], false)}
+          </div>
+        `;
+        liveBox.style.display = 'block';
+
+        // Actualizar el reloj cada segundo
+        setInterval(() => {
+          gameSeconds++;
+          const timeEl = document.getElementById('live-time-val');
+          if(timeEl) timeEl.innerText = formatDuration(gameSeconds);
+        }, 1000);
+      }
+    } catch (e) {
+      console.log("Error cargando partida en vivo:", e);
+    }
+  };
+
+  // --- LÓGICA DE DATOS DEL JUGADOR ---
   try {
     const res = await fetch('datos.json', { cache: 'no-store' });
     const data = await res.json();
     const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
-    
     const p = jugadores.find(j => j.nombre === jugadorId);
-    
     if (!p) throw new Error("No encontrado");
 
-    // Limpiar nombre quitando los IDs extraños de la API para mostrar una imagen bonita
     const formatImg = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
 
     // HEADER
     document.getElementById('p-avatar').src = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-    document.getElementById('p-name').innerText = p.nombre.split('#')[0]; // Solo el nombre, sin el tag
+    document.getElementById('p-name').innerText = p.nombre.split('#')[0]; 
     document.getElementById('p-tier').innerText = p.rango;
     document.getElementById('p-lp').innerText = `${p.lp} LP`;
     document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
@@ -169,7 +299,6 @@ window.addEventListener('load', async () => {
     // ROLES RECIENTES
     const boxRoles = document.getElementById('box-roles');
     if(p.top_roles && p.top_roles.length > 0) {
-      // Como no hay icono de rol fácilmente disponible en ddragon, usamos texto bonito
       boxRoles.innerHTML = p.top_roles.map(r => `
         <div class="list-item">
           <div class="champ-img" style="display:flex; align-items:center; justify-content:center; background: rgba(139,92,246,0.2); color: #a78bfa; font-weight:bold; font-size:20px;">
@@ -199,6 +328,9 @@ window.addEventListener('load', async () => {
     } else { boxHistory.innerHTML = '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>'; }
 
     document.getElementById('profile-content').style.display = 'block';
+    
+    // Llamamos a cargar la partida en vivo después de mostrar el perfil base
+    loadLiveGame();
 
   } catch (error) {
     document.getElementById('error-msg').style.display = 'block';
