@@ -1,17 +1,15 @@
 import os
 import json
-import urllib.request
-import urllib.error
+import requests  # Librería moderna para conexiones seguras
 
 # 1. Configuración de Regiones para LAN
 REGION_API = "americas"  
 REGION_GAME = "la1"      
 
-# 2. LISTA DE JUGADORES (Modifica solo lo que está entre comillas)
+# 2. LISTA DE JUGADORES
 JUGADORES = [
     {"name": "Pinea", "tag": "Pinea"},
-    {"name": "Galactic Shark", "tag": "AYK"},
-    {"name": "El Buñuelito", "tag": "KyA"},
+    {"name": "Galactic Shark", "tag": "AYK"}
 ]
 
 def obtener_datos():
@@ -27,46 +25,46 @@ def obtener_datos():
         nombre_completo = f"{jugador['name']}#{jugador['tag']}"
         print(f"🔍 Consultando a: {nombre_completo}...")
         
-        # Limpiamos espacios por si acaso se coló alguno al escribir los nombres
-        name_clean = jugador['name'].strip().replace(" ", "%20")
-        tag_clean = jugador['tag'].strip()
-        
         try:
-            # PASO A: Obtener el PUUID
-            url_account = f"https://{REGION_API}://{name_clean}/{tag_clean}?api_key={API_KEY}"
-            req = urllib.request.Request(url_account, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=15) as response:
-                account_data = json.loads(response.read().decode())
-                puuid = account_data["puuid"]
+            # Los encabezados oficiales que pide Riot
+            headers = {
+                "User-Agent": "Mozilla/5.0",
+                "X-Riot-Token": API_KEY
+            }
+            
+            # PASO A: Obtener el PUUID (requests codifica automáticamente los espacios del nombre)
+            url_account = f"https://{REGION_API}://{jugador['name']}/{jugador['tag']}"
+            response = requests.get(url_account, headers=headers, timeout=15)
+            response.raise_for_status()
+            puuid = response.json()["puuid"]
             
             # PASO B: Obtener el ID de Invocador
-            url_summoner = f"https://{REGION_GAME}://{puuid}?api_key={API_KEY}"
-            req_sum = urllib.request.Request(url_summoner, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req_sum, timeout=15) as response_sum:
-                summoner_data = json.loads(response_sum.read().decode())
-                summoner_id = summoner_data["id"]
+            url_summoner = f"https://{REGION_GAME}://{puuid}"
+            response_sum = requests.get(url_summoner, headers=headers, timeout=15)
+            response_sum.raise_for_status()
+            summoner_id = response_sum.json()["id"]
 
             # PASO C: Obtener el Rango y LP
-            url_league = f"https://{REGION_GAME}://{summoner_id}?api_key={API_KEY}"
-            req_league = urllib.request.Request(url_league, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req_league, timeout=15) as response_league:
-                league_data = json.loads(response_league.read().decode())
-                
-                rango = "Unranked"
-                division = ""
-                lp = 0
-                winrate = "0%"
-                
-                for mode in league_data:
-                    if mode["queueType"] == "RANKED_SOLO_5x5":
-                        rango = mode["tier"].capitalize()
-                        division = mode["rank"]
-                        lp = mode["leaguePoints"]
-                        total_games = mode["wins"] + mode["losses"]
-                        winrate = f"{round((mode['wins'] / total_games) * 100)}%" if total_games > 0 else "0%"
+            url_league = f"https://{REGION_GAME}://{summoner_id}"
+            response_league = requests.get(url_league, headers=headers, timeout=15)
+            response_league.raise_for_status()
+            league_data = response_league.json()
+            
+            rango = "Unranked"
+            division = ""
+            lp = 0
+            winrate = "0%"
+            
+            for mode in league_data:
+                if mode["queueType"] == "RANKED_SOLO_5x5":
+                    rango = mode["tier"].capitalize()
+                    division = mode["rank"]
+                    lp = mode["leaguePoints"]
+                    total_games = mode["wins"] + mode["losses"]
+                    winrate = f"{round((mode['wins'] / total_games) * 100)}%" if total_games > 0 else "0%"
 
             lista_final.append({
-                "nombre": f"{jugador['name']}#{jugador['tag']}",
+                "nombre": nombre_completo,
                 "rango": f"{rango} {division}".strip(),
                 "lp": lp,
                 "winrate": winrate,
@@ -76,18 +74,19 @@ def obtener_datos():
                 ]
             })
             
-        except urllib.error.HTTPError as e:
+        except requests.exceptions.HTTPError as e:
             print(f"\n🚨 ERROR DE RIOT CON EL JUGADOR: {nombre_completo}")
-            if e.code == 403:
+            status_code = e.response.status_code
+            if status_code == 403:
                 print("❌ MOTIVO: Tu Riot API Key está VENCIDA o es INCORRECTA. Renuévala en ://riotgames.com")
-            elif e.code == 404:
+            elif status_code == 404:
                 print("❌ MOTIVO: Jugador no encontrado. Revisa mayúsculas/minúsculas o el #Tag.")
             else:
-                print(f"❌ MOTIVO: Código de error HTTP {e.code}")
+                print(f"❌ MOTIVO: Código de error HTTP {status_code}")
             raise e
             
         except Exception as e:
-            print(f"\n🚨 ERROR GENERAL DE RED CON: {nombre_completo}")
+            print(f"\n🚨 ERROR GENERAL DE CONEXIÓN CON: {nombre_completo}")
             print(f"❌ DETALLE DEL FALLO: {e}")
             raise e
 
