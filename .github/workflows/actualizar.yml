@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-
+  
 # NUEVO: evita que dos corridas se ejecuten en paralelo si una tarda más de 5 min
 # (duplicaría llamadas a la API de Riot y podría causar conflictos al hacer push)
 concurrency:
