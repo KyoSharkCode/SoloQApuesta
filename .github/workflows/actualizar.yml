@@ -2,25 +2,24 @@ name: Actualizar Tabla de LoL de forma Automatica
 
 on:
   schedule:
-    # Se ejecuta de forma automatica cada 3 horas
     - cron: '0 */3 * * *'
-  workflow_dispatch: # Esto te permite activar la actualización manualmente cuando quieras
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Clonar el repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-packages: 'urllib'
+        python-version: '3.11'
 
     - name: Ejecutar script de Riot API
       env:
-        RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }} # Aquí saca la clave de tu caja fuerte
+        RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
       run: python actualizar_datos.py
 
     - name: Guardar cambios en GitHub
