@@ -96,6 +96,10 @@
   .timer-val { font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 5px; color: #ffffff; }
   .timer-label { font-size: 11px; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; }
 
+  .live-indicator{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); padding:8px 14px; border-radius:999px; }
+  .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse 2.2s infinite; }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 var(--accent-glow);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
+
   /* NUEVO: ESTILOS PARA INDICADOR DE ESTADO EN PARTIDA/OFFLINE */
   .status-chip { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; letter-spacing: 0.05em; }
   .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
@@ -109,6 +113,10 @@
   <header>
     <div>
       <h1 id="titulo">Torneo entre Amigos</h1>
+    </div>
+    <div class="live-indicator" id="live-indicator">
+      <span class="pulse-dot"></span>
+      <span id="live-indicator-text">Cargando…</span>
     </div>
   </header>
 
@@ -176,26 +184,45 @@ window.addEventListener('load', () => {
   const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
 
   // NUEVO: Agregamos liveData al estado
-  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', chart: null };
+  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', chart: null, lastUpdate: null };
+
+  const REFRESH_MS = 30000; // frecuencia de auto-actualización (30s)
 
   const top1ContainerEl = document.getElementById('top1-container');
   const rankingListEl = document.getElementById('ranking-list');
   const historyPanelEl = document.getElementById('history-panel');
   const eloFilterEl = document.getElementById('elo-filter');
-  
+  const liveIndicatorTextEl = document.getElementById('live-indicator-text');
+
+  eloFilterEl.addEventListener('change', (e) => {
+    state.filterElo = e.target.value;
+    renderRanking();
+  });
+
   init();
   startCountdown();
 
-  async function init(){
+  function init(){
+    refreshData();
+    setInterval(refreshData, REFRESH_MS);
+    setInterval(tickLiveIndicator, 1000);
+
+    // Si el usuario vuelve a la pestaña, refresca al instante en vez de esperar el intervalo
+    document.addEventListener('visibilitychange', () => {
+      if(!document.hidden) refreshData();
+    });
+  }
+
+  async function refreshData(){
     try{
-      const res = await fetch('datos.json', { cache: 'no-store' });
+      const res = await fetch(`datos.json?t=${Date.now()}`, { cache: 'no-store' });
       if(!res.ok) throw new Error();
       const rawData = await res.json();
       const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
-      
+
       // NUEVO: Intentar cargar los datos en vivo
       try {
-        const liveRes = await fetch('live_data.json', { cache: 'no-store' });
+        const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache: 'no-store' });
         if(liveRes.ok) state.liveData = await liveRes.json();
       } catch(e) { console.log("No hay datos en vivo aún."); }
 
@@ -212,19 +239,35 @@ window.addEventListener('load', () => {
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
-      eloFilterEl.addEventListener('change', (e) => {
-        state.filterElo = e.target.value;
-        renderRanking();
-      });
-
       renderTop1();
       renderRanking();
       buildChart();
-      if(state.players.length) selectPlayer(state.players[0].id);
+
+      // Mantiene la selección actual si el jugador sigue existiendo; si no, selecciona al Top 1
+      const seleccionValida = state.players.some(p => p.id === state.selectedId);
+      if(state.players.length){
+        selectPlayer(seleccionValida ? state.selectedId : state.players[0].id);
+      }
+
+      state.lastUpdate = Date.now();
+      tickLiveIndicator();
 
     }catch(err){
-      rankingListEl.innerHTML = `<p class="empty-state">Espera a que el bot recolecte la información en un par de minutos y recarga la página.</p>`;
+      console.warn('No se pudo refrescar datos.json', err);
+      // Solo mostramos el error si nunca cargamos datos exitosamente
+      if(state.players.length === 0){
+        rankingListEl.innerHTML = `<p class="empty-state">Espera a que el bot recolecte la información en un par de minutos y recarga la página.</p>`;
+      }
     }
+  }
+
+  function tickLiveIndicator(){
+    if(!liveIndicatorTextEl) return;
+    if(!state.lastUpdate){ liveIndicatorTextEl.textContent = 'Cargando…'; return; }
+    const secs = Math.floor((Date.now() - state.lastUpdate) / 1000);
+    if(secs < 5) liveIndicatorTextEl.textContent = 'Actualizado ahora';
+    else if(secs < 60) liveIndicatorTextEl.textContent = `Actualizado hace ${secs}s`;
+    else liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
   }
 
   function rankScore(p){
@@ -335,7 +378,10 @@ window.addEventListener('load', () => {
       };
     });
 
-    new Chart(document.getElementById('lp-chart').getContext('2d'), {
+    // Si ya existe un gráfico de una actualización anterior, lo destruimos antes de crear el nuevo
+    if(state.chart){ state.chart.destroy(); state.chart = null; }
+
+    state.chart = new Chart(document.getElementById('lp-chart').getContext('2d'), {
       type: 'line', data: { datasets },
       options: {
         responsive: true, maintainAspectRatio: false,
