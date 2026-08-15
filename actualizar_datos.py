@@ -11,8 +11,8 @@ REGION_GAME = "la1"      # Usa 'la1' para LAN, 'la2' para LAS, 'na1' para NA
 JUGADORES = [
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito", "tag": "KyA"},
-    {"name": "Pinea", "tag": "Pinea"}
-    {"name": "ゆうき まこと", "tag": "1411"}
+    {"name": "Pinea", "tag": "Pinea"},
+    {"name": "ゆうき まこと", "tag": "1411"},
 ]
 
 def obtener_datos():
