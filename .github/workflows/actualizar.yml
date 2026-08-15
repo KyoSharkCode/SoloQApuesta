@@ -16,17 +16,18 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-
+        
     - name: Ejecutar script de Riot API
       env:
         RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
       run: |
         pip install requests
         python actualizar_datos.py
+        python live_status.py
 
     - name: Guardar cambios en GitHub
       run: |
         git config --global user.name 'RiotBot'
         git config --global user.email 'riotbot@github.com'
-        git add datos.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de rangos" && git push)
+        git add datos.json live_data.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Actualizacion automatica de rangos y estado en vivo" && git push)
