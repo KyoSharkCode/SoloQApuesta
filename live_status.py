@@ -2,9 +2,11 @@ import os
 import json
 import time
 import requests
+from urllib.parse import quote
 
 # ================= CONFIGURACIÓN =================
-API_KEY = "TU_API_KEY_AQUI"
+# Usamos os.getenv para que GitHub Actions pueda leer la clave secreta
+API_KEY = os.getenv("RIOT_API_KEY", "").strip()
 REGION_ACC = "americas"   # Coincide con tu REGION_API
 REGION_LOL = "la1"        # Coincide con tu REGION_GAME
 VERSION_DDRAGON = "14.20.1" 
