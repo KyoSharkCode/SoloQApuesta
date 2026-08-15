@@ -1,46 +1,55 @@
 import os
 import json
 import urllib.request
+import urllib.error
 
-# 1. Configuración inicial
-API_KEY = os.getenv("RIOT_API_KEY") # Aquí GitHub inyecta tu clave secreta de forma segura
-REGION_API = "americas"  # Para cuentas de LAN, LAS, NA, etc.
-REGION_GAME = "la1"      # Usa 'la1' para LAN, 'la2' para LAS, 'na1' para NA
+# 1. Configuración de Regiones para LAN
+REGION_API = "americas"  
+REGION_GAME = "la1"      
 
-# LISTA DE TUS AMIGOS: Reemplaza estos nombres por los de tu grupo (Máximo 5-10 por ahora)
+# 2. LISTA DE JUGADORES (Edita solo lo que está entre comillas)
 JUGADORES = [
+    {"name": "Pinea", "tag": "Pinea"},
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito", "tag": "KyA"},
-    {"name": "Pinea", "tag": "Pinea"},
-    {"name": "ゆうき まこと", "tag": "1411"},
+    {"name": "ゆうき まこと", "tag": "1411"}
 ]
 
 def obtener_datos():
+    API_KEY = os.getenv("RIOT_API_KEY")
+    
+    # Validación inicial de la clave secreta
+    if not API_KEY or API_KEY.strip() == "":
+        print("🚨 ERROR CRÍTICO: No se encontró la API Key en los Secrets de GitHub. Verifica el Método 2.")
+        raise ValueError("Falta la RIOT_API_KEY")
+
     lista_final = []
     
     for jugador in JUGADORES:
+        nombre_completo = f"{jugador['name']}#{jugador['tag']}"
+        print(f"🔍 Consultando a: {nombre_completo}...")
+        
         try:
-            # PASO A: Obtener el PUUID del jugador usando su Riot ID y Tag
+            # PASO A: Obtener el PUUID
             url_account = f"https://{REGION_API}://{jugador['name']}/{jugador['tag']}?api_key={API_KEY}"
             req = urllib.request.Request(url_account, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req) as response:
                 account_data = json.loads(response.read().decode())
                 puuid = account_data["puuid"]
             
-            # PASO B: Obtener el ID de Invocador (necesario para el rango)
+            # PASO B: Obtener el ID de Invocador
             url_summoner = f"https://{REGION_GAME}://{puuid}?api_key={API_KEY}"
             req_sum = urllib.request.Request(url_summoner, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req_sum) as response_sum:
                 summoner_data = json.loads(response_sum.read().decode())
                 summoner_id = summoner_data["id"]
 
-            # PASO C: Obtener el Rango, LP y Winrate
+            # PASO C: Obtener el Rango y LP
             url_league = f"https://{REGION_GAME}://{summoner_id}?api_key={API_KEY}"
             req_league = urllib.request.Request(url_league, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req_league) as response_league:
                 league_data = json.loads(response_league.read().decode())
                 
-                # Datos por defecto si el jugador no tiene rango en SoloQ
                 rango = "Unranked"
                 division = ""
                 lp = 0
@@ -54,25 +63,39 @@ def obtener_datos():
                         total_games = mode["wins"] + mode["losses"]
                         winrate = f"{round((mode['wins'] / total_games) * 100)}%" if total_games > 0 else "0%"
 
-            # Construimos la estructura limpia para tu HTML
+            # Guardar estructura limpia
             lista_final.append({
-                "nombre": f"{jugador['name']}#{jugador['tag']}",
+                "nombre": nombre_completo,
                 "rango": f"{rango} {division}".strip(),
                 "lp": lp,
                 "winrate": winrate,
-                "progreso_lp": [lp], # Nota: En el futuro esto guardará el histórico
+                "progreso_lp": [lp],
                 "historial": [
                     {"campeon": "Ver en juego", "kda": "N/A", "resultado": "Próximamente"}
                 ]
             })
             
+        except urllib.error.HTTPError as e:
+            print(f"\n🚨 ERROR CRÍTICO CON EL JUGADOR: {nombre_completo}")
+            if e.code == 403:
+                print("❌ MOTIVO: Tu Riot API Key está VENCIDA o es INCORRECTA. Entra a ://riotgames.com y renuévala.")
+            elif e.code == 404:
+                print("❌ MOTIVO: El jugador no fue encontrado. Revisa si escribiste mal las mayúsculas, minúsculas o el #Tag.")
+            elif e.code == 429:
+                print("❌ MOTIVO: Riot está saturado (Rate Limit excedido). Espera un par de minutos.")
+            else:
+                print(f"❌ MOTIVO: Error de Riot de tipo HTTP {e.code}")
+            raise e
+            
         except Exception as e:
-    print(f"🚨 ERROR CRÍTICO con {jugador['name']}: {e}")
-    raise e  # <--- Esto obligará a GitHub Actions a ponerse en ROJO y decirnos el motivo
+            print(f"\n🚨 ERROR DE PROGRAMACIÓN CON: {nombre_completo}")
+            print(f"❌ DETALLE: {e}")
+            raise e
 
-    # Guardar los datos en el archivo datos.json
+    # Guardar en el archivo JSON si todo sale bien
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(lista_final, f, indent=2, ensure_ascii=False)
+    print("\n✅ ¡ÉXITO! El archivo datos.json se actualizó correctamente con tus amigos.")
 
 if __name__ == "__main__":
     obtener_datos()
