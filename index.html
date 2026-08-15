@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<!-- LIBRERÍAS DE CHART.JS Y ADAPTADOR DE FECHAS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <style>
@@ -32,7 +31,6 @@
   header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:30px; padding-bottom:24px; border-bottom:1px solid var(--border); }
   h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color: #ffffff;}
   
-  /* TOP 1 CARD */
   .top1-card { display: flex; align-items: center; gap: 20px; background: var(--panel); border: 1px solid var(--accent); padding: 24px; border-radius: var(--radius); margin-bottom: 50px; box-shadow: 0 0 30px var(--accent-glow); position: relative; overflow: hidden;}
   .top1-badge { position: absolute; top: 0; left: 0; background: var(--accent); color: white; font-weight: 800; font-size: 11px; padding: 4px 12px; border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
   .top1-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent-soft); object-fit: cover; }
@@ -60,7 +58,10 @@
   .rank-pos{ font-size:13px; font-weight:700; color:var(--text-faint); text-align:center; }
   .player-cell{ display:flex; align-items:center; gap:12px; }
   .avatar{ width:34px; height:34px; border-radius:9px; border:1px solid var(--border); object-fit:cover; }
-  .player-name{ font-size:14px; font-weight:600; color: #ffffff;}
+  
+  /* NUEVO: Enlace de perfil */
+  .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
+  .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
   
   .role-badge{ font-size:12px; color:#ffffff; font-weight: 700; background: rgba(139,92,246,0.3); padding: 4px 8px; border-radius: 6px; text-align: center; }
   .tier-badge{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color: #ffffff;}
@@ -72,13 +73,11 @@
   .wr-bar{ height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
   .wr-fill{ height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
 
-  /* Colors */
   .tier-iron .tier-crest{background:#5b5c63;} .tier-bronze .tier-crest{background:#a9754f;} .tier-silver .tier-crest{background:#9fb0c2;}
   .tier-gold .tier-crest{background:#d8ad3d;} .tier-platinum .tier-crest{background:#3fc6b6;} .tier-emerald .tier-crest{background:#3fcf7f;}
   .tier-diamond .tier-crest{background:#6f8bff;} .tier-master .tier-crest{background:#b154e8;} .tier-grandmaster .tier-crest{background:#e5484d;}
   .tier-challenger .tier-crest{background:linear-gradient(135deg,#8ce6e0,#f4d160);}
 
-  /* History */
   .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
   .match{ display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
@@ -89,11 +88,7 @@
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
-
-  /* Chart */
   .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:350px; }
-
-  /* Countdown */
   .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
   .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
   .timer-boxes { display: flex; justify-content: center; gap: 15px; }
@@ -112,7 +107,6 @@
     </div>
   </header>
 
-  <!-- SECCIÓN TOP 1 -->
   <div id="top1-container"></div>
 
   <section id="seccion-ranking">
@@ -146,7 +140,7 @@
       <span>Últimas 10 partidas Solo/Duo</span>
     </div>
     <div class="history-panel" id="history-panel">
-      <p class="empty-state">Selecciona un jugador del ranking.</p>
+      <p class="empty-state">Haz clic en la fila de un jugador para ver su historial rápido.</p>
     </div>
   </section>
 
@@ -160,7 +154,6 @@
     </div>
   </section>
 
-  <!-- TEMPORIZADOR -->
   <div class="countdown-container">
     <h2>⏳ Fin de Temporada</h2>
     <div class="timer-boxes" id="countdown">
@@ -197,14 +190,11 @@ window.addEventListener('load', () => {
       state.players = rawPlayers.map(p => {
         const rankParts = (p.rango || 'Unranked').split(' ');
         return {
-          id: p.nombre, nombre: p.nombre,
-          icono: p.icono || 1, // Se extrae el icono de datos.json
+          id: p.nombre, nombre: p.nombre, icono: p.icono || 1,
           rango: rankParts[0], division: rankParts.slice(1).join(' '),
-          lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, 
-          rol: p.rol_principal || 'N/A',
+          lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, rol: p.rol_principal || 'N/A',
           partidas: (p.historial || []).map(h => ({
-            campeon: h.campeon, kda: h.kda,
-            resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion
+            campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion
           })),
           historialLP: p.progreso_lp || []
         };
@@ -232,13 +222,11 @@ window.addEventListener('load', () => {
     return ti * 100000 + divNum * 2000 + (p.lp || 0);
   }
 
-  function getAvatarUrl(iconId) {
-    return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`;
-  }
+  function getAvatarUrl(iconId) { return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
 
   function renderTop1() {
     if (state.players.length === 0) return;
-    const topPlayer = state.players[0]; // Como ya están ordenados por rankScore, el 0 es el mejor
+    const topPlayer = state.players[0]; 
     const tierPretty = topPlayer.rango.charAt(0) + topPlayer.rango.slice(1).toLowerCase();
     const rankDisplay = DIVISIONLESS.includes((topPlayer.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${topPlayer.division}`;
 
@@ -247,7 +235,7 @@ window.addEventListener('load', () => {
         <div class="top1-badge">Top 1 Actual</div>
         <img class="top1-avatar" src="${getAvatarUrl(topPlayer.icono)}" alt="Avatar">
         <div class="top1-info">
-          <h3>${topPlayer.nombre}</h3>
+          <h3><a href="perfil.html?jugador=${encodeURIComponent(topPlayer.id)}" class="profile-link" style="padding:0;">${topPlayer.nombre}</a></h3>
           <p>Dominando la grieta como ${topPlayer.rol}</p>
         </div>
         <div class="top1-stats">
@@ -260,10 +248,7 @@ window.addEventListener('load', () => {
 
   function renderRanking(){
     rankingListEl.innerHTML = '';
-    
-    const filtrados = state.players.filter(p => 
-      state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo
-    );
+    const filtrados = state.players.filter(p => state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo);
 
     if(filtrados.length === 0){
       rankingListEl.innerHTML = `<p class="empty-state">Nadie está en este elo todavía.</p>`;
@@ -273,7 +258,12 @@ window.addEventListener('load', () => {
     filtrados.forEach((p, i) => {
       const row = document.createElement('button');
       row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
-      row.addEventListener('click', () => selectPlayer(p.id));
+      
+      // Al hacer click en la FILA muestra el historial rápido
+      row.addEventListener('click', (e) => {
+        // Evitamos que active el historial si hicieron click justo en el enlace del nombre
+        if (e.target.tagName.toLowerCase() !== 'a') { selectPlayer(p.id); }
+      });
 
       const tierPretty = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
       const rankDisplay = DIVISIONLESS.includes((p.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
@@ -282,7 +272,7 @@ window.addEventListener('load', () => {
         <span class="rank-pos">${i + 1}</span>
         <span class="player-cell">
           <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
-          <span class="player-name">${p.nombre}</span>
+          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre}</a>
         </span>
         <span class="role-badge">${p.rol}</span>
         <span class="tier-badge tier-${(p.rango || '').toLowerCase()}">
@@ -301,7 +291,6 @@ window.addEventListener('load', () => {
   function selectPlayer(id){
     state.selectedId = id;
     renderRanking();
-    
     const player = state.players.find(p => p.id === id);
     const matchesHtml = player.partidas.map(m => `
       <div class="match">
@@ -313,48 +302,27 @@ window.addEventListener('load', () => {
         <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
       </div>
     `).join('');
-
     historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
   }
 
   function buildChart(){
     const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
-
     const datasets = state.players.map((p, i) => {
-      const dataPoints = p.historialLP
-          .filter(pt => pt.fecha) 
-          .map(pt => ({ x: new Date(pt.fecha).getTime(), y: pt.lp }));
-
+      const dataPoints = p.historialLP.filter(pt => pt.fecha).map(pt => ({ x: new Date(pt.fecha).getTime(), y: pt.lp }));
       return {
-        label: p.nombre,
-        data: dataPoints,
-        borderColor: palette[i % palette.length],
-        backgroundColor: palette[i % palette.length],
-        borderWidth: 2, tension: 0.3, spanGaps: true
+        label: p.nombre, data: dataPoints, borderColor: palette[i % palette.length],
+        backgroundColor: palette[i % palette.length], borderWidth: 2, tension: 0.3, spanGaps: true
       };
     });
 
     new Chart(document.getElementById('lp-chart').getContext('2d'), {
-      type: 'line', 
-      data: { datasets },
+      type: 'line', data: { datasets },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { 
-          legend: { position: 'bottom', labels: { color: '#ffffff' } } 
-        },
+        plugins: { legend: { position: 'bottom', labels: { color: '#ffffff' } } },
         scales: {
-          x: { 
-            type: 'time',
-            time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } },
-            min: '2026-07-29T00:00:00', // Límite inferior forzado
-            max: '2027-01-01T23:59:59', // Límite superior forzado
-            grid: { color: '#232329' }, 
-            ticks: { color: '#a1a1aa' } 
-          },
-          y: { 
-            grid: { color: '#232329' }, 
-            ticks: { color: '#a1a1aa' } 
-          },
+          x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } }, min: '2026-07-29T00:00:00', max: '2027-01-01T23:59:59', grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
+          y: { grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
         },
       },
     });
@@ -362,29 +330,15 @@ window.addEventListener('load', () => {
 
   function startCountdown() {
     const targetDate = new Date('2027-01-01T00:00:00').getTime();
-    
-    const cdDays = document.getElementById('cd-days');
-    const cdHours = document.getElementById('cd-hours');
-    const cdMins = document.getElementById('cd-mins');
-    const cdSecs = document.getElementById('cd-secs');
-
     function update() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        document.getElementById('countdown').innerHTML = '<div class="timer-val">¡La temporada ha terminado!</div>';
-        return;
-      }
-
-      cdDays.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-      cdHours.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      cdMins.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      cdSecs.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+      const distance = targetDate - new Date().getTime();
+      if (distance < 0) return;
+      document.getElementById('cd-days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById('cd-hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById('cd-mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('cd-secs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
     }
-    
-    update();
-    setInterval(update, 1000);
+    update(); setInterval(update, 1000);
   }
 });
 </script>
