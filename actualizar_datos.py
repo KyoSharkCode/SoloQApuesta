@@ -10,6 +10,7 @@ JUGADORES = [
     {"name": "Pinea",          "tag": "Pinea"},
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito",   "tag": "KyA"},
+    {"name": "ゆうき まこと",   "tag": "1411"}
 ]
 
 def obtener_datos():
