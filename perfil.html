@@ -35,6 +35,21 @@
   .profile-rank h2 { margin: 0; font-size: 28px; color: #fbbf24; font-weight: 800; }
   .profile-rank span { color: var(--text-faint); font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;}
 
+  /* PARTIDA EN VIVO */
+  .live-game-box { background: var(--panel); border: 1px solid rgba(248,113,113,0.4); border-radius: var(--radius); padding: 20px; margin-bottom: 40px; box-shadow: 0 0 15px rgba(248,113,113,0.1); }
+  .live-game-box h3 { color: #f87171; margin-top: 0; text-align: center; font-weight: 900; font-size: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .live-teams { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .team-blue h4 { color: #3b82f6; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-top: 0; text-transform: uppercase; font-size: 13px; }
+  .team-red h4 { color: #ef4444; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-top: 0; text-transform: uppercase; font-size: 13px; }
+  .live-player { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .live-player:last-child { margin-bottom: 0; }
+  .live-champ { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border); background: #1d1d24; }
+  .live-spells { display: flex; flex-direction: column; gap: 2px; }
+  .live-spells img { width: 17px; height: 17px; border-radius: 4px; object-fit: cover; }
+  .live-info { display: flex; flex-direction: column; overflow: hidden; }
+  .live-name { font-weight: 700; font-size: 13px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .live-champ-name { font-size: 11px; color: var(--text-dim); }
+
   /* GRID DE ESTADÍSTICAS */
   .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 40px; }
   .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
@@ -80,6 +95,9 @@
       </div>
     </div>
 
+    <!-- CONTENEDOR DE PARTIDA EN VIVO -->
+    <div id="partida-en-vivo-container"></div>
+
     <div class="stats-grid">
       <!-- Top 3 Maestrías -->
       <div class="stat-card">
@@ -109,7 +127,6 @@
 
 <script>
 window.addEventListener('load', async () => {
-  // Extraer el nombre del jugador de la URL (ej: perfil.html?jugador=Pinea#Pinea)
   const params = new URLSearchParams(window.location.search);
   const jugadorId = params.get('jugador');
 
@@ -127,15 +144,53 @@ window.addEventListener('load', async () => {
     
     if (!p) throw new Error("No encontrado");
 
-    // Limpiar nombre quitando los IDs extraños de la API para mostrar una imagen bonita
     const formatImg = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
 
     // HEADER
     document.getElementById('p-avatar').src = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-    document.getElementById('p-name').innerText = p.nombre.split('#')[0]; // Solo el nombre, sin el tag
+    document.getElementById('p-name').innerText = p.nombre.split('#')[0];
     document.getElementById('p-tier').innerText = p.rango;
     document.getElementById('p-lp').innerText = `${p.lp} LP`;
     document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
+
+    // PARTIDA EN VIVO (Si está jugando)
+    const liveContainer = document.getElementById('partida-en-vivo-container');
+    if (p.en_partida && p.datos_partida) {
+      const blueTeam = p.datos_partida.participantes.filter(x => x.equipo === 'Azul');
+      const redTeam = p.datos_partida.participantes.filter(x => x.equipo === 'Rojo');
+
+      const renderPlayer = (player) => `
+        <div class="live-player">
+          <img class="live-champ" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${player.campeon_img}.png" alt="${player.campeon_nombre}" onerror="this.style.visibility='hidden'">
+          <div class="live-spells">
+            <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${player.hechizo1}.png" alt="Hechizo 1" onerror="this.style.visibility='hidden'">
+            <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${player.hechizo2}.png" alt="Hechizo 2" onerror="this.style.visibility='hidden'">
+          </div>
+          <div class="live-info">
+            <span class="live-name">${player.nombre.split('#')[0]}</span>
+            <span class="live-champ-name">${player.campeon_nombre}</span>
+          </div>
+        </div>
+      `;
+
+      liveContainer.innerHTML = `
+        <div class="live-game-box">
+          <h3>🔴 En Partida Directa — Modo: ${p.datos_partida.modo}</h3>
+          <div class="live-teams">
+            <div class="team-blue">
+              <h4>Lado Azul</h4>
+              ${blueTeam.map(renderPlayer).join('')}
+            </div>
+            <div class="team-red">
+              <h4>Lado Rojo</h4>
+              ${redTeam.map(renderPlayer).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      liveContainer.innerHTML = '';
+    }
 
     // MAESTRÍAS
     const boxMastery = document.getElementById('box-mastery');
@@ -168,7 +223,6 @@ window.addEventListener('load', async () => {
     // ROLES RECIENTES
     const boxRoles = document.getElementById('box-roles');
     if(p.top_roles && p.top_roles.length > 0) {
-      // Como no hay icono de rol fácilmente disponible en ddragon, usamos texto bonito
       boxRoles.innerHTML = p.top_roles.map(r => `
         <div class="list-item">
           <div class="champ-img" style="display:flex; align-items:center; justify-content:center; background: rgba(139,92,246,0.2); color: #a78bfa; font-weight:bold; font-size:20px;">
