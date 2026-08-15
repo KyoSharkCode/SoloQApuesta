@@ -20,7 +20,9 @@ jobs:
     - name: Ejecutar script de Riot API
       env:
         RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
-      run: python actualizar_datos.py
+      run: |
+        pip install requests
+        python actualizar_datos.py
 
     - name: Guardar cambios en GitHub
       run: |
