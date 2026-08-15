@@ -9,9 +9,10 @@ REGION_GAME = "la1"      # Usa 'la1' para LAN, 'la2' para LAS, 'na1' para NA
 
 # LISTA DE TUS AMIGOS: Reemplaza estos nombres por los de tu grupo (Máximo 5-10 por ahora)
 JUGADORES = [
-    {"name": "AmigoPro", "tag": "LAN"},
-    {"name": "OtroAmigo", "tag": "LAS"},
-    {"name": "TuNombre", "tag": "1234"}
+    {"Kyo": "Galactic Shark", "tag": "AYK"},
+    {"Buñuelo": "El Buñuelito", "tag": "KyA"},
+    {"Pinea": "Pinea", "tag": "Pinea"}
+    {"Román": "ゆうき まこと", "tag": "1411"}
 ]
 
 def obtener_datos():
