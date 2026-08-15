@@ -9,7 +9,6 @@ REGION_GAME = "la1"
 
 # 2. LISTA DE JUGADORES (Edita solo lo que está entre comillas)
 JUGADORES = [
-    {"name": "Pinea", "tag": "Pinea"},
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito", "tag": "KyA"},
     {"name": "ゆうき まこと", "tag": "1411"}
