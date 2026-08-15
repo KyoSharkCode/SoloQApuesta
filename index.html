@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0095)file:///Users/aiko/Library/Caches/com.spotify.studio/.studio/artifacts/lol-github-v2/index.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SoloQ Reto · Ranking</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./SoloQ Reto · Ranking_files/css2" rel="stylesheet">
-<script src="./SoloQ Reto · Ranking_files/chart.umd.min.js"></script>
+<title>Torneo LoL · Ranking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
   :root{
     --bg:#0a0a0c;
@@ -90,7 +90,6 @@
     border:1px solid var(--border);
     padding:8px 14px;
     border-radius:999px;
-    white-space:nowrap;
   }
   .pulse{
     width:7px;height:7px;border-radius:50%;
@@ -132,7 +131,7 @@
   }
   .rank-head{
     display:grid;
-    grid-template-columns:40px 1fr 150px 90px 120px;
+    grid-template-columns:40px 1fr 130px 90px 120px;
     gap:12px;
     padding:0 16px 10px;
     font-size:11px;
@@ -143,7 +142,7 @@
   }
   .rank-row{
     display:grid;
-    grid-template-columns:40px 1fr 150px 90px 120px;
+    grid-template-columns:40px 1fr 130px 90px 120px;
     align-items:center;
     gap:12px;
     padding:12px 16px;
@@ -155,7 +154,6 @@
     text-align:left;
     color:inherit;
     font:inherit;
-    width:100%;
   }
   .rank-row:hover{
     border-color:#33333c;
@@ -210,6 +208,7 @@
     transform:rotate(45deg);
     border-radius:4px;
     flex-shrink:0;
+    background:#5b5c63; /* Default para unranked */
   }
   .tier-label{white-space:nowrap;}
 
@@ -241,7 +240,6 @@
   .tier-master .tier-crest{background:#b154e8;}
   .tier-grandmaster .tier-crest{background:#e5484d;}
   .tier-challenger .tier-crest{background:linear-gradient(135deg,#8ce6e0,#f4d160);}
-  .tier-unranked .tier-crest{background:#5c5c66;}
 
   /* ---------- HISTORY ---------- */
   .history-panel{
@@ -286,27 +284,13 @@
   }
   .match-champ{font-size:13px;font-weight:600;}
   .match-kda{font-size:12px;color:var(--text-dim);}
-  .match-dur{font-size:11px;color:var(--text-faint);}
-
-  /* LP badge por partida */
-  .lp-chip{
-    font-size:11px;
-    font-weight:700;
-    padding:3px 8px;
-    border-radius:99px;
-    white-space:nowrap;
-  }
-  .lp-chip.win{color:var(--win);background:var(--win-bg);}
-  .lp-chip.loss{color:var(--loss);background:var(--loss-bg);}
-
   .result-chip{
     font-size:11px;
     font-weight:700;
     letter-spacing:.03em;
     padding:4px 10px;
     border-radius:99px;
-    text-transform:capitalize;
-    white-space:nowrap;
+    text-transform:uppercase;
   }
   .result-chip.victoria{color:var(--win);background:var(--win-bg);}
   .result-chip.derrota{color:var(--loss);background:var(--loss-bg);}
@@ -327,35 +311,20 @@
     height:300px;
   }
 
-  /* ---------- ERROR BANNER ---------- */
-  .error-banner{
-    background:rgba(248,113,113,.08);
-    border:1px solid rgba(248,113,113,.25);
-    border-radius:var(--radius);
-    padding:16px 20px;
-    font-size:13px;
-    color:var(--loss);
-    margin-bottom:24px;
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    text-align:center;
-    font-size:11px;
-    color:var(--text-faint);
-    padding-top:40px;
-  }
-
-  @media(max-width:640px){
+  @media (max-width:640px){
     .rank-head{display:none;}
     .rank-row{
-      grid-template-columns:32px 1fr auto;
-      grid-template-rows:auto auto;
+      grid-template-columns:1fr;
+      gap:10px;
     }
-    .tier-badge{grid-column:2/3;grid-row:2/3;}
-    .lp-cell{grid-column:3/4;grid-row:1/2;text-align:right;}
-    .wr-cell{grid-column:2/4;grid-row:3/4;}
-    .match{grid-template-columns:36px 1fr auto auto;}
+    .rank-pos{
+      position:absolute;
+      margin-top:-4px;
+    }
+    .lp-cell,.wr-cell{padding-left:46px;}
+    .match{grid-template-columns:36px 1fr auto;}
+    .match-kda{grid-column:2/3;}
+    .result-chip{grid-row:1/3;}
   }
 </style>
 </head>
@@ -365,21 +334,13 @@
   <header>
     <div>
       <p class="eyebrow">Temporada 2026</p>
-      <h1>Torneo entre Amigos</h1>
+      <h1 id="titulo">Torneo entre Amigos</h1>
     </div>
     <div class="update-badge">
       <span class="pulse"></span>
-      <span id="ultima-actualizacion">Sin datos</span>
+      <span id="ultima-actualizacion">Datos Cargados</span>
     </div>
   </header>
-
-  <div id="error-box" style="display: block;" class="error-banner">
-        <strong>No se pudieron cargar los datos.</strong><br>
-        Failed to fetch<br>
-        <span style="color:var(--text-faint);font-size:12px;margin-top:4px;display:block;">
-          Asegúrate de que <code>datos.json</code> esté en la misma carpeta que este <code>index.html</code>
-          y que el script Python haya corrido correctamente.
-        </span></div>
 
   <section id="seccion-ranking">
     <div class="section-title">
@@ -399,7 +360,7 @@
   <section id="seccion-historial">
     <div class="section-title">
       <h2>Historial Individual</h2>
-      <span>Últimas 5 partidas · SoloQ</span>
+      <span>Últimas 5 partidas</span>
     </div>
     <div class="history-panel" id="history-panel">
       <p class="empty-state">Selecciona un jugador del ranking para ver su historial.</p>
@@ -415,256 +376,201 @@
       <canvas id="lp-chart"></canvas>
     </div>
   </section>
-
-  <footer>Made with Studio · Datos: Riot Games API</footer>
 </div>
 
 <script>
 (() => {
-  // ════════════════════════════════════════════
-  //  FORMATO datos.json generado por el script Python:
-  //
-  //  [
-  //    {
-  //      "nombre":      "Pinea#Pinea",          // string
-  //      "rango":       "Silver II",             // "Tier División" o "Unranked"
-  //      "lp":          45,                      // número
-  //      "winrate":     "52%",                   // string con %
-  //      "progreso_lp": [45],                    // array de números (snapshots LP)
-  //      "historial": [
-  //        {
-  //          "campeon":   "Jinx",
-  //          "kda":       "8/2/10 (9.0)",
-  //          "resultado": "Victoria",            // "Victoria" o "Derrota"
-  //          "duracion":  "32min"
-  //        }
-  //      ]
-  //    }
-  //  ]
-  // ════════════════════════════════════════════
-
-  const TIER_ORDER = ['UNRANKED','IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
+  const TIER_ORDER = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
   const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
 
-  const state = { players: [], selectedIdx: null, chart: null };
+  const state = { players: [], selectedId: null, chart: null };
 
-  const rankingListEl   = document.getElementById('ranking-list');
-  const historyPanelEl  = document.getElementById('history-panel');
-  const updateBadgeEl   = document.getElementById('ultima-actualizacion');
-  const errorBoxEl      = document.getElementById('error-box');
-
+  const rankingListEl = document.getElementById('ranking-list');
+  const historyPanelEl = document.getElementById('history-panel');
+  
   init();
 
-  // ─── INIT ───────────────────────────────────
   async function init(){
     try{
       const res = await fetch('datos.json', { cache: 'no-store' });
-      if(!res.ok) throw new Error(`HTTP ${res.status} al cargar datos.json`);
-      const raw = await res.json();
+      if(!res.ok) throw new Error('No se pudo cargar datos.json');
+      const rawData = await res.json();
 
-      // El script Python guarda un array directamente (no un objeto envolvente)
-      const jugadores = Array.isArray(raw) ? raw : (raw.jugadores || []);
+      // Adaptador para el array directo de Python a lo que necesita el HTML
+      const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
+      
+      const mappedPlayers = rawPlayers.map(p => {
+        // Separamos "Silver II" en "Silver" y "II"
+        const rankParts = (p.rango || 'Unranked').split(' ');
+        const tier = rankParts[0];
+        const div = rankParts.slice(1).join(' ');
 
-      if(!jugadores.length) throw new Error('datos.json está vacío o sin jugadores.');
+        return {
+          id: p.nombre,
+          nombre: p.nombre,
+          rango: tier,
+          division: div,
+          lp: p.lp || 0,
+          winrate: parseInt(p.winrate) || 0, 
+          // Adaptamos "historial" al formato de "partidas" del HTML
+          partidas: (p.historial || []).map(h => ({
+            campeon: h.campeon,
+            kda: h.kda,
+            resultado: (h.resultado || '').toLowerCase(), // "Victoria" pasa a "victoria"
+            duracion: h.duracion
+          })),
+          // Adaptamos la progresión de LPs
+          historialLP: (p.progreso_lp || []).map((lpVal, i) => ({
+            fecha: 'Medición ' + (i+1),
+            lp: lpVal
+          }))
+        };
+      });
 
-      // Normalizar y ordenar
-      state.players = sortPlayers(jugadores.map((j, i) => normalizePlayer(j, i)));
-
-      const now = new Date().toLocaleString('es-CO', { dateStyle:'short', timeStyle:'short' });
-      updateBadgeEl.textContent = 'Actualizado: ' + now;
-
+      state.players = sortPlayers(mappedPlayers);
       renderRanking();
       buildChart();
-      selectPlayer(0); // selecciona el #1 por defecto
 
-    } catch(err){
-      errorBoxEl.style.display = 'block';
-      errorBoxEl.innerHTML = `
-        <strong>No se pudieron cargar los datos.</strong><br>
-        ${err.message}<br>
-        <span style="color:var(--text-faint);font-size:12px;margin-top:4px;display:block;">
-          Asegúrate de que <code>datos.json</code> esté en la misma carpeta que este <code>index.html</code>
-          y que el script Python haya corrido correctamente.
-        </span>`;
-      rankingListEl.innerHTML = '';
-      updateBadgeEl.textContent = 'Sin datos';
+      if(state.players.length){
+        selectPlayer(state.players[0].id);
+      }
+    }catch(err){
+      rankingListEl.innerHTML = `<p class="empty-state">No se pudieron cargar los datos (${err.message}). Verifica que datos.json exista en la misma carpeta.</p>`;
+      document.getElementById('ultima-actualizacion').textContent = 'Error';
     }
   }
 
-  // ─── NORMALIZAR ─────────────────────────────
-  // Convierte el formato del Python al formato interno de la UI
-  function normalizePlayer(j, idx){
-    // "rango" viene como "Silver II", "Gold I", "Unranked", etc.
-    const rangoRaw  = (j.rango || 'Unranked').trim();
-    const partes    = rangoRaw.split(' ');
-    const tier      = partes[0].toUpperCase(); // "SILVER"
-    const division  = partes[1] || '';         // "II", "I", etc. (vacío si Master+)
-
-    // winrate: "52%" → 52
-    const wrStr  = String(j.winrate || '0').replace('%','').trim();
-    const wrNum  = parseFloat(wrStr) || 0;
-
-    // nombre: "Pinea#Pinea" → quitar tag para el display principal
-    const nombre = String(j.nombre || `Jugador ${idx+1}`);
-    const displayName = nombre.includes('#') ? nombre.split('#')[0] : nombre;
-
-    return {
-      idx,
-      nombre,          // "Pinea#Pinea" (completo)
-      displayName,     // "Pinea" (sin tag)
-      tier,
-      division,
-      lp:       typeof j.lp === 'number' ? j.lp : parseInt(j.lp) || 0,
-      wrNum,           // número 0-100
-      winrate:  wrStr, // string limpio sin %
-      progresoLP: Array.isArray(j.progreso_lp) ? j.progreso_lp : [j.lp || 0],
-      historial: Array.isArray(j.historial) ? j.historial : [],
-    };
+  // ---------- helpers ----------
+  function tierIndex(tier){
+    return TIER_ORDER.indexOf((tier || '').toUpperCase());
   }
 
-  // ─── ORDENAR ────────────────────────────────
   function rankScore(p){
-    const ti = TIER_ORDER.indexOf(p.tier);
-    if(DIVISIONLESS.includes(p.tier)){
-      return ti * 100000 + p.lp;
+    const ti = tierIndex(p.rango);
+    if(DIVISIONLESS.includes((p.rango || '').toUpperCase())){
+      return ti * 100000 + (p.lp || 0);
     }
     const divNum = { 'IV':1,'III':2,'II':3,'I':4 }[p.division] || 0;
-    return ti * 100000 + divNum * 2000 + p.lp;
+    return ti * 100000 + divNum * 2000 + (p.lp || 0);
   }
+
   function sortPlayers(players){
     return [...players].sort((a,b) => rankScore(b) - rankScore(a));
   }
 
-  // ─── HELPERS ────────────────────────────────
   function initials(name){
     return (name || '?').trim().split(/\s+/).slice(0,2).map(w => w[0]).join('').toUpperCase();
   }
+
   function tierClass(tier){
-    return 'tier-' + (tier || 'unranked').toLowerCase();
-  }
-  function tierDisplay(p){
-    if(!p.tier || p.tier === 'UNRANKED') return 'Sin clasificar';
-    const pretty = p.tier.charAt(0) + p.tier.slice(1).toLowerCase();
-    if(DIVISIONLESS.includes(p.tier)) return pretty;
-    return `${pretty} ${p.division}`.trim();
-  }
-  function championIconUrl(champ){
-    const id = (champ || '').replace(/['\s]/g,'').replace(/^(.)/,c=>c.toUpperCase());
-    return `https://ddragon.leagueoflegends.com/cdn/14.24.1/img/champion/${id}.png`;
-  }
-  function esVictoria(resultado){
-    return /victoria/i.test(resultado || '');
+    return 'tier-' + (tier || '').toLowerCase();
   }
 
-  // ─── RANKING ────────────────────────────────
+  function tierDisplay(p){
+    const tier = (p.rango || '').toUpperCase();
+    const pretty = tier.charAt(0) + tier.slice(1).toLowerCase();
+    if(DIVISIONLESS.includes(tier)) return pretty;
+    return `${pretty} ${p.division || ''}`.trim();
+  }
+
+  function championIconUrl(champ){
+    const id = (champ || '').replace(/[^a-zA-Z0-9]/g,'');
+    return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${id}.png`;
+  }
+
+  // ---------- ranking ----------
   function renderRanking(){
     rankingListEl.innerHTML = '';
     state.players.forEach((p, i) => {
-      const isActive = i === state.selectedIdx;
       const row = document.createElement('button');
-      row.className = 'rank-row' + (isActive ? ' active' : '');
+      row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
       row.type = 'button';
-      row.setAttribute('aria-pressed', String(isActive));
-      row.addEventListener('click', () => selectPlayer(i));
+      row.setAttribute('aria-pressed', p.id === state.selectedId);
+      row.addEventListener('click', () => selectPlayer(p.id));
 
       row.innerHTML = `
         <span class="rank-pos">${i + 1}</span>
         <span class="player-cell">
-          <span class="avatar">${initials(p.displayName)}</span>
-          <span class="player-name">${p.displayName}</span>
+          <span class="avatar">${initials(p.nombre)}</span>
+          <span class="player-name">${p.nombre}</span>
         </span>
-        <span class="tier-badge ${tierClass(p.tier)}">
+        <span class="tier-badge ${tierClass(p.rango)}">
           <span class="tier-crest"></span>
           <span class="tier-label">${tierDisplay(p)}</span>
         </span>
-        <span class="lp-cell">${p.lp} LP</span>
+        <span class="lp-cell">${p.lp ?? 0} LP</span>
         <span class="wr-cell">
-          <span class="wr-top">
-            <span>${p.winrate}%</span>
-          </span>
-          <span class="wr-bar"><span class="wr-fill" style="width:${Math.min(p.wrNum,100)}%"></span></span>
+          <span class="wr-top"><span>${p.winrate ?? 0}% Winrate</span></span>
+          <span class="wr-bar"><span class="wr-fill" style="width:${p.winrate ?? 0}%"></span></span>
         </span>
       `;
       rankingListEl.appendChild(row);
     });
   }
 
-  // ─── SELECCIÓN ──────────────────────────────
-  function selectPlayer(idx){
-    state.selectedIdx = idx;
+  // ---------- selection ----------
+  function selectPlayer(id){
+    state.selectedId = id;
     renderRanking();
-    renderHistory(state.players[idx]);
-    updateChartHighlight(idx);
+    renderHistory(state.players.find(p => p.id === id));
+    updateChartHighlight(id);
   }
 
-  // ─── HISTORIAL ──────────────────────────────
+  // ---------- history ----------
   function renderHistory(player){
     if(!player){
-      historyPanelEl.innerHTML = '<p class="empty-state">Selecciona un jugador del ranking.</p>';
+      historyPanelEl.innerHTML = '<p class="empty-state">Selecciona un jugador del ranking para ver su historial.</p>';
       return;
     }
-    const partidas = player.historial.slice(0, 5);
-
+    const partidas = (player.partidas || []).slice(0, 5);
     const matchesHtml = partidas.length
-      ? partidas.map(m => {
-          const victoria = esVictoria(m.resultado);
-          const resClass = victoria ? 'victoria' : 'derrota';
-          const lpClass  = victoria ? 'win' : 'loss';
-          const lpText   = victoria ? '+~20 LP' : '-~20 LP';
-          const dur      = m.duracion ? `<div class="match-dur">${m.duracion}</div>` : '';
-          return `
-            <div class="match">
-              <img class="champ-icon"
-                   src="${championIconUrl(m.campeon)}"
-                   alt="${m.campeon}"
-                   onerror="this.style.opacity='.3'">
-              <span>
-                <div class="match-champ">${m.campeon}</div>
-                <div class="match-kda">${m.kda}</div>
-                ${dur}
-              </span>
-              <span class="lp-chip ${lpClass}">${lpText}</span>
-              <span class="result-chip ${resClass}">${m.resultado}</span>
-            </div>`;
-        }).join('')
+      ? partidas.map(m => `
+        <div class="match">
+          <img class="champ-icon" src="${championIconUrl(m.campeon)}" alt="${m.campeon}"
+               onerror="this.style.visibility='hidden'">
+          <span>
+            <div class="match-champ">${m.campeon}</div>
+            <div class="match-kda">${m.kda} KDA</div>
+          </span>
+          <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
+        </div>
+      `).join('')
       : '<p class="empty-state">Sin partidas registradas.</p>';
 
     historyPanelEl.innerHTML = `
       <div class="history-head">
-        <span class="avatar" style="width:40px;height:40px;font-size:15px;">${initials(player.displayName)}</span>
+        <span class="avatar">${initials(player.nombre)}</span>
         <div>
           <h3>${player.nombre}</h3>
-          <p>${tierDisplay(player)} · ${player.lp} LP · ${player.winrate}% WR</p>
+          <p>${tierDisplay(player)} · ${player.lp ?? 0} LP · ${player.winrate ?? 0}% winrate</p>
         </div>
       </div>
       <div class="matches">${matchesHtml}</div>
     `;
   }
 
-  // ─── CHART ──────────────────────────────────
+  // ---------- chart ----------
   function buildChart(){
-    // progresoLP es un array de snapshots numéricos
-    // Usamos índices como etiquetas del eje X (Snapshot 1, 2, 3…)
-    const maxSnapshots = Math.max(...state.players.map(p => p.progresoLP.length));
-    const labels = Array.from({ length: maxSnapshots }, (_, i) => `Snapshot ${i + 1}`);
+    const allDates = new Set();
+    state.players.forEach(p => (p.historialLP || []).forEach(pt => allDates.add(pt.fecha)));
+    const labels = [...allDates]; // Sin sort() porque las mediciones llevan formato numérico (Medición 1, 2)
 
     const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
 
     const datasets = state.players.map((p, i) => {
+      const byDate = new Map((p.historialLP || []).map(pt => [pt.fecha, pt.lp]));
       const baseColor = palette[i % palette.length];
-      // Rellenar hasta maxSnapshots con null si hay menos datos
-      const data = [...p.progresoLP, ...Array(maxSnapshots - p.progresoLP.length).fill(null)];
       return {
-        playerIdx: i,
-        label: p.displayName,
-        data,
+        id: p.id,
+        label: p.nombre,
+        data: labels.map(d => byDate.has(d) ? byDate.get(d) : null),
         spanGaps: true,
         baseColor,
         borderColor: baseColor,
         backgroundColor: baseColor,
         borderWidth: 2,
-        pointRadius: 3,
-        pointHoverRadius: 5,
+        pointRadius: 2,
+        pointHoverRadius: 4,
         tension: .35,
       };
     });
@@ -680,13 +586,8 @@
         plugins: {
           legend: {
             position: 'bottom',
-            labels: {
-              color: '#9a9aa3',
-              usePointStyle: true,
-              boxWidth: 8,
-              font: { family: 'Inter', size: 11 },
-            },
-            onClick: (evt, item) => selectPlayer(datasets[item.datasetIndex].playerIdx),
+            labels: { color: '#9a9aa3', usePointStyle: true, boxWidth: 8, font: { family: 'Inter', size: 11 } },
+            onClick: (evt, item) => selectPlayer(datasets[item.datasetIndex].id),
           },
           tooltip: {
             backgroundColor: '#18181d',
@@ -695,33 +596,25 @@
             titleColor: '#f2f2f5',
             bodyColor: '#9a9aa3',
             padding: 10,
-            callbacks: {
-              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} LP`,
-            },
           },
         },
         scales: {
-          x: {
-            grid: { color: '#1c1c22' },
-            ticks: { color: '#5c5c66', font: { family: 'Inter', size: 10 } },
-          },
-          y: {
-            grid: { color: '#1c1c22' },
-            ticks: { color: '#5c5c66', font: { family: 'Inter', size: 10 }, callback: v => v + ' LP' },
-          },
+          x: { grid: { color: '#1c1c22' }, ticks: { color: '#5c5c66', font: { family: 'Inter', size: 10 } } },
+          y: { grid: { color: '#1c1c22' }, ticks: { color: '#5c5c66', font: { family: 'Inter', size: 10 } } },
         },
       },
     });
   }
 
-  function updateChartHighlight(selectedIdx){
+  function updateChartHighlight(id){
     if(!state.chart) return;
     state.chart.data.datasets.forEach(ds => {
-      const isSel = ds.playerIdx === selectedIdx;
-      ds.borderWidth = isSel ? 3 : 1.5;
-      ds.borderColor = hexToRgba(ds.baseColor, isSel ? 1 : .25);
-      ds.backgroundColor = hexToRgba(ds.baseColor, isSel ? 1 : .25);
-      ds.order = isSel ? 0 : 1;
+      const isSelected = ds.id === id;
+      const alpha = isSelected ? 1 : .25;
+      ds.borderWidth = isSelected ? 3 : 1.5;
+      ds.borderColor = hexToRgba(ds.baseColor, alpha);
+      ds.backgroundColor = hexToRgba(ds.baseColor, alpha);
+      ds.order = isSelected ? 0 : 1;
     });
     state.chart.update();
   }
@@ -729,14 +622,12 @@
   function hexToRgba(hex, alpha){
     const clean = hex.startsWith('#') ? hex.slice(1) : hex;
     const bigint = parseInt(clean.length === 3
-      ? clean.split('').map(c => c+c).join('')
+      ? clean.split('').map(c => c + c).join('')
       : clean, 16);
     const r = (bigint >> 16) & 255, g = (bigint >> 8) & 255, b = bigint & 255;
     return `rgba(${r},${g},${b},${alpha})`;
   }
-
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>
