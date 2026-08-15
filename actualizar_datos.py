@@ -67,7 +67,8 @@ def obtener_datos():
             })
             
         except Exception as e:
-            print(f"Error cargando a {jugador['name']}: {e}")
+    print(f"🚨 ERROR CRÍTICO con {jugador['name']}: {e}")
+    raise e  # <--- Esto obligará a GitHub Actions a ponerse en ROJO y decirnos el motivo
 
     # Guardar los datos en el archivo datos.json
     with open("datos.json", "w", encoding="utf-8") as f:
