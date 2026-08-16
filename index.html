@@ -88,7 +88,7 @@
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
-  .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:350px; }
+  .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:440px; }
   .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
   .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
   .timer-boxes { display: flex; justify-content: center; gap: 15px; }
@@ -270,11 +270,37 @@ window.addEventListener('load', () => {
     else liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
   }
 
+  // NUEVO: "escalera de elo" — convierte (tier, división, lp) en una sola posición continua,
+  // usada tanto para ordenar el ranking como para el eje Y de la gráfica.
+  const DIV_NUM = { 'IV': 0, 'III': 1, 'II': 2, 'I': 3 };
+  const DIVISIONED_TIER_COUNT = 7; // Iron..Diamond tienen división; Master+ no
+  const MASTER_PLUS_BASE = DIVISIONED_TIER_COUNT * 4 * 100; // 2800
+
+  function tierPretty(tierUpper){ return tierUpper.charAt(0) + tierUpper.slice(1).toLowerCase(); }
+
+  function eloScore(rango, division, lp){
+    const tier = (rango || '').toUpperCase();
+    const ti = TIER_ORDER.indexOf(tier);
+    if (ti === -1) return null; // Unranked u otro valor desconocido
+    if (DIVISIONLESS.includes(tier)) return MASTER_PLUS_BASE + Math.max(0, lp || 0);
+    const dn = DIV_NUM[(division || '').toUpperCase()];
+    if (dn === undefined) return null; // división desconocida, no se puede ubicar
+    const bandIndex = ti * 4 + dn;
+    return bandIndex * 100 + Math.max(0, Math.min(100, lp || 0));
+  }
+
+  function bandLabel(score){
+    if (score >= MASTER_PLUS_BASE) return 'Master+';
+    const bandIndex = Math.round(score / 100);
+    const ti = Math.floor(bandIndex / 4);
+    const dn = bandIndex % 4;
+    const tierName = TIER_ORDER[ti] ? tierPretty(TIER_ORDER[ti]) : '';
+    return `${tierName} ${['IV','III','II','I'][dn]}`;
+  }
+
   function rankScore(p){
-    const ti = TIER_ORDER.indexOf((p.rango || '').toUpperCase());
-    if(DIVISIONLESS.includes((p.rango || '').toUpperCase())) return ti * 100000 + (p.lp || 0);
-    const divNum = { 'IV':1,'III':2,'II':3,'I':4 }[p.division] || 0;
-    return ti * 100000 + divNum * 2000 + (p.lp || 0);
+    const s = eloScore(p.rango, p.division, p.lp);
+    return s === null ? -100000 : s;
   }
 
   function getAvatarUrl(iconId) { return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
@@ -370,8 +396,41 @@ window.addEventListener('load', () => {
 
   function buildChart(){
     const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
+
+    // Determinamos qué franja de tiers/divisiones mostrar, mirando la posición
+    // actual de cada jugador y todo su historial (incluye puntos viejos sin rango
+    // propio, usando como mejor aproximación el rango actual del jugador).
+    let minBand = Infinity, maxBand = -Infinity;
+    const registrarBanda = (rango, division, lp) => {
+      const s = eloScore(rango, division, lp);
+      if (s === null) return;
+      const b = Math.floor(s / 100);
+      minBand = Math.min(minBand, b);
+      maxBand = Math.max(maxBand, b);
+    };
+    state.players.forEach(p => {
+      registrarBanda(p.rango, p.division, p.lp);
+      (p.historialLP || []).forEach(pt => {
+        registrarBanda(pt.rango || p.rango, pt.division !== undefined ? pt.division : p.division, pt.lp);
+      });
+    });
+    if (!isFinite(minBand)) { minBand = 4; maxBand = 7; } // fallback si aún no hay datos
+
+    const yMin = Math.max(0, (minBand - 1) * 100);
+    const yMax = (maxBand + 2) * 100;
+
     const datasets = state.players.map((p, i) => {
-      const dataPoints = p.historialLP.filter(pt => pt.fecha).map(pt => ({ x: new Date(pt.fecha).getTime(), y: pt.lp }));
+      const dataPoints = (p.historialLP || [])
+        .filter(pt => pt.fecha)
+        .map(pt => {
+          const rango = pt.rango || p.rango;
+          const division = pt.division !== undefined ? pt.division : p.division;
+          const y = eloScore(rango, division, pt.lp);
+          return y === null ? null : { x: new Date(pt.fecha).getTime(), y };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.x - b.x);
+
       return {
         label: p.nombre, data: dataPoints, borderColor: palette[i % palette.length],
         backgroundColor: palette[i % palette.length], borderWidth: 2, tension: 0.3, spanGaps: true
@@ -385,10 +444,32 @@ window.addEventListener('load', () => {
       type: 'line', data: { datasets },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'bottom', labels: { color: '#ffffff' } } },
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#ffffff' } },
+          tooltip: {
+            callbacks: {
+              label: function(ctx){
+                const val = ctx.parsed.y;
+                if (val >= MASTER_PLUS_BASE) {
+                  return `${ctx.dataset.label}: Master+ · ${Math.round(val - MASTER_PLUS_BASE)} LP`;
+                }
+                return `${ctx.dataset.label}: ${bandLabel(val)} · ${Math.round(val % 100)} LP`;
+              }
+            }
+          }
+        },
         scales: {
           x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } }, min: '2026-07-29T00:00:00', max: '2027-01-01T23:59:59', grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
-          y: { grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
+          y: {
+            min: yMin, max: yMax,
+            grid: { color: (ctx) => (ctx.tick.value % 100 === 0) ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.05)' },
+            ticks: {
+              stepSize: 50,
+              color: (ctx) => (ctx.tick.value % 100 === 0) ? '#ffffff' : 'transparent',
+              font: { size: 11, weight: '700' },
+              callback: function(value){ return (value % 100 === 0) ? bandLabel(value) : ''; }
+            },
+          },
         },
       },
     });
