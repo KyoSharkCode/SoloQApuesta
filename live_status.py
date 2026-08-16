@@ -24,6 +24,33 @@ except ImportError:
     ]
 
 
+DDRAGON_VERSION = "14.20.1"
+
+
+def cargar_diccionarios_ddragon():
+    """Descarga los diccionarios de campeones y hechizos de invocador (id numérico -> nombre/icono)."""
+    diccionario_campeones = {}
+    diccionario_hechizos = {}
+    try:
+        url_champ = f"https://ddragon.leagueoflegends.com/cdn/{DDRAGON_VERSION}/data/es_ES/champion.json"
+        champ_data = requests.get(url_champ, timeout=15).json()["data"]
+        diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
+    except Exception as e:
+        print(f"⚠️ No se pudo descargar el diccionario de campeones: {e}")
+
+    try:
+        url_summ = f"https://ddragon.leagueoflegends.com/cdn/{DDRAGON_VERSION}/data/es_ES/summoner.json"
+        summ_data = requests.get(url_summ, timeout=15).json()["data"]
+        diccionario_hechizos = {
+            int(info["key"]): {"nombre": info["name"], "icono": info["image"]["full"]}
+            for info in summ_data.values()
+        }
+    except Exception as e:
+        print(f"⚠️ No se pudo descargar el diccionario de hechizos: {e}")
+
+    return diccionario_campeones, diccionario_hechizos
+
+
 def get_con_reintento(url, headers, timeout=10, max_reintentos=2):
     """GET con reintento simple ante rate limit (429) o error de servidor (5xx)."""
     resp = None
@@ -57,6 +84,7 @@ def actualizar_estado_en_vivo(jugadores):
 
     datos_json = {}
     errores_auth = 0  # NUEVO: cuenta cuántos jugadores fallaron por 401/403 (key inválida/expirada)
+    diccionario_campeones, diccionario_hechizos = cargar_diccionarios_ddragon()
 
     for jugador in jugadores:
         print(f"Revisando estado de: {jugador}")
@@ -107,7 +135,26 @@ def actualizar_estado_en_vivo(jugadores):
 
         if res_spec.status_code == 200:
             print(f"  🟢 ¡Está en partida!")
-            datos_json[jugador] = {"en_partida": True}
+            info_partida = {"en_partida": True}
+            try:
+                game_data = res_spec.json()
+                participante = next(
+                    (p for p in game_data.get("participants", []) if p.get("puuid") == puuid),
+                    None
+                )
+                if participante:
+                    champ_id = participante.get("championId")
+                    equipo = "blue" if participante.get("teamId") == 100 else "red"
+                    spell1 = diccionario_hechizos.get(participante.get("spell1Id"), {"nombre": "?", "icono": ""})
+                    spell2 = diccionario_hechizos.get(participante.get("spell2Id"), {"nombre": "?", "icono": ""})
+                    info_partida.update({
+                        "campeon": diccionario_campeones.get(champ_id, "Desconocido"),
+                        "equipo": equipo,
+                        "hechizos": [spell1, spell2],
+                    })
+            except Exception as e:
+                print(f"  ⚠️ No se pudo leer el detalle de la partida: {e}")
+            datos_json[jugador] = info_partida
         elif res_spec.status_code == 404:
             print(f"  💤 Fuera de partida.")
             datos_json[jugador] = {"en_partida": False}
