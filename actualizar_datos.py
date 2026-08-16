@@ -109,9 +109,23 @@ def obtener_datos():
 
             # NUEVO: solo agregamos un punto nuevo al historial si el LP realmente cambió,
             # y limitamos el tamaño total para que datos.json y la gráfica no crezcan sin control.
+            # NUEVO: cada punto ahora guarda también rango+división, no solo el LP,
+            # para poder ubicarlo correctamente en la escalera de elo en la gráfica.
             historial_lp_jugador = list((anterior or {}).get("progreso_lp", []))
-            if not historial_lp_jugador or historial_lp_jugador[-1].get("lp") != lp:
-                historial_lp_jugador.append({"fecha": fecha_actual, "lp": lp})
+            punto_anterior = historial_lp_jugador[-1] if historial_lp_jugador else None
+            mismo_punto = (
+                punto_anterior is not None and
+                punto_anterior.get("lp") == lp and
+                punto_anterior.get("rango") == rango and
+                punto_anterior.get("division") == division
+            )
+            if not mismo_punto:
+                historial_lp_jugador.append({
+                    "fecha": fecha_actual,
+                    "lp": lp,
+                    "rango": rango,
+                    "division": division
+                })
             historial_lp_jugador = historial_lp_jugador[-MAX_PUNTOS_HISTORIAL:]
 
             # Top 3 Maestrías
