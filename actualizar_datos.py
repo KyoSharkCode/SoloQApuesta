@@ -14,6 +14,7 @@ JUGADORES = [
     {"name": "El Buñuelito",   "tag": "KyA"},
     {"name": "ゆうき まこと",     "tag": "1411"},
     {"name": "adrianNOOBYT",     "tag": "LAN"},
+    {"name": "Ostia",     "tag": "LAN"},
 ]
 
 MAX_PUNTOS_HISTORIAL = 300  # tope de puntos de LP guardados por jugador
