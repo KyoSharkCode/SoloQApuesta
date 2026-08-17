@@ -41,6 +41,15 @@
   .top1-stats .lp { font-size: 28px; font-weight: 900; color: var(--gold); margin: 0 0 4px 0; }
   .top1-stats .tier { font-size: 14px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; }
 
+  .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
+  .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+  .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
+  .highlight-body { min-width:0; }
+  .highlight-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin:0 0 4px; }
+  .highlight-player { font-size:14px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
+  .highlight-empty { font-size:13px; color:var(--text-faint); }
+
   .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
   .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
   
@@ -49,7 +58,7 @@
   section{margin-bottom:52px;}
 
   .ranking{ display:flex; flex-direction:column; gap:6px; }
-  .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 100px 120px 90px 120px; gap:12px; align-items:center; }
+  .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 110px 100px 120px 90px 120px; gap:12px; align-items:center; }
   .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
   
   .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color: var(--text); text-align: left; }
@@ -57,8 +66,18 @@
   .rank-row.active{ border-color:var(--accent); background:linear-gradient(180deg, rgba(139,92,246,.10), rgba(139,92,246,.03)); }
   
   .rank-pos{ font-size:13px; font-weight:700; color:var(--text-faint); text-align:center; }
+  .rank-pos.pos-1{ font-size:18px; color:var(--gold); text-shadow:0 0 12px rgba(251,191,36,.7); }
+  .rank-pos.pos-2{ color:#d6d9e0; text-shadow:0 0 10px rgba(214,217,224,.55); font-weight:900; }
+  .rank-pos.pos-3{ color:#d99a5b; text-shadow:0 0 10px rgba(217,154,91,.55); font-weight:900; }
   .player-cell{ display:flex; align-items:center; gap:12px; }
   .avatar{ width:34px; height:34px; border-radius:9px; border:1px solid var(--border); object-fit:cover; }
+
+  .status-cell{ display:flex; justify-content:center; }
+
+  .role-cell{ display:flex; align-items:center; gap:6px; }
+  .trend-arrow{ font-size:11px; font-weight:900; line-height:1; }
+  .trend-arrow.up{ color:var(--win); }
+  .trend-arrow.down{ color:var(--loss); }
   
   .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
   .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
@@ -122,6 +141,8 @@
 
   <div id="top1-container"></div>
 
+  <div class="highlights-grid" id="highlights-container"></div>
+
   <section id="seccion-ranking">
     <div class="filter-bar">
       <div class="section-title" style="margin:0;">
@@ -142,7 +163,7 @@
       </select>
     </div>
     <div class="rank-head">
-      <span>#</span> <span>Jugador</span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
+      <span>#</span> <span>Jugador</span> <span></span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
     </div>
     <div class="ranking" id="ranking-list"></div>
   </section>
@@ -150,7 +171,7 @@
   <section id="seccion-historial">
     <div class="section-title">
       <h2>Historial Individual</h2>
-      <span>Últimas 10 partidas Solo/Duo</span>
+      <span>Últimas 5 partidas Solo/Duo</span>
     </div>
     <div class="history-panel" id="history-panel">
       <p class="empty-state">Haz clic en la fila de un jugador para ver su historial rápido.</p>
@@ -189,6 +210,7 @@ window.addEventListener('load', () => {
   const REFRESH_MS = 30000; // frecuencia de auto-actualización (30s)
 
   const top1ContainerEl = document.getElementById('top1-container');
+  const highlightsContainerEl = document.getElementById('highlights-container');
   const rankingListEl = document.getElementById('ranking-list');
   const historyPanelEl = document.getElementById('history-panel');
   const eloFilterEl = document.getElementById('elo-filter');
@@ -235,11 +257,15 @@ window.addEventListener('load', () => {
           partidas: (p.historial || []).map(h => ({
             campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion
           })),
-          historialLP: p.progreso_lp || []
+          historialLP: p.progreso_lp || [],
+          killsRecientes: p.kills_recientes || 0,
+          pentakillsRecientes: p.pentakills_recientes || 0,
+          visionPromedio: p.vision_promedio || 0
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
       renderTop1();
+      renderHighlights();
       renderRanking();
       buildChart();
 
@@ -327,6 +353,57 @@ window.addEventListener('load', () => {
     `;
   }
 
+  function renderHighlights() {
+    if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
+
+    const categorias = [
+      { icon: '⚔️', label: 'Top Asesino', campo: 'killsRecientes', sufijo: 'kills', vacio: 'Nadie ha registrado kills todavía.' },
+      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsRecientes', sufijo: 'pentakills', vacio: 'Nadie ha hecho un penta… todavía 👀' },
+      { icon: '👁️', label: 'Top Observador', campo: 'visionPromedio', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
+    ];
+
+    highlightsContainerEl.innerHTML = categorias.map(cat => {
+      const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
+      const valor = lider ? (lider[cat.campo] || 0) : 0;
+
+      if (!lider || valor <= 0) {
+        return `
+          <div class="highlight-card">
+            <div class="highlight-icon">${cat.icon}</div>
+            <div class="highlight-body">
+              <p class="highlight-label">${cat.label}</p>
+              <p class="highlight-empty">${cat.vacio}</p>
+            </div>
+          </div>`;
+      }
+
+      return `
+        <div class="highlight-card">
+          <div class="highlight-icon">${cat.icon}</div>
+          <div class="highlight-body">
+            <p class="highlight-label">${cat.label}</p>
+            <p class="highlight-player">${lider.nombre}</p>
+            <p class="highlight-value">${valor} ${cat.sufijo}</p>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // NUEVO: compara el último punto de historial contra el anterior para saber si viene subiendo o bajando
+  function getTrendArrow(p){
+    const hist = (p.historialLP || []).filter(pt => pt.fecha);
+    if (hist.length < 2) return '';
+    const ordenado = [...hist].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+    const ultimo = ordenado[ordenado.length - 1];
+    const anterior = ordenado[ordenado.length - 2];
+    const sUltimo = eloScore(ultimo.rango || p.rango, ultimo.division !== undefined ? ultimo.division : p.division, ultimo.lp);
+    const sAnterior = eloScore(anterior.rango || p.rango, anterior.division !== undefined ? anterior.division : p.division, anterior.lp);
+    if (sUltimo === null || sAnterior === null || sUltimo === sAnterior) return '';
+    return sUltimo > sAnterior
+      ? `<span class="trend-arrow up" title="Subió respecto a su registro anterior">▲</span>`
+      : `<span class="trend-arrow down" title="Bajó respecto a su registro anterior">▼</span>`;
+  }
+
   function renderRanking(){
     rankingListEl.innerHTML = '';
     const filtrados = state.players.filter(p => state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo);
@@ -355,15 +432,18 @@ window.addEventListener('load', () => {
           ? `<span class="status-chip in-game">En Partida</span>` 
           : `<span class="status-chip offline">Offline</span>`;
 
-      // Inyectamos el statusHtml en el player-cell
+      // NUEVO: corona para el #1, brillo para el top 3 (posición dentro de la vista/filtro actual)
+      const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
+      const posContent = i === 0 ? '👑' : (i + 1);
+
       row.innerHTML = `
-        <span class="rank-pos">${i + 1}</span>
+        <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
           <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
           <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre}</a>
-          ${statusHtml}
         </span>
-        <span class="role-badge">${p.rol}</span>
+        <span class="status-cell">${statusHtml}</span>
+        <span class="role-cell">${getTrendArrow(p)}<span class="role-badge">${p.rol}</span></span>
         <span class="tier-badge tier-${(p.rango || '').toLowerCase()}">
           <span class="tier-crest"></span> <span class="tier-label">${rankDisplay}</span>
         </span>
@@ -381,7 +461,7 @@ window.addEventListener('load', () => {
     state.selectedId = id;
     renderRanking();
     const player = state.players.find(p => p.id === id);
-    const matchesHtml = player.partidas.map(m => `
+    const matchesHtml = player.partidas.slice(0, 5).map(m => `
       <div class="match">
         <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
         <span>
