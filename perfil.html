@@ -83,6 +83,33 @@
   .live-game-side.side-blue{ color:#60a5fa; background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.3); }
   .live-game-side.side-red{ color:#f87171; background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); }
 
+  /* BADGES / LOGROS */
+  .badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .badge-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    transition: border-color 150ms ease;
+  }
+  .badge-chip.gold   { border-color: rgba(251,191,36,.5);  background: rgba(251,191,36,.08); color: #fbbf24; }
+  .badge-chip.green  { border-color: rgba(52,211,153,.5);  background: rgba(52,211,153,.08); color: #34d399; }
+  .badge-chip.purple { border-color: rgba(139,92,246,.5);  background: rgba(139,92,246,.08); color: #a78bfa; }
+  .badge-chip.red    { border-color: rgba(239,68,68,.5);   background: rgba(239,68,68,.08);  color: #f87171; }
+  .badge-chip.blue   { border-color: rgba(96,165,250,.5);  background: rgba(96,165,250,.08); color: #60a5fa; }
+  .badge-chip-icon   { font-size: 15px; line-height: 1; }
+
   /* MODO DE JUEGO — badge nuevo */
   .live-game-mode{
     font-weight:700; font-size:12px; padding:6px 14px; border-radius:8px;
@@ -142,6 +169,9 @@
         <span id="p-tier">Rango</span>
       </div>
     </div>
+
+    <!-- BADGES -->
+    <div class="badges-row" id="badges-row"></div>
 
     <div class="live-status-box offline" id="live-status-box">
       <span class="live-offline-text">Cargando…</span>
@@ -209,6 +239,133 @@ window.addEventListener('load', () => {
     if(secs < 5)      liveIndicatorTextEl.textContent = 'Actualizado ahora';
     else if(secs < 60) liveIndicatorTextEl.textContent = `Actualizado hace ${secs}s`;
     else              liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs/60)}m`;
+  }
+
+  function renderBadges(p, todos) {
+    const badgesEl = document.getElementById('badges-row');
+    const badges   = [];
+
+    const TIER_ORDER = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
+    const DIV_NUM    = { 'IV':0,'III':1,'II':2,'I':3 };
+    const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
+    const MASTER_BASE  = 7 * 4 * 100;
+
+    function eloScore(rango, div, lp) {
+      const tier = (rango || '').toUpperCase();
+      const ti   = TIER_ORDER.indexOf(tier);
+      if (ti === -1) return -1;
+      if (DIVISIONLESS.includes(tier)) return MASTER_BASE + Math.max(0, lp || 0);
+      const dn = DIV_NUM[(div || '').toUpperCase()];
+      if (dn === undefined) return -1;
+      return (ti * 4 + dn) * 100 + Math.max(0, Math.min(100, lp || 0));
+    }
+
+    const rankParts   = (p.rango || 'Unranked').split(' ');
+    const pRango      = rankParts[0];
+    const pDiv        = rankParts.slice(1).join(' ');
+    const pScore      = eloScore(pRango, pDiv, p.lp || 0);
+    const pKills      = p.kills_recientes || 0;
+    const pPenta      = p.pentakills_recientes || 0;
+    const pVision     = p.vision_promedio || 0;
+    const pHistorial  = p.historial || [];
+    const pHistLP     = p.progreso_lp || [];
+
+    // Calcular estadísticas de todos para comparar
+    const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+    const now      = Date.now();
+
+    let maxScore = -Infinity, maxKills = -1, maxPenta = -1, maxVision = -1;
+    let maxClimb = -Infinity, pClimb = -Infinity;
+    let maxChampPct = -1;
+    let pChampPct   = 0;
+    let pTopChamp   = '';
+
+    todos.forEach(j => {
+      const rp   = (j.rango || 'Unranked').split(' ');
+      const sc   = eloScore(rp[0], rp.slice(1).join(' '), j.lp || 0);
+      if (sc > maxScore) maxScore = sc;
+      if ((j.kills_recientes || 0) > maxKills)  maxKills  = j.kills_recientes || 0;
+      if ((j.pentakills_recientes || 0) > maxPenta) maxPenta = j.pentakills_recientes || 0;
+      if ((j.vision_promedio || 0) > maxVision) maxVision = j.vision_promedio || 0;
+
+      // Escalador: LP ganados esta semana
+      const hist = (j.progreso_lp || []).filter(pt => pt.fecha && now - new Date(pt.fecha).getTime() <= ONE_WEEK)
+                    .sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+      if (hist.length > 0) {
+        const curSc   = eloScore(rp[0], rp.slice(1).join(' '), j.lp || 0);
+        const firstSc = eloScore(hist[0].rango || rp[0], hist[0].division || rp.slice(1).join(' '), hist[0].lp || 0);
+        const diff    = curSc - firstSc;
+        if (diff > maxClimb) maxClimb = diff;
+        if (j.nombre === p.nombre) pClimb = diff;
+      }
+
+      // OTP
+      if (j.historial && j.historial.length > 0) {
+        const cc = {};
+        j.historial.forEach(m => { cc[m.campeon] = (cc[m.campeon] || 0) + 1; });
+        const top = Object.entries(cc).sort((a,b) => b[1]-a[1])[0];
+        if (top) {
+          const pct = Math.round(top[1] / j.historial.length * 100);
+          if (pct > maxChampPct) maxChampPct = pct;
+          if (j.nombre === p.nombre) { pChampPct = pct; pTopChamp = top[0]; }
+        }
+      }
+    });
+
+    // ── Evaluar badges para este jugador ──
+
+    // Top 1 ranking
+    if (pScore >= maxScore && pScore > -1)
+      badges.push({ icon:'👑', label:'Top 1 del Torneo', color:'gold' });
+
+    // Top Asesino
+    if (pKills > 0 && pKills >= maxKills)
+      badges.push({ icon:'⚔️', label:`Top Asesino · ${pKills} kills`, color:'red' });
+
+    // Top Pentakills
+    if (pPenta > 0 && pPenta >= maxPenta)
+      badges.push({ icon:'🔥', label:`Top Pentakills · ${pPenta} pentas`, color:'red' });
+
+    // Top Observador
+    if (pVision > 0 && pVision >= maxVision)
+      badges.push({ icon:'👁️', label:`Top Observador · ${pVision} visión`, color:'blue' });
+
+    // El Escalador (mejor escalada esta semana)
+    if (pClimb > 0 && pClimb >= maxClimb)
+      badges.push({ icon:'📈', label:'El Escalador · Mejor semana', color:'green' });
+
+    // OTP
+    if (pChampPct >= 60)
+      badges.push({ icon:'🎯', label:`OTP · ${pTopChamp} (${pChampPct}%)`, color:'purple' });
+
+    // Racha de victorias
+    let streak = 0;
+    for (const m of pHistorial) {
+      if ((m.resultado || '').toLowerCase() === 'victoria') streak++;
+      else break;
+    }
+    if (streak >= 3)
+      badges.push({ icon:'🔥', label:`Racha de ${streak} victorias`, color:'green' });
+
+    // Racha de derrotas (con cariño 😅)
+    let loseStreak = 0;
+    for (const m of pHistorial) {
+      if ((m.resultado || '').toLowerCase() === 'derrota') loseStreak++;
+      else break;
+    }
+    if (loseStreak >= 3)
+      badges.push({ icon:'❄️', label:`Racha fría · ${loseStreak} derrotas`, color:'blue' });
+
+    if (badges.length === 0) {
+      badgesEl.style.display = 'none';
+      return;
+    }
+
+    badgesEl.innerHTML = badges.map(b => `
+      <div class="badge-chip ${b.color}">
+        <span class="badge-chip-icon">${b.icon}</span>
+        <span>${b.label}</span>
+      </div>`).join('');
   }
 
   async function checkLiveStatus() {
@@ -325,6 +482,9 @@ window.addEventListener('load', () => {
               <div class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</div>
             </div>`).join('')
         : '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>';
+
+      // Cargar todos los jugadores para comparar badges
+      renderBadges(p, jugadores);
 
       document.getElementById('profile-content').style.display = 'block';
       document.getElementById('error-msg').style.display       = 'none';
