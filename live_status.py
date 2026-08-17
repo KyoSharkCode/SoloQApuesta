@@ -27,7 +27,6 @@ except ImportError:
         "El Buñuelito#KyA",
         "ゆうき まこと#1411",
         "adrianNOOBYT#LAN",
-        "Ostia#LAN",
     ]
 
 DDRAGON_VERSION = "14.20.1"
@@ -174,16 +173,39 @@ def actualizar_estado_en_vivo(jugadores):
                     (p for p in game_data.get("participants", []) if p.get("puuid") == puuid),
                     None
                 )
+
+                # Mapeo de queue IDs a nombres legibles
+                QUEUE_NAMES = {
+                    420:  "Solo/Duo",
+                    440:  "Flex",
+                    400:  "Normal",
+                    430:  "Partida Rápida",
+                    450:  "ARAM",
+                    490:  "Quickplay",
+                    900:  "URF",
+                    1020: "OFA",
+                    1300: "Nexus Blitz",
+                    1400: "Modo Definitivo",
+                    1700: "Arena",
+                    1900: "URF",
+                    2000: "Tutorial",
+                    0:    "Personalizada",
+                }
+                queue_id   = game_data.get("gameQueueConfigId", 0)
+                modo_juego = QUEUE_NAMES.get(queue_id, f"Modo {queue_id}")
+
                 if participante:
                     champ_id = participante.get("championId")
                     equipo   = "blue" if participante.get("teamId") == 100 else "red"
                     spell1   = diccionario_hechizos.get(participante.get("spell1Id"), {"nombre": "?", "icono": ""})
                     spell2   = diccionario_hechizos.get(participante.get("spell2Id"), {"nombre": "?", "icono": ""})
                     info_partida.update({
-                        "campeon":  diccionario_campeones.get(champ_id, "Desconocido"),
-                        "equipo":   equipo,
-                        "hechizos": [spell1, spell2],
+                        "campeon":    diccionario_campeones.get(champ_id, "Desconocido"),
+                        "equipo":     equipo,
+                        "hechizos":   [spell1, spell2],
+                        "modo_juego": modo_juego,
                     })
+                    print(f"  🎮 Modo: {modo_juego}")
             except Exception as e:
                 print(f"  ⚠️ No se pudo leer el detalle de la partida: {e}")
             datos_json[jugador] = info_partida
