@@ -1,35 +1,35 @@
 {
-  "ultimaActualizacion": "2026-08-17T17:26:57.383751",
+  "ultimaActualizacion": "2026-08-17T18:21:40.511697",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 73,
-      "winrate": "52%",
+      "lp": 51,
+      "winrate": "51%",
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "rol": "Mid",
-          "cantidad": 4
+          "cantidad": 3
         }
       ],
       "top_recientes": [
         {
+          "campeon": "Jayce",
+          "cantidad": 3
+        },
+        {
           "campeon": "Ekko",
-          "cantidad": 4
+          "cantidad": 3
         },
         {
           "campeon": "Fiora",
           "cantidad": 3
-        },
-        {
-          "campeon": "Jayce",
-          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -194,9 +194,22 @@
           "lp": 73,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-17T18:21:19",
+          "lp": 51,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741851383",
+          "campeon": "Jayce",
+          "kda": "10/10/1 (1.1)",
+          "resultado": "Derrota",
+          "duracion": "29min"
+        },
         {
           "match_id": "LA1_1741842426",
           "campeon": "Ekko",
@@ -259,18 +272,11 @@
           "kda": "4/8/10 (1.75)",
           "resultado": "Derrota",
           "duracion": "35min"
-        },
-        {
-          "match_id": "LA1_1741588950",
-          "campeon": "Ekko",
-          "kda": "7/8/12 (2.38)",
-          "resultado": "Derrota",
-          "duracion": "37min"
         }
       ],
-      "kills_recientes": 105,
+      "kills_recientes": 108,
       "pentakills_recientes": 0,
-      "vision_promedio": 26
+      "vision_promedio": 25
     },
     {
       "nombre": "Galactic Shark#AYK",
@@ -1248,7 +1254,7 @@
         },
         {
           "rol": "Top",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
@@ -1257,11 +1263,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Lux",
+          "campeon": "Veigar",
           "cantidad": 1
         },
         {
-          "campeon": "Mordekaiser",
+          "campeon": "Lux",
           "cantidad": 1
         }
       ],
@@ -1291,6 +1297,13 @@
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741851383",
+          "campeon": "Veigar",
+          "kda": "5/6/3 (1.33)",
+          "resultado": "Derrota",
+          "duracion": "29min"
+        },
         {
           "match_id": "LA1_1741842426",
           "campeon": "Lux",
@@ -1353,16 +1366,9 @@
           "kda": "3/3/2 (1.67)",
           "resultado": "Derrota",
           "duracion": "30min"
-        },
-        {
-          "match_id": "LA1_1673421433",
-          "campeon": "Urgot",
-          "kda": "2/6/3 (0.83)",
-          "resultado": "Derrota",
-          "duracion": "31min"
         }
       ],
-      "kills_recientes": 25,
+      "kills_recientes": 28,
       "pentakills_recientes": 0,
       "vision_promedio": 36
     }
