@@ -1,30 +1,30 @@
 {
-  "ultimaActualizacion": "2026-08-17T17:21:10.449725",
+  "ultimaActualizacion": "2026-08-17T17:26:57.383751",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 55,
-      "winrate": "51%",
+      "lp": 73,
+      "winrate": "52%",
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "rol": "Mid",
-          "cantidad": 3
+          "cantidad": 4
         }
       ],
       "top_recientes": [
         {
-          "campeon": "Fiora",
+          "campeon": "Ekko",
           "cantidad": 4
         },
         {
-          "campeon": "Ekko",
+          "campeon": "Fiora",
           "cantidad": 3
         },
         {
@@ -188,9 +188,22 @@
           "lp": 55,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-17T17:26:40",
+          "lp": 73,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741842426",
+          "campeon": "Ekko",
+          "kda": "13/6/9 (3.67)",
+          "resultado": "Victoria",
+          "duracion": "23min"
+        },
         {
           "match_id": "LA1_1741829880",
           "campeon": "Ekko",
@@ -253,18 +266,11 @@
           "kda": "7/8/12 (2.38)",
           "resultado": "Derrota",
           "duracion": "37min"
-        },
-        {
-          "match_id": "LA1_1741586197",
-          "campeon": "Fiora",
-          "kda": "6/6/7 (2.17)",
-          "resultado": "Victoria",
-          "duracion": "32min"
         }
       ],
-      "kills_recientes": 98,
+      "kills_recientes": 105,
       "pentakills_recientes": 0,
-      "vision_promedio": 27
+      "vision_promedio": 26
     },
     {
       "nombre": "Galactic Shark#AYK",
@@ -1238,11 +1244,11 @@
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Top",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
@@ -1251,11 +1257,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Mordekaiser",
+          "campeon": "Lux",
           "cantidad": 1
         },
         {
-          "campeon": "Urgot",
+          "campeon": "Mordekaiser",
           "cantidad": 1
         }
       ],
@@ -1263,7 +1269,7 @@
         {
           "campeon": "Lux",
           "nivel": 18,
-          "puntos": "205.680"
+          "puntos": "206.918"
         },
         {
           "campeon": "Swain",
@@ -1285,6 +1291,13 @@
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741842426",
+          "campeon": "Lux",
+          "kda": "5/0/12 (Perfect)",
+          "resultado": "Victoria",
+          "duracion": "23min"
+        },
         {
           "match_id": "LA1_1679555502",
           "campeon": "Swain",
@@ -1347,18 +1360,11 @@
           "kda": "2/6/3 (0.83)",
           "resultado": "Derrota",
           "duracion": "31min"
-        },
-        {
-          "match_id": "LA1_1671419946",
-          "campeon": "Kayle",
-          "kda": "7/7/4 (1.57)",
-          "resultado": "Derrota",
-          "duracion": "27min"
         }
       ],
-      "kills_recientes": 27,
+      "kills_recientes": 25,
       "pentakills_recientes": 0,
-      "vision_promedio": 34
+      "vision_promedio": 36
     }
   ]
 }
