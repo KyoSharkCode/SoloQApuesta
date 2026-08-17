@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-17T02:14:34.314256",
+  "ultimaActualizacion": "2026-08-17T02:21:31.599793",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -441,13 +441,17 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver II",
-      "lp": 66,
+      "lp": 42,
       "winrate": "49%",
       "rol_principal": "ADC",
       "top_roles": [
         {
           "rol": "ADC",
-          "cantidad": 10
+          "cantidad": 9
+        },
+        {
+          "rol": "Support",
+          "cantidad": 1
         }
       ],
       "top_recientes": [
@@ -457,10 +461,10 @@
         },
         {
           "campeon": "Xayah",
-          "cantidad": 4
+          "cantidad": 3
         },
         {
-          "campeon": "Jinx",
+          "campeon": "Lux",
           "cantidad": 1
         }
       ],
@@ -478,7 +482,7 @@
         {
           "campeon": "Lux",
           "nivel": 21,
-          "puntos": "218.743"
+          "puntos": "219.469"
         }
       ],
       "progreso_lp": [
@@ -602,9 +606,21 @@
           "lp": 66,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-17T02:21:20",
+          "lp": 42,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "campeon": "Lux",
+          "kda": "1/8/7 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "33min"
+        },
         {
           "campeon": "Xayah",
           "kda": "2/9/8 (1.11)",
@@ -658,12 +674,6 @@
           "kda": "6/11/10 (1.45)",
           "resultado": "Derrota",
           "duracion": "39min"
-        },
-        {
-          "campeon": "Xayah",
-          "kda": "10/5/9 (3.8)",
-          "resultado": "Derrota",
-          "duracion": "41min"
         }
       ]
     },
