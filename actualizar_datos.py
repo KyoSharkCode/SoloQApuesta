@@ -151,6 +151,10 @@ def obtener_datos():
             historial = []
             roles_count = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
             campeones_count = {}
+            # NUEVO: acumuladores para los highlights (Top Asesino / Pentakills / Observador)
+            total_kills_recientes = 0
+            total_pentakills_recientes = 0
+            vision_scores_recientes = []
 
             for match_id in ids:
                 url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
@@ -168,12 +172,20 @@ def obtener_datos():
 
                     campeones_count[campeon_jugado] = campeones_count.get(campeon_jugado, 0) + 1
 
+                    # NUEVO
+                    total_kills_recientes += k
+                    total_pentakills_recientes += pp.get("pentaKills", 0)
+                    vision_scores_recientes.append(pp.get("visionScore", 0))
+
                     historial.append({
                         "campeon":   campeon_jugado,
                         "kda":       f"{k}/{d}/{a} ({kda})",
                         "resultado": "Victoria" if pp["win"] else "Derrota",
                         "duracion":  f"{md['info']['gameDuration'] // 60}min",
                     })
+
+            # NUEVO: promedio de visión (no total, para no penalizar a quien tenga menos partidas registradas)
+            vision_promedio = round(sum(vision_scores_recientes) / len(vision_scores_recientes)) if vision_scores_recientes else 0
 
             mapa_roles = {"TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid", "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"}
 
@@ -198,6 +210,9 @@ def obtener_datos():
                 "maestrias":        maestrias,
                 "progreso_lp":      historial_lp_jugador,
                 "historial":        historial,
+                "kills_recientes":       total_kills_recientes,
+                "pentakills_recientes":  total_pentakills_recientes,
+                "vision_promedio":       vision_promedio,
             })
             print(f"  ✓ {nombre_completo} actualizado correctamente.")
 
