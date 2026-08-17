@@ -1,17 +1,8 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
-    },
-    "Galactic Shark#AYK": {
-        "en_partida": false
-    },
-    "El Buñuelito#KyA": {
-        "en_partida": false
-    },
-    "ゆうき まこと#1411": {
         "en_partida": true,
-        "campeon": "Morgana",
-        "equipo": "blue",
+        "campeon": "Ekko",
+        "equipo": "red",
         "hechizos": [
             {
                 "nombre": "Prender",
@@ -23,10 +14,31 @@
             }
         ]
     },
+    "Galactic Shark#AYK": {
+        "en_partida": false
+    },
+    "El Buñuelito#KyA": {
+        "en_partida": false
+    },
+    "ゆうき まこと#1411": {
+        "en_partida": false
+    },
     "adrianNOOBYT#LAN": {
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Lux",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Prender",
+                "icono": "SummonerDot.png"
+            }
+        ]
     }
 }
