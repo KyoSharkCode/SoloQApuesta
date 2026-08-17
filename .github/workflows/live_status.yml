@@ -1,8 +1,6 @@
 name: Estado en Vivo (En Partida / Offline)
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'   # respaldo cada 30 min; el disparo real cada 5 min lo hace cron-job.org via workflow_dispatch
   workflow_dispatch:
 
 permissions:
