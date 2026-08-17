@@ -1,8 +1,6 @@
 name: Ranking y Estadisticas de LoL
 
 on:
-  schedule:
-    - cron: '15-59/30 * * * *'   # respaldo cada 30 min, desfasado 15 min de live_status para no chocar; el disparo real lo hace cron-job.org
   workflow_dispatch:
 
 permissions:
