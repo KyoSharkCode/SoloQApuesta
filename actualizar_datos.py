@@ -1,12 +1,13 @@
 import os
+import sys
 import json
 import time
 import requests
 from urllib.parse import quote
 from datetime import datetime
 
-REGION_API  = "americas"   
-REGION_GAME = "la1"        
+REGION_API  = "americas"
+REGION_GAME = "la1"
 
 JUGADORES = [
     {"name": "Pinea",          "tag": "Pinea"},
@@ -56,15 +57,16 @@ def obtener_datos():
         "X-Riot-Token": API_KEY
     }
 
-    # 1. Obtener diccionario de campeones (para las maestrías)
+    # 1. Diccionario de campeones para maestrías
     print("📚 Descargando diccionario de campeones...")
     url_ddragon = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/champion.json"
     champ_data = requests.get(url_ddragon).json()["data"]
     diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
 
-    # NUEVO: guardamos el jugador COMPLETO anterior (no solo su progreso_lp),
-    # así si falla la actualización de alguien podemos conservar su último dato bueno.
+    # 2. Cargar datos anteriores para comparación inteligente
     datos_antiguos = {}
+    ultimas_partidas_anteriores = {}  # nombre → match_id más reciente guardado
+
     if os.path.exists("datos.json"):
         try:
             with open("datos.json", "r", encoding="utf-8") as f:
@@ -72,6 +74,10 @@ def obtener_datos():
                 lista_antigua = data_cargada if isinstance(data_cargada, list) else data_cargada.get("jugadores", [])
                 for p in lista_antigua:
                     datos_antiguos[p["nombre"]] = p
+                    # Guardamos el match_id del primer elemento del historial (más reciente)
+                    hist = p.get("historial", [])
+                    if hist:
+                        ultimas_partidas_anteriores[p["nombre"]] = hist[0].get("match_id", "")
         except Exception as e:
             print(f"⚠️ No se pudo leer datos.json anterior, se continúa sin histórico: {e}")
 
@@ -108,10 +114,7 @@ def obtener_datos():
                     winrate  = f"{round(mode['wins'] / total * 100)}%" if total > 0 else "0%"
                     break
 
-            # NUEVO: solo agregamos un punto nuevo al historial si el LP realmente cambió,
-            # y limitamos el tamaño total para que datos.json y la gráfica no crezcan sin control.
-            # NUEVO: cada punto ahora guarda también rango+división, no solo el LP,
-            # para poder ubicarlo correctamente en la escalera de elo en la gráfica.
+            # Progreso LP
             historial_lp_jugador = list((anterior or {}).get("progreso_lp", []))
             punto_anterior = historial_lp_jugador[-1] if historial_lp_jugador else None
             mismo_punto = (
@@ -122,9 +125,9 @@ def obtener_datos():
             )
             if not mismo_punto:
                 historial_lp_jugador.append({
-                    "fecha": fecha_actual,
-                    "lp": lp,
-                    "rango": rango,
+                    "fecha":    fecha_actual,
+                    "lp":       lp,
+                    "rango":    rango,
                     "division": division
                 })
             historial_lp_jugador = historial_lp_jugador[-MAX_PUNTOS_HISTORIAL:]
@@ -132,7 +135,6 @@ def obtener_datos():
             # Top 3 Maestrías
             url_mast = f"https://{REGION_GAME}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}"
             mast_data = get_con_reintento(url_mast, headers).json()
-            # NUEVO: ordenamos explícitamente por puntos; no confiamos en el orden de la API
             if isinstance(mast_data, list):
                 mast_data = sorted(mast_data, key=lambda m: m.get("championPoints", 0), reverse=True)
             maestrias = []
@@ -140,8 +142,8 @@ def obtener_datos():
                 c_nombre = diccionario_campeones.get(m["championId"], "Desconocido")
                 maestrias.append({
                     "campeon": c_nombre,
-                    "nivel": m["championLevel"],
-                    "puntos": f"{m['championPoints']:,}".replace(",", ".")
+                    "nivel":   m["championLevel"],
+                    "puntos":  f"{m['championPoints']:,}".replace(",", ".")
                 })
 
             # Últimas 10 partidas
@@ -151,7 +153,6 @@ def obtener_datos():
             historial = []
             roles_count = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
             campeones_count = {}
-            # NUEVO: acumuladores para los highlights (Top Asesino / Pentakills / Observador)
             total_kills_recientes = 0
             total_pentakills_recientes = 0
             vision_scores_recientes = []
@@ -171,60 +172,71 @@ def obtener_datos():
                         roles_count[rol_api] += 1
 
                     campeones_count[campeon_jugado] = campeones_count.get(campeon_jugado, 0) + 1
-
-                    # NUEVO
                     total_kills_recientes += k
                     total_pentakills_recientes += pp.get("pentaKills", 0)
                     vision_scores_recientes.append(pp.get("visionScore", 0))
 
                     historial.append({
+                        "match_id":  match_id,   # ← clave para la comparación inteligente
                         "campeon":   campeon_jugado,
                         "kda":       f"{k}/{d}/{a} ({kda})",
                         "resultado": "Victoria" if pp["win"] else "Derrota",
                         "duracion":  f"{md['info']['gameDuration'] // 60}min",
                     })
 
-            # NUEVO: promedio de visión (no total, para no penalizar a quien tenga menos partidas registradas)
             vision_promedio = round(sum(vision_scores_recientes) / len(vision_scores_recientes)) if vision_scores_recientes else 0
 
             mapa_roles = {"TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid", "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"}
 
-            # Calcular Top 2 Roles
             roles_ordenados = sorted(roles_count.items(), key=lambda x: x[1], reverse=True)
             top_2_roles = [{"rol": mapa_roles.get(r[0]), "cantidad": r[1]} for r in roles_ordenados if r[1] > 0][:2]
             rol_mas_jugado = top_2_roles[0]["rol"] if top_2_roles else "Desconocido"
 
-            # Calcular Top 3 Campeones (Recientes)
             campeones_ordenados = sorted(campeones_count.items(), key=lambda x: x[1], reverse=True)[:3]
             top_3_recientes = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ordenados]
 
             lista_final.append({
-                "nombre":           nombre_completo,
-                "icono":            icono_id,
-                "rango":            f"{rango} {division}".strip(),
-                "lp":               lp,
-                "winrate":          winrate,
-                "rol_principal":    rol_mas_jugado,
-                "top_roles":        top_2_roles,
-                "top_recientes":    top_3_recientes,
-                "maestrias":        maestrias,
-                "progreso_lp":      historial_lp_jugador,
-                "historial":        historial,
-                "kills_recientes":       total_kills_recientes,
-                "pentakills_recientes":  total_pentakills_recientes,
-                "vision_promedio":       vision_promedio,
+                "nombre":               nombre_completo,
+                "icono":                icono_id,
+                "rango":                f"{rango} {division}".strip(),
+                "lp":                   lp,
+                "winrate":              winrate,
+                "rol_principal":        rol_mas_jugado,
+                "top_roles":            top_2_roles,
+                "top_recientes":        top_3_recientes,
+                "maestrias":            maestrias,
+                "progreso_lp":          historial_lp_jugador,
+                "historial":            historial,
+                "kills_recientes":      total_kills_recientes,
+                "pentakills_recientes": total_pentakills_recientes,
+                "vision_promedio":      vision_promedio,
             })
             print(f"  ✓ {nombre_completo} actualizado correctamente.")
 
         except Exception as e:
             print(f"🚨 Error con {nombre_completo}: {e}")
-            # NUEVO: si falló, conservamos su último dato bueno en vez de borrarlo del ranking
             if anterior:
                 print(f"  ↩️ Conservando los últimos datos guardados de {nombre_completo}.")
                 lista_final.append(anterior)
             else:
-                print(f"  ⚠️ No hay datos previos de {nombre_completo}; se omite en esta actualización.")
+                print(f"  ⚠️ No hay datos previos de {nombre_completo}; se omite.")
 
+    # =========================================================
+    # COMPARACIÓN INTELIGENTE — solo compara el match_id más
+    # reciente de cada jugador, no fechas ni puntos de LP.
+    # =========================================================
+    ultimas_partidas_nuevas = {}
+    for p in lista_final:
+        hist = p.get("historial", [])
+        if hist:
+            ultimas_partidas_nuevas[p["nombre"]] = hist[0].get("match_id", "")
+
+    if ultimas_partidas_nuevas == ultimas_partidas_anteriores:
+        print("\n💤 No se detectaron partidas nuevas en ningún jugador.")
+        print("🛑 Sin cambios reales — datos.json no se sobrescribe. Ahorrando despliegue.")
+        sys.exit(0)
+
+    # Si llegamos aquí, alguien jugó una partida nueva → guardamos
     datos_exportar = {
         "ultimaActualizacion": datetime.now().isoformat(),
         "jugadores": lista_final
@@ -232,7 +244,8 @@ def obtener_datos():
 
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(datos_exportar, f, indent=2, ensure_ascii=False)
-    print("\n✅ datos.json actualizado correctamente con maestrías y perfiles.")
+    print("\n✅ datos.json actualizado — se detectaron partidas nuevas.")
+
 
 if __name__ == "__main__":
     obtener_datos()
