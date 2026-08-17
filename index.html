@@ -89,8 +89,10 @@
   
   .wr-cell{ display:flex; flex-direction:column; gap:5px; }
   .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-faint); }
-  .wr-bar{ height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
-  .wr-fill{ height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
+  
+  /* ESTILOS CORREGIDOS PARA LA BARRA */
+  .wr-bar{ display:block; width:100%; height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
+  .wr-fill{ display:block; height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
 
   .tier-iron .tier-crest{background:#5b5c63;} .tier-bronze .tier-crest{background:#a9754f;} .tier-silver .tier-crest{background:#9fb0c2;}
   .tier-gold .tier-crest{background:#d8ad3d;} .tier-platinum .tier-crest{background:#3fc6b6;} .tier-emerald .tier-crest{background:#3fcf7f;}
@@ -436,6 +438,7 @@ window.addEventListener('load', () => {
       const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
       const posContent = i === 0 ? '👑' : (i + 1);
 
+      // CÓDIGO HTML DE LA BARRA CORREGIDO
       row.innerHTML = `
         <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
@@ -450,7 +453,7 @@ window.addEventListener('load', () => {
         <span class="lp-cell">${p.lp} LP</span>
         <span class="wr-cell">
           <span class="wr-top"><span>${p.winrate}% WR</span></span>
-          <span class="wr-bar"><span class="wr-fill" style="width:${p.winrate}%"></span></span>
+          <div class="wr-bar"><div class="wr-fill" style="width:${p.winrate}%"></div></div>
         </span>
       `;
       rankingListEl.appendChild(row);
