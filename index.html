@@ -6,10 +6,8 @@
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type=image/x.icon" alt="logo">
+<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <style>
   :root{
     --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
@@ -44,11 +42,15 @@
   .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
   .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
   .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
+  .highlight-avatar { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); object-fit: cover; flex-shrink: 0; }
   .highlight-body { min-width:0; }
   .highlight-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin:0 0 4px; }
   .highlight-player { font-size:14px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
+  
+  .otp-champ-info { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+  .champ-icon-small { width: 20px; height: 20px; border-radius: 4px; object-fit: cover; }
 
   .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
   .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
@@ -90,7 +92,6 @@
   .wr-cell{ display:flex; flex-direction:column; gap:5px; }
   .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-faint); }
   
-  /* ESTILOS CORREGIDOS PARA LA BARRA */
   .wr-bar{ display:block; width:100%; height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
   .wr-fill{ display:block; height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
 
@@ -109,7 +110,7 @@
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
-  .chart-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; height:440px; }
+  
   .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
   .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
   .timer-boxes { display: flex; justify-content: center; gap: 15px; }
@@ -121,7 +122,6 @@
   .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse 2.2s infinite; }
   @keyframes pulse{ 0%{box-shadow:0 0 0 0 var(--accent-glow);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
 
-  /* NUEVO: ESTILOS PARA INDICADOR DE ESTADO EN PARTIDA/OFFLINE */
   .status-chip { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; letter-spacing: 0.05em; }
   .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
   .status-chip.offline { background: rgba(161, 161, 170, 0.1); color: #a1a1aa; border: 1px solid rgba(161, 161, 170, 0.2); }
@@ -180,14 +180,13 @@
     </div>
   </section>
 
-  <section id="seccion-grafica">
-    <div class="section-title">
-      <h2>Progreso General de LPs</h2>
-      <span>29 Jul 2026 - 1 Ene 2027</span>
+  <!-- NUEVA SECCIÓN DE DESTACADOS SEMANALES (Reemplaza la gráfica) -->
+  <section id="seccion-semanales">
+    <div class="section-title" style="margin-bottom: 16px;">
+      <h2>Destacados de la Semana</h2>
+      <span>Últimos 7 días</span>
     </div>
-    <div class="chart-panel">
-      <canvas id="lp-chart"></canvas>
-    </div>
+    <div class="highlights-grid" id="weekly-highlights-container"></div>
   </section>
 
   <div class="countdown-container">
@@ -205,11 +204,12 @@
 window.addEventListener('load', () => {
   const TIER_ORDER = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
   const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
+  const DIV_NUM = { 'IV': 0, 'III': 1, 'II': 2, 'I': 3 };
+  const DIVISIONED_TIER_COUNT = 7;
+  const MASTER_PLUS_BASE = DIVISIONED_TIER_COUNT * 4 * 100;
 
-  // NUEVO: Agregamos liveData al estado
-  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', chart: null, lastUpdate: null };
-
-  const REFRESH_MS = 30000; // frecuencia de auto-actualización (30s)
+  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', lastUpdate: null };
+  const REFRESH_MS = 30000;
 
   const top1ContainerEl = document.getElementById('top1-container');
   const highlightsContainerEl = document.getElementById('highlights-container');
@@ -230,8 +230,6 @@ window.addEventListener('load', () => {
     refreshData();
     setInterval(refreshData, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
-
-    // Si el usuario vuelve a la pestaña, refresca al instante en vez de esperar el intervalo
     document.addEventListener('visibilitychange', () => {
       if(!document.hidden) refreshData();
     });
@@ -244,7 +242,6 @@ window.addEventListener('load', () => {
       const rawData = await res.json();
       const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
 
-      // NUEVO: Intentar cargar los datos en vivo
       try {
         const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache: 'no-store' });
         if(liveRes.ok) state.liveData = await liveRes.json();
@@ -269,9 +266,8 @@ window.addEventListener('load', () => {
       renderTop1();
       renderHighlights();
       renderRanking();
-      buildChart();
+      renderWeeklyHighlights(); // Renders new weekly highlighted boxes
 
-      // Mantiene la selección actual si el jugador sigue existiendo; si no, selecciona al Top 1
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
         selectPlayer(seleccionValida ? state.selectedId : state.players[0].id);
@@ -282,7 +278,6 @@ window.addEventListener('load', () => {
 
     }catch(err){
       console.warn('No se pudo refrescar datos.json', err);
-      // Solo mostramos el error si nunca cargamos datos exitosamente
       if(state.players.length === 0){
         rankingListEl.innerHTML = `<p class="empty-state">Espera a que el bot recolecte la información en un par de minutos y recarga la página.</p>`;
       }
@@ -298,32 +293,15 @@ window.addEventListener('load', () => {
     else liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
   }
 
-  // NUEVO: "escalera de elo" — convierte (tier, división, lp) en una sola posición continua,
-  // usada tanto para ordenar el ranking como para el eje Y de la gráfica.
-  const DIV_NUM = { 'IV': 0, 'III': 1, 'II': 2, 'I': 3 };
-  const DIVISIONED_TIER_COUNT = 7; // Iron..Diamond tienen división; Master+ no
-  const MASTER_PLUS_BASE = DIVISIONED_TIER_COUNT * 4 * 100; // 2800
-
-  function tierPretty(tierUpper){ return tierUpper.charAt(0) + tierUpper.slice(1).toLowerCase(); }
-
   function eloScore(rango, division, lp){
     const tier = (rango || '').toUpperCase();
     const ti = TIER_ORDER.indexOf(tier);
-    if (ti === -1) return null; // Unranked u otro valor desconocido
+    if (ti === -1) return null;
     if (DIVISIONLESS.includes(tier)) return MASTER_PLUS_BASE + Math.max(0, lp || 0);
     const dn = DIV_NUM[(division || '').toUpperCase()];
-    if (dn === undefined) return null; // división desconocida, no se puede ubicar
+    if (dn === undefined) return null;
     const bandIndex = ti * 4 + dn;
     return bandIndex * 100 + Math.max(0, Math.min(100, lp || 0));
-  }
-
-  function bandLabel(score){
-    if (score >= MASTER_PLUS_BASE) return 'Master+';
-    const bandIndex = Math.round(score / 100);
-    const ti = Math.floor(bandIndex / 4);
-    const dn = bandIndex % 4;
-    const tierName = TIER_ORDER[ti] ? tierPretty(TIER_ORDER[ti]) : '';
-    return `${tierName} ${['IV','III','II','I'][dn]}`;
   }
 
   function rankScore(p){
@@ -357,17 +335,14 @@ window.addEventListener('load', () => {
 
   function renderHighlights() {
     if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
-
     const categorias = [
       { icon: '⚔️', label: 'Top Asesino', campo: 'killsRecientes', sufijo: 'kills', vacio: 'Nadie ha registrado kills todavía.' },
       { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsRecientes', sufijo: 'pentakills', vacio: 'Nadie ha hecho un penta… todavía 👀' },
       { icon: '👁️', label: 'Top Observador', campo: 'visionPromedio', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
     ];
-
     highlightsContainerEl.innerHTML = categorias.map(cat => {
       const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
       const valor = lider ? (lider[cat.campo] || 0) : 0;
-
       if (!lider || valor <= 0) {
         return `
           <div class="highlight-card">
@@ -378,7 +353,6 @@ window.addEventListener('load', () => {
             </div>
           </div>`;
       }
-
       return `
         <div class="highlight-card">
           <div class="highlight-icon">${cat.icon}</div>
@@ -391,7 +365,102 @@ window.addEventListener('load', () => {
     }).join('');
   }
 
-  // NUEVO: compara el último punto de historial contra el anterior para saber si viene subiendo o bajando
+  function renderWeeklyHighlights() {
+    const container = document.getElementById('weekly-highlights-container');
+    if (state.players.length === 0) { container.innerHTML = ''; return; }
+
+    let otpPlayer = null;
+    let otpChamp = '';
+    let otpPercent = 0;
+
+    let climber = null;
+    let maxClimb = -Infinity;
+    const now = Date.now();
+    const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+
+    let grinder = null;
+    let maxTime = 0;
+
+    state.players.forEach(p => {
+      // 1. Lógica OTP
+      if (p.partidas && p.partidas.length > 0) {
+        const champCounts = {};
+        p.partidas.forEach(m => { champCounts[m.campeon] = (champCounts[m.campeon] || 0) + 1; });
+        let maxC = 0, champ = '';
+        for (const c in champCounts) { if (champCounts[c] > maxC) { maxC = champCounts[c]; champ = c; } }
+        const pct = Math.round((maxC / p.partidas.length) * 100);
+        if (pct > otpPercent || (pct === otpPercent && (!otpPlayer || maxC > (otpPlayer.maxC||0)))) {
+          otpPercent = pct; otpChamp = champ; otpPlayer = p;
+          if(otpPlayer) otpPlayer.maxC = maxC; 
+        }
+      }
+      
+      // 2. Lógica El Escalador
+      if (p.historialLP && p.historialLP.length > 0) {
+        const hist = [...p.historialLP].filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime() <= ONE_WEEK)).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+        if (hist.length > 0) {
+          const first = hist[0];
+          const currentScore = eloScore(p.rango, p.division, p.lp);
+          const firstScore = eloScore(first.rango || p.rango, first.division !== undefined ? first.division : p.division, first.lp);
+          if (currentScore !== null && firstScore !== null) {
+            const diff = currentScore - firstScore;
+            if (diff > maxClimb) { maxClimb = diff; climber = p; }
+          }
+        }
+      }
+
+      // 3. Lógica Horas en la Grieta
+      if (p.partidas && p.partidas.length > 0) {
+        let time = 0;
+        p.partidas.forEach(m => {
+          if (typeof m.duracion === 'number') time += m.duracion;
+          else if (typeof m.duracion === 'string') {
+            const parts = m.duracion.split(':');
+            if (parts.length === 2) time += parseInt(parts[0])*60 + parseInt(parts[1]);
+          }
+        });
+        if (time > maxTime) { maxTime = time; grinder = p; }
+      }
+    });
+
+    if (!otpPlayer) otpPlayer = state.players[0];
+    if (!climber) climber = state.players[0];
+    if (!grinder) grinder = state.players[0];
+    if (!otpChamp) otpChamp = "Desconocido";
+
+    const otpChampImg = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+
+    container.innerHTML = `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">OTP del Torneo</p>
+          <p class="highlight-player">${otpPlayer.nombre}</p>
+          <div class="otp-champ-info">
+             <img class="champ-icon-small" src="${otpChampImg}" onerror="this.style.display='none'">
+             <span class="highlight-value">${otpChamp} (${otpPercent}% de las partidas)</span>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">El Escalador</p>
+          <p class="highlight-player">${climber.nombre}</p>
+          <p class="highlight-value" style="color: var(--win);">Mejor jugador de la semana</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">Horas en la grieta</p>
+          <p class="highlight-player">${grinder.nombre}</p>
+          <p class="highlight-value" style="color: #fbbf24;">¿Le tienes miedo a la Pala?🪏</p>
+        </div>
+      </div>
+    `;
+  }
+
   function getTrendArrow(p){
     const hist = (p.historialLP || []).filter(pt => pt.fecha);
     if (hist.length < 2) return '';
@@ -404,6 +473,26 @@ window.addEventListener('load', () => {
     return sUltimo > sAnterior
       ? `<span class="trend-arrow up" title="Subió respecto a su registro anterior">▲</span>`
       : `<span class="trend-arrow down" title="Bajó respecto a su registro anterior">▼</span>`;
+  }
+
+  // Lógica para saber si el jugador está en racha en sus partidas activas
+  function getStreakEmoji(partidas) {
+    if (!partidas || partidas.length < 3) return '';
+    let activeWins = 0;
+    for(let i=0; i<Math.min(partidas.length, 10); i++){
+      if(partidas[i].resultado === 'victoria') activeWins++;
+      else break;
+    }
+    if(activeWins >= 3) return '🔥';
+
+    let activeLosses = 0;
+    for(let i=0; i<Math.min(partidas.length, 10); i++){
+      if(partidas[i].resultado === 'derrota') activeLosses++;
+      else break;
+    }
+    if(activeLosses >= 3) return '❄️';
+
+    return '';
   }
 
   function renderRanking(){
@@ -419,31 +508,29 @@ window.addEventListener('load', () => {
       const row = document.createElement('button');
       row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
       
-      // Al hacer click en la FILA muestra el historial rápido
       row.addEventListener('click', (e) => {
-        // Evitamos que active el historial si hicieron click justo en el enlace del nombre
         if (e.target.tagName.toLowerCase() !== 'a') { selectPlayer(p.id); }
       });
 
       const tierPretty = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
       const rankDisplay = DIVISIONLESS.includes((p.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
 
-      // NUEVO: Calculamos si está en partida leyendo del JSON liveData
       const liveStatus = state.liveData[p.id] || { en_partida: false };
       const statusHtml = liveStatus.en_partida 
           ? `<span class="status-chip in-game">En Partida</span>` 
           : `<span class="status-chip offline">Offline</span>`;
 
-      // NUEVO: corona para el #1, brillo para el top 3 (posición dentro de la vista/filtro actual)
       const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
       const posContent = i === 0 ? '👑' : (i + 1);
 
-      // CÓDIGO HTML DE LA BARRA CORREGIDO
+      // Evalúa la racha y añade el emoji
+      const streakEmoji = getStreakEmoji(p.partidas);
+
       row.innerHTML = `
         <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
           <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
-          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre}</a>
+          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre} ${streakEmoji}</a>
         </span>
         <span class="status-cell">${statusHtml}</span>
         <span class="role-cell">${getTrendArrow(p)}<span class="role-badge">${p.rol}</span></span>
@@ -475,87 +562,6 @@ window.addEventListener('load', () => {
       </div>
     `).join('');
     historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
-  }
-
-  function buildChart(){
-    const palette = ['#8b5cf6','#38bdf8','#34d399','#f472b6','#fbbf24','#f87171','#a78bfa','#60a5fa'];
-
-    // Determinamos qué franja de tiers/divisiones mostrar, mirando la posición
-    // actual de cada jugador y todo su historial (incluye puntos viejos sin rango
-    // propio, usando como mejor aproximación el rango actual del jugador).
-    let minBand = Infinity, maxBand = -Infinity;
-    const registrarBanda = (rango, division, lp) => {
-      const s = eloScore(rango, division, lp);
-      if (s === null) return;
-      const b = Math.floor(s / 100);
-      minBand = Math.min(minBand, b);
-      maxBand = Math.max(maxBand, b);
-    };
-    state.players.forEach(p => {
-      registrarBanda(p.rango, p.division, p.lp);
-      (p.historialLP || []).forEach(pt => {
-        registrarBanda(pt.rango || p.rango, pt.division !== undefined ? pt.division : p.division, pt.lp);
-      });
-    });
-    if (!isFinite(minBand)) { minBand = 4; maxBand = 7; } // fallback si aún no hay datos
-
-    const yMin = Math.max(0, (minBand - 1) * 100);
-    const yMax = (maxBand + 2) * 100;
-
-    const datasets = state.players.map((p, i) => {
-      const dataPoints = (p.historialLP || [])
-        .filter(pt => pt.fecha)
-        .map(pt => {
-          const rango = pt.rango || p.rango;
-          const division = pt.division !== undefined ? pt.division : p.division;
-          const y = eloScore(rango, division, pt.lp);
-          return y === null ? null : { x: new Date(pt.fecha).getTime(), y };
-        })
-        .filter(Boolean)
-        .sort((a, b) => a.x - b.x);
-
-      return {
-        label: p.nombre, data: dataPoints, borderColor: palette[i % palette.length],
-        backgroundColor: palette[i % palette.length], borderWidth: 2, tension: 0.3, spanGaps: true
-      };
-    });
-
-    // Si ya existe un gráfico de una actualización anterior, lo destruimos antes de crear el nuevo
-    if(state.chart){ state.chart.destroy(); state.chart = null; }
-
-    state.chart = new Chart(document.getElementById('lp-chart').getContext('2d'), {
-      type: 'line', data: { datasets },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { color: '#ffffff' } },
-          tooltip: {
-            callbacks: {
-              label: function(ctx){
-                const val = ctx.parsed.y;
-                if (val >= MASTER_PLUS_BASE) {
-                  return `${ctx.dataset.label}: Master+ · ${Math.round(val - MASTER_PLUS_BASE)} LP`;
-                }
-                return `${ctx.dataset.label}: ${bandLabel(val)} · ${Math.round(val % 100)} LP`;
-              }
-            }
-          }
-        },
-        scales: {
-          x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'MMM yyyy' } }, min: '2026-07-29T00:00:00', max: '2027-01-01T23:59:59', grid: { color: '#232329' }, ticks: { color: '#a1a1aa' } },
-          y: {
-            min: yMin, max: yMax,
-            grid: { color: (ctx) => (ctx.tick.value % 100 === 0) ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.05)' },
-            ticks: {
-              stepSize: 50,
-              color: (ctx) => (ctx.tick.value % 100 === 0) ? '#ffffff' : 'transparent',
-              font: { size: 11, weight: '700' },
-              callback: function(value){ return (value % 100 === 0) ? bandLabel(value) : ''; }
-            },
-          },
-        },
-      },
-    });
   }
 
   function startCountdown() {
