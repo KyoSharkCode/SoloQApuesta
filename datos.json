@@ -1,42 +1,42 @@
 {
-  "ultimaActualizacion": "2026-08-17T18:45:44.566878",
+  "ultimaActualizacion": "2026-08-17T19:05:43.607932",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 51,
-      "winrate": "51%",
+      "lp": 69,
+      "winrate": "52%",
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Mid",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
+        {
+          "campeon": "Fiora",
+          "cantidad": 4
+        },
         {
           "campeon": "Jayce",
           "cantidad": 3
         },
         {
           "campeon": "Ekko",
-          "cantidad": 3
-        },
-        {
-          "campeon": "Fiora",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "maestrias": [
         {
           "campeon": "Fiora",
           "nivel": 26,
-          "puntos": "255.668"
+          "puntos": "257.559"
         },
         {
           "campeon": "Irelia",
@@ -200,9 +200,22 @@
           "lp": 51,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-17T19:05:27",
+          "lp": 69,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741857393",
+          "campeon": "Fiora",
+          "kda": "11/7/7 (2.57)",
+          "resultado": "Victoria",
+          "duracion": "32min"
+        },
         {
           "match_id": "LA1_1741851383",
           "campeon": "Jayce",
@@ -265,16 +278,9 @@
           "kda": "14/11/9 (2.09)",
           "resultado": "Derrota",
           "duracion": "34min"
-        },
-        {
-          "match_id": "LA1_1741603171",
-          "campeon": "Ekko",
-          "kda": "4/8/10 (1.75)",
-          "resultado": "Derrota",
-          "duracion": "35min"
         }
       ],
-      "kills_recientes": 108,
+      "kills_recientes": 115,
       "pentakills_recientes": 0,
       "vision_promedio": 25
     },
@@ -1250,10 +1256,10 @@
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
-          "rol": "Top",
+          "rol": "Mid",
           "cantidad": 1
         }
       ],
@@ -1263,11 +1269,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Veigar",
+          "campeon": "Velkoz",
           "cantidad": 1
         },
         {
-          "campeon": "Lux",
+          "campeon": "Veigar",
           "cantidad": 1
         }
       ],
@@ -1297,6 +1303,13 @@
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1741857393",
+          "campeon": "Velkoz",
+          "kda": "1/5/11 (2.4)",
+          "resultado": "Victoria",
+          "duracion": "32min"
+        },
         {
           "match_id": "LA1_1741851383",
           "campeon": "Veigar",
@@ -1359,18 +1372,11 @@
           "kda": "1/2/10 (5.5)",
           "resultado": "Victoria",
           "duracion": "15min"
-        },
-        {
-          "match_id": "LA1_1673436626",
-          "campeon": "Mordekaiser",
-          "kda": "3/3/2 (1.67)",
-          "resultado": "Derrota",
-          "duracion": "30min"
         }
       ],
-      "kills_recientes": 28,
+      "kills_recientes": 26,
       "pentakills_recientes": 0,
-      "vision_promedio": 36
+      "vision_promedio": 40
     }
   ]
 }
