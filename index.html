@@ -6,7 +6,8 @@
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
+<!-- Icono de la pestaña actualizado -->
+<link rel="shortcut icon" href="logoSoloQReto.png" type="image/x-icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -126,6 +127,27 @@
   .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
   .status-chip.offline { background: rgba(161, 161, 170, 0.1); color: #a1a1aa; border: 1px solid rgba(161, 161, 170, 0.2); }
 
+  /* ESTILOS NUEVOS PARA EL FOOTER */
+  .site-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-logo {
+    width: 70px;
+    height: auto;
+    margin-bottom: 12px;
+  }
+  .site-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -180,7 +202,6 @@
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN DE DESTACADOS SEMANALES (Reemplaza la gráfica) -->
   <section id="seccion-semanales">
     <div class="section-title" style="margin-bottom: 16px;">
       <h2>Destacados de la Semana</h2>
@@ -198,6 +219,13 @@
       <div class="timer-box"><div class="timer-val" id="cd-secs">0</div><div class="timer-label">Seg</div></div>
     </div>
   </div>
+
+  <!-- FOOTER NUEVO AGREGADO AQUÍ -->
+  <footer class="site-footer">
+    <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo">
+    <p>creado por KyoSumiVT</p>
+  </footer>
+
 </div>
 
 <script>
@@ -266,7 +294,7 @@ window.addEventListener('load', () => {
       renderTop1();
       renderHighlights();
       renderRanking();
-      renderWeeklyHighlights(); // Renders new weekly highlighted boxes
+      renderWeeklyHighlights();
 
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
@@ -382,7 +410,6 @@ window.addEventListener('load', () => {
     let maxTime = 0;
 
     state.players.forEach(p => {
-      // 1. Lógica OTP
       if (p.partidas && p.partidas.length > 0) {
         const champCounts = {};
         p.partidas.forEach(m => { champCounts[m.campeon] = (champCounts[m.campeon] || 0) + 1; });
@@ -395,7 +422,6 @@ window.addEventListener('load', () => {
         }
       }
       
-      // 2. Lógica El Escalador
       if (p.historialLP && p.historialLP.length > 0) {
         const hist = [...p.historialLP].filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime() <= ONE_WEEK)).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
         if (hist.length > 0) {
@@ -409,7 +435,6 @@ window.addEventListener('load', () => {
         }
       }
 
-      // 3. Lógica Horas en la Grieta
       if (p.partidas && p.partidas.length > 0) {
         let time = 0;
         p.partidas.forEach(m => {
@@ -475,7 +500,6 @@ window.addEventListener('load', () => {
       : `<span class="trend-arrow down" title="Bajó respecto a su registro anterior">▼</span>`;
   }
 
-  // Lógica para saber si el jugador está en racha en sus partidas activas
   function getStreakEmoji(partidas) {
     if (!partidas || partidas.length < 3) return '';
     let activeWins = 0;
@@ -523,7 +547,6 @@ window.addEventListener('load', () => {
       const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
       const posContent = i === 0 ? '👑' : (i + 1);
 
-      // Evalúa la racha y añade el emoji
       const streakEmoji = getStreakEmoji(p.partidas);
 
       row.innerHTML = `
