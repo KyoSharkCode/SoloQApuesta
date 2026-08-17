@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-17T12:56:36.492061",
+  "ultimaActualizacion": "2026-08-17T13:01:07.436338",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -253,20 +253,28 @@
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
-      "rango": "Silver I",
-      "lp": 0,
-      "winrate": "50%",
+      "rango": "Silver II",
+      "lp": 90,
+      "winrate": "48%",
       "rol_principal": "Jungla",
       "top_roles": [
         {
           "rol": "Jungla",
-          "cantidad": 10
+          "cantidad": 9
+        },
+        {
+          "rol": "ADC",
+          "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Lillia",
-          "cantidad": 9
+          "cantidad": 8
+        },
+        {
+          "campeon": "Twitch",
+          "cantidad": 1
         },
         {
           "campeon": "Poppy",
@@ -399,9 +407,21 @@
           "lp": 0,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-17T13:00:52",
+          "lp": 90,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "campeon": "Twitch",
+          "kda": "8/10/4 (1.2)",
+          "resultado": "Derrota",
+          "duracion": "32min"
+        },
         {
           "campeon": "Lillia",
           "kda": "6/5/5 (2.2)",
@@ -455,17 +475,11 @@
           "kda": "1/1/5 (6.0)",
           "resultado": "Victoria",
           "duracion": "16min"
-        },
-        {
-          "campeon": "Lillia",
-          "kda": "9/4/13 (5.5)",
-          "resultado": "Victoria",
-          "duracion": "37min"
         }
       ],
-      "kills_recientes": 70,
+      "kills_recientes": 69,
       "pentakills_recientes": 0,
-      "vision_promedio": 41
+      "vision_promedio": 38
     },
     {
       "nombre": "El Buñuelito#KyA",
