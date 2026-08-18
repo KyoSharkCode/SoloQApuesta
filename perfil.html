@@ -350,15 +350,19 @@ window.addEventListener('load', () => {
     const pRango      = rankParts[0];
     const pDiv        = rankParts.slice(1).join(' ');
     const pScore      = eloScore(pRango, pDiv, p.lp || 0);
-    const pKills      = p.kills_recientes || 0;
-    const pPenta      = p.pentakills_recientes || 0;
-    const pVision     = p.vision_promedio_reciente || 0;
-    const pPrimSangre = p.primeras_sangre_semana || 0;
-    const pKdaProm    = p.kda_promedio_semana || 0;
-    const pKdaPerf    = !!p.kda_perfecto_semana;
-    const pChampsGan  = p.campeones_ganados_semana || 0;
-    const pHistorial  = p.historial || [];
-    const pHistLP     = p.progreso_lp || [];
+    const pKills          = p.kills_recientes || 0;
+    const pPenta          = p.pentakills_recientes || 0;
+    const pVision         = p.vision_promedio_reciente || 0;
+    const pPrimSangre     = p.primeras_sangre_semana || 0;
+    const pKdaProm        = p.kda_promedio_semana || 0;
+    const pKdaPerf        = !!p.kda_perfecto_semana;
+    const pChampsGan      = p.campeones_ganados_semana || 0;
+    const pHistorial      = p.historial || [];
+    const pHistLP         = p.progreso_lp || [];
+    const pAsistencias    = p.asistencias_semana || 0;
+    const pPartidasSemana = p.partidas_semana || 0;
+    const pMaxDia         = p.max_partidas_en_un_dia || 0;
+    const pPrimVictoria   = p.primera_victoria_hoy || null;
 
     // Calcular estadísticas de todos para comparar
     const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -370,6 +374,7 @@ window.addEventListener('load', () => {
     let pChampPct   = 0;
     let pTopChamp   = '';
     let maxPrimSangre = -1, maxKdaProm = -1, maxChampsGan = -1;
+    let maxAsistencias = -1, minPartidasSemana = Infinity, maxDia = -1;
 
     // ordenar jugadores por score para saber si es top1/2/3
     const sortedByScore = [...todos].sort((a, b) => {
@@ -389,6 +394,9 @@ window.addEventListener('load', () => {
       if ((j.primeras_sangre_semana || 0) > maxPrimSangre) maxPrimSangre = j.primeras_sangre_semana || 0;
       if ((j.kda_promedio_semana || 0) > maxKdaProm)  maxKdaProm   = j.kda_promedio_semana || 0;
       if ((j.campeones_ganados_semana || 0) > maxChampsGan) maxChampsGan = j.campeones_ganados_semana || 0;
+      if ((j.asistencias_semana || 0) > maxAsistencias) maxAsistencias = j.asistencias_semana || 0;
+      if ((j.partidas_semana || 0) > 0 && (j.partidas_semana || 0) < minPartidasSemana) minPartidasSemana = j.partidas_semana;
+      if ((j.max_partidas_en_un_dia || 0) > maxDia) maxDia = j.max_partidas_en_un_dia || 0;
 
       // Escalador: LP ganados esta semana
       const hist = (j.progreso_lp || []).filter(pt => pt.fecha && now - new Date(pt.fecha).getTime() <= ONE_WEEK)
@@ -455,6 +463,24 @@ window.addEventListener('load', () => {
     // Maestro del Champion Pool (más campeones distintos ganados esta semana)
     if (pChampsGan > 0 && pChampsGan >= maxChampsGan)
       badges.push({ icon:'🎭', label:`Maestro del Pool · ${pChampsGan} campeones ganados`, color:'purple' });
+
+    // El Tortuga — menos partidas de todos esta semana
+    if (pPartidasSemana > 0 && pPartidasSemana <= minPartidasSemana)
+      badges.push({ icon:'🐢', label:`El Tortuga · ${pPartidasSemana} partida${pPartidasSemana === 1 ? '' : 's'} esta semana`, color:'blue' });
+
+    // El Asistente — más asistencias de todos esta semana
+    if (pAsistencias > 0 && pAsistencias >= maxAsistencias)
+      badges.push({ icon:'🤝', label:`El Asistente · ${pAsistencias} asistencias`, color:'green' });
+
+    // Sin rendirse — más partidas en un solo día (mínimo 3)
+    if (pMaxDia >= 3 && pMaxDia >= maxDia)
+      badges.push({ icon:'😤', label:`Sin rendirse · ${pMaxDia} partidas en un día`, color:'purple' });
+
+    // Primera victoria del día — FIX: es objeto con .timestamp (ms)
+    if (pPrimVictoria && typeof pPrimVictoria === 'object' && pPrimVictoria.timestamp) {
+      const hora = new Date(pPrimVictoria.timestamp).toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
+      badges.push({ icon:'🌅', label:`Primera Victoria del Día · ${hora}h`, color:'gold' });
+    }
 
     // Racha de victorias
     let streak = 0;
