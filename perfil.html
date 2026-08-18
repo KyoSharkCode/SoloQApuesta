@@ -145,6 +145,7 @@
     background:rgba(139,92,246,.15); border:1px solid rgba(139,92,246,.35);
     color:var(--accent-soft); letter-spacing:0.04em; text-transform:uppercase;
   }
+  .live-game-duo{ font-weight:700; font-size:12px; color:var(--accent-soft); width:100%; }
 
   /* GRID STATS */
   .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-bottom:40px; }
@@ -167,6 +168,7 @@
   .match-spells img{ width:20px; height:20px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
   .match-champ{ font-size:15px; font-weight:700; color:#ffffff; }
   .match-kda{ font-size:13px; color:var(--text-faint); margin-top:3px; }
+  .match-duo{ font-size:12px; font-weight:700; color:var(--accent-soft); margin-top:3px; }
   .result-chip{ font-size:12px; font-weight:800; padding:6px 14px; border-radius:99px; text-transform:uppercase; text-align:center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); border:1px solid rgba(52,211,153,.3); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); border:1px solid rgba(248,113,113,.3); }
@@ -369,6 +371,7 @@ window.addEventListener('load', () => {
     const pPartidasSemana = p.partidas_semana || 0;
     const pMaxDia         = p.max_partidas_en_un_dia || 0;
     const pPrimVictoria   = p.primera_victoria_hoy || null;
+    const pDuoSemana      = p.duo_semana || null;
 
     // Calcular estadísticas de todos para comparar
     const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -482,6 +485,10 @@ window.addEventListener('load', () => {
     if (pMaxDia >= 3 && pMaxDia >= maxDia)
       badges.push({ icon:'😤', label:`Sin rendirse · ${pMaxDia} partidas en un día`, color:'purple' });
 
+    // Dúo más frecuente de la semana
+    if (pDuoSemana && pDuoSemana.nombre && pDuoSemana.partidas > 0)
+      badges.push({ icon:'🎮', label:`Dúo Frecuente · ${pDuoSemana.nombre} (${pDuoSemana.partidas} partida${pDuoSemana.partidas === 1 ? '' : 's'} juntos)`, color:'blue' });
+
     // Primera victoria del día — FIX: es objeto con .timestamp (ms)
     if (pPrimVictoria && typeof pPrimVictoria === 'object' && pPrimVictoria.timestamp) {
       const hora = new Date(pPrimVictoria.timestamp).toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
@@ -540,6 +547,8 @@ window.addEventListener('load', () => {
                title="${h.nombre}" alt="${h.nombre}"
                onerror="this.style.visibility='hidden'">
         `).join('');
+        const duoCon    = Array.isArray(liveStatus.duo_con) ? liveStatus.duo_con : [];
+        const duoHtml   = duoCon.length ? `<div class="live-game-duo">🎮 Con ${duoCon.join(', ')}</div>` : '';
 
         box.className = 'live-status-box in-game';
         box.innerHTML = `
@@ -552,6 +561,7 @@ window.addEventListener('load', () => {
             <div class="live-game-spells">${hechizosHtml}</div>
             <div class="live-game-mode">${modoJuego}</div>
             <div class="live-game-side ${ladoClase}">${ladoTexto}</div>
+            ${duoHtml}
           </div>
         `;
       } else {
@@ -645,6 +655,7 @@ window.addEventListener('load', () => {
             const spellsHtml = (Array.isArray(h.hechizos) ? h.hechizos : []).map(s =>
               `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
+            const duoCon = Array.isArray(h.duo_con) ? h.duo_con : [];
             return `
             <div class="match">
               <span class="match-icons">
@@ -654,6 +665,7 @@ window.addEventListener('load', () => {
               <div>
                 <div class="match-champ">${h.campeon}</div>
                 <div class="match-kda">${h.kda} KDA</div>
+                ${duoCon.length ? `<div class="match-duo">🎮 Dúo con ${duoCon.join(', ')}</div>` : ''}
               </div>
               <div class="match-result-block">
                 <span class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</span>
