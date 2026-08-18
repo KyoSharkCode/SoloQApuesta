@@ -133,8 +133,11 @@
 
   .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
-  .match{ display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
+  .match{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
+  .match-icons{ display:flex; align-items:center; gap:5px; }
   .champ-icon{ width:36px; height:36px; border-radius:8px; object-fit:cover; background:#1d1d24; }
+  .match-spells{ display:flex; flex-direction:column; gap:3px; }
+  .match-spells img{ width:16px; height:16px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
   .match-champ{ font-size:13px; font-weight:700; color:#ffffff;}
   .match-kda{ font-size:12px; color:var(--text-faint); }
   .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align:center; }
@@ -352,7 +355,8 @@ window.addEventListener('load', () => {
             campeon: h.campeon, kda: h.kda,
             resultado: (h.resultado || '').toLowerCase(),
             duracion: h.duracion || null,
-            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null
+            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null,
+            hechizos: Array.isArray(h.hechizos) ? h.hechizos : []
           })),
           historialLP: p.progreso_lp || [],
           // Últimas 10 partidas — para los 3 tops superiores
@@ -707,9 +711,16 @@ window.addEventListener('load', () => {
     state.selectedId=id;
     renderRanking();
     const player=state.players.find(p=>p.id===id);
-    const matchesHtml=player.partidas.slice(0,5).map(m=>`
+    const matchesHtml=player.partidas.slice(0,5).map(m=>{
+      const spellsHtml=(m.hechizos||[]).map(h=>
+        `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+      ).join('');
+      return `
       <div class="match">
-        <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+        <span class="match-icons">
+          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+          ${spellsHtml?`<span class="match-spells">${spellsHtml}</span>`:''}
+        </span>
         <span>
           <div class="match-champ">${m.campeon}</div>
           <div class="match-kda">${m.kda} KDA</div>
@@ -720,7 +731,8 @@ window.addEventListener('load', () => {
             ?`<span class="lp-change ${m.lpChange>=0?'win':'loss'}">${m.lpChange>=0?'+':''}${m.lpChange} LP</span>`
             :m.duracion?`<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>`:''}
         </span>
-      </div>`).join('');
+      </div>`;
+    }).join('');
     historyPanelEl.innerHTML=`<div class="matches">${matchesHtml}</div>`;
   }
 
