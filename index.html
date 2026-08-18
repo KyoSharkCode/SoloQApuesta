@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstract.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -39,7 +39,6 @@
   .top1-stats .lp { font-size:28px; font-weight:900; color:var(--gold); margin:0 0 4px 0; }
   .top1-stats .tier { font-size:14px; color:var(--text-faint); font-weight:600; text-transform:uppercase; }
 
-  /* HIGHLIGHTS — grid normal para los 3 tops */
   .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
   .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
   .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
@@ -50,7 +49,6 @@
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
 
-  /* PRIMERA VICTORIA DEL DÍA — ocupa todo el ancho, pirámide encima de los 3 tops */
   .first-win-card {
     grid-column: 1 / -1;
     display:flex; align-items:center; gap:20px;
@@ -225,7 +223,7 @@
 
   <div id="top1-container"></div>
 
-  <!-- Bloque superior: primera victoria + 3 tops en pirámide -->
+  <!-- Bloque superior -->
   <div class="highlights-grid" id="highlights-container"></div>
 
   <section id="seccion-ranking">
@@ -282,7 +280,7 @@
   </div>
 
   <footer class="site-footer">
-    <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo">
+    <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo" onerror="this.style.display='none'">
     <p>creado por KyoSumiVT</p>
   </footer>
 </div>
@@ -291,12 +289,19 @@
 <div class="fab-tooltip">Comparar jugadores</div>
 
 <script>
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   const TIER_ORDER   = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
   const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
   const DIV_NUM      = { 'IV':0,'III':1,'II':2,'I':3 };
   const MASTER_PLUS_BASE = 7 * 4 * 100;
   const MINI_CREST_BASE  = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
+
+  // ── ¡NUEVO! Cargar versión dinámica de DDragon para evitar imágenes rotas ──
+  let DDRAGON_VERSION = '14.20.1';
+  try {
+    const vRes = await fetch('https://ddragon.leagueoflegends.com/api/versions.json');
+    if(vRes.ok) DDRAGON_VERSION = (await vRes.json())[0];
+  } catch(e) {}
 
   function getEmblemUrl(rango) {
     const tier  = (rango || 'unranked').split(' ')[0].toLowerCase();
@@ -328,7 +333,6 @@ window.addEventListener('load', () => {
 
   async function refreshData(){
     try{
-      // jsDelivr CDN — datos disponibles ~1 min después del push, sin esperar deploy de Pages
       const CDN = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
       const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' });
       if(!res.ok) throw new Error();
@@ -353,11 +357,9 @@ window.addEventListener('load', () => {
             lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null
           })),
           historialLP: p.progreso_lp || [],
-          // Últimas 10 partidas — para los 3 tops superiores
           killsRecientes:        p.kills_recientes          || 0,
           pentakillsRecientes:   p.pentakills_recientes     || 0,
           visionPromedioReciente:p.vision_promedio_reciente || 0,
-          // Últimos 7 días — para los destacados de la semana
           killsSemana:            p.kills_semana              || 0,
           pentakillsSemana:       p.pentakills_semana         || 0,
           visionPromedioSemana:   p.vision_promedio_semana    || 0,
@@ -366,18 +368,16 @@ window.addEventListener('load', () => {
           kdaPerfectoSemana:      !!p.kda_perfecto_semana,
           campeonesGanadosSemana: p.campeones_ganados_semana  || 0,
           asistenciasSemana:      p.asistencias_semana        || 0,
-          // FIX: partidas_semana — conteo real de partidas procesadas
           partidasSemana:         p.partidas_semana           || 0,
           maxPartidasEnUnDia:     p.max_partidas_en_un_dia    || 0,
-          // FIX: primera_victoria_hoy es un objeto {timestamp, campeon, kda, hechizos, equipo, duracion}
           primeraVictoriaHoy:     p.primera_victoria_hoy      || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
       renderTop1();
-      renderHighlights();    // primera victoria + 3 tops (últimas 10)
+      renderHighlights();
       renderRanking();
-      renderWeeklyHighlights(); // destacados semana (7 días)
+      renderWeeklyHighlights();
 
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
@@ -414,7 +414,9 @@ window.addEventListener('load', () => {
     return (ti*4+dn)*100 + Math.max(0, Math.min(100, lp||0));
   }
   function rankScore(p){ const s = eloScore(p.rango,p.division,p.lp); return s===null?-100000:s; }
-  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
+  
+  // Utiliza la variable dinámica para las URLs de iconos
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/profileicon/${iconId}.png`; }
 
   function renderTop1(){
     if(!state.players.length) return;
@@ -436,18 +438,12 @@ window.addEventListener('load', () => {
       </div>`;
   }
 
-  // ─────────────────────────────────────────────────────
-  // renderHighlights — PIRÁMIDE: primera victoria (ancho
-  // completo) + 3 tops de las ÚLTIMAS 10 PARTIDAS abajo
-  // ─────────────────────────────────────────────────────
   function renderHighlights(){
     if(!state.players.length){ highlightsContainerEl.innerHTML = ''; return; }
 
-    // Primera victoria del día — objeto {timestamp(ms), campeon, kda, hechizos, equipo, duracion}
     let pvPlayer = null, pvTs = Infinity;
     state.players.forEach(p => {
       const pv = p.primeraVictoriaHoy;
-      // FIX: timestamp es en ms (número), comparamos directamente
       if(pv && typeof pv === 'object' && typeof pv.timestamp === 'number'){
         if(pv.timestamp < pvTs){ pvTs = pv.timestamp; pvPlayer = p; }
       }
@@ -458,16 +454,18 @@ window.addEventListener('load', () => {
       const pv        = pvPlayer.primeraVictoriaHoy;
       const hora      = new Date(pv.timestamp).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
       const champClean= (pv.campeon||'').replace(/[^a-zA-Z0-9]/g,'');
+      
       const spells    = (pv.hechizos||[]).map(h =>
-        `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+        `<img src="https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
+      
       const sideClass = pv.equipo === 'blue' ? 'blue' : 'red';
       const sideLabel = pv.equipo === 'blue' ? 'Lado Azul' : 'Lado Rojo';
       pvHtml = `
         <div class="first-win-card">
           <span class="first-win-badge">🌅 Primera Victoria del Día</span>
           <img class="first-win-avatar" src="${getAvatarUrl(pvPlayer.icono)}" alt="Avatar" style="margin-top:12px;">
-          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
+          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
           <div class="first-win-info" style="margin-top:12px;">
             <span class="first-win-name">${pvPlayer.nombre.split('#')[0]}</span>
             <span class="first-win-kda">${pv.campeon} · ${pv.kda} KDA</span>
@@ -490,12 +488,12 @@ window.addEventListener('load', () => {
         </div>`;
     }
 
-    // 3 tops — usan campos _recientes (últimas 10 partidas)
     const categorias = [
       { icon:'⚔️', label:'Top Asesino (10p)',    campo:'killsRecientes',         sufijo:'kills',        vacio:'Nadie ha registrado kills todavía.' },
       { icon:'🔥', label:'Top Pentakills (10p)',  campo:'pentakillsRecientes',    sufijo:'pentakills',   vacio:'Nadie ha hecho un penta… todavía 👀' },
       { icon:'👁️', label:'Top Observador (10p)', campo:'visionPromedioReciente', sufijo:'visión prom.', vacio:'Sin datos de visión aún.' },
     ];
+    
     const topsHtml = categorias.map(cat => {
       const lider = [...state.players].sort((a,b) => (b[cat.campo]||0)-(a[cat.campo]||0))[0];
       const valor = lider ? (lider[cat.campo]||0) : 0;
@@ -509,38 +507,33 @@ window.addEventListener('load', () => {
           <div class="highlight-icon">${cat.icon}</div>
           <div class="highlight-body">
             <p class="highlight-label">${cat.label}</p>
-            <p class="highlight-player">${lider.nombre}</p>
+            <p class="highlight-player">${lider.nombre.split('#')[0]}</p>
             <p class="highlight-value">${valor} ${cat.sufijo}</p>
           </div>
+          <img class="highlight-avatar" src="${getAvatarUrl(lider.icono)}" alt="Avatar">
         </div>`;
     }).join('');
 
-    // FIX: primera victoria ocupa grid-column 1/-1 (ya está en el CSS .first-win-card)
-    // Los 3 tops van debajo en auto-fit
     highlightsContainerEl.innerHTML = pvHtml + topsHtml;
   }
 
-  // ─────────────────────────────────────────────────────
-  // renderWeeklyHighlights — todo usa campos _semana (7d)
-  // ─────────────────────────────────────────────────────
   function renderWeeklyHighlights(){
-    const container = document.getElementById('weekly-highlights-container');
-    if(!state.players.length){ container.innerHTML=''; return; }
+    if(!state.players.length) return;
+    
+    let kdaPlayer = state.players[0], vicioPlayer = state.players[0];
+    let otpPlayer = null, otpChamp = '', otpPercent = 0;
+    let maxSangre = 0, agresivo = state.players[0];
 
-    let otpPlayer=null, otpChamp='', otpPercent=0;
-    let climber=null, maxClimb=-Infinity;
-    let grinder=null, maxTime=0;
-    let agresivo=null, maxSangre=-1;
-    let kdaPlayer=null, maxKda=-1, kdaPlayerPerfecto=false;
-    let champPoolMaster=null, maxChamps=-1;
-    let tortuga=null, minPartidas=Infinity;
-    let asistente=null, maxAsistencias=-1;
-    let sinRendirse=null, maxDia=-1;
-
-    const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
+    const now = Date.now();
+    const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+    let climbPlayer = null, maxLpGained = -9999;
 
     state.players.forEach(p => {
-      // OTP — últimas 10 partidas
+      const pKda = (p.kdaPerfectoSemana ? 999 : p.kdaPromedioSemana) || 0;
+      const cKda = (kdaPlayer.kdaPerfectoSemana ? 999 : kdaPlayer.kdaPromedioSemana) || 0;
+      if(pKda > cKda) kdaPlayer = p;
+      if((p.partidasSemana||0) > (vicioPlayer.partidasSemana||0)) vicioPlayer = p;
+
       if(p.partidas && p.partidas.length > 0){
         const cc={};
         p.partidas.forEach(m => { cc[m.campeon]=(cc[m.campeon]||0)+1; });
@@ -549,190 +542,158 @@ window.addEventListener('load', () => {
         const pct=Math.round((maxC/p.partidas.length)*100);
         if(pct>otpPercent){ otpPercent=pct; otpChamp=champ; otpPlayer=p; }
       }
-      // Escalador — LP histórico semana
-      if(p.historialLP && p.historialLP.length > 0){
-        const hist=[...p.historialLP].filter(pt=>pt.fecha&&(now-new Date(pt.fecha).getTime()<=ONE_WEEK)).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
-        if(hist.length>0){
-          const curSc  =eloScore(p.rango,p.division,p.lp);
-          const firstSc=eloScore(hist[0].rango||p.rango,hist[0].division!==undefined?hist[0].division:p.division,hist[0].lp);
-          if(curSc!==null&&firstSc!==null){ const d=curSc-firstSc; if(d>maxClimb){maxClimb=d;climber=p;} }
+
+      const hist = [...p.historialLP]
+        .filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime() <= ONE_WEEK))
+        .sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+        
+      if(hist.length > 0){
+        const firstSc = eloScore(hist[0].rango || p.rango, hist[0].division || p.division, hist[0].lp);
+        const currSc  = eloScore(p.rango, p.division, p.lp);
+        if(firstSc !== null && currSc !== null){
+          const diff = currSc - firstSc;
+          if(diff > maxLpGained){ maxLpGained = diff; climbPlayer = p; }
         }
       }
-      // Grinder — duración acumulada últimas 10
-      if(p.partidas && p.partidas.length > 0){
-        let t=0;
-        p.partidas.forEach(m=>{
-          if(typeof m.duracion==='string'){ const pts=m.duracion.replace('min','').split(':'); t+= pts.length===2?parseInt(pts[0])*60+parseInt(pts[1]):parseInt(pts[0])*60; }
-        });
-        if(t>maxTime){maxTime=t;grinder=p;}
-      }
-      // Campos semana
-      if((p.primerasSangreSemana||0)>maxSangre)    { maxSangre=p.primerasSangreSemana||0; agresivo=p; }
-      if((p.kdaPromedioSemana||0)>maxKda)           { maxKda=p.kdaPromedioSemana||0; kdaPlayer=p; kdaPlayerPerfecto=p.kdaPerfectoSemana; }
-      if((p.campeonesGanadosSemana||0)>maxChamps)   { maxChamps=p.campeonesGanadosSemana||0; champPoolMaster=p; }
-      // Tortuga — menos partidas de la semana (mínimo 1 para aparecer)
-      if(p.partidasSemana > 0 && p.partidasSemana < minPartidas){ minPartidas=p.partidasSemana; tortuga=p; }
-      // Asistente — más asistencias de la semana
-      if((p.asistenciasSemana||0) > maxAsistencias){ maxAsistencias=p.asistenciasSemana||0; asistente=p; }
-      // Sin rendirse — más partidas jugadas HOY (desde 6AM España), mínimo 1
-      if((p.maxPartidasEnUnDia||0) > maxDia){ maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
+
+      if((p.primerasSangreSemana||0) > maxSangre) { maxSangre = p.primerasSangreSemana||0; agresivo = p; }
     });
 
-    if(!otpPlayer) otpPlayer=state.players[0];
-    if(!climber)   climber  =state.players[0];
-    if(!grinder)   grinder  =state.players[0];
-    if(!otpChamp)  otpChamp ='Desconocido';
+    if(!otpPlayer) otpPlayer = state.players[0];
+    const otpChampImg = `https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/champion/${(otpChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
 
-    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const kdaDisplay = kdaPlayer.kdaPerfectoSemana ? "Perfect" : (kdaPlayer.kdaPromedioSemana||0);
+    const vicioLabel = (vicioPlayer.partidasSemana||0) === 1 ? 'partida' : 'partidas';
+    let climbVal = maxLpGained > 0 ? `+${maxLpGained} LP` : (maxLpGained === 0 ? '0 LP' : `${maxLpGained} LP`);
+    if(!climbPlayer){ climbPlayer = state.players[0]; climbVal = "0 LP"; }
 
-    const agresivoHtml=(agresivo&&maxSangre>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🩸 Agresivo</p><p class="highlight-player">${agresivo.nombre}</p><p class="highlight-value">${maxSangre} primera${maxSangre===1?'':'s'} sangre</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">🩸</div><div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p></div></div>`;
+    const hl = [
+      { id:'kda', label:'KDA Semanal', player:kdaPlayer, val:`${kdaDisplay} KDA`, icon:'⭐' },
+      { id:'vicio', label:'Más Viciado', player:vicioPlayer, val:`${vicioPlayer.partidasSemana||0} ${vicioLabel}`, icon:'🎮' },
+      { id:'otp', label:'OTP de la Semana', player:otpPlayer, val:`${otpPercent}% Pickrate`, icon:'🎯', 
+        extra:`<div class="otp-champ-info"><img src="${otpChampImg}" class="champ-icon-small" onerror="this.style.display='none'"><span>${otpChamp}</span></div>` },
+      { id:'climb', label:'Mayor Escalada', player:climbPlayer, val:climbVal, icon:'📈' },
+      { id:'blood', label:'Primera Sangre', player:agresivo, val:`${agresivo.primerasSangreSemana||0} veces`, icon:'🩸' }
+    ];
 
-    const kdaHtml=(kdaPlayer&&maxKda>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">📊 KDA Player</p><p class="highlight-player">${kdaPlayer.nombre}</p><p class="highlight-value">${kdaPlayerPerfecto?'Perfect':maxKda} KDA</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">📊</div><div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
-
-    const champPoolHtml=(champPoolMaster&&maxChamps>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🎭 Maestro del Champion Pool</p><p class="highlight-player">${champPoolMaster.nombre}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">🎭</div><div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-empty">Nadie ha ganado esta semana todavía.</p></div></div>`;
-
-    const tortugaHtml=tortuga?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(tortuga.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🐢 El Tortuga</p><p class="highlight-player">${tortuga.nombre}</p><p class="highlight-value">${minPartidas} partida${minPartidas===1?'':'s'} esta semana</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">🐢</div><div class="highlight-body"><p class="highlight-label">El Tortuga</p><p class="highlight-empty">Nadie ha jugado esta semana aún.</p></div></div>`;
-
-    const asistenteHtml=(asistente&&maxAsistencias>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(asistente.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🤝 El Asistente</p><p class="highlight-player">${asistente.nombre}</p><p class="highlight-value">${maxAsistencias} asistencias esta semana</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`;
-
-    const sinRendirseHtml=(sinRendirse&&maxDia>=1)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partida${maxDia===1?'':'s'} jugadas hoy</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado hoy todavía.</p></div></div>`;
-
-    container.innerHTML = `
+    const c = document.getElementById('weekly-highlights-container');
+    c.innerHTML = hl.map(h => `
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
+        <div class="highlight-icon">${h.icon}</div>
         <div class="highlight-body">
-          <p class="highlight-label">OTP del Torneo</p>
-          <p class="highlight-player">${otpPlayer.nombre}</p>
-          <div class="otp-champ-info">
-            <img class="champ-icon-small" src="${otpChampImg}" onerror="this.style.display='none'">
-            <span class="highlight-value">${otpChamp} (${otpPercent}% de las partidas)</span>
-          </div>
+          <p class="highlight-label">${h.label}</p>
+          <p class="highlight-player">${h.player.nombre.split('#')[0]}</p>
+          <p class="highlight-value">${h.val}</p>
+          ${h.extra || ''}
         </div>
+        <img class="highlight-avatar" src="${getAvatarUrl(h.player.icono)}" alt="Avatar">
       </div>
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div>
-      </div>
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
-      </div>
-      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}`;
+    `).join('');
   }
 
-  function getTrendArrow(p){
-    const hist=(p.historialLP||[]).filter(pt=>pt.fecha);
-    if(hist.length<2) return '';
-    const ord=[...hist].sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
-    const ul=ord[ord.length-1], an=ord[ord.length-2];
-    const sU=eloScore(ul.rango||p.rango,ul.division!==undefined?ul.division:p.division,ul.lp);
-    const sA=eloScore(an.rango||p.rango,an.division!==undefined?an.division:p.division,an.lp);
-    if(sU===null||sA===null||sU===sA) return '';
-    return sU>sA?`<span class="trend-arrow up" title="Subió">▲</span>`:`<span class="trend-arrow down" title="Bajó">▼</span>`;
-  }
-
-  function getStreakEmoji(partidas){
-    if(!partidas||partidas.length<3) return '';
-    let w=0;
-    for(let i=0;i<Math.min(partidas.length,10);i++){ if(partidas[i].resultado==='victoria') w++; else break; }
-    if(w>=3) return '🔥';
-    let l=0;
-    for(let i=0;i<Math.min(partidas.length,10);i++){ if(partidas[i].resultado==='derrota') l++; else break; }
-    if(l>=3) return '❄️';
-    return '';
+  function getTrendHtml(hist){
+    if(!hist || hist.length < 2) return '';
+    const nowSc = eloScore(hist[hist.length-1].rango, hist[hist.length-1].division, hist[hist.length-1].lp);
+    const oldSc = eloScore(hist[hist.length-2].rango, hist[hist.length-2].division, hist[hist.length-2].lp);
+    if(nowSc === null || oldSc === null || nowSc === oldSc) return '';
+    return nowSc > oldSc ? `<span class="trend-arrow up">▲</span>` : `<span class="trend-arrow down">▼</span>`;
   }
 
   function renderRanking(){
-    rankingListEl.innerHTML='';
-    const filtrados=state.players.filter(p=>state.filterElo==='ALL'||(p.rango||'').toUpperCase()===state.filterElo);
-    if(!filtrados.length){ rankingListEl.innerHTML=`<p class="empty-state">Nadie está en este elo todavía.</p>`; return; }
+    const fElo = state.filterElo;
+    const filtered = state.players.filter(p => fElo === 'ALL' || (p.rango||'').toUpperCase() === fElo);
+    
+    if(!filtered.length){
+      rankingListEl.innerHTML = `<p class="empty-state" style="padding:40px 0;">Nadie ha llegado a este rango todavía.</p>`;
+      return;
+    }
 
-    filtrados.forEach((p,i)=>{
-      const row=document.createElement('button');
-      row.className='rank-row'+(p.id===state.selectedId?' active':'');
-      row.addEventListener('click', e=>{ if(e.target.tagName.toLowerCase()!=='a') selectPlayer(p.id); });
-
-      const tierPretty =p.rango.charAt(0)+p.rango.slice(1).toLowerCase();
-      const rankDisplay=DIVISIONLESS.includes((p.rango||'').toUpperCase())?tierPretty:`${tierPretty} ${p.division}`;
-      const liveStatus =state.liveData[p.id]||{en_partida:false};
-      const statusHtml =liveStatus.en_partida
-        ?`<span class="status-chip in-game">En Partida</span>`
-        :`<span class="status-chip offline">Offline</span>`;
-      const posClass  =i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'';
-      const posContent=i===0?'👑':(i+1);
-      const streakEmoji=getStreakEmoji(p.partidas);
-
-      row.innerHTML=`
-        <span class="rank-pos ${posClass}">${posContent}</span>
-        <span class="player-cell">
-          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
-          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre} ${streakEmoji}</a>
-        </span>
-        <span class="status-cell">${statusHtml}</span>
-        <span class="role-cell">${getTrendArrow(p)}<span class="role-badge">${p.rol}</span></span>
-        <span class="tier-badge">
-          <img class="tier-emblem" src="${getEmblemUrl(p.rango)}" alt="${p.rango}" onerror="this.style.display='none'">
-          <span>${rankDisplay}</span>
-        </span>
-        <span class="lp-cell">${p.lp} LP</span>
-        <span class="wr-cell">
-          <span class="wr-top"><span>${p.winrate}% WR</span></span>
+    rankingListEl.innerHTML = filtered.map((p, i) => {
+      const clsPos = i<3 ? `pos-${i+1}` : '';
+      const tierPretty = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
+      const wrColor = p.winrate>=50 ? 'var(--win)' : 'var(--loss)';
+      const trHtml = getTrendHtml(p.historialLP);
+      const isAct = p.id === state.selectedId ? 'active' : '';
+      
+      const liveStatus = state.liveData && state.liveData[p.id] ? state.liveData[p.id] : {en_partida:false};
+      let statusHtml = '';
+      if(liveStatus.en_partida){
+        const m = Math.floor(liveStatus.tiempo_partida/60);
+        statusHtml = `<span class="status-chip in-game" title="${liveStatus.campeon}">En partida ${m>0?m+'m':''}</span>`;
+      } else {
+        statusHtml = `<span class="status-chip offline">Jugando ARAM/TFT o Inactivo</span>`;
+      }
+      
+      return `
+      <div class="rank-row ${isAct}" onclick="window.selectPlayer('${p.id.replace(/'/g,"\\'")}')">
+        <div class="rank-pos ${clsPos}">${i+1}</div>
+        <div class="player-cell">
+          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Avatar">
+          <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link" onclick="event.stopPropagation()">${p.nombre}</a>
+          ${trHtml}
+        </div>
+        <div class="status-cell">${statusHtml}</div>
+        <div class="role-cell"><span class="role-badge">${p.rol}</span></div>
+        <div class="tier-badge"><img class="tier-emblem" src="${getEmblemUrl(p.rango)}" alt="rango">${tierPretty} ${DIVISIONLESS.includes((p.rango||'').toUpperCase())?'':p.division}</div>
+        <div class="lp-cell">${p.lp} LP</div>
+        <div class="wr-cell">
+          <div class="wr-top"><span style="color:${wrColor};font-weight:700;">${p.winrate}%</span><span>Winrate</span></div>
           <div class="wr-bar"><div class="wr-fill" style="width:${p.winrate}%"></div></div>
-        </span>`;
-      rankingListEl.appendChild(row);
-    });
+        </div>
+      </div>
+    `}).join('');
   }
 
-  function selectPlayer(id){
-    state.selectedId=id;
+  window.selectPlayer = function(id){
+    state.selectedId = id;
     renderRanking();
-    const player=state.players.find(p=>p.id===id);
-    const matchesHtml=player.partidas.slice(0,5).map(m=>`
+    const p = state.players.find(x => x.id === id);
+    if(!p){ historyPanelEl.innerHTML = ''; return; }
+
+    const parts = (p.partidas || []).slice(0,5);
+    if(!parts.length){
+      historyPanelEl.innerHTML = `<p class="empty-state">No hay partidas recientes (o puros remakes).</p>`;
+      return;
+    }
+
+    const mHtml = parts.map(m => {
+      const lpC = m.lpChange !== null 
+        ? `<span class="lp-change ${m.lpChange>0?'win':m.lpChange<0?'loss':''}">${m.lpChange>0?'+':''}${m.lpChange} LP</span>`
+        : `<span class="lp-change" style="color:var(--text-faint);">-- LP</span>`;
+      
+      return `
       <div class="match">
-        <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
-        <span>
-          <div class="match-champ">${m.campeon}</div>
+        <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+        <div>
+          <div class="match-champ">${m.campeon} <span style="font-weight:400;color:var(--text-dim);font-size:12px;margin-left:6px;">${m.duracion?m.duracion:''}</span></div>
           <div class="match-kda">${m.kda} KDA</div>
-        </span>
-        <span class="match-result-block">
-          <span class="result-chip ${m.resultado}">${m.resultado==='victoria'?'Victoria':m.resultado==='remake'?'Remake':'Derrota'}</span>
-          ${m.lpChange!==null
-            ?`<span class="lp-change ${m.lpChange>=0?'win':'loss'}">${m.lpChange>=0?'+':''}${m.lpChange} LP</span>`
-            :m.duracion?`<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>`:''}
-        </span>
-      </div>`).join('');
-    historyPanelEl.innerHTML=`<div class="matches">${matchesHtml}</div>`;
-  }
+        </div>
+        <div class="match-result-block">
+          <span class="result-chip ${m.resultado}">${m.resultado}</span>
+          ${m.resultado!=='remake' ? lpC : ''}
+        </div>
+      </div>
+    `}).join('');
+    
+    historyPanelEl.innerHTML = `<div class="matches">${mHtml}</div>`;
+  };
 
   function startCountdown(){
-    const targetDate=new Date('2027-01-01T00:00:00').getTime();
+    const targetDate = new Date('2027-01-01T00:00:00').getTime();
     function update(){
-      const d=targetDate-new Date().getTime();
-      if(d<0) return;
-      document.getElementById('cd-days').innerText =Math.floor(d/(1000*60*60*24));
-      document.getElementById('cd-hours').innerText=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-      document.getElementById('cd-mins').innerText =Math.floor((d%(1000*60*60))/(1000*60));
-      document.getElementById('cd-secs').innerText =Math.floor((d%(1000*60))/1000);
+      const now = new Date().getTime();
+      const d = targetDate - now;
+      if(d < 0){
+        document.getElementById('countdown').innerHTML = `<p style="font-size:18px;font-weight:800;color:var(--accent-soft);">¡La temporada ha terminado!</p>`;
+        return;
+      }
+      document.getElementById('cd-days').textContent = Math.floor(d / (1000*60*60*24));
+      document.getElementById('cd-hours').textContent = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+      document.getElementById('cd-mins').textContent = Math.floor((d % (1000*60*60)) / (1000*60));
+      document.getElementById('cd-secs').textContent = Math.floor((d % (1000*60)) / 1000);
     }
-    update(); setInterval(update,1000);
+    update();
+    setInterval(update, 1000);
   }
 });
 </script>
