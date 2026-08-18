@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstract.com" crossorigin>
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -28,69 +28,70 @@
   .wrap{ max-width:960px; margin:0 auto; padding:48px 20px 80px; }
 
   header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:30px; padding-bottom:24px; border-bottom:1px solid var(--border); }
-  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color: #ffffff;}
+  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color:#ffffff;}
 
-  .top1-card { display: flex; align-items: center; gap: 20px; background: var(--panel); border: 1px solid var(--accent); padding: 24px; border-radius: var(--radius); margin-bottom: 50px; box-shadow: 0 0 30px var(--accent-glow); position: relative; overflow: hidden;}
-  .top1-badge { position: absolute; top: 0; left: 0; background: var(--accent); color: white; font-weight: 800; font-size: 11px; padding: 4px 12px; border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
-  .top1-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent-soft); object-fit: cover; }
-  .top1-info h3 { margin: 0 0 4px 0; font-size: 22px; font-weight: 800; color: #ffffff;}
-  .top1-info p { margin: 0; color: var(--text-faint); font-size: 14px; font-weight: 500; }
-  .top1-stats { margin-left: auto; text-align: right; }
-  .top1-stats .lp { font-size: 28px; font-weight: 900; color: var(--gold); margin: 0 0 4px 0; }
-  .top1-stats .tier { font-size: 14px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; }
+  .top1-card { display:flex; align-items:center; gap:20px; background:var(--panel); border:1px solid var(--accent); padding:24px; border-radius:var(--radius); margin-bottom:50px; box-shadow:0 0 30px var(--accent-glow); position:relative; overflow:hidden;}
+  .top1-badge { position:absolute; top:0; left:0; background:var(--accent); color:white; font-weight:800; font-size:11px; padding:4px 12px; border-bottom-right-radius:8px; text-transform:uppercase; letter-spacing:0.1em; }
+  .top1-avatar { width:70px; height:70px; border-radius:50%; border:2px solid var(--accent-soft); object-fit:cover; }
+  .top1-info h3 { margin:0 0 4px 0; font-size:22px; font-weight:800; color:#ffffff;}
+  .top1-info p { margin:0; color:var(--text-faint); font-size:14px; font-weight:500; }
+  .top1-stats { margin-left:auto; text-align:right; }
+  .top1-stats .lp { font-size:28px; font-weight:900; color:var(--gold); margin:0 0 4px 0; }
+  .top1-stats .tier { font-size:14px; color:var(--text-faint); font-weight:600; text-transform:uppercase; }
 
+  /* HIGHLIGHTS — grid normal para los 3 tops */
   .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
   .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
   .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
-  .highlight-avatar { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); object-fit: cover; flex-shrink: 0; }
+  .highlight-avatar { width:44px; height:44px; border-radius:12px; border:1px solid var(--border); object-fit:cover; flex-shrink:0; }
   .highlight-body { min-width:0; }
   .highlight-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin:0 0 4px; }
   .highlight-player { font-size:14px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
 
-  /* Primera Victoria del Día — card ancha */
+  /* PRIMERA VICTORIA DEL DÍA — ocupa todo el ancho, pirámide encima de los 3 tops */
   .first-win-card {
     grid-column: 1 / -1;
-    display: flex; align-items: center; gap: 20px;
-    background: var(--panel);
-    border: 1px solid rgba(251,191,36,.4);
-    box-shadow: 0 0 24px rgba(251,191,36,.12);
-    border-radius: var(--radius); padding: 20px 24px;
-    flex-wrap: wrap; position: relative; overflow: hidden;
+    display:flex; align-items:center; gap:20px;
+    background:var(--panel);
+    border:1px solid rgba(251,191,36,.4);
+    box-shadow:0 0 24px rgba(251,191,36,.12);
+    border-radius:var(--radius); padding:20px 24px;
+    flex-wrap:wrap; position:relative; overflow:hidden;
   }
   .first-win-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(251,191,36,.07), transparent 60%);
-    pointer-events: none;
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(251,191,36,.07), transparent 60%);
+    pointer-events:none;
   }
   .first-win-badge {
-    position: absolute; top: 0; left: 0;
-    background: var(--gold); color: #000;
-    font-size: 10px; font-weight: 800; padding: 4px 12px;
-    border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: .08em;
+    position:absolute; top:0; left:0;
+    background:var(--gold); color:#000;
+    font-size:10px; font-weight:800; padding:4px 12px;
+    border-bottom-right-radius:8px; text-transform:uppercase; letter-spacing:.08em;
   }
-  .first-win-avatar { width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--gold); object-fit: cover; flex-shrink: 0; }
-  .first-win-champ  { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
-  .first-win-info   { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-  .first-win-name   { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .first-win-kda    { font-size: 12px; color: var(--text-faint); font-weight: 600; }
-  .first-win-meta   { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-wrap: wrap; }
-  .first-win-spells { display: flex; gap: 5px; }
-  .first-win-spells img { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); }
-  .first-win-side   { font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 7px; text-transform: uppercase; }
-  .first-win-side.blue { color: #60a5fa; background: rgba(96,165,250,.12); border: 1px solid rgba(96,165,250,.3); }
-  .first-win-side.red  { color: #f87171; background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.3); }
-  .first-win-dur    { font-size: 12px; color: var(--text-faint); font-weight: 700; }
-  .first-win-time   { font-size: 12px; color: var(--gold); font-weight: 800; }
+  .first-win-avatar { width:52px; height:52px; border-radius:12px; border:2px solid var(--gold); object-fit:cover; flex-shrink:0; }
+  .first-win-champ  { width:52px; height:52px; border-radius:10px; object-fit:cover; flex-shrink:0; border:2px solid var(--border); }
+  .first-win-info   { display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .first-win-name   { font-size:17px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .first-win-kda    { font-size:12px; color:var(--text-faint); font-weight:600; }
+  .first-win-meta   { display:flex; align-items:center; gap:10px; margin-left:auto; flex-wrap:wrap; }
+  .first-win-spells { display:flex; gap:5px; }
+  .first-win-spells img { width:28px; height:28px; border-radius:6px; border:1px solid var(--border); }
+  .first-win-side   { font-size:11px; font-weight:800; padding:5px 12px; border-radius:7px; text-transform:uppercase; }
+  .first-win-side.blue { color:#60a5fa; background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.3); }
+  .first-win-side.red  { color:#f87171; background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); }
+  .first-win-dur    { font-size:12px; color:var(--text-faint); font-weight:700; }
+  .first-win-time   { font-size:12px; color:var(--gold); font-weight:800; }
 
-  .otp-champ-info { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
-  .champ-icon-small { width: 20px; height: 20px; border-radius: 4px; object-fit: cover; }
+  .otp-champ-info { display:flex; align-items:center; gap:6px; margin-top:2px; }
+  .champ-icon-small { width:20px; height:20px; border-radius:4px; object-fit:cover; }
 
-  .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
-  .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
+  .filter-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;}
+  .filter-bar select { background:var(--panel-2); color:var(--text); border:1px solid var(--border); padding:8px 12px; border-radius:8px; font-family:inherit; font-size:13px; cursor:pointer; outline:none; }
 
-  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color: #ffffff;}
+  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color:#ffffff;}
   .section-title span{ font-size:12px; color:var(--text-faint); }
   section{margin-bottom:52px;}
 
@@ -99,7 +100,7 @@
   .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 110px 90px 150px 80px 110px; gap:14px; align-items:center; }
   .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
 
-  .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color: var(--text); text-align: left; }
+  .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color:var(--text); text-align:left; }
   .rank-row:hover{ border-color:#33333c; transform:translateY(-1px); }
   .rank-row.active{ border-color:var(--accent); background:linear-gradient(180deg, rgba(139,92,246,.10), rgba(139,92,246,.03)); }
 
@@ -116,13 +117,11 @@
   .trend-arrow.up{ color:var(--win); }
   .trend-arrow.down{ color:var(--loss); }
 
-  .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
-  .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
+  .profile-link { font-size:14px; font-weight:700; color:#ffffff; text-decoration:none; transition:color 0.2s; position:relative; z-index:10; padding:4px 8px; border-radius:6px;}
+  .profile-link:hover { color:var(--accent-soft); background:rgba(139,92,246,.15); text-decoration:underline; }
 
-  /* Mini crest de elo — al lado del texto del rango */
   .tier-badge{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#ffffff; white-space:nowrap; }
   .tier-emblem{ width:28px; height:28px; object-fit:contain; flex-shrink:0; image-rendering:auto; }
-  /* Roles — ancho fijo para que todos sean iguales */
   .role-badge{ font-size:12px; color:#ffffff; font-weight:700; background:rgba(139,92,246,0.3); padding:4px 0; border-radius:6px; text-align:center; width:72px; display:inline-block; }
 
   .lp-cell{ font-size:13px; font-weight:600; color:#ffffff; }
@@ -136,9 +135,9 @@
   .matches{ display:flex; flex-direction:column; gap:8px; }
   .match{ display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
   .champ-icon{ width:36px; height:36px; border-radius:8px; object-fit:cover; background:#1d1d24; }
-  .match-champ{ font-size:13px; font-weight:700; color: #ffffff;}
+  .match-champ{ font-size:13px; font-weight:700; color:#ffffff;}
   .match-kda{ font-size:12px; color:var(--text-faint); }
-  .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align: center; }
+  .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align:center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
   .match-result-block{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
@@ -147,26 +146,25 @@
   .lp-change.loss{ color:var(--loss); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
 
-  .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
-  .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
-  .timer-boxes { display: flex; justify-content: center; gap: 15px; }
-  .timer-box { background: var(--panel-2); border: 1px solid var(--border); padding: 15px 20px; border-radius: 12px; min-width: 90px; }
-  .timer-val { font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 5px; color: #ffffff; }
-  .timer-label { font-size: 11px; font-weight: 700; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.1em; }
+  .countdown-container { text-align:center; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:40px 20px; }
+  .countdown-container h2 { margin:0 0 20px 0; font-size:20px; font-weight:800; letter-spacing:0.05em; color:var(--accent-soft); text-transform:uppercase;}
+  .timer-boxes { display:flex; justify-content:center; gap:15px; }
+  .timer-box { background:var(--panel-2); border:1px solid var(--border); padding:15px 20px; border-radius:12px; min-width:90px; }
+  .timer-val { font-size:32px; font-weight:900; line-height:1; margin-bottom:5px; color:#ffffff; }
+  .timer-label { font-size:11px; font-weight:700; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.1em; }
 
   .live-indicator{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); padding:8px 14px; border-radius:999px; }
   .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse 2.2s infinite; }
   @keyframes pulse{ 0%{box-shadow:0 0 0 0 var(--accent-glow);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
 
-  .status-chip { font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; margin-left: 8px; letter-spacing: 0.05em; }
-  .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
-  .status-chip.offline { background: rgba(161, 161, 170, 0.1); color: #a1a1aa; border: 1px solid rgba(161, 161, 170, 0.2); }
+  .status-chip { font-size:10px; font-weight:800; padding:4px 8px; border-radius:6px; text-transform:uppercase; margin-left:8px; letter-spacing:0.05em; }
+  .status-chip.in-game { background:rgba(239,68,68,0.15); color:#ef4444; border:1px solid rgba(239,68,68,0.4); box-shadow:0 0 10px rgba(239,68,68,0.2); }
+  .status-chip.offline { background:rgba(161,161,170,0.1); color:#a1a1aa; border:1px solid rgba(161,161,170,0.2); }
 
-  .site-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; }
-  .footer-logo { width: 70px; height: auto; margin-bottom: 12px; }
-  .site-footer p { margin: 0; font-size: 14px; color: var(--text-dim); font-weight: 500; }
+  .site-footer { margin-top:60px; padding-top:40px; border-top:1px solid var(--border); text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .footer-logo { width:70px; height:auto; margin-bottom:12px; }
+  .site-footer p { margin:0; font-size:14px; color:var(--text-dim); font-weight:500; }
 
-  /* FAB — botón versus flotante */
   .fab {
     position:fixed; bottom:28px; right:28px; z-index:999;
     width:56px; height:56px; border-radius:50%;
@@ -186,40 +184,27 @@
   }
   .fab:hover + .fab-tooltip { opacity:1; }
 
-  /* RESPONSIVE */
   @media (max-width:700px){
     .wrap{ padding:28px 12px 60px; }
     .rank-head{ display:none; }
-    .rank-row{
-      grid-template-columns:32px 1fr auto;
-      grid-template-rows:auto auto;
-      gap:6px 10px;
-      padding:12px 14px;
-    }
-    /* pos | nombre | status — fila 1 */
+    .rank-row{ grid-template-columns:32px 1fr auto; grid-template-rows:auto auto; gap:6px 10px; padding:12px 14px; }
     .rank-row > *:nth-child(1){ grid-column:1; grid-row:1; }
     .rank-row > *:nth-child(2){ grid-column:2; grid-row:1; }
     .rank-row > *:nth-child(3){ grid-column:3; grid-row:1; }
-    /* rol | tier | lp | wr — fila 2, todos juntos bajo el nombre */
-    .rank-row > *:nth-child(4){ grid-column:2; grid-row:2; }
-    .rank-row > *:nth-child(5){ grid-column:2; grid-row:2; display:none; }
-    .rank-row > *:nth-child(6){ grid-column:2; grid-row:2; display:none; }
-    .rank-row > *:nth-child(7){ grid-column:3; grid-row:2; }
-    /* fila 2: rol + tier juntos */
-    .rank-row > *:nth-child(4){ display:flex; flex-wrap:wrap; gap:6px; }
-    /* ocultar winrate bar y LP en móvil para no saturar */
+    .rank-row > *:nth-child(4){ grid-column:2; grid-row:2; display:flex; flex-wrap:wrap; gap:6px; }
+    .rank-row > *:nth-child(5){ display:none; }
     .rank-row > *:nth-child(6){ display:none; }
+    .rank-row > *:nth-child(7){ grid-column:3; grid-row:2; }
     .wr-bar{ display:none; }
     .wr-top{ font-size:11px; }
-    /* highlights en 1 columna */
     .highlights-grid{ grid-template-columns:1fr 1fr; }
-    /* timer más compacto */
     .timer-box{ min-width:60px; padding:10px 12px; }
     .timer-val{ font-size:22px; }
-    /* top1 card en columna */
     .top1-card{ flex-wrap:wrap; }
     .top1-stats{ margin-left:0; text-align:left; }
     header{ flex-direction:column; align-items:flex-start; gap:12px; }
+    .first-win-card{ flex-direction:column; align-items:flex-start; }
+    .first-win-meta{ margin-left:0; }
   }
   @media (max-width:420px){
     .highlights-grid{ grid-template-columns:1fr; }
@@ -230,9 +215,7 @@
 
 <div class="wrap">
   <header>
-    <div>
-      <h1 id="titulo">Torneo entre Amigos</h1>
-    </div>
+    <div><h1 id="titulo">Torneo entre Amigos</h1></div>
     <div class="live-indicator" id="live-indicator">
       <span class="pulse-dot"></span>
       <span id="live-indicator-text">Cargando…</span>
@@ -240,13 +223,13 @@
   </header>
 
   <div id="top1-container"></div>
+
+  <!-- Bloque superior: primera victoria + 3 tops en pirámide -->
   <div class="highlights-grid" id="highlights-container"></div>
 
   <section id="seccion-ranking">
     <div class="filter-bar">
-      <div class="section-title" style="margin:0;">
-        <h2>Ranking Global</h2>
-      </div>
+      <div class="section-title" style="margin:0;"><h2>Ranking Global</h2></div>
       <select id="elo-filter">
         <option value="ALL">Todos los Elos</option>
         <option value="CHALLENGER">Challenger</option>
@@ -263,7 +246,7 @@
     </div>
     <div class="ranking-scroll">
       <div class="rank-head">
-        <span>#</span> <span>Jugador</span> <span></span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
+        <span>#</span><span>Jugador</span><span></span><span>Rol (10p)</span><span>Rango</span><span>LP</span><span>Winrate</span>
       </div>
       <div class="ranking" id="ranking-list"></div>
     </div>
@@ -280,7 +263,7 @@
   </section>
 
   <section id="seccion-semanales">
-    <div class="section-title" style="margin-bottom: 16px;">
+    <div class="section-title" style="margin-bottom:16px;">
       <h2>Destacados de la Semana</h2>
       <span>Últimos 7 días</span>
     </div>
@@ -308,21 +291,19 @@
 
 <script>
 window.addEventListener('load', () => {
-  const TIER_ORDER = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
+  const TIER_ORDER   = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
   const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
-  const DIV_NUM = { 'IV': 0, 'III': 1, 'II': 2, 'I': 3 };
-  const DIVISIONED_TIER_COUNT = 7;
-  const MASTER_PLUS_BASE = DIVISIONED_TIER_COUNT * 4 * 100;
+  const DIV_NUM      = { 'IV':0,'III':1,'II':2,'I':3 };
+  const MASTER_PLUS_BASE = 7 * 4 * 100;
+  const MINI_CREST_BASE  = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
 
-  // Mini crests de elo (CommunityDragon) — compactos, coloridos, perfectos para tabla
-  const MINI_CREST_BASE = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
   function getEmblemUrl(rango) {
-    const tier = (rango || 'unranked').split(' ')[0].toLowerCase();
+    const tier  = (rango || 'unranked').split(' ')[0].toLowerCase();
     const valid = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
     return `${MINI_CREST_BASE}${valid.includes(tier) ? tier : 'unranked'}.png`;
   }
 
-  const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', lastUpdate: null };
+  const state = { players:[], liveData:{}, selectedId:null, filterElo:'ALL', lastUpdate:null };
   const REFRESH_MS = 30000;
 
   const top1ContainerEl       = document.getElementById('top1-container');
@@ -332,7 +313,7 @@ window.addEventListener('load', () => {
   const eloFilterEl           = document.getElementById('elo-filter');
   const liveIndicatorTextEl   = document.getElementById('live-indicator-text');
 
-  eloFilterEl.addEventListener('change', (e) => { state.filterElo = e.target.value; renderRanking(); });
+  eloFilterEl.addEventListener('change', e => { state.filterElo = e.target.value; renderRanking(); });
 
   init();
   startCountdown();
@@ -346,15 +327,15 @@ window.addEventListener('load', () => {
 
   async function refreshData(){
     try{
-      const res = await fetch(`datos.json?t=${Date.now()}`, { cache: 'no-store' });
+      const res = await fetch(`datos.json?t=${Date.now()}`, { cache:'no-store' });
       if(!res.ok) throw new Error();
-      const rawData = await res.json();
+      const rawData   = await res.json();
       const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
 
       try {
-        const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache: 'no-store' });
+        const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache:'no-store' });
         if(liveRes.ok) state.liveData = await liveRes.json();
-      } catch(e) { console.log("No hay datos en vivo aún."); }
+      } catch(e) { console.log('No hay datos en vivo aún.'); }
 
       state.players = rawPlayers.map(p => {
         const rankParts = (p.rango || 'Unranked').split(' ');
@@ -363,34 +344,37 @@ window.addEventListener('load', () => {
           rango: rankParts[0], division: rankParts.slice(1).join(' '),
           lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, rol: p.rol_principal || 'N/A',
           partidas: (p.historial || []).map(h => ({
-            campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion,
-            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null,
-            duracion: h.duracion || null
+            campeon: h.campeon, kda: h.kda,
+            resultado: (h.resultado || '').toLowerCase(),
+            duracion: h.duracion || null,
+            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null
           })),
           historialLP: p.progreso_lp || [],
-          // Variables de las últimas 10 partidas
-          killsRecientes: p.kills_recientes || 0,
-          pentakillsRecientes: p.pentakills_recientes || 0,
-          visionPromedioReciente: p.vision_promedio_reciente || 0,
-          // Variables de la semana (7 días)
-          killsSemana: p.kills_semana || 0,
-          pentakillsSemana: p.pentakills_semana || 0,
-          visionPromedioSemana: p.vision_promedio_semana || 0,
-          primerasSangreSemana: p.primeras_sangre_semana || 0,
-          kdaPromedioSemana: p.kda_promedio_semana || 0,
-          kdaPerfectoSemana: !!p.kda_perfecto_semana,
-          campeonesGanadosSemana: p.campeones_ganados_semana || 0,
-          asistenciasSemana: p.asistencias_semana || 0,
-          partidasSemana: p.partidas_semana || 0,
-          maxPartidasEnUnDia: p.max_partidas_en_un_dia || 0,
-          primeraVictoriaHoy: p.primera_victoria_hoy || null
+          // Últimas 10 partidas — para los 3 tops superiores
+          killsRecientes:        p.kills_recientes          || 0,
+          pentakillsRecientes:   p.pentakills_recientes     || 0,
+          visionPromedioReciente:p.vision_promedio_reciente || 0,
+          // Últimos 7 días — para los destacados de la semana
+          killsSemana:            p.kills_semana              || 0,
+          pentakillsSemana:       p.pentakills_semana         || 0,
+          visionPromedioSemana:   p.vision_promedio_semana    || 0,
+          primerasSangreSemana:   p.primeras_sangre_semana    || 0,
+          kdaPromedioSemana:      p.kda_promedio_semana       || 0,
+          kdaPerfectoSemana:      !!p.kda_perfecto_semana,
+          campeonesGanadosSemana: p.campeones_ganados_semana  || 0,
+          asistenciasSemana:      p.asistencias_semana        || 0,
+          // FIX: partidas_semana — conteo real de partidas procesadas
+          partidasSemana:         p.partidas_semana           || 0,
+          maxPartidasEnUnDia:     p.max_partidas_en_un_dia    || 0,
+          // FIX: primera_victoria_hoy es un objeto {timestamp, campeon, kda, hechizos, equipo, duracion}
+          primeraVictoriaHoy:     p.primera_victoria_hoy      || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
       renderTop1();
-      renderHighlights();
+      renderHighlights();    // primera victoria + 3 tops (últimas 10)
       renderRanking();
-      renderWeeklyHighlights();
+      renderWeeklyHighlights(); // destacados semana (7 días)
 
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
@@ -414,100 +398,105 @@ window.addEventListener('load', () => {
     const secs = Math.floor((Date.now() - state.lastUpdate) / 1000);
     if(secs < 5)       liveIndicatorTextEl.textContent = 'Actualizado ahora';
     else if(secs < 60) liveIndicatorTextEl.textContent = `Actualizado hace ${secs}s`;
-    else               liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
+    else               liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs/60)}m`;
   }
 
   function eloScore(rango, division, lp){
-    const tier = (rango || '').toUpperCase();
-    const ti = TIER_ORDER.indexOf(tier);
-    if (ti === -1) return null;
-    if (DIVISIONLESS.includes(tier)) return MASTER_PLUS_BASE + Math.max(0, lp || 0);
-    const dn = DIV_NUM[(division || '').toUpperCase()];
-    if (dn === undefined) return null;
-    const bandIndex = ti * 4 + dn;
-    return bandIndex * 100 + Math.max(0, Math.min(100, lp || 0));
+    const tier = (rango||'').toUpperCase();
+    const ti   = TIER_ORDER.indexOf(tier);
+    if(ti === -1) return null;
+    if(DIVISIONLESS.includes(tier)) return MASTER_PLUS_BASE + Math.max(0, lp||0);
+    const dn = DIV_NUM[(division||'').toUpperCase()];
+    if(dn === undefined) return null;
+    return (ti*4+dn)*100 + Math.max(0, Math.min(100, lp||0));
   }
+  function rankScore(p){ const s = eloScore(p.rango,p.division,p.lp); return s===null?-100000:s; }
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
 
-  function rankScore(p){ const s = eloScore(p.rango, p.division, p.lp); return s === null ? -100000 : s; }
-  function getAvatarUrl(iconId) { return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
-
-  function renderTop1() {
-    if (state.players.length === 0) return;
-    const topPlayer = state.players[0];
-    const tierPretty = topPlayer.rango.charAt(0) + topPlayer.rango.slice(1).toLowerCase();
-    const rankDisplay = DIVISIONLESS.includes((topPlayer.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${topPlayer.division}`;
+  function renderTop1(){
+    if(!state.players.length) return;
+    const tp = state.players[0];
+    const tierPretty  = tp.rango.charAt(0) + tp.rango.slice(1).toLowerCase();
+    const rankDisplay = DIVISIONLESS.includes((tp.rango||'').toUpperCase()) ? tierPretty : `${tierPretty} ${tp.division}`;
     top1ContainerEl.innerHTML = `
       <div class="top1-card">
         <div class="top1-badge">Top 1 Actual</div>
-        <img class="top1-avatar" src="${getAvatarUrl(topPlayer.icono)}" alt="Avatar">
+        <img class="top1-avatar" src="${getAvatarUrl(tp.icono)}" alt="Avatar">
         <div class="top1-info">
-          <h3><a href="perfil.html?jugador=${encodeURIComponent(topPlayer.id)}" class="profile-link" style="padding:0;">${topPlayer.nombre}</a></h3>
-          <p>Dominando la grieta como ${topPlayer.rol}</p>
+          <h3><a href="perfil.html?jugador=${encodeURIComponent(tp.id)}" class="profile-link" style="padding:0;">${tp.nombre}</a></h3>
+          <p>Dominando la grieta como ${tp.rol}</p>
         </div>
         <div class="top1-stats">
-          <p class="lp">${topPlayer.lp} LP</p>
+          <p class="lp">${tp.lp} LP</p>
           <p class="tier">${rankDisplay}</p>
         </div>
       </div>`;
   }
 
-  function renderHighlights() {
-    if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
+  // ─────────────────────────────────────────────────────
+  // renderHighlights — PIRÁMIDE: primera victoria (ancho
+  // completo) + 3 tops de las ÚLTIMAS 10 PARTIDAS abajo
+  // ─────────────────────────────────────────────────────
+  function renderHighlights(){
+    if(!state.players.length){ highlightsContainerEl.innerHTML = ''; return; }
 
-    // Primera victoria del día — va primero en la pirámide
-    let primeraVictoriaTop = null, primeraVictoriaHoraTop = null;
+    // Primera victoria del día — objeto {timestamp(ms), campeon, kda, hechizos, equipo, duracion}
+    let pvPlayer = null, pvTs = Infinity;
     state.players.forEach(p => {
       const pv = p.primeraVictoriaHoy;
-      if (pv && typeof pv === 'object' && pv.timestamp) {
-        if (!primeraVictoriaTop || pv.timestamp < primeraVictoriaHoraTop) {
-          primeraVictoriaTop = p;
-          primeraVictoriaHoraTop = pv.timestamp;
-        }
+      // FIX: timestamp es en ms (número), comparamos directamente
+      if(pv && typeof pv === 'object' && typeof pv.timestamp === 'number'){
+        if(pv.timestamp < pvTs){ pvTs = pv.timestamp; pvPlayer = p; }
       }
     });
-    let primeraVictoriaHtml;
-    if (primeraVictoriaTop && primeraVictoriaTop.primeraVictoriaHoy && typeof primeraVictoriaTop.primeraVictoriaHoy === 'object') {
-      const pv      = primeraVictoriaTop.primeraVictoriaHoy;
-      const pvHora  = new Date(pv.timestamp).toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
-      const pvChamp = (pv.campeon || '').replace(/[^a-zA-Z0-9]/g, '');
-      const spellsHtml = (pv.hechizos || []).map(h =>
+
+    let pvHtml;
+    if(pvPlayer){
+      const pv        = pvPlayer.primeraVictoriaHoy;
+      const hora      = new Date(pv.timestamp).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+      const champClean= (pv.campeon||'').replace(/[^a-zA-Z0-9]/g,'');
+      const spells    = (pv.hechizos||[]).map(h =>
         `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
       const sideClass = pv.equipo === 'blue' ? 'blue' : 'red';
       const sideLabel = pv.equipo === 'blue' ? 'Lado Azul' : 'Lado Rojo';
-      primeraVictoriaHtml = `
+      pvHtml = `
         <div class="first-win-card">
           <span class="first-win-badge">🌅 Primera Victoria del Día</span>
-          <img class="first-win-avatar" src="${getAvatarUrl(primeraVictoriaTop.icono)}" alt="Avatar" style="margin-top:12px;">
-          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${pvChamp}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
+          <img class="first-win-avatar" src="${getAvatarUrl(pvPlayer.icono)}" alt="Avatar" style="margin-top:12px;">
+          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
           <div class="first-win-info" style="margin-top:12px;">
-            <span class="first-win-name">${primeraVictoriaTop.nombre.split('#')[0]}</span>
+            <span class="first-win-name">${pvPlayer.nombre.split('#')[0]}</span>
             <span class="first-win-kda">${pv.campeon} · ${pv.kda} KDA</span>
           </div>
           <div class="first-win-meta">
-            <div class="first-win-spells">${spellsHtml}</div>
+            <div class="first-win-spells">${spells}</div>
             <span class="first-win-side ${sideClass}">${sideLabel}</span>
             <span class="first-win-dur">${pv.duracion}</span>
-            <span class="first-win-time">${pvHora} h</span>
+            <span class="first-win-time">${hora} h</span>
           </div>
         </div>`;
     } else {
-      primeraVictoriaHtml = `
-        <div class="first-win-card" style="justify-content:center; opacity:.6;">
+      pvHtml = `
+        <div class="first-win-card" style="justify-content:center;opacity:.6;">
           <div class="highlight-icon">🌅</div>
-          <div class="highlight-body"><p class="highlight-label">Primera Victoria del Día</p><p class="highlight-empty">Nadie ha ganado hoy todavía.</p></div>
+          <div class="highlight-body">
+            <p class="highlight-label">Primera Victoria del Día</p>
+            <p class="highlight-empty">Nadie ha ganado hoy todavía.</p>
+          </div>
         </div>`;
     }
 
+    // 3 tops — usan campos _recientes (últimas 10 partidas)
     const categorias = [
-      { icon: '⚔️', label: 'Top Asesino (10p)',   campo: 'killsRecientes',        sufijo: 'kills',       vacio: 'Nadie ha registrado kills todavía.' },
-      { icon: '🔥', label: 'Top Pentakills (10p)', campo: 'pentakillsRecientes',   sufijo: 'pentakills',  vacio: 'Nadie ha hecho un penta… todavía 👀' },
-      { icon: '👁️', label: 'Top Observador (10p)', campo: 'visionPromedioReciente', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
+      { icon:'⚔️', label:'Top Asesino (10p)',    campo:'killsRecientes',         sufijo:'kills',        vacio:'Nadie ha registrado kills todavía.' },
+      { icon:'🔥', label:'Top Pentakills (10p)',  campo:'pentakillsRecientes',    sufijo:'pentakills',   vacio:'Nadie ha hecho un penta… todavía 👀' },
+      { icon:'👁️', label:'Top Observador (10p)', campo:'visionPromedioReciente', sufijo:'visión prom.', vacio:'Sin datos de visión aún.' },
     ];
-    const categoriasHtml = categorias.map(cat => {
-      const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
-      const valor = lider ? (lider[cat.campo] || 0) : 0;
-      if (!lider || valor <= 0) return `
+    const topsHtml = categorias.map(cat => {
+      const lider = [...state.players].sort((a,b) => (b[cat.campo]||0)-(a[cat.campo]||0))[0];
+      const valor = lider ? (lider[cat.campo]||0) : 0;
+      if(!lider || valor <= 0) return `
         <div class="highlight-card">
           <div class="highlight-icon">${cat.icon}</div>
           <div class="highlight-body"><p class="highlight-label">${cat.label}</p><p class="highlight-empty">${cat.vacio}</p></div>
@@ -523,100 +512,106 @@ window.addEventListener('load', () => {
         </div>`;
     }).join('');
 
-    highlightsContainerEl.innerHTML = `
-      <div style="grid-column:1/-1; display:flex; justify-content:center;">
-        <div style="width:100%; max-width:340px;">${primeraVictoriaHtml}</div>
-      </div>
-      ${categoriasHtml}`;
+    // FIX: primera victoria ocupa grid-column 1/-1 (ya está en el CSS .first-win-card)
+    // Los 3 tops van debajo en auto-fit
+    highlightsContainerEl.innerHTML = pvHtml + topsHtml;
   }
 
-  function renderWeeklyHighlights() {
+  // ─────────────────────────────────────────────────────
+  // renderWeeklyHighlights — todo usa campos _semana (7d)
+  // ─────────────────────────────────────────────────────
+  function renderWeeklyHighlights(){
     const container = document.getElementById('weekly-highlights-container');
-    if (state.players.length === 0) { container.innerHTML = ''; return; }
+    if(!state.players.length){ container.innerHTML=''; return; }
 
-    let otpPlayer = null, otpChamp = '', otpPercent = 0;
-    let climber = null, maxClimb = -Infinity;
-    let grinder = null, maxTime = 0;
-    const now = Date.now(), ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
+    let otpPlayer=null, otpChamp='', otpPercent=0;
+    let climber=null, maxClimb=-Infinity;
+    let grinder=null, maxTime=0;
+    let agresivo=null, maxSangre=-1;
+    let kdaPlayer=null, maxKda=-1, kdaPlayerPerfecto=false;
+    let champPoolMaster=null, maxChamps=-1;
+    let tortuga=null, minPartidas=Infinity;
+    let asistente=null, maxAsistencias=-1;
+    let sinRendirse=null, maxDia=-1;
 
-    let agresivo = null, maxSangre = -1;
-    let kdaPlayer = null, maxKda = -1, kdaPlayerPerfecto = false;
-    let champPoolMaster = null, maxChamps = -1;
-    // Badges nuevos
-    let tortuga = null, minPartidas = Infinity;
-    let asistente = null, maxAsistencias = -1;
-    let sinRendirse = null, maxDia = -1;
-    let primeraVictoria = null, primeraVictoriaHora = null;
+    const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
 
     state.players.forEach(p => {
-      if (p.partidas && p.partidas.length > 0) {
-        const champCounts = {};
-        p.partidas.forEach(m => { champCounts[m.campeon] = (champCounts[m.campeon] || 0) + 1; });
-        let maxC = 0, champ = '';
-        for (const c in champCounts) { if (champCounts[c] > maxC) { maxC = champCounts[c]; champ = c; } }
-        const pct = Math.round((maxC / p.partidas.length) * 100);
-        if (pct > otpPercent) { otpPercent = pct; otpChamp = champ; otpPlayer = p; }
+      // OTP — últimas 10 partidas
+      if(p.partidas && p.partidas.length > 0){
+        const cc={};
+        p.partidas.forEach(m => { cc[m.campeon]=(cc[m.campeon]||0)+1; });
+        let maxC=0, champ='';
+        for(const c in cc){ if(cc[c]>maxC){ maxC=cc[c]; champ=c; } }
+        const pct=Math.round((maxC/p.partidas.length)*100);
+        if(pct>otpPercent){ otpPercent=pct; otpChamp=champ; otpPlayer=p; }
       }
-      if (p.historialLP && p.historialLP.length > 0) {
-        const hist = [...p.historialLP].filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime() <= ONE_WEEK)).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
-        if (hist.length > 0) {
-          const curSc   = eloScore(p.rango, p.division, p.lp);
-          const firstSc = eloScore(hist[0].rango || p.rango, hist[0].division !== undefined ? hist[0].division : p.division, hist[0].lp);
-          if (curSc !== null && firstSc !== null) { const diff = curSc - firstSc; if (diff > maxClimb) { maxClimb = diff; climber = p; } }
+      // Escalador — LP histórico semana
+      if(p.historialLP && p.historialLP.length > 0){
+        const hist=[...p.historialLP].filter(pt=>pt.fecha&&(now-new Date(pt.fecha).getTime()<=ONE_WEEK)).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+        if(hist.length>0){
+          const curSc  =eloScore(p.rango,p.division,p.lp);
+          const firstSc=eloScore(hist[0].rango||p.rango,hist[0].division!==undefined?hist[0].division:p.division,hist[0].lp);
+          if(curSc!==null&&firstSc!==null){ const d=curSc-firstSc; if(d>maxClimb){maxClimb=d;climber=p;} }
         }
       }
-      if (p.partidas && p.partidas.length > 0) {
-        let time = 0;
-        p.partidas.forEach(m => {
-          if (typeof m.duracion === 'number') time += m.duracion;
-          else if (typeof m.duracion === 'string') { const pts = m.duracion.split(':'); if (pts.length === 2) time += parseInt(pts[0])*60 + parseInt(pts[1]); }
+      // Grinder — duración acumulada últimas 10
+      if(p.partidas && p.partidas.length > 0){
+        let t=0;
+        p.partidas.forEach(m=>{
+          if(typeof m.duracion==='string'){ const pts=m.duracion.replace('min','').split(':'); t+= pts.length===2?parseInt(pts[0])*60+parseInt(pts[1]):parseInt(pts[0])*60; }
         });
-        if (time > maxTime) { maxTime = time; grinder = p; }
+        if(t>maxTime){maxTime=t;grinder=p;}
       }
-      if ((p.primerasSangreSemana || 0) > maxSangre)    { maxSangre = p.primerasSangreSemana || 0; agresivo = p; }
-      if ((p.kdaPromedioSemana || 0) > maxKda)           { maxKda = p.kdaPromedioSemana || 0; kdaPlayer = p; kdaPlayerPerfecto = p.kdaPerfectoSemana; }
-      if ((p.campeonesGanadosSemana || 0) > maxChamps)   { maxChamps = p.campeonesGanadosSemana || 0; champPoolMaster = p; }
-      // Badges nuevos
-      if (p.partidasSemana > 0 && p.partidasSemana < minPartidas) { minPartidas = p.partidasSemana; tortuga = p; }
-      if ((p.asistenciasSemana || 0) > maxAsistencias)   { maxAsistencias = p.asistenciasSemana || 0; asistente = p; }
-      if ((p.maxPartidasEnUnDia || 0) > maxDia)          { maxDia = p.maxPartidasEnUnDia || 0; sinRendirse = p; }
-      const pv2 = p.primeraVictoriaHoy;
-      if (pv2 && typeof pv2 === 'object' && pv2.timestamp) {
-        if (!primeraVictoria || pv2.timestamp < primeraVictoriaHora) {
-          primeraVictoria = p;
-          primeraVictoriaHora = pv2.timestamp;
-        }
-      }
+      // Campos semana
+      if((p.primerasSangreSemana||0)>maxSangre)    { maxSangre=p.primerasSangreSemana||0; agresivo=p; }
+      if((p.kdaPromedioSemana||0)>maxKda)           { maxKda=p.kdaPromedioSemana||0; kdaPlayer=p; kdaPlayerPerfecto=p.kdaPerfectoSemana; }
+      if((p.campeonesGanadosSemana||0)>maxChamps)   { maxChamps=p.campeonesGanadosSemana||0; champPoolMaster=p; }
+      if(p.partidasSemana>0 && p.partidasSemana<minPartidas){ minPartidas=p.partidasSemana; tortuga=p; }
+      if((p.asistenciasSemana||0)>maxAsistencias)   { maxAsistencias=p.asistenciasSemana||0; asistente=p; }
+      if((p.maxPartidasEnUnDia||0)>maxDia)          { maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
     });
 
-    if (!otpPlayer)       otpPlayer       = state.players[0];
-    if (!climber)         climber         = state.players[0];
-    if (!grinder)         grinder         = state.players[0];
-    if (!otpChamp)        otpChamp        = "Desconocido";
+    if(!otpPlayer) otpPlayer=state.players[0];
+    if(!climber)   climber  =state.players[0];
+    if(!grinder)   grinder  =state.players[0];
+    if(!otpChamp)  otpChamp ='Desconocido';
 
-    const otpChampImg = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
 
-    const agresivoHtml = (agresivo && maxSangre > 0) ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="Avatar">
-        <div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-player">${agresivo.nombre}</p><p class="highlight-value">${maxSangre} primera${maxSangre === 1 ? '' : 's'} sangre</p></div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">🩸</div><div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p></div></div>`;
+    const agresivoHtml=(agresivo&&maxSangre>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🩸 Agresivo</p><p class="highlight-player">${agresivo.nombre}</p><p class="highlight-value">${maxSangre} primera${maxSangre===1?'':'s'} sangre</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🩸</div><div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p></div></div>`;
 
-    const kdaHtml = (kdaPlayer && maxKda > 0) ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="Avatar">
-        <div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-player">${kdaPlayer.nombre}</p><p class="highlight-value">${kdaPlayerPerfecto ? 'Perfect' : maxKda} KDA</p></div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">📊</div><div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
+    const kdaHtml=(kdaPlayer&&maxKda>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">📊 KDA Player</p><p class="highlight-player">${kdaPlayer.nombre}</p><p class="highlight-value">${kdaPlayerPerfecto?'Perfect':maxKda} KDA</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">📊</div><div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
-    const championPoolHtml = (champPoolMaster && maxChamps > 0) ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="Avatar">
-        <div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-player">${champPoolMaster.nombre}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">🎭</div><div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-empty">Nadie ha ganado esta semana todavía.</p></div></div>`;
+    const champPoolHtml=(champPoolMaster&&maxChamps>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🎭 Maestro del Champion Pool</p><p class="highlight-player">${champPoolMaster.nombre}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🎭</div><div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-empty">Nadie ha ganado esta semana todavía.</p></div></div>`;
+
+    const tortugaHtml=tortuga?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(tortuga.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🐢 El Tortuga</p><p class="highlight-player">${tortuga.nombre}</p><p class="highlight-value">${minPartidas} partida${minPartidas===1?'':'s'} esta semana</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🐢</div><div class="highlight-body"><p class="highlight-label">El Tortuga</p><p class="highlight-empty">Nadie ha jugado esta semana aún.</p></div></div>`;
+
+    const asistenteHtml=(asistente&&maxAsistencias>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(asistente.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🤝 El Asistente</p><p class="highlight-player">${asistente.nombre}</p><p class="highlight-value">${maxAsistencias} asistencias esta semana</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`;
+
+    const sinRendirseHtml=(sinRendirse&&maxDia>=3)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partidas en un solo día</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado 3+ partidas en un día aún.</p></div></div>`;
 
     container.innerHTML = `
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="Avatar">
+        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
         <div class="highlight-body">
           <p class="highlight-label">OTP del Torneo</p>
           <p class="highlight-player">${otpPlayer.nombre}</p>
@@ -627,89 +622,59 @@ window.addEventListener('load', () => {
         </div>
       </div>
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="Avatar">
+        <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div>
       </div>
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="Avatar">
+        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}${kdaHtml}${championPoolHtml}
-      ${tortuga ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(tortuga.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">🐢 El Tortuga</p>
-          <p class="highlight-player">${tortuga.nombre}</p>
-          <p class="highlight-value">${minPartidas} partida${minPartidas === 1 ? '' : 's'} esta semana</p>
-        </div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">🐢</div><div class="highlight-body"><p class="highlight-label">El Tortuga</p><p class="highlight-empty">Nadie ha jugado esta semana aún.</p></div></div>`}
-      ${asistente && maxAsistencias > 0 ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(asistente.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">🤝 El Asistente</p>
-          <p class="highlight-player">${asistente.nombre}</p>
-          <p class="highlight-value">${maxAsistencias} asistencias esta semana</p>
-        </div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`}
-      ${sinRendirse && maxDia >= 3 ? `
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">😤 Sin rendirse</p>
-          <p class="highlight-player">${sinRendirse.nombre}</p>
-          <p class="highlight-value">${maxDia} partidas en un solo día</p>
-        </div>
-      </div>` : `<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado 3+ partidas en un día aún.</p></div></div>`}`;
+      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}`;
   }
 
   function getTrendArrow(p){
-    const hist = (p.historialLP || []).filter(pt => pt.fecha);
-    if (hist.length < 2) return '';
-    const ord = [...hist].sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
-    const ul = ord[ord.length-1], an = ord[ord.length-2];
-    const sU = eloScore(ul.rango || p.rango, ul.division !== undefined ? ul.division : p.division, ul.lp);
-    const sA = eloScore(an.rango || p.rango, an.division !== undefined ? an.division : p.division, an.lp);
-    if (sU === null || sA === null || sU === sA) return '';
-    return sU > sA
-      ? `<span class="trend-arrow up" title="Subió">▲</span>`
-      : `<span class="trend-arrow down" title="Bajó">▼</span>`;
+    const hist=(p.historialLP||[]).filter(pt=>pt.fecha);
+    if(hist.length<2) return '';
+    const ord=[...hist].sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+    const ul=ord[ord.length-1], an=ord[ord.length-2];
+    const sU=eloScore(ul.rango||p.rango,ul.division!==undefined?ul.division:p.division,ul.lp);
+    const sA=eloScore(an.rango||p.rango,an.division!==undefined?an.division:p.division,an.lp);
+    if(sU===null||sA===null||sU===sA) return '';
+    return sU>sA?`<span class="trend-arrow up" title="Subió">▲</span>`:`<span class="trend-arrow down" title="Bajó">▼</span>`;
   }
 
-  function getStreakEmoji(partidas) {
-    if (!partidas || partidas.length < 3) return '';
-    let w = 0;
-    for(let i=0; i<Math.min(partidas.length,10); i++){ if(partidas[i].resultado==='victoria') w++; else break; }
-    if(w >= 3) return '🔥';
-    let l = 0;
-    for(let i=0; i<Math.min(partidas.length,10); i++){ if(partidas[i].resultado==='derrota') l++; else break; }
-    if(l >= 3) return '❄️';
+  function getStreakEmoji(partidas){
+    if(!partidas||partidas.length<3) return '';
+    let w=0;
+    for(let i=0;i<Math.min(partidas.length,10);i++){ if(partidas[i].resultado==='victoria') w++; else break; }
+    if(w>=3) return '🔥';
+    let l=0;
+    for(let i=0;i<Math.min(partidas.length,10);i++){ if(partidas[i].resultado==='derrota') l++; else break; }
+    if(l>=3) return '❄️';
     return '';
   }
 
   function renderRanking(){
-    rankingListEl.innerHTML = '';
-    const filtrados = state.players.filter(p => state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo);
-    if(filtrados.length === 0){ rankingListEl.innerHTML = `<p class="empty-state">Nadie está en este elo todavía.</p>`; return; }
+    rankingListEl.innerHTML='';
+    const filtrados=state.players.filter(p=>state.filterElo==='ALL'||(p.rango||'').toUpperCase()===state.filterElo);
+    if(!filtrados.length){ rankingListEl.innerHTML=`<p class="empty-state">Nadie está en este elo todavía.</p>`; return; }
 
-    filtrados.forEach((p, i) => {
-      const row = document.createElement('button');
-      row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
-      row.addEventListener('click', (e) => { if(e.target.tagName.toLowerCase() !== 'a') selectPlayer(p.id); });
+    filtrados.forEach((p,i)=>{
+      const row=document.createElement('button');
+      row.className='rank-row'+(p.id===state.selectedId?' active':'');
+      row.addEventListener('click', e=>{ if(e.target.tagName.toLowerCase()!=='a') selectPlayer(p.id); });
 
-      const tierPretty  = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
-      const rankDisplay = DIVISIONLESS.includes((p.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
-      const liveStatus  = state.liveData[p.id] || { en_partida: false };
-      const statusHtml  = liveStatus.en_partida
-        ? `<span class="status-chip in-game">En Partida</span>`
-        : `<span class="status-chip offline">Offline</span>`;
-      const posClass   = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
-      const posContent = i === 0 ? '👑' : (i + 1);
-      const streakEmoji = getStreakEmoji(p.partidas);
+      const tierPretty =p.rango.charAt(0)+p.rango.slice(1).toLowerCase();
+      const rankDisplay=DIVISIONLESS.includes((p.rango||'').toUpperCase())?tierPretty:`${tierPretty} ${p.division}`;
+      const liveStatus =state.liveData[p.id]||{en_partida:false};
+      const statusHtml =liveStatus.en_partida
+        ?`<span class="status-chip in-game">En Partida</span>`
+        :`<span class="status-chip offline">Offline</span>`;
+      const posClass  =i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'';
+      const posContent=i===0?'👑':(i+1);
+      const streakEmoji=getStreakEmoji(p.partidas);
 
-      // NUEVO: emblema de elo en lugar del diamante de color
-      row.innerHTML = `
+      row.innerHTML=`
         <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
           <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
@@ -731,10 +696,10 @@ window.addEventListener('load', () => {
   }
 
   function selectPlayer(id){
-    state.selectedId = id;
+    state.selectedId=id;
     renderRanking();
-    const player = state.players.find(p => p.id === id);
-    const matchesHtml = player.partidas.slice(0, 5).map(m => `
+    const player=state.players.find(p=>p.id===id);
+    const matchesHtml=player.partidas.slice(0,5).map(m=>`
       <div class="match">
         <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
         <span>
@@ -742,26 +707,26 @@ window.addEventListener('load', () => {
           <div class="match-kda">${m.kda} KDA</div>
         </span>
         <span class="match-result-block">
-          <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
-          ${m.lpChange !== null
-            ? `<span class="lp-change ${m.lpChange >= 0 ? 'win' : 'loss'}">${m.lpChange >= 0 ? '+' : ''}${m.lpChange} LP</span>`
-            : m.duracion ? `<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>` : ''}
+          <span class="result-chip ${m.resultado}">${m.resultado==='victoria'?'Victoria':'Derrota'}</span>
+          ${m.lpChange!==null
+            ?`<span class="lp-change ${m.lpChange>=0?'win':'loss'}">${m.lpChange>=0?'+':''}${m.lpChange} LP</span>`
+            :m.duracion?`<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>`:''}
         </span>
       </div>`).join('');
-    historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
+    historyPanelEl.innerHTML=`<div class="matches">${matchesHtml}</div>`;
   }
 
-  function startCountdown() {
-    const targetDate = new Date('2027-01-01T00:00:00').getTime();
-    function update() {
-      const distance = targetDate - new Date().getTime();
-      if (distance < 0) return;
-      document.getElementById('cd-days').innerText  = Math.floor(distance / (1000*60*60*24));
-      document.getElementById('cd-hours').innerText = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-      document.getElementById('cd-mins').innerText  = Math.floor((distance % (1000*60*60)) / (1000*60));
-      document.getElementById('cd-secs').innerText  = Math.floor((distance % (1000*60)) / 1000);
+  function startCountdown(){
+    const targetDate=new Date('2027-01-01T00:00:00').getTime();
+    function update(){
+      const d=targetDate-new Date().getTime();
+      if(d<0) return;
+      document.getElementById('cd-days').innerText =Math.floor(d/(1000*60*60*24));
+      document.getElementById('cd-hours').innerText=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+      document.getElementById('cd-mins').innerText =Math.floor((d%(1000*60*60))/(1000*60));
+      document.getElementById('cd-secs').innerText =Math.floor((d%(1000*60))/1000);
     }
-    update(); setInterval(update, 1000);
+    update(); setInterval(update,1000);
   }
 });
 </script>
