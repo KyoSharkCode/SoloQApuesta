@@ -567,9 +567,12 @@ window.addEventListener('load', () => {
       if((p.primerasSangreSemana||0)>maxSangre)    { maxSangre=p.primerasSangreSemana||0; agresivo=p; }
       if((p.kdaPromedioSemana||0)>maxKda)           { maxKda=p.kdaPromedioSemana||0; kdaPlayer=p; kdaPlayerPerfecto=p.kdaPerfectoSemana; }
       if((p.campeonesGanadosSemana||0)>maxChamps)   { maxChamps=p.campeonesGanadosSemana||0; champPoolMaster=p; }
-      if(p.partidasSemana>0 && p.partidasSemana<minPartidas){ minPartidas=p.partidasSemana; tortuga=p; }
-      if((p.asistenciasSemana||0)>maxAsistencias)   { maxAsistencias=p.asistenciasSemana||0; asistente=p; }
-      if((p.maxPartidasEnUnDia||0)>maxDia)          { maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
+      // Tortuga — menos partidas de la semana (mínimo 1 para aparecer)
+      if(p.partidasSemana > 0 && p.partidasSemana < minPartidas){ minPartidas=p.partidasSemana; tortuga=p; }
+      // Asistente — más asistencias de la semana
+      if((p.asistenciasSemana||0) > maxAsistencias){ maxAsistencias=p.asistenciasSemana||0; asistente=p; }
+      // Sin rendirse — más partidas jugadas HOY (desde 6AM España), mínimo 1
+      if((p.maxPartidasEnUnDia||0) > maxDia){ maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
     });
 
     if(!otpPlayer) otpPlayer=state.players[0];
@@ -604,10 +607,10 @@ window.addEventListener('load', () => {
         <div class="highlight-body"><p class="highlight-label">🤝 El Asistente</p><p class="highlight-player">${asistente.nombre}</p><p class="highlight-value">${maxAsistencias} asistencias esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`;
 
-    const sinRendirseHtml=(sinRendirse&&maxDia>=3)?`
+    const sinRendirseHtml=(sinRendirse&&maxDia>=1)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partidas en un solo día</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado 3+ partidas en un día aún.</p></div></div>`;
+        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partida${maxDia===1?'':'s'} jugadas hoy</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado hoy todavía.</p></div></div>`;
 
     container.innerHTML = `
       <div class="highlight-card">
