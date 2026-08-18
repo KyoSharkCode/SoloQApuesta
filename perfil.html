@@ -39,9 +39,11 @@
   .name-wrapper { display:flex; align-items:center; gap:12px; }
   .profile-info h1 { margin:0; font-size:32px; font-weight:900; }
   .profile-info p { margin:0; color:var(--text-faint); font-size:16px; font-weight:500; }
-  .profile-rank { margin-left:auto; text-align:right; }
+  .profile-rank { margin-left:auto; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
   .profile-rank h2 { margin:0; font-size:28px; color:var(--gold); font-weight:800; }
+  .profile-rank .rank-tier-row { display:inline-flex; align-items:center; gap:8px; }
   .profile-rank span { color:var(--text-faint); font-size:14px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; }
+  .profile-rank .tier-emblem { width:36px; height:36px; object-fit:contain; }
 
   /* CAJA EN VIVO */
   .live-status-box{
@@ -166,7 +168,10 @@
       </div>
       <div class="profile-rank">
         <h2 id="p-lp">0 LP</h2>
-        <span id="p-tier">Rango</span>
+        <div class="rank-tier-row">
+          <img id="p-emblem" class="tier-emblem" src="" alt="Emblema de elo">
+          <span id="p-tier">Rango</span>
+        </div>
       </div>
     </div>
 
@@ -456,11 +461,16 @@ window.addEventListener('load', () => {
 
       const fmt = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
 
-      document.getElementById('p-avatar').src    = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-      document.getElementById('p-name').innerText    = p.nombre.split('#')[0];
-      document.getElementById('p-tier').innerText    = p.rango;
-      document.getElementById('p-lp').innerText      = `${p.lp} LP`;
+      const MINI_CREST_BASE = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
+      const VALID_TIERS = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
+      const tierSlug = (p.rango || 'unranked').split(' ')[0].toLowerCase();
+
+      document.getElementById('p-avatar').src       = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
+      document.getElementById('p-name').innerText   = p.nombre.split('#')[0];
+      document.getElementById('p-tier').innerText   = p.rango;
+      document.getElementById('p-lp').innerText     = `${p.lp} LP`;
       document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
+      document.getElementById('p-emblem').src = `${MINI_CREST_BASE}${VALID_TIERS.includes(tierSlug) ? tierSlug : 'unranked'}.png`;
 
       // Maestrías
       const boxMastery = document.getElementById('box-mastery');
