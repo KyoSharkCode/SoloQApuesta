@@ -266,7 +266,11 @@ window.addEventListener('load', () => {
     const pScore      = eloScore(pRango, pDiv, p.lp || 0);
     const pKills      = p.kills_recientes || 0;
     const pPenta      = p.pentakills_recientes || 0;
-    const pVision     = p.vision_promedio || 0;
+    const pVision     = p.vision_promedio_reciente || 0;
+    const pPrimSangre = p.primeras_sangre_semana || 0;
+    const pKdaProm    = p.kda_promedio_semana || 0;
+    const pKdaPerf    = !!p.kda_perfecto_semana;
+    const pChampsGan  = p.campeones_ganados_semana || 0;
     const pHistorial  = p.historial || [];
     const pHistLP     = p.progreso_lp || [];
 
@@ -279,14 +283,26 @@ window.addEventListener('load', () => {
     let maxChampPct = -1;
     let pChampPct   = 0;
     let pTopChamp   = '';
+    let maxPrimSangre = -1, maxKdaProm = -1, maxChampsGan = -1;
+
+    // ordenar jugadores por score para saber si es top1/2/3
+    const sortedByScore = [...todos].sort((a, b) => {
+      const ra = (a.rango || 'Unranked').split(' ');
+      const rb = (b.rango || 'Unranked').split(' ');
+      return eloScore(rb[0], rb.slice(1).join(' '), b.lp || 0) - eloScore(ra[0], ra.slice(1).join(' '), a.lp || 0);
+    });
+    const rankPosition = sortedByScore.findIndex(j => j.nombre === p.nombre) + 1; // 1-based
 
     todos.forEach(j => {
       const rp   = (j.rango || 'Unranked').split(' ');
       const sc   = eloScore(rp[0], rp.slice(1).join(' '), j.lp || 0);
       if (sc > maxScore) maxScore = sc;
-      if ((j.kills_recientes || 0) > maxKills)  maxKills  = j.kills_recientes || 0;
-      if ((j.pentakills_recientes || 0) > maxPenta) maxPenta = j.pentakills_recientes || 0;
-      if ((j.vision_promedio || 0) > maxVision) maxVision = j.vision_promedio || 0;
+      if ((j.kills_recientes || 0) > maxKills)            maxKills  = j.kills_recientes || 0;
+      if ((j.pentakills_recientes || 0) > maxPenta)       maxPenta  = j.pentakills_recientes || 0;
+      if ((j.vision_promedio_reciente || 0) > maxVision)  maxVision = j.vision_promedio_reciente || 0;
+      if ((j.primeras_sangre_semana || 0) > maxPrimSangre) maxPrimSangre = j.primeras_sangre_semana || 0;
+      if ((j.kda_promedio_semana || 0) > maxKdaProm)  maxKdaProm   = j.kda_promedio_semana || 0;
+      if ((j.campeones_ganados_semana || 0) > maxChampsGan) maxChampsGan = j.campeones_ganados_semana || 0;
 
       // Escalador: LP ganados esta semana
       const hist = (j.progreso_lp || []).filter(pt => pt.fecha && now - new Date(pt.fecha).getTime() <= ONE_WEEK)
@@ -314,19 +330,23 @@ window.addEventListener('load', () => {
 
     // ── Evaluar badges para este jugador ──
 
-    // Top 1 ranking
-    if (pScore >= maxScore && pScore > -1)
+    // Top 1 / 2 / 3 ranking
+    if (rankPosition === 1 && pScore > -1)
       badges.push({ icon:'👑', label:'Top 1 del Torneo', color:'gold' });
+    else if (rankPosition === 2 && pScore > -1)
+      badges.push({ icon:'🥈', label:'Top 2 del Torneo', color:'blue' });
+    else if (rankPosition === 3 && pScore > -1)
+      badges.push({ icon:'🥉', label:'Top 3 del Torneo', color:'purple' });
 
-    // Top Asesino
+    // Top Asesino (semana)
     if (pKills > 0 && pKills >= maxKills)
       badges.push({ icon:'⚔️', label:`Top Asesino · ${pKills} kills`, color:'red' });
 
-    // Top Pentakills
+    // Top Pentakills (semana)
     if (pPenta > 0 && pPenta >= maxPenta)
       badges.push({ icon:'🔥', label:`Top Pentakills · ${pPenta} pentas`, color:'red' });
 
-    // Top Observador
+    // Top Observador (semana)
     if (pVision > 0 && pVision >= maxVision)
       badges.push({ icon:'👁️', label:`Top Observador · ${pVision} visión`, color:'blue' });
 
@@ -338,6 +358,18 @@ window.addEventListener('load', () => {
     if (pChampPct >= 60)
       badges.push({ icon:'🎯', label:`OTP · ${pTopChamp} (${pChampPct}%)`, color:'purple' });
 
+    // Agresivo (más primeras sangres esta semana)
+    if (pPrimSangre > 0 && pPrimSangre >= maxPrimSangre)
+      badges.push({ icon:'🩸', label:`Agresivo · ${pPrimSangre} primera${pPrimSangre === 1 ? '' : 's'} sangre`, color:'red' });
+
+    // KDA Player (mejor KDA promedio esta semana)
+    if (pKdaProm > 0 && pKdaProm >= maxKdaProm)
+      badges.push({ icon:'📊', label: pKdaPerf ? 'KDA Player · Perfect KDA' : `KDA Player · ${pKdaProm} KDA prom.`, color:'green' });
+
+    // Maestro del Champion Pool (más campeones distintos ganados esta semana)
+    if (pChampsGan > 0 && pChampsGan >= maxChampsGan)
+      badges.push({ icon:'🎭', label:`Maestro del Pool · ${pChampsGan} campeones ganados`, color:'purple' });
+
     // Racha de victorias
     let streak = 0;
     for (const m of pHistorial) {
@@ -347,7 +379,7 @@ window.addEventListener('load', () => {
     if (streak >= 3)
       badges.push({ icon:'🔥', label:`Racha de ${streak} victorias`, color:'green' });
 
-    // Racha de derrotas (con cariño 😅)
+    // Racha de derrotas
     let loseStreak = 0;
     for (const m of pHistorial) {
       if ((m.resultado || '').toLowerCase() === 'derrota') loseStreak++;
