@@ -327,13 +327,15 @@ window.addEventListener('load', () => {
 
   async function refreshData(){
     try{
-      const res = await fetch(`datos.json?t=${Date.now()}`, { cache:'no-store' });
+      // jsDelivr CDN — datos disponibles ~1 min después del push, sin esperar deploy de Pages
+      const CDN = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
+      const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' });
       if(!res.ok) throw new Error();
       const rawData   = await res.json();
       const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
 
       try {
-        const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache:'no-store' });
+        const liveRes = await fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache:'no-store' });
         if(liveRes.ok) state.liveData = await liveRes.json();
       } catch(e) { console.log('No hay datos en vivo aún.'); }
 
