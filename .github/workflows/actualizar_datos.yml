@@ -39,12 +39,15 @@ jobs:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: python live_status.py
 
-      - name: Guardar cambios en GitHub
+      # Solo hace push de los JSON — sin deploy de Pages
+      # Los HTML leen los datos desde jsDelivr CDN directamente
+      # jsDelivr los sirve ~1 min después del push sin ningún deploy adicional
+      - name: Guardar JSON en GitHub
         if: always()
         run: |
           git config --global user.name 'RiotBot'
           git config --global user.email 'riotbot@github.com'
           git add datos.json live_data.json
-          git diff --staged --quiet || git commit -m "Actualizacion de ranking y estado en vivo"
+          git diff --staged --quiet || git commit -m "Actualizacion de datos [skip ci]"
           git pull --no-rebase --strategy-option=theirs origin main
           git push origin main
