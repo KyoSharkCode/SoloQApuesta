@@ -73,6 +73,37 @@ def calcular_lp_por_partida(md, progreso_lp_ordenado):
     return s_despues - s_antes
 
 
+def calcular_agregados_semana(detalle):
+    """
+    Recalcula los destacados semanales a partir del detalle de partidas
+    (una entrada por partida, con su timestamp "fin_seg" y sus stats).
+
+    Se usa SIEMPRE, haya o no partidas nuevas — así la ventana de 7 días
+    se recalcula localmente (sin pedirle nada a la API de Riot) y una
+    partida que ya pasó de los 7 días se cae del conteo aunque el
+    jugador no haya vuelto a jugar. Antes, si no había partidas nuevas,
+    se reutilizaban los totales viejos tal cual y una partida de hace
+    8+ días se seguía contando como "de esta semana" para siempre.
+    """
+    n   = len(detalle)
+    k_s = sum(d.get("kills", 0) for d in detalle)
+    d_s = sum(d.get("muertes", 0) for d in detalle)
+    a_s = sum(d.get("asistencias", 0) for d in detalle)
+    vision_scores = [d.get("vision", 0) for d in detalle]
+    kda_perfecto  = n > 0 and d_s == 0
+    return {
+        "kills_semana":             k_s,
+        "pentakills_semana":        sum(d.get("pentakills", 0) for d in detalle),
+        "primeras_sangre_semana":   sum(1 for d in detalle if d.get("primera_sangre")),
+        "asistencias_semana":       a_s,
+        "vision_promedio_semana":   round(sum(vision_scores) / len(vision_scores)) if vision_scores else 0,
+        "kda_perfecto_semana":      kda_perfecto,
+        "kda_promedio_semana":      0 if kda_perfecto else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0),
+        "campeones_ganados_semana": len({d.get("campeon") for d in detalle if d.get("victoria") and d.get("campeon")}),
+        "partidas_semana":          n,
+    }
+
+
 def get_con_reintento(url, headers, timeout=15, max_reintentos=2):
     resp = None
     for intento in range(max_reintentos + 1):
@@ -255,16 +286,26 @@ def obtener_datos():
                 top_2_roles                = anterior.get("top_roles", [])
                 top_3_recientes            = anterior.get("top_recientes", [])
 
-                # Stats semana: reutilizar directamente (no cambiaron)
-                total_kills_semana           = anterior.get("kills_semana", 0)
-                total_pentakills_semana      = anterior.get("pentakills_semana", 0)
-                total_primeras_sangre_semana = anterior.get("primeras_sangre_semana", 0)
-                total_asistencias_semana     = anterior.get("asistencias_semana", 0)
-                vision_promedio_semana       = anterior.get("vision_promedio_semana", 0)
-                kda_promedio_semana          = anterior.get("kda_promedio_semana", 0)
-                kda_perfecto_semana          = anterior.get("kda_perfecto_semana", False)
-                campeones_ganados_semana_n   = anterior.get("campeones_ganados_semana", 0)
-                n_semana                     = anterior.get("partidas_semana", 0)
+                # FIX: Stats semana — antes se reutilizaban tal cual ("no
+                # cambiaron"), pero la ventana de 7 días se mueve con el
+                # tiempo aunque el jugador no juegue. Ahora se recalculan
+                # localmente desde el detalle guardado, descartando
+                # partidas que ya se salieron de los últimos 7 días —
+                # sin pedirle nada nuevo a la API de Riot.
+                partidas_semana_detalle = [
+                    d for d in (anterior.get("partidas_semana_detalle") or [])
+                    if isinstance(d, dict) and d.get("fin_seg", 0) >= hace_7_dias
+                ]
+                agregados_semana              = calcular_agregados_semana(partidas_semana_detalle)
+                total_kills_semana            = agregados_semana["kills_semana"]
+                total_pentakills_semana       = agregados_semana["pentakills_semana"]
+                total_primeras_sangre_semana  = agregados_semana["primeras_sangre_semana"]
+                total_asistencias_semana      = agregados_semana["asistencias_semana"]
+                vision_promedio_semana        = agregados_semana["vision_promedio_semana"]
+                kda_promedio_semana           = agregados_semana["kda_promedio_semana"]
+                kda_perfecto_semana           = agregados_semana["kda_perfecto_semana"]
+                campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
+                n_semana                      = agregados_semana["partidas_semana"]
 
                 # Recalcular partidas de HOY y primera victoria desde historial guardado
                 # El historial guarda match_id pero no timestamp — usamos primera_victoria_hoy
@@ -378,16 +419,12 @@ def obtener_datos():
                 top_3_recientes = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ord]
 
                 # ── Agregados semanales ──
-                total_kills_semana           = 0
-                total_pentakills_semana      = 0
-                total_primeras_sangre_semana = 0
-                total_asistencias_semana     = 0
-                vision_scores_semana         = []
-                k_s = d_s = a_s             = 0
-                campeones_ganados_semana     = set()
-                partidas_semana_count        = 0
-                partidas_hoy_count           = 0
-                primera_victoria_hoy         = None
+                # Se guarda el detalle por partida (no solo el total) para
+                # que en corridas futuras sin partidas nuevas (CASO A) se
+                # pueda recalcular la ventana de 7 días localmente.
+                partidas_semana_detalle = []
+                partidas_hoy_count      = 0
+                primera_victoria_hoy    = None
 
                 for match_id in ids_semana:
                     md = detalles_por_id.get(match_id)
@@ -403,17 +440,17 @@ def obtener_datos():
                     fin_ms  = md["info"].get("gameEndTimestamp") or (md["info"].get("gameCreation", 0) + md["info"].get("gameDuration", 0) * 1000)
                     fin_seg = fin_ms / 1000
 
-                    total_kills_semana           += pp["kills"]
-                    total_pentakills_semana      += pp.get("pentaKills", 0)
-                    total_primeras_sangre_semana += 1 if pp.get("firstBloodKill") else 0
-                    total_asistencias_semana     += pp["assists"]
-                    vision_scores_semana.append(pp.get("visionScore", 0))
-                    k_s += pp["kills"]
-                    d_s += pp["deaths"]
-                    a_s += pp["assists"]
-                    if pp["win"]:
-                        campeones_ganados_semana.add(pp["championName"])
-                    partidas_semana_count += 1
+                    partidas_semana_detalle.append({
+                        "fin_seg":        fin_seg,
+                        "kills":          pp["kills"],
+                        "muertes":        pp["deaths"],
+                        "asistencias":    pp["assists"],
+                        "pentakills":     pp.get("pentaKills", 0),
+                        "primera_sangre": bool(pp.get("firstBloodKill")),
+                        "vision":         pp.get("visionScore", 0),
+                        "campeon":        pp["championName"],
+                        "victoria":       bool(pp["win"]),
+                    })
 
                     if fin_seg >= inicio_dia_utc:
                         partidas_hoy_count += 1
@@ -434,12 +471,18 @@ def obtener_datos():
                                 "hechizos":  [spell1, spell2],
                             }
 
-                n_semana               = partidas_semana_count
                 max_partidas_en_un_dia = partidas_hoy_count
-                vision_promedio_semana = round(sum(vision_scores_semana) / len(vision_scores_semana)) if vision_scores_semana else 0
-                kda_perfecto_semana    = n_semana > 0 and d_s == 0
-                kda_promedio_semana    = 0 if kda_perfecto_semana else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0)
-                campeones_ganados_semana_n = len(campeones_ganados_semana)
+
+                agregados_semana              = calcular_agregados_semana(partidas_semana_detalle)
+                total_kills_semana            = agregados_semana["kills_semana"]
+                total_pentakills_semana       = agregados_semana["pentakills_semana"]
+                total_primeras_sangre_semana  = agregados_semana["primeras_sangre_semana"]
+                total_asistencias_semana      = agregados_semana["asistencias_semana"]
+                vision_promedio_semana        = agregados_semana["vision_promedio_semana"]
+                kda_promedio_semana           = agregados_semana["kda_promedio_semana"]
+                kda_perfecto_semana           = agregados_semana["kda_perfecto_semana"]
+                campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
+                n_semana                      = agregados_semana["partidas_semana"]
 
             print(f"    📊 {nombre_completo}: semana={n_semana}p, hoy={max_partidas_en_un_dia}p, asistencias={total_asistencias_semana}, primera_victoria={'sí' if primera_victoria_hoy else 'no'}")
 
@@ -469,6 +512,10 @@ def obtener_datos():
                 "campeones_ganados_semana":  campeones_ganados_semana_n,
                 "asistencias_semana":        total_asistencias_semana,
                 "partidas_semana":           n_semana,
+                # Detalle de partidas de los últimos 7 días (una entrada por
+                # partida) — permite recalcular los agregados de arriba en
+                # corridas futuras sin volver a pedirle nada a Riot.
+                "partidas_semana_detalle":   partidas_semana_detalle,
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
                 "primera_victoria_hoy":      primera_victoria_hoy,
@@ -495,6 +542,7 @@ def obtener_datos():
                 anterior.setdefault("campeones_ganados_semana", 0)
                 anterior.setdefault("asistencias_semana",       0)
                 anterior.setdefault("partidas_semana",          0)
+                anterior.setdefault("partidas_semana_detalle",  [])
                 anterior.setdefault("max_partidas_en_un_dia",   0)
                 anterior.setdefault("primera_victoria_hoy",     None)
                 anterior.setdefault("dia_referencia",           None)
