@@ -258,8 +258,17 @@ def obtener_datos():
                 pv_anterior = anterior.get("primera_victoria_hoy")
                 if pv_anterior and isinstance(pv_anterior, dict):
                     ts_pv = pv_anterior.get("timestamp", 0)
-                    # timestamp en ms → convertir a segundos para comparar
-                    if isinstance(ts_pv, (int, float)) and (ts_pv / 1000) >= inicio_dia_utc:
+                    # Validar que sigue siendo de hoy y no es un remake
+                    # duracion guardada en formato "M:SS" — convertir a segundos
+                    dur_str = pv_anterior.get("duracion", "99:00")
+                    try:
+                        partes     = dur_str.split(":")
+                        dur_seg    = int(partes[0]) * 60 + int(partes[1])
+                    except Exception:
+                        dur_seg    = 999
+                    es_hoy    = isinstance(ts_pv, (int, float)) and (ts_pv / 1000) >= inicio_dia_utc
+                    es_remake = dur_seg < 210
+                    if es_hoy and not es_remake:
                         primera_victoria_hoy = pv_anterior
                         partidas_hoy_count   = anterior.get("max_partidas_en_un_dia", 0)
 
