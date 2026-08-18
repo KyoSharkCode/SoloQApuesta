@@ -373,6 +373,11 @@ def obtener_datos():
 
                     dur_seg     = md["info"].get("gameDuration", 999)
                     campeon_jug = pp["championName"]
+                    # FIX: hechizos de invocador por partida, para mostrarlos
+                    # en el historial (index y perfil) igual que ya se
+                    # muestran en la tarjeta de "primera victoria del día".
+                    spell1_jug  = diccionario_hechizos.get(pp.get("summoner1Id", 0), "SummonerFlash")
+                    spell2_jug  = diccionario_hechizos.get(pp.get("summoner2Id", 0), "SummonerDot")
 
                     # Remake — aparece en historial pero NO suma stats
                     if dur_seg < 210:
@@ -383,6 +388,7 @@ def obtener_datos():
                             "resultado": "Remake",
                             "duracion":  f"{dur_seg // 60}:{dur_seg % 60:02d}",
                             "lp_change": None,
+                            "hechizos":  [spell1_jug, spell2_jug],
                         })
                         continue
 
@@ -405,6 +411,7 @@ def obtener_datos():
                         "resultado": "Victoria" if pp["win"] else "Derrota",
                         "duracion":  f"{dur_seg // 60}min",
                         "lp_change": lp_change,
+                        "hechizos":  [spell1_jug, spell2_jug],
                     })
 
                 vision_promedio_reciente = (
