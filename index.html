@@ -140,6 +140,7 @@
   .match-spells img{ width:16px; height:16px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
   .match-champ{ font-size:13px; font-weight:700; color:#ffffff;}
   .match-kda{ font-size:12px; color:var(--text-faint); }
+  .match-duo{ font-size:11px; font-weight:700; color:var(--accent-soft); margin-top:2px; }
   .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align:center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
@@ -164,6 +165,8 @@
   .status-chip { font-size:10px; font-weight:800; padding:4px 8px; border-radius:6px; text-transform:uppercase; margin-left:8px; letter-spacing:0.05em; }
   .status-chip.in-game { background:rgba(239,68,68,0.15); color:#ef4444; border:1px solid rgba(239,68,68,0.4); box-shadow:0 0 10px rgba(239,68,68,0.2); }
   .status-chip.offline { background:rgba(161,161,170,0.1); color:#a1a1aa; border:1px solid rgba(161,161,170,0.2); }
+  .status-cell{ display:flex; flex-direction:column; align-items:flex-start; gap:3px; }
+  .duo-tag{ font-size:10px; font-weight:700; color:var(--accent-soft); margin-left:8px; }
 
   .site-footer { margin-top:60px; padding-top:40px; border-top:1px solid var(--border); text-align:center; display:flex; flex-direction:column; align-items:center; }
   .footer-logo { width:70px; height:auto; margin-bottom:12px; }
@@ -356,7 +359,8 @@ window.addEventListener('load', () => {
             resultado: (h.resultado || '').toLowerCase(),
             duracion: h.duracion || null,
             lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null,
-            hechizos: Array.isArray(h.hechizos) ? h.hechizos : []
+            hechizos: Array.isArray(h.hechizos) ? h.hechizos : [],
+            duoCon: Array.isArray(h.duo_con) ? h.duo_con : []
           })),
           historialLP: p.progreso_lp || [],
           // Últimas 10 partidas — para los 3 tops superiores
@@ -376,7 +380,9 @@ window.addEventListener('load', () => {
           partidasSemana:         p.partidas_semana           || 0,
           maxPartidasEnUnDia:     p.max_partidas_en_un_dia    || 0,
           // FIX: primera_victoria_hoy es un objeto {timestamp, campeon, kda, hechizos, equipo, duracion}
-          primeraVictoriaHoy:     p.primera_victoria_hoy      || null
+          primeraVictoriaHoy:     p.primera_victoria_hoy      || null,
+          // Dúo más frecuente de la semana — {nombre, partidas} o null
+          duoSemana:              p.duo_semana                || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
@@ -542,6 +548,7 @@ window.addEventListener('load', () => {
     let tortuga=null, minPartidas=Infinity;
     let asistente=null, maxAsistencias=-1;
     let sinRendirse=null, maxDia=-1;
+    let duoPlayer=null, duoCompanero='', maxDuo=-1;
 
     const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
 
@@ -582,6 +589,10 @@ window.addEventListener('load', () => {
       if((p.asistenciasSemana||0) > maxAsistencias){ maxAsistencias=p.asistenciasSemana||0; asistente=p; }
       // Sin rendirse — más partidas jugadas HOY (desde 6AM España), mínimo 1
       if((p.maxPartidasEnUnDia||0) > maxDia){ maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
+      // Dúo Dinámico — la pareja que más veces jugó junta esta semana
+      if(p.duoSemana && (p.duoSemana.partidas||0) > maxDuo){
+        maxDuo=p.duoSemana.partidas; duoPlayer=p; duoCompanero=p.duoSemana.nombre;
+      }
     });
 
     if(!otpPlayer) otpPlayer=state.players[0];
@@ -621,6 +632,11 @@ window.addEventListener('load', () => {
         <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partida${maxDia===1?'':'s'} jugadas hoy</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado hoy todavía.</p></div></div>`;
 
+    const duoHtml=(duoPlayer&&maxDuo>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(duoPlayer.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🎮 Dúo Dinámico</p><p class="highlight-player">${duoPlayer.nombre.split('#')[0]} &amp; ${duoCompanero}</p><p class="highlight-value">${maxDuo} partida${maxDuo===1?'':'s'} juntos esta semana</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🎮</div><div class="highlight-body"><p class="highlight-label">Dúo Dinámico</p><p class="highlight-empty">Nadie ha jugado en dúo esta semana.</p></div></div>`;
+
     container.innerHTML = `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
@@ -641,7 +657,7 @@ window.addEventListener('load', () => {
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}`;
+      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}${duoHtml}`;
   }
 
   function getTrendArrow(p){
@@ -679,8 +695,10 @@ window.addEventListener('load', () => {
       const tierPretty =p.rango.charAt(0)+p.rango.slice(1).toLowerCase();
       const rankDisplay=DIVISIONLESS.includes((p.rango||'').toUpperCase())?tierPretty:`${tierPretty} ${p.division}`;
       const liveStatus =state.liveData[p.id]||{en_partida:false};
+      const duoTagHtml =(liveStatus.en_partida && Array.isArray(liveStatus.duo_con) && liveStatus.duo_con.length)
+        ?`<span class="duo-tag">🎮 con ${liveStatus.duo_con.join(', ')}</span>`:'';
       const statusHtml =liveStatus.en_partida
-        ?`<span class="status-chip in-game">En Partida</span>`
+        ?`<span class="status-chip in-game">En Partida</span>${duoTagHtml}`
         :`<span class="status-chip offline">Offline</span>`;
       const posClass  =i===0?'pos-1':i===1?'pos-2':i===2?'pos-3':'';
       const posContent=i===0?'👑':(i+1);
@@ -724,6 +742,7 @@ window.addEventListener('load', () => {
         <span>
           <div class="match-champ">${m.campeon}</div>
           <div class="match-kda">${m.kda} KDA</div>
+          ${m.duoCon&&m.duoCon.length?`<div class="match-duo">🎮 Dúo con ${m.duoCon.join(', ')}</div>`:''}
         </span>
         <span class="match-result-block">
           <span class="result-chip ${m.resultado}">${m.resultado==='victoria'?'Victoria':m.resultado==='remake'?'Remake':'Derrota'}</span>
