@@ -1,11 +1,11 @@
 {
-  "ultimaActualizacion": "2026-08-18T22:40:09.416949",
+  "ultimaActualizacion": "2026-08-18T22:55:40.571060",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
-      "rango": "Silver III",
-      "lp": 93,
+      "rango": "Silver II",
+      "lp": 12,
       "winrate": "52%",
       "rol_principal": "Top",
       "top_roles": [
@@ -36,7 +36,7 @@
         {
           "campeon": "Fiora",
           "nivel": 27,
-          "puntos": "268.196"
+          "puntos": "269.659"
         },
         {
           "campeon": "Irelia",
@@ -253,9 +253,23 @@
           "lp": 93,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-18T22:55:29Z",
+          "lp": 12,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742141953",
+          "campeon": "Fiora",
+          "kda": "3/7/8 (1.57)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 19
+        },
         {
           "match_id": "LA1_1742128573",
           "campeon": "Fiora",
@@ -327,29 +341,21 @@
           "resultado": "Derrota",
           "duracion": "24min",
           "lp_change": -21
-        },
-        {
-          "match_id": "LA1_1741956228",
-          "campeon": "Fiora",
-          "kda": "7/6/6 (2.17)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": 19
         }
       ],
-      "kills_recientes": 86,
+      "kills_recientes": 82,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 36,
-      "kills_semana": 234,
+      "vision_promedio_reciente": 38,
+      "kills_semana": 231,
       "pentakills_semana": 0,
       "vision_promedio_semana": 32,
-      "primeras_sangre_semana": 11,
-      "kda_promedio_semana": 2.51,
+      "primeras_sangre_semana": 10,
+      "kda_promedio_semana": 2.48,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 162,
+      "asistencias_semana": 163,
       "partidas_semana": 23,
-      "max_partidas_en_un_dia": 17,
+      "max_partidas_en_un_dia": 18,
       "primera_victoria_hoy": {
         "timestamp": 1786939299743,
         "campeon": "Fiora",
@@ -1508,8 +1514,8 @@
       "nombre": "Ostia#LAN",
       "icono": 1296,
       "rango": "Bronze II",
-      "lp": 23,
-      "winrate": "70%",
+      "lp": 53,
+      "winrate": "73%",
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -1539,7 +1545,7 @@
         {
           "campeon": "Lux",
           "nivel": 19,
-          "puntos": "212.353"
+          "puntos": "213.966"
         },
         {
           "campeon": "Swain",
@@ -1588,16 +1594,30 @@
           "lp": 23,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-18T22:55:29Z",
+          "lp": 53,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742141953",
+          "campeon": "Lux",
+          "kda": "5/1/11 (16.0)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 30
+        },
         {
           "match_id": "LA1_1742128573",
           "campeon": "Lux",
           "kda": "1/7/18 (2.71)",
           "resultado": "Derrota",
           "duracion": "42min",
-          "lp_change": null
+          "lp_change": 30
         },
         {
           "match_id": "LA1_1742124714",
@@ -1662,38 +1682,30 @@
           "resultado": "Derrota",
           "duracion": "29min",
           "lp_change": null
-        },
-        {
-          "match_id": "LA1_1741842426",
-          "campeon": "Lux",
-          "kda": "5/0/12 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "23min",
-          "lp_change": null
         }
       ],
       "kills_recientes": 36,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 43,
-      "kills_semana": 36,
+      "vision_promedio_reciente": 46,
+      "kills_semana": 41,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 43,
+      "vision_promedio_semana": 45,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.54,
+      "kda_promedio_semana": 2.78,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 101,
-      "partidas_semana": 10,
-      "max_partidas_en_un_dia": 0,
+      "asistencias_semana": 112,
+      "partidas_semana": 11,
+      "max_partidas_en_un_dia": 11,
       "primera_victoria_hoy": {
-        "timestamp": 1787043320707,
-        "campeon": "Veigar",
-        "kda": "6/9/11 (1.89)",
-        "equipo": "blue",
-        "duracion": "38:36",
+        "timestamp": 1786987393513,
+        "campeon": "Lux",
+        "kda": "5/0/12 (Perfect)",
+        "equipo": "red",
+        "duracion": "23:13",
         "hechizos": [
           "SummonerFlash",
-          "SummonerTeleport"
+          "SummonerDot"
         ]
       },
       "dia_referencia": 1786939200
