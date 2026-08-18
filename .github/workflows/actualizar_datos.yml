@@ -1,9 +1,7 @@
 name: Ranking y Estadisticas de LoL
 
 on:
-  workflow_dispatch: # Permite ejecución manual
-  schedule:
-    - cron: '*/10 * * * *' # Ejecuta el workflow automáticamente cada 10 minutos
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,10 +17,9 @@ jobs:
     timeout-minutes: 8
 
     steps:
+
       - name: Clonar el repositorio
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Necesario para evitar problemas en el rebase
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -42,21 +39,32 @@ jobs:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: python live_status.py
 
+      # Solo hace push de los JSON — sin deploy de Pages
+      # Los HTML leen los datos desde jsDelivr CDN directamente
       - name: Guardar JSON en GitHub
+        id: guardar
         if: always()
         run: |
-          # Usamos el usuario oficial del bot de GitHub Actions
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          
-          # Atrapamos todos los JSON modificados o creados (no falla si falta uno)
-          git add *.json || true
-          
-          # Hacemos commit solo si realmente hubo cambios en los JSON
-          git diff --staged --quiet || git commit -m "Actualización de datos 🤖 [skip ci]"
-          
-          # Sincronizamos con el repositorio remoto usando rebase (historial limpio, sin "theirs" destructivo)
-          git pull --rebase origin main
-          
-          # Empujamos a la rama main
-          git push origin main
+          git config --global user.name 'RiotBot'
+          git config --global user.email 'riotbot@github.com'
+          git add datos.json live_data.json
+          if git diff --staged --quiet; then
+            echo "hubo_cambios=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Actualizacion de datos [skip ci]"
+            # "ours" protege los datos recien generados en este run si hay
+            # un conflicto con el remoto (en vez de descartarlos)
+            git pull --no-rebase --strategy-option=ours origin main
+            git push origin main
+            echo "hubo_cambios=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # jsDelivr cachea los archivos servidos vía @main durante horas,
+      # así que sin esto la web puede seguir mostrando datos viejos aunque
+      # el push ya se haya hecho. Esto fuerza a jsDelivr a refrescar su
+      # copia justo después de cada push.
+      - name: Purgar caché de jsDelivr
+        if: always() && steps.guardar.outputs.hubo_cambios == 'true'
+        run: |
+          curl -sf "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/datos.json" || true
+          curl -sf "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/live_data.json" || true
