@@ -49,6 +49,41 @@
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
 
+  /* Primera Victoria del Día — card ancha */
+  .first-win-card {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 20px;
+    background: var(--panel);
+    border: 1px solid rgba(251,191,36,.4);
+    box-shadow: 0 0 24px rgba(251,191,36,.12);
+    border-radius: var(--radius); padding: 20px 24px;
+    flex-wrap: wrap; position: relative; overflow: hidden;
+  }
+  .first-win-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(251,191,36,.07), transparent 60%);
+    pointer-events: none;
+  }
+  .first-win-badge {
+    position: absolute; top: 0; left: 0;
+    background: var(--gold); color: #000;
+    font-size: 10px; font-weight: 800; padding: 4px 12px;
+    border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: .08em;
+  }
+  .first-win-avatar { width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--gold); object-fit: cover; flex-shrink: 0; }
+  .first-win-champ  { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
+  .first-win-info   { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .first-win-name   { font-size: 17px; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .first-win-kda    { font-size: 12px; color: var(--text-faint); font-weight: 600; }
+  .first-win-meta   { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-wrap: wrap; }
+  .first-win-spells { display: flex; gap: 5px; }
+  .first-win-spells img { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); }
+  .first-win-side   { font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 7px; text-transform: uppercase; }
+  .first-win-side.blue { color: #60a5fa; background: rgba(96,165,250,.12); border: 1px solid rgba(96,165,250,.3); }
+  .first-win-side.red  { color: #f87171; background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.3); }
+  .first-win-dur    { font-size: 12px; color: var(--text-faint); font-weight: 700; }
+  .first-win-time   { font-size: 12px; color: var(--gold); font-weight: 800; }
+
   .otp-champ-info { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
   .champ-icon-small { width: 20px; height: 20px; border-radius: 4px; object-fit: cover; }
 
@@ -330,7 +365,8 @@ window.addEventListener('load', () => {
           lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, rol: p.rol_principal || 'N/A',
           partidas: (p.historial || []).map(h => ({
             campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion,
-            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null
+            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null,
+            duracion: h.duracion || null
           })),
           historialLP: p.progreso_lp || [],
           killsSemana: p.kills_semana || 0,
@@ -339,7 +375,11 @@ window.addEventListener('load', () => {
           primerasSangreSemana: p.primeras_sangre_semana || 0,
           kdaPromedioSemana: p.kda_promedio_semana || 0,
           kdaPerfectoSemana: !!p.kda_perfecto_semana,
-          campeonesGanadosSemana: p.campeones_ganados_semana || 0
+          campeonesGanadosSemana: p.campeones_ganados_semana || 0,
+          asistenciasSemana: p.asistencias_semana || 0,
+          partidasSemana: p.partidas_semana || 0,
+          maxPartidasEnUnDia: p.max_partidas_en_un_dia || 0,
+          primeraVictoriaHoy: p.primera_victoria_hoy || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
@@ -409,12 +449,58 @@ window.addEventListener('load', () => {
 
   function renderHighlights() {
     if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
+
+    // Primera victoria del día — va primero en la pirámide
+    let primeraVictoriaTop = null, primeraVictoriaHoraTop = null;
+    state.players.forEach(p => {
+      const pv = p.primeraVictoriaHoy;
+      if (pv && typeof pv === 'object' && pv.timestamp) {
+        if (!primeraVictoriaTop || pv.timestamp < primeraVictoriaHoraTop) {
+          primeraVictoriaTop = p;
+          primeraVictoriaHoraTop = pv.timestamp;
+        }
+      }
+    });
+    let primeraVictoriaHtml;
+    if (primeraVictoriaTop && primeraVictoriaTop.primeraVictoriaHoy && typeof primeraVictoriaTop.primeraVictoriaHoy === 'object') {
+      const pv      = primeraVictoriaTop.primeraVictoriaHoy;
+      const pvHora  = new Date(pv.timestamp).toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});
+      const pvChamp = (pv.campeon || '').replace(/[^a-zA-Z0-9]/g, '');
+      const spellsHtml = (pv.hechizos || []).map(h =>
+        `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+      ).join('');
+      const sideClass = pv.equipo === 'blue' ? 'blue' : 'red';
+      const sideLabel = pv.equipo === 'blue' ? 'Lado Azul' : 'Lado Rojo';
+      primeraVictoriaHtml = `
+        <div class="first-win-card">
+          <span class="first-win-badge">🌅 Primera Victoria del Día</span>
+          <img class="first-win-avatar" src="${getAvatarUrl(primeraVictoriaTop.icono)}" alt="Avatar" style="margin-top:12px;">
+          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${pvChamp}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
+          <div class="first-win-info" style="margin-top:12px;">
+            <span class="first-win-name">${primeraVictoriaTop.nombre.split('#')[0]}</span>
+            <span class="first-win-kda">${pv.campeon} · ${pv.kda} KDA</span>
+          </div>
+          <div class="first-win-meta">
+            <div class="first-win-spells">${spellsHtml}</div>
+            <span class="first-win-side ${sideClass}">${sideLabel}</span>
+            <span class="first-win-dur">${pv.duracion}</span>
+            <span class="first-win-time">${pvHora} h</span>
+          </div>
+        </div>`;
+    } else {
+      primeraVictoriaHtml = `
+        <div class="first-win-card" style="justify-content:center; opacity:.6;">
+          <div class="highlight-icon">🌅</div>
+          <div class="highlight-body"><p class="highlight-label">Primera Victoria del Día</p><p class="highlight-empty">Nadie ha ganado hoy todavía.</p></div>
+        </div>`;
+    }
+
     const categorias = [
       { icon: '⚔️', label: 'Top Asesino',   campo: 'killsSemana',        sufijo: 'kills',       vacio: 'Nadie ha registrado kills todavía.' },
       { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsSemana',   sufijo: 'pentakills',  vacio: 'Nadie ha hecho un penta… todavía 👀' },
       { icon: '👁️', label: 'Top Observador', campo: 'visionPromedioSemana', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
     ];
-    highlightsContainerEl.innerHTML = categorias.map(cat => {
+    const categoriasHtml = categorias.map(cat => {
       const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
       const valor = lider ? (lider[cat.campo] || 0) : 0;
       if (!lider || valor <= 0) return `
@@ -432,6 +518,12 @@ window.addEventListener('load', () => {
           </div>
         </div>`;
     }).join('');
+
+    highlightsContainerEl.innerHTML = `
+      <div style="grid-column:1/-1; display:flex; justify-content:center;">
+        <div style="width:100%; max-width:340px;">${primeraVictoriaHtml}</div>
+      </div>
+      ${categoriasHtml}`;
   }
 
   function renderWeeklyHighlights() {
@@ -446,6 +538,11 @@ window.addEventListener('load', () => {
     let agresivo = null, maxSangre = -1;
     let kdaPlayer = null, maxKda = -1, kdaPlayerPerfecto = false;
     let champPoolMaster = null, maxChamps = -1;
+    // Badges nuevos
+    let tortuga = null, minPartidas = Infinity;
+    let asistente = null, maxAsistencias = -1;
+    let sinRendirse = null, maxDia = -1;
+    let primeraVictoria = null, primeraVictoriaHora = null;
 
     state.players.forEach(p => {
       if (p.partidas && p.partidas.length > 0) {
@@ -475,6 +572,17 @@ window.addEventListener('load', () => {
       if ((p.primerasSangreSemana || 0) > maxSangre)    { maxSangre = p.primerasSangreSemana || 0; agresivo = p; }
       if ((p.kdaPromedioSemana || 0) > maxKda)           { maxKda = p.kdaPromedioSemana || 0; kdaPlayer = p; kdaPlayerPerfecto = p.kdaPerfectoSemana; }
       if ((p.campeonesGanadosSemana || 0) > maxChamps)   { maxChamps = p.campeonesGanadosSemana || 0; champPoolMaster = p; }
+      // Badges nuevos
+      if (p.partidasSemana > 0 && p.partidasSemana < minPartidas) { minPartidas = p.partidasSemana; tortuga = p; }
+      if ((p.asistenciasSemana || 0) > maxAsistencias)   { maxAsistencias = p.asistenciasSemana || 0; asistente = p; }
+      if ((p.maxPartidasEnUnDia || 0) > maxDia)          { maxDia = p.maxPartidasEnUnDia || 0; sinRendirse = p; }
+      const pv2 = p.primeraVictoriaHoy;
+      if (pv2 && typeof pv2 === 'object' && pv2.timestamp) {
+        if (!primeraVictoria || pv2.timestamp < primeraVictoriaHora) {
+          primeraVictoria = p;
+          primeraVictoriaHora = pv2.timestamp;
+        }
+      }
     });
 
     if (!otpPlayer)       otpPlayer       = state.players[0];
@@ -522,7 +630,34 @@ window.addEventListener('load', () => {
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="Avatar">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}${kdaHtml}${championPoolHtml}`;
+      ${agresivoHtml}${kdaHtml}${championPoolHtml}
+      ${tortuga ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(tortuga.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">🐢 El Tortuga</p>
+          <p class="highlight-player">${tortuga.nombre}</p>
+          <p class="highlight-value">${minPartidas} partida${minPartidas === 1 ? '' : 's'} esta semana</p>
+        </div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">🐢</div><div class="highlight-body"><p class="highlight-label">El Tortuga</p><p class="highlight-empty">Nadie ha jugado esta semana aún.</p></div></div>`}
+      ${asistente && maxAsistencias > 0 ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(asistente.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">🤝 El Asistente</p>
+          <p class="highlight-player">${asistente.nombre}</p>
+          <p class="highlight-value">${maxAsistencias} asistencias esta semana</p>
+        </div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`}
+      ${sinRendirse && maxDia >= 3 ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">😤 Sin rendirse</p>
+          <p class="highlight-player">${sinRendirse.nombre}</p>
+          <p class="highlight-value">${maxDia} partidas en un solo día</p>
+        </div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado 3+ partidas en un día aún.</p></div></div>`}`;
   }
 
   function getTrendArrow(p){
@@ -604,7 +739,9 @@ window.addEventListener('load', () => {
         </span>
         <span class="match-result-block">
           <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
-          ${m.lpChange !== null ? `<span class="lp-change ${m.lpChange >= 0 ? 'win' : 'loss'}">${m.lpChange >= 0 ? '+' : ''}${m.lpChange} LP</span>` : ''}
+          ${m.lpChange !== null
+            ? `<span class="lp-change ${m.lpChange >= 0 ? 'win' : 'loss'}">${m.lpChange >= 0 ? '+' : ''}${m.lpChange} LP</span>`
+            : m.duracion ? `<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>` : ''}
         </span>
       </div>`).join('');
     historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
