@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import calendar
 import requests
 from urllib.parse import quote
 from datetime import datetime
@@ -284,15 +285,15 @@ def obtener_datos():
             partidas_por_dia             = {}   # "YYYY-MM-DD" → count
             primera_victoria_hoy         = None  # ISO timestamp de la primera victoria del día actual (hora España)
 
-            # Hora actual en España (UTC+1 invierno / UTC+2 verano) — offset simple
-            import calendar
-            ahora_utc   = datetime.utcnow()
-            # Offset España: CET=+1, CEST=+2 (verano: último dom. marzo – último dom. octubre)
+            # Inicio del día de hoy en España convertido a timestamp UTC
+            # España es UTC+2 en verano (abril-oct) y UTC+1 en invierno
+            ahora_utc = datetime.utcnow()
             mes = ahora_utc.month
-            offset_h = 2 if 3 < mes < 10 else (1 if mes != 3 and mes != 10 else 1)
-            hoy_es = (ahora_utc.replace(hour=0, minute=0, second=0, microsecond=0))
-            # Inicio del día de hoy en España en timestamp UTC
-            inicio_hoy_utc = calendar.timegm(hoy_es.timetuple()) - offset_h * 3600
+            offset_h = 2 if 3 < mes < 10 else 1   # CEST=+2, CET=+1
+            # Medianoche de hoy en hora España = medianoche UTC menos el offset
+            # Ej: medianoche España (00:00 CEST) = 22:00 UTC del día anterior
+            hoy_es_midnight_utc = ahora_utc.replace(hour=0, minute=0, second=0, microsecond=0)
+            inicio_hoy_utc = calendar.timegm(hoy_es_midnight_utc.timetuple()) - offset_h * 3600
 
             for match_id in ids_semana:
                 md = detalles_por_id.get(match_id)
