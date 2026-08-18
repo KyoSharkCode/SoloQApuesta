@@ -285,6 +285,7 @@ window.addEventListener('load', () => {
   const params    = new URLSearchParams(window.location.search);
   const jugadorId = params.get('jugador');
 
+  const CDN        = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
   const REFRESH_MS = 30000;
   let lastUpdate   = null;
   let loadedOnce   = false;
@@ -515,7 +516,6 @@ window.addEventListener('load', () => {
   async function checkLiveStatus() {
     const box = document.getElementById('live-status-box');
     try {
-      const CDN = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
       const liveRes = await fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache: 'no-store' });
       if (!liveRes.ok) return;
       const liveData   = await liveRes.json();
