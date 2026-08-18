@@ -301,17 +301,28 @@ def obtener_datos():
                     md = detalles_por_id.get(match_id)
                     if not md:
                         continue
-                    # Ignorar remakes — partidas de menos de 3:30 min
-                    if md["info"].get("gameDuration", 999) < 210:
-                        continue
                     pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
                     if not pp:
                         continue
 
-                    k, d, a     = pp["kills"], pp["deaths"], pp["assists"]
-                    kda         = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
+                    dur_seg     = md["info"].get("gameDuration", 999)
                     campeon_jug = pp["championName"]
-                    rol_api     = pp.get("teamPosition", "")
+
+                    # Remake — aparece en historial pero NO suma stats
+                    if dur_seg < 210:
+                        historial.append({
+                            "match_id":  match_id,
+                            "campeon":   campeon_jug,
+                            "kda":       "—",
+                            "resultado": "Remake",
+                            "duracion":  f"{dur_seg // 60}:{dur_seg % 60:02d}",
+                            "lp_change": None,
+                        })
+                        continue
+
+                    k, d, a = pp["kills"], pp["deaths"], pp["assists"]
+                    kda     = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
+                    rol_api = pp.get("teamPosition", "")
                     if rol_api in roles_count:
                         roles_count[rol_api] += 1
                     campeones_count[campeon_jug] = campeones_count.get(campeon_jug, 0) + 1
@@ -326,7 +337,7 @@ def obtener_datos():
                         "campeon":   campeon_jug,
                         "kda":       f"{k}/{d}/{a} ({kda})",
                         "resultado": "Victoria" if pp["win"] else "Derrota",
-                        "duracion":  f"{md['info']['gameDuration'] // 60}min",
+                        "duracion":  f"{dur_seg // 60}min",
                         "lp_change": lp_change,
                     })
 
