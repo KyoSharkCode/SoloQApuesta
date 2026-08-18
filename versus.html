@@ -321,7 +321,9 @@ function crestUrl(rango)    {
 function cleanChamp(name)   { return (name||'').replace(/[^a-zA-Z0-9]/g,''); }
 
 async function loadData() {
-  const res = await fetch(`datos.json?t=${Date.now()}`, { cache:'no-store' });
+  // jsDelivr CDN — datos disponibles ~1 min después del push, sin esperar deploy de Pages
+  const CDN = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
+  const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' });
   const raw = await res.json();
   const list = Array.isArray(raw) ? raw : (raw.jugadores || []);
   allPlayers = list.map(p => {
