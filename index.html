@@ -110,6 +110,10 @@
   .result-chip{ font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; text-transform:uppercase; text-align: center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); }
+  .match-result-block{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+  .lp-change{ font-size:11px; font-weight:800; }
+  .lp-change.win{ color:var(--win); }
+  .lp-change.loss{ color:var(--loss); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
   
   .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
@@ -282,12 +286,17 @@ window.addEventListener('load', () => {
           rango: rankParts[0], division: rankParts.slice(1).join(' '),
           lp: p.lp || 0, winrate: parseInt(p.winrate) || 0, rol: p.rol_principal || 'N/A',
           partidas: (p.historial || []).map(h => ({
-            campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion
+            campeon: h.campeon, kda: h.kda, resultado: (h.resultado || '').toLowerCase(), duracion: h.duracion,
+            lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null
           })),
           historialLP: p.progreso_lp || [],
-          killsRecientes: p.kills_recientes || 0,
-          pentakillsRecientes: p.pentakills_recientes || 0,
-          visionPromedio: p.vision_promedio || 0
+          killsSemana: p.kills_semana || 0,
+          pentakillsSemana: p.pentakills_semana || 0,
+          visionPromedioSemana: p.vision_promedio_semana || 0,
+          primerasSangreSemana: p.primeras_sangre_semana || 0,
+          kdaPromedioSemana: p.kda_promedio_semana || 0,
+          kdaPerfectoSemana: !!p.kda_perfecto_semana,
+          campeonesGanadosSemana: p.campeones_ganados_semana || 0
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
@@ -364,9 +373,9 @@ window.addEventListener('load', () => {
   function renderHighlights() {
     if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
     const categorias = [
-      { icon: '⚔️', label: 'Top Asesino', campo: 'killsRecientes', sufijo: 'kills', vacio: 'Nadie ha registrado kills todavía.' },
-      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsRecientes', sufijo: 'pentakills', vacio: 'Nadie ha hecho un penta… todavía 👀' },
-      { icon: '👁️', label: 'Top Observador', campo: 'visionPromedio', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
+      { icon: '⚔️', label: 'Top Asesino', campo: 'killsSemana', sufijo: 'kills', vacio: 'Nadie ha registrado kills todavía.' },
+      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsSemana', sufijo: 'pentakills', vacio: 'Nadie ha hecho un penta… todavía 👀' },
+      { icon: '👁️', label: 'Top Observador', campo: 'visionPromedioSemana', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
     ];
     highlightsContainerEl.innerHTML = categorias.map(cat => {
       const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
@@ -455,6 +464,68 @@ window.addEventListener('load', () => {
 
     const otpChampImg = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
 
+    // NUEVO: Agresivo (más primeras sangres), KDA Player (mejor KDA prom.) y Maestro del Champion Pool (más campeones distintos ganados) — todo en ventana de 7 días
+    let agresivo = null, maxSangre = -1;
+    let kdaPlayer = null, maxKda = -1, kdaPlayerPerfecto = false;
+    let champPoolMaster = null, maxChamps = -1;
+
+    state.players.forEach(p => {
+      if ((p.primerasSangreSemana || 0) > maxSangre) { maxSangre = p.primerasSangreSemana || 0; agresivo = p; }
+      if ((p.kdaPromedioSemana || 0) > maxKda) { maxKda = p.kdaPromedioSemana || 0; kdaPlayer = p; kdaPlayerPerfecto = p.kdaPerfectoSemana; }
+      if ((p.campeonesGanadosSemana || 0) > maxChamps) { maxChamps = p.campeonesGanadosSemana || 0; champPoolMaster = p; }
+    });
+
+    const agresivoHtml = (agresivo && maxSangre > 0) ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">Agresivo</p>
+          <p class="highlight-player">${agresivo.nombre}</p>
+          <p class="highlight-value">${maxSangre} primera${maxSangre === 1 ? '' : 's'} sangre</p>
+        </div>
+      </div>` : `
+      <div class="highlight-card">
+        <div class="highlight-icon">🩸</div>
+        <div class="highlight-body">
+          <p class="highlight-label">Agresivo</p>
+          <p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p>
+        </div>
+      </div>`;
+
+    const kdaHtml = (kdaPlayer && maxKda > 0) ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">KDA Player</p>
+          <p class="highlight-player">${kdaPlayer.nombre}</p>
+          <p class="highlight-value">${kdaPlayerPerfecto ? 'Perfect' : maxKda} KDA</p>
+        </div>
+      </div>` : `
+      <div class="highlight-card">
+        <div class="highlight-icon">📊</div>
+        <div class="highlight-body">
+          <p class="highlight-label">KDA Player</p>
+          <p class="highlight-empty">Sin partidas suficientes esta semana.</p>
+        </div>
+      </div>`;
+
+    const championPoolHtml = (champPoolMaster && maxChamps > 0) ? `
+      <div class="highlight-card">
+        <img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="Avatar">
+        <div class="highlight-body">
+          <p class="highlight-label">Maestro del Champion Pool</p>
+          <p class="highlight-player">${champPoolMaster.nombre}</p>
+          <p class="highlight-value">${maxChamps} campeones distintos ganados</p>
+        </div>
+      </div>` : `
+      <div class="highlight-card">
+        <div class="highlight-icon">🎭</div>
+        <div class="highlight-body">
+          <p class="highlight-label">Maestro del Champion Pool</p>
+          <p class="highlight-empty">Nadie ha ganado esta semana todavía.</p>
+        </div>
+      </div>`;
+
     container.innerHTML = `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="Avatar">
@@ -483,8 +554,12 @@ window.addEventListener('load', () => {
           <p class="highlight-value" style="color: #fbbf24;">¿Le tienes miedo a la Pala?🪏</p>
         </div>
       </div>
+      ${agresivoHtml}
+      ${kdaHtml}
+      ${championPoolHtml}
     `;
   }
+
 
   function getTrendArrow(p){
     const hist = (p.historialLP || []).filter(pt => pt.fecha);
@@ -581,7 +656,10 @@ window.addEventListener('load', () => {
           <div class="match-champ">${m.campeon}</div>
           <div class="match-kda">${m.kda} KDA</div>
         </span>
-        <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
+        <span class="match-result-block">
+          <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
+          ${m.lpChange !== null ? `<span class="lp-change ${m.lpChange >= 0 ? 'win' : 'loss'}">${m.lpChange >= 0 ? '+' : ''}${m.lpChange} LP</span>` : ''}
+        </span>
       </div>
     `).join('');
     historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
