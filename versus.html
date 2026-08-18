@@ -74,15 +74,18 @@
     position:absolute; inset:0;
     background:linear-gradient(180deg, transparent 0%, var(--panel) 100%);
   }
-  .card-splash .splash-avatar {
-    position:absolute; bottom:-20px; left:50%;
-    transform:translateX(-50%);
+  /* avatar fuera del overflow:hidden — lo movemos al card-body */
+  .avatar-wrapper {
+    display:flex; justify-content:center;
+    margin-top:-36px; margin-bottom:12px; position:relative; z-index:2;
+  }
+  .splash-avatar {
     width:72px; height:72px; border-radius:18px;
     border:3px solid var(--accent); object-fit:cover;
-    z-index:2;
+    display:block;
   }
 
-  .card-body { padding:32px 20px 24px; text-align:center; }
+  .card-body { padding:0 20px 24px; text-align:center; }
   .card-name { font-size:17px; font-weight:800; margin:0 0 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .card-tier { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--text-faint); text-transform:uppercase; margin-bottom:16px; }
   .card-tier img { width:22px; height:22px; object-fit:contain; }
@@ -217,9 +220,11 @@
         <div class="card-splash">
           <img class="splash-img" id="splash-left" src="" alt="">
           <div class="splash-overlay"></div>
-          <img class="splash-avatar" id="avatar-left" src="" alt="">
         </div>
         <div class="card-body">
+          <div class="avatar-wrapper">
+            <img class="splash-avatar" id="avatar-left" src="" alt="">
+          </div>
           <p class="card-name" id="name-left">—</p>
           <div class="card-tier">
             <img id="crest-left" src="" alt="">
@@ -239,9 +244,11 @@
         <div class="card-splash">
           <img class="splash-img" id="splash-right" src="" alt="">
           <div class="splash-overlay"></div>
-          <img class="splash-avatar" id="avatar-right" src="" alt="">
         </div>
         <div class="card-body">
+          <div class="avatar-wrapper">
+            <img class="splash-avatar" id="avatar-right" src="" alt="">
+          </div>
           <p class="card-name" id="name-right">—</p>
           <div class="card-tier">
             <img id="crest-right" src="" alt="">
@@ -305,7 +312,7 @@ function eloScore(rango, division, lp) {
 }
 
 function avatarUrl(iconId)  { return `${DDRAGON}/img/profileicon/${iconId}.png`; }
-function champSplash(name)  { return `${DDRAGON.replace('14.20.1','')}/img/champion/splash/${name}_0.jpg`; }
+function champSplash(name)  { return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name}_0.jpg`; }
 function champIcon(name)    { return `${DDRAGON}/img/champion/${name}.png`; }
 function crestUrl(rango)    {
   const t = (rango||'unranked').split(' ')[0].toLowerCase();
