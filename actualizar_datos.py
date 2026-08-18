@@ -147,7 +147,11 @@ def obtener_datos():
             print(f"⚠️ No se pudo leer datos.json anterior: {e}")
 
     lista_final  = []
-    fecha_actual = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    # FIX: se guarda explícitamente en UTC con sufijo "Z". Antes se usaba
+    # datetime.now() sin zona horaria, y el navegador (JS) interpretaba esa
+    # fecha como hora LOCAL del usuario en vez de UTC, desfasando ~1-2h
+    # todo el historial de LP y los filtros de "última semana" en el front.
+    fecha_actual = ahora_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
 
     for jugador in JUGADORES:
         nombre_completo = f"{jugador['name']}#{jugador['tag']}"
@@ -252,7 +256,6 @@ def obtener_datos():
                 # Recalcular partidas de HOY y primera victoria desde historial guardado
                 # El historial guarda match_id pero no timestamp — usamos primera_victoria_hoy
                 # anterior si su timestamp sigue siendo de hoy (>= inicio_dia_utc)
-                partidas_hoy_count   = 0
                 primera_victoria_hoy = None
 
                 pv_anterior = anterior.get("primera_victoria_hoy")
@@ -270,9 +273,18 @@ def obtener_datos():
                     es_remake = dur_seg < 210
                     if es_hoy and not es_remake:
                         primera_victoria_hoy = pv_anterior
-                        partidas_hoy_count   = anterior.get("max_partidas_en_un_dia", 0)
 
-                max_partidas_en_un_dia = partidas_hoy_count
+                # FIX: max_partidas_en_un_dia YA NO depende de si hubo
+                # victoria hoy — antes, un jugador con partidas jugadas
+                # hoy pero sin ninguna victoria veía este contador
+                # reseteado a 0 en cada corrida sin partidas nuevas.
+                # Se conserva el conteo anterior mientras siga siendo el
+                # mismo "día" de referencia (6AM España); si cambió de
+                # día, se resetea a 0.
+                if anterior.get("dia_referencia") == inicio_dia_utc:
+                    max_partidas_en_un_dia = anterior.get("max_partidas_en_un_dia", 0)
+                else:
+                    max_partidas_en_un_dia = 0
 
             # ════════════════════════════════════════════════════════════════
             # CASO B: Hay partidas nuevas — descargar y procesar todo
@@ -447,6 +459,10 @@ def obtener_datos():
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
                 "primera_victoria_hoy":      primera_victoria_hoy,
+                # FIX: referencia del "día" (6AM España) usado para calcular
+                # max_partidas_en_un_dia — permite saber si ese conteo sigue
+                # siendo válido en la siguiente corrida o si ya es otro día.
+                "dia_referencia":            inicio_dia_utc,
             })
             print(f"  ✓ {nombre_completo} actualizado correctamente.")
 
@@ -468,6 +484,7 @@ def obtener_datos():
                 anterior.setdefault("partidas_semana",          0)
                 anterior.setdefault("max_partidas_en_un_dia",   0)
                 anterior.setdefault("primera_victoria_hoy",     None)
+                anterior.setdefault("dia_referencia",           None)
                 lista_final.append(anterior)
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
