@@ -59,7 +59,8 @@
   .section-title span{ font-size:12px; color:var(--text-faint); }
   section{margin-bottom:52px;}
 
-  .ranking{ display:flex; flex-direction:column; gap:6px; }
+  .ranking-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .ranking{ display:flex; flex-direction:column; gap:6px; min-width:580px; }
   .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 110px 90px 150px 80px 110px; gap:14px; align-items:center; }
   .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
 
@@ -130,6 +131,45 @@
   .site-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; }
   .footer-logo { width: 70px; height: auto; margin-bottom: 12px; }
   .site-footer p { margin: 0; font-size: 14px; color: var(--text-dim); font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width:700px){
+    .wrap{ padding:28px 12px 60px; }
+    .rank-head{ display:none; }
+    .rank-row{
+      grid-template-columns:32px 1fr auto;
+      grid-template-rows:auto auto;
+      gap:6px 10px;
+      padding:12px 14px;
+    }
+    /* pos | nombre | status — fila 1 */
+    .rank-row > *:nth-child(1){ grid-column:1; grid-row:1; }
+    .rank-row > *:nth-child(2){ grid-column:2; grid-row:1; }
+    .rank-row > *:nth-child(3){ grid-column:3; grid-row:1; }
+    /* rol | tier | lp | wr — fila 2, todos juntos bajo el nombre */
+    .rank-row > *:nth-child(4){ grid-column:2; grid-row:2; }
+    .rank-row > *:nth-child(5){ grid-column:2; grid-row:2; display:none; }
+    .rank-row > *:nth-child(6){ grid-column:2; grid-row:2; display:none; }
+    .rank-row > *:nth-child(7){ grid-column:3; grid-row:2; }
+    /* fila 2: rol + tier juntos */
+    .rank-row > *:nth-child(4){ display:flex; flex-wrap:wrap; gap:6px; }
+    /* ocultar winrate bar y LP en móvil para no saturar */
+    .rank-row > *:nth-child(6){ display:none; }
+    .wr-bar{ display:none; }
+    .wr-top{ font-size:11px; }
+    /* highlights en 1 columna */
+    .highlights-grid{ grid-template-columns:1fr 1fr; }
+    /* timer más compacto */
+    .timer-box{ min-width:60px; padding:10px 12px; }
+    .timer-val{ font-size:22px; }
+    /* top1 card en columna */
+    .top1-card{ flex-wrap:wrap; }
+    .top1-stats{ margin-left:0; text-align:left; }
+    header{ flex-direction:column; align-items:flex-start; gap:12px; }
+  }
+  @media (max-width:420px){
+    .highlights-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -167,10 +207,12 @@
         <option value="IRON">Iron</option>
       </select>
     </div>
-    <div class="rank-head">
-      <span>#</span> <span>Jugador</span> <span></span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
+    <div class="ranking-scroll">
+      <div class="rank-head">
+        <span>#</span> <span>Jugador</span> <span></span> <span>Rol (10p)</span> <span>Rango</span> <span>LP</span> <span>Winrate</span>
+      </div>
+      <div class="ranking" id="ranking-list"></div>
     </div>
-    <div class="ranking" id="ranking-list"></div>
   </section>
 
   <section id="seccion-historial">
