@@ -169,6 +169,33 @@
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); border:1px solid rgba(248,113,113,.3); }
 
   #error-msg { text-align:center; padding:50px; color:var(--loss); font-weight:bold; display:none; }
+
+  /* GRÁFICA LP */
+  .lp-chart-section { margin-top:32px; }
+  .lp-chart-section h3 { font-size:18px; font-weight:800; margin-bottom:16px; }
+  .lp-chart-wrap {
+    background:var(--panel); border:1px solid var(--border);
+    border-radius:var(--radius); padding:20px 20px 14px;
+  }
+  .lp-chart-header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .lp-chart-header .lp-label {
+    font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--text-faint);
+  }
+  .lp-chart-header .lp-delta {
+    font-size:13px; font-weight:800;
+  }
+  .lp-chart-header .lp-delta.up   { color:var(--win); }
+  .lp-chart-header .lp-delta.down { color:var(--loss); }
+  .lp-chart-header .lp-delta.flat { color:var(--text-faint); }
+  #lp-canvas { display:block; width:100%; height:90px; }
+  .lp-chart-footer {
+    display:flex; justify-content:space-between;
+    font-size:11px; color:var(--text-faint); margin-top:6px;
+  }
 </style>
 </head>
 <body>
@@ -229,6 +256,22 @@
     <div class="history-section">
       <h3>Últimas Partidas (Solo/Duo)</h3>
       <div class="matches" id="box-history"></div>
+    </div>
+
+    <!-- GRÁFICA LP 7 DÍAS -->
+    <div class="lp-chart-section" id="lp-chart-section" style="display:none;">
+      <h3>Progreso de LP — últimos 7 días</h3>
+      <div class="lp-chart-wrap">
+        <div class="lp-chart-header">
+          <span class="lp-label" id="lp-range-label">—</span>
+          <span class="lp-delta" id="lp-delta">—</span>
+        </div>
+        <canvas id="lp-canvas" height="90"></canvas>
+        <div class="lp-chart-footer">
+          <span id="lp-date-start">Hace 7 días</span>
+          <span id="lp-date-end">Hoy</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -567,6 +610,9 @@ window.addEventListener('load', () => {
       // Cargar todos los jugadores para comparar badges
       renderBadges(p, jugadores);
 
+      // Gráfica LP
+      renderLpChart(p.progreso_lp || []);
+
       document.getElementById('profile-content').style.display = 'block';
       document.getElementById('error-msg').style.display       = 'none';
       loadedOnce = true;
@@ -577,6 +623,114 @@ window.addEventListener('load', () => {
       }
       console.error(error);
     }
+  }
+
+  function renderLpChart(progreso_lp) {
+    const TIER_ORDER   = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
+    const DIVISIONLESS = ['MASTER','GRANDMASTER','CHALLENGER'];
+    const DIV_NUM      = {'IV':0,'III':1,'II':2,'I':3};
+    const MASTER_BASE  = 7*4*100;
+
+    function eloScore(rango, division, lp) {
+      const tier = (rango||'').toUpperCase();
+      const ti   = TIER_ORDER.indexOf(tier);
+      if (ti === -1) return null;
+      if (DIVISIONLESS.includes(tier)) return MASTER_BASE + Math.max(0, lp||0);
+      const dn = DIV_NUM[(division||'').toUpperCase()];
+      if (dn === undefined) return null;
+      return (ti*4+dn)*100 + Math.max(0, Math.min(100, lp||0));
+    }
+
+    // Filtrar últimos 7 días
+    const now     = Date.now();
+    const semana  = 7 * 24 * 60 * 60 * 1000;
+    const puntos  = (progreso_lp || [])
+      .filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime()) <= semana)
+      .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
+      .map(pt => ({
+        fecha: new Date(pt.fecha),
+        score: eloScore(pt.rango, pt.division, pt.lp),
+        lp:    pt.lp,
+        rango: pt.rango,
+        div:   pt.division,
+      }))
+      .filter(pt => pt.score !== null);
+
+    const section = document.getElementById('lp-chart-section');
+    if (puntos.length < 2) { section.style.display = 'none'; return; }
+    section.style.display = 'block';
+
+    // Delta total
+    const first = puntos[0].score;
+    const last  = puntos[puntos.length - 1].score;
+    const delta = last - first;
+    const deltaEl = document.getElementById('lp-delta');
+    if (delta > 0)       { deltaEl.textContent = `+${delta} LP`; deltaEl.className = 'lp-delta up'; }
+    else if (delta < 0)  { deltaEl.textContent = `${delta} LP`;  deltaEl.className = 'lp-delta down'; }
+    else                 { deltaEl.textContent = `Sin cambio`;    deltaEl.className = 'lp-delta flat'; }
+
+    // Fechas en footer
+    const fmtDate = d => `${d.getDate()}/${d.getMonth()+1}`;
+    document.getElementById('lp-date-start').textContent = fmtDate(puntos[0].fecha);
+    document.getElementById('lp-date-end').textContent   = fmtDate(puntos[puntos.length-1].fecha);
+    document.getElementById('lp-range-label').textContent =
+      `${puntos[0].rango} ${puntos[0].div||''} → ${puntos[puntos.length-1].rango} ${puntos[puntos.length-1].div||''}`.trim();
+
+    // Dibujar canvas
+    const canvas  = document.getElementById('lp-canvas');
+    const dpr     = window.devicePixelRatio || 1;
+    const W       = canvas.parentElement.clientWidth - 40; // padding 20px c/lado
+    const H       = 90;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const scores = puntos.map(p => p.score);
+    const minS   = Math.min(...scores);
+    const maxS   = Math.max(...scores);
+    const rangeS = maxS - minS || 1;
+
+    const PAD_X = 4, PAD_Y = 8;
+    const toX   = i => PAD_X + (i / (puntos.length - 1)) * (W - PAD_X * 2);
+    const toY   = s => PAD_Y + (1 - (s - minS) / rangeS) * (H - PAD_Y * 2);
+
+    // Gradiente de relleno bajo la línea
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, 'rgba(139,92,246,0.25)');
+    grad.addColorStop(1, 'rgba(139,92,246,0)');
+
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(scores[0]));
+    for (let i = 1; i < scores.length; i++) ctx.lineTo(toX(i), toY(scores[i]));
+    ctx.lineTo(toX(scores.length - 1), H);
+    ctx.lineTo(toX(0), H);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Línea principal
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(scores[0]));
+    for (let i = 1; i < scores.length; i++) ctx.lineTo(toX(i), toY(scores[i]));
+    ctx.strokeStyle = '#8b5cf6';
+    ctx.lineWidth   = 2;
+    ctx.lineJoin    = 'round';
+    ctx.stroke();
+
+    // Punto final destacado
+    const lastX = toX(scores.length - 1);
+    const lastY = toY(scores[scores.length - 1]);
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#a78bfa';
+    ctx.fill();
+    ctx.strokeStyle = '#0a0a0c';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
   }
 });
 </script>
