@@ -282,8 +282,13 @@ window.addEventListener('load', () => {
   const jugadorId = params.get('jugador');
 
   const REFRESH_MS = 30000;
-  let lastUpdate  = null;
-  let loadedOnce  = false;
+  let lastUpdate   = null;
+  let loadedOnce   = false;
+  let lastProgreso = [];
+
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(() => renderLpChart(lastProgreso));
+  });
 
   const liveIndicatorTextEl = document.getElementById('live-indicator-text');
 
@@ -610,8 +615,9 @@ window.addEventListener('load', () => {
       // Cargar todos los jugadores para comparar badges
       renderBadges(p, jugadores);
 
-      // Gráfica LP
-      renderLpChart(p.progreso_lp || []);
+      // Gráfica LP — espera un frame para que el layout esté listo
+      lastProgreso = p.progreso_lp || [];
+      requestAnimationFrame(() => renderLpChart(lastProgreso));
 
       document.getElementById('profile-content').style.display = 'block';
       document.getElementById('error-msg').style.display       = 'none';
