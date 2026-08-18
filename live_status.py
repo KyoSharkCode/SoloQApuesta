@@ -14,6 +14,7 @@ REGION_LOL = "la1"
 HEADERS = {"X-Riot-Token": API_KEY}
 
 # Importa la lista de jugadores desde actualizar_datos.py
+# Si no se puede importar, usa la lista completa de respaldo
 try:
     from actualizar_datos import JUGADORES as JUGADORES_RAW
     LISTA_JUGADORES = [f"{j['name']}#{j['tag']}" for j in JUGADORES_RAW]
@@ -39,11 +40,7 @@ def cargar_diccionarios_ddragon():
     try:
         url_champ = f"https://ddragon.leagueoflegends.com/cdn/{DDRAGON_VERSION}/data/es_ES/champion.json"
         champ_data = requests.get(url_champ, timeout=15).json()["data"]
-        # Guardamos tanto el ID para la URL como el nombre legible
-        diccionario_campeones = {
-            int(info["key"]): {"id": nombre, "name": info["name"]} 
-            for nombre, info in champ_data.items()
-        }
+        diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
         print(f"✅ Diccionario de campeones cargado ({len(diccionario_campeones)} entradas)")
     except Exception as e:
         print(f"⚠️ No se pudo descargar el diccionario de campeones: {e}")
@@ -91,6 +88,7 @@ def get_con_reintento(url, headers, timeout=10, max_reintentos=2):
 def estados_son_iguales(estado_anterior, estado_nuevo):
     """
     Compara dos dicts de estado de forma robusta usando json.dumps ordenado.
+    Evita falsos positivos por diferencias en el orden de las keys.
     """
     try:
         anterior_str = json.dumps(estado_anterior, sort_keys=True, ensure_ascii=False)
@@ -105,6 +103,7 @@ def actualizar_estado_en_vivo(jugadores):
         print("🚨 No se encontró RIOT_API_KEY en las variables de entorno.")
         sys.exit(1)
 
+    # Cargar estado anterior para comparación inteligente
     data_cargada = {}
     if os.path.exists("live_data.json"):
         try:
@@ -114,7 +113,7 @@ def actualizar_estado_en_vivo(jugadores):
         except Exception as e:
             print(f"⚠️ No se pudo leer live_data.json anterior: {e}")
 
-    datos_json   = {}
+    datos_json  = {}
     errores_auth = 0
     diccionario_campeones, diccionario_hechizos = cargar_diccionarios_ddragon()
 
@@ -175,15 +174,16 @@ def actualizar_estado_en_vivo(jugadores):
                     None
                 )
 
+                # Mapeo de queue IDs a nombres legibles
                 QUEUE_NAMES = {
                     420:  "Solo/Duo",
                     440:  "Flex",
-                    400:  "Normal (Reclutamiento)",
-                    430:  "Normal (Oculta)",
+                    400:  "Normal",
+                    430:  "Partida Rápida",
                     450:  "ARAM",
-                    490:  "Partida Rápida",
+                    490:  "Quickplay",
                     900:  "URF",
-                    1020: "One For All",
+                    1020: "OFA",
                     1300: "Nexus Blitz",
                     1400: "Modo Definitivo",
                     1700: "Arena",
@@ -199,12 +199,8 @@ def actualizar_estado_en_vivo(jugadores):
                     equipo   = "blue" if participante.get("teamId") == 100 else "red"
                     spell1   = diccionario_hechizos.get(participante.get("spell1Id"), {"nombre": "?", "icono": ""})
                     spell2   = diccionario_hechizos.get(participante.get("spell2Id"), {"nombre": "?", "icono": ""})
-                    
-                    champ_info = diccionario_campeones.get(champ_id, {"id": "Unknown", "name": "Desconocido"})
-                    
                     info_partida.update({
-                        "campeon_id": champ_info["id"],
-                        "campeon":    champ_info["name"],
+                        "campeon":    diccionario_campeones.get(champ_id, "Desconocido"),
                         "equipo":     equipo,
                         "hechizos":   [spell1, spell2],
                         "modo_juego": modo_juego,
@@ -228,16 +224,19 @@ def actualizar_estado_en_vivo(jugadores):
 
         time.sleep(1)
 
+    # ── Failsafe: si la key falló para todos, no sobreescribir ──
     if jugadores and errores_auth >= len(jugadores):
         print("\n🚨 API key inválida o expirada para todos los jugadores.")
         print("🚫 No se sobreescribe live_data.json para conservar el último estado válido.")
-        sys.exit(1)
+        sys.exit(1)  # exit(1) = fallo real, GitHub Actions lo marca en rojo
 
+    # ── Comparación inteligente — solo guarda si algo cambió ──
     if estados_son_iguales(data_cargada, datos_json):
         print("\n💤 Sin cambios en el estado de las partidas.")
         print("🛑 live_data.json no se sobrescribe. Ahorrando despliegue.")
-        sys.exit(0)
+        sys.exit(0)  # exit(0) = éxito, nadie jugó pero no es un error
 
+    # Si llegamos aquí, alguien entró o salió de partida → guardamos
     with open("live_data.json", "w", encoding="utf-8") as f:
         json.dump(datos_json, f, ensure_ascii=False, indent=4)
     print("\n✅ live_data.json actualizado — se detectaron cambios de estado.")
