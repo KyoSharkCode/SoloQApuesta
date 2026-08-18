@@ -32,18 +32,45 @@
   .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse-live 2.2s infinite; }
   @keyframes pulse-live{ 0%{box-shadow:0 0 0 0 rgba(139,92,246,.35);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
 
-  /* HEADER PERFIL */
-  .profile-header { display:flex; align-items:center; gap:24px; padding-bottom:30px; border-bottom:1px solid var(--border); margin-bottom:40px; }
-  .profile-avatar { width:100px; height:100px; border-radius:20px; border:3px solid var(--accent); object-fit:cover; }
-  .profile-info { display:flex; flex-direction:column; gap:5px; }
+  /* HEADER PERFIL — splash art de fondo */
+  .profile-header {
+    position:relative; display:flex; align-items:center; gap:24px;
+    padding:32px 32px 32px; margin-bottom:40px;
+    border-radius:18px; overflow:hidden;
+    border:1px solid var(--border);
+  }
+  .profile-splash {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center top;
+    opacity:0.18; pointer-events:none; z-index:0;
+  }
+  .profile-splash-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.6) 60%, rgba(10,10,12,0.2) 100%);
+    z-index:1;
+  }
+  .profile-avatar { position:relative; z-index:2; width:100px; height:100px; border-radius:20px; border:3px solid var(--accent); object-fit:cover; flex-shrink:0; }
+  .profile-info { position:relative; z-index:2; display:flex; flex-direction:column; gap:5px; }
   .name-wrapper { display:flex; align-items:center; gap:12px; }
   .profile-info h1 { margin:0; font-size:32px; font-weight:900; }
   .profile-info p { margin:0; color:var(--text-faint); font-size:16px; font-weight:500; }
-  .profile-rank { margin-left:auto; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+  .profile-rank { position:relative; z-index:2; margin-left:auto; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
   .profile-rank h2 { margin:0; font-size:28px; color:var(--gold); font-weight:800; }
   .profile-rank .rank-tier-row { display:inline-flex; align-items:center; gap:8px; }
   .profile-rank span { color:var(--text-faint); font-size:14px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; }
   .profile-rank .tier-emblem { width:36px; height:36px; object-fit:contain; }
+
+  /* RESPONSIVE */
+  @media (max-width:640px){
+    .wrap{ padding:24px 14px 60px; }
+    .profile-header{ flex-wrap:wrap; padding:24px 20px; gap:16px; }
+    .profile-splash-overlay{ background:linear-gradient(180deg, rgba(10,10,12,0.85) 0%, rgba(10,10,12,0.5) 100%); }
+    .profile-rank{ margin-left:0; text-align:left; align-items:flex-start; width:100%; }
+    .profile-info h1{ font-size:24px; }
+    .stats-grid{ grid-template-columns:1fr; }
+    .match{ grid-template-columns:40px 1fr auto; gap:10px; padding:10px 12px; }
+    .topbar{ flex-direction:column; align-items:flex-start; gap:10px; }
+  }
 
   /* CAJA EN VIVO */
   .live-status-box{
@@ -159,6 +186,8 @@
 
   <div id="profile-content" style="display:none;">
     <div class="profile-header">
+      <img id="p-splash" class="profile-splash" src="" alt="">
+      <div class="profile-splash-overlay"></div>
       <img id="p-avatar" class="profile-avatar" src="" alt="Avatar">
       <div class="profile-info">
         <div class="name-wrapper">
@@ -465,12 +494,22 @@ window.addEventListener('load', () => {
       const VALID_TIERS = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
       const tierSlug = (p.rango || 'unranked').split(' ')[0].toLowerCase();
 
-      document.getElementById('p-avatar').src       = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
-      document.getElementById('p-name').innerText   = p.nombre.split('#')[0];
-      document.getElementById('p-tier').innerText   = p.rango;
-      document.getElementById('p-lp').innerText     = `${p.lp} LP`;
+      document.getElementById('p-avatar').src        = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
+      document.getElementById('p-name').innerText    = p.nombre.split('#')[0];
+      document.getElementById('p-tier').innerText    = p.rango;
+      document.getElementById('p-lp').innerText      = `${p.lp} LP`;
       document.getElementById('p-winrate').innerText = `Tasa de victoria global: ${p.winrate}`;
-      document.getElementById('p-emblem').src = `${MINI_CREST_BASE}${VALID_TIERS.includes(tierSlug) ? tierSlug : 'unranked'}.png`;
+      document.getElementById('p-emblem').src        = `${MINI_CREST_BASE}${VALID_TIERS.includes(tierSlug) ? tierSlug : 'unranked'}.png`;
+
+      // Splash art del campeón con más maestría
+      const topChamp = (p.maestrias && p.maestrias.length) ? p.maestrias[0].campeon.replace(/[^a-zA-Z0-9]/g,'') : null;
+      const splashEl = document.getElementById('p-splash');
+      if (topChamp) {
+        splashEl.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${topChamp}_0.jpg`;
+        splashEl.style.display = 'block';
+      } else {
+        splashEl.style.display = 'none';
+      }
 
       // Maestrías
       const boxMastery = document.getElementById('box-mastery');
