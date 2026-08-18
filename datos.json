@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-18T08:50:39.309383",
+  "ultimaActualizacion": "2026-08-18T08:55:30.915315",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1380,31 +1380,31 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 1296,
-      "rango": "Unranked",
-      "lp": 0,
-      "winrate": "0%",
+      "rango": "Bronze III",
+      "lp": 43,
+      "winrate": "80%",
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
-          "rol": "Jungla",
-          "cantidad": 1
+          "rol": "Mid",
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Swain",
-          "cantidad": 6
+          "cantidad": 5
+        },
+        {
+          "campeon": "Veigar",
+          "cantidad": 2
         },
         {
           "campeon": "Ekko",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Velkoz",
           "cantidad": 1
         }
       ],
@@ -1431,9 +1431,23 @@
           "lp": 0,
           "rango": "Unranked",
           "division": ""
+        },
+        {
+          "fecha": "2026-08-18T08:55:26",
+          "lp": 43,
+          "rango": "Bronze",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742065003",
+          "campeon": "Veigar",
+          "kda": "6/9/11 (1.89)",
+          "resultado": "Victoria",
+          "duracion": "38min",
+          "lp_change": null
+        },
         {
           "match_id": "LA1_1741918426",
           "campeon": "Ekko",
@@ -1505,26 +1519,18 @@
           "resultado": "Victoria",
           "duracion": "1min",
           "lp_change": null
-        },
-        {
-          "match_id": "LA1_1675464099",
-          "campeon": "Swain",
-          "kda": "2/5/10 (2.4)",
-          "resultado": "Derrota",
-          "duracion": "31min",
-          "lp_change": null
         }
       ],
-      "kills_recientes": 25,
+      "kills_recientes": 29,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 42,
-      "kills_semana": 11,
+      "vision_promedio_reciente": 39,
+      "kills_semana": 17,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 36,
+      "vision_promedio_semana": 34,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.62,
+      "kda_promedio_semana": 2.36,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3
+      "campeones_ganados_semana": 4
     }
   ]
 }
