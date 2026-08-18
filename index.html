@@ -6,7 +6,6 @@
 <title>Torneo LoL · Ranking</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Icono de la pestaña actualizado -->
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -30,7 +29,7 @@
 
   header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin-bottom:30px; padding-bottom:24px; border-bottom:1px solid var(--border); }
   h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0; color: #ffffff;}
-  
+
   .top1-card { display: flex; align-items: center; gap: 20px; background: var(--panel); border: 1px solid var(--accent); padding: 24px; border-radius: var(--radius); margin-bottom: 50px; box-shadow: 0 0 30px var(--accent-glow); position: relative; overflow: hidden;}
   .top1-badge { position: absolute; top: 0; left: 0; background: var(--accent); color: white; font-weight: 800; font-size: 11px; padding: 4px 12px; border-bottom-right-radius: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
   .top1-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent-soft); object-fit: cover; }
@@ -49,25 +48,25 @@
   .highlight-player { font-size:14px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
-  
+
   .otp-champ-info { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
   .champ-icon-small { width: 20px; height: 20px; border-radius: 4px; object-fit: cover; }
 
   .filter-bar { display:flex; justify-content:space-between; align-items: center; margin-bottom: 18px;}
   .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer; outline: none; }
-  
+
   .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color: #ffffff;}
   .section-title span{ font-size:12px; color:var(--text-faint); }
   section{margin-bottom:52px;}
 
   .ranking{ display:flex; flex-direction:column; gap:6px; }
-  .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 110px 100px 120px 90px 120px; gap:12px; align-items:center; }
+  .rank-head, .rank-row{ display:grid; grid-template-columns:40px 1fr 110px 90px 150px 80px 110px; gap:14px; align-items:center; }
   .rank-head{ padding:0 16px 10px; font-size:11px; font-weight:600; text-transform:uppercase; color:var(--text-faint); }
-  
+
   .rank-row{ padding:12px 16px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .15s ease; color: var(--text); text-align: left; }
   .rank-row:hover{ border-color:#33333c; transform:translateY(-1px); }
   .rank-row.active{ border-color:var(--accent); background:linear-gradient(180deg, rgba(139,92,246,.10), rgba(139,92,246,.03)); }
-  
+
   .rank-pos{ font-size:13px; font-weight:700; color:var(--text-faint); text-align:center; }
   .rank-pos.pos-1{ font-size:18px; color:var(--gold); text-shadow:0 0 12px rgba(251,191,36,.7); }
   .rank-pos.pos-2{ color:#d6d9e0; text-shadow:0 0 10px rgba(214,217,224,.55); font-weight:900; }
@@ -76,30 +75,27 @@
   .avatar{ width:34px; height:34px; border-radius:9px; border:1px solid var(--border); object-fit:cover; }
 
   .status-cell{ display:flex; justify-content:center; }
-
   .role-cell{ display:flex; align-items:center; gap:6px; }
   .trend-arrow{ font-size:11px; font-weight:900; line-height:1; }
   .trend-arrow.up{ color:var(--win); }
   .trend-arrow.down{ color:var(--loss); }
-  
+
   .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
   .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
-  
-  .role-badge{ font-size:12px; color:#ffffff; font-weight: 700; background: rgba(139,92,246,0.3); padding: 4px 8px; border-radius: 6px; text-align: center; }
-  .tier-badge{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color: #ffffff;}
-  .tier-crest{ width:16px; height:16px; transform:rotate(45deg); border-radius:4px; background:#5b5c63; }
+
+
+  /* Mini crest de elo — al lado del texto del rango */
+  .tier-badge{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#ffffff; white-space:nowrap; }
+  .tier-emblem{ width:28px; height:28px; object-fit:contain; flex-shrink:0; image-rendering:auto; }
+  /* Roles — ancho fijo para que todos sean iguales */
+  .role-badge{ font-size:12px; color:#ffffff; font-weight:700; background:rgba(139,92,246,0.3); padding:4px 0; border-radius:6px; text-align:center; width:72px; display:inline-block; }
+
   .lp-cell{ font-size:13px; font-weight:600; color:#ffffff; }
-  
+
   .wr-cell{ display:flex; flex-direction:column; gap:5px; }
   .wr-top{ display:flex; justify-content:space-between; font-size:12px; color:var(--text-faint); }
-  
   .wr-bar{ display:block; width:100%; height:4px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
   .wr-fill{ display:block; height:100%; background:linear-gradient(90deg,var(--accent-soft),var(--accent)); border-radius:99px; }
-
-  .tier-iron .tier-crest{background:#5b5c63;} .tier-bronze .tier-crest{background:#a9754f;} .tier-silver .tier-crest{background:#9fb0c2;}
-  .tier-gold .tier-crest{background:#d8ad3d;} .tier-platinum .tier-crest{background:#3fc6b6;} .tier-emerald .tier-crest{background:#3fcf7f;}
-  .tier-diamond .tier-crest{background:#6f8bff;} .tier-master .tier-crest{background:#b154e8;} .tier-grandmaster .tier-crest{background:#e5484d;}
-  .tier-challenger .tier-crest{background:linear-gradient(135deg,#8ce6e0,#f4d160);}
 
   .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
@@ -115,7 +111,7 @@
   .lp-change.win{ color:var(--win); }
   .lp-change.loss{ color:var(--loss); }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
-  
+
   .countdown-container { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 20px; }
   .countdown-container h2 { margin: 0 0 20px 0; font-size: 20px; font-weight: 800; letter-spacing: 0.05em; color: var(--accent-soft); text-transform: uppercase;}
   .timer-boxes { display: flex; justify-content: center; gap: 15px; }
@@ -131,27 +127,9 @@
   .status-chip.in-game { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
   .status-chip.offline { background: rgba(161, 161, 170, 0.1); color: #a1a1aa; border: 1px solid rgba(161, 161, 170, 0.2); }
 
-  /* ESTILOS NUEVOS PARA EL FOOTER */
-  .site-footer {
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-logo {
-    width: 70px;
-    height: auto;
-    margin-bottom: 12px;
-  }
-  .site-footer p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
+  .site-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .footer-logo { width: 70px; height: auto; margin-bottom: 12px; }
+  .site-footer p { margin: 0; font-size: 14px; color: var(--text-dim); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -168,7 +146,6 @@
   </header>
 
   <div id="top1-container"></div>
-
   <div class="highlights-grid" id="highlights-container"></div>
 
   <section id="seccion-ranking">
@@ -224,12 +201,10 @@
     </div>
   </div>
 
-  <!-- FOOTER NUEVO AGREGADO AQUÍ -->
   <footer class="site-footer">
     <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo">
     <p>creado por KyoSumiVT</p>
   </footer>
-
 </div>
 
 <script>
@@ -240,20 +215,25 @@ window.addEventListener('load', () => {
   const DIVISIONED_TIER_COUNT = 7;
   const MASTER_PLUS_BASE = DIVISIONED_TIER_COUNT * 4 * 100;
 
+  // Mini crests de elo (CommunityDragon) — compactos, coloridos, perfectos para tabla
+  const MINI_CREST_BASE = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
+  function getEmblemUrl(rango) {
+    const tier = (rango || 'unranked').split(' ')[0].toLowerCase();
+    const valid = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
+    return `${MINI_CREST_BASE}${valid.includes(tier) ? tier : 'unranked'}.png`;
+  }
+
   const state = { players: [], liveData: {}, selectedId: null, filterElo: 'ALL', lastUpdate: null };
   const REFRESH_MS = 30000;
 
-  const top1ContainerEl = document.getElementById('top1-container');
+  const top1ContainerEl       = document.getElementById('top1-container');
   const highlightsContainerEl = document.getElementById('highlights-container');
-  const rankingListEl = document.getElementById('ranking-list');
-  const historyPanelEl = document.getElementById('history-panel');
-  const eloFilterEl = document.getElementById('elo-filter');
-  const liveIndicatorTextEl = document.getElementById('live-indicator-text');
+  const rankingListEl         = document.getElementById('ranking-list');
+  const historyPanelEl        = document.getElementById('history-panel');
+  const eloFilterEl           = document.getElementById('elo-filter');
+  const liveIndicatorTextEl   = document.getElementById('live-indicator-text');
 
-  eloFilterEl.addEventListener('change', (e) => {
-    state.filterElo = e.target.value;
-    renderRanking();
-  });
+  eloFilterEl.addEventListener('change', (e) => { state.filterElo = e.target.value; renderRanking(); });
 
   init();
   startCountdown();
@@ -262,9 +242,7 @@ window.addEventListener('load', () => {
     refreshData();
     setInterval(refreshData, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
-    document.addEventListener('visibilitychange', () => {
-      if(!document.hidden) refreshData();
-    });
+    document.addEventListener('visibilitychange', () => { if(!document.hidden) refreshData(); });
   }
 
   async function refreshData(){
@@ -325,9 +303,9 @@ window.addEventListener('load', () => {
     if(!liveIndicatorTextEl) return;
     if(!state.lastUpdate){ liveIndicatorTextEl.textContent = 'Cargando…'; return; }
     const secs = Math.floor((Date.now() - state.lastUpdate) / 1000);
-    if(secs < 5) liveIndicatorTextEl.textContent = 'Actualizado ahora';
+    if(secs < 5)       liveIndicatorTextEl.textContent = 'Actualizado ahora';
     else if(secs < 60) liveIndicatorTextEl.textContent = `Actualizado hace ${secs}s`;
-    else liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
+    else               liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs / 60)}m`;
   }
 
   function eloScore(rango, division, lp){
@@ -341,19 +319,14 @@ window.addEventListener('load', () => {
     return bandIndex * 100 + Math.max(0, Math.min(100, lp || 0));
   }
 
-  function rankScore(p){
-    const s = eloScore(p.rango, p.division, p.lp);
-    return s === null ? -100000 : s;
-  }
-
+  function rankScore(p){ const s = eloScore(p.rango, p.division, p.lp); return s === null ? -100000 : s; }
   function getAvatarUrl(iconId) { return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
 
   function renderTop1() {
     if (state.players.length === 0) return;
-    const topPlayer = state.players[0]; 
+    const topPlayer = state.players[0];
     const tierPretty = topPlayer.rango.charAt(0) + topPlayer.rango.slice(1).toLowerCase();
     const rankDisplay = DIVISIONLESS.includes((topPlayer.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${topPlayer.division}`;
-
     top1ContainerEl.innerHTML = `
       <div class="top1-card">
         <div class="top1-badge">Top 1 Actual</div>
@@ -366,30 +339,24 @@ window.addEventListener('load', () => {
           <p class="lp">${topPlayer.lp} LP</p>
           <p class="tier">${rankDisplay}</p>
         </div>
-      </div>
-    `;
+      </div>`;
   }
 
   function renderHighlights() {
     if (state.players.length === 0) { highlightsContainerEl.innerHTML = ''; return; }
     const categorias = [
-      { icon: '⚔️', label: 'Top Asesino', campo: 'killsSemana', sufijo: 'kills', vacio: 'Nadie ha registrado kills todavía.' },
-      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsSemana', sufijo: 'pentakills', vacio: 'Nadie ha hecho un penta… todavía 👀' },
+      { icon: '⚔️', label: 'Top Asesino',   campo: 'killsSemana',        sufijo: 'kills',       vacio: 'Nadie ha registrado kills todavía.' },
+      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsSemana',   sufijo: 'pentakills',  vacio: 'Nadie ha hecho un penta… todavía 👀' },
       { icon: '👁️', label: 'Top Observador', campo: 'visionPromedioSemana', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
     ];
     highlightsContainerEl.innerHTML = categorias.map(cat => {
       const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
       const valor = lider ? (lider[cat.campo] || 0) : 0;
-      if (!lider || valor <= 0) {
-        return `
-          <div class="highlight-card">
-            <div class="highlight-icon">${cat.icon}</div>
-            <div class="highlight-body">
-              <p class="highlight-label">${cat.label}</p>
-              <p class="highlight-empty">${cat.vacio}</p>
-            </div>
-          </div>`;
-      }
+      if (!lider || valor <= 0) return `
+        <div class="highlight-card">
+          <div class="highlight-icon">${cat.icon}</div>
+          <div class="highlight-body"><p class="highlight-label">${cat.label}</p><p class="highlight-empty">${cat.vacio}</p></div>
+        </div>`;
       return `
         <div class="highlight-card">
           <div class="highlight-icon">${cat.icon}</div>
@@ -406,17 +373,14 @@ window.addEventListener('load', () => {
     const container = document.getElementById('weekly-highlights-container');
     if (state.players.length === 0) { container.innerHTML = ''; return; }
 
-    let otpPlayer = null;
-    let otpChamp = '';
-    let otpPercent = 0;
+    let otpPlayer = null, otpChamp = '', otpPercent = 0;
+    let climber = null, maxClimb = -Infinity;
+    let grinder = null, maxTime = 0;
+    const now = Date.now(), ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 
-    let climber = null;
-    let maxClimb = -Infinity;
-    const now = Date.now();
-    const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
-
-    let grinder = null;
-    let maxTime = 0;
+    let agresivo = null, maxSangre = -1;
+    let kdaPlayer = null, maxKda = -1, kdaPlayerPerfecto = false;
+    let champPoolMaster = null, maxChamps = -1;
 
     state.players.forEach(p => {
       if (p.partidas && p.partidas.length > 0) {
@@ -425,106 +389,53 @@ window.addEventListener('load', () => {
         let maxC = 0, champ = '';
         for (const c in champCounts) { if (champCounts[c] > maxC) { maxC = champCounts[c]; champ = c; } }
         const pct = Math.round((maxC / p.partidas.length) * 100);
-        if (pct > otpPercent || (pct === otpPercent && (!otpPlayer || maxC > (otpPlayer.maxC||0)))) {
-          otpPercent = pct; otpChamp = champ; otpPlayer = p;
-          if(otpPlayer) otpPlayer.maxC = maxC; 
-        }
+        if (pct > otpPercent) { otpPercent = pct; otpChamp = champ; otpPlayer = p; }
       }
-      
       if (p.historialLP && p.historialLP.length > 0) {
         const hist = [...p.historialLP].filter(pt => pt.fecha && (now - new Date(pt.fecha).getTime() <= ONE_WEEK)).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
         if (hist.length > 0) {
-          const first = hist[0];
-          const currentScore = eloScore(p.rango, p.division, p.lp);
-          const firstScore = eloScore(first.rango || p.rango, first.division !== undefined ? first.division : p.division, first.lp);
-          if (currentScore !== null && firstScore !== null) {
-            const diff = currentScore - firstScore;
-            if (diff > maxClimb) { maxClimb = diff; climber = p; }
-          }
+          const curSc   = eloScore(p.rango, p.division, p.lp);
+          const firstSc = eloScore(hist[0].rango || p.rango, hist[0].division !== undefined ? hist[0].division : p.division, hist[0].lp);
+          if (curSc !== null && firstSc !== null) { const diff = curSc - firstSc; if (diff > maxClimb) { maxClimb = diff; climber = p; } }
         }
       }
-
       if (p.partidas && p.partidas.length > 0) {
         let time = 0;
         p.partidas.forEach(m => {
           if (typeof m.duracion === 'number') time += m.duracion;
-          else if (typeof m.duracion === 'string') {
-            const parts = m.duracion.split(':');
-            if (parts.length === 2) time += parseInt(parts[0])*60 + parseInt(parts[1]);
-          }
+          else if (typeof m.duracion === 'string') { const pts = m.duracion.split(':'); if (pts.length === 2) time += parseInt(pts[0])*60 + parseInt(pts[1]); }
         });
         if (time > maxTime) { maxTime = time; grinder = p; }
       }
+      if ((p.primerasSangreSemana || 0) > maxSangre)    { maxSangre = p.primerasSangreSemana || 0; agresivo = p; }
+      if ((p.kdaPromedioSemana || 0) > maxKda)           { maxKda = p.kdaPromedioSemana || 0; kdaPlayer = p; kdaPlayerPerfecto = p.kdaPerfectoSemana; }
+      if ((p.campeonesGanadosSemana || 0) > maxChamps)   { maxChamps = p.campeonesGanadosSemana || 0; champPoolMaster = p; }
     });
 
-    if (!otpPlayer) otpPlayer = state.players[0];
-    if (!climber) climber = state.players[0];
-    if (!grinder) grinder = state.players[0];
-    if (!otpChamp) otpChamp = "Desconocido";
+    if (!otpPlayer)       otpPlayer       = state.players[0];
+    if (!climber)         climber         = state.players[0];
+    if (!grinder)         grinder         = state.players[0];
+    if (!otpChamp)        otpChamp        = "Desconocido";
 
     const otpChampImg = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
-
-    // NUEVO: Agresivo (más primeras sangres), KDA Player (mejor KDA prom.) y Maestro del Champion Pool (más campeones distintos ganados) — todo en ventana de 7 días
-    let agresivo = null, maxSangre = -1;
-    let kdaPlayer = null, maxKda = -1, kdaPlayerPerfecto = false;
-    let champPoolMaster = null, maxChamps = -1;
-
-    state.players.forEach(p => {
-      if ((p.primerasSangreSemana || 0) > maxSangre) { maxSangre = p.primerasSangreSemana || 0; agresivo = p; }
-      if ((p.kdaPromedioSemana || 0) > maxKda) { maxKda = p.kdaPromedioSemana || 0; kdaPlayer = p; kdaPlayerPerfecto = p.kdaPerfectoSemana; }
-      if ((p.campeonesGanadosSemana || 0) > maxChamps) { maxChamps = p.campeonesGanadosSemana || 0; champPoolMaster = p; }
-    });
 
     const agresivoHtml = (agresivo && maxSangre > 0) ? `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">Agresivo</p>
-          <p class="highlight-player">${agresivo.nombre}</p>
-          <p class="highlight-value">${maxSangre} primera${maxSangre === 1 ? '' : 's'} sangre</p>
-        </div>
-      </div>` : `
-      <div class="highlight-card">
-        <div class="highlight-icon">🩸</div>
-        <div class="highlight-body">
-          <p class="highlight-label">Agresivo</p>
-          <p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p>
-        </div>
-      </div>`;
+        <div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-player">${agresivo.nombre}</p><p class="highlight-value">${maxSangre} primera${maxSangre === 1 ? '' : 's'} sangre</p></div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">🩸</div><div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p></div></div>`;
 
     const kdaHtml = (kdaPlayer && maxKda > 0) ? `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">KDA Player</p>
-          <p class="highlight-player">${kdaPlayer.nombre}</p>
-          <p class="highlight-value">${kdaPlayerPerfecto ? 'Perfect' : maxKda} KDA</p>
-        </div>
-      </div>` : `
-      <div class="highlight-card">
-        <div class="highlight-icon">📊</div>
-        <div class="highlight-body">
-          <p class="highlight-label">KDA Player</p>
-          <p class="highlight-empty">Sin partidas suficientes esta semana.</p>
-        </div>
-      </div>`;
+        <div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-player">${kdaPlayer.nombre}</p><p class="highlight-value">${kdaPlayerPerfecto ? 'Perfect' : maxKda} KDA</p></div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">📊</div><div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
     const championPoolHtml = (champPoolMaster && maxChamps > 0) ? `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">Maestro del Champion Pool</p>
-          <p class="highlight-player">${champPoolMaster.nombre}</p>
-          <p class="highlight-value">${maxChamps} campeones distintos ganados</p>
-        </div>
-      </div>` : `
-      <div class="highlight-card">
-        <div class="highlight-icon">🎭</div>
-        <div class="highlight-body">
-          <p class="highlight-label">Maestro del Champion Pool</p>
-          <p class="highlight-empty">Nadie ha ganado esta semana todavía.</p>
-        </div>
-      </div>`;
+        <div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-player">${champPoolMaster.nombre}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div>
+      </div>` : `<div class="highlight-card"><div class="highlight-icon">🎭</div><div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-empty">Nadie ha ganado esta semana todavía.</p></div></div>`;
 
     container.innerHTML = `
       <div class="highlight-card">
@@ -533,97 +444,67 @@ window.addEventListener('load', () => {
           <p class="highlight-label">OTP del Torneo</p>
           <p class="highlight-player">${otpPlayer.nombre}</p>
           <div class="otp-champ-info">
-             <img class="champ-icon-small" src="${otpChampImg}" onerror="this.style.display='none'">
-             <span class="highlight-value">${otpChamp} (${otpPercent}% de las partidas)</span>
+            <img class="champ-icon-small" src="${otpChampImg}" onerror="this.style.display='none'">
+            <span class="highlight-value">${otpChamp} (${otpPercent}% de las partidas)</span>
           </div>
         </div>
       </div>
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">El Escalador</p>
-          <p class="highlight-player">${climber.nombre}</p>
-          <p class="highlight-value" style="color: var(--win);">Mejor jugador de la semana</p>
-        </div>
+        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div>
       </div>
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="Avatar">
-        <div class="highlight-body">
-          <p class="highlight-label">Horas en la grieta</p>
-          <p class="highlight-player">${grinder.nombre}</p>
-          <p class="highlight-value" style="color: #fbbf24;">¿Le tienes miedo a la Pala?🪏</p>
-        </div>
+        <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}
-      ${kdaHtml}
-      ${championPoolHtml}
-    `;
+      ${agresivoHtml}${kdaHtml}${championPoolHtml}`;
   }
-
 
   function getTrendArrow(p){
     const hist = (p.historialLP || []).filter(pt => pt.fecha);
     if (hist.length < 2) return '';
-    const ordenado = [...hist].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-    const ultimo = ordenado[ordenado.length - 1];
-    const anterior = ordenado[ordenado.length - 2];
-    const sUltimo = eloScore(ultimo.rango || p.rango, ultimo.division !== undefined ? ultimo.division : p.division, ultimo.lp);
-    const sAnterior = eloScore(anterior.rango || p.rango, anterior.division !== undefined ? anterior.division : p.division, anterior.lp);
-    if (sUltimo === null || sAnterior === null || sUltimo === sAnterior) return '';
-    return sUltimo > sAnterior
-      ? `<span class="trend-arrow up" title="Subió respecto a su registro anterior">▲</span>`
-      : `<span class="trend-arrow down" title="Bajó respecto a su registro anterior">▼</span>`;
+    const ord = [...hist].sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+    const ul = ord[ord.length-1], an = ord[ord.length-2];
+    const sU = eloScore(ul.rango || p.rango, ul.division !== undefined ? ul.division : p.division, ul.lp);
+    const sA = eloScore(an.rango || p.rango, an.division !== undefined ? an.division : p.division, an.lp);
+    if (sU === null || sA === null || sU === sA) return '';
+    return sU > sA
+      ? `<span class="trend-arrow up" title="Subió">▲</span>`
+      : `<span class="trend-arrow down" title="Bajó">▼</span>`;
   }
 
   function getStreakEmoji(partidas) {
     if (!partidas || partidas.length < 3) return '';
-    let activeWins = 0;
-    for(let i=0; i<Math.min(partidas.length, 10); i++){
-      if(partidas[i].resultado === 'victoria') activeWins++;
-      else break;
-    }
-    if(activeWins >= 3) return '🔥';
-
-    let activeLosses = 0;
-    for(let i=0; i<Math.min(partidas.length, 10); i++){
-      if(partidas[i].resultado === 'derrota') activeLosses++;
-      else break;
-    }
-    if(activeLosses >= 3) return '❄️';
-
+    let w = 0;
+    for(let i=0; i<Math.min(partidas.length,10); i++){ if(partidas[i].resultado==='victoria') w++; else break; }
+    if(w >= 3) return '🔥';
+    let l = 0;
+    for(let i=0; i<Math.min(partidas.length,10); i++){ if(partidas[i].resultado==='derrota') l++; else break; }
+    if(l >= 3) return '❄️';
     return '';
   }
 
   function renderRanking(){
     rankingListEl.innerHTML = '';
     const filtrados = state.players.filter(p => state.filterElo === 'ALL' || (p.rango || '').toUpperCase() === state.filterElo);
-
-    if(filtrados.length === 0){
-      rankingListEl.innerHTML = `<p class="empty-state">Nadie está en este elo todavía.</p>`;
-      return;
-    }
+    if(filtrados.length === 0){ rankingListEl.innerHTML = `<p class="empty-state">Nadie está en este elo todavía.</p>`; return; }
 
     filtrados.forEach((p, i) => {
       const row = document.createElement('button');
       row.className = 'rank-row' + (p.id === state.selectedId ? ' active' : '');
-      
-      row.addEventListener('click', (e) => {
-        if (e.target.tagName.toLowerCase() !== 'a') { selectPlayer(p.id); }
-      });
+      row.addEventListener('click', (e) => { if(e.target.tagName.toLowerCase() !== 'a') selectPlayer(p.id); });
 
-      const tierPretty = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
+      const tierPretty  = p.rango.charAt(0) + p.rango.slice(1).toLowerCase();
       const rankDisplay = DIVISIONLESS.includes((p.rango || '').toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
-
-      const liveStatus = state.liveData[p.id] || { en_partida: false };
-      const statusHtml = liveStatus.en_partida 
-          ? `<span class="status-chip in-game">En Partida</span>` 
-          : `<span class="status-chip offline">Offline</span>`;
-
-      const posClass = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
+      const liveStatus  = state.liveData[p.id] || { en_partida: false };
+      const statusHtml  = liveStatus.en_partida
+        ? `<span class="status-chip in-game">En Partida</span>`
+        : `<span class="status-chip offline">Offline</span>`;
+      const posClass   = i === 0 ? 'pos-1' : i === 1 ? 'pos-2' : i === 2 ? 'pos-3' : '';
       const posContent = i === 0 ? '👑' : (i + 1);
-
       const streakEmoji = getStreakEmoji(p.partidas);
 
+      // NUEVO: emblema de elo en lugar del diamante de color
       row.innerHTML = `
         <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
@@ -632,15 +513,15 @@ window.addEventListener('load', () => {
         </span>
         <span class="status-cell">${statusHtml}</span>
         <span class="role-cell">${getTrendArrow(p)}<span class="role-badge">${p.rol}</span></span>
-        <span class="tier-badge tier-${(p.rango || '').toLowerCase()}">
-          <span class="tier-crest"></span> <span class="tier-label">${rankDisplay}</span>
+        <span class="tier-badge">
+          <img class="tier-emblem" src="${getEmblemUrl(p.rango)}" alt="${p.rango}" onerror="this.style.display='none'">
+          <span>${rankDisplay}</span>
         </span>
         <span class="lp-cell">${p.lp} LP</span>
         <span class="wr-cell">
           <span class="wr-top"><span>${p.winrate}% WR</span></span>
           <div class="wr-bar"><div class="wr-fill" style="width:${p.winrate}%"></div></div>
-        </span>
-      `;
+        </span>`;
       rankingListEl.appendChild(row);
     });
   }
@@ -660,8 +541,7 @@ window.addEventListener('load', () => {
           <span class="result-chip ${m.resultado}">${m.resultado === 'victoria' ? 'Victoria' : 'Derrota'}</span>
           ${m.lpChange !== null ? `<span class="lp-change ${m.lpChange >= 0 ? 'win' : 'loss'}">${m.lpChange >= 0 ? '+' : ''}${m.lpChange} LP</span>` : ''}
         </span>
-      </div>
-    `).join('');
+      </div>`).join('');
     historyPanelEl.innerHTML = `<div class="matches">${matchesHtml}</div>`;
   }
 
@@ -670,10 +550,10 @@ window.addEventListener('load', () => {
     function update() {
       const distance = targetDate - new Date().getTime();
       if (distance < 0) return;
-      document.getElementById('cd-days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-      document.getElementById('cd-hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      document.getElementById('cd-mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      document.getElementById('cd-secs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').innerText  = Math.floor(distance / (1000*60*60*24));
+      document.getElementById('cd-hours').innerText = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      document.getElementById('cd-mins').innerText  = Math.floor((distance % (1000*60*60)) / (1000*60));
+      document.getElementById('cd-secs').innerText  = Math.floor((distance % (1000*60)) / 1000);
     }
     update(); setInterval(update, 1000);
   }
