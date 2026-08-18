@@ -204,6 +204,12 @@ def actualizar_estado_en_vivo(jugadores):
                         "equipo":     equipo,
                         "hechizos":   [spell1, spell2],
                         "modo_juego": modo_juego,
+                        # FIX: gameId + teamId temporales, para poder cruzar
+                        # más abajo si alguien más del grupo está en la misma
+                        # partida y equipo (dúo en vivo). Se quitan del
+                        # resultado final antes de guardar.
+                        "_gameId":    game_data.get("gameId"),
+                        "_teamId":    participante.get("teamId"),
                     })
                     print(f"  🎮 Modo: {modo_juego}")
             except Exception as e:
@@ -223,6 +229,31 @@ def actualizar_estado_en_vivo(jugadores):
             datos_json[jugador] = {"en_partida": False}
 
         time.sleep(1)
+
+    # ── Dúo en vivo ────────────────────────────────────────────────────────
+    # Si dos (o más) del grupo están en la misma partida Y el mismo equipo,
+    # se marcan como dúo entre sí. Igual que en actualizar_datos.py, Riot no
+    # expone quién va de premade en la API pública, así que se infiere por
+    # coincidir en partida+equipo — con solo 6 personas en el grupo, es una
+    # señal muy confiable.
+    grupos_por_partida = {}
+    for jugador, info in datos_json.items():
+        if info.get("en_partida") and info.get("_gameId") is not None:
+            clave = (info["_gameId"], info.get("_teamId"))
+            grupos_por_partida.setdefault(clave, []).append(jugador)
+
+    for miembros in grupos_por_partida.values():
+        if len(miembros) < 2:
+            continue
+        for jugador in miembros:
+            companeros = [m.split("#", 1)[0] for m in miembros if m != jugador]
+            datos_json[jugador]["duo_con"] = companeros
+            print(f"  🎮🎮 {jugador} está jugando en dúo con: {', '.join(companeros)}")
+
+    # Limpiar los campos temporales antes de guardar
+    for info in datos_json.values():
+        info.pop("_gameId", None)
+        info.pop("_teamId", None)
 
     # ── Failsafe: si la key falló para todos, no sobreescribir ──
     if jugadores and errores_auth >= len(jugadores):
