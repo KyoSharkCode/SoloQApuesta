@@ -410,7 +410,7 @@ function fillStats(pL, pR) {
     { label:'Winrate',         vL: pL.winrate,          vR: pR.winrate,          fmt: v => `${v}%`,                    higher:'left'  },
     { label:'Kills semana',    vL: pL.killsSemana,      vR: pR.killsSemana,      fmt: v => v,                          higher:'left'  },
     { label:'Pentakills',      vL: pL.pentakillsSemana, vR: pR.pentakillsSemana, fmt: v => v,                          higher:'left'  },
-    { label:'KDA semana',      vL: pL.kdaSemana,        vR: pR.kdaSemana,        fmt: (v,p) => p.kdaPerfecto ? '∞' : v, higher:'left' },
+    { label:'KDA semana',      vL: pL.kdaSemana,        vR: pR.kdaSemana,        fmt: (v,p) => p.kdaPerfecto ? '∞' : v, higher:'left', perfectL: pL.kdaPerfecto, perfectR: pR.kdaPerfecto },
     { label:'Visión prom.',    vL: pL.visionSemana,     vR: pR.visionSemana,     fmt: v => v,                          higher:'left'  },
     { label:'Primeras sangre', vL: pL.primerasSangre,   vR: pR.primerasSangre,   fmt: v => v,                          higher:'left'  },
     { label:'Pool semana',       vL: pL.campeonesGanados, vR: pR.campeonesGanados, fmt: v => v,                        higher:'left'  },
@@ -422,16 +422,28 @@ function fillStats(pL, pR) {
   stats.forEach(s => {
     const numL = typeof s.vL === 'number' ? s.vL : 0;
     const numR = typeof s.vR === 'number' ? s.vR : 0;
-    const winnerSide = numL > numR ? 'left' : numL < numR ? 'right' : 'tie';
+    // KDA perfecto gana siempre; si los dos son perfectos, empate
+    let winnerSide;
+    if (s.perfectL && s.perfectR) winnerSide = 'tie';
+    else if (s.perfectL)          winnerSide = 'left';
+    else if (s.perfectR)          winnerSide = 'right';
+    else winnerSide = numL > numR ? 'left' : numL < numR ? 'right' : 'tie';
     if (winnerSide === 'left')  winsL++;
     if (winnerSide === 'right') winsR++;
 
     const fmtL = typeof s.fmt === 'function' ? s.fmt(s.vL, pL) : s.vL;
     const fmtR = typeof s.fmt === 'function' ? s.fmt(s.vR, pR) : s.vR;
 
-    const maxVal = Math.max(numL, numR, 1);
-    const pctL   = Math.round((numL / maxVal) * 100);
-    const pctR   = Math.round((numR / maxVal) * 100);
+    // KDA perfecto: forzar barra al 100% para el perfecto, 0% para el otro
+    let pctL, pctR;
+    if (s.perfectL || s.perfectR) {
+      pctL = s.perfectL ? 100 : (s.perfectR ? 0 : 50);
+      pctR = s.perfectR ? 100 : (s.perfectL ? 0 : 50);
+    } else {
+      const maxVal = Math.max(numL, numR, 1);
+      pctL = Math.round((numL / maxVal) * 100);
+      pctR = Math.round((numR / maxVal) * 100);
+    }
     const isWinL = winnerSide === 'left';
     const isWinR = winnerSide === 'right';
 
