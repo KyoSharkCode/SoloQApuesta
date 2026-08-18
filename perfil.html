@@ -515,7 +515,8 @@ window.addEventListener('load', () => {
   async function checkLiveStatus() {
     const box = document.getElementById('live-status-box');
     try {
-      const liveRes = await fetch(`live_data.json?t=${Date.now()}`, { cache: 'no-store' });
+      const CDN = 'https://cdn.jsdelivr.net/gh/KyoSharkCode/SoloQApuesta@main';
+      const liveRes = await fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache: 'no-store' });
       if (!liveRes.ok) return;
       const liveData   = await liveRes.json();
       const liveStatus = liveData[jugadorId];
@@ -559,7 +560,7 @@ window.addEventListener('load', () => {
 
   async function loadProfileData() {
     try {
-      const res = await fetch(`datos.json?t=${Date.now()}`, { cache: 'no-store' });
+      const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache: 'no-store' });
       if(!res.ok) throw new Error();
       const data     = await res.json();
       const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
