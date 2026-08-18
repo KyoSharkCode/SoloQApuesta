@@ -193,27 +193,12 @@ def obtener_datos():
             url_ids = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&start=0&count=10"
             ids_recientes = get_con_reintento(url_ids, headers).json()
 
-            # Comparación inteligente: si el match más reciente no cambió, nadie jugó
+            # Comparación inteligente: si el match más reciente no cambió,
+            # el historial visible no cambió — pero los campos _semana SÍ pueden
+            # haber cambiado (partidas de hace 6 días pueden salir del rango de 7d).
+            # Por eso recalculamos los campos semanales de todas formas.
             match_mas_reciente = ids_recientes[0] if ids_recientes else ""
-            if match_mas_reciente and match_mas_reciente == ultimo_match_id.get(nombre_completo, ""):
-                print(f"  ⏭️ Sin partidas nuevas para {nombre_completo}, conservando datos.")
-                if anterior:
-                    anterior.setdefault("kills_recientes",          0)
-                    anterior.setdefault("pentakills_recientes",     0)
-                    anterior.setdefault("vision_promedio_reciente", 0)
-                    anterior.setdefault("kills_semana",             0)
-                    anterior.setdefault("pentakills_semana",        0)
-                    anterior.setdefault("vision_promedio_semana",   0)
-                    anterior.setdefault("primeras_sangre_semana",   0)
-                    anterior.setdefault("kda_promedio_semana",      0)
-                    anterior.setdefault("kda_perfecto_semana",      False)
-                    anterior.setdefault("campeones_ganados_semana", 0)
-                    anterior.setdefault("asistencias_semana",       0)
-                    anterior.setdefault("partidas_semana",          0)
-                    anterior.setdefault("max_partidas_en_un_dia",   0)
-                    anterior.setdefault("primera_victoria_hoy",     None)
-                    lista_final.append(anterior)
-                continue
+            sin_partidas_nuevas = match_mas_reciente and match_mas_reciente == ultimo_match_id.get(nombre_completo, "")
 
             # ── IDs de partidas de los últimos 7 días (Destacados de la Semana) ──
             hace_7_dias = int(time.time()) - 7 * 24 * 60 * 60
@@ -228,51 +213,71 @@ def obtener_datos():
                 detalles_por_id[match_id] = get_con_reintento(url_match, headers).json()
 
             # ── Historial visible (últimas 10 partidas) ──
-            historial        = []
-            roles_count      = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
-            campeones_count  = {}
+            # Si no hay partidas nuevas, reutilizamos el historial anterior
+            # para no recalcular lo que no cambió. Solo recalculamos los campos
+            # semanales (más abajo) porque el rango de 7 días sigue corriendo.
+            if sin_partidas_nuevas and anterior:
+                historial               = anterior.get("historial", [])
+                roles_count             = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
+                campeones_count         = {}
+                kills_recientes_total   = anterior.get("kills_recientes", 0)
+                pentakills_recientes_total = anterior.get("pentakills_recientes", 0)
+                vision_promedio_reciente   = anterior.get("vision_promedio_reciente", 0)
+                rol_mas_jugado          = anterior.get("rol_principal", "Desconocido")
+                top_2_roles             = anterior.get("top_roles", [])
+                top_3_recientes         = anterior.get("top_recientes", [])
+                print(f"  ⏭️ Sin partidas nuevas para {nombre_completo} — reutilizando historial, recalculando semana.")
+            else:
+                historial        = []
+                roles_count      = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
+                campeones_count  = {}
+                kills_recientes_total    = 0
+                pentakills_recientes_total = 0
+                vision_scores_recientes  = []
 
-            # Contadores de las últimas 10 partidas (badges superiores)
-            kills_recientes_total    = 0
-            pentakills_recientes_total = 0
-            vision_scores_recientes  = []
+            if not sin_partidas_nuevas:
+                for match_id in ids_recientes:
+                    md = detalles_por_id.get(match_id)
+                    if not md:
+                        continue
+                    pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
+                    if not pp:
+                        continue
 
-            for match_id in ids_recientes:
-                md = detalles_por_id.get(match_id)
-                if not md:
-                    continue
-                pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
-                if not pp:
-                    continue
+                    k, d, a = pp["kills"], pp["deaths"], pp["assists"]
+                    kda         = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
+                    campeon_jug = pp["championName"]
+                    rol_api     = pp.get("teamPosition", "")
+                    if rol_api in roles_count:
+                        roles_count[rol_api] += 1
+                    campeones_count[campeon_jug] = campeones_count.get(campeon_jug, 0) + 1
 
-                k, d, a = pp["kills"], pp["deaths"], pp["assists"]
-                kda          = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
-                campeon_jug  = pp["championName"]
-                rol_api      = pp.get("teamPosition", "")
-                if rol_api in roles_count:
-                    roles_count[rol_api] += 1
-                campeones_count[campeon_jug] = campeones_count.get(campeon_jug, 0) + 1
+                    kills_recientes_total      += pp["kills"]
+                    pentakills_recientes_total += pp.get("pentaKills", 0)
+                    vision_scores_recientes.append(pp.get("visionScore", 0))
 
-                # Acumular para badges superiores (últimas 10)
-                kills_recientes_total      += pp["kills"]
-                pentakills_recientes_total += pp.get("pentaKills", 0)
-                vision_scores_recientes.append(pp.get("visionScore", 0))
+                    lp_change = calcular_lp_por_partida(md, historial_lp_jugador)
 
-                lp_change = calcular_lp_por_partida(md, historial_lp_jugador)
+                    historial.append({
+                        "match_id":  match_id,
+                        "campeon":   campeon_jug,
+                        "kda":       f"{k}/{d}/{a} ({kda})",
+                        "resultado": "Victoria" if pp["win"] else "Derrota",
+                        "duracion":  f"{md['info']['gameDuration'] // 60}min",
+                        "lp_change": lp_change,
+                    })
 
-                historial.append({
-                    "match_id":  match_id,
-                    "campeon":   campeon_jug,
-                    "kda":       f"{k}/{d}/{a} ({kda})",
-                    "resultado": "Victoria" if pp["win"] else "Derrota",
-                    "duracion":  f"{md['info']['gameDuration'] // 60}min",
-                    "lp_change": lp_change,
-                })
+                vision_promedio_reciente = (
+                    round(sum(vision_scores_recientes) / len(vision_scores_recientes))
+                    if vision_scores_recientes else 0
+                )
 
-            vision_promedio_reciente = (
-                round(sum(vision_scores_recientes) / len(vision_scores_recientes))
-                if vision_scores_recientes else 0
-            )
+                mapa_roles      = {"TOP":"Top","JUNGLE":"Jungla","MIDDLE":"Mid","BOTTOM":"ADC","UTILITY":"Support","N/A":"Unranked"}
+                roles_ordenados = sorted(roles_count.items(), key=lambda x: x[1], reverse=True)
+                top_2_roles     = [{"rol": mapa_roles.get(r[0], r[0]), "cantidad": r[1]} for r in roles_ordenados if r[1] > 0][:2]
+                rol_mas_jugado  = top_2_roles[0]["rol"] if top_2_roles else "Desconocido"
+                campeones_ord   = sorted(campeones_count.items(), key=lambda x: x[1], reverse=True)[:3]
+                top_3_recientes = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ord]
 
             # ── Agregados semanales (Destacados de la Semana) ──
             total_kills_semana           = 0
@@ -355,17 +360,6 @@ def obtener_datos():
             # FIX: cuando el KDA es perfecto guardamos 0 para el promedio numérico;
             # el frontend usa kda_perfecto_semana=true para mostrar "Perfect KDA".
             kda_promedio_semana   = 0 if kda_perfecto_semana else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0)
-
-            mapa_roles = {
-                "TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid",
-                "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"
-            }
-            roles_ordenados  = sorted(roles_count.items(), key=lambda x: x[1], reverse=True)
-            top_2_roles      = [{"rol": mapa_roles.get(r[0], r[0]), "cantidad": r[1]} for r in roles_ordenados if r[1] > 0][:2]
-            rol_mas_jugado   = top_2_roles[0]["rol"] if top_2_roles else "Desconocido"
-
-            campeones_ordenados = sorted(campeones_count.items(), key=lambda x: x[1], reverse=True)[:3]
-            top_3_recientes     = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ordenados]
 
             lista_final.append({
                 "nombre":           nombre_completo,
