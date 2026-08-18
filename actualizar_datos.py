@@ -197,7 +197,6 @@ def obtener_datos():
             if match_mas_reciente and match_mas_reciente == ultimo_match_id.get(nombre_completo, ""):
                 print(f"  ⏭️ Sin partidas nuevas para {nombre_completo}, conservando datos.")
                 if anterior:
-                    # Rellenar campos _semana/_recientes que pueden faltar en datos viejos
                     anterior.setdefault("kills_recientes",          0)
                     anterior.setdefault("pentakills_recientes",     0)
                     anterior.setdefault("vision_promedio_reciente", 0)
@@ -208,6 +207,10 @@ def obtener_datos():
                     anterior.setdefault("kda_promedio_semana",      0)
                     anterior.setdefault("kda_perfecto_semana",      False)
                     anterior.setdefault("campeones_ganados_semana", 0)
+                    anterior.setdefault("asistencias_semana",       0)
+                    anterior.setdefault("partidas_semana",          0)
+                    anterior.setdefault("max_partidas_en_un_dia",   0)
+                    anterior.setdefault("primera_victoria_hoy",     None)
                     lista_final.append(anterior)
                 continue
 
@@ -271,12 +274,25 @@ def obtener_datos():
             )
 
             # ── Agregados semanales (Destacados de la Semana) ──
-            total_kills_semana          = 0
-            total_pentakills_semana     = 0
+            total_kills_semana           = 0
+            total_pentakills_semana      = 0
             total_primeras_sangre_semana = 0
-            vision_scores_semana        = []
-            k_s = d_s = a_s          = 0
-            campeones_ganados_semana   = set()
+            total_asistencias_semana     = 0
+            vision_scores_semana         = []
+            k_s = d_s = a_s             = 0
+            campeones_ganados_semana     = set()
+            partidas_por_dia             = {}   # "YYYY-MM-DD" → count
+            primera_victoria_hoy         = None  # ISO timestamp de la primera victoria del día actual (hora España)
+
+            # Hora actual en España (UTC+1 invierno / UTC+2 verano) — offset simple
+            import calendar
+            ahora_utc   = datetime.utcnow()
+            # Offset España: CET=+1, CEST=+2 (verano: último dom. marzo – último dom. octubre)
+            mes = ahora_utc.month
+            offset_h = 2 if 3 < mes < 10 else (1 if mes != 3 and mes != 10 else 1)
+            hoy_es = (ahora_utc.replace(hour=0, minute=0, second=0, microsecond=0))
+            # Inicio del día de hoy en España en timestamp UTC
+            inicio_hoy_utc = calendar.timegm(hoy_es.timetuple()) - offset_h * 3600
 
             for match_id in ids_semana:
                 md = detalles_por_id.get(match_id)
@@ -289,6 +305,7 @@ def obtener_datos():
                 total_kills_semana           += pp["kills"]
                 total_pentakills_semana      += pp.get("pentaKills", 0)
                 total_primeras_sangre_semana += 1 if pp.get("firstBloodKill") else 0
+                total_asistencias_semana     += pp["assists"]
                 vision_scores_semana.append(pp.get("visionScore", 0))
                 k_s += pp["kills"]
                 d_s += pp["deaths"]
@@ -296,8 +313,42 @@ def obtener_datos():
                 if pp["win"]:
                     campeones_ganados_semana.add(pp["championName"])
 
-            n_semana              = len(ids_semana)
+                # Partidas por día (para "Sin rendirse")
+                fin_ms  = md["info"].get("gameEndTimestamp") or (md["info"].get("gameCreation", 0) + md["info"].get("gameDuration", 0) * 1000)
+                fin_dt  = datetime.utcfromtimestamp(fin_ms / 1000)
+                dia_key = fin_dt.strftime("%Y-%m-%d")
+                partidas_por_dia[dia_key] = partidas_por_dia.get(dia_key, 0) + 1
+
+                # Primera victoria del día (hora España)
+                if pp["win"]:
+                    fin_seg = fin_ms / 1000
+                    if fin_seg >= inicio_hoy_utc:
+                        ts_iso = datetime.utcfromtimestamp(fin_seg).strftime("%Y-%m-%dT%H:%M:%S")
+                        if primera_victoria_hoy is None or ts_iso < primera_victoria_hoy["timestamp"]:
+                            k_pv, d_pv, a_pv = pp["kills"], pp["deaths"], pp["assists"]
+                            kda_pv = "Perfect" if d_pv == 0 else f"{round((k_pv + a_pv) / d_pv, 2)}"
+                            equipo = "blue" if pp.get("teamId") == 100 else "red"
+                            hechizos_ids = [pp.get("summoner1Id", 0), pp.get("summoner2Id", 0)]
+                            # Mapa simple de IDs de hechizos a nombres de icono DDragon
+                            SPELL_MAP = {
+                                1:"SummonerBoost", 3:"SummonerExhaust", 4:"SummonerFlash",
+                                6:"SummonerHaste", 7:"SummonerHeal", 11:"SummonerSmite",
+                                12:"SummonerTeleport", 13:"SummonerMana", 14:"SummonerDot",
+                                21:"SummonerBarrier", 32:"SummonerSnowball"
+                            }
+                            hechizos = [SPELL_MAP.get(sid, "SummonerFlash") for sid in hechizos_ids]
+                            primera_victoria_hoy = {
+                                "timestamp":  ts_iso,
+                                "campeon":    pp["championName"],
+                                "kda":        f"{k_pv}/{d_pv}/{a_pv} ({kda_pv})",
+                                "equipo":     equipo,
+                                "duracion":   f"{md['info']['gameDuration'] // 60}min",
+                                "hechizos":   hechizos,
+                            }
+
+            n_semana               = len(ids_semana)
             vision_promedio_semana = round(sum(vision_scores_semana) / len(vision_scores_semana)) if vision_scores_semana else 0
+            max_partidas_en_un_dia = max(partidas_por_dia.values()) if partidas_por_dia else 0
             kda_perfecto_semana   = n_semana > 0 and d_s == 0
             # FIX: cuando el KDA es perfecto guardamos 0 para el promedio numérico;
             # el frontend usa kda_perfecto_semana=true para mostrar "Perfect KDA".
@@ -338,6 +389,11 @@ def obtener_datos():
                 "kda_promedio_semana":       kda_promedio_semana,
                 "kda_perfecto_semana":       kda_perfecto_semana,
                 "campeones_ganados_semana":  len(campeones_ganados_semana),
+                # ── Campos nuevos ──
+                "asistencias_semana":        total_asistencias_semana,
+                "partidas_semana":           n_semana,
+                "max_partidas_en_un_dia":    max_partidas_en_un_dia,
+                "primera_victoria_hoy":      primera_victoria_hoy,
             })
             print(f"  ✓ {nombre_completo} actualizado correctamente.")
 
@@ -355,6 +411,10 @@ def obtener_datos():
                 anterior.setdefault("kda_promedio_semana",      0)
                 anterior.setdefault("kda_perfecto_semana",      False)
                 anterior.setdefault("campeones_ganados_semana", 0)
+                anterior.setdefault("asistencias_semana",       0)
+                anterior.setdefault("partidas_semana",          0)
+                anterior.setdefault("max_partidas_en_un_dia",   0)
+                anterior.setdefault("primera_victoria_hoy",     None)
                 lista_final.append(anterior)
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
