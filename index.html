@@ -119,7 +119,6 @@
   .profile-link { font-size:14px; font-weight:700; color: #ffffff; text-decoration: none; transition: color 0.2s; position: relative; z-index: 10; padding: 4px 8px; border-radius: 6px;}
   .profile-link:hover { color: var(--accent-soft); background: rgba(139,92,246,.15); text-decoration: underline; }
 
-
   /* Mini crest de elo — al lado del texto del rango */
   .tier-badge{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#ffffff; white-space:nowrap; }
   .tier-emblem{ width:28px; height:28px; object-fit:contain; flex-shrink:0; image-rendering:auto; }
@@ -369,6 +368,11 @@ window.addEventListener('load', () => {
             duracion: h.duracion || null
           })),
           historialLP: p.progreso_lp || [],
+          // Variables de las últimas 10 partidas
+          killsRecientes: p.kills_recientes || 0,
+          pentakillsRecientes: p.pentakills_recientes || 0,
+          visionPromedioReciente: p.vision_promedio_reciente || 0,
+          // Variables de la semana (7 días)
           killsSemana: p.kills_semana || 0,
           pentakillsSemana: p.pentakills_semana || 0,
           visionPromedioSemana: p.vision_promedio_semana || 0,
@@ -496,9 +500,9 @@ window.addEventListener('load', () => {
     }
 
     const categorias = [
-      { icon: '⚔️', label: 'Top Asesino',   campo: 'killsSemana',        sufijo: 'kills',       vacio: 'Nadie ha registrado kills todavía.' },
-      { icon: '🔥', label: 'Top Pentakills', campo: 'pentakillsSemana',   sufijo: 'pentakills',  vacio: 'Nadie ha hecho un penta… todavía 👀' },
-      { icon: '👁️', label: 'Top Observador', campo: 'visionPromedioSemana', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
+      { icon: '⚔️', label: 'Top Asesino (10p)',   campo: 'killsRecientes',        sufijo: 'kills',       vacio: 'Nadie ha registrado kills todavía.' },
+      { icon: '🔥', label: 'Top Pentakills (10p)', campo: 'pentakillsRecientes',   sufijo: 'pentakills',  vacio: 'Nadie ha hecho un penta… todavía 👀' },
+      { icon: '👁️', label: 'Top Observador (10p)', campo: 'visionPromedioReciente', sufijo: 'visión prom.', vacio: 'Sin datos de visión aún.' },
     ];
     const categoriasHtml = categorias.map(cat => {
       const lider = [...state.players].sort((a, b) => (b[cat.campo] || 0) - (a[cat.campo] || 0))[0];
