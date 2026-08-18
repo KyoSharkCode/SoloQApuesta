@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-18T19:20:48.772131",
+  "ultimaActualizacion": "2026-08-18T19:25:41.857078",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1429,8 +1429,8 @@
       "nombre": "Ostia#LAN",
       "icono": 1296,
       "rango": "Bronze III",
-      "lp": 33,
-      "winrate": "67%",
+      "lp": 63,
+      "winrate": "71%",
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -1444,23 +1444,23 @@
       ],
       "top_recientes": [
         {
-          "campeon": "Swain",
-          "cantidad": 4
-        },
-        {
           "campeon": "Veigar",
           "cantidad": 3
         },
         {
-          "campeon": "Ekko",
-          "cantidad": 1
+          "campeon": "Swain",
+          "cantidad": 3
+        },
+        {
+          "campeon": "Lux",
+          "cantidad": 2
         }
       ],
       "maestrias": [
         {
           "campeon": "Lux",
-          "nivel": 18,
-          "puntos": "206.918"
+          "nivel": 19,
+          "puntos": "208.691"
         },
         {
           "campeon": "Swain",
@@ -1491,9 +1491,23 @@
           "lp": 33,
           "rango": "Bronze",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-18T19:25:26",
+          "lp": 63,
+          "rango": "Bronze",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742110117",
+          "campeon": "Lux",
+          "kda": "6/5/17 (4.6)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 30
+        },
         {
           "match_id": "LA1_1742063652",
           "campeon": "Veigar",
@@ -1565,29 +1579,21 @@
           "resultado": "Derrota",
           "duracion": "31min",
           "lp_change": null
-        },
-        {
-          "match_id": "LA1_1677050834",
-          "campeon": "Swain",
-          "kda": "6/7/19 (3.57)",
-          "resultado": "Victoria",
-          "duracion": "37min",
-          "lp_change": null
         }
       ],
       "kills_recientes": 34,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 41,
-      "kills_semana": 22,
+      "vision_promedio_reciente": 44,
+      "kills_semana": 28,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 32,
+      "vision_promedio_semana": 38,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.06,
+      "kda_promedio_semana": 2.42,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 42,
-      "partidas_semana": 6,
-      "max_partidas_en_un_dia": 2,
+      "asistencias_semana": 59,
+      "partidas_semana": 7,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787043320707,
         "campeon": "Veigar",
