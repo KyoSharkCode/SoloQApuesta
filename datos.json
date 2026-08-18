@@ -1,17 +1,17 @@
 {
-  "ultimaActualizacion": "2026-08-18T22:02:07.579278",
+  "ultimaActualizacion": "2026-08-18T22:40:09.416949",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 57,
+      "lp": 93,
       "winrate": "52%",
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 6
         },
         {
           "rol": "Mid",
@@ -21,14 +21,14 @@
       "top_recientes": [
         {
           "campeon": "Fiora",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
-          "campeon": "Draven",
+          "campeon": "Ekko",
           "cantidad": 1
         },
         {
-          "campeon": "Jayce",
+          "campeon": "Alistar",
           "cantidad": 1
         }
       ],
@@ -36,7 +36,7 @@
         {
           "campeon": "Fiora",
           "nivel": 27,
-          "puntos": "263.902"
+          "puntos": "268.196"
         },
         {
           "campeon": "Irelia",
@@ -50,7 +50,6 @@
         }
       ],
       "progreso_lp": [
-        58,
         {
           "fecha": "15/08 13:11",
           "lp": 58
@@ -248,101 +247,127 @@
           "lp": 57,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-18T22:39:54Z",
+          "lp": 93,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
         {
+          "match_id": "LA1_1742128573",
+          "campeon": "Fiora",
+          "kda": "18/10/7 (2.5)",
+          "resultado": "Derrota",
+          "duracion": "42min",
+          "lp_change": 36
+        },
+        {
+          "match_id": "LA1_1742124714",
+          "campeon": "Fiora",
+          "kda": "7/3/2 (3.0)",
+          "resultado": "Victoria",
+          "duracion": "16min",
+          "lp_change": 36
+        },
+        {
+          "match_id": "LA1_1742116443",
+          "campeon": "Fiora",
+          "kda": "20/10/11 (3.1)",
+          "resultado": "Victoria",
+          "duracion": "39min",
+          "lp_change": 36
+        },
+        {
+          "match_id": "LA1_1742110117",
+          "campeon": "Ekko",
+          "kda": "10/7/8 (2.57)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 36
+        },
+        {
+          "match_id": "LA1_1742089011",
+          "campeon": "Alistar",
+          "kda": "1/8/15 (2.0)",
+          "resultado": "Derrota",
+          "duracion": "29min",
+          "lp_change": 36
+        },
+        {
           "match_id": "LA1_1742010452",
           "campeon": "Fiora",
-          "kda": "0/0/0 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "2min"
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "2:11",
+          "lp_change": null
         },
         {
           "match_id": "LA1_1742000003",
           "campeon": "Fiora",
           "kda": "10/9/10 (2.22)",
           "resultado": "Victoria",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": 18
         },
         {
           "match_id": "LA1_1741975937",
           "campeon": "Fiora",
           "kda": "10/9/3 (1.44)",
           "resultado": "Derrota",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": -21
         },
         {
           "match_id": "LA1_1741971061",
           "campeon": "Draven",
           "kda": "3/6/4 (1.17)",
           "resultado": "Derrota",
-          "duracion": "24min"
+          "duracion": "24min",
+          "lp_change": -21
         },
         {
           "match_id": "LA1_1741956228",
           "campeon": "Fiora",
           "kda": "7/6/6 (2.17)",
           "resultado": "Victoria",
-          "duracion": "28min"
-        },
-        {
-          "match_id": "LA1_1741930404",
-          "campeon": "Fiora",
-          "kda": "6/10/5 (1.1)",
-          "resultado": "Derrota",
-          "duracion": "37min"
-        },
-        {
-          "match_id": "LA1_1741924017",
-          "campeon": "Fiora",
-          "kda": "10/0/7 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "24min"
-        },
-        {
-          "match_id": "LA1_1741857393",
-          "campeon": "Fiora",
-          "kda": "11/7/7 (2.57)",
-          "resultado": "Victoria",
-          "duracion": "32min"
-        },
-        {
-          "match_id": "LA1_1741851383",
-          "campeon": "Jayce",
-          "kda": "10/10/1 (1.1)",
-          "resultado": "Derrota",
-          "duracion": "29min"
-        },
-        {
-          "match_id": "LA1_1741842426",
-          "campeon": "Ekko",
-          "kda": "13/6/9 (3.67)",
-          "resultado": "Victoria",
-          "duracion": "23min"
+          "duracion": "28min",
+          "lp_change": 19
         }
       ],
-      "kills_recientes": 80,
+      "kills_recientes": 86,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 0,
-      "kills_semana": 214,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 234,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 27,
-      "primeras_sangre_semana": 12,
-      "kda_promedio_semana": 2.31,
+      "vision_promedio_semana": 32,
+      "primeras_sangre_semana": 11,
+      "kda_promedio_semana": 2.51,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 167,
-      "partidas_semana": 25,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
-      "dia_referencia": null
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 162,
+      "partidas_semana": 23,
+      "max_partidas_en_un_dia": 17,
+      "primera_victoria_hoy": {
+        "timestamp": 1786939299743,
+        "campeon": "Fiora",
+        "kda": "17/3/4 (7.0)",
+        "equipo": "red",
+        "duracion": "25:48",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
+      "dia_referencia": 1786939200
     },
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 19,
+      "lp": 47,
       "winrate": "48%",
       "rol_principal": "Jungla",
       "top_roles": [
@@ -383,11 +408,10 @@
         {
           "campeon": "Lillia",
           "nivel": 16,
-          "puntos": "145.400"
+          "puntos": "148.427"
         }
       ],
       "progreso_lp": [
-        55,
         {
           "fecha": "15/08 13:11",
           "lp": 55
@@ -507,107 +531,133 @@
           "lp": 19,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-18T22:39:54Z",
+          "lp": 47,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742131148",
+          "campeon": "Lillia",
+          "kda": "13/5/21 (6.8)",
+          "resultado": "Victoria",
+          "duracion": "43min",
+          "lp_change": 28
+        },
+        {
+          "match_id": "LA1_1742096775",
+          "campeon": "Lillia",
+          "kda": "5/8/9 (1.75)",
+          "resultado": "Derrota",
+          "duracion": "37min",
+          "lp_change": 28
+        },
         {
           "match_id": "LA1_1741849535",
           "campeon": "Lillia",
           "kda": "9/7/11 (2.86)",
           "resultado": "Derrota",
-          "duracion": "42min"
+          "duracion": "42min",
+          "lp_change": 28
         },
         {
           "match_id": "LA1_1741825128",
           "campeon": "Lillia",
           "kda": "7/7/21 (4.0)",
           "resultado": "Victoria",
-          "duracion": "35min"
+          "duracion": "35min",
+          "lp_change": 29
         },
         {
           "match_id": "LA1_1741819940",
           "campeon": "Twitch",
           "kda": "8/10/4 (1.2)",
           "resultado": "Derrota",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": -10
         },
         {
           "match_id": "LA1_1741582837",
           "campeon": "Lillia",
           "kda": "6/5/5 (2.2)",
           "resultado": "Derrota",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": -10
         },
         {
           "match_id": "LA1_1741575193",
           "campeon": "Lillia",
           "kda": "9/1/10 (19.0)",
           "resultado": "Victoria",
-          "duracion": "27min"
+          "duracion": "27min",
+          "lp_change": 30
         },
         {
           "match_id": "LA1_1741557117",
           "campeon": "Lillia",
           "kda": "5/11/17 (2.0)",
           "resultado": "Victoria",
-          "duracion": "42min"
+          "duracion": "42min",
+          "lp_change": 30
         },
         {
           "match_id": "LA1_1741390160",
           "campeon": "Lillia",
           "kda": "3/11/13 (1.45)",
           "resultado": "Derrota",
-          "duracion": "36min"
+          "duracion": "36min",
+          "lp_change": null
         },
         {
           "match_id": "LA1_1741367690",
           "campeon": "Poppy",
           "kda": "10/8/3 (1.62)",
           "resultado": "Derrota",
-          "duracion": "29min"
-        },
-        {
-          "match_id": "LA1_1741349516",
-          "campeon": "Lillia",
-          "kda": "5/5/4 (1.8)",
-          "resultado": "Derrota",
-          "duracion": "25min"
-        },
-        {
-          "match_id": "LA1_1741315951",
-          "campeon": "Lillia",
-          "kda": "16/9/16 (3.56)",
-          "resultado": "Victoria",
-          "duracion": "43min"
+          "duracion": "29min",
+          "lp_change": null
         }
       ],
-      "kills_recientes": 78,
+      "kills_recientes": 75,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 0,
-      "kills_semana": 85,
+      "vision_promedio_reciente": 42,
+      "kills_semana": 103,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 39,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.52,
+      "vision_promedio_semana": 41,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 2.69,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 117,
-      "partidas_semana": 12,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
-      "dia_referencia": null
+      "asistencias_semana": 147,
+      "partidas_semana": 14,
+      "max_partidas_en_un_dia": 5,
+      "primera_victoria_hoy": {
+        "timestamp": 1786974092435,
+        "campeon": "Lillia",
+        "kda": "7/7/21 (4.0)",
+        "equipo": "red",
+        "duracion": "35:08",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
+      "dia_referencia": 1786939200
     },
     {
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
-      "rango": "Silver I",
-      "lp": 15,
+      "rango": "Silver II",
+      "lp": 93,
       "winrate": "49%",
       "rol_principal": "ADC",
       "top_roles": [
         {
           "rol": "ADC",
-          "cantidad": 7
+          "cantidad": 5
         },
         {
           "rol": "Mid",
@@ -617,14 +667,14 @@
       "top_recientes": [
         {
           "campeon": "Caitlyn",
-          "cantidad": 5
-        },
-        {
-          "campeon": "Lux",
-          "cantidad": 1
+          "cantidad": 3
         },
         {
           "campeon": "Zoe",
+          "cantidad": 2
+        },
+        {
+          "campeon": "Seraphine",
           "cantidad": 1
         }
       ],
@@ -637,7 +687,7 @@
         {
           "campeon": "Zoe",
           "nivel": 23,
-          "puntos": "225.426"
+          "puntos": "226.254"
         },
         {
           "campeon": "Lux",
@@ -646,7 +696,6 @@
         }
       ],
       "progreso_lp": [
-        57,
         {
           "fecha": "15/08 13:11",
           "lp": 57
@@ -838,95 +887,121 @@
           "lp": 15,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-18T22:39:54Z",
+          "lp": 93,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
         {
+          "match_id": "LA1_1742142820",
+          "campeon": "Zoe",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:13",
+          "lp_change": null
+        },
+        {
+          "match_id": "LA1_1742126734",
+          "campeon": "Zoe",
+          "kda": "11/7/5 (2.29)",
+          "resultado": "Derrota",
+          "duracion": "31min",
+          "lp_change": -22
+        },
+        {
           "match_id": "LA1_1742010452",
           "campeon": "Lux",
-          "kda": "1/0/0 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "2min"
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "2:11",
+          "lp_change": null
         },
         {
           "match_id": "LA1_1742000003",
           "campeon": "Zoe",
           "kda": "7/7/8 (2.14)",
           "resultado": "Victoria",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": 18
         },
         {
           "match_id": "LA1_1741975937",
           "campeon": "Caitlyn",
           "kda": "9/10/3 (1.2)",
           "resultado": "Derrota",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": -22
         },
         {
           "match_id": "LA1_1741971061",
           "campeon": "Seraphine",
           "kda": "4/3/4 (2.67)",
           "resultado": "Derrota",
-          "duracion": "24min"
+          "duracion": "24min",
+          "lp_change": -22
         },
         {
           "match_id": "LA1_1741956228",
           "campeon": "Aphelios",
           "kda": "7/10/5 (1.2)",
           "resultado": "Victoria",
-          "duracion": "28min"
+          "duracion": "28min",
+          "lp_change": 18
         },
         {
           "match_id": "LA1_1741930404",
           "campeon": "Caitlyn",
           "kda": "4/13/8 (0.92)",
           "resultado": "Derrota",
-          "duracion": "37min"
+          "duracion": "37min",
+          "lp_change": -22
         },
         {
           "match_id": "LA1_1741924017",
           "campeon": "Xayah",
           "kda": "3/4/4 (1.75)",
           "resultado": "Victoria",
-          "duracion": "24min"
+          "duracion": "24min",
+          "lp_change": 18
         },
         {
           "match_id": "LA1_1741897080",
           "campeon": "Caitlyn",
           "kda": "9/4/5 (3.5)",
           "resultado": "Victoria",
-          "duracion": "26min"
-        },
-        {
-          "match_id": "LA1_1741891827",
-          "campeon": "Caitlyn",
-          "kda": "0/0/0 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "1min"
-        },
-        {
-          "match_id": "LA1_1741760600",
-          "campeon": "Caitlyn",
-          "kda": "6/11/7 (1.18)",
-          "resultado": "Victoria",
-          "duracion": "39min"
+          "duracion": "26min",
+          "lp_change": 18
         }
       ],
-      "kills_recientes": 50,
+      "kills_recientes": 54,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 0,
-      "kills_semana": 133,
+      "vision_promedio_reciente": 25,
+      "kills_semana": 127,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
+      "vision_promedio_semana": 28,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 1.96,
+      "kda_promedio_semana": 1.94,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 6,
-      "asistencias_semana": 165,
-      "partidas_semana": 25,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
-      "dia_referencia": null
+      "campeones_ganados_semana": 5,
+      "asistencias_semana": 151,
+      "partidas_semana": 21,
+      "max_partidas_en_un_dia": 10,
+      "primera_victoria_hoy": {
+        "timestamp": 1786939299743,
+        "campeon": "Jinx",
+        "kda": "7/9/5 (1.33)",
+        "equipo": "red",
+        "duracion": "25:48",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerHaste"
+        ]
+      },
+      "dia_referencia": 1786939200
     },
     {
       "nombre": "ゆうき まこと#1411",
@@ -977,7 +1052,6 @@
         }
       ],
       "progreso_lp": [
-        75,
         {
           "fecha": "15/08 13:11",
           "lp": 75
