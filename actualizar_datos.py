@@ -3,7 +3,7 @@ import json
 import time
 import requests
 from urllib.parse import quote
-from datetime import datetime
+from datetime import datetime, timedelta
 
 REGION_API  = "americas"
 REGION_GAME = "la1"
@@ -39,7 +39,6 @@ def elo_score_simple(rango, division, lp):
 
 
 def calcular_lp_por_partida(md, progreso_lp_ordenado):
-    """Estima el LP ganado/perdido comparando snapshots de LP antes y después de la partida."""
     info   = md.get("info", {})
     fin_ms = info.get("gameEndTimestamp")
     if fin_ms is None:
@@ -102,14 +101,26 @@ def obtener_datos():
         "X-Riot-Token": API_KEY
     }
 
-    print("📚 Descargando diccionario de campeones...")
-    url_ddragon = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/champion.json"
-    champ_data = requests.get(url_ddragon).json()["data"]
+    print("📚 Descargando diccionarios...")
+    url_ddragon_champ = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/champion.json"
+    champ_data = requests.get(url_ddragon_champ).json()["data"]
     diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
 
-    # Cargar datos anteriores para preservar historial y fallback
+    url_ddragon_spell = "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/es_ES/summoner.json"
+    spell_data = requests.get(url_ddragon_spell).json()["data"]
+    diccionario_hechizos = {int(info["key"]): info["id"] for _, info in spell_data.items()}
+
+    # Calcular límite de las 6 AM (Hora de España / CET/CEST aproximado con UTC+2)
+    now_utc = datetime.utcnow()
+    now_spain = now_utc + timedelta(hours=2)
+    if now_spain.hour >= 6:
+        boundary_spain = now_spain.replace(hour=6, minute=0, second=0, microsecond=0)
+    else:
+        boundary_spain = (now_spain - timedelta(days=1)).replace(hour=6, minute=0, second=0, microsecond=0)
+    boundary_utc_ts = (boundary_spain - timedelta(hours=2)).timestamp()
+
     datos_antiguos = {}
-    ultimo_match_id = {}  # nombre → match_id más reciente guardado (comparación inteligente)
+    ultimo_match_id = {}
     if os.path.exists("datos.json"):
         try:
             with open("datos.json", "r", encoding="utf-8") as f:
@@ -132,17 +143,14 @@ def obtener_datos():
         anterior = datos_antiguos.get(nombre_completo)
 
         try:
-            # ── PUUID ──
             name_enc = quote(jugador["name"])
             tag_enc  = quote(jugador["tag"])
             url_account = f"https://{REGION_API}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{name_enc}/{tag_enc}"
             puuid = get_con_reintento(url_account, headers).json()["puuid"]
 
-            # ── Icono ──
             url_summoner = f"https://{REGION_GAME}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{puuid}"
             icono_id = get_con_reintento(url_summoner, headers).json().get("profileIconId", 1)
 
-            # ── Rango y LP ──
             url_league = f"https://{REGION_GAME}.api.riotgames.com/lol/league/v4/entries/by-puuid/{puuid}"
             league_data = get_con_reintento(url_league, headers).json()
 
@@ -156,7 +164,6 @@ def obtener_datos():
                     winrate  = f"{round(mode['wins'] / total * 100)}%" if total > 0 else "0%"
                     break
 
-            # ── Historial LP (solo agrega punto si algo cambió) ──
             historial_lp_jugador = list((anterior or {}).get("progreso_lp", []))
             punto_anterior = historial_lp_jugador[-1] if historial_lp_jugador else None
             mismo_punto = (
@@ -174,7 +181,6 @@ def obtener_datos():
                 })
             historial_lp_jugador = historial_lp_jugador[-MAX_PUNTOS_HISTORIAL:]
 
-            # ── Top 3 Maestrías ──
             url_mast = f"https://{REGION_GAME}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}"
             mast_data = get_con_reintento(url_mast, headers).json()
             if isinstance(mast_data, list):
@@ -188,16 +194,13 @@ def obtener_datos():
                     "puntos":  f"{m['championPoints']:,}".replace(",", ".")
                 })
 
-            # ── IDs de partidas recientes (historial visible) ──
             url_ids = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&start=0&count=10"
             ids_recientes = get_con_reintento(url_ids, headers).json()
 
-            # Comparación inteligente: si el match más reciente no cambió, nadie jugó
             match_mas_reciente = ids_recientes[0] if ids_recientes else ""
             if match_mas_reciente and match_mas_reciente == ultimo_match_id.get(nombre_completo, ""):
                 print(f"  ⏭️ Sin partidas nuevas para {nombre_completo}, conservando datos.")
                 if anterior:
-                    # Rellenar campos _semana/_recientes que pueden faltar en datos viejos
                     anterior.setdefault("kills_recientes",          0)
                     anterior.setdefault("pentakills_recientes",     0)
                     anterior.setdefault("vision_promedio_reciente", 0)
@@ -208,48 +211,44 @@ def obtener_datos():
                     anterior.setdefault("kda_promedio_semana",      0)
                     anterior.setdefault("kda_perfecto_semana",      False)
                     anterior.setdefault("campeones_ganados_semana", 0)
+                    anterior.setdefault("partidas_semana",          0)
+                    anterior.setdefault("asistencias_semana",       0)
+                    anterior.setdefault("max_partidas_en_un_dia",   0)
+                    anterior.setdefault("primera_victoria_hoy",     None)
                     lista_final.append(anterior)
                 continue
 
-            # ── IDs de partidas de los últimos 7 días (Destacados de la Semana) ──
             hace_7_dias = int(time.time()) - 7 * 24 * 60 * 60
             url_ids_semana = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&startTime={hace_7_dias}&count=25"
             ids_semana = get_con_reintento(url_ids_semana, headers).json()
 
-            # Unir sin duplicar para no pedir el mismo detalle dos veces
             ids_a_consultar = list(dict.fromkeys(ids_recientes + ids_semana))
             detalles_por_id = {}
             for match_id in ids_a_consultar:
                 url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
                 detalles_por_id[match_id] = get_con_reintento(url_match, headers).json()
 
-            # ── Historial visible (últimas 10 partidas) ──
             historial        = []
             roles_count      = {"TOP": 0, "JUNGLE": 0, "MIDDLE": 0, "BOTTOM": 0, "UTILITY": 0}
             campeones_count  = {}
 
-            # Contadores de las últimas 10 partidas (badges superiores)
-            kills_recientes_total    = 0
+            kills_recientes_total      = 0
             pentakills_recientes_total = 0
-            vision_scores_recientes  = []
+            vision_scores_recientes    = []
 
             for match_id in ids_recientes:
                 md = detalles_por_id.get(match_id)
-                if not md:
-                    continue
+                if not md: continue
                 pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
-                if not pp:
-                    continue
+                if not pp: continue
 
                 k, d, a = pp["kills"], pp["deaths"], pp["assists"]
                 kda          = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
                 campeon_jug  = pp["championName"]
                 rol_api      = pp.get("teamPosition", "")
-                if rol_api in roles_count:
-                    roles_count[rol_api] += 1
+                if rol_api in roles_count: roles_count[rol_api] += 1
                 campeones_count[campeon_jug] = campeones_count.get(campeon_jug, 0) + 1
 
-                # Acumular para badges superiores (últimas 10)
                 kills_recientes_total      += pp["kills"]
                 pentakills_recientes_total += pp.get("pentaKills", 0)
                 vision_scores_recientes.append(pp.get("visionScore", 0))
@@ -265,30 +264,38 @@ def obtener_datos():
                     "lp_change": lp_change,
                 })
 
-            vision_promedio_reciente = (
-                round(sum(vision_scores_recientes) / len(vision_scores_recientes))
-                if vision_scores_recientes else 0
-            )
+            vision_promedio_reciente = round(sum(vision_scores_recientes) / len(vision_scores_recientes)) if vision_scores_recientes else 0
 
-            # ── Agregados semanales (Destacados de la Semana) ──
-            total_kills_semana          = 0
-            total_pentakills_semana     = 0
+            # ── Variables para 7 días y Primera Victoria ──
+            total_kills_semana           = 0
+            total_pentakills_semana      = 0
             total_primeras_sangre_semana = 0
-            vision_scores_semana        = []
-            k_s = d_s = a_s          = 0
-            campeones_ganados_semana   = set()
+            asistencias_semana           = 0
+            vision_scores_semana         = []
+            k_s = d_s = a_s              = 0
+            campeones_ganados_semana     = set()
+            partidas_por_dia             = {}
+            primera_victoria_hoy         = None
 
             for match_id in ids_semana:
                 md = detalles_por_id.get(match_id)
-                if not md:
-                    continue
-                pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
-                if not pp:
-                    continue
+                if not md: continue
+                info = md["info"]
+                end_ts_ms = info.get("gameEndTimestamp") or (info.get("gameCreation", 0) + info.get("gameDuration", 0) * 1000)
+                end_ts = end_ts_ms / 1000
+
+                # Max partidas por día
+                dt_spain = datetime.utcfromtimestamp(end_ts) + timedelta(hours=2)
+                day_str = dt_spain.strftime("%Y-%m-%d")
+                partidas_por_dia[day_str] = partidas_por_dia.get(day_str, 0) + 1
+
+                pp = next((p for p in info["participants"] if p["puuid"] == puuid), None)
+                if not pp: continue
 
                 total_kills_semana           += pp["kills"]
                 total_pentakills_semana      += pp.get("pentaKills", 0)
                 total_primeras_sangre_semana += 1 if pp.get("firstBloodKill") else 0
+                asistencias_semana           += pp["assists"]
                 vision_scores_semana.append(pp.get("visionScore", 0))
                 k_s += pp["kills"]
                 d_s += pp["deaths"]
@@ -296,17 +303,31 @@ def obtener_datos():
                 if pp["win"]:
                     campeones_ganados_semana.add(pp["championName"])
 
-            n_semana              = len(ids_semana)
-            vision_promedio_semana = round(sum(vision_scores_semana) / len(vision_scores_semana)) if vision_scores_semana else 0
-            kda_perfecto_semana   = n_semana > 0 and d_s == 0
-            # FIX: cuando el KDA es perfecto guardamos 0 para el promedio numérico;
-            # el frontend usa kda_perfecto_semana=true para mostrar "Perfect KDA".
-            kda_promedio_semana   = 0 if kda_perfecto_semana else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0)
+                # Lógica Primera Victoria (Desde las 6 AM de hoy)
+                if pp["win"] and end_ts >= boundary_utc_ts:
+                    if primera_victoria_hoy is None or end_ts < (primera_victoria_hoy["timestamp"] / 1000):
+                        k, d, a = pp["kills"], pp["deaths"], pp["assists"]
+                        spell1 = diccionario_hechizos.get(pp["summoner1Id"], "SummonerFlash")
+                        spell2 = diccionario_hechizos.get(pp["summoner2Id"], "SummonerDot")
+                        dur_mins = info["gameDuration"] // 60
+                        dur_secs = info["gameDuration"] % 60
+                        kda_str = "Perfect" if d == 0 else str(round((k + a) / d, 2))
+                        
+                        primera_victoria_hoy = {
+                            "timestamp": int(end_ts * 1000),
+                            "campeon": pp["championName"],
+                            "kda": f"{k}/{d}/{a} ({kda_str})",
+                            "hechizos": [spell1, spell2],
+                            "equipo": "blue" if pp["teamId"] == 100 else "red",
+                            "duracion": f"{dur_mins}:{dur_secs:02d}"
+                        }
 
-            mapa_roles = {
-                "TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid",
-                "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"
-            }
+            n_semana               = len(ids_semana)
+            vision_promedio_semana = round(sum(vision_scores_semana) / len(vision_scores_semana)) if vision_scores_semana else 0
+            kda_perfecto_semana    = n_semana > 0 and d_s == 0
+            kda_promedio_semana    = 0 if kda_perfecto_semana else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0)
+
+            mapa_roles = {"TOP": "Top", "JUNGLE": "Jungla", "MIDDLE": "Mid", "BOTTOM": "ADC", "UTILITY": "Support", "N/A": "Unranked"}
             roles_ordenados  = sorted(roles_count.items(), key=lambda x: x[1], reverse=True)
             top_2_roles      = [{"rol": mapa_roles.get(r[0], r[0]), "cantidad": r[1]} for r in roles_ordenados if r[1] > 0][:2]
             rol_mas_jugado   = top_2_roles[0]["rol"] if top_2_roles else "Desconocido"
@@ -315,29 +336,31 @@ def obtener_datos():
             top_3_recientes     = [{"campeon": c[0], "cantidad": c[1]} for c in campeones_ordenados]
 
             lista_final.append({
-                "nombre":           nombre_completo,
-                "icono":            icono_id,
-                "rango":            f"{rango} {division}".strip(),
-                "lp":               lp,
-                "winrate":          winrate,
-                "rol_principal":    rol_mas_jugado,
-                "top_roles":        top_2_roles,
-                "top_recientes":    top_3_recientes,
-                "maestrias":        maestrias,
-                "progreso_lp":      historial_lp_jugador,
-                "historial":        historial,
-                # ── Campos últimas 10 partidas (badges superiores) ──
-                "kills_recientes":           kills_recientes_total,
-                "pentakills_recientes":      pentakills_recientes_total,
-                "vision_promedio_reciente":  vision_promedio_reciente,
-                # ── Campos semanales para Destacados de la Semana y badges inferiores ──
-                "kills_semana":              total_kills_semana,
-                "pentakills_semana":         total_pentakills_semana,
-                "vision_promedio_semana":    vision_promedio_semana,
-                "primeras_sangre_semana":    total_primeras_sangre_semana,
-                "kda_promedio_semana":       kda_promedio_semana,
-                "kda_perfecto_semana":       kda_perfecto_semana,
-                "campeones_ganados_semana":  len(campeones_ganados_semana),
+                "nombre":                   nombre_completo,
+                "icono":                    icono_id,
+                "rango":                    f"{rango} {division}".strip(),
+                "lp":                       lp,
+                "winrate":                  winrate,
+                "rol_principal":            rol_mas_jugado,
+                "top_roles":                top_2_roles,
+                "top_recientes":            top_3_recientes,
+                "maestrias":                maestrias,
+                "progreso_lp":              historial_lp_jugador,
+                "historial":                historial,
+                "kills_recientes":          kills_recientes_total,
+                "pentakills_recientes":     pentakills_recientes_total,
+                "vision_promedio_reciente": vision_promedio_reciente,
+                "kills_semana":             total_kills_semana,
+                "pentakills_semana":        total_pentakills_semana,
+                "vision_promedio_semana":   vision_promedio_semana,
+                "primeras_sangre_semana":   total_primeras_sangre_semana,
+                "kda_promedio_semana":      kda_promedio_semana,
+                "kda_perfecto_semana":      kda_perfecto_semana,
+                "campeones_ganados_semana": len(campeones_ganados_semana),
+                "partidas_semana":          n_semana,
+                "asistencias_semana":       asistencias_semana,
+                "max_partidas_en_un_dia":   max(partidas_por_dia.values()) if partidas_por_dia else 0,
+                "primera_victoria_hoy":     primera_victoria_hoy
             })
             print(f"  ✓ {nombre_completo} actualizado correctamente.")
 
@@ -355,6 +378,10 @@ def obtener_datos():
                 anterior.setdefault("kda_promedio_semana",      0)
                 anterior.setdefault("kda_perfecto_semana",      False)
                 anterior.setdefault("campeones_ganados_semana", 0)
+                anterior.setdefault("partidas_semana",          0)
+                anterior.setdefault("asistencias_semana",       0)
+                anterior.setdefault("max_partidas_en_un_dia",   0)
+                anterior.setdefault("primera_victoria_hoy",     None)
                 lista_final.append(anterior)
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
@@ -367,7 +394,6 @@ def obtener_datos():
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(datos_exportar, f, indent=2, ensure_ascii=False)
     print("\n✅ datos.json actualizado correctamente.")
-
 
 if __name__ == "__main__":
     obtener_datos()
