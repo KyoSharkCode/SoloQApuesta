@@ -167,6 +167,10 @@
   .result-chip{ font-size:12px; font-weight:800; padding:6px 14px; border-radius:99px; text-transform:uppercase; text-align:center; }
   .result-chip.victoria{ color:var(--win); background:var(--win-bg); border:1px solid rgba(52,211,153,.3); }
   .result-chip.derrota{ color:var(--loss); background:var(--loss-bg); border:1px solid rgba(248,113,113,.3); }
+  .match-result-block{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+  .lp-change{ font-size:11px; font-weight:800; }
+  .lp-change.win{ color:var(--win); }
+  .lp-change.loss{ color:var(--loss); }
 
   #error-msg { text-align:center; padding:50px; color:var(--loss); font-weight:bold; display:none; }
 
@@ -601,15 +605,24 @@ window.addEventListener('load', () => {
       // Historial
       const boxHistory = document.getElementById('box-history');
       boxHistory.innerHTML = (p.historial && p.historial.length)
-        ? p.historial.map(h => `
+        ? p.historial.map(h => {
+            const lpVal = (typeof h.lp_change === 'number') ? h.lp_change : null;
+            const lpHtml = lpVal !== null
+              ? `<span class="lp-change ${lpVal >= 0 ? 'win' : 'loss'}">${lpVal >= 0 ? '+' : ''}${lpVal} LP</span>`
+              : h.duracion ? `<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${h.duracion}</span>` : '';
+            return `
             <div class="match">
               <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
               <div>
                 <div class="match-champ">${h.campeon}</div>
-                <div class="match-kda">${h.kda} KDA • ${h.duracion}</div>
+                <div class="match-kda">${h.kda} KDA</div>
               </div>
-              <div class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</div>
-            </div>`).join('')
+              <div class="match-result-block">
+                <span class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</span>
+                ${lpHtml}
+              </div>
+            </div>`;
+          }).join('')
         : '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>';
 
       // Cargar todos los jugadores para comparar badges
