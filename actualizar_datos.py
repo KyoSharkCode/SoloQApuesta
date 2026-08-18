@@ -48,9 +48,13 @@ def calcular_lp_por_partida(md, progreso_lp_ordenado):
 
     punto_despues, idx_despues = None, None
     for i, punto in enumerate(progreso_lp_ordenado):
+        # FIX: puntos corruptos (no-dict) en progreso_lp no deben tumbar el
+        # cálculo de todo el jugador — se ignoran en vez de propagar el error.
+        if not isinstance(punto, dict):
+            continue
         try:
             ts_punto = datetime.fromisoformat(punto["fecha"]).timestamp()
-        except (KeyError, ValueError):
+        except (KeyError, TypeError, ValueError):
             continue
         if ts_punto >= fin_seg:
             punto_despues, idx_despues = punto, i
@@ -60,6 +64,8 @@ def calcular_lp_por_partida(md, progreso_lp_ordenado):
         return None
 
     punto_antes = progreso_lp_ordenado[idx_despues - 1]
+    if not isinstance(punto_antes, dict):
+        return None
     s_antes   = elo_score_simple(punto_antes.get("rango"), punto_antes.get("division"), punto_antes.get("lp"))
     s_despues = elo_score_simple(punto_despues.get("rango"), punto_despues.get("division"), punto_despues.get("lp"))
     if s_antes is None or s_despues is None:
@@ -184,7 +190,14 @@ def obtener_datos():
                     break
 
             # ── Historial LP ──
-            historial_lp_jugador = list((anterior or {}).get("progreso_lp", []))
+            # FIX: se descartan entradas corruptas (no-dict) que puedan venir
+            # de datos.json — antes un valor suelto (p.ej. un int) en vez de
+            # {"fecha":...,"lp":...} tumbaba calcular_lp_por_partida con
+            # 'int' object is not subscriptable y dejaba al jugador congelado
+            # para siempre (el dato corrupto nunca se limpiaba solo).
+            historial_lp_jugador = [
+                p for p in (anterior or {}).get("progreso_lp", []) if isinstance(p, dict)
+            ]
             punto_anterior = historial_lp_jugador[-1] if historial_lp_jugador else None
             mismo_punto = (
                 punto_anterior is not None and
