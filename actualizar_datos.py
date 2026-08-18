@@ -91,6 +91,18 @@ def calcular_agregados_semana(detalle):
     a_s = sum(d.get("asistencias", 0) for d in detalle)
     vision_scores = [d.get("vision", 0) for d in detalle]
     kda_perfecto  = n > 0 and d_s == 0
+
+    # Dúo más frecuente de la semana — cuenta con quién del grupo se repitió
+    # más veces en el mismo equipo entre las partidas de los últimos 7 días.
+    conteo_duo = {}
+    for d in detalle:
+        for companero in d.get("duo_con", []) or []:
+            conteo_duo[companero] = conteo_duo.get(companero, 0) + 1
+    duo_mas_frecuente = None
+    if conteo_duo:
+        nombre_duo, partidas_duo = max(conteo_duo.items(), key=lambda kv: kv[1])
+        duo_mas_frecuente = {"nombre": nombre_duo, "partidas": partidas_duo}
+
     return {
         "kills_semana":             k_s,
         "pentakills_semana":        sum(d.get("pentakills", 0) for d in detalle),
@@ -101,7 +113,31 @@ def calcular_agregados_semana(detalle):
         "kda_promedio_semana":      0 if kda_perfecto else (round((k_s + a_s) / d_s, 2) if d_s > 0 else 0),
         "campeones_ganados_semana": len({d.get("campeon") for d in detalle if d.get("victoria") and d.get("campeon")}),
         "partidas_semana":          n,
+        "duo_mas_frecuente":        duo_mas_frecuente,
     }
+
+
+def detectar_duo(md, pp, puuid_propio, nombre_por_puuid):
+    """
+    Devuelve los nombres (sin tag) de otros jugadores del grupo que estaban
+    en el MISMO equipo en esta partida. Riot ya no expone en la API pública
+    quién iba de premade, así que se infiere: misma partida + mismo equipo
+    + ser parte del grupo que seguimos — en un grupo de 6 amigos, caer así
+    por puro azar del matchmaking es muy raro, así que es una señal confiable
+    de que jugaron en dúo/grupo.
+    """
+    equipo_propio = pp.get("teamId")
+    duo = []
+    for otro in md.get("info", {}).get("participants", []):
+        otro_puuid = otro.get("puuid")
+        if not otro_puuid or otro_puuid == puuid_propio:
+            continue
+        if otro.get("teamId") != equipo_propio:
+            continue
+        nombre_otro = nombre_por_puuid.get(otro_puuid)
+        if nombre_otro:
+            duo.append(nombre_otro.split("#")[0])
+    return duo
 
 
 def get_con_reintento(url, headers, timeout=15, max_reintentos=2):
@@ -190,17 +226,34 @@ def obtener_datos():
     # todo el historial de LP y los filtros de "última semana" en el front.
     fecha_actual = ahora_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    # ── PUUIDs de todo el grupo ──────────────────────────────────────────────
+    # Se resuelven todos aquí arriba (antes se pedía uno por uno más abajo,
+    # ya en el bucle de cada jugador) para poder cruzar partidas entre sí y
+    # detectar cuándo dos del grupo jugaron juntos (dúo) — necesitamos los 6
+    # PUUID disponibles desde el principio, no solo el del jugador en turno.
+    print("🔗 Resolviendo PUUID de los 6 jugadores...")
+    puuid_por_jugador = {}
+    for jugador in JUGADORES:
+        nombre_tmp = f"{jugador['name']}#{jugador['tag']}"
+        try:
+            name_enc    = quote(jugador["name"])
+            tag_enc     = quote(jugador["tag"])
+            url_account = f"https://{REGION_API}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{name_enc}/{tag_enc}"
+            puuid_por_jugador[nombre_tmp] = get_con_reintento(url_account, headers).json()["puuid"]
+        except Exception as e:
+            print(f"  ⚠️ No se pudo resolver PUUID de {nombre_tmp}: {e}")
+    nombre_por_puuid = {v: k for k, v in puuid_por_jugador.items()}
+
     for jugador in JUGADORES:
         nombre_completo = f"{jugador['name']}#{jugador['tag']}"
         print(f"\n🔍 Consultando: {nombre_completo}")
         anterior = datos_antiguos.get(nombre_completo)
 
         try:
-            # ── PUUID ──
-            name_enc    = quote(jugador["name"])
-            tag_enc     = quote(jugador["tag"])
-            url_account = f"https://{REGION_API}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{name_enc}/{tag_enc}"
-            puuid       = get_con_reintento(url_account, headers).json()["puuid"]
+            # ── PUUID (ya resuelto arriba, junto con el de todo el grupo) ──
+            puuid = puuid_por_jugador.get(nombre_completo)
+            if not puuid:
+                raise ValueError(f"No se pudo resolver el PUUID de {nombre_completo}")
 
             # ── Icono ──
             url_summoner = f"https://{REGION_GAME}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{puuid}"
@@ -306,6 +359,7 @@ def obtener_datos():
                 kda_perfecto_semana           = agregados_semana["kda_perfecto_semana"]
                 campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
                 n_semana                      = agregados_semana["partidas_semana"]
+                duo_semana                    = agregados_semana["duo_mas_frecuente"]
 
                 # Recalcular partidas de HOY y primera victoria desde historial guardado
                 # El historial guarda match_id pero no timestamp — usamos primera_victoria_hoy
@@ -378,6 +432,9 @@ def obtener_datos():
                     # muestran en la tarjeta de "primera victoria del día".
                     spell1_jug  = diccionario_hechizos.get(pp.get("summoner1Id", 0), "SummonerFlash")
                     spell2_jug  = diccionario_hechizos.get(pp.get("summoner2Id", 0), "SummonerDot")
+                    # FIX: detecta si alguien más del grupo estaba en el
+                    # mismo equipo en esta partida (dúo/grupo).
+                    duo_con_jug = detectar_duo(md, pp, puuid, nombre_por_puuid)
 
                     # Remake — aparece en historial pero NO suma stats
                     if dur_seg < 210:
@@ -389,6 +446,7 @@ def obtener_datos():
                             "duracion":  f"{dur_seg // 60}:{dur_seg % 60:02d}",
                             "lp_change": None,
                             "hechizos":  [spell1_jug, spell2_jug],
+                            "duo_con":   duo_con_jug,
                         })
                         continue
 
@@ -412,6 +470,7 @@ def obtener_datos():
                         "duracion":  f"{dur_seg // 60}min",
                         "lp_change": lp_change,
                         "hechizos":  [spell1_jug, spell2_jug],
+                        "duo_con":   duo_con_jug,
                     })
 
                 vision_promedio_reciente = (
@@ -457,6 +516,7 @@ def obtener_datos():
                         "vision":         pp.get("visionScore", 0),
                         "campeon":        pp["championName"],
                         "victoria":       bool(pp["win"]),
+                        "duo_con":        detectar_duo(md, pp, puuid, nombre_por_puuid),
                     })
 
                     if fin_seg >= inicio_dia_utc:
@@ -490,6 +550,7 @@ def obtener_datos():
                 kda_perfecto_semana           = agregados_semana["kda_perfecto_semana"]
                 campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
                 n_semana                      = agregados_semana["partidas_semana"]
+                duo_semana                    = agregados_semana["duo_mas_frecuente"]
 
             print(f"    📊 {nombre_completo}: semana={n_semana}p, hoy={max_partidas_en_un_dia}p, asistencias={total_asistencias_semana}, primera_victoria={'sí' if primera_victoria_hoy else 'no'}")
 
@@ -523,6 +584,8 @@ def obtener_datos():
                 # partida) — permite recalcular los agregados de arriba en
                 # corridas futuras sin volver a pedirle nada a Riot.
                 "partidas_semana_detalle":   partidas_semana_detalle,
+                # Dúo más frecuente de la semana — {"nombre":..,"partidas":N} o None
+                "duo_semana":                duo_semana,
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
                 "primera_victoria_hoy":      primera_victoria_hoy,
@@ -550,6 +613,7 @@ def obtener_datos():
                 anterior.setdefault("asistencias_semana",       0)
                 anterior.setdefault("partidas_semana",          0)
                 anterior.setdefault("partidas_semana_detalle",  [])
+                anterior.setdefault("duo_semana",               None)
                 anterior.setdefault("max_partidas_en_un_dia",   0)
                 anterior.setdefault("primera_victoria_hoy",     None)
                 anterior.setdefault("dia_referencia",           None)
