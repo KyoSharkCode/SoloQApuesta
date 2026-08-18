@@ -197,6 +197,17 @@ def obtener_datos():
             if match_mas_reciente and match_mas_reciente == ultimo_match_id.get(nombre_completo, ""):
                 print(f"  ⏭️ Sin partidas nuevas para {nombre_completo}, conservando datos.")
                 if anterior:
+                    # Rellenar campos _semana/_recientes que pueden faltar en datos viejos
+                    anterior.setdefault("kills_recientes",          0)
+                    anterior.setdefault("pentakills_recientes",     0)
+                    anterior.setdefault("vision_promedio_reciente", 0)
+                    anterior.setdefault("kills_semana",             0)
+                    anterior.setdefault("pentakills_semana",        0)
+                    anterior.setdefault("vision_promedio_semana",   0)
+                    anterior.setdefault("primeras_sangre_semana",   0)
+                    anterior.setdefault("kda_promedio_semana",      0)
+                    anterior.setdefault("kda_perfecto_semana",      False)
+                    anterior.setdefault("campeones_ganados_semana", 0)
                     lista_final.append(anterior)
                 continue
 
@@ -334,6 +345,16 @@ def obtener_datos():
             print(f"🚨 Error con {nombre_completo}: {e}")
             if anterior:
                 print(f"  ↩️ Conservando últimos datos de {nombre_completo}.")
+                anterior.setdefault("kills_recientes",          0)
+                anterior.setdefault("pentakills_recientes",     0)
+                anterior.setdefault("vision_promedio_reciente", 0)
+                anterior.setdefault("kills_semana",             0)
+                anterior.setdefault("pentakills_semana",        0)
+                anterior.setdefault("vision_promedio_semana",   0)
+                anterior.setdefault("primeras_sangre_semana",   0)
+                anterior.setdefault("kda_promedio_semana",      0)
+                anterior.setdefault("kda_perfecto_semana",      False)
+                anterior.setdefault("campeones_ganados_semana", 0)
                 lista_final.append(anterior)
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
