@@ -292,6 +292,9 @@ def obtener_datos():
                     md = detalles_por_id.get(match_id)
                     if not md:
                         continue
+                    # Ignorar remakes — partidas de menos de 3:30 min
+                    if md["info"].get("gameDuration", 999) < 210:
+                        continue
                     pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
                     if not pp:
                         continue
@@ -344,6 +347,9 @@ def obtener_datos():
                 for match_id in ids_semana:
                     md = detalles_por_id.get(match_id)
                     if not md:
+                        continue
+                    # Ignorar remakes — partidas de menos de 3:30 min
+                    if md["info"].get("gameDuration", 999) < 210:
                         continue
                     pp = next((p for p in md["info"]["participants"] if p["puuid"] == puuid), None)
                     if not pp:
