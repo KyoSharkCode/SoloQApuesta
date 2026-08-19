@@ -85,7 +85,13 @@
   .team-objectives{ display:flex; gap:14px; font-size:11.5px; font-weight:600; color:var(--text-faint); }
   .team-objectives span{ white-space:nowrap; }
   .team-rows{ background:var(--panel); }
-  .p-row{ display:grid; grid-template-columns:auto 1fr auto auto auto; align-items:center; gap:14px; padding:10px 16px; border-top:1px solid var(--border); font-size:13px; }
+  /* FIX: columnas con ancho FIJO (no "auto") — cada .p-row es su propio
+     grid independiente, así que con "auto" cada fila calculaba el ancho
+     de sus columnas según SU PROPIO contenido (KDA/CS con más o menos
+     dígitos) y el bloque de items terminaba empezando en una posición X
+     distinta en cada fila → efecto "escalera". Con anchos fijos todas
+     las filas alinean sus columnas exactamente igual. */
+  .p-row{ display:grid; grid-template-columns:64px 1fr 92px 128px 176px; align-items:center; gap:14px; padding:10px 16px; border-top:1px solid var(--border); font-size:13px; }
   .p-row:first-child{ border-top:none; }
   .p-row.self{ background:rgba(139,92,246,.08); }
   .p-champ{ display:flex; align-items:center; gap:10px; min-width:0; }
@@ -95,7 +101,10 @@
   .p-name-block{ min-width:0; display:flex; flex-direction:column; line-height:1.3; }
   .p-name{ font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
   .p-name.group-name{ color:var(--accent-soft); }
-  .p-champ-name{ font-size:11px; color:var(--text-dim); }
+  .p-role-row{ display:flex; align-items:center; gap:4px; }
+  .p-role-icon{ width:13px; height:13px; object-fit:contain; opacity:.85; flex-shrink:0; }
+  .p-role-emoji{ display:none; font-size:11px; flex-shrink:0; }
+  .p-champ-name{ font-size:11px; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .p-kda{ font-weight:700; white-space:nowrap; }
   .p-kda-sub{ font-size:11px; color:var(--text-faint); }
   .p-cs{ color:var(--text-faint); font-size:12px; white-space:nowrap; }
@@ -109,7 +118,7 @@
     .wrap{ padding:24px 14px 80px; }
     .match-header{ padding:18px; }
     .mh-meta{ margin-left:0; align-items:flex-start; width:100%; }
-    .p-row{ grid-template-columns:1fr auto; grid-template-areas:"champ kda" "items items"; row-gap:6px; }
+    .p-row{ grid-template-columns:1fr auto; grid-template-areas:"champ kda" "items items"; row-gap:6px; padding:12px 16px; }
     .p-champ{ grid-area:champ; }
     .p-kda{ grid-area:kda; text-align:right; }
     .p-cs{ display:none; }
@@ -235,6 +244,29 @@ window.addEventListener('load', () => {
   const champUrl = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
   const spellUrl = (name) => `${DDRAGON}/img/spell/${name}.png`;
   const itemUrl  = (id)   => `${DDRAGON}/img/item/${id}.png`;
+
+  // Roles — mismo mapeo que ya usa el resto del sitio (BOTTOM→ADC,
+  // UTILITY→SUPPORT). Los iconos son los mismos minimalistas que Riot usa
+  // para elegir posición en el cliente (CommunityDragon); si por lo que
+  // sea no cargan, cae automáticamente al emoji.
+  const ROLE_ICON_BASE = 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-';
+  const ROLES = {
+    TOP:     { orden: 0, label: 'TOP',     emoji: '⚔️', slug: 'top' },
+    JUNGLE:  { orden: 1, label: 'JUNGLE',  emoji: '🌲', slug: 'jungle' },
+    MIDDLE:  { orden: 2, label: 'MID',     emoji: '🔮', slug: 'middle' },
+    BOTTOM:  { orden: 3, label: 'ADC',     emoji: '🏹', slug: 'bottom' },
+    UTILITY: { orden: 4, label: 'SUPPORT', emoji: '🛡️', slug: 'utility' },
+  };
+  const rolInfo  = (rol) => ROLES[rol] || { orden: 99, label: rol || '—', emoji: '❔', slug: null };
+  const rolOrden = (rol) => rolInfo(rol).orden;
+  const rolHtml  = (rol) => {
+    const info = rolInfo(rol);
+    const iconHtml = info.slug
+      ? `<img class="p-role-icon" src="${ROLE_ICON_BASE}${info.slug}.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+         <span class="p-role-emoji">${info.emoji}</span>`
+      : `<span class="p-role-emoji" style="display:inline;">${info.emoji}</span>`;
+    return `<span class="p-role-row">${iconHtml}<span>${info.label}</span></span>`;
+  };
 
   if (!matchId) {
     showState('No se especificó ninguna partida.', true);
@@ -369,7 +401,8 @@ window.addEventListener('load', () => {
     } else {
       const equiposOrden = ['blue', 'red'];
       scoreboardEl.innerHTML = equiposOrden.map(lado => {
-        const jugs = jugadores.filter(j => j.equipo === lado).sort((a,b) => (b.danio_a_campeones||0) - (a.danio_a_campeones||0));
+        // Orden fijo por rol: Top, Jungla, Mid, ADC, Support — como pidió Alex.
+        const jugs = jugadores.filter(j => j.equipo === lado).sort((a,b) => rolOrden(a.rol) - rolOrden(b.rol));
         const eqInfo = (detalle.equipos && detalle.equipos[lado]) || {};
         const nombreLado = lado === 'blue' ? 'Equipo Azul' : 'Equipo Rojo';
         const resultadoLado = eqInfo.victoria ? 'Victoria' : 'Derrota';
@@ -412,7 +445,7 @@ window.addEventListener('load', () => {
         </div>
         <div class="p-name-block">
           <span class="${nombreClase}">${nombreMostrar}</span>
-          <span class="p-champ-name">${j.campeon || ''} · ${j.rol || ''}</span>
+          <span class="p-champ-name">${j.campeon || ''} · ${rolHtml(j.rol)}</span>
         </div>
         <div>
           <div class="p-kda">${j.kills}/${j.muertes}/${j.asistencias}</div>
@@ -440,7 +473,22 @@ window.addEventListener('load', () => {
     }
 
     evaluar('danio', j => j.danio_a_campeones||0, '🗡️', 'Mejor daño del equipo', '🪶', 'Menos daño del equipo');
-    evaluar('cs',    j => j.cs_por_min||0,          '🌾', 'Mejor farmeo del equipo', '🐌', 'Peor farmeo del equipo');
+
+    // El farmeo NO se compara igual para el support — estructuralmente
+    // hace mucho menos CS que el resto (se dedica a proteger al ADC, no
+    // a golear minions). Se compara solo entre los 4 no-support, y al
+    // support directamente no se le evalúa este badge (ni bueno ni malo).
+    if (self.rol !== 'UTILITY') {
+      const noSupport = equipo.filter(j => j.rol !== 'UTILITY');
+      const valoresCs  = noSupport.map(j => j.cs_por_min || 0);
+      const maxCs = Math.max(...valoresCs), minCs = Math.min(...valoresCs);
+      if (maxCs !== minCs) {
+        const propioCs = self.cs_por_min || 0;
+        if (propioCs === maxCs) badges.push({ tipo:'good', icono:'🌾', label:'Mejor farmeo del equipo' });
+        else if (propioCs === minCs) badges.push({ tipo:'bad', icono:'🐌', label:'Peor farmeo del equipo' });
+      }
+    }
+
     evaluar('vision',j => j.vision||0,              '👁️', 'Mejor visión del equipo', '🙈', 'Peor visión del equipo');
     evaluar('oro',   j => j.oro||0,                 '💰', 'Más oro del equipo',      '🪙', 'Menos oro del equipo');
     evaluar('kda',   j => (j.kills + j.asistencias) / Math.max(1, j.muertes), '📊', 'Mejor KDA del equipo', '📉', 'Peor KDA del equipo');
