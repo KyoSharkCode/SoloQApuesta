@@ -16,7 +16,6 @@ JUGADORES = [
     {"name": "ゆうき まこと",     "tag": "1411"},
     {"name": "adrianNOOBYT",   "tag": "LAN"},
     {"name": "Ostia",          "tag": "LAN"},
-    {"name": "Panquemado",          "tag": "UNSC"},
 ]
 
 MAX_PUNTOS_HISTORIAL = 300
@@ -104,6 +103,27 @@ def calcular_agregados_semana(detalle):
         nombre_duo, partidas_duo = max(conteo_duo.items(), key=lambda kv: kv[1])
         duo_mas_frecuente = {"nombre": nombre_duo, "partidas": partidas_duo}
 
+    # El Farmeador — mejor CS/min de UNA sola partida de la semana (no promedio).
+    # "cs" y "duracion_seg" solo existen en partidas guardadas después de este
+    # cambio; las entradas viejas (guardadas antes) no las tienen y se ignoran
+    # aquí hasta que se caigan de la ventana de 7 días por sí solas.
+    mejor_cs_min = None
+    for d in detalle:
+        if "cs" not in d or not d.get("duracion_seg"):
+            continue
+        dur_min = max(d["duracion_seg"] / 60, 1)
+        cs_por_min = round(d["cs"] / dur_min, 1)
+        if mejor_cs_min is None or cs_por_min > mejor_cs_min["cs_por_min"]:
+            mejor_cs_min = {"cs_por_min": cs_por_min, "cs": d["cs"], "campeon": d.get("campeon")}
+
+    # El Defensor — mayor daño recibido en UNA sola partida de la semana.
+    mayor_danio_recibido = None
+    for d in detalle:
+        if "damage_taken" not in d:
+            continue
+        if mayor_danio_recibido is None or d["damage_taken"] > mayor_danio_recibido["damage_taken"]:
+            mayor_danio_recibido = {"damage_taken": d["damage_taken"], "campeon": d.get("campeon")}
+
     return {
         "kills_semana":             k_s,
         "pentakills_semana":        sum(d.get("pentakills", 0) for d in detalle),
@@ -115,6 +135,8 @@ def calcular_agregados_semana(detalle):
         "campeones_ganados_semana": len({d.get("campeon") for d in detalle if d.get("victoria") and d.get("campeon")}),
         "partidas_semana":          n,
         "duo_mas_frecuente":        duo_mas_frecuente,
+        "mejor_cs_min_semana":      mejor_cs_min,
+        "mayor_danio_recibido_semana": mayor_danio_recibido,
     }
 
 
@@ -139,6 +161,51 @@ def detectar_duo(md, pp, puuid_propio, nombre_por_puuid):
         if nombre_otro:
             duo.append(nombre_otro.split("#")[0])
     return duo
+
+
+def calcular_titulares_grupo(lista_final):
+    """
+    Para el historial de logros: determina quién del grupo tiene ahora mismo
+    cada badge semanal "grande". Se compara el resultado de esta función
+    contra el de la corrida anterior — si cambió el líder de una categoría,
+    se genera un evento ("X le quitó el badge a Y"). No pide nada nuevo a
+    Riot: usa los mismos campos *_semana que ya se calcularon arriba para
+    cada jugador.
+    """
+    def lider(extractor_valor, extractor_detalle=None):
+        mejor, mejor_valor = None, 0
+        for j in lista_final:
+            v = extractor_valor(j) or 0
+            if v > mejor_valor:
+                mejor_valor, mejor = v, j
+        if mejor is None:
+            return None
+        return {
+            "jugador": mejor["nombre"].split("#", 1)[0],
+            "valor":   mejor_valor,
+            "detalle": extractor_detalle(mejor) if extractor_detalle else None,
+        }
+
+    return {
+        "agresivo": lider(
+            lambda j: j.get("primeras_sangre_semana"),
+            lambda j: f"{j['primeras_sangre_semana']} primera{'s' if j['primeras_sangre_semana'] != 1 else ''} sangre"),
+        "kda_player": lider(
+            lambda j: 999 if j.get("kda_perfecto_semana") else j.get("kda_promedio_semana"),
+            lambda j: "KDA Perfecto" if j.get("kda_perfecto_semana") else f"{j['kda_promedio_semana']} KDA"),
+        "champion_pool": lider(
+            lambda j: j.get("campeones_ganados_semana"),
+            lambda j: f"{j['campeones_ganados_semana']} campeones distintos ganados"),
+        "asistente": lider(
+            lambda j: j.get("asistencias_semana"),
+            lambda j: f"{j['asistencias_semana']} asistencias"),
+        "farmeador": lider(
+            lambda j: (j.get("cs_min_semana") or {}).get("cs_por_min"),
+            lambda j: f"{j['cs_min_semana']['cs_por_min']} CS/min con {j['cs_min_semana']['campeon']}"),
+        "defensor": lider(
+            lambda j: (j.get("danio_recibido_semana") or {}).get("damage_taken"),
+            lambda j: f"{j['danio_recibido_semana']['damage_taken']:,} de daño recibido con {j['danio_recibido_semana']['campeon']}"),
+    }
 
 
 def get_con_reintento(url, headers, timeout=15, max_reintentos=2):
@@ -207,6 +274,13 @@ def obtener_datos():
     # ── Cargar datos anteriores ──────────────────────────────────────────────
     datos_antiguos  = {}
     ultimo_match_id = {}
+    # Metadata a nivel de grupo (no por jugador) que persiste entre corridas
+    # para el historial de logros — quién tenía cada badge la corrida pasada,
+    # los eventos ya generados, y quién tenía la primera victoria de hoy.
+    titulares_anteriores    = {}
+    eventos_previos         = []
+    titular_dia_anterior    = None
+    dia_referencia_anterior = None
     if os.path.exists("datos.json"):
         try:
             with open("datos.json", "r", encoding="utf-8") as f:
@@ -217,9 +291,15 @@ def obtener_datos():
                     hist = p.get("historial", [])
                     if hist:
                         ultimo_match_id[p["nombre"]] = hist[0].get("match_id", "")
+                if isinstance(data_cargada, dict):
+                    titulares_anteriores    = data_cargada.get("titulares", {}) or {}
+                    eventos_previos         = data_cargada.get("eventos", []) or []
+                    titular_dia_anterior    = data_cargada.get("titular_primera_victoria_dia")
+                    dia_referencia_anterior = data_cargada.get("dia_referencia_eventos")
         except Exception as e:
             print(f"⚠️ No se pudo leer datos.json anterior: {e}")
 
+    eventos_nuevos = []  # eventos que se generan en ESTA corrida (historial de logros)
     lista_final  = []
     # FIX: se guarda explícitamente en UTC con sufijo "Z". Antes se usaba
     # datetime.now() sin zona horaria, y el navegador (JS) interpretaba esa
@@ -361,6 +441,8 @@ def obtener_datos():
                 campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
                 n_semana                      = agregados_semana["partidas_semana"]
                 duo_semana                    = agregados_semana["duo_mas_frecuente"]
+                cs_min_semana                 = agregados_semana["mejor_cs_min_semana"]
+                danio_semana                  = agregados_semana["mayor_danio_recibido_semana"]
 
                 # Recalcular partidas de HOY y primera victoria desde historial guardado
                 # El historial guarda match_id pero no timestamp — usamos primera_victoria_hoy
@@ -518,6 +600,12 @@ def obtener_datos():
                         "campeon":        pp["championName"],
                         "victoria":       bool(pp["win"]),
                         "duo_con":        detectar_duo(md, pp, puuid, nombre_por_puuid),
+                        # Para "El Farmeador" (CS/min) y "El Defensor" (daño
+                        # recibido) — ya vienen en la misma partida que ya se
+                        # descarga, no cuestan ninguna llamada extra a Riot.
+                        "cs":             pp.get("totalMinionsKilled", 0) + pp.get("neutralMinionsKilled", 0),
+                        "duracion_seg":   md["info"].get("gameDuration", 0),
+                        "damage_taken":   pp.get("totalDamageTaken", 0),
                     })
 
                     if fin_seg >= inicio_dia_utc:
@@ -552,8 +640,44 @@ def obtener_datos():
                 campeones_ganados_semana_n    = agregados_semana["campeones_ganados_semana"]
                 n_semana                      = agregados_semana["partidas_semana"]
                 duo_semana                    = agregados_semana["duo_mas_frecuente"]
+                cs_min_semana                 = agregados_semana["mejor_cs_min_semana"]
+                danio_semana                  = agregados_semana["mayor_danio_recibido_semana"]
 
             print(f"    📊 {nombre_completo}: semana={n_semana}p, hoy={max_partidas_en_un_dia}p, asistencias={total_asistencias_semana}, primera_victoria={'sí' if primera_victoria_hoy else 'no'}")
+
+            # ── Récord de LP de temporada ──────────────────────────────────
+            # Compara el elo actual contra el mejor que este jugador haya
+            # alcanzado desde que se le sigue la pista. Se guarda un score
+            # numérico comparable (elo_score_simple) + una etiqueta legible.
+            # Si supera su propio récord, se marca para generar un evento de
+            # "historial de logros" más abajo — no pide nada nuevo a Riot,
+            # solo compara rango/división/lp que ya se acaban de consultar.
+            score_actual          = elo_score_simple(rango, division, lp)
+            record_anterior_score = (anterior or {}).get("record_lp_score")
+            record_anterior_label = (anterior or {}).get("record_lp_label")
+            hubo_nuevo_record_lp  = False
+            if score_actual is not None and (record_anterior_score is None or score_actual > record_anterior_score):
+                record_lp_score      = score_actual
+                record_lp_label      = f"{rango} {division}".strip() + (f" ({lp} LP)" if lp else "")
+                # Solo cuenta como "evento" si ya existía un récord previo que
+                # superar — evita generar un aviso falso en el primer run de
+                # cada jugador (cuando todavía no hay nada que "batir").
+                hubo_nuevo_record_lp = record_anterior_score is not None
+            else:
+                record_lp_score = record_anterior_score if record_anterior_score is not None else score_actual
+                record_lp_label = record_anterior_label if record_anterior_label is not None else f"{rango} {division}".strip()
+
+            if hubo_nuevo_record_lp:
+                eventos_nuevos.append({
+                    "timestamp":        fecha_actual,
+                    "tipo":             "record_lp",
+                    "icono":            "📈",
+                    "categoria_label":  "Récord de temporada",
+                    "jugador_nuevo":    jugador["name"],
+                    "jugador_anterior": None,
+                    "detalle":          record_lp_label,
+                })
+                print(f"  📈 Nuevo evento: {jugador['name']} alcanzó un nuevo récord de temporada ({record_lp_label})")
 
             lista_final.append({
                 "nombre":                    nombre_completo,
@@ -561,6 +685,9 @@ def obtener_datos():
                 "rango":                     f"{rango} {division}".strip(),
                 "lp":                        lp,
                 "winrate":                   winrate,
+                # Récord de LP de temporada — {"record_lp_score":.., "record_lp_label":..}
+                "record_lp_score":           record_lp_score,
+                "record_lp_label":           record_lp_label,
                 "rol_principal":             rol_mas_jugado,
                 "top_roles":                 top_2_roles,
                 "top_recientes":             top_3_recientes,
@@ -587,6 +714,12 @@ def obtener_datos():
                 "partidas_semana_detalle":   partidas_semana_detalle,
                 # Dúo más frecuente de la semana — {"nombre":..,"partidas":N} o None
                 "duo_semana":                duo_semana,
+                # El Farmeador — mejor CS/min en una sola partida de la semana
+                # {"cs_por_min":.., "cs":.., "campeon":..} o None
+                "cs_min_semana":             cs_min_semana,
+                # El Defensor — mayor daño recibido en una sola partida de la semana
+                # {"damage_taken":.., "campeon":..} o None
+                "danio_recibido_semana":     danio_semana,
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
                 "primera_victoria_hoy":      primera_victoria_hoy,
@@ -615,6 +748,10 @@ def obtener_datos():
                 anterior.setdefault("partidas_semana",          0)
                 anterior.setdefault("partidas_semana_detalle",  [])
                 anterior.setdefault("duo_semana",               None)
+                anterior.setdefault("cs_min_semana",            None)
+                anterior.setdefault("danio_recibido_semana",    None)
+                anterior.setdefault("record_lp_score",          None)
+                anterior.setdefault("record_lp_label",          None)
                 anterior.setdefault("max_partidas_en_un_dia",   0)
                 anterior.setdefault("primera_victoria_hoy",     None)
                 anterior.setdefault("dia_referencia",           None)
@@ -622,13 +759,87 @@ def obtener_datos():
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
 
+    # ══════════════════════════════════════════════════════════════════
+    # HISTORIAL DE LOGROS (2/2) — badges semanales grupales + primera
+    # victoria del día. Se compara contra lo que había la corrida pasada
+    # (titulares_anteriores, titular_dia_anterior, cargados arriba) para
+    # detectar cambios de líder. Todo sale de lista_final, ya calculado —
+    # no pide nada nuevo a Riot.
+    # ══════════════════════════════════════════════════════════════════
+    CATEGORIAS_BADGE = {
+        "farmeador":     {"icono": "🌾", "label": "El Farmeador"},
+        "defensor":      {"icono": "🛡️", "label": "El Defensor"},
+        "agresivo":      {"icono": "🩸", "label": "Agresivo"},
+        "kda_player":    {"icono": "📊", "label": "KDA Player"},
+        "asistente":     {"icono": "🤝", "label": "El Asistente"},
+        "champion_pool": {"icono": "🎭", "label": "Maestro del Champion Pool"},
+    }
+
+    titulares_nuevos = calcular_titulares_grupo(lista_final)
+
+    for categoria, meta in CATEGORIAS_BADGE.items():
+        actual = titulares_nuevos.get(categoria)
+        if not actual:
+            continue
+        anterior_tit     = titulares_anteriores.get(categoria)
+        jugador_anterior = anterior_tit.get("jugador") if anterior_tit else None
+        if actual["jugador"] != jugador_anterior:
+            eventos_nuevos.append({
+                "timestamp":        fecha_actual,
+                "tipo":             "badge_semanal",
+                "categoria":        categoria,
+                "categoria_label":  meta["label"],
+                "icono":            meta["icono"],
+                "jugador_nuevo":    actual["jugador"],
+                "jugador_anterior": jugador_anterior,
+                "detalle":          actual.get("detalle"),
+            })
+            print(f"  🏅 Nuevo evento: {actual['jugador']} reclamó {meta['label']}" +
+                  (f" (se lo quitó a {jugador_anterior})" if jugador_anterior else " (por primera vez)"))
+
+    # Primera victoria del día — quién tiene el timestamp más temprano de hoy
+    titular_dia_actual = None
+    mejor_ts = None
+    for j in lista_final:
+        pv = j.get("primera_victoria_hoy")
+        if isinstance(pv, dict) and isinstance(pv.get("timestamp"), (int, float)):
+            if mejor_ts is None or pv["timestamp"] < mejor_ts:
+                mejor_ts = pv["timestamp"]
+                titular_dia_actual = j["nombre"].split("#", 1)[0]
+
+    # Si ya es otro "día" (6AM España), el titular de ayer ya no aplica
+    if dia_referencia_anterior != inicio_dia_utc:
+        titular_dia_anterior = None
+
+    if titular_dia_actual and titular_dia_actual != titular_dia_anterior:
+        eventos_nuevos.append({
+            "timestamp":        fecha_actual,
+            "tipo":             "primera_victoria_dia",
+            "icono":            "🌅",
+            "categoria_label":  "Primera Victoria del Día",
+            "jugador_nuevo":    titular_dia_actual,
+            "jugador_anterior": None,
+            "detalle":          None,
+        })
+        print(f"  🌅 Nuevo evento: {titular_dia_actual} consiguió la primera victoria del día")
+
+    # Se guardan como máximo los últimos 40 eventos, más recientes primero.
+    eventos_totales = (eventos_nuevos + eventos_previos)[:40]
+
     datos_exportar = {
         "ultimaActualizacion": datetime.now().isoformat(),
-        "jugadores": lista_final
+        "jugadores": lista_final,
+        # Metadata de grupo para el historial de logros (popup + feed en el index)
+        "titulares": titulares_nuevos,
+        "eventos": eventos_totales,
+        "titular_primera_victoria_dia": titular_dia_actual if titular_dia_actual else titular_dia_anterior,
+        "dia_referencia_eventos": inicio_dia_utc,
     }
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(datos_exportar, f, indent=2, ensure_ascii=False)
     print("\n✅ datos.json actualizado correctamente.")
+    if eventos_nuevos:
+        print(f"🏆 {len(eventos_nuevos)} evento(s) nuevo(s) de logros esta corrida.")
 
 
 if __name__ == "__main__":
