@@ -274,7 +274,7 @@
 
 <div class="wrap">
   <header>
-    <div><h1 id="titulo">Torneo entre Amigos</h1></div>
+    <div><h1 id="titulo">SoloQReto</h1></div>
     <div class="live-indicator" id="live-indicator">
       <span class="pulse-dot"></span>
       <span id="live-indicator-text">Cargando…</span>
@@ -647,7 +647,7 @@ window.addEventListener('load', () => {
     let sinRendirse=null, maxDia=-1;
     let duoPlayer=null, duoCompanero='', maxDuo=-1;
     let farmeador=null, maxCsMin=-1, farmeadorChamp='';
-    let defensor=null, maxDanio=-1, defensorChamp='';
+    let defensor=null, maxDanioPct=-1, defensorChamp='', defensorDanioBruto=0;
 
     const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
 
@@ -696,9 +696,20 @@ window.addEventListener('load', () => {
       if(p.csMinSemana && (p.csMinSemana.cs_por_min||0) > maxCsMin){
         maxCsMin=p.csMinSemana.cs_por_min; farmeador=p; farmeadorChamp=p.csMinSemana.campeon||'';
       }
-      // El Defensor — mayor daño recibido en una sola partida de la semana
-      if(p.danioRecibidoSemana && (p.danioRecibidoSemana.damage_taken||0) > maxDanio){
-        maxDanio=p.danioRecibidoSemana.damage_taken; defensor=p; defensorChamp=p.danioRecibidoSemana.campeon||'';
+      // El Defensor — mayor % del daño recibido de SU EQUIPO en una sola
+      // partida de la semana (no daño en bruto — así no se lo queda
+      // siempre el mismo jugador solo por jugar un campeón tanque/jungla).
+      // FIX: entradas viejas (de antes de este cambio) no tienen
+      // "danio_recibido_pct" — con "||0" el valor de comparación caía a 0
+      // pero se ASIGNABA igual el "undefined" real a maxDanioPct, y luego
+      // ninguna comparación futura (número > undefined) es nunca true en
+      // JS, dejando el badge roto en cuanto el primer jugador de la lista
+      // tenía datos viejos. Ahora esas entradas simplemente se ignoran
+      // hasta que se autodepuren de la ventana de 7 días.
+      if(p.danioRecibidoSemana && typeof p.danioRecibidoSemana.danio_recibido_pct === 'number'
+         && p.danioRecibidoSemana.danio_recibido_pct > maxDanioPct){
+        maxDanioPct=p.danioRecibidoSemana.danio_recibido_pct; defensor=p; defensorChamp=p.danioRecibidoSemana.campeon||'';
+        defensorDanioBruto=p.danioRecibidoSemana.damage_taken||0;
       }
     });
 
@@ -769,12 +780,12 @@ window.addEventListener('load', () => {
       :`<div class="highlight-card"><div class="highlight-icon">🌾</div><div class="highlight-body"><p class="highlight-label">El Farmeador</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
     const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(defensorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
-    const defensorHtml=(defensor&&maxDanio>0)?`
+    const defensorHtml=(defensor&&maxDanioPct>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">🛡️ El Defensor</p><p class="highlight-player">${defensor.nombre}</p>
           <div class="otp-champ-info">
             <img class="champ-icon-small" src="${defensorChampImg}" onerror="this.style.display='none'">
-            <span class="highlight-value">${maxDanio.toLocaleString('es-ES')} de daño recibido con ${defensorChamp}</span>
+            <span class="highlight-value">${maxDanioPct}% del daño de su equipo (${defensorDanioBruto.toLocaleString('es-ES')}) con ${defensorChamp}</span>
           </div>
         </div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🛡️</div><div class="highlight-body"><p class="highlight-label">El Defensor</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
