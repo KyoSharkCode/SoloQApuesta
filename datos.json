@@ -1,11 +1,11 @@
 {
-  "ultimaActualizacion": "2026-08-19T21:45:38.278763",
+  "ultimaActualizacion": "2026-08-19T21:48:52.415250",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 64,
+      "lp": 82,
       "winrate": "51%",
       "record_lp_score": 986,
       "record_lp_label": "Silver III (86 LP)",
@@ -13,7 +13,7 @@
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
+          "cantidad": 10
         }
       ],
       "top_recientes": [
@@ -22,11 +22,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Jayce",
+          "campeon": "Nasus",
           "cantidad": 1
         },
         {
-          "campeon": "Darius",
+          "campeon": "Jayce",
           "cantidad": 1
         }
       ],
@@ -305,9 +305,30 @@
           "lp": 64,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-19T21:48:35Z",
+          "lp": 82,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742363620",
+          "campeon": "Nasus",
+          "kda": "4/6/6 (1.67)",
+          "resultado": "Victoria",
+          "duracion": "30min",
+          "lp_change": 18,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ]
+        },
         {
           "match_id": "LA1_1742357949",
           "campeon": "Jayce",
@@ -442,36 +463,38 @@
           "duo_con": [
             "El Buñuelito"
           ]
-        },
-        {
-          "match_id": "LA1_1742156936",
-          "campeon": "Fiora",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:13",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ]
         }
       ],
-      "kills_recientes": 64,
+      "kills_recientes": 68,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 23,
-      "kills_semana": 180,
+      "vision_promedio_reciente": 24,
+      "kills_semana": 173,
       "pentakills_semana": 0,
       "vision_promedio_semana": 30,
-      "primeras_sangre_semana": 8,
-      "kda_promedio_semana": 1.94,
+      "primeras_sangre_semana": 7,
+      "kda_promedio_semana": 1.9,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 2,
-      "asistencias_semana": 132,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 131,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787175956.931,
+          "kills": 4,
+          "muertes": 6,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 30,
+          "campeon": "Nasus",
+          "victoria": true,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 171,
+          "duracion_seg": 1851,
+          "damage_taken": 40303
+        },
         {
           "fin_seg": 1787173712.377,
           "kills": 0,
@@ -826,23 +849,6 @@
           "cs": 165,
           "duracion_seg": 1499,
           "damage_taken": 22960
-        },
-        {
-          "fin_seg": 1786993428.471,
-          "kills": 11,
-          "muertes": 7,
-          "asistencias": 7,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 31,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "Ostia"
-          ],
-          "cs": 169,
-          "duracion_seg": 1949,
-          "damage_taken": 40502
         }
       ],
       "duo_semana": {
@@ -858,7 +864,7 @@
         "damage_taken": 67400,
         "campeon": "Fiora"
       },
-      "max_partidas_en_un_dia": 4,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Fiora",
@@ -3090,8 +3096,8 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze II",
-      "lp": 40,
-      "winrate": "56%",
+      "lp": 68,
+      "winrate": "59%",
       "record_lp_score": 683,
       "record_lp_label": "Bronze II (83 LP)",
       "rol_principal": "Support",
@@ -3119,7 +3125,7 @@
         {
           "campeon": "Lux",
           "nivel": 21,
-          "puntos": "218.016"
+          "puntos": "219.568"
         },
         {
           "campeon": "Swain",
@@ -3204,9 +3210,30 @@
           "lp": 40,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T21:48:35Z",
+          "lp": 68,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742363620",
+          "campeon": "Lux",
+          "kda": "2/6/13 (2.5)",
+          "resultado": "Victoria",
+          "duracion": "30min",
+          "lp_change": 28,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "match_id": "LA1_1742357949",
           "campeon": "Lux",
@@ -3335,36 +3362,38 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "match_id": "LA1_1742110117",
-          "campeon": "Lux",
-          "kda": "6/5/17 (4.6)",
-          "resultado": "Victoria",
-          "duracion": "33min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
-      "kills_recientes": 45,
+      "kills_recientes": 41,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 61,
-      "kills_semana": 67,
+      "vision_promedio_reciente": 60,
+      "kills_semana": 69,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 50,
+      "vision_promedio_semana": 51,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.79,
+      "kda_promedio_semana": 2.77,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 159,
-      "partidas_semana": 16,
+      "asistencias_semana": 172,
+      "partidas_semana": 17,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787175956.931,
+          "kills": 2,
+          "muertes": 6,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 66,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 113,
+          "duracion_seg": 1851,
+          "damage_taken": 16190
+        },
         {
           "fin_seg": 1787173712.377,
           "kills": 0,
@@ -3628,7 +3657,7 @@
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 9
+        "partidas": 10
       },
       "cs_min_semana": {
         "cs_por_min": 6.0,
@@ -3639,7 +3668,7 @@
         "damage_taken": 29704,
         "campeon": "Lux"
       },
-      "max_partidas_en_un_dia": 5,
+      "max_partidas_en_un_dia": 6,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
         "campeon": "Lux",
@@ -3657,13 +3686,13 @@
   "titulares": {
     "agresivo": {
       "jugador": "Pinea",
-      "valor": 8,
-      "detalle": "8 primeras sangre"
+      "valor": 7,
+      "detalle": "7 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.79,
-      "detalle": "2.79 KDA"
+      "valor": 2.77,
+      "detalle": "2.77 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -3671,9 +3700,9 @@
       "detalle": "6 campeones distintos ganados"
     },
     "asistente": {
-      "jugador": "Galactic Shark",
-      "valor": 166,
-      "detalle": "166 asistencias"
+      "jugador": "Ostia",
+      "valor": 172,
+      "detalle": "172 asistencias"
     },
     "farmeador": {
       "jugador": "Galactic Shark",
@@ -3687,6 +3716,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T21:48:35Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "172 asistencias"
+    },
     {
       "timestamp": "2026-08-19T20:48:25Z",
       "tipo": "badge_semanal",
