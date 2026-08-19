@@ -618,10 +618,10 @@ window.addEventListener('load', () => {
         const campeon    = liveStatus.campeon || 'Desconocido';
         const modoJuego  = liveStatus.modo_juego || 'Partida';
         const champUrl   = liveStatus.campeon
-          ? `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${liveStatus.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
+          ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${liveStatus.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
           : '';
         const hechizosHtml = (liveStatus.hechizos || []).map(h => `
-          <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h.icono}"
+          <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
                title="${h.nombre}" alt="${h.nombre}"
                onerror="this.style.visibility='hidden'">
         `).join('');
@@ -638,10 +638,10 @@ window.addEventListener('load', () => {
             <span class="live-game-duo-label">🎮 Dúo con</span>
             ${duoDetalle.map(d => {
               const duoChampUrl = d.campeon
-                ? `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${d.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
+                ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${d.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
                 : '';
               const duoSpellsHtml = (d.hechizos || []).map(h => `
-                <img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h.icono}"
+                <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
                      title="${h.nombre}" alt="${h.nombre}"
                      onerror="this.style.visibility='hidden'">
               `).join('');
@@ -699,7 +699,7 @@ window.addEventListener('load', () => {
       const VALID_TIERS = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
       const tierSlug = (p.rango || 'unranked').split(' ')[0].toLowerCase();
 
-      document.getElementById('p-avatar').src        = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${p.icono || 1}.png`;
+      document.getElementById('p-avatar').src        = `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${p.icono || 1}.png`;
       document.getElementById('p-name').innerText    = p.nombre.split('#')[0];
       document.getElementById('p-tier').innerText    = p.rango;
       document.getElementById('p-lp').innerText      = `${p.lp} LP`;
@@ -721,7 +721,7 @@ window.addEventListener('load', () => {
       boxMastery.innerHTML = (p.maestrias && p.maestrias.length)
         ? p.maestrias.map(m => `
             <div class="list-item">
-              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${fmt(m.campeon)}.png" onerror="this.style.visibility='hidden'">
+              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(m.campeon)}.png" onerror="this.style.visibility='hidden'">
               <div>
                 <div class="item-title">${m.campeon}</div>
                 <div class="item-sub">Nivel ${m.nivel} • ${m.puntos} pts</div>
@@ -734,7 +734,7 @@ window.addEventListener('load', () => {
       boxChamps.innerHTML = (p.top_recientes && p.top_recientes.length)
         ? p.top_recientes.map(c => `
             <div class="list-item">
-              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${fmt(c.campeon)}.png" onerror="this.style.visibility='hidden'">
+              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(c.campeon)}.png" onerror="this.style.visibility='hidden'">
               <div>
                 <div class="item-title">${c.campeon}</div>
                 <div class="item-sub">${c.cantidad} partidas recientes</div>
@@ -764,7 +764,7 @@ window.addEventListener('load', () => {
               ? `<span class="lp-change ${lpVal >= 0 ? 'win' : 'loss'}">${lpVal >= 0 ? '+' : ''}${lpVal} LP</span>`
               : h.duracion ? `<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${h.duracion}</span>` : '';
             const spellsHtml = (Array.isArray(h.hechizos) ? h.hechizos : []).map(s =>
-              `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
+              `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
             const duoCon = Array.isArray(h.duo_con) ? h.duo_con : [];
             const tag      = h.match_id ? 'a' : 'div';
@@ -772,7 +772,7 @@ window.addEventListener('load', () => {
             return `
             <${tag} class="match" ${hrefAttr}>
               <span class="match-icons">
-                <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
+                <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
                 ${spellsHtml ? `<span class="match-spells">${spellsHtml}</span>` : ''}
               </span>
               <div>
