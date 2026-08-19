@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T08:43:23.063305",
+  "ultimaActualizacion": "2026-08-19T08:50:12.997823",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2927,27 +2927,27 @@
       "nombre": "Ostia#LAN",
       "icono": 1296,
       "rango": "Bronze II",
-      "lp": 53,
-      "winrate": "73%",
+      "lp": 83,
+      "winrate": "75%",
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "rol": "Mid",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Lux",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Veigar",
-          "cantidad": 3
+          "cantidad": 2
         },
         {
           "campeon": "Ekko",
@@ -2958,7 +2958,7 @@
         {
           "campeon": "Lux",
           "nivel": 19,
-          "puntos": "213.966"
+          "puntos": "215.498"
         },
         {
           "campeon": "Swain",
@@ -3013,16 +3013,42 @@
           "lp": 53,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T08:50:07Z",
+          "lp": 83,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742300299",
+          "campeon": "Lux",
+          "kda": "2/4/12 (3.5)",
+          "resultado": "Victoria",
+          "duracion": "32min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742141953",
           "campeon": "Lux",
           "kda": "5/1/11 (16.0)",
           "resultado": "Victoria",
           "duracion": "29min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         },
         {
           "match_id": "LA1_1742128573",
@@ -3030,7 +3056,14 @@
           "kda": "1/7/18 (2.71)",
           "resultado": "Derrota",
           "duracion": "42min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         },
         {
           "match_id": "LA1_1742124714",
@@ -3038,7 +3071,14 @@
           "kda": "0/2/10 (5.0)",
           "resultado": "Victoria",
           "duracion": "16min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         },
         {
           "match_id": "LA1_1742116443",
@@ -3046,7 +3086,14 @@
           "kda": "7/9/14 (2.33)",
           "resultado": "Victoria",
           "duracion": "39min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         },
         {
           "match_id": "LA1_1742110117",
@@ -3054,7 +3101,14 @@
           "kda": "6/5/17 (4.6)",
           "resultado": "Victoria",
           "duracion": "33min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         },
         {
           "match_id": "LA1_1742063652",
@@ -3062,7 +3116,12 @@
           "kda": "5/6/0 (0.83)",
           "resultado": "Derrota",
           "duracion": "24min",
-          "lp_change": -10
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1742065003",
@@ -3070,7 +3129,12 @@
           "kda": "6/9/11 (1.89)",
           "resultado": "Victoria",
           "duracion": "38min",
-          "lp_change": null
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741918426",
@@ -3078,7 +3142,12 @@
           "kda": "0/5/5 (1.0)",
           "resultado": "Victoria",
           "duracion": "40min",
-          "lp_change": null
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741857393",
@@ -3086,33 +3155,206 @@
           "kda": "1/5/11 (2.4)",
           "resultado": "Victoria",
           "duracion": "32min",
-          "lp_change": null
-        },
-        {
-          "match_id": "LA1_1741851383",
-          "campeon": "Veigar",
-          "kda": "5/6/3 (1.33)",
-          "resultado": "Derrota",
-          "duracion": "29min",
-          "lp_change": null
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         }
       ],
-      "kills_recientes": 36,
+      "kills_recientes": 33,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 46,
-      "kills_semana": 0,
+      "vision_promedio_reciente": 52,
+      "kills_semana": 43,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 0,
+      "vision_promedio_semana": 48,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 0,
+      "kda_promedio_semana": 2.83,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 0,
-      "asistencias_semana": 0,
-      "partidas_semana": 0,
-      "partidas_semana_detalle": [],
-      "duo_semana": null,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 124,
+      "partidas_semana": 12,
+      "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787129031.287,
+          "kills": 2,
+          "muertes": 4,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 73,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1787093281.138,
+          "kills": 5,
+          "muertes": 1,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 71,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1787089107.393,
+          "kills": 1,
+          "muertes": 7,
+          "asistencias": 18,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 84,
+          "campeon": "Lux",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1787086045.816,
+          "kills": 0,
+          "muertes": 2,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 11,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1787084365.491,
+          "kills": 7,
+          "muertes": 9,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 66,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1787080996.778,
+          "kills": 6,
+          "muertes": 5,
+          "asistencias": 17,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 77,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1787045585.2,
+          "kills": 5,
+          "muertes": 6,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 21,
+          "campeon": "Veigar",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1787043320.707,
+          "kills": 6,
+          "muertes": 9,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 24,
+          "campeon": "Veigar",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1787011796.772,
+          "kills": 0,
+          "muertes": 5,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 37,
+          "campeon": "Ekko",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786993428.471,
+          "kills": 1,
+          "muertes": 5,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 56,
+          "campeon": "Velkoz",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1786990813.636,
+          "kills": 5,
+          "muertes": 6,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 17,
+          "campeon": "Veigar",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1786987393.513,
+          "kills": 5,
+          "muertes": 0,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 35,
+          "campeon": "Lux",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ]
+        }
+      ],
+      "duo_semana": {
+        "nombre": "Pinea",
+        "partidas": 8
+      },
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787129031287,
+        "campeon": "Lux",
+        "kda": "2/4/12 (3.5)",
+        "equipo": "blue",
+        "duracion": "32:00",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerDot"
+        ]
+      },
       "dia_referencia": 1787112000
     },
     {
