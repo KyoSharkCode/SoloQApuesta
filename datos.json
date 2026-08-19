@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T08:50:12.997823",
+  "ultimaActualizacion": "2026-08-19T09:04:15.567964",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -7,6 +7,8 @@
       "rango": "Silver III",
       "lp": 86,
       "winrate": "51%",
+      "record_lp_score": 986,
+      "record_lp_label": "Silver III (86 LP)",
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -771,6 +773,8 @@
         "nombre": "El Buñuelito",
         "partidas": 14
       },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
@@ -791,6 +795,8 @@
       "rango": "Silver I",
       "lp": 75,
       "winrate": "50%",
+      "record_lp_score": 1175,
+      "record_lp_label": "Silver I (75 LP)",
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1299,6 +1305,8 @@
         "nombre": "Pinea",
         "partidas": 2
       },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": {
         "timestamp": 1787123681368,
@@ -1319,6 +1327,8 @@
       "rango": "Silver II",
       "lp": 33,
       "winrate": "49%",
+      "record_lp_score": 1033,
+      "record_lp_label": "Silver II (33 LP)",
       "rol_principal": "ADC",
       "top_roles": [
         {
@@ -2049,6 +2059,8 @@
         "nombre": "Pinea",
         "partidas": 17
       },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
@@ -2069,6 +2081,8 @@
       "rango": "Gold III",
       "lp": 15,
       "winrate": "50%",
+      "record_lp_score": 1315,
+      "record_lp_label": "Gold III (15 LP)",
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -2296,6 +2310,8 @@
       "partidas_semana": 0,
       "partidas_semana_detalle": [],
       "duo_semana": null,
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787112000
@@ -2306,6 +2322,8 @@
       "rango": "Bronze I",
       "lp": 79,
       "winrate": "43%",
+      "record_lp_score": 779,
+      "record_lp_label": "Bronze I (79 LP)",
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2909,6 +2927,8 @@
         }
       ],
       "duo_semana": null,
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
@@ -2925,10 +2945,12 @@
     },
     {
       "nombre": "Ostia#LAN",
-      "icono": 1296,
+      "icono": 6205,
       "rango": "Bronze II",
       "lp": 83,
       "winrate": "75%",
+      "record_lp_score": 683,
+      "record_lp_label": "Bronze II (83 LP)",
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -3343,6 +3365,8 @@
         "nombre": "Pinea",
         "partidas": 8
       },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
@@ -3356,249 +3380,83 @@
         ]
       },
       "dia_referencia": 1787112000
+    }
+  ],
+  "titulares": {
+    "agresivo": {
+      "jugador": "Pinea",
+      "valor": 9,
+      "detalle": "9 primeras sangre"
+    },
+    "kda_player": {
+      "jugador": "Galactic Shark",
+      "valor": 2.86,
+      "detalle": "2.86 KDA"
+    },
+    "champion_pool": {
+      "jugador": "El Buñuelito",
+      "valor": 6,
+      "detalle": "6 campeones distintos ganados"
+    },
+    "asistente": {
+      "jugador": "Galactic Shark",
+      "valor": 159,
+      "detalle": "159 asistencias"
+    },
+    "farmeador": null,
+    "defensor": null
+  },
+  "eventos": [
+    {
+      "timestamp": "2026-08-19T09:04:10Z",
+      "tipo": "badge_semanal",
+      "categoria": "agresivo",
+      "categoria_label": "Agresivo",
+      "icono": "🩸",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": null,
+      "detalle": "9 primeras sangre"
     },
     {
-      "nombre": "Panquemado#UNSC",
-      "icono": 5416,
-      "rango": "Gold I",
-      "lp": 31,
-      "winrate": "55%",
-      "rol_principal": "Support",
-      "top_roles": [
-        {
-          "rol": "Support",
-          "cantidad": 6
-        },
-        {
-          "rol": "ADC",
-          "cantidad": 4
-        }
-      ],
-      "top_recientes": [
-        {
-          "campeon": "Jhin",
-          "cantidad": 4
-        },
-        {
-          "campeon": "Thresh",
-          "cantidad": 3
-        },
-        {
-          "campeon": "Blitzcrank",
-          "cantidad": 2
-        }
-      ],
-      "maestrias": [
-        {
-          "campeon": "Pyke",
-          "nivel": 25,
-          "puntos": "255.198"
-        },
-        {
-          "campeon": "Jhin",
-          "nivel": 24,
-          "puntos": "231.437"
-        },
-        {
-          "campeon": "Thresh",
-          "nivel": 17,
-          "puntos": "153.707"
-        }
-      ],
-      "progreso_lp": [
-        {
-          "fecha": "2026-08-19T00:07:07Z",
-          "lp": 31,
-          "rango": "Gold",
-          "division": "I"
-        }
-      ],
-      "historial": [
-        {
-          "match_id": "LA1_1741875057",
-          "campeon": "Jhin",
-          "kda": "10/4/7 (4.25)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741869039",
-          "campeon": "Jhin",
-          "kda": "6/7/10 (2.29)",
-          "resultado": "Victoria",
-          "duracion": "25min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741863005",
-          "campeon": "Jhin",
-          "kda": "8/3/15 (7.67)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1734811972",
-          "campeon": "Jhin",
-          "kda": "4/8/23 (3.38)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1734803781",
-          "campeon": "Blitzcrank",
-          "kda": "1/6/18 (3.17)",
-          "resultado": "Derrota",
-          "duracion": "36min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1734798357",
-          "campeon": "Thresh",
-          "kda": "2/4/17 (4.75)",
-          "resultado": "Derrota",
-          "duracion": "28min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1734790567",
-          "campeon": "Thresh",
-          "kda": "1/5/9 (2.0)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1729571213",
-          "campeon": "Thresh",
-          "kda": "5/7/13 (2.57)",
-          "resultado": "Derrota",
-          "duracion": "24min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1729558633",
-          "campeon": "Blitzcrank",
-          "kda": "0/7/9 (1.29)",
-          "resultado": "Victoria",
-          "duracion": "34min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1729541367",
-          "campeon": "Leona",
-          "kda": "2/2/21 (11.5)",
-          "resultado": "Victoria",
-          "duracion": "31min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": []
-        }
-      ],
-      "kills_recientes": 39,
-      "pentakills_recientes": 0,
-      "vision_promedio_reciente": 43,
-      "kills_semana": 24,
-      "pentakills_semana": 0,
-      "vision_promedio_semana": 16,
-      "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 4.0,
-      "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 1,
-      "asistencias_semana": 32,
-      "partidas_semana": 3,
-      "partidas_semana_detalle": [
-        {
-          "fin_seg": 1786998493.679,
-          "kills": 10,
-          "muertes": 4,
-          "asistencias": 7,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 12,
-          "campeon": "Jhin",
-          "victoria": true,
-          "duo_con": []
-        },
-        {
-          "fin_seg": 1786996262.208,
-          "kills": 6,
-          "muertes": 7,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 13,
-          "campeon": "Jhin",
-          "victoria": true,
-          "duo_con": []
-        },
-        {
-          "fin_seg": 1786994311.198,
-          "kills": 8,
-          "muertes": 3,
-          "asistencias": 15,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 23,
-          "campeon": "Jhin",
-          "victoria": true,
-          "duo_con": []
-        }
-      ],
-      "duo_semana": null,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
-      "dia_referencia": 1787112000
+      "timestamp": "2026-08-19T09:04:10Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "2.86 KDA"
+    },
+    {
+      "timestamp": "2026-08-19T09:04:10Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "159 asistencias"
+    },
+    {
+      "timestamp": "2026-08-19T09:04:10Z",
+      "tipo": "badge_semanal",
+      "categoria": "champion_pool",
+      "categoria_label": "Maestro del Champion Pool",
+      "icono": "🎭",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "6 campeones distintos ganados"
+    },
+    {
+      "timestamp": "2026-08-19T09:04:10Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": null
     }
-  ]
+  ],
+  "titular_primera_victoria_dia": "adrianNOOBYT",
+  "dia_referencia_eventos": 1787112000
 }
