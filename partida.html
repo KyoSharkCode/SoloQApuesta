@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de Partida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
+    --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
+    --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --win:#34d399; --win-bg:rgba(52,211,153,.12);
+    --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
+    --gold:#fbbf24; --blue:#60a5fa; --red:#f87171;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background: radial-gradient(800px 400px at 50% 0%, rgba(139,92,246,.15), transparent), var(--bg);
+    color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
+  }
+  .wrap{ max-width:980px; margin:0 auto; padding:40px 20px 100px; }
+
+  .topbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
+  .back-btn{ display:inline-flex; align-items:center; color:var(--accent-soft); text-decoration:none; font-weight:600; font-size:14px; transition:color 0.2s; }
+  .back-btn:hover{ color:#ffffff; }
+
+  #state-msg{ text-align:center; padding:70px 20px; color:var(--text-dim); font-weight:600; }
+  #state-msg.error{ color:var(--loss); }
+  .retry-btn{ margin-top:16px; background:var(--panel-2); border:1px solid var(--border); color:var(--text); padding:9px 18px; border-radius:10px; font-weight:700; cursor:pointer; font-size:13px; }
+  .retry-btn:hover{ border-color:var(--accent-soft); }
+
+  /* CABECERA DE PARTIDA */
+  .match-header{
+    display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+    padding:22px 26px; margin-bottom:28px; border-radius:18px;
+    border:1px solid var(--border); background:var(--panel);
+    border-left:5px solid var(--text-dim);
+  }
+  .match-header.victoria{ border-left-color:var(--win); }
+  .match-header.derrota{ border-left-color:var(--loss); }
+  .match-header.remake{ border-left-color:var(--text-dim); }
+  .mh-result{ font-size:22px; font-weight:900; letter-spacing:.02em; }
+  .mh-result.victoria{ color:var(--win); }
+  .mh-result.derrota{ color:var(--loss); }
+  .mh-result.remake{ color:var(--text-dim); }
+  .mh-champ{ display:flex; align-items:center; gap:12px; }
+  .mh-champ img{ width:56px; height:56px; border-radius:14px; border:2px solid var(--accent-soft); background:#1d1d24; object-fit:cover; }
+  .mh-champ-info{ display:flex; flex-direction:column; gap:2px; }
+  .mh-champ-name{ font-weight:800; font-size:16px; }
+  .mh-spells{ display:flex; gap:6px; }
+  .mh-spells img{ width:26px; height:26px; border-radius:6px; border:1px solid var(--border); background:#1d1d24; }
+  .mh-meta{ margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:4px; color:var(--text-faint); font-size:12.5px; font-weight:600; }
+  .mh-kda-big{ font-size:20px; font-weight:900; color:#fff; }
+
+  /* BADGES DE DESEMPEÑO */
+  .perf-badges{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+  .perf-badge{ display:flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; font-size:12px; font-weight:700; border:1px solid; }
+  .perf-badge.good{ color:var(--win); border-color:rgba(52,211,153,.5); background:var(--win-bg); }
+  .perf-badge.bad{ color:var(--loss); border-color:rgba(248,113,113,.5); background:var(--loss-bg); }
+
+  /* STATS PERSONALES */
+  .stats-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:28px; }
+  .stat-tile{ background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .stat-tile .st-label{ font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); font-weight:700; margin-bottom:6px; }
+  .stat-tile .st-value{ font-size:19px; font-weight:800; color:#fff; }
+
+  /* BUILD DE ITEMS */
+  .build-section{ margin-bottom:28px; }
+  .build-section h3{ font-size:14px; text-transform:uppercase; color:var(--text-faint); font-weight:700; margin:0 0 12px; }
+  .items-row{ display:flex; gap:6px; flex-wrap:wrap; }
+  .items-row img{ width:42px; height:42px; border-radius:8px; border:1px solid var(--border); background:#1d1d24; object-fit:cover; }
+  .item-empty{ width:42px; height:42px; border-radius:8px; border:1px dashed var(--border); background:#141418; }
+
+  /* MARCADOR COMPLETO */
+  .scoreboard{ margin-bottom:20px; }
+  .team-block{ margin-bottom:22px; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
+  .team-head{ display:flex; align-items:center; justify-content:space-between; padding:11px 16px; font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+  .team-head.blue{ background:rgba(96,165,250,.12); color:var(--blue); border-bottom:1px solid rgba(96,165,250,.25); }
+  .team-head.red{ background:rgba(248,113,113,.12); color:var(--red); border-bottom:1px solid rgba(248,113,113,.25); }
+  .team-objectives{ display:flex; gap:14px; font-size:11.5px; font-weight:600; color:var(--text-faint); }
+  .team-objectives span{ white-space:nowrap; }
+  .team-rows{ background:var(--panel); }
+  .p-row{ display:grid; grid-template-columns:auto 1fr auto auto auto; align-items:center; gap:14px; padding:10px 16px; border-top:1px solid var(--border); font-size:13px; }
+  .p-row:first-child{ border-top:none; }
+  .p-row.self{ background:rgba(139,92,246,.08); }
+  .p-champ{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .p-champ img.p-champ-img{ width:36px; height:36px; border-radius:8px; background:#1d1d24; object-fit:cover; flex-shrink:0; }
+  .p-spells{ display:flex; flex-direction:column; gap:2px; flex-shrink:0; }
+  .p-spells img{ width:16px; height:16px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
+  .p-name-block{ min-width:0; display:flex; flex-direction:column; line-height:1.3; }
+  .p-name{ font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
+  .p-name.group-name{ color:var(--accent-soft); }
+  .p-champ-name{ font-size:11px; color:var(--text-dim); }
+  .p-kda{ font-weight:700; white-space:nowrap; }
+  .p-kda-sub{ font-size:11px; color:var(--text-faint); }
+  .p-cs{ color:var(--text-faint); font-size:12px; white-space:nowrap; }
+  .p-items{ display:flex; gap:3px; }
+  .p-items img{ width:22px; height:22px; border-radius:5px; border:1px solid var(--border); background:#1d1d24; }
+  .p-items .item-empty{ width:22px; height:22px; border-radius:5px; border:1px dashed var(--border); background:#141418; }
+
+  #partida-content{ display:none; }
+
+  @media (max-width:640px){
+    .wrap{ padding:24px 14px 80px; }
+    .match-header{ padding:18px; }
+    .mh-meta{ margin-left:0; align-items:flex-start; width:100%; }
+    .p-row{ grid-template-columns:1fr auto; grid-template-areas:"champ kda" "items items"; row-gap:6px; }
+    .p-champ{ grid-area:champ; }
+    .p-kda{ grid-area:kda; text-align:right; }
+    .p-cs{ display:none; }
+    .p-items{ grid-area:items; }
+    .team-objectives{ flex-wrap:wrap; row-gap:4px; }
+  }
+
+  /* Menú flotante desplegable */
+  .fab-menu{ position:fixed; right:28px; bottom:28px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:14px; }
+  .fab-main{
+    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--accent); color:#fff; font-size:26px; font-weight:400; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 24px rgba(139,92,246,.55);
+    transition:transform .25s ease, box-shadow .2s ease;
+  }
+  .fab-main:hover{ box-shadow:0 6px 32px rgba(139,92,246,.75); }
+  .fab-menu.open .fab-main{ transform:rotate(45deg); }
+  .fab-options{ display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+  .fab-option{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    opacity:0; transform:translateY(10px) scale(.85); pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .fab-menu.open .fab-option{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .fab-menu.open .fab-option:nth-child(1){ transition-delay:.09s; }
+  .fab-menu.open .fab-option:nth-child(2){ transition-delay:.06s; }
+  .fab-menu.open .fab-option:nth-child(3){ transition-delay:.03s; }
+  .fab-option-icon{
+    width:46px; height:46px; border-radius:50%; background:var(--panel-2);
+    border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    font-size:20px; box-shadow:0 4px 16px rgba(0,0,0,.45); flex-shrink:0;
+  }
+  .fab-option-label{
+    font-size:12px; font-weight:700; color:var(--text); background:var(--panel-2);
+    padding:5px 10px; border-radius:8px; border:1px solid var(--border);
+    white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <a href="index.html" class="back-btn" id="back-link">← Volver</a>
+  </div>
+
+  <div id="state-msg">Cargando partida…</div>
+
+  <div id="partida-content">
+    <div class="match-header" id="mh-box">
+      <div class="mh-result" id="mh-result">—</div>
+      <div class="mh-champ">
+        <img id="mh-champ-img" src="" alt="">
+        <div class="mh-champ-info">
+          <span class="mh-champ-name" id="mh-champ-name">—</span>
+          <div class="mh-spells" id="mh-spells"></div>
+        </div>
+      </div>
+      <div class="mh-meta">
+        <span class="mh-kda-big" id="mh-kda-big">—</span>
+        <span id="mh-submeta">—</span>
+      </div>
+    </div>
+
+    <div class="perf-badges" id="perf-badges"></div>
+
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <div class="build-section" id="build-section" style="display:none;">
+      <h3>Build de Items</h3>
+      <div class="items-row" id="items-row"></div>
+    </div>
+
+    <div class="scoreboard" id="scoreboard"></div>
+  </div>
+</div>
+
+<div class="fab-menu" id="fabMenu">
+  <div class="fab-options">
+    <a class="fab-option" href="campeones.html">
+      <span class="fab-option-label">Campeones</span>
+      <span class="fab-option-icon">🏆</span>
+    </a>
+    <a class="fab-option" href="versus.html">
+      <span class="fab-option-label">Versus</span>
+      <span class="fab-option-icon">⚔️</span>
+    </a>
+    <a class="fab-option" href="index.html">
+      <span class="fab-option-label">Inicio</span>
+      <span class="fab-option-icon">🏠</span>
+    </a>
+  </div>
+  <button class="fab-main" id="fabMainBtn" type="button" aria-label="Menú de navegación" title="Menú">+</button>
+</div>
+<script>
+(function(){
+  var menu = document.getElementById('fabMenu');
+  var btn  = document.getElementById('fabMainBtn');
+  if(!menu || !btn) return;
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if(menu.classList.contains('open') && !menu.contains(e.target)) menu.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') menu.classList.remove('open'); });
+})();
+</script>
+
+<script>
+window.addEventListener('load', () => {
+  const params    = new URLSearchParams(window.location.search);
+  const matchId   = params.get('match_id');
+  const jugadorId = params.get('jugador'); // "Nombre#Tag" completo, opcional
+
+  const CDN     = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/14.20.1';
+
+  const backLink = document.getElementById('back-link');
+  if (jugadorId) {
+    backLink.href = `perfil.html?jugador=${encodeURIComponent(jugadorId)}`;
+    backLink.textContent = '← Volver al Perfil';
+  }
+
+  const fmt = (name) => (name || '').replace(/[^a-zA-Z0-9]/g, '');
+  const champUrl = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
+  const spellUrl = (name) => `${DDRAGON}/img/spell/${name}.png`;
+  const itemUrl  = (id)   => `${DDRAGON}/img/item/${id}.png`;
+
+  if (!matchId) {
+    showState('No se especificó ninguna partida.', true);
+    return;
+  }
+
+  cargar();
+
+  function showState(msg, isError, showRetry){
+    const el = document.getElementById('state-msg');
+    el.style.display = 'block';
+    el.className = isError ? 'error' : '';
+    el.innerHTML = msg + (showRetry ? '<div><button class="retry-btn" id="retry-btn">Reintentar</button></div>' : '');
+    document.getElementById('partida-content').style.display = 'none';
+    if (showRetry) {
+      document.getElementById('retry-btn').addEventListener('click', cargar);
+    }
+  }
+
+  async function cargar(){
+    showState('Cargando partida…', false);
+    try {
+      const res = await fetch(`${CDN}/datos_partidas.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('fetch-fail');
+      const todas = await res.json();
+      const detalle = todas[matchId];
+      if (!detalle) {
+        showState(
+          'Todavía no hay detalle guardado para esta partida.<br>' +
+          'Puede que sea muy reciente (el bot tarda unos minutos) o que ya haya salido de las últimas 10 partidas de todos.',
+          false, true
+        );
+        return;
+      }
+      render(detalle);
+      document.getElementById('state-msg').style.display = 'none';
+      document.getElementById('partida-content').style.display = 'block';
+    } catch (e) {
+      console.error(e);
+      showState('No se pudo cargar la partida. Revisa tu conexión.', true, true);
+    }
+  }
+
+  function render(detalle){
+    const jugadores = detalle.jugadores || [];
+    const self = jugadorId
+      ? jugadores.find(j => j.nombre_grupo && j.nombre_grupo === jugadorId.split('#')[0])
+      : null;
+
+    // ── Cabecera ──
+    const esRemake = detalle.modo_juego === 'Remake';
+    const resultadoTexto = esRemake ? 'Remake' : (self ? (self.victoria ? 'Victoria' : 'Derrota') : (detalle.equipos?.blue?.victoria ? 'Victoria del Equipo Azul' : 'Victoria del Equipo Rojo'));
+    const resultadoClase = esRemake ? 'remake' : (self ? (self.victoria ? 'victoria' : 'derrota') : (detalle.equipos?.blue?.victoria ? 'victoria' : 'derrota'));
+
+    const mhBox = document.getElementById('mh-box');
+    mhBox.className = `match-header ${resultadoClase}`;
+    document.getElementById('mh-result').className = `mh-result ${resultadoClase}`;
+    document.getElementById('mh-result').textContent = resultadoTexto;
+
+    const protagonista = self || jugadores[0] || null;
+    if (protagonista) {
+      document.getElementById('mh-champ-img').src = champUrl(protagonista.campeon);
+      document.getElementById('mh-champ-img').onerror = function(){ this.style.visibility = 'hidden'; };
+      document.getElementById('mh-champ-name').textContent = protagonista.campeon || '—';
+      document.getElementById('mh-spells').innerHTML = (protagonista.hechizos || []).map(s => `
+        <img src="${spellUrl(s)}" alt="${s}" onerror="this.style.visibility='hidden'">`).join('');
+      document.getElementById('mh-kda-big').textContent =
+        `${protagonista.kills}/${protagonista.muertes}/${protagonista.asistencias}`;
+    }
+
+    const durMin = Math.floor((detalle.duracion_seg || 0) / 60);
+    const durSeg = (detalle.duracion_seg || 0) % 60;
+    const fechaTxt = detalle.fecha ? new Date(detalle.fecha).toLocaleString('es-ES', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '';
+    document.getElementById('mh-submeta').textContent =
+      `${detalle.modo_juego || 'Ranked Solo/Duo'} · ${durMin}:${String(durSeg).padStart(2,'0')} · ${fechaTxt}`;
+
+    // ── Badges de desempeño (contra el propio equipo) ──
+    const badgesEl = document.getElementById('perf-badges');
+    if (self && !esRemake) {
+      const equipo = jugadores.filter(j => j.equipo === self.equipo);
+      badgesEl.innerHTML = calcularBadgesEquipo(self, equipo).map(b => `
+        <div class="perf-badge ${b.tipo}"><span>${b.icono}</span><span>${b.label}</span></div>`).join('');
+    } else {
+      badgesEl.innerHTML = '';
+    }
+
+    // ── Stats personales ──
+    const statsEl = document.getElementById('stats-grid');
+    if (self && !esRemake) {
+      const tiles = [
+        { label:'KDA', value:`${self.kills}/${self.muertes}/${self.asistencias}` },
+        { label:'CS', value:`${self.cs} (${self.cs_por_min}/min)` },
+        { label:'Daño a campeones', value:(self.danio_a_campeones||0).toLocaleString('es-ES') },
+        { label:'Daño recibido', value:(self.danio_recibido||0).toLocaleString('es-ES') },
+        { label:'Oro', value:(self.oro||0).toLocaleString('es-ES') },
+        { label:'Visión', value:self.vision },
+        { label:'Wards puestos', value:self.wards_colocadas },
+        { label:'Wards destruidos', value:self.wards_destruidas },
+      ];
+      statsEl.innerHTML = tiles.map(t => `
+        <div class="stat-tile"><div class="st-label">${t.label}</div><div class="st-value">${t.value}</div></div>`).join('');
+    } else {
+      statsEl.innerHTML = '';
+    }
+
+    // ── Build de items ──
+    const buildSection = document.getElementById('build-section');
+    if (self && !esRemake) {
+      buildSection.style.display = 'block';
+      document.getElementById('items-row').innerHTML = (self.items || []).map(id =>
+        id > 0
+          ? `<img src="${itemUrl(id)}" alt="item ${id}" onerror="this.style.visibility='hidden'">`
+          : `<div class="item-empty"></div>`
+      ).join('');
+    } else {
+      buildSection.style.display = 'none';
+    }
+
+    // ── Marcador completo ──
+    const scoreboardEl = document.getElementById('scoreboard');
+    if (esRemake) {
+      scoreboardEl.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:20px;">Esta partida fue un Remake — sin estadísticas.</p>';
+    } else {
+      const equiposOrden = ['blue', 'red'];
+      scoreboardEl.innerHTML = equiposOrden.map(lado => {
+        const jugs = jugadores.filter(j => j.equipo === lado).sort((a,b) => (b.danio_a_campeones||0) - (a.danio_a_campeones||0));
+        const eqInfo = (detalle.equipos && detalle.equipos[lado]) || {};
+        const nombreLado = lado === 'blue' ? 'Equipo Azul' : 'Equipo Rojo';
+        const resultadoLado = eqInfo.victoria ? 'Victoria' : 'Derrota';
+        return `
+          <div class="team-block">
+            <div class="team-head ${lado}">
+              <span>${nombreLado} · ${resultadoLado}</span>
+              <span class="team-objectives">
+                <span>🐉 ${eqInfo.dragones||0}</span>
+                <span>🦂 ${eqInfo.heraldos||0}</span>
+                <span>👹 ${eqInfo.barones||0}</span>
+                <span>🗼 ${eqInfo.torres||0}</span>
+                <span>🏰 ${eqInfo.inhibidores||0}</span>
+              </span>
+            </div>
+            <div class="team-rows">
+              ${jugs.map(j => filaJugador(j, self)).join('')}
+            </div>
+          </div>`;
+      }).join('');
+    }
+  }
+
+  function filaJugador(j, self){
+    const esSelf = self && j.nombre_grupo === self.nombre_grupo;
+    const nombreMostrar = j.nombre_grupo || j.riot_id;
+    const nombreClase = j.nombre_grupo ? 'p-name group-name' : 'p-name';
+    const itemsHtml = (j.items || []).map(id =>
+      id > 0
+        ? `<img src="${itemUrl(id)}" alt="" onerror="this.style.visibility='hidden'">`
+        : `<div class="item-empty"></div>`
+    ).join('');
+    return `
+      <div class="p-row ${esSelf ? 'self' : ''}">
+        <div class="p-champ">
+          <img class="p-champ-img" src="${champUrl(j.campeon)}" alt="${j.campeon}" onerror="this.style.visibility='hidden'">
+          <div class="p-spells">
+            ${(j.hechizos||[]).map(s => `<img src="${spellUrl(s)}" alt="" onerror="this.style.visibility='hidden'">`).join('')}
+          </div>
+        </div>
+        <div class="p-name-block">
+          <span class="${nombreClase}">${nombreMostrar}</span>
+          <span class="p-champ-name">${j.campeon || ''} · ${j.rol || ''}</span>
+        </div>
+        <div>
+          <div class="p-kda">${j.kills}/${j.muertes}/${j.asistencias}</div>
+          <div class="p-kda-sub">${(j.danio_a_campeones||0).toLocaleString('es-ES')} daño</div>
+        </div>
+        <div class="p-cs">${j.cs} CS (${j.cs_por_min}/min)</div>
+        <div class="p-items">${itemsHtml}</div>
+      </div>`;
+  }
+
+  // Compara al jugador contra su propio equipo (5 jugadores de esa partida)
+  // — el mismo criterio que se confirmó para los badges de desempeño.
+  function calcularBadgesEquipo(self, equipo){
+    if (equipo.length < 2) return [];
+    const badges = [];
+
+    function evaluar(campo, extractor, iconoGood, labelGood, iconoBad, labelBad){
+      const valores = equipo.map(extractor);
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      if (max === min) return; // todos iguales, no hay nada que destacar
+      const propio = extractor(self);
+      if (propio === max) badges.push({ tipo:'good', icono:iconoGood, label:labelGood });
+      else if (propio === min) badges.push({ tipo:'bad', icono:iconoBad, label:labelBad });
+    }
+
+    evaluar('danio', j => j.danio_a_campeones||0, '🗡️', 'Mejor daño del equipo', '🪶', 'Menos daño del equipo');
+    evaluar('cs',    j => j.cs_por_min||0,          '🌾', 'Mejor farmeo del equipo', '🐌', 'Peor farmeo del equipo');
+    evaluar('vision',j => j.vision||0,              '👁️', 'Mejor visión del equipo', '🙈', 'Peor visión del equipo');
+    evaluar('oro',   j => j.oro||0,                 '💰', 'Más oro del equipo',      '🪙', 'Menos oro del equipo');
+    evaluar('kda',   j => (j.kills + j.asistencias) / Math.max(1, j.muertes), '📊', 'Mejor KDA del equipo', '📉', 'Peor KDA del equipo');
+    evaluar('muertes', j => -(j.muertes||0),        '🛡️', 'Menos muertes del equipo', '💀', 'Más muertes del equipo');
+
+    return badges;
+  }
+});
+</script>
+</body>
+</html>
