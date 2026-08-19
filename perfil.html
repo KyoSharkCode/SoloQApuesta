@@ -178,6 +178,8 @@
   .history-section h3 { font-size:18px; font-weight:800; margin-bottom:16px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
   .match{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; padding:12px 16px; border-radius:12px; background:var(--panel); border:1px solid var(--border); }
+  a.match{ text-decoration:none; color:inherit; cursor:pointer; transition:border-color .15s ease; }
+  a.match:hover{ border-color:var(--accent-soft); }
   .match-icons{ display:flex; align-items:center; gap:6px; }
   .match-champ-img { width:48px; height:48px; border-radius:10px; }
   .match-spells{ display:flex; flex-direction:column; gap:3px; }
@@ -765,8 +767,10 @@ window.addEventListener('load', () => {
               `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
             const duoCon = Array.isArray(h.duo_con) ? h.duo_con : [];
+            const tag      = h.match_id ? 'a' : 'div';
+            const hrefAttr = h.match_id ? `href="partida.html?match_id=${encodeURIComponent(h.match_id)}&jugador=${encodeURIComponent(jugadorId)}"` : '';
             return `
-            <div class="match">
+            <${tag} class="match" ${hrefAttr}>
               <span class="match-icons">
                 <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
                 ${spellsHtml ? `<span class="match-spells">${spellsHtml}</span>` : ''}
@@ -780,7 +784,7 @@ window.addEventListener('load', () => {
                 <span class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</span>
                 ${lpHtml}
               </div>
-            </div>`;
+            </${tag}>`;
           }).join('')
         : '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>';
 
