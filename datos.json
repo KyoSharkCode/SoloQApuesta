@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T04:33:22.201109",
+  "ultimaActualizacion": "2026-08-19T04:36:38.124039",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1977,7 +1977,7 @@
       "icono": 5913,
       "rango": "Bronze I",
       "lp": 92,
-      "winrate": "48%",
+      "winrate": "45%",
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2007,7 +2007,7 @@
         {
           "campeon": "Akali",
           "nivel": 39,
-          "puntos": "430.250"
+          "puntos": "430.751"
         },
         {
           "campeon": "Warwick",
@@ -2154,6 +2154,19 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1742252510",
+          "campeon": "Akali",
+          "kda": "7/4/0 (1.75)",
+          "resultado": "Derrota",
+          "duracion": "17min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
+        {
           "match_id": "LA1_1742239014",
           "campeon": "Akali",
           "kda": "27/4/6 (8.25)",
@@ -2269,34 +2282,33 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741640227",
-          "campeon": "Akali",
-          "kda": "10/7/10 (2.86)",
-          "resultado": "Victoria",
-          "duracion": "38min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 95,
+      "kills_recientes": 92,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 27,
-      "kills_semana": 150,
+      "kills_semana": 157,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.12,
+      "kda_promedio_semana": 2.11,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
       "asistencias_semana": 134,
-      "partidas_semana": 21,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787114120.127,
+          "kills": 7,
+          "muertes": 4,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 18,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": []
+        },
         {
           "fin_seg": 1787112601.639,
           "kills": 27,
@@ -2551,7 +2563,7 @@
         }
       ],
       "duo_semana": null,
-      "max_partidas_en_un_dia": 1,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
