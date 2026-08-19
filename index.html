@@ -168,6 +168,8 @@
   .history-panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
   .matches{ display:flex; flex-direction:column; gap:8px; }
   .match{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; padding:10px 12px; border-radius:10px; background:var(--panel-2); border:1px solid var(--border); }
+  a.match{ text-decoration:none; color:inherit; cursor:pointer; transition:border-color .15s ease; }
+  a.match:hover{ border-color:var(--accent-soft); }
   .match-icons{ display:flex; align-items:center; gap:5px; }
   .champ-icon{ width:36px; height:36px; border-radius:8px; object-fit:cover; background:#1d1d24; }
   .match-spells{ display:flex; flex-direction:column; gap:3px; }
@@ -445,7 +447,8 @@ window.addEventListener('load', () => {
             duracion: h.duracion || null,
             lpChange: (typeof h.lp_change === 'number') ? h.lp_change : null,
             hechizos: Array.isArray(h.hechizos) ? h.hechizos : [],
-            duoCon: Array.isArray(h.duo_con) ? h.duo_con : []
+            duoCon: Array.isArray(h.duo_con) ? h.duo_con : [],
+            matchId: h.match_id || null
           })),
           historialLP: p.progreso_lp || [],
           // Últimas 10 partidas — para los 3 tops superiores
@@ -700,11 +703,24 @@ window.addEventListener('load', () => {
     });
 
     if(!otpPlayer) otpPlayer=state.players[0];
-    if(!climber)   climber  =state.players[0];
+    // FIX: antes había un "if(!climber) climber = state.players[0]" — si
+    // nadie tenía datos válidos de escalada, se le ponía por error el
+    // badge al jugador #1 del ranking general aunque no hubiera subido
+    // nada de LP esa semana. Ahora, sin fallback: si maxClimb no quedó
+    // en positivo, climberHtml (abajo) muestra el estado vacío en vez de
+    // inventarle el logro a alguien — mismo criterio que ya usa el perfil.
     if(!grinder)   grinder  =state.players[0];
     if(!otpChamp)  otpChamp ='Desconocido';
 
     const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+
+    // FIX: ahora exige maxClimb>0 igual que el perfil — antes con
+    // cualquier climber no-null se mostraba, incluso con LP negativo o
+    // con el fallback roto al jugador #1 del ranking general.
+    const climberHtml=(climber&&maxClimb>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">📈</div><div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-empty">Nadie ha subido de LP esta semana todavía.</p></div></div>`;
 
     const agresivoHtml=(agresivo&&maxSangre>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="">
@@ -775,10 +791,7 @@ window.addEventListener('load', () => {
           </div>
         </div>
       </div>
-      <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div>
-      </div>
+      ${climberHtml}
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
@@ -949,8 +962,10 @@ window.addEventListener('load', () => {
       const spellsHtml=(m.hechizos||[]).map(h=>
         `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
+      const tag       = m.matchId ? 'a' : 'div';
+      const hrefAttr  = m.matchId ? `href="partida.html?match_id=${encodeURIComponent(m.matchId)}&jugador=${encodeURIComponent(id)}"` : '';
       return `
-      <div class="match">
+      <${tag} class="match" ${hrefAttr}>
         <span class="match-icons">
           <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
           ${spellsHtml?`<span class="match-spells">${spellsHtml}</span>`:''}
@@ -966,7 +981,7 @@ window.addEventListener('load', () => {
             ?`<span class="lp-change ${m.lpChange>=0?'win':'loss'}">${m.lpChange>=0?'+':''}${m.lpChange} LP</span>`
             :m.duracion?`<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>`:''}
         </span>
-      </div>`;
+      </${tag}>`;
     }).join('');
     historyPanelEl.innerHTML=`<div class="matches">${matchesHtml}</div>`;
   }
