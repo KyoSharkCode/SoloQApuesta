@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T23:54:39.345436",
+  "ultimaActualizacion": "2026-08-19T23:57:39.377689",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2489,8 +2489,8 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Bronze I",
-      "lp": 66,
-      "winrate": "42%",
+      "lp": 52,
+      "winrate": "40%",
       "record_lp_score": 779,
       "record_lp_label": "Bronze I (79 LP)",
       "rol_principal": "Mid",
@@ -2501,13 +2501,13 @@
         },
         {
           "rol": "Top",
-          "cantidad": 2
+          "cantidad": 3
         }
       ],
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "campeon": "Yone",
@@ -2522,7 +2522,7 @@
         {
           "campeon": "Akali",
           "nivel": 39,
-          "puntos": "432.199"
+          "puntos": "433.121"
         },
         {
           "campeon": "Warwick",
@@ -2677,9 +2677,28 @@
           "lp": 66,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T23:57:19Z",
+          "lp": 52,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742388521",
+          "campeon": "Akali",
+          "kda": "10/9/3 (1.44)",
+          "resultado": "Derrota",
+          "duracion": "41min",
+          "lp_change": -14,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742382333",
           "campeon": "Akali",
@@ -2796,34 +2815,37 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741924978",
-          "campeon": "Jinx",
-          "kda": "1/5/9 (2.0)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": 60,
-          "hechizos": [
-            "SummonerBarrier",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 82,
+      "kills_recientes": 91,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 155,
+      "kills_semana": 165,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 1.96,
+      "kda_promedio_semana": 1.93,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 135,
-      "partidas_semana": 23,
+      "asistencias_semana": 138,
+      "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787183821.582,
+          "kills": 10,
+          "muertes": 9,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 26,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 220,
+          "duracion_seg": 2467,
+          "damage_taken": 44197,
+          "danio_recibido_pct": 19.9
+        },
         {
           "fin_seg": 1787181067.857,
           "kills": 4,
@@ -2837,7 +2859,8 @@
           "duo_con": [],
           "cs": 127,
           "duracion_seg": 1648,
-          "damage_taken": 34243
+          "damage_taken": 34243,
+          "danio_recibido_pct": 25.5
         },
         {
           "fin_seg": 1787117964.016,
@@ -2852,7 +2875,8 @@
           "duo_con": [],
           "cs": 150,
           "duracion_seg": 2345,
-          "damage_taken": 45652
+          "damage_taken": 45652,
+          "danio_recibido_pct": 21.1
         },
         {
           "fin_seg": 1787114120.127,
@@ -2867,7 +2891,8 @@
           "duo_con": [],
           "cs": 80,
           "duracion_seg": 1045,
-          "damage_taken": 15384
+          "damage_taken": 15384,
+          "danio_recibido_pct": 26.6
         },
         {
           "fin_seg": 1787112601.639,
@@ -2882,7 +2907,8 @@
           "duo_con": [],
           "cs": 175,
           "duracion_seg": 2170,
-          "damage_taken": 42380
+          "damage_taken": 42380,
+          "danio_recibido_pct": 18.9
         },
         {
           "fin_seg": 1787110060.816,
@@ -2897,7 +2923,8 @@
           "duo_con": [],
           "cs": 111,
           "duracion_seg": 1627,
-          "damage_taken": 28387
+          "damage_taken": 28387,
+          "danio_recibido_pct": 20.9
         },
         {
           "fin_seg": 1787027691.792,
@@ -2912,7 +2939,8 @@
           "duo_con": [],
           "cs": 170,
           "duracion_seg": 2033,
-          "damage_taken": 36244
+          "damage_taken": 36244,
+          "danio_recibido_pct": 23.8
         },
         {
           "fin_seg": 1787025258.621,
@@ -2927,7 +2955,8 @@
           "duo_con": [],
           "cs": 379,
           "duracion_seg": 3126,
-          "damage_taken": 79415
+          "damage_taken": 79415,
+          "danio_recibido_pct": 23.8
         },
         {
           "fin_seg": 1787018586.924,
@@ -2942,7 +2971,8 @@
           "duo_con": [],
           "cs": 174,
           "duracion_seg": 1826,
-          "damage_taken": 28341
+          "damage_taken": 28341,
+          "danio_recibido_pct": 26.2
         },
         {
           "fin_seg": 1787016297.111,
@@ -2957,7 +2987,8 @@
           "duo_con": [],
           "cs": 276,
           "duracion_seg": 2496,
-          "damage_taken": 76492
+          "damage_taken": 76492,
+          "danio_recibido_pct": 31.7
         },
         {
           "fin_seg": 1787013007.429,
@@ -2972,7 +3003,8 @@
           "duo_con": [],
           "cs": 178,
           "duracion_seg": 1706,
-          "damage_taken": 15387
+          "damage_taken": 15387,
+          "danio_recibido_pct": 12.2
         },
         {
           "fin_seg": 1787008643.524,
@@ -2987,7 +3019,8 @@
           "duo_con": [],
           "cs": 171,
           "duracion_seg": 1928,
-          "damage_taken": 34123
+          "damage_taken": 34123,
+          "danio_recibido_pct": 21.5
         },
         {
           "fin_seg": 1786929669.909,
@@ -3002,7 +3035,8 @@
           "duo_con": [],
           "cs": 179,
           "duracion_seg": 2269,
-          "damage_taken": 38843
+          "damage_taken": 38843,
+          "danio_recibido_pct": 18.3
         },
         {
           "fin_seg": 1786920228.724,
@@ -3017,7 +3051,8 @@
           "duo_con": [],
           "cs": 140,
           "duracion_seg": 2293,
-          "damage_taken": 33181
+          "damage_taken": 33181,
+          "danio_recibido_pct": 22.6
         },
         {
           "fin_seg": 1786914834.942,
@@ -3032,7 +3067,8 @@
           "duo_con": [],
           "cs": 261,
           "duracion_seg": 2502,
-          "damage_taken": 34450
+          "damage_taken": 34450,
+          "danio_recibido_pct": 20.1
         },
         {
           "fin_seg": 1786912010.061,
@@ -3047,7 +3083,8 @@
           "duo_con": [],
           "cs": 132,
           "duracion_seg": 1638,
-          "damage_taken": 17635
+          "damage_taken": 17635,
+          "danio_recibido_pct": 12.9
         },
         {
           "fin_seg": 1786909916.739,
@@ -3062,7 +3099,8 @@
           "duo_con": [],
           "cs": 181,
           "duracion_seg": 1119,
-          "damage_taken": 10762
+          "damage_taken": 10762,
+          "danio_recibido_pct": 21.2
         },
         {
           "fin_seg": 1786866086.228,
@@ -3077,7 +3115,8 @@
           "duo_con": [],
           "cs": 148,
           "duracion_seg": 1732,
-          "damage_taken": 32067
+          "damage_taken": 32067,
+          "danio_recibido_pct": 20.8
         },
         {
           "fin_seg": 1786863912.864,
@@ -3092,7 +3131,8 @@
           "duo_con": [],
           "cs": 113,
           "duracion_seg": 1439,
-          "damage_taken": 23119
+          "damage_taken": 23119,
+          "danio_recibido_pct": 21.7
         },
         {
           "fin_seg": 1786862119.121,
@@ -3107,7 +3147,8 @@
           "duo_con": [],
           "cs": 190,
           "duracion_seg": 1805,
-          "damage_taken": 25385
+          "damage_taken": 25385,
+          "danio_recibido_pct": 18.1
         },
         {
           "fin_seg": 1786859964.809,
@@ -3122,7 +3163,8 @@
           "duo_con": [],
           "cs": 137,
           "duracion_seg": 1889,
-          "damage_taken": 32671
+          "damage_taken": 32671,
+          "danio_recibido_pct": 19.4
         },
         {
           "fin_seg": 1786852777.68,
@@ -3137,7 +3179,8 @@
           "duo_con": [],
           "cs": 145,
           "duracion_seg": 1815,
-          "damage_taken": 22555
+          "damage_taken": 22555,
+          "danio_recibido_pct": 17.4
         },
         {
           "fin_seg": 1786830790.865,
@@ -3152,7 +3195,8 @@
           "duo_con": [],
           "cs": 120,
           "duracion_seg": 1764,
-          "damage_taken": 25490
+          "damage_taken": 25490,
+          "danio_recibido_pct": 20.3
         },
         {
           "fin_seg": 1786828653.206,
@@ -3167,7 +3211,8 @@
           "duo_con": [],
           "cs": 16,
           "duracion_seg": 271,
-          "damage_taken": 1132
+          "damage_taken": 1132,
+          "danio_recibido_pct": 17.9
         }
       ],
       "duo_semana": null,
@@ -3176,8 +3221,12 @@
         "cs": 181,
         "campeon": "Akali"
       },
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 6,
+      "danio_recibido_semana": {
+        "danio_recibido_pct": 31.7,
+        "damage_taken": 76492,
+        "campeon": "Trundle"
+      },
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
