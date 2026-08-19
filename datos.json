@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T23:09:06.623454",
+  "ultimaActualizacion": "2026-08-19T23:15:46.244908",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2481,8 +2481,8 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Bronze I",
-      "lp": 79,
-      "winrate": "43%",
+      "lp": 66,
+      "winrate": "42%",
       "record_lp_score": 779,
       "record_lp_label": "Bronze I (79 LP)",
       "rol_principal": "Mid",
@@ -2514,7 +2514,7 @@
         {
           "campeon": "Akali",
           "nivel": 39,
-          "puntos": "431.620"
+          "puntos": "432.199"
         },
         {
           "campeon": "Warwick",
@@ -2663,9 +2663,28 @@
           "lp": 79,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T23:15:32Z",
+          "lp": 66,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742382333",
+          "campeon": "Akali",
+          "kda": "4/10/3 (0.7)",
+          "resultado": "Derrota",
+          "duracion": "27min",
+          "lp_change": -13,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742263905",
           "campeon": "Akali",
@@ -2782,34 +2801,36 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741910043",
-          "campeon": "Akali",
-          "kda": "7/7/11 (2.57)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 85,
+      "kills_recientes": 82,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 26,
-      "kills_semana": 165,
+      "vision_promedio_reciente": 24,
+      "kills_semana": 155,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 23,
+      "vision_promedio_semana": 22,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.07,
+      "kda_promedio_semana": 1.96,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 143,
+      "asistencias_semana": 135,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787181067.857,
+          "kills": 4,
+          "muertes": 10,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 10,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 127,
+          "duracion_seg": 1648,
+          "damage_taken": 34243
+        },
         {
           "fin_seg": 1787117964.016,
           "kills": 8,
@@ -2820,7 +2841,10 @@
           "vision": 30,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 150,
+          "duracion_seg": 2345,
+          "damage_taken": 45652
         },
         {
           "fin_seg": 1787114120.127,
@@ -2832,7 +2856,10 @@
           "vision": 18,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 80,
+          "duracion_seg": 1045,
+          "damage_taken": 15384
         },
         {
           "fin_seg": 1787112601.639,
@@ -2844,7 +2871,10 @@
           "vision": 39,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 175,
+          "duracion_seg": 2170,
+          "damage_taken": 42380
         },
         {
           "fin_seg": 1787110060.816,
@@ -2856,7 +2886,10 @@
           "vision": 26,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 111,
+          "duracion_seg": 1627,
+          "damage_taken": 28387
         },
         {
           "fin_seg": 1787027691.792,
@@ -2868,7 +2901,10 @@
           "vision": 24,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 170,
+          "duracion_seg": 2033,
+          "damage_taken": 36244
         },
         {
           "fin_seg": 1787025258.621,
@@ -2880,7 +2916,10 @@
           "vision": 22,
           "campeon": "Yone",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 379,
+          "duracion_seg": 3126,
+          "damage_taken": 79415
         },
         {
           "fin_seg": 1787018586.924,
@@ -2892,7 +2931,10 @@
           "vision": 12,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 174,
+          "duracion_seg": 1826,
+          "damage_taken": 28341
         },
         {
           "fin_seg": 1787016297.111,
@@ -2904,7 +2946,10 @@
           "vision": 33,
           "campeon": "Trundle",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 276,
+          "duracion_seg": 2496,
+          "damage_taken": 76492
         },
         {
           "fin_seg": 1787013007.429,
@@ -2916,7 +2961,10 @@
           "vision": 31,
           "campeon": "Jinx",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 178,
+          "duracion_seg": 1706,
+          "damage_taken": 15387
         },
         {
           "fin_seg": 1787008643.524,
@@ -2928,7 +2976,10 @@
           "vision": 30,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 171,
+          "duracion_seg": 1928,
+          "damage_taken": 34123
         },
         {
           "fin_seg": 1786929669.909,
@@ -2940,7 +2991,10 @@
           "vision": 31,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 179,
+          "duracion_seg": 2269,
+          "damage_taken": 38843
         },
         {
           "fin_seg": 1786920228.724,
@@ -2952,7 +3006,10 @@
           "vision": 24,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 140,
+          "duracion_seg": 2293,
+          "damage_taken": 33181
         },
         {
           "fin_seg": 1786914834.942,
@@ -2964,7 +3021,10 @@
           "vision": 33,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 261,
+          "duracion_seg": 2502,
+          "damage_taken": 34450
         },
         {
           "fin_seg": 1786912010.061,
@@ -2976,7 +3036,10 @@
           "vision": 14,
           "campeon": "Vayne",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 132,
+          "duracion_seg": 1638,
+          "damage_taken": 17635
         },
         {
           "fin_seg": 1786909916.739,
@@ -2988,7 +3051,10 @@
           "vision": 16,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 181,
+          "duracion_seg": 1119,
+          "damage_taken": 10762
         },
         {
           "fin_seg": 1786866086.228,
@@ -3000,7 +3066,10 @@
           "vision": 21,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 148,
+          "duracion_seg": 1732,
+          "damage_taken": 32067
         },
         {
           "fin_seg": 1786863912.864,
@@ -3012,7 +3081,10 @@
           "vision": 4,
           "campeon": "Ekko",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 113,
+          "duracion_seg": 1439,
+          "damage_taken": 23119
         },
         {
           "fin_seg": 1786862119.121,
@@ -3024,7 +3096,10 @@
           "vision": 13,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 190,
+          "duracion_seg": 1805,
+          "damage_taken": 25385
         },
         {
           "fin_seg": 1786859964.809,
@@ -3036,7 +3111,10 @@
           "vision": 25,
           "campeon": "Trundle",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 137,
+          "duracion_seg": 1889,
+          "damage_taken": 32671
         },
         {
           "fin_seg": 1786852777.68,
@@ -3048,7 +3126,10 @@
           "vision": 22,
           "campeon": "Akali",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 145,
+          "duracion_seg": 1815,
+          "damage_taken": 22555
         },
         {
           "fin_seg": 1786830790.865,
@@ -3060,7 +3141,10 @@
           "vision": 22,
           "campeon": "Akali",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 120,
+          "duracion_seg": 1764,
+          "damage_taken": 25490
         },
         {
           "fin_seg": 1786828653.206,
@@ -3072,25 +3156,23 @@
           "vision": 1,
           "campeon": "Ahri",
           "victoria": true,
-          "duo_con": []
-        },
-        {
-          "fin_seg": 1786816797.582,
-          "kills": 14,
-          "muertes": 11,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 27,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 16,
+          "duracion_seg": 271,
+          "damage_taken": 1132
         }
       ],
       "duo_semana": null,
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 0,
+      "cs_min_semana": {
+        "cs_por_min": 9.7,
+        "cs": 181,
+        "campeon": "Akali"
+      },
+      "danio_recibido_semana": {
+        "damage_taken": 79415,
+        "campeon": "Yone"
+      },
+      "max_partidas_en_un_dia": 6,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
@@ -3767,9 +3849,9 @@
       "detalle": "181 asistencias"
     },
     "farmeador": {
-      "jugador": "Galactic Shark",
-      "valor": 8.2,
-      "detalle": "8.2 CS/min con Lillia"
+      "jugador": "adrianNOOBYT",
+      "valor": 9.7,
+      "detalle": "9.7 CS/min con Akali"
     },
     "defensor": {
       "jugador": "Galactic Shark",
@@ -3778,6 +3860,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T23:15:32Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "9.7 CS/min con Akali"
+    },
     {
       "timestamp": "2026-08-19T22:50:40Z",
       "tipo": "record_lp",
