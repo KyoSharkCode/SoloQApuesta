@@ -1,11 +1,11 @@
 {
-  "ultimaActualizacion": "2026-08-19T05:30:48.198374",
+  "ultimaActualizacion": "2026-08-19T05:33:38.887323",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver II",
-      "lp": 29,
+      "lp": 8,
       "winrate": "52%",
       "rol_principal": "Top",
       "top_roles": [
@@ -28,7 +28,7 @@
         {
           "campeon": "Fiora",
           "nivel": 28,
-          "puntos": "276.279"
+          "puntos": "277.031"
         },
         {
           "campeon": "Irelia",
@@ -281,9 +281,30 @@
           "lp": 29,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T05:33:23Z",
+          "lp": 8,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742263954",
+          "campeon": "Fiora",
+          "kda": "10/13/3 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "30min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "El Buñuelito"
+          ]
+        },
         {
           "match_id": "LA1_1742255344",
           "campeon": "Fiora",
@@ -418,36 +439,35 @@
           "duo_con": [
             "Ostia"
           ]
-        },
-        {
-          "match_id": "LA1_1742128573",
-          "campeon": "Fiora",
-          "kda": "18/10/7 (2.5)",
-          "resultado": "Derrota",
-          "duracion": "42min",
-          "lp_change": 36,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "Ostia"
-          ]
         }
       ],
-      "kills_recientes": 70,
+      "kills_recientes": 62,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
-      "kills_semana": 200,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 198,
       "pentakills_semana": 0,
       "vision_promedio_semana": 31,
       "primeras_sangre_semana": 9,
-      "kda_promedio_semana": 2.13,
+      "kda_promedio_semana": 2.04,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 150,
+      "asistencias_semana": 141,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787117445.84,
+          "kills": 10,
+          "muertes": 13,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 18,
+          "campeon": "Fiora",
+          "victoria": false,
+          "duo_con": [
+            "El Buñuelito"
+          ]
+        },
         {
           "fin_seg": 1787115285.101,
           "kills": 9,
@@ -739,25 +759,13 @@
           "duo_con": [
             "Ostia"
           ]
-        },
-        {
-          "fin_seg": 1786983563.201,
-          "kills": 12,
-          "muertes": 11,
-          "asistencias": 12,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 31,
-          "campeon": "Ekko",
-          "victoria": false,
-          "duo_con": []
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 12
+        "partidas": 13
       },
-      "max_partidas_en_un_dia": 1,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Fiora",
@@ -1051,13 +1059,13 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver II",
-      "lp": 79,
+      "lp": 56,
       "winrate": "49%",
       "rol_principal": "ADC",
       "top_roles": [
         {
           "rol": "ADC",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "rol": "Mid",
@@ -1074,7 +1082,7 @@
           "cantidad": 2
         },
         {
-          "campeon": "Seraphine",
+          "campeon": "Ezreal",
           "cantidad": 1
         }
       ],
@@ -1329,9 +1337,30 @@
           "lp": 79,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T05:33:23Z",
+          "lp": 56,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742263954",
+          "campeon": "Ezreal",
+          "kda": "8/12/7 (1.25)",
+          "resultado": "Derrota",
+          "duracion": "30min",
+          "lp_change": -23,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerBarrier"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "match_id": "LA1_1742255344",
           "campeon": "Seraphine",
@@ -1464,34 +1493,35 @@
             "SummonerDot"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1742142820",
-          "campeon": "Zoe",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:13",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 42,
+      "kills_recientes": 50,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 23,
-      "kills_semana": 112,
+      "vision_promedio_reciente": 22,
+      "kills_semana": 120,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 24,
+      "vision_promedio_semana": 23,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 1.65,
+      "kda_promedio_semana": 1.58,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 106,
+      "asistencias_semana": 103,
       "partidas_semana": 19,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787117445.84,
+          "kills": 8,
+          "muertes": 12,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 11,
+          "campeon": "Ezreal",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "fin_seg": 1787115285.101,
           "kills": 2,
@@ -1737,27 +1767,13 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "fin_seg": 1786935732.398,
-          "kills": 0,
-          "muertes": 3,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 17,
-          "campeon": "Xayah",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
         "partidas": 16
       },
-      "max_partidas_en_un_dia": 1,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Seraphine",
