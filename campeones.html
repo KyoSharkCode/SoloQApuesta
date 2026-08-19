@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo LoL · Campeones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstract.com" crossorigin>
+<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
+    --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
+    --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --accent-glow:rgba(139,92,246,.35); --gold:#fbbf24;
+    --win:#34d399; --win-bg:rgba(52,211,153,.12);
+    --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background: radial-gradient(1200px 500px at 50% -10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
+    color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:960px; margin:0 auto; padding:48px 20px 80px; }
+
+  .back-btn{ display:inline-flex; align-items:center; color:var(--accent-soft); text-decoration:none; font-weight:600; font-size:14px; transition:color .2s; }
+  .back-btn:hover{ color:#fff; }
+
+  header{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; margin:20px 0 30px; padding-bottom:24px; border-bottom:1px solid var(--border); gap:12px; }
+  h1{ font-size:clamp(28px,4vw,38px); font-weight:800; margin:0 0 6px; color:#ffffff; display:flex; align-items:center; gap:10px; }
+  header p{ margin:0; color:var(--text-faint); font-size:13px; }
+
+  .section-title{ margin:0 0 16px; }
+  .section-title h2{ font-size:15px; font-weight:700; text-transform:uppercase; margin:0; color:#ffffff; }
+  .section-title span{ font-size:12px; color:var(--text-faint); }
+  section{ margin-bottom:50px; }
+
+  /* KPI row — stat tiles */
+  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:16px; margin-bottom:50px; }
+  .kpi-card{ display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+  .kpi-icon{ font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
+  .kpi-avatar{ width:44px; height:44px; border-radius:12px; border:1px solid var(--border); object-fit:cover; flex-shrink:0; background:#1d1d24; }
+  .kpi-body{ min-width:0; }
+  .kpi-label{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin:0 0 4px; }
+  .kpi-value{ font-size:16px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .kpi-sub{ font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
+  .kpi-empty{ font-size:13px; color:var(--text-faint); }
+
+  /* Bar chart — top campeones más jugados (magnitud → un solo tono) */
+  .champ-bars{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:20px; display:flex; flex-direction:column; gap:10px; }
+  .champ-bar-row{ display:grid; grid-template-columns:22px 34px minmax(90px,150px) 1fr 60px; align-items:center; gap:12px; }
+  .champ-bar-rank{ font-size:12px; font-weight:800; color:var(--text-faint); text-align:center; }
+  .champ-bar-icon{ width:34px; height:34px; border-radius:8px; object-fit:cover; background:#1d1d24; }
+  .champ-bar-name{ font-size:13px; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .champ-bar-track{ height:20px; background:var(--panel-2); border-radius:6px; overflow:hidden; }
+  .champ-bar-fill{ display:block; height:100%; min-width:6px; background:linear-gradient(90deg, var(--accent-soft), var(--accent)); border-radius:6px; }
+  .champ-bar-value{ font-size:13px; font-weight:800; color:#fff; text-align:right; }
+  .champ-bar-value small{ font-size:10px; font-weight:600; color:var(--text-faint); display:block; }
+
+  /* Tabla completa de campeones */
+  .champ-table-wrap{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow-x:auto; }
+  .champ-table{ width:100%; border-collapse:collapse; min-width:560px; }
+  .champ-table th{ text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); padding:14px 16px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  .champ-table td{ padding:12px 16px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; }
+  .champ-table tr:last-child td{ border-bottom:none; }
+  .champ-table tr:hover td{ background:var(--panel-2); }
+  .champ-cell{ display:flex; align-items:center; gap:10px; font-weight:700; color:#fff; }
+  .champ-cell img{ width:28px; height:28px; border-radius:6px; object-fit:cover; background:#1d1d24; }
+  .champ-table td.num{ font-variant-numeric:tabular-nums; color:var(--text-dim); }
+  .wr-pill{ display:inline-block; padding:3px 10px; border-radius:99px; font-weight:800; font-size:12px; }
+  .wr-pill.good{ color:var(--win); background:var(--win-bg); }
+  .wr-pill.bad{ color:var(--loss); background:var(--loss-bg); }
+  .owner-cell{ display:flex; align-items:center; gap:8px; color:var(--text-dim); }
+  .owner-cell img{ width:22px; height:22px; border-radius:50%; object-fit:cover; background:#1d1d24; }
+
+  .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
+
+  .site-footer{ margin-top:60px; padding-top:40px; border-top:1px solid var(--border); text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .footer-logo{ width:70px; height:auto; margin-bottom:12px; }
+  .site-footer p{ margin:0; font-size:14px; color:var(--text-dim); font-weight:500; }
+
+  .fab{
+    position:fixed; bottom:28px; right:28px; z-index:999;
+    width:56px; height:56px; border-radius:50%;
+    background:var(--accent); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; box-shadow:0 4px 24px rgba(139,92,246,.55);
+    transition:transform .2s, box-shadow .2s;
+    text-decoration:none; color:#fff;
+  }
+  .fab:hover{ transform:scale(1.1); box-shadow:0 6px 32px rgba(139,92,246,.75); }
+  .fab-tooltip{
+    position:fixed; bottom:34px; right:92px; z-index:998;
+    background:var(--panel); border:1px solid var(--border);
+    color:var(--text); font-size:12px; font-weight:700;
+    padding:6px 12px; border-radius:8px; white-space:nowrap;
+    opacity:0; pointer-events:none; transition:opacity .2s;
+  }
+  .fab:hover + .fab-tooltip{ opacity:1; }
+  .fab-2{ bottom:96px; }
+  .fab-tooltip-2{ bottom:102px; }
+
+  @media(max-width:640px){
+    .champ-bar-row{ grid-template-columns:18px 28px 1fr 50px; }
+    .champ-bar-name{ display:none; } /* el nombre ya va sobre el icono en pantallas chicas */
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a href="index.html" class="back-btn">← Volver al Ranking</a>
+
+  <header>
+    <div>
+      <h1>🏆 Campeones del Grupo</h1>
+      <p>Basado en las últimas 10 partidas Solo/Duo de cada jugador · se actualiza junto con el resto del sitio</p>
+    </div>
+  </header>
+
+  <div class="kpi-grid" id="kpi-container"></div>
+
+  <section>
+    <div class="section-title"><h2>Más Jugados</h2><span>Top 10 del grupo por número de partidas</span></div>
+    <div class="champ-bars" id="bars-container"></div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>Todos los Campeones</h2><span>Ordenado por partidas jugadas</span></div>
+    <div class="champ-table-wrap">
+      <table class="champ-table">
+        <thead>
+          <tr><th>Campeón</th><th>Partidas</th><th>V / D</th><th>Winrate</th><th>Más jugado por</th></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo">
+    <p>creado por KyoSumiVT</p>
+  </footer>
+</div>
+
+<a class="fab" href="versus.html" title="Versus">⚔️</a>
+<div class="fab-tooltip">Comparar jugadores</div>
+<a class="fab fab-2" href="index.html" title="Ranking">🏠</a>
+<div class="fab-tooltip fab-tooltip-2">Volver al ranking</div>
+
+<script>
+window.addEventListener('load', () => {
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId||1}.png`; }
+  function getChampImg(campeon){ return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${(campeon||'').replace(/[^a-zA-Z0-9]/g,'')}.png`; }
+
+  const kpiContainer   = document.getElementById('kpi-container');
+  const barsContainer  = document.getElementById('bars-container');
+  const tableBody      = document.getElementById('table-body');
+  const REFRESH_MS = 60000;
+
+  init();
+  setInterval(refreshData, REFRESH_MS);
+
+  function init(){ refreshData(); }
+
+  async function refreshData(){
+    try{
+      // Mismo CDN que el resto del sitio — refleja el push casi al instante.
+      const CDN = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
+      const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' });
+      if(!res.ok) throw new Error();
+      const rawData    = await res.json();
+      const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
+
+      const stats = agregarCampeones(rawPlayers);
+      renderKpis(stats);
+      renderBars(stats);
+      renderTable(stats);
+    }catch(err){
+      console.warn('No se pudo refrescar datos.json', err);
+      if(!tableBody.children.length){
+        tableBody.innerHTML = `<tr><td colspan="5" class="empty-state">Espera a que el bot recolecte la información y recarga la página.</td></tr>`;
+      }
+    }
+  }
+
+  // Agrega, por campeón, cuántas veces se jugó, cuántas se ganó, y quién
+  // (de los 6) lo jugó más veces — todo a partir de las últimas 10
+  // partidas que YA trae cada jugador en datos.json. No pide nada nuevo
+  // a Riot: es puro front-end sobre datos que ya se están descargando.
+  function agregarCampeones(players){
+    const stats = {}; // nombreCampeon -> {partidas, victorias, porJugador:{nombre:{icono,partidas}}}
+    players.forEach(p=>{
+      (p.historial||[]).forEach(h=>{
+        const resultado = (h.resultado||'').toLowerCase();
+        if(resultado==='remake' || !h.campeon) return; // los remakes no cuentan
+        const c = h.campeon;
+        if(!stats[c]) stats[c] = { partidas:0, victorias:0, porJugador:{} };
+        stats[c].partidas++;
+        if(resultado==='victoria') stats[c].victorias++;
+        if(!stats[c].porJugador[p.nombre]) stats[c].porJugador[p.nombre] = { icono:p.icono||1, partidas:0 };
+        stats[c].porJugador[p.nombre].partidas++;
+      });
+    });
+    return stats;
+  }
+
+  function listaOrdenada(stats){
+    return Object.entries(stats)
+      .map(([campeon, s])=>{
+        const dueno = Object.entries(s.porJugador).sort((a,b)=>b[1].partidas-a[1].partidas)[0];
+        return {
+          campeon, partidas:s.partidas, victorias:s.victorias,
+          derrotas: s.partidas - s.victorias,
+          winrate: s.partidas>0 ? Math.round(s.victorias/s.partidas*100) : 0,
+          duenoNombre: dueno ? dueno[0] : null,
+          duenoIcono:  dueno ? dueno[1].icono : 1,
+          duenoPartidas: dueno ? dueno[1].partidas : 0,
+        };
+      })
+      .sort((a,b)=> b.partidas-a.partidas || b.winrate-a.winrate);
+  }
+
+  function renderKpis(stats){
+    const lista = listaOrdenada(stats);
+    if(!lista.length){
+      kpiContainer.innerHTML = `<div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-body"><p class="kpi-label">Campeones del Grupo</p><p class="kpi-empty">Aún no hay partidas suficientes.</p></div></div>`;
+      return;
+    }
+    const totalPartidas   = lista.reduce((a,c)=>a+c.partidas,0);
+    const masJugado       = lista[0];
+    const conMuestra      = lista.filter(c=>c.partidas>=3);
+    const mejorWinrate    = [...conMuestra].sort((a,b)=>b.winrate-a.winrate)[0];
+    const totalDistintos  = lista.length;
+
+    kpiContainer.innerHTML = `
+      <div class="kpi-card">
+        <img class="kpi-avatar" src="${getChampImg(masJugado.campeon)}" onerror="this.style.visibility='hidden'">
+        <div class="kpi-body">
+          <p class="kpi-label">Más Jugado</p>
+          <p class="kpi-value">${masJugado.campeon}</p>
+          <p class="kpi-sub">${masJugado.partidas} partidas</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        ${mejorWinrate ? `<img class="kpi-avatar" src="${getChampImg(mejorWinrate.campeon)}" onerror="this.style.visibility='hidden'">` : `<div class="kpi-icon">📈</div>`}
+        <div class="kpi-body">
+          <p class="kpi-label">Mejor Winrate</p>
+          <p class="kpi-value">${mejorWinrate ? mejorWinrate.campeon : '—'}</p>
+          <p class="kpi-sub">${mejorWinrate ? `${mejorWinrate.winrate}% (${mejorWinrate.partidas}p)` : 'Sin muestra suficiente (mín. 3p)'}</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🎭</div>
+        <div class="kpi-body">
+          <p class="kpi-label">Campeones Distintos</p>
+          <p class="kpi-value">${totalDistintos}</p>
+          <p class="kpi-sub">jugados por el grupo</p>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-body">
+          <p class="kpi-label">Partidas Analizadas</p>
+          <p class="kpi-value">${totalPartidas}</p>
+          <p class="kpi-sub">últimas 10 de cada jugador</p>
+        </div>
+      </div>`;
+  }
+
+  function renderBars(stats){
+    const lista = listaOrdenada(stats).slice(0,10);
+    if(!lista.length){
+      barsContainer.innerHTML = `<p class="empty-state">Todavía no hay partidas registradas.</p>`;
+      return;
+    }
+    const max = lista[0].partidas;
+    barsContainer.innerHTML = lista.map((c,i)=>`
+      <div class="champ-bar-row">
+        <span class="champ-bar-rank">${i+1}</span>
+        <img class="champ-bar-icon" src="${getChampImg(c.campeon)}" onerror="this.style.visibility='hidden'">
+        <span class="champ-bar-name">${c.campeon}</span>
+        <span class="champ-bar-track"><span class="champ-bar-fill" style="width:${Math.max(4,Math.round(c.partidas/max*100))}%"></span></span>
+        <span class="champ-bar-value">${c.partidas}<small>${c.winrate}% WR</small></span>
+      </div>`).join('');
+  }
+
+  function renderTable(stats){
+    const lista = listaOrdenada(stats);
+    if(!lista.length){
+      tableBody.innerHTML = `<tr><td colspan="5" class="empty-state">Todavía no hay partidas registradas.</td></tr>`;
+      return;
+    }
+    tableBody.innerHTML = lista.map(c=>`
+      <tr>
+        <td><span class="champ-cell"><img src="${getChampImg(c.campeon)}" onerror="this.style.visibility='hidden'">${c.campeon}</span></td>
+        <td class="num">${c.partidas}</td>
+        <td class="num">${c.victorias}V / ${c.derrotas}D</td>
+        <td><span class="wr-pill ${c.winrate>=50?'good':'bad'}">${c.winrate}%</span></td>
+        <td>${c.duenoNombre ? `
+          <span class="owner-cell">
+            <img src="${getAvatarUrl(c.duenoIcono)}" onerror="this.style.visibility='hidden'">
+            ${c.duenoNombre.split('#')[0]} (${c.duenoPartidas}p)
+          </span>` : '—'}
+        </td>
+      </tr>`).join('');
+  }
+});
+</script>
+</body>
+</html>
