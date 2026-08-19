@@ -246,9 +246,22 @@ def actualizar_estado_en_vivo(jugadores):
         if len(miembros) < 2:
             continue
         for jugador in miembros:
-            companeros = [m.split("#", 1)[0] for m in miembros if m != jugador]
-            datos_json[jugador]["duo_con"] = companeros
-            print(f"  🎮🎮 {jugador} está jugando en dúo con: {', '.join(companeros)}")
+            companeros = [m for m in miembros if m != jugador]
+            datos_json[jugador]["duo_con"] = [m.split("#", 1)[0] for m in companeros]
+            # FIX: además del nombre, se guarda el campeón y los hechizos de
+            # cada compañero de dúo — ya están en datos_json (cada uno se
+            # calculó arriba con su propia consulta a Spectator v5), así que
+            # esto no cuesta ninguna llamada extra a la API.
+            datos_json[jugador]["duo_detalle"] = [
+                {
+                    "nombre":   m.split("#", 1)[0],
+                    "campeon":  datos_json[m].get("campeon", "Desconocido"),
+                    "hechizos": datos_json[m].get("hechizos", []),
+                }
+                for m in companeros
+            ]
+            nombres_legibles = ', '.join(m.split('#', 1)[0] for m in companeros)
+            print(f"  🎮🎮 {jugador} está jugando en dúo con: {nombres_legibles}")
 
     # Limpiar los campos temporales antes de guardar
     for info in datos_json.values():
