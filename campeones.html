@@ -83,26 +83,37 @@
   .footer-logo{ width:70px; height:auto; margin-bottom:12px; }
   .site-footer p{ margin:0; font-size:14px; color:var(--text-dim); font-weight:500; }
 
-  .fab{
-    position:fixed; bottom:28px; right:28px; z-index:999;
-    width:56px; height:56px; border-radius:50%;
-    background:var(--accent); border:none; cursor:pointer;
+  /* Menú flotante desplegable — un botón, se abre en burbujas hacia arriba */
+  .fab-menu{ position:fixed; right:28px; bottom:28px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:14px; }
+  .fab-main{
+    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--accent); color:#fff; font-size:26px; font-weight:400; line-height:1;
     display:flex; align-items:center; justify-content:center;
-    font-size:22px; box-shadow:0 4px 24px rgba(139,92,246,.55);
-    transition:transform .2s, box-shadow .2s;
-    text-decoration:none; color:#fff;
+    box-shadow:0 4px 24px rgba(139,92,246,.55);
+    transition:transform .25s ease, box-shadow .2s ease;
   }
-  .fab:hover{ transform:scale(1.1); box-shadow:0 6px 32px rgba(139,92,246,.75); }
-  .fab-tooltip{
-    position:fixed; bottom:34px; right:92px; z-index:998;
-    background:var(--panel); border:1px solid var(--border);
-    color:var(--text); font-size:12px; font-weight:700;
-    padding:6px 12px; border-radius:8px; white-space:nowrap;
-    opacity:0; pointer-events:none; transition:opacity .2s;
+  .fab-main:hover{ box-shadow:0 6px 32px rgba(139,92,246,.75); }
+  .fab-menu.open .fab-main{ transform:rotate(45deg); }
+  .fab-options{ display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+  .fab-option{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    opacity:0; transform:translateY(10px) scale(.85); pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
   }
-  .fab:hover + .fab-tooltip{ opacity:1; }
-  .fab-2{ bottom:96px; }
-  .fab-tooltip-2{ bottom:102px; }
+  .fab-menu.open .fab-option{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .fab-menu.open .fab-option:nth-child(1){ transition-delay:.06s; }
+  .fab-menu.open .fab-option:nth-child(2){ transition-delay:.03s; }
+  .fab-menu.open .fab-option:nth-child(3){ transition-delay:0s; }
+  .fab-option-icon{
+    width:46px; height:46px; border-radius:50%; background:var(--panel-2);
+    border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    font-size:20px; box-shadow:0 4px 16px rgba(0,0,0,.45); flex-shrink:0;
+  }
+  .fab-option-label{
+    font-size:12px; font-weight:700; color:var(--text); background:var(--panel-2);
+    padding:5px 10px; border-radius:8px; border:1px solid var(--border);
+    white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.4);
+  }
 
   @media(max-width:640px){
     .champ-bar-row{ grid-template-columns:18px 28px 1fr 50px; }
@@ -147,10 +158,29 @@
   </footer>
 </div>
 
-<a class="fab" href="versus.html" title="Versus">⚔️</a>
-<div class="fab-tooltip">Comparar jugadores</div>
-<a class="fab fab-2" href="index.html" title="Ranking">🏠</a>
-<div class="fab-tooltip fab-tooltip-2">Volver al ranking</div>
+<div class="fab-menu" id="fabMenu">
+  <div class="fab-options">
+    <a class="fab-option" href="index.html">
+      <span class="fab-option-label">Inicio</span>
+      <span class="fab-option-icon">🏠</span>
+    </a>
+    <a class="fab-option" href="versus.html">
+      <span class="fab-option-label">Versus</span>
+      <span class="fab-option-icon">⚔️</span>
+    </a>
+  </div>
+  <button class="fab-main" id="fabMainBtn" type="button" aria-label="Menú de navegación" title="Menú">+</button>
+</div>
+<script>
+(function(){
+  var menu = document.getElementById('fabMenu');
+  var btn  = document.getElementById('fabMainBtn');
+  if(!menu || !btn) return;
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if(menu.classList.contains('open') && !menu.contains(e.target)) menu.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') menu.classList.remove('open'); });
+})();
+</script>
 
 <script>
 window.addEventListener('load', () => {
