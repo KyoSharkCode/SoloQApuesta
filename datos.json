@@ -1,14 +1,14 @@
 {
-  "ultimaActualizacion": "2026-08-19T23:24:27.235211",
+  "ultimaActualizacion": "2026-08-19T23:27:31.494961",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver II",
-      "lp": 20,
+      "lp": 40,
       "winrate": "52%",
-      "record_lp_score": 1020,
-      "record_lp_label": "Silver II (20 LP)",
+      "record_lp_score": 1040,
+      "record_lp_label": "Silver II (40 LP)",
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -323,9 +323,30 @@
           "lp": 20,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T23:27:17Z",
+          "lp": 40,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742384623",
+          "campeon": "Fiora",
+          "kda": "11/6/5 (2.67)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 20,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ]
+        },
         {
           "match_id": "LA1_1742375856",
           "campeon": "Fiora",
@@ -460,36 +481,38 @@
           "duo_con": [
             "El Buñuelito"
           ]
-        },
-        {
-          "match_id": "LA1_1742181992",
-          "campeon": "Fiora",
-          "kda": "10/12/5 (1.25)",
-          "resultado": "Derrota",
-          "duracion": "29min",
-          "lp_change": -20,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ]
         }
       ],
-      "kills_recientes": 68,
+      "kills_recientes": 69,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 20,
-      "kills_semana": 176,
+      "vision_promedio_reciente": 21,
+      "kills_semana": 180,
       "pentakills_semana": 0,
       "vision_promedio_semana": 29,
-      "primeras_sangre_semana": 7,
-      "kda_promedio_semana": 2.0,
+      "primeras_sangre_semana": 8,
+      "kda_promedio_semana": 2.02,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 130,
+      "asistencias_semana": 129,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787181981.932,
+          "kills": 11,
+          "muertes": 6,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 25,
+          "campeon": "Fiora",
+          "victoria": true,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 215,
+          "duracion_seg": 1782,
+          "damage_taken": 40413
+        },
         {
           "fin_seg": 1787179739.213,
           "kills": 15,
@@ -844,28 +867,11 @@
           "cs": 155,
           "duracion_seg": 1468,
           "damage_taken": 16936
-        },
-        {
-          "fin_seg": 1787018487.755,
-          "kills": 7,
-          "muertes": 6,
-          "asistencias": 6,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 22,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 164,
-          "duracion_seg": 1714,
-          "damage_taken": 34042
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 12
+        "partidas": 11
       },
       "cs_min_semana": {
         "cs_por_min": 7.8,
@@ -876,7 +882,7 @@
         "damage_taken": 67400,
         "campeon": "Fiora"
       },
-      "max_partidas_en_un_dia": 18,
+      "max_partidas_en_un_dia": 19,
       "primera_victoria_hoy": {
         "timestamp": 1787080996778,
         "campeon": "Ekko",
@@ -3190,10 +3196,10 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze I",
-      "lp": 24,
-      "winrate": "63%",
-      "record_lp_score": 724,
-      "record_lp_label": "Bronze I (24 LP)",
+      "lp": 53,
+      "winrate": "65%",
+      "record_lp_score": 753,
+      "record_lp_label": "Bronze I (53 LP)",
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -3208,11 +3214,11 @@
       "top_recientes": [
         {
           "campeon": "Lux",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "campeon": "Swain",
-          "cantidad": 2
+          "cantidad": 3
         },
         {
           "campeon": "Veigar",
@@ -3228,7 +3234,7 @@
         {
           "campeon": "Swain",
           "nivel": 12,
-          "puntos": "102.532"
+          "puntos": "104.122"
         },
         {
           "campeon": "Kayn",
@@ -3326,9 +3332,30 @@
           "lp": 24,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T23:27:17Z",
+          "lp": 53,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742384623",
+          "campeon": "Swain",
+          "kda": "2/5/14 (3.2)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 29,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "match_id": "LA1_1742375856",
           "campeon": "Swain",
@@ -3457,36 +3484,38 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "match_id": "LA1_1742128573",
-          "campeon": "Lux",
-          "kda": "1/7/18 (2.71)",
-          "resultado": "Derrota",
-          "duracion": "42min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
-      "kills_recientes": 43,
+      "kills_recientes": 44,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 60,
-      "kills_semana": 78,
+      "vision_promedio_reciente": 58,
+      "kills_semana": 80,
       "pentakills_semana": 0,
       "vision_promedio_semana": 50,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.85,
+      "kda_promedio_semana": 2.86,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 181,
-      "partidas_semana": 19,
+      "asistencias_semana": 195,
+      "partidas_semana": 20,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787181981.932,
+          "kills": 2,
+          "muertes": 5,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 61,
+          "campeon": "Swain",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 69,
+          "duracion_seg": 1782,
+          "damage_taken": 17315
+        },
         {
           "fin_seg": 1787179739.213,
           "kills": 6,
@@ -3801,7 +3830,7 @@
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 12
+        "partidas": 13
       },
       "cs_min_semana": {
         "cs_por_min": 6.0,
@@ -3812,7 +3841,7 @@
         "damage_taken": 29704,
         "campeon": "Lux"
       },
-      "max_partidas_en_un_dia": 15,
+      "max_partidas_en_un_dia": 16,
       "primera_victoria_hoy": {
         "timestamp": 1787043320707,
         "campeon": "Veigar",
@@ -3830,13 +3859,13 @@
   "titulares": {
     "agresivo": {
       "jugador": "Pinea",
-      "valor": 7,
-      "detalle": "7 primeras sangre"
+      "valor": 8,
+      "detalle": "8 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.85,
-      "detalle": "2.85 KDA"
+      "valor": 2.86,
+      "detalle": "2.86 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -3845,8 +3874,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 181,
-      "detalle": "181 asistencias"
+      "valor": 195,
+      "detalle": "195 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -3860,6 +3889,24 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T23:27:17Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": null,
+      "detalle": "Silver II (40 LP)"
+    },
+    {
+      "timestamp": "2026-08-19T23:27:17Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Bronze I (53 LP)"
+    },
     {
       "timestamp": "2026-08-19T23:15:32Z",
       "tipo": "badge_semanal",
