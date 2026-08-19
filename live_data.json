@@ -1,12 +1,44 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Fiora",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Prender",
+                "icono": "SummonerDot.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            }
+        ],
+        "modo_juego": "Solo/Duo",
+        "duo_con": [
+            "El Buñuelito"
+        ]
     },
     "Galactic Shark#AYK": {
         "en_partida": false
     },
     "El Buñuelito#KyA": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Xayah",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Fantasmal",
+                "icono": "SummonerHaste.png"
+            }
+        ],
+        "modo_juego": "Solo/Duo",
+        "duo_con": [
+            "Pinea"
+        ]
     },
     "ゆうき まこと#1411": {
         "en_partida": false
@@ -18,6 +50,19 @@
         "en_partida": false
     },
     "Panquemado#UNSC": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Blitzcrank",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Fantasmal",
+                "icono": "SummonerHaste.png"
+            }
+        ],
+        "modo_juego": "Modo 2400"
     }
 }
