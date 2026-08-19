@@ -258,13 +258,22 @@ window.addEventListener('load', () => {
     showState('Cargando partida…', false);
     try {
       const res = await fetch(`${CDN}/datos_partidas.json?t=${Date.now()}`, { cache: 'no-store' });
-      if (!res.ok) throw new Error('fetch-fail');
-      const todas = await res.json();
+      // FIX: un 404 (el archivo todavía no existe en el repo, p.ej. recién
+      // agregada la función o el bot no ha vuelto a correr) NO es un error
+      // de conexión — es el mismo caso de "esta partida no tiene detalle
+      // guardado todavía". Antes caía al mensaje genérico y alarmante de
+      // "revisa tu conexión" en vez del mensaje amigable de abajo.
+      let todas = {};
+      if (res.ok) {
+        todas = await res.json();
+      } else if (res.status !== 404) {
+        throw new Error('fetch-fail: ' + res.status);
+      }
       const detalle = todas[matchId];
       if (!detalle) {
         showState(
           'Todavía no hay detalle guardado para esta partida.<br>' +
-          'Puede que sea muy reciente (el bot tarda unos minutos) o que ya haya salido de las últimas 10 partidas de todos.',
+          'Puede que sea muy reciente (el bot tarda unos minutos), que ya haya salido de las últimas 10 partidas de todos, o que el bot todavía no haya generado datos_partidas.json.',
           false, true
         );
         return;
