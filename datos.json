@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T07:12:25.054409",
+  "ultimaActualizacion": "2026-08-19T07:15:40.499404",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -789,8 +789,8 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 47,
-      "winrate": "48%",
+      "lp": 75,
+      "winrate": "50%",
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -805,14 +805,10 @@
       "top_recientes": [
         {
           "campeon": "Lillia",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "campeon": "Twitch",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Poppy",
           "cantidad": 1
         }
       ],
@@ -830,7 +826,7 @@
         {
           "campeon": "Lillia",
           "nivel": 16,
-          "puntos": "148.427"
+          "puntos": "150.180"
         }
       ],
       "progreso_lp": [
@@ -959,16 +955,40 @@
           "lp": 47,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T07:15:30Z",
+          "lp": 75,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742286931",
+          "campeon": "Lillia",
+          "kda": "13/3/12 (8.33)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 28,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742131148",
           "campeon": "Lillia",
           "kda": "13/5/21 (6.8)",
           "resultado": "Victoria",
           "duracion": "43min",
-          "lp_change": 28
+          "lp_change": 28,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1742096775",
@@ -976,7 +996,12 @@
           "kda": "5/8/9 (1.75)",
           "resultado": "Derrota",
           "duracion": "37min",
-          "lp_change": 28
+          "lp_change": 28,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741849535",
@@ -984,7 +1009,12 @@
           "kda": "9/7/11 (2.86)",
           "resultado": "Derrota",
           "duracion": "42min",
-          "lp_change": 28
+          "lp_change": 28,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741825128",
@@ -992,7 +1022,12 @@
           "kda": "7/7/21 (4.0)",
           "resultado": "Victoria",
           "duracion": "35min",
-          "lp_change": 29
+          "lp_change": 29,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741819940",
@@ -1000,7 +1035,12 @@
           "kda": "8/10/4 (1.2)",
           "resultado": "Derrota",
           "duracion": "32min",
-          "lp_change": -10
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerBarrier"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741582837",
@@ -1008,7 +1048,12 @@
           "kda": "6/5/5 (2.2)",
           "resultado": "Derrota",
           "duracion": "32min",
-          "lp_change": -10
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741575193",
@@ -1016,7 +1061,12 @@
           "kda": "9/1/10 (19.0)",
           "resultado": "Victoria",
           "duracion": "27min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741557117",
@@ -1024,7 +1074,12 @@
           "kda": "5/11/17 (2.0)",
           "resultado": "Victoria",
           "duracion": "42min",
-          "lp_change": 30
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741390160",
@@ -1032,33 +1087,230 @@
           "kda": "3/11/13 (1.45)",
           "resultado": "Derrota",
           "duracion": "36min",
-          "lp_change": null
-        },
-        {
-          "match_id": "LA1_1741367690",
-          "campeon": "Poppy",
-          "kda": "10/8/3 (1.62)",
-          "resultado": "Derrota",
-          "duracion": "29min",
-          "lp_change": null
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
         }
       ],
-      "kills_recientes": 75,
+      "kills_recientes": 78,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 42,
-      "kills_semana": 0,
+      "kills_semana": 116,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 0,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 0,
+      "vision_promedio_semana": 40,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 2.86,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 0,
-      "asistencias_semana": 0,
-      "partidas_semana": 0,
-      "partidas_semana_detalle": [],
-      "duo_semana": null,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "campeones_ganados_semana": 1,
+      "asistencias_semana": 159,
+      "partidas_semana": 15,
+      "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787123681.368,
+          "kills": 13,
+          "muertes": 3,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1787088757.409,
+          "kills": 13,
+          "muertes": 5,
+          "asistencias": 21,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 56,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1787078180.963,
+          "kills": 5,
+          "muertes": 8,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 53,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786991577.089,
+          "kills": 9,
+          "muertes": 7,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 45,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786974092.435,
+          "kills": 7,
+          "muertes": 7,
+          "asistencias": 21,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 41,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786971410.319,
+          "kills": 8,
+          "muertes": 10,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Twitch",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786906903.177,
+          "kills": 6,
+          "muertes": 5,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 36,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786903258.635,
+          "kills": 9,
+          "muertes": 1,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 33,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786896231.109,
+          "kills": 5,
+          "muertes": 11,
+          "asistencias": 17,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 42,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786838822.376,
+          "kills": 3,
+          "muertes": 11,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 42,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1786833831.567,
+          "kills": 10,
+          "muertes": 8,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 35,
+          "campeon": "Poppy",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786828554.09,
+          "kills": 5,
+          "muertes": 5,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 36,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ]
+        },
+        {
+          "fin_seg": 1786819858.47,
+          "kills": 16,
+          "muertes": 9,
+          "asistencias": 16,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 52,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786612618.993,
+          "kills": 6,
+          "muertes": 5,
+          "asistencias": 8,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 47,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": []
+        },
+        {
+          "fin_seg": 1786559601.801,
+          "kills": 1,
+          "muertes": 1,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 20,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": []
+        }
+      ],
+      "duo_semana": {
+        "nombre": "Pinea",
+        "partidas": 2
+      },
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787123681368,
+        "campeon": "Lillia",
+        "kda": "13/3/12 (8.33)",
+        "equipo": "blue",
+        "duracion": "33:10",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
       "dia_referencia": 1787112000
     },
     {
