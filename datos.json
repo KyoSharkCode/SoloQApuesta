@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T05:39:23.939169",
+  "ultimaActualizacion": "2026-08-19T05:42:42.151290",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2028,8 +2028,8 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Bronze I",
-      "lp": 92,
-      "winrate": "45%",
+      "lp": 79,
+      "winrate": "43%",
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2059,7 +2059,7 @@
         {
           "campeon": "Akali",
           "nivel": 39,
-          "puntos": "430.751"
+          "puntos": "431.620"
         },
         {
           "campeon": "Warwick",
@@ -2202,16 +2202,35 @@
           "lp": 92,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T05:42:32Z",
+          "lp": 79,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742263905",
+          "campeon": "Akali",
+          "kda": "8/11/9 (1.55)",
+          "resultado": "Derrota",
+          "duracion": "39min",
+          "lp_change": -13,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742252510",
           "campeon": "Akali",
           "kda": "7/4/0 (1.75)",
           "resultado": "Derrota",
           "duracion": "17min",
-          "lp_change": null,
+          "lp_change": -13,
           "hechizos": [
             "SummonerDot",
             "SummonerFlash"
@@ -2321,34 +2340,33 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741688082",
-          "campeon": "Akali",
-          "kda": "15/7/10 (3.57)",
-          "resultado": "Victoria",
-          "duracion": "37min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 92,
+      "kills_recientes": 85,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 157,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 165,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 22,
+      "vision_promedio_semana": 23,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.11,
+      "kda_promedio_semana": 2.07,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 134,
-      "partidas_semana": 22,
+      "asistencias_semana": 143,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787117964.016,
+          "kills": 8,
+          "muertes": 11,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 30,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": []
+        },
         {
           "fin_seg": 1787114120.127,
           "kills": 7,
@@ -2615,7 +2633,7 @@
         }
       ],
       "duo_semana": null,
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
