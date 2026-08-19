@@ -1,11 +1,11 @@
 {
-  "ultimaActualizacion": "2026-08-19T21:06:27.131230",
+  "ultimaActualizacion": "2026-08-19T21:09:33.942474",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 1626,
       "rango": "Silver III",
-      "lp": 86,
+      "lp": 64,
       "winrate": "51%",
       "record_lp_score": 986,
       "record_lp_label": "Silver III (86 LP)",
@@ -13,13 +13,17 @@
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 9
         }
       ],
       "top_recientes": [
         {
           "campeon": "Fiora",
           "cantidad": 7
+        },
+        {
+          "campeon": "Jayce",
+          "cantidad": 1
         },
         {
           "campeon": "Darius",
@@ -295,9 +299,30 @@
           "lp": 86,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-19T21:09:20Z",
+          "lp": 64,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742357949",
+          "campeon": "Jayce",
+          "kda": "0/4/0 (0.0)",
+          "resultado": "Derrota",
+          "duracion": "15min",
+          "lp_change": -22,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ]
+        },
         {
           "match_id": "LA1_1742275598",
           "campeon": "Fiora",
@@ -432,36 +457,38 @@
           "duo_con": [
             "El Buñuelito"
           ]
-        },
-        {
-          "match_id": "LA1_1742156602",
-          "campeon": "Fiora",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "2:33",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ]
         }
       ],
       "kills_recientes": 64,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 24,
-      "kills_semana": 190,
+      "vision_promedio_reciente": 23,
+      "kills_semana": 180,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 31,
-      "primeras_sangre_semana": 9,
-      "kda_promedio_semana": 1.93,
+      "vision_promedio_semana": 30,
+      "primeras_sangre_semana": 8,
+      "kda_promedio_semana": 1.94,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 133,
+      "asistencias_semana": 132,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787173712.377,
+          "kills": 0,
+          "muertes": 4,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 13,
+          "campeon": "Jayce",
+          "victoria": false,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 95,
+          "duracion_seg": 912,
+          "damage_taken": 10021
+        },
         {
           "fin_seg": 1787119531.395,
           "kills": 5,
@@ -474,7 +501,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 148,
+          "duracion_seg": 1644,
+          "damage_taken": 27402
         },
         {
           "fin_seg": 1787117445.84,
@@ -488,7 +518,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 134,
+          "duracion_seg": 1818,
+          "damage_taken": 45979
         },
         {
           "fin_seg": 1787115285.101,
@@ -502,7 +535,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 167,
+          "duracion_seg": 1683,
+          "damage_taken": 24735
         },
         {
           "fin_seg": 1787106610.3,
@@ -516,7 +552,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 111,
+          "duracion_seg": 1450,
+          "damage_taken": 23747
         },
         {
           "fin_seg": 1787104858.035,
@@ -530,7 +569,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 168,
+          "duracion_seg": 1692,
+          "damage_taken": 30383
         },
         {
           "fin_seg": 1787102670.153,
@@ -544,7 +586,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 136,
+          "duracion_seg": 1792,
+          "damage_taken": 43430
         },
         {
           "fin_seg": 1787100508.546,
@@ -558,7 +603,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 187,
+          "duracion_seg": 1795,
+          "damage_taken": 31658
         },
         {
           "fin_seg": 1787097802.334,
@@ -572,7 +620,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 207,
+          "duracion_seg": 2280,
+          "damage_taken": 45146
         },
         {
           "fin_seg": 1787093281.138,
@@ -586,7 +637,10 @@
           "victoria": true,
           "duo_con": [
             "Ostia"
-          ]
+          ],
+          "cs": 130,
+          "duracion_seg": 1794,
+          "damage_taken": 27624
         },
         {
           "fin_seg": 1787089107.393,
@@ -600,7 +654,10 @@
           "victoria": false,
           "duo_con": [
             "Ostia"
-          ]
+          ],
+          "cs": 274,
+          "duracion_seg": 2549,
+          "damage_taken": 66252
         },
         {
           "fin_seg": 1787086045.816,
@@ -614,7 +671,10 @@
           "victoria": true,
           "duo_con": [
             "Ostia"
-          ]
+          ],
+          "cs": 94,
+          "duracion_seg": 1006,
+          "damage_taken": 15733
         },
         {
           "fin_seg": 1787084365.491,
@@ -628,7 +688,10 @@
           "victoria": true,
           "duo_con": [
             "Ostia"
-          ]
+          ],
+          "cs": 233,
+          "duracion_seg": 2372,
+          "damage_taken": 67400
         },
         {
           "fin_seg": 1787080996.778,
@@ -642,7 +705,10 @@
           "victoria": true,
           "duo_con": [
             "Ostia"
-          ]
+          ],
+          "cs": 160,
+          "duracion_seg": 2033,
+          "damage_taken": 33800
         },
         {
           "fin_seg": 1787072489.221,
@@ -654,7 +720,10 @@
           "vision": 62,
           "campeon": "Alistar",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 23,
+          "duracion_seg": 1799,
+          "damage_taken": 32649
         },
         {
           "fin_seg": 1787025531.298,
@@ -668,7 +737,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 165,
+          "duracion_seg": 1953,
+          "damage_taken": 41200
         },
         {
           "fin_seg": 1787022591.843,
@@ -682,7 +754,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 184,
+          "duracion_seg": 1974,
+          "damage_taken": 37032
         },
         {
           "fin_seg": 1787020280.139,
@@ -696,7 +771,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 155,
+          "duracion_seg": 1468,
+          "damage_taken": 16936
         },
         {
           "fin_seg": 1787018487.755,
@@ -710,7 +788,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 164,
+          "duracion_seg": 1714,
+          "damage_taken": 34042
         },
         {
           "fin_seg": 1787014019.863,
@@ -724,7 +805,10 @@
           "victoria": false,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 181,
+          "duracion_seg": 2247,
+          "damage_taken": 52039
         },
         {
           "fin_seg": 1787011493.408,
@@ -738,7 +822,10 @@
           "victoria": true,
           "duo_con": [
             "El Buñuelito"
-          ]
+          ],
+          "cs": 165,
+          "duracion_seg": 1499,
+          "damage_taken": 22960
         },
         {
           "fin_seg": 1786993428.471,
@@ -752,30 +839,26 @@
           "victoria": true,
           "duo_con": [
             "Ostia"
-          ]
-        },
-        {
-          "fin_seg": 1786990813.636,
-          "kills": 10,
-          "muertes": 10,
-          "asistencias": 1,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 26,
-          "campeon": "Jayce",
-          "victoria": false,
-          "duo_con": [
-            "Ostia"
-          ]
+          ],
+          "cs": 169,
+          "duracion_seg": 1949,
+          "damage_taken": 40502
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
         "partidas": 14
       },
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 3,
+      "cs_min_semana": {
+        "cs_por_min": 6.6,
+        "cs": 165,
+        "campeon": "Fiora"
+      },
+      "danio_recibido_semana": {
+        "damage_taken": 67400,
+        "campeon": "Fiora"
+      },
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Fiora",
@@ -3007,36 +3090,36 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze II",
-      "lp": 52,
-      "winrate": "60%",
+      "lp": 40,
+      "winrate": "56%",
       "record_lp_score": 683,
       "record_lp_label": "Bronze II (83 LP)",
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "rol": "Mid",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Lux",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "campeon": "Veigar",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "maestrias": [
         {
           "campeon": "Lux",
           "nivel": 21,
-          "puntos": "217.629"
+          "puntos": "218.016"
         },
         {
           "campeon": "Swain",
@@ -3115,9 +3198,30 @@
           "lp": 52,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T21:09:20Z",
+          "lp": 40,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742357949",
+          "campeon": "Lux",
+          "kda": "0/1/3 (3.0)",
+          "resultado": "Derrota",
+          "duracion": "15min",
+          "lp_change": -12,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "match_id": "LA1_1742353065",
           "campeon": "Lux",
@@ -3246,34 +3350,38 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "match_id": "LA1_1742063652",
-          "campeon": "Veigar",
-          "kda": "5/6/0 (0.83)",
-          "resultado": "Derrota",
-          "duracion": "24min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 50,
+      "kills_recientes": 45,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 62,
+      "vision_promedio_reciente": 61,
       "kills_semana": 67,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 52,
+      "vision_promedio_semana": 50,
       "primeras_sangre_semana": 0,
       "kda_promedio_semana": 2.79,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 156,
-      "partidas_semana": 15,
+      "asistencias_semana": 159,
+      "partidas_semana": 16,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787173712.377,
+          "kills": 0,
+          "muertes": 1,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 13,
+          "campeon": "Lux",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 33,
+          "duracion_seg": 912,
+          "damage_taken": 4156
+        },
         {
           "fin_seg": 1787172423.439,
           "kills": 11,
@@ -3520,7 +3628,7 @@
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 8
+        "partidas": 9
       },
       "cs_min_semana": {
         "cs_por_min": 6.0,
@@ -3531,7 +3639,7 @@
         "damage_taken": 29704,
         "campeon": "Lux"
       },
-      "max_partidas_en_un_dia": 4,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
         "campeon": "Lux",
@@ -3549,8 +3657,8 @@
   "titulares": {
     "agresivo": {
       "jugador": "Pinea",
-      "valor": 9,
-      "detalle": "9 primeras sangre"
+      "valor": 8,
+      "detalle": "8 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
