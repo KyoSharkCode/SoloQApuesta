@@ -16,6 +16,7 @@ JUGADORES = [
     {"name": "ゆうき まこと",     "tag": "1411"},
     {"name": "adrianNOOBYT",   "tag": "LAN"},
     {"name": "Ostia",          "tag": "LAN"},
+    {"name": "Panquemado",          "tag": "UNSC"},
 ]
 
 MAX_PUNTOS_HISTORIAL = 300
