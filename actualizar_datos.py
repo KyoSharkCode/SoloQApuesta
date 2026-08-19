@@ -116,13 +116,26 @@ def calcular_agregados_semana(detalle):
         if mejor_cs_min is None or cs_por_min > mejor_cs_min["cs_por_min"]:
             mejor_cs_min = {"cs_por_min": cs_por_min, "cs": d["cs"], "campeon": d.get("campeon")}
 
-    # El Defensor — mayor daño recibido en UNA sola partida de la semana.
+    # El Defensor — se elige por el % del daño recibido de SU EQUIPO que
+    # absorbió en esa partida (no por el número de daño en bruto). Con el
+    # número en bruto, el mismo jugador que siempre juega un campeón tanque
+    # (p.ej. Lillia de jungla) se quedaba el badge todas las semanas sin
+    # importar la partida — con el %, el badge premia partidas puntuales
+    # donde de verdad aguantó más que el resto de su equipo, sin importar
+    # el rol/campeón que juegue normalmente.
+    # "danio_recibido_pct" solo existe en partidas guardadas después de este
+    # cambio; las entradas viejas se ignoran aquí hasta que se caigan de la
+    # ventana de 7 días por sí solas (mismo patrón que "cs" arriba).
     mayor_danio_recibido = None
     for d in detalle:
-        if "damage_taken" not in d:
+        if "danio_recibido_pct" not in d:
             continue
-        if mayor_danio_recibido is None or d["damage_taken"] > mayor_danio_recibido["damage_taken"]:
-            mayor_danio_recibido = {"damage_taken": d["damage_taken"], "campeon": d.get("campeon")}
+        if mayor_danio_recibido is None or d["danio_recibido_pct"] > mayor_danio_recibido["danio_recibido_pct"]:
+            mayor_danio_recibido = {
+                "danio_recibido_pct": d["danio_recibido_pct"],
+                "damage_taken":       d.get("damage_taken", 0),
+                "campeon":            d.get("campeon"),
+            }
 
     return {
         "kills_semana":             k_s,
@@ -290,8 +303,8 @@ def calcular_titulares_grupo(lista_final):
             lambda j: (j.get("cs_min_semana") or {}).get("cs_por_min"),
             lambda j: f"{j['cs_min_semana']['cs_por_min']} CS/min con {j['cs_min_semana']['campeon']}"),
         "defensor": lider(
-            lambda j: (j.get("danio_recibido_semana") or {}).get("damage_taken"),
-            lambda j: f"{j['danio_recibido_semana']['damage_taken']:,} de daño recibido con {j['danio_recibido_semana']['campeon']}"),
+            lambda j: (j.get("danio_recibido_semana") or {}).get("danio_recibido_pct"),
+            lambda j: f"{j['danio_recibido_semana']['danio_recibido_pct']}% del daño de su equipo ({j['danio_recibido_semana']['damage_taken']:,}) con {j['danio_recibido_semana']['campeon']}"),
     }
 
 
@@ -694,6 +707,24 @@ def obtener_datos():
                     fin_ms  = md["info"].get("gameEndTimestamp") or (md["info"].get("gameCreation", 0) + md["info"].get("gameDuration", 0) * 1000)
                     fin_seg = fin_ms / 1000
 
+                    # FIX: "El Defensor" comparaba daño recibido EN BRUTO entre
+                    # partidas — eso favorece siempre al mismo campeón/rol
+                    # tanque (p.ej. alguien que solo juega Lillia de jungla
+                    # se lleva el badge siempre, sin importar qué tan reñida
+                    # estuvo la partida). Se guarda también el % que representa
+                    # ese daño sobre el TOTAL de daño recibido de su propio
+                    # equipo en esa partida — mismos datos ya descargados, cero
+                    # llamadas extra a Riot — así el badge premia partidas
+                    # donde de verdad "aguantó" más que sus compañeros, no solo
+                    # el rol que estructuralmente recibe más golpes.
+                    danio_propio       = pp.get("totalDamageTaken", 0)
+                    danio_equipo_total = sum(
+                        p2.get("totalDamageTaken", 0)
+                        for p2 in md["info"]["participants"]
+                        if p2.get("teamId") == pp.get("teamId")
+                    )
+                    danio_recibido_pct = round(danio_propio / danio_equipo_total * 100, 1) if danio_equipo_total > 0 else 0
+
                     partidas_semana_detalle.append({
                         "fin_seg":        fin_seg,
                         "kills":          pp["kills"],
@@ -708,9 +739,10 @@ def obtener_datos():
                         # Para "El Farmeador" (CS/min) y "El Defensor" (daño
                         # recibido) — ya vienen en la misma partida que ya se
                         # descarga, no cuestan ninguna llamada extra a Riot.
-                        "cs":             pp.get("totalMinionsKilled", 0) + pp.get("neutralMinionsKilled", 0),
-                        "duracion_seg":   md["info"].get("gameDuration", 0),
-                        "damage_taken":   pp.get("totalDamageTaken", 0),
+                        "cs":                  pp.get("totalMinionsKilled", 0) + pp.get("neutralMinionsKilled", 0),
+                        "duracion_seg":        md["info"].get("gameDuration", 0),
+                        "damage_taken":        danio_propio,
+                        "danio_recibido_pct":  danio_recibido_pct,
                     })
 
                     if fin_seg >= inicio_dia_utc:
@@ -822,8 +854,9 @@ def obtener_datos():
                 # El Farmeador — mejor CS/min en una sola partida de la semana
                 # {"cs_por_min":.., "cs":.., "campeon":..} o None
                 "cs_min_semana":             cs_min_semana,
-                # El Defensor — mayor daño recibido en una sola partida de la semana
-                # {"damage_taken":.., "campeon":..} o None
+                # El Defensor — mayor % del daño recibido de SU EQUIPO en una
+                # sola partida de la semana (no daño en bruto, ver fix arriba)
+                # {"danio_recibido_pct":.., "damage_taken":.., "campeon":..} o None
                 "danio_recibido_semana":     danio_semana,
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
