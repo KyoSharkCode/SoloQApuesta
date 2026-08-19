@@ -27,9 +27,10 @@ except ImportError:
         "El Buñuelito#KyA",
         "ゆうき まこと#1411",
         "adrianNOOBYT#LAN",
+        "Ostia#LAN",
     ]
 
-DDRAGON_VERSION = "14.20.1"
+DDRAGON_VERSION = "16.16.1"
 
 
 def cargar_diccionarios_ddragon():
