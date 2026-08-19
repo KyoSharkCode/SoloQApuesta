@@ -47,7 +47,7 @@ jobs:
         run: |
           git config --global user.name 'RiotBot'
           git config --global user.email 'riotbot@github.com'
-          git add datos.json live_data.json
+          git add datos.json live_data.json datos_partidas.json
           if ! git diff --staged --quiet; then
             git commit -m "Actualizacion de datos [skip ci]"
             # "ours" protege los datos recien generados en este run si hay
