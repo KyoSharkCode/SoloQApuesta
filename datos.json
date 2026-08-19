@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T09:50:16.146343",
+  "ultimaActualizacion": "2026-08-19T10:00:31.681726",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -793,8 +793,8 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 75,
-      "winrate": "50%",
+      "lp": 63,
+      "winrate": "48%",
       "record_lp_score": 1175,
       "record_lp_label": "Silver I (75 LP)",
       "rol_principal": "Jungla",
@@ -832,7 +832,7 @@
         {
           "campeon": "Lillia",
           "nivel": 16,
-          "puntos": "150.180"
+          "puntos": "150.953"
         }
       ],
       "progreso_lp": [
@@ -967,9 +967,30 @@
           "lp": 75,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-19T10:00:20Z",
+          "lp": 63,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742301902",
+          "campeon": "Lillia",
+          "kda": "2/8/12 (1.75)",
+          "resultado": "Derrota",
+          "duracion": "34min",
+          "lp_change": -12,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Ostia"
+          ]
+        },
         {
           "match_id": "LA1_1742286931",
           "campeon": "Lillia",
@@ -1086,36 +1107,38 @@
             "SummonerSmite"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741390160",
-          "campeon": "Lillia",
-          "kda": "3/11/13 (1.45)",
-          "resultado": "Derrota",
-          "duracion": "36min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
-      "kills_recientes": 78,
+      "kills_recientes": 77,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 42,
-      "kills_semana": 116,
+      "vision_promedio_reciente": 41,
+      "kills_semana": 118,
       "pentakills_semana": 0,
       "vision_promedio_semana": 40,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.86,
+      "kda_promedio_semana": 2.78,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 159,
-      "partidas_semana": 15,
+      "asistencias_semana": 171,
+      "partidas_semana": 16,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787133428.986,
+          "kills": 2,
+          "muertes": 8,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 39,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 195,
+          "duracion_seg": 2085,
+          "damage_taken": 42858
+        },
         {
           "fin_seg": 1787123681.368,
           "kills": 13,
@@ -1126,7 +1149,10 @@
           "vision": 34,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 235,
+          "duracion_seg": 1990,
+          "damage_taken": 43224
         },
         {
           "fin_seg": 1787088757.409,
@@ -1138,7 +1164,10 @@
           "vision": 56,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 257,
+          "duracion_seg": 2592,
+          "damage_taken": 68248
         },
         {
           "fin_seg": 1787078180.963,
@@ -1150,7 +1179,10 @@
           "vision": 53,
           "campeon": "Lillia",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 211,
+          "duracion_seg": 2276,
+          "damage_taken": 43193
         },
         {
           "fin_seg": 1786991577.089,
@@ -1162,7 +1194,10 @@
           "vision": 45,
           "campeon": "Lillia",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 296,
+          "duracion_seg": 2575,
+          "damage_taken": 55940
         },
         {
           "fin_seg": 1786974092.435,
@@ -1174,7 +1209,10 @@
           "vision": 41,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 203,
+          "duracion_seg": 2108,
+          "damage_taken": 43152
         },
         {
           "fin_seg": 1786971410.319,
@@ -1186,7 +1224,10 @@
           "vision": 34,
           "campeon": "Twitch",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 194,
+          "duracion_seg": 1958,
+          "damage_taken": 20260
         },
         {
           "fin_seg": 1786906903.177,
@@ -1198,7 +1239,10 @@
           "vision": 36,
           "campeon": "Lillia",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 235,
+          "duracion_seg": 1930,
+          "damage_taken": 31458
         },
         {
           "fin_seg": 1786903258.635,
@@ -1210,7 +1254,10 @@
           "vision": 33,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 224,
+          "duracion_seg": 1631,
+          "damage_taken": 23063
         },
         {
           "fin_seg": 1786896231.109,
@@ -1222,7 +1269,10 @@
           "vision": 42,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 244,
+          "duracion_seg": 2574,
+          "damage_taken": 56819
         },
         {
           "fin_seg": 1786838822.376,
@@ -1236,7 +1286,10 @@
           "victoria": false,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 210,
+          "duracion_seg": 2175,
+          "damage_taken": 50159
         },
         {
           "fin_seg": 1786833831.567,
@@ -1248,7 +1301,10 @@
           "vision": 35,
           "campeon": "Poppy",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 137,
+          "duracion_seg": 1754,
+          "damage_taken": 38159
         },
         {
           "fin_seg": 1786828554.09,
@@ -1262,7 +1318,10 @@
           "victoria": false,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 174,
+          "duracion_seg": 1505,
+          "damage_taken": 31302
         },
         {
           "fin_seg": 1786819858.47,
@@ -1274,7 +1333,10 @@
           "vision": 52,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 258,
+          "duracion_seg": 2636,
+          "damage_taken": 79668
         },
         {
           "fin_seg": 1786612618.993,
@@ -1286,7 +1348,10 @@
           "vision": 47,
           "campeon": "Lillia",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 213,
+          "duracion_seg": 2093,
+          "damage_taken": 51264
         },
         {
           "fin_seg": 1786559601.801,
@@ -1298,16 +1363,26 @@
           "vision": 20,
           "campeon": "Lillia",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 97,
+          "duracion_seg": 966,
+          "damage_taken": 11745
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
         "partidas": 2
       },
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 1,
+      "cs_min_semana": {
+        "cs_por_min": 8.2,
+        "cs": 224,
+        "campeon": "Lillia"
+      },
+      "danio_recibido_semana": {
+        "damage_taken": 79668,
+        "campeon": "Lillia"
+      },
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787123681368,
         "campeon": "Lillia",
@@ -2947,8 +3022,8 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze II",
-      "lp": 83,
-      "winrate": "75%",
+      "lp": 73,
+      "winrate": "69%",
       "record_lp_score": 683,
       "record_lp_label": "Bronze II (83 LP)",
       "rol_principal": "Support",
@@ -2965,7 +3040,7 @@
       "top_recientes": [
         {
           "campeon": "Lux",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "campeon": "Veigar",
@@ -2979,8 +3054,8 @@
       "maestrias": [
         {
           "campeon": "Lux",
-          "nivel": 19,
-          "puntos": "215.498"
+          "nivel": 20,
+          "puntos": "216.396"
         },
         {
           "campeon": "Swain",
@@ -3041,9 +3116,30 @@
           "lp": 83,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T10:00:20Z",
+          "lp": 73,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742301902",
+          "campeon": "Lux",
+          "kda": "3/4/12 (3.75)",
+          "resultado": "Derrota",
+          "duracion": "34min",
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ]
+        },
         {
           "match_id": "LA1_1742300299",
           "campeon": "Lux",
@@ -3170,36 +3266,38 @@
             "SummonerSmite"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741857393",
-          "campeon": "Velkoz",
-          "kda": "1/5/11 (2.4)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
-      "kills_recientes": 33,
+      "kills_recientes": 35,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 52,
-      "kills_semana": 43,
+      "vision_promedio_reciente": 56,
+      "kills_semana": 46,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 48,
+      "vision_promedio_semana": 51,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.83,
+      "kda_promedio_semana": 2.89,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 124,
-      "partidas_semana": 12,
+      "asistencias_semana": 136,
+      "partidas_semana": 13,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787133428.986,
+          "kills": 3,
+          "muertes": 4,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 91,
+          "campeon": "Lux",
+          "victoria": false,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 110,
+          "duracion_seg": 2085,
+          "damage_taken": 14392
+        },
         {
           "fin_seg": 1787129031.287,
           "kills": 2,
@@ -3210,7 +3308,10 @@
           "vision": 73,
           "campeon": "Lux",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 73,
+          "duracion_seg": 1920,
+          "damage_taken": 15568
         },
         {
           "fin_seg": 1787093281.138,
@@ -3224,7 +3325,10 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 77,
+          "duracion_seg": 1794,
+          "damage_taken": 9413
         },
         {
           "fin_seg": 1787089107.393,
@@ -3238,7 +3342,10 @@
           "victoria": false,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 157,
+          "duracion_seg": 2549,
+          "damage_taken": 26851
         },
         {
           "fin_seg": 1787086045.816,
@@ -3252,7 +3359,10 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 33,
+          "duracion_seg": 1006,
+          "damage_taken": 5764
         },
         {
           "fin_seg": 1787084365.491,
@@ -3266,7 +3376,10 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 93,
+          "duracion_seg": 2372,
+          "damage_taken": 26663
         },
         {
           "fin_seg": 1787080996.778,
@@ -3280,7 +3393,10 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 65,
+          "duracion_seg": 2033,
+          "damage_taken": 18068
         },
         {
           "fin_seg": 1787045585.2,
@@ -3292,7 +3408,10 @@
           "vision": 21,
           "campeon": "Veigar",
           "victoria": false,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 134,
+          "duracion_seg": 1442,
+          "damage_taken": 17844
         },
         {
           "fin_seg": 1787043320.707,
@@ -3304,7 +3423,10 @@
           "vision": 24,
           "campeon": "Veigar",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 231,
+          "duracion_seg": 2316,
+          "damage_taken": 28553
         },
         {
           "fin_seg": 1787011796.772,
@@ -3316,7 +3438,10 @@
           "vision": 37,
           "campeon": "Ekko",
           "victoria": true,
-          "duo_con": []
+          "duo_con": [],
+          "cs": 183,
+          "duracion_seg": 2454,
+          "damage_taken": 29492
         },
         {
           "fin_seg": 1786993428.471,
@@ -3330,7 +3455,10 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 104,
+          "duracion_seg": 1949,
+          "damage_taken": 16414
         },
         {
           "fin_seg": 1786990813.636,
@@ -3344,7 +3472,10 @@
           "victoria": false,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 176,
+          "duracion_seg": 1764,
+          "damage_taken": 23907
         },
         {
           "fin_seg": 1786987393.513,
@@ -3358,16 +3489,26 @@
           "victoria": true,
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "cs": 72,
+          "duracion_seg": 1393,
+          "damage_taken": 6610
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
         "partidas": 8
       },
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 1,
+      "cs_min_semana": {
+        "cs_por_min": 6.0,
+        "cs": 231,
+        "campeon": "Veigar"
+      },
+      "danio_recibido_semana": {
+        "damage_taken": 29492,
+        "campeon": "Ekko"
+      },
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
         "campeon": "Lux",
@@ -3389,9 +3530,9 @@
       "detalle": "9 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Galactic Shark",
-      "valor": 2.86,
-      "detalle": "2.86 KDA"
+      "jugador": "Ostia",
+      "valor": 2.89,
+      "detalle": "2.89 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -3400,13 +3541,51 @@
     },
     "asistente": {
       "jugador": "Galactic Shark",
-      "valor": 159,
-      "detalle": "159 asistencias"
+      "valor": 171,
+      "detalle": "171 asistencias"
     },
-    "farmeador": null,
-    "defensor": null
+    "farmeador": {
+      "jugador": "Galactic Shark",
+      "valor": 8.2,
+      "detalle": "8.2 CS/min con Lillia"
+    },
+    "defensor": {
+      "jugador": "Galactic Shark",
+      "valor": 79668,
+      "detalle": "79,668 de daño recibido con Lillia"
+    }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T10:00:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "8.2 CS/min con Lillia"
+    },
+    {
+      "timestamp": "2026-08-19T10:00:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "79,668 de daño recibido con Lillia"
+    },
+    {
+      "timestamp": "2026-08-19T10:00:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "2.89 KDA"
+    },
     {
       "timestamp": "2026-08-19T09:04:10Z",
       "tipo": "badge_semanal",
