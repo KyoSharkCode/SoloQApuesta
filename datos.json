@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T21:57:26.367485",
+  "ultimaActualizacion": "2026-08-19T22:01:43.816725",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -864,7 +864,7 @@
         "damage_taken": 67400,
         "campeon": "Fiora"
       },
-      "max_partidas_en_un_dia": 5,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Fiora",
@@ -876,7 +876,7 @@
           "SummonerFlash"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     },
     {
       "nombre": "Galactic Shark#AYK",
@@ -1456,7 +1456,7 @@
         "damage_taken": 79668,
         "campeon": "Lillia"
       },
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787123681368,
         "campeon": "Lillia",
@@ -1468,7 +1468,7 @@
           "SummonerSmite"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     },
     {
       "nombre": "El Buñuelito#KyA",
@@ -2210,7 +2210,7 @@
       },
       "cs_min_semana": null,
       "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 3,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787115285101,
         "campeon": "Seraphine",
@@ -2222,7 +2222,7 @@
           "SummonerBarrier"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     },
     {
       "nombre": "ゆうき まこと#1411",
@@ -2463,7 +2463,7 @@
       "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     },
     {
       "nombre": "adrianNOOBYT#LAN",
@@ -3078,7 +3078,7 @@
       "duo_semana": null,
       "cs_min_semana": null,
       "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 3,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
@@ -3090,7 +3090,7 @@
           "SummonerFlash"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     },
     {
       "nombre": "Ostia#LAN",
@@ -3668,7 +3668,7 @@
         "damage_taken": 29704,
         "campeon": "Lux"
       },
-      "max_partidas_en_un_dia": 6,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
         "campeon": "Lux",
@@ -3680,7 +3680,7 @@
           "SummonerDot"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787025600
     }
   ],
   "titulares": {
@@ -3716,6 +3716,15 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T22:01:38Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-19T21:48:35Z",
       "tipo": "badge_semanal",
@@ -3827,5 +3836,5 @@
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
-  "dia_referencia_eventos": 1787112000
+  "dia_referencia_eventos": 1787025600
 }
