@@ -163,6 +163,90 @@ def detectar_duo(md, pp, puuid_propio, nombre_por_puuid):
     return duo
 
 
+def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos):
+    """
+    Arma el detalle completo de UNA partida (los 10 jugadores, ambos
+    equipos, objetivos) a partir del match ya descargado (md) — no pide
+    nada nuevo a Riot, reutiliza exactamente el mismo detalle que ya se
+    bajó para el historial/agregados semanales. Esto alimenta
+    datos_partidas.json, que consume partida.html.
+    """
+    info    = md.get("info", {})
+    dur_seg = info.get("gameDuration", 0)
+    dur_min = max(dur_seg / 60, 1)
+
+    equipos_info = {}
+    for t in info.get("teams", []):
+        lado = "blue" if t.get("teamId") == 100 else "red"
+        obj  = t.get("objectives", {}) or {}
+        equipos_info[lado] = {
+            "victoria":     bool(t.get("win")),
+            "barones":      obj.get("baron", {}).get("kills", 0),
+            "dragones":     obj.get("dragon", {}).get("kills", 0),
+            "heraldos":     obj.get("riftHerald", {}).get("kills", 0),
+            "torres":       obj.get("tower", {}).get("kills", 0),
+            "inhibidores":  obj.get("inhibitor", {}).get("kills", 0),
+        }
+
+    jugadores_detalle = []
+    for pp in info.get("participants", []):
+        lado         = "blue" if pp.get("teamId") == 100 else "red"
+        cs           = pp.get("totalMinionsKilled", 0) + pp.get("neutralMinionsKilled", 0)
+        puuid_p      = pp.get("puuid")
+        nombre_grupo = nombre_por_puuid.get(puuid_p)
+
+        perks             = pp.get("perks", {}) or {}
+        estilos           = perks.get("styles", []) or []
+        perk_principal    = None
+        estilo_secundario = None
+        if estilos and estilos[0].get("selections"):
+            perk_principal = estilos[0]["selections"][0].get("perk")
+        if len(estilos) > 1:
+            estilo_secundario = estilos[1].get("style")
+
+        game_name = pp.get("riotIdGameName") or pp.get("summonerName") or "?"
+        tag_line  = pp.get("riotIdTagline") or ""
+
+        jugadores_detalle.append({
+            "nombre_grupo":      nombre_grupo.split("#", 1)[0] if nombre_grupo else None,
+            "riot_id":           f"{game_name}#{tag_line}" if tag_line else game_name,
+            "equipo":            lado,
+            "campeon":           pp.get("championName"),
+            "nivel":             pp.get("champLevel"),
+            "hechizos": [
+                diccionario_hechizos.get(pp.get("summoner1Id", 0), "SummonerFlash"),
+                diccionario_hechizos.get(pp.get("summoner2Id", 0), "SummonerDot"),
+            ],
+            "items":             [pp.get(f"item{i}", 0) for i in range(7)],
+            "perk_principal":    perk_principal,
+            "estilo_secundario": estilo_secundario,
+            "kills":             pp.get("kills", 0),
+            "muertes":           pp.get("deaths", 0),
+            "asistencias":       pp.get("assists", 0),
+            "cs":                cs,
+            "cs_por_min":        round(cs / dur_min, 1),
+            "oro":               pp.get("goldEarned", 0),
+            "danio_a_campeones": pp.get("totalDamageDealtToChampions", 0),
+            "danio_recibido":    pp.get("totalDamageTaken", 0),
+            "vision":            pp.get("visionScore", 0),
+            "wards_colocadas":   pp.get("wardsPlaced", 0),
+            "wards_destruidas":  pp.get("wardsKilled", 0),
+            "rol":               pp.get("teamPosition", ""),
+            "victoria":          bool(pp.get("win")),
+        })
+
+    fin_ms = info.get("gameEndTimestamp") or (info.get("gameCreation", 0) + dur_seg * 1000)
+    return {
+        "match_id":     match_id,
+        "fecha":        datetime.utcfromtimestamp(fin_ms / 1000).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "duracion_seg": dur_seg,
+        "modo_juego":   "Remake" if dur_seg < 210 else "Ranked Solo/Duo",
+        "parche":       ".".join((info.get("gameVersion", "") or "").split(".")[:2]),
+        "equipos":      equipos_info,
+        "jugadores":    jugadores_detalle,
+    }
+
+
 def calcular_titulares_grupo(lista_final):
     """
     Para el historial de logros: determina quién del grupo tiene ahora mismo
@@ -300,6 +384,10 @@ def obtener_datos():
             print(f"⚠️ No se pudo leer datos.json anterior: {e}")
 
     eventos_nuevos = []  # eventos que se generan en ESTA corrida (historial de logros)
+    # Detalle completo de partidas (10 jugadores, objetivos) para
+    # datos_partidas.json — se rellena solo con partidas realmente nuevas
+    # que se descargan en esta corrida (CASO B); no pide nada extra a Riot.
+    partidas_recolectadas = {}
     lista_final  = []
     # FIX: se guarda explícitamente en UTC con sufijo "Z". Antes se usaba
     # datetime.now() sin zona horaria, y el navegador (JS) interpretaba esa
@@ -491,6 +579,20 @@ def obtener_datos():
                 for match_id in ids_a_consultar:
                     url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
                     detalles_por_id[match_id] = get_con_reintento(url_match, headers).json()
+
+                # ── Detalle completo para datos_partidas.json ──
+                # Solo las que aparecen en el historial visible (últimas 10)
+                # — es la única ventana que necesita partida.html. Si dos
+                # jugadores del grupo comparten una partida, se arma una
+                # sola vez (cache por match_id de esta misma corrida).
+                for match_id in ids_recientes:
+                    if match_id in partidas_recolectadas:
+                        continue
+                    md_r = detalles_por_id.get(match_id)
+                    if md_r:
+                        partidas_recolectadas[match_id] = construir_detalle_partida(
+                            match_id, md_r, nombre_por_puuid, diccionario_hechizos
+                        )
 
                 # ── Historial visible (últimas 10) ──
                 historial              = []
@@ -758,6 +860,37 @@ def obtener_datos():
                 lista_final.append(anterior)
             else:
                 print(f"  ⚠️ Sin datos previos de {nombre_completo}; se omite.")
+
+    # ══════════════════════════════════════════════════════════════════
+    # DATOS_PARTIDAS.JSON — detalle completo (10 jugadores, objetivos) de
+    # cada partida que aparece AHORA MISMO en el historial (últimas 10)
+    # de cualquier jugador del grupo. Archivo aparte de datos.json para
+    # no inflar lo que se sondea cada 15s en el front — este solo se pide
+    # al entrar a una partida puntual (partida.html). Cero llamadas extra
+    # a Riot: se arma con lo que ya se descargó arriba. Autopoda: lo que
+    # ya salió del historial de últimas 10 de TODOS se descarta solo.
+    # ══════════════════════════════════════════════════════════════════
+    match_ids_vigentes = set()
+    for j in lista_final:
+        for h in j.get("historial", []):
+            if h.get("match_id"):
+                match_ids_vigentes.add(h["match_id"])
+
+    partidas_anteriores = {}
+    if os.path.exists("datos_partidas.json"):
+        try:
+            with open("datos_partidas.json", "r", encoding="utf-8") as f:
+                partidas_anteriores = json.load(f) or {}
+        except Exception as e:
+            print(f"⚠️ No se pudo leer datos_partidas.json anterior: {e}")
+
+    partidas_merged   = {**partidas_anteriores, **partidas_recolectadas}
+    partidas_exportar = {mid: det for mid, det in partidas_merged.items() if mid in match_ids_vigentes}
+
+    with open("datos_partidas.json", "w", encoding="utf-8") as f:
+        json.dump(partidas_exportar, f, indent=2, ensure_ascii=False)
+    podadas = len(partidas_merged) - len(partidas_exportar)
+    print(f"✅ datos_partidas.json actualizado ({len(partidas_exportar)} partidas guardadas, {podadas} podadas).")
 
     # ══════════════════════════════════════════════════════════════════
     # HISTORIAL DE LOGROS (2/2) — badges semanales grupales + primera
