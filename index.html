@@ -523,7 +523,7 @@ window.addEventListener('load', () => {
     return (ti*4+dn)*100 + Math.max(0, Math.min(100, lp||0));
   }
   function rankScore(p){ const s = eloScore(p.rango,p.division,p.lp); return s===null?-100000:s; }
-  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/profileicon/${iconId}.png`; }
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${iconId}.png`; }
 
   function renderTop1(){
     if(!state.players.length) return;
@@ -568,7 +568,7 @@ window.addEventListener('load', () => {
       const hora      = new Date(pv.timestamp).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
       const champClean= (pv.campeon||'').replace(/[^a-zA-Z0-9]/g,'');
       const spells    = (pv.hechizos||[]).map(h =>
-        `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+        `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
       const sideClass = pv.equipo === 'blue' ? 'blue' : 'red';
       const sideLabel = pv.equipo === 'blue' ? 'Lado Azul' : 'Lado Rojo';
@@ -576,7 +576,7 @@ window.addEventListener('load', () => {
         <div class="first-win-card">
           <span class="first-win-badge">🌅 Primera Victoria del Día</span>
           <img class="first-win-avatar" src="${getAvatarUrl(pvPlayer.icono)}" alt="Avatar" style="margin-top:12px;">
-          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
+          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
           <div class="first-win-info" style="margin-top:12px;">
             <span class="first-win-name">${pvPlayer.nombre.split('#')[0]}</span>
             <span class="first-win-kda">${pv.campeon} · ${pv.kda} KDA</span>
@@ -712,7 +712,7 @@ window.addEventListener('load', () => {
     if(!grinder)   grinder  =state.players[0];
     if(!otpChamp)  otpChamp ='Desconocido';
 
-    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
 
     // FIX: ahora exige maxClimb>0 igual que el perfil — antes con
     // cualquier climber no-null se mostraba, incluso con LP negativo o
@@ -757,7 +757,7 @@ window.addEventListener('load', () => {
         <div class="highlight-body"><p class="highlight-label">🎮 Dúo Dinámico</p><p class="highlight-player">${duoPlayer.nombre.split('#')[0]} &amp; ${duoCompanero}</p><p class="highlight-value">${maxDuo} partida${maxDuo===1?'':'s'} juntos esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🎮</div><div class="highlight-body"><p class="highlight-label">Dúo Dinámico</p><p class="highlight-empty">Nadie ha jugado en dúo esta semana.</p></div></div>`;
 
-    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${(farmeadorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(farmeadorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
     const farmeadorHtml=(farmeador&&maxCsMin>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(farmeador.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">🌾 El Farmeador</p><p class="highlight-player">${farmeador.nombre}</p>
@@ -768,7 +768,7 @@ window.addEventListener('load', () => {
         </div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🌾</div><div class="highlight-body"><p class="highlight-label">El Farmeador</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
-    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${(defensorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(defensorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
     const defensorHtml=(defensor&&maxDanio>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">🛡️ El Defensor</p><p class="highlight-player">${defensor.nombre}</p>
@@ -960,14 +960,14 @@ window.addEventListener('load', () => {
     const player=state.players.find(p=>p.id===id);
     const matchesHtml=player.partidas.slice(0,5).map(m=>{
       const spellsHtml=(m.hechizos||[]).map(h=>
-        `<img src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+        `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
       const tag       = m.matchId ? 'a' : 'div';
       const hrefAttr  = m.matchId ? `href="partida.html?match_id=${encodeURIComponent(m.matchId)}&jugador=${encodeURIComponent(id)}"` : '';
       return `
       <${tag} class="match" ${hrefAttr}>
         <span class="match-icons">
-          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
           ${spellsHtml?`<span class="match-spells">${spellsHtml}</span>`:''}
         </span>
         <span>
