@@ -232,7 +232,7 @@ window.addEventListener('load', () => {
   const jugadorId = params.get('jugador'); // "Nombre#Tag" completo, opcional
 
   const CDN     = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
-  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/14.20.1';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
 
   const backLink = document.getElementById('back-link');
   if (jugadorId) {
@@ -267,6 +267,15 @@ window.addEventListener('load', () => {
       : `<span class="p-role-emoji" style="display:inline;">${info.emoji}</span>`;
     return `<span class="p-role-row">${iconHtml}<span>${info.label}</span></span>`;
   };
+
+  // Objetivos de equipo (dragones, barón, larvas del vacío, torres,
+  // inhibidores) — a diferencia de los iconos de rol, CommunityDragon no
+  // distribuye estos como imágenes sueltas (Riot los empaqueta dentro de
+  // un atlas del HUD, no como archivos individuales), así que se quedan
+  // en emoji — se ven bien y no dependen de adivinar una URL que rompa.
+  function objIconHtml(slug, emoji, valor){
+    return `<span title="${slug}">${emoji} ${valor||0}</span>`;
+  }
 
   if (!matchId) {
     showState('No se especificó ninguna partida.', true);
@@ -411,11 +420,12 @@ window.addEventListener('load', () => {
             <div class="team-head ${lado}">
               <span>${nombreLado} · ${resultadoLado}</span>
               <span class="team-objectives">
-                <span>🐉 ${eqInfo.dragones||0}</span>
-                <span>🦂 ${eqInfo.heraldos||0}</span>
-                <span>👹 ${eqInfo.barones||0}</span>
-                <span>🗼 ${eqInfo.torres||0}</span>
-                <span>🏰 ${eqInfo.inhibidores||0}</span>
+                ${objIconHtml('dragon', '🐉', eqInfo.dragones)}
+                ${objIconHtml('herald', '🦏', eqInfo.heraldos)}
+                ${objIconHtml('baron', '👹', eqInfo.barones)}
+                ${objIconHtml('grubs', '🐛', eqInfo.vacuolarvas)}
+                ${objIconHtml('tower', '🗼', eqInfo.torres)}
+                ${objIconHtml('inhibitor', '🏰', eqInfo.inhibidores)}
               </span>
             </div>
             <div class="team-rows">
