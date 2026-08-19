@@ -50,6 +50,40 @@
   .highlight-value { font-size:12px; color:var(--accent-soft); font-weight:700; margin:0; }
   .highlight-empty { font-size:13px; color:var(--text-faint); }
 
+  /* HISTORIAL DE LOGROS — feed de eventos ("X le quitó tal badge a Y") */
+  .historial-logros{ display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+  .historial-item{ display:flex; align-items:center; gap:14px; padding:14px 18px; border-bottom:1px solid var(--border); }
+  .historial-item:last-child{ border-bottom:none; }
+  .historial-icon{ font-size:19px; width:38px; height:38px; border-radius:50%; background:var(--panel-2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .historial-body{ flex:1; min-width:0; }
+  .historial-text{ font-size:13px; font-weight:600; color:var(--text-dim); margin:0; line-height:1.4; }
+  .historial-text b{ color:#fff; font-weight:800; }
+  .historial-detalle{ font-size:12px; color:var(--accent-soft); font-weight:600; margin:3px 0 0; }
+  .historial-time{ font-size:11px; color:var(--text-faint); white-space:nowrap; flex-shrink:0; }
+  .historial-empty{ padding:26px 18px; text-align:center; color:var(--text-faint); font-size:13px; }
+
+  /* POPUP DE LOGROS — toast abajo a la izquierda cuando cambia algo en vivo */
+  .toast-container{
+    position:fixed; left:24px; bottom:24px; z-index:1000;
+    display:flex; flex-direction:column-reverse; gap:10px;
+    max-width:340px; pointer-events:none;
+  }
+  .toast{
+    display:flex; align-items:center; gap:12px;
+    background:var(--panel); border:1px solid var(--accent);
+    border-radius:12px; padding:12px 16px;
+    box-shadow:0 8px 32px rgba(0,0,0,.55), 0 0 0 1px rgba(139,92,246,.15);
+    animation: toast-in .3s ease; pointer-events:auto;
+  }
+  .toast.toast-out{ animation: toast-out .3s ease forwards; }
+  @keyframes toast-in{ from{ opacity:0; transform:translateX(-24px); } to{ opacity:1; transform:translateX(0); } }
+  @keyframes toast-out{ from{ opacity:1; transform:translateX(0); } to{ opacity:0; transform:translateX(-24px); } }
+  .toast-icon{ font-size:24px; flex-shrink:0; }
+  .toast-body{ flex:1; min-width:0; }
+  .toast-title{ font-size:13px; font-weight:700; color:var(--text-dim); margin:0; line-height:1.4; }
+  .toast-title b{ color:#fff; font-weight:800; }
+  .toast-sub{ font-size:11px; color:var(--accent-soft); font-weight:600; margin:3px 0 0; }
+
   /* PRIMERA VICTORIA DEL DÍA — ocupa todo el ancho, pirámide encima de los 3 tops */
   .first-win-card {
     grid-column: 1 / -1;
@@ -172,26 +206,37 @@
   .footer-logo { width:70px; height:auto; margin-bottom:12px; }
   .site-footer p { margin:0; font-size:14px; color:var(--text-dim); font-weight:500; }
 
-  .fab {
-    position:fixed; bottom:28px; right:28px; z-index:999;
-    width:56px; height:56px; border-radius:50%;
-    background:var(--accent); border:none; cursor:pointer;
+  /* Menú flotante desplegable — un botón, se abre en burbujas hacia arriba */
+  .fab-menu{ position:fixed; right:28px; bottom:28px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:14px; }
+  .fab-main{
+    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--accent); color:#fff; font-size:26px; font-weight:400; line-height:1;
     display:flex; align-items:center; justify-content:center;
-    font-size:22px; box-shadow:0 4px 24px rgba(139,92,246,.55);
-    transition:transform .2s, box-shadow .2s;
-    text-decoration:none; color:#fff;
+    box-shadow:0 4px 24px rgba(139,92,246,.55);
+    transition:transform .25s ease, box-shadow .2s ease;
   }
-  .fab:hover { transform:scale(1.1); box-shadow:0 6px 32px rgba(139,92,246,.75); }
-  .fab-tooltip {
-    position:fixed; bottom:34px; right:92px; z-index:998;
-    background:var(--panel); border:1px solid var(--border);
-    color:var(--text); font-size:12px; font-weight:700;
-    padding:6px 12px; border-radius:8px; white-space:nowrap;
-    opacity:0; pointer-events:none; transition:opacity .2s;
+  .fab-main:hover{ box-shadow:0 6px 32px rgba(139,92,246,.75); }
+  .fab-menu.open .fab-main{ transform:rotate(45deg); }
+  .fab-options{ display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+  .fab-option{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    opacity:0; transform:translateY(10px) scale(.85); pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
   }
-  .fab:hover + .fab-tooltip { opacity:1; }
-  .fab-2 { bottom:96px; }
-  .fab-tooltip-2 { bottom:102px; }
+  .fab-menu.open .fab-option{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .fab-menu.open .fab-option:nth-child(1){ transition-delay:.06s; }
+  .fab-menu.open .fab-option:nth-child(2){ transition-delay:.03s; }
+  .fab-menu.open .fab-option:nth-child(3){ transition-delay:0s; }
+  .fab-option-icon{
+    width:46px; height:46px; border-radius:50%; background:var(--panel-2);
+    border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    font-size:20px; box-shadow:0 4px 16px rgba(0,0,0,.45); flex-shrink:0;
+  }
+  .fab-option-label{
+    font-size:12px; font-weight:700; color:var(--text); background:var(--panel-2);
+    padding:5px 10px; border-radius:8px; border:1px solid var(--border);
+    white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.4);
+  }
 
   @media (max-width:700px){
     .wrap{ padding:28px 12px 60px; }
@@ -208,6 +253,9 @@
     .wr-top{ font-size:11px; }
     .highlights-grid{ grid-template-columns:1fr 1fr; }
     .timer-box{ min-width:60px; padding:10px 12px; }
+    .toast-container{ left:12px; right:12px; max-width:none; }
+    .historial-item{ flex-wrap:wrap; }
+    .historial-time{ width:100%; }
     .timer-val{ font-size:22px; }
     .top1-card{ flex-wrap:wrap; }
     .top1-stats{ margin-left:0; text-align:left; }
@@ -279,6 +327,14 @@
     <div class="highlights-grid" id="weekly-highlights-container"></div>
   </section>
 
+  <section id="seccion-historial-logros">
+    <div class="section-title" style="margin-bottom:16px;">
+      <h2>Historial de Logros</h2>
+      <span>Cambios recientes en los grandes logros del grupo</span>
+    </div>
+    <div class="historial-logros" id="historial-logros-container"></div>
+  </section>
+
   <div class="countdown-container">
     <h2>⏳ Fin de Temporada</h2>
     <div class="timer-boxes" id="countdown">
@@ -295,10 +351,31 @@
   </footer>
 </div>
 
-<a class="fab" href="versus.html" title="Versus">⚔️</a>
-<div class="fab-tooltip">Comparar jugadores</div>
-<a class="fab fab-2" href="campeones.html" title="Campeones">🏆</a>
-<div class="fab-tooltip fab-tooltip-2">Campeones del grupo</div>
+<div class="toast-container" id="toast-container"></div>
+
+<div class="fab-menu" id="fabMenu">
+  <div class="fab-options">
+    <a class="fab-option" href="campeones.html">
+      <span class="fab-option-label">Campeones</span>
+      <span class="fab-option-icon">🏆</span>
+    </a>
+    <a class="fab-option" href="versus.html">
+      <span class="fab-option-label">Versus</span>
+      <span class="fab-option-icon">⚔️</span>
+    </a>
+  </div>
+  <button class="fab-main" id="fabMainBtn" type="button" aria-label="Menú de navegación" title="Menú">+</button>
+</div>
+<script>
+(function(){
+  var menu = document.getElementById('fabMenu');
+  var btn  = document.getElementById('fabMainBtn');
+  if(!menu || !btn) return;
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if(menu.classList.contains('open') && !menu.contains(e.target)) menu.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') menu.classList.remove('open'); });
+})();
+</script>
 
 <script>
 window.addEventListener('load', () => {
@@ -316,6 +393,10 @@ window.addEventListener('load', () => {
 
   const state = { players:[], liveData:{}, selectedId:null, filterElo:'ALL', lastUpdate:null };
   const REFRESH_MS = 15000;
+  // Historial de logros — null = todavía no se ha visto ningún evento en
+  // esta sesión del navegador (se usa para no lanzar popups de cosas
+  // viejas apenas se abre la página, solo de lo que pasa DESPUÉS).
+  let eventosVistos = null;
 
   const top1ContainerEl       = document.getElementById('top1-container');
   const highlightsContainerEl = document.getElementById('highlights-container');
@@ -386,7 +467,11 @@ window.addEventListener('load', () => {
           // FIX: primera_victoria_hoy es un objeto {timestamp, campeon, kda, hechizos, equipo, duracion}
           primeraVictoriaHoy:     p.primera_victoria_hoy      || null,
           // Dúo más frecuente de la semana — {nombre, partidas} o null
-          duoSemana:              p.duo_semana                || null
+          duoSemana:              p.duo_semana                || null,
+          // El Farmeador — {cs_por_min, cs, campeon} o null
+          csMinSemana:            p.cs_min_semana             || null,
+          // El Defensor — {damage_taken, campeon} o null
+          danioRecibidoSemana:    p.danio_recibido_semana     || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
 
@@ -394,6 +479,11 @@ window.addEventListener('load', () => {
       renderHighlights();    // primera victoria + 3 tops (últimas 10)
       renderRanking();
       renderWeeklyHighlights(); // destacados semana (7 días)
+
+      // Historial de logros — feed permanente + popup cuando cambia algo mientras miras la página
+      const eventos = Array.isArray(rawData.eventos) ? rawData.eventos : [];
+      renderHistorialLogros(eventos);
+      procesarEventosNuevos(eventos);
 
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
@@ -553,6 +643,8 @@ window.addEventListener('load', () => {
     let asistente=null, maxAsistencias=-1;
     let sinRendirse=null, maxDia=-1;
     let duoPlayer=null, duoCompanero='', maxDuo=-1;
+    let farmeador=null, maxCsMin=-1, farmeadorChamp='';
+    let defensor=null, maxDanio=-1, defensorChamp='';
 
     const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
 
@@ -596,6 +688,14 @@ window.addEventListener('load', () => {
       // Dúo Dinámico — la pareja que más veces jugó junta esta semana
       if(p.duoSemana && (p.duoSemana.partidas||0) > maxDuo){
         maxDuo=p.duoSemana.partidas; duoPlayer=p; duoCompanero=p.duoSemana.nombre;
+      }
+      // El Farmeador — mejor CS/min en una sola partida de la semana
+      if(p.csMinSemana && (p.csMinSemana.cs_por_min||0) > maxCsMin){
+        maxCsMin=p.csMinSemana.cs_por_min; farmeador=p; farmeadorChamp=p.csMinSemana.campeon||'';
+      }
+      // El Defensor — mayor daño recibido en una sola partida de la semana
+      if(p.danioRecibidoSemana && (p.danioRecibidoSemana.damage_taken||0) > maxDanio){
+        maxDanio=p.danioRecibidoSemana.damage_taken; defensor=p; defensorChamp=p.danioRecibidoSemana.campeon||'';
       }
     });
 
@@ -641,6 +741,28 @@ window.addEventListener('load', () => {
         <div class="highlight-body"><p class="highlight-label">🎮 Dúo Dinámico</p><p class="highlight-player">${duoPlayer.nombre.split('#')[0]} &amp; ${duoCompanero}</p><p class="highlight-value">${maxDuo} partida${maxDuo===1?'':'s'} juntos esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🎮</div><div class="highlight-body"><p class="highlight-label">Dúo Dinámico</p><p class="highlight-empty">Nadie ha jugado en dúo esta semana.</p></div></div>`;
 
+    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${(farmeadorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const farmeadorHtml=(farmeador&&maxCsMin>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(farmeador.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🌾 El Farmeador</p><p class="highlight-player">${farmeador.nombre}</p>
+          <div class="otp-champ-info">
+            <img class="champ-icon-small" src="${farmeadorChampImg}" onerror="this.style.display='none'">
+            <span class="highlight-value">${maxCsMin} CS/min con ${farmeadorChamp}</span>
+          </div>
+        </div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🌾</div><div class="highlight-body"><p class="highlight-label">El Farmeador</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
+
+    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${(defensorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const defensorHtml=(defensor&&maxDanio>0)?`
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">🛡️ El Defensor</p><p class="highlight-player">${defensor.nombre}</p>
+          <div class="otp-champ-info">
+            <img class="champ-icon-small" src="${defensorChampImg}" onerror="this.style.display='none'">
+            <span class="highlight-value">${maxDanio.toLocaleString('es-ES')} de daño recibido con ${defensorChamp}</span>
+          </div>
+        </div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">🛡️</div><div class="highlight-body"><p class="highlight-label">El Defensor</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
+
     container.innerHTML = `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
@@ -661,7 +783,97 @@ window.addEventListener('load', () => {
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}${duoHtml}`;
+      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}${duoHtml}${farmeadorHtml}${defensorHtml}`;
+  }
+
+  // ─────────────────────────────────────────────────────
+  // Historial de logros — feed permanente + popup en vivo.
+  // Los eventos ("X le quitó tal badge a Y", "nuevo récord de
+  // temporada"...) los genera el bot en cada corrida y vienen ya
+  // armados en datos.json (rawData.eventos). Aquí solo se muestran.
+  // ─────────────────────────────────────────────────────
+  function tiempoRelativo(fechaISO){
+    if(!fechaISO) return '';
+    const ms = Date.now() - new Date(fechaISO).getTime();
+    if(ms < 0 || isNaN(ms)) return '';
+    const min = Math.floor(ms / 60000);
+    if(min < 1)  return 'justo ahora';
+    if(min < 60) return `hace ${min} min`;
+    const horas = Math.floor(min / 60);
+    if(horas < 24) return `hace ${horas} h`;
+    const dias = Math.floor(horas / 24);
+    return `hace ${dias} día${dias===1?'':'s'}`;
+  }
+
+  function textoEvento(e){
+    if(e.tipo === 'badge_semanal'){
+      return e.jugador_anterior
+        ? `<b>${e.jugador_nuevo}</b> reclamó ${e.categoria_label}, quitándoselo a <b>${e.jugador_anterior}</b>`
+        : `<b>${e.jugador_nuevo}</b> reclamó ${e.categoria_label} por primera vez`;
+    }
+    if(e.tipo === 'record_lp'){
+      return `<b>${e.jugador_nuevo}</b> alcanzó un nuevo récord de temporada`;
+    }
+    if(e.tipo === 'primera_victoria_dia'){
+      return `<b>${e.jugador_nuevo}</b> consiguió la primera victoria del día`;
+    }
+    return `<b>${e.jugador_nuevo}</b> logró algo nuevo`;
+  }
+
+  function renderHistorialLogros(eventos){
+    const container = document.getElementById('historial-logros-container');
+    if(!container) return;
+    if(!eventos.length){
+      container.innerHTML = `<div class="historial-empty">Todavía no hay logros registrados — en cuanto alguien reclame un badge o bata un récord, aparece aquí.</div>`;
+      return;
+    }
+    container.innerHTML = eventos.slice(0, 15).map(e => `
+      <div class="historial-item">
+        <div class="historial-icon">${e.icono || '🏅'}</div>
+        <div class="historial-body">
+          <p class="historial-text">${textoEvento(e)}</p>
+          ${e.detalle ? `<p class="historial-detalle">${e.detalle}</p>` : ''}
+        </div>
+        <div class="historial-time">${tiempoRelativo(e.timestamp)}</div>
+      </div>`).join('');
+  }
+
+  function claveEvento(e){ return `${e.timestamp}|${e.tipo}|${e.categoria||''}|${e.jugador_nuevo}`; }
+
+  function procesarEventosNuevos(eventos){
+    if(!Array.isArray(eventos)) return;
+    if(eventosVistos === null){
+      // Primera carga de esta pestaña — no lanzamos popups de logros
+      // viejos, solo marcamos lo que ya existe como "visto".
+      eventosVistos = new Set(eventos.map(claveEvento));
+      return;
+    }
+    // Del más viejo al más nuevo, para que si hay varios se muestren en orden.
+    [...eventos].reverse().forEach(e => {
+      const clave = claveEvento(e);
+      if(!eventosVistos.has(clave)){
+        eventosVistos.add(clave);
+        mostrarToast(e);
+      }
+    });
+  }
+
+  function mostrarToast(evento){
+    const container = document.getElementById('toast-container');
+    if(!container) return;
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.innerHTML = `
+      <div class="toast-icon">${evento.icono || '🏅'}</div>
+      <div class="toast-body">
+        <p class="toast-title">${textoEvento(evento)}</p>
+        ${evento.detalle ? `<p class="toast-sub">${evento.detalle}</p>` : ''}
+      </div>`;
+    container.appendChild(el);
+    setTimeout(() => {
+      el.classList.add('toast-out');
+      el.addEventListener('animationend', () => el.remove(), { once:true });
+    }, 6000);
   }
 
   function getTrendArrow(p){
