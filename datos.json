@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T20:45:41.999336",
+  "ultimaActualizacion": "2026-08-19T20:48:33.534987",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3007,36 +3007,36 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze II",
-      "lp": 63,
-      "winrate": "64%",
+      "lp": 52,
+      "winrate": "60%",
       "record_lp_score": 683,
       "record_lp_label": "Bronze II (83 LP)",
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Mid",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Lux",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "campeon": "Veigar",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "maestrias": [
         {
           "campeon": "Lux",
-          "nivel": 20,
-          "puntos": "216.396"
+          "nivel": 21,
+          "puntos": "217.629"
         },
         {
           "campeon": "Swain",
@@ -3109,9 +3109,28 @@
           "lp": 63,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-19T20:48:25Z",
+          "lp": 52,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742353065",
+          "campeon": "Lux",
+          "kda": "11/7/14 (3.57)",
+          "resultado": "Derrota",
+          "duracion": "50min",
+          "lp_change": -11,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742343447",
           "campeon": "Veigar",
@@ -3240,34 +3259,36 @@
             "SummonerTeleport"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1742065003",
-          "campeon": "Veigar",
-          "kda": "6/9/11 (1.89)",
-          "resultado": "Victoria",
-          "duracion": "38min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 45,
+      "kills_recientes": 50,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 54,
-      "kills_semana": 56,
+      "vision_promedio_reciente": 62,
+      "kills_semana": 67,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 49,
+      "vision_promedio_semana": 52,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.71,
+      "kda_promedio_semana": 2.79,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 142,
-      "partidas_semana": 14,
+      "asistencias_semana": 156,
+      "partidas_semana": 15,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787172423.439,
+          "kills": 11,
+          "muertes": 7,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 103,
+          "campeon": "Lux",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 198,
+          "duracion_seg": 3015,
+          "damage_taken": 29704
+        },
         {
           "fin_seg": 1787168347.771,
           "kills": 10,
@@ -3507,10 +3528,10 @@
         "campeon": "Veigar"
       },
       "danio_recibido_semana": {
-        "damage_taken": 29546,
-        "campeon": "Veigar"
+        "damage_taken": 29704,
+        "campeon": "Lux"
       },
-      "max_partidas_en_un_dia": 3,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787129031287,
         "campeon": "Lux",
@@ -3532,9 +3553,9 @@
       "detalle": "9 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Galactic Shark",
-      "valor": 2.75,
-      "detalle": "2.75 KDA"
+      "jugador": "Ostia",
+      "valor": 2.79,
+      "detalle": "2.79 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -3558,6 +3579,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-19T20:48:25Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "2.79 KDA"
+    },
     {
       "timestamp": "2026-08-19T19:39:20Z",
       "tipo": "badge_semanal",
