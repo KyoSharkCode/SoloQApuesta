@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T22:18:41.077141",
+  "ultimaActualizacion": "2026-08-20T22:20:41.824332",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1004,9 +1004,9 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 77,
-      "winrate": "48%",
-      "elo_score": 1177,
+      "lp": 64,
+      "winrate": "47%",
+      "elo_score": 1164,
       "record_lp_score": 1190,
       "record_lp_label": "Silver I (90 LP)",
       "rol_principal": "Jungla",
@@ -1201,9 +1201,30 @@
           "lp": 77,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-20T22:20:33Z",
+          "lp": 64,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742602038",
+          "campeon": "Lillia",
+          "kda": "3/9/15 (2.0)",
+          "resultado": "Derrota",
+          "duracion": "35min",
+          "lp_change": -13,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8300
+        },
         {
           "match_id": "LA1_1742593698",
           "campeon": "Maokai",
@@ -1340,36 +1361,37 @@
           "duo_con": [],
           "perk_principal": 8008,
           "estilo_secundario": 8200
-        },
-        {
-          "match_id": "LA1_1741582837",
-          "campeon": "Lillia",
-          "kda": "6/5/5 (2.2)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8300
         }
       ],
-      "kills_recientes": 66,
+      "kills_recientes": 63,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 42,
-      "kills_semana": 114,
+      "vision_promedio_reciente": 44,
+      "kills_semana": 117,
       "pentakills_semana": 0,
       "vision_promedio_semana": 42,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.77,
+      "kda_promedio_semana": 2.71,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 177,
-      "partidas_semana": 16,
+      "asistencias_semana": 192,
+      "partidas_semana": 17,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787264409.398,
+          "kills": 3,
+          "muertes": 9,
+          "asistencias": 15,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 50,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 196,
+          "duracion_seg": 2152,
+          "damage_taken": 51761,
+          "danio_recibido_pct": 24.1
+        },
         {
           "fin_seg": 1787261218.139,
           "kills": 1,
@@ -1647,13 +1669,13 @@
         "damage_taken": 43224,
         "campeon": "Lillia"
       },
-      "max_partidas_en_un_dia": 0,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
-        "timestamp": 1787258784345,
+        "timestamp": 1787123681368,
         "campeon": "Lillia",
-        "kda": "2/3/10 (4.0)",
+        "kda": "13/3/12 (8.33)",
         "equipo": "blue",
-        "duracion": "24:17",
+        "duracion": "33:10",
         "hechizos": [
           "SummonerFlash",
           "SummonerSmite"
@@ -3916,8 +3938,8 @@
         },
         {
           "campeon": "Swain",
-          "nivel": 12,
-          "puntos": "107.874"
+          "nivel": 13,
+          "puntos": "109.998"
         },
         {
           "campeon": "Kayn",
@@ -4691,9 +4713,9 @@
       "detalle": "4 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Galactic Shark",
-      "valor": 2.77,
-      "detalle": "2.77 KDA"
+      "jugador": "Ostia",
+      "valor": 2.73,
+      "detalle": "2.73 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4717,6 +4739,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T22:20:33Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "2.73 KDA"
+    },
     {
       "timestamp": "2026-08-20T22:18:28Z",
       "tipo": "record_lp",
