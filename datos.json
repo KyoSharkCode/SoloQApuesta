@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T19:27:23.624266",
+  "ultimaActualizacion": "2026-08-20T19:30:56.922558",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1521,33 +1521,33 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver II",
-      "lp": 18,
+      "lp": 35,
       "winrate": "49%",
-      "elo_score": 1018,
-      "record_lp_score": 1033,
-      "record_lp_label": "Silver II (33 LP)",
+      "elo_score": 1035,
+      "record_lp_score": 1035,
+      "record_lp_label": "Silver II (35 LP)",
       "rol_principal": "ADC",
       "top_roles": [
         {
           "rol": "ADC",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "rol": "Mid",
-          "cantidad": 2
+          "cantidad": 3
         }
       ],
       "top_recientes": [
-        {
-          "campeon": "Seraphine",
-          "cantidad": 2
-        },
         {
           "campeon": "Caitlyn",
           "cantidad": 2
         },
         {
           "campeon": "Jinx",
+          "cantidad": 2
+        },
+        {
+          "campeon": "Ezreal",
           "cantidad": 2
         }
       ],
@@ -1560,7 +1560,7 @@
         {
           "campeon": "Zoe",
           "nivel": 23,
-          "puntos": "227.036"
+          "puntos": "228.556"
         },
         {
           "campeon": "Lux",
@@ -1856,9 +1856,30 @@
           "lp": 18,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-20T19:30:49Z",
+          "lp": 35,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742573455",
+          "campeon": "Zoe",
+          "kda": "6/1/9 (15.0)",
+          "resultado": "Victoria",
+          "duracion": "28min",
+          "lp_change": 17,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
+        },
         {
           "match_id": "LA1_1742514222",
           "campeon": "Seraphine",
@@ -1870,7 +1891,9 @@
             "SummonerFlash",
             "SummonerHeal"
           ],
-          "duo_con": []
+          "duo_con": [],
+          "perk_principal": 8229,
+          "estilo_secundario": 8300
         },
         {
           "match_id": "LA1_1742471600",
@@ -1883,7 +1906,9 @@
             "SummonerFlash",
             "SummonerHaste"
           ],
-          "duo_con": []
+          "duo_con": [],
+          "perk_principal": 8369,
+          "estilo_secundario": 8200
         },
         {
           "match_id": "LA1_1742446050",
@@ -1898,7 +1923,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200
         },
         {
           "match_id": "LA1_1742431837",
@@ -1913,7 +1940,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8300
         },
         {
           "match_id": "LA1_1742416779",
@@ -1928,7 +1957,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8300
         },
         {
           "match_id": "LA1_1742411474",
@@ -1943,7 +1974,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8229,
+          "estilo_secundario": 8100
         },
         {
           "match_id": "LA1_1742400658",
@@ -1958,7 +1991,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8128,
+          "estilo_secundario": 8200
         },
         {
           "match_id": "LA1_1742275598",
@@ -1973,7 +2008,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8300
         },
         {
           "match_id": "LA1_1742263954",
@@ -1988,37 +2025,40 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
-        },
-        {
-          "match_id": "LA1_1742255344",
-          "campeon": "Seraphine",
-          "kda": "2/7/7 (1.29)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": 17,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
           ],
-          "duo_con": [
-            "Pinea"
-          ]
+          "perk_principal": 8005,
+          "estilo_secundario": 8300
         }
       ],
-      "kills_recientes": 57,
+      "kills_recientes": 61,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 135,
+      "kills_semana": 134,
       "pentakills_semana": 0,
       "vision_promedio_semana": 24,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 1.64,
+      "kda_promedio_semana": 1.76,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 6,
-      "asistencias_semana": 136,
+      "campeones_ganados_semana": 5,
+      "asistencias_semana": 140,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787254147.781,
+          "kills": 6,
+          "muertes": 1,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 19,
+          "campeon": "Zoe",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 161,
+          "duracion_seg": 1724,
+          "damage_taken": 17849,
+          "danio_recibido_pct": 13.9
+        },
         {
           "fin_seg": 1787208098.111,
           "kills": 6,
@@ -2370,29 +2410,11 @@
           "duracion_seg": 1468,
           "damage_taken": 15602,
           "danio_recibido_pct": 18.5
-        },
-        {
-          "fin_seg": 1787018487.755,
-          "kills": 7,
-          "muertes": 10,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 19,
-          "campeon": "Aphelios",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 153,
-          "duracion_seg": 1714,
-          "damage_taken": 19049,
-          "danio_recibido_pct": 17.7
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 17
+        "partidas": 16
       },
       "cs_min_semana": {
         "cs_por_min": 7.1,
@@ -2404,7 +2426,7 @@
         "damage_taken": 42724,
         "campeon": "Jinx"
       },
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787199246813,
         "campeon": "Caitlyn",
@@ -4471,8 +4493,8 @@
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
-      "valor": 6,
-      "detalle": "6 campeones distintos ganados"
+      "valor": 5,
+      "detalle": "5 campeones distintos ganados"
     },
     "asistente": {
       "jugador": "Ostia",
@@ -4491,6 +4513,15 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T19:30:49Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Silver II (35 LP)"
+    },
     {
       "timestamp": "2026-08-20T13:45:34Z",
       "tipo": "adelantamiento",
