@@ -381,6 +381,17 @@ def obtener_datos():
     eventos_previos         = []
     titular_dia_anterior    = None
     dia_referencia_anterior = None
+    # Posición de cada jugador en el ranking la corrida pasada (nombre → 1..N)
+    # — permite detectar adelantamientos ("Fulano superó a Mengano") sin
+    # pedir nada nuevo a Riot, comparando contra la posición de ahora.
+    ranking_anterior_pos    = {}
+    # "Rey de la Temporada" — a diferencia de "TOP 1 ACTUAL" (que muestra
+    # quién está primero AHORA MISMO), esto acumula cuántos DÍAS en total
+    # ha pasado cada quien en el puesto #1 desde que existe el ranking. Se
+    # suma el tiempo real transcurrido entre esta corrida y la anterior al
+    # nombre que tenía el #1 en ese momento.
+    tiempo_top1_anterior       = {}
+    ultima_actualizacion_ts    = None
     if os.path.exists("datos.json"):
         try:
             with open("datos.json", "r", encoding="utf-8") as f:
@@ -396,6 +407,13 @@ def obtener_datos():
                     eventos_previos         = data_cargada.get("eventos", []) or []
                     titular_dia_anterior    = data_cargada.get("titular_primera_victoria_dia")
                     dia_referencia_anterior = data_cargada.get("dia_referencia_eventos")
+                    ranking_anterior_pos    = data_cargada.get("ranking_posiciones", {}) or {}
+                    tiempo_top1_anterior    = data_cargada.get("tiempo_top1", {}) or {}
+                    try:
+                        ts_txt = data_cargada.get("ultimaActualizacion")
+                        ultima_actualizacion_ts = datetime.fromisoformat(ts_txt) if ts_txt else None
+                    except (TypeError, ValueError):
+                        ultima_actualizacion_ts = None
         except Exception as e:
             print(f"⚠️ No se pudo leer datos.json anterior: {e}")
 
@@ -822,6 +840,10 @@ def obtener_datos():
                 "rango":                     f"{rango} {division}".strip(),
                 "lp":                        lp,
                 "winrate":                   winrate,
+                # Puntaje numérico comparable del rango actual (no el récord,
+                # el de AHORA MISMO) — se usa para calcular el orden del
+                # ranking y detectar adelantamientos entre corridas.
+                "elo_score":                 score_actual,
                 # Récord de LP de temporada — {"record_lp_score":.., "record_lp_label":..}
                 "record_lp_score":           record_lp_score,
                 "record_lp_label":           record_lp_label,
@@ -888,6 +910,7 @@ def obtener_datos():
                 anterior.setdefault("duo_semana",               None)
                 anterior.setdefault("cs_min_semana",            None)
                 anterior.setdefault("danio_recibido_semana",    None)
+                anterior.setdefault("elo_score",                None)
                 anterior.setdefault("record_lp_score",          None)
                 anterior.setdefault("record_lp_label",          None)
                 anterior.setdefault("max_partidas_en_un_dia",   0)
@@ -966,6 +989,97 @@ def obtener_datos():
             print(f"  🏅 Nuevo evento: {actual['jugador']} reclamó {meta['label']}" +
                   (f" (se lo quitó a {jugador_anterior})" if jugador_anterior else " (por primera vez)"))
 
+    # ── RANKING — adelantamientos ("Fulano superó a Mengano") ───────────────
+    # Se ordena a todo el grupo por elo_score (mayor a menor) para sacar la
+    # posición 1..N de esta corrida, y se compara contra ranking_anterior_pos
+    # (guardado la corrida pasada). Si "i" tenía peor posición que "j" y ahora
+    # tiene mejor posición que "j", es que lo adelantó. Si la nueva posición
+    # de "i" es top 1/2/3 y coincide con la posición que "j" tenía antes, se
+    # usa el mensaje especial "le ha quitado el top N a Y". No pide nada
+    # nuevo a Riot: usa el mismo rango/división/lp ya consultado arriba.
+    jugadores_con_elo = [j for j in lista_final if j.get("elo_score") is not None]
+    jugadores_ordenados = sorted(jugadores_con_elo, key=lambda j: j["elo_score"], reverse=True)
+    ranking_posiciones_actual = {j["nombre"]: idx for idx, j in enumerate(jugadores_ordenados, start=1)}
+
+    pares_ya_notificados = set()
+    for j_i in lista_final:
+        nombre_i     = j_i["nombre"]
+        pos_actual_i = ranking_posiciones_actual.get(nombre_i)
+        pos_previa_i = ranking_anterior_pos.get(nombre_i)
+        if pos_actual_i is None or pos_previa_i is None or pos_actual_i >= pos_previa_i:
+            continue  # sin ranking válido en alguna de las dos corridas, o no mejoró
+        for j_j in lista_final:
+            nombre_j = j_j["nombre"]
+            if nombre_j == nombre_i:
+                continue
+            pos_actual_j = ranking_posiciones_actual.get(nombre_j)
+            pos_previa_j = ranking_anterior_pos.get(nombre_j)
+            if pos_actual_j is None or pos_previa_j is None:
+                continue
+            adelanto = pos_previa_i > pos_previa_j and pos_actual_i < pos_actual_j
+            if not adelanto:
+                continue
+            clave_par = tuple(sorted((nombre_i, nombre_j)))
+            if clave_par in pares_ya_notificados:
+                continue
+            pares_ya_notificados.add(clave_par)
+
+            nombre_corto_i = nombre_i.split("#", 1)[0]
+            nombre_corto_j = nombre_j.split("#", 1)[0]
+            top_posicion   = pos_actual_i if (pos_actual_i <= 3 and pos_previa_j == pos_actual_i) else None
+            icono_evento   = "👑" if top_posicion == 1 else ("🔥" if top_posicion in (2, 3) else "⚔️")
+
+            eventos_nuevos.append({
+                "timestamp":        fecha_actual,
+                "tipo":             "adelantamiento",
+                "icono":            icono_evento,
+                "categoria_label":  "Cambio de posición",
+                "jugador_nuevo":    nombre_corto_i,
+                "jugador_anterior": nombre_corto_j,
+                "top_posicion":     top_posicion,
+                "detalle":          None,
+            })
+            if top_posicion:
+                print(f"  {icono_evento} Nuevo evento: {nombre_corto_i} le quitó el top {top_posicion} a {nombre_corto_j}")
+            else:
+                print(f"  {icono_evento} Nuevo evento: {nombre_corto_i} superó a {nombre_corto_j}")
+
+    # ── REY DE LA TEMPORADA — días acumulados en el puesto #1 ──────────────
+    # Distinto de "TOP 1 ACTUAL" (que es quién está primero AHORA): esto
+    # suma cuánto tiempo real ha pasado cada quien en el #1 a lo largo de
+    # TODA la temporada. Se le atribuye a quien tenía el #1 la corrida
+    # pasada el tiempo transcurrido hasta esta corrida (asumiendo que el
+    # ranking no cambió entre medio, que es lo mejor que se puede saber sin
+    # llamar a Riot a cada rato).
+    def nombre_en_posicion(posiciones, pos):
+        for nombre, p in posiciones.items():
+            if p == pos:
+                return nombre
+        return None
+
+    tiempo_top1 = dict(tiempo_top1_anterior)  # se parte de lo acumulado hasta ahora
+    top1_anterior_nombre = nombre_en_posicion(ranking_anterior_pos, 1)
+    if top1_anterior_nombre and ultima_actualizacion_ts is not None:
+        elapsed_dias = max(0.0, (ahora_utc - ultima_actualizacion_ts).total_seconds() / 86400)
+        top1_anterior_corto = top1_anterior_nombre.split("#", 1)[0]
+        tiempo_top1[top1_anterior_corto] = tiempo_top1.get(top1_anterior_corto, 0.0) + elapsed_dias
+
+    rey_anterior_nombre = max(tiempo_top1_anterior, key=tiempo_top1_anterior.get) if tiempo_top1_anterior else None
+    rey_actual_nombre    = max(tiempo_top1, key=tiempo_top1.get) if tiempo_top1 else None
+
+    if rey_actual_nombre and rey_actual_nombre != rey_anterior_nombre:
+        eventos_nuevos.append({
+            "timestamp":        fecha_actual,
+            "tipo":             "rey_temporada",
+            "icono":            "👑",
+            "categoria_label":  "Rey de la Temporada",
+            "jugador_nuevo":    rey_actual_nombre,
+            "jugador_anterior": rey_anterior_nombre,
+            "detalle":          f"{round(tiempo_top1[rey_actual_nombre], 1)} días acumulados en el Top 1",
+        })
+        print(f"  👑 Nuevo evento: {rey_actual_nombre} es el nuevo Rey de la Temporada" +
+              (f" (se lo quitó a {rey_anterior_nombre})" if rey_anterior_nombre else " (por primera vez)"))
+
     # Primera victoria del día — quién tiene el timestamp más temprano de hoy
     titular_dia_actual = None
     mejor_ts = None
@@ -1003,6 +1117,16 @@ def obtener_datos():
         "eventos": eventos_totales,
         "titular_primera_victoria_dia": titular_dia_actual if titular_dia_actual else titular_dia_anterior,
         "dia_referencia_eventos": inicio_dia_utc,
+        # Posición de cada jugador en el ranking de ESTA corrida (nombre → 1..N)
+        # — se compara contra esto la próxima corrida para detectar adelantamientos.
+        "ranking_posiciones": ranking_posiciones_actual,
+        # Días acumulados en el puesto #1 por jugador (nombre corto → días) y
+        # quién tiene más ahora mismo — "Rey de la Temporada".
+        "tiempo_top1": {k: round(v, 2) for k, v in tiempo_top1.items()},
+        "rey_temporada": (
+            {"jugador": rey_actual_nombre, "dias": round(tiempo_top1[rey_actual_nombre], 1)}
+            if rey_actual_nombre else None
+        ),
     }
     with open("datos.json", "w", encoding="utf-8") as f:
         json.dump(datos_exportar, f, indent=2, ensure_ascii=False)
