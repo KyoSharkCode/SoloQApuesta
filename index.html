@@ -42,6 +42,13 @@
   /* HIGHLIGHTS — grid normal para los 3 tops */
   .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
   .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+  /* Rey de la Temporada — es un logro de TODA la temporada (como Top 1
+     Actual), no un badge semanal más, así que ocupa el ancho completo de
+     la fila en vez de competir por una casilla del grid con los demás. */
+  .highlight-card.rey-card{ grid-column:1 / -1; border-color:rgba(251,191,36,.4); box-shadow:0 0 24px rgba(251,191,36,.1); padding:20px 22px; }
+  .highlight-card.rey-card .highlight-avatar,
+  .highlight-card.rey-card .highlight-icon{ width:52px; height:52px; }
+  .highlight-card.rey-card .highlight-player{ font-size:16px; }
   .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
   .highlight-avatar { width:44px; height:44px; border-radius:12px; border:1px solid var(--border); object-fit:cover; flex-shrink:0; }
   .highlight-body { min-width:0; }
@@ -853,9 +860,9 @@ window.addEventListener('load', () => {
     const rey = state.reyTemporada;
     const reyPlayer = rey ? state.players.find(p => p.nombre.split('#')[0] === rey.jugador) : null;
     const reyHtml = (rey && reyPlayer) ? `
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(reyPlayer.icono)}" alt="">
+      <div class="highlight-card rey-card"><img class="highlight-avatar" src="${getAvatarUrl(reyPlayer.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">👑 Rey de la Temporada</p><p class="highlight-player">${reyPlayer.nombre}</p><p class="highlight-value" style="color:#fbbf24;">${rey.dias} día${rey.dias===1?'':'s'} acumulados en el Top 1</p></div></div>`
-      : `<div class="highlight-card"><div class="highlight-icon">👑</div><div class="highlight-body"><p class="highlight-label">Rey de la Temporada</p><p class="highlight-empty">Todavía no hay suficiente historial.</p></div></div>`;
+      : `<div class="highlight-card rey-card"><div class="highlight-icon">👑</div><div class="highlight-body"><p class="highlight-label">Rey de la Temporada</p><p class="highlight-empty">Todavía no hay suficiente historial.</p></div></div>`;
 
     container.innerHTML = `
       <div class="highlight-card">
