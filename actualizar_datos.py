@@ -176,6 +176,25 @@ def detectar_duo(md, pp, puuid_propio, nombre_por_puuid):
     return duo
 
 
+def extraer_runas(pp):
+    """
+    Keystone (perk_principal) + árbol secundario (estilo_secundario) de un
+    participante — mismo criterio usado en datos_partidas.json (detalle de
+    partida) y en el historial visible de datos.json (index/perfil), para
+    que ambos puedan mostrar el ícono de runas sin pedir nada extra a Riot:
+    ya viene incluido en el mismo match que se descarga de todos modos.
+    """
+    perks             = pp.get("perks", {}) or {}
+    estilos           = perks.get("styles", []) or []
+    perk_principal    = None
+    estilo_secundario = None
+    if estilos and estilos[0].get("selections"):
+        perk_principal = estilos[0]["selections"][0].get("perk")
+    if len(estilos) > 1:
+        estilo_secundario = estilos[1].get("style")
+    return perk_principal, estilo_secundario
+
+
 def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos):
     """
     Arma el detalle completo de UNA partida (los 10 jugadores, ambos
@@ -211,14 +230,7 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
         puuid_p      = pp.get("puuid")
         nombre_grupo = nombre_por_puuid.get(puuid_p)
 
-        perks             = pp.get("perks", {}) or {}
-        estilos           = perks.get("styles", []) or []
-        perk_principal    = None
-        estilo_secundario = None
-        if estilos and estilos[0].get("selections"):
-            perk_principal = estilos[0]["selections"][0].get("perk")
-        if len(estilos) > 1:
-            estilo_secundario = estilos[1].get("style")
+        perk_principal, estilo_secundario = extraer_runas(pp)
 
         game_name = pp.get("riotIdGameName") or pp.get("summonerName") or "?"
         tag_line  = pp.get("riotIdTagline") or ""
@@ -654,6 +666,10 @@ def obtener_datos():
                     # FIX: detecta si alguien más del grupo estaba en el
                     # mismo equipo en esta partida (dúo/grupo).
                     duo_con_jug = detectar_duo(md, pp, puuid, nombre_por_puuid)
+                    # Runas (keystone + árbol secundario) — para mostrarlas en
+                    # el historial (index y perfil) igual que ya se muestran
+                    # en partida.html. Cero llamadas extra a Riot.
+                    perk_principal_jug, estilo_secundario_jug = extraer_runas(pp)
 
                     # Remake — aparece en historial pero NO suma stats
                     if dur_seg < 210:
@@ -666,6 +682,8 @@ def obtener_datos():
                             "lp_change": None,
                             "hechizos":  [spell1_jug, spell2_jug],
                             "duo_con":   duo_con_jug,
+                            "perk_principal":    perk_principal_jug,
+                            "estilo_secundario": estilo_secundario_jug,
                         })
                         continue
 
@@ -690,6 +708,8 @@ def obtener_datos():
                         "lp_change": lp_change,
                         "hechizos":  [spell1_jug, spell2_jug],
                         "duo_con":   duo_con_jug,
+                        "perk_principal":    perk_principal_jug,
+                        "estilo_secundario": estilo_secundario_jug,
                     })
 
                 vision_promedio_reciente = (
