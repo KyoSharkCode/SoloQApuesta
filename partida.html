@@ -360,7 +360,12 @@ window.addEventListener('load', () => {
 
     // ── Panel izquierdo: splash art del campeón, recortado con un corte
     // diagonal (más angosto arriba que abajo, para que se sienta dinámico) ──
-    const xTop = 460, xBottom = 560, anchoSplash = Math.max(xTop, xBottom);
+    // Corte diagonal más angosto que antes — le da más espacio al panel de
+    // información de la derecha y, de paso, la proporción del panel del
+    // splash queda mucho más cerca de la proporción vertical de la imagen
+    // "loading" (0.55), así que se recorta mucho menos personaje (antes se
+    // recortaba ~39% de alto, ahora ~21%).
+    const xTop = 360, xBottom = 430, anchoSplash = Math.max(xTop, xBottom);
 
     let splashImg = null;
     try { splashImg = await cargarImagenSegura(splashUrl(self.campeon)); } catch (e) { splashImg = null; }
@@ -476,8 +481,17 @@ window.addEventListener('load', () => {
 
     const badgeX = contentX + boxW + 20;
     const badgeMaxW = W - badgeX - 40;
-    let badgeY = 250;
-    ctx.font = '700 12.5px Arial, sans-serif';
+    const badgeAreaTop = 250, badgeAreaBottom = 502 - 8; // 502 = buildLabelY (ver más abajo)
+    // Puede haber hasta 6 badges (si alguien barre todas las categorías del
+    // equipo) — el tamaño de cada pill se calcula según cuántos hay, para
+    // que siempre quepan sin invadir la fila de BUILD de abajo.
+    const badgeGap = 8;
+    const badgePillH = badges.length
+      ? Math.max(28, Math.min(40, Math.floor((badgeAreaBottom - badgeAreaTop - (badges.length - 1) * badgeGap) / badges.length)))
+      : 40;
+    const badgeFontPx = badgePillH >= 36 ? 12.5 : (badgePillH >= 32 ? 11.5 : 10.5);
+    let badgeY = badgeAreaTop;
+    ctx.font = `700 ${badgeFontPx}px Arial, sans-serif`;
     badges.forEach(b => {
       const texto = `${b.icono} ${b.label}`;
       const pillW = Math.min(ctx.measureText(texto).width + 34, badgeMaxW);
@@ -485,20 +499,20 @@ window.addEventListener('load', () => {
       const bgBadge    = b.tipo === 'good' ? 'rgba(52,211,153,0.12)' : 'rgba(248,113,113,0.12)';
 
       ctx.fillStyle = bgBadge;
-      roundRect(ctx, badgeX, badgeY, pillW, 40, 20);
+      roundRect(ctx, badgeX, badgeY, pillW, badgePillH, badgePillH / 2);
       ctx.fill();
       ctx.strokeStyle = colorBadge;
       ctx.lineWidth = 1.3;
-      roundRect(ctx, badgeX, badgeY, pillW, 40, 20);
+      roundRect(ctx, badgeX, badgeY, pillW, badgePillH, badgePillH / 2);
       ctx.stroke();
 
       ctx.fillStyle = colorBadge;
-      ctx.font = '700 12.5px Arial, sans-serif';
+      ctx.font = `700 ${badgeFontPx}px Arial, sans-serif`;
       ctx.textBaseline = 'middle';
-      ctx.fillText(texto, badgeX + 17, badgeY + 21);
+      ctx.fillText(texto, badgeX + 17, badgeY + badgePillH / 2);
       ctx.textBaseline = 'alphabetic';
 
-      badgeY += 40 + boxGap;
+      badgeY += badgePillH + badgeGap;
     });
 
     // ── Build de items, franja inferior a lo ancho del degradado ──
