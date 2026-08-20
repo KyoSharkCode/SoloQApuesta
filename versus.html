@@ -383,7 +383,16 @@ function crestUrl(rango)    {
   const t = (rango||'unranked').split(' ')[0].toLowerCase();
   return `${MINI_CREST}${VALID_TIERS.includes(t) ? t : 'unranked'}.png`;
 }
-function cleanChamp(name)   { return (name||'').replace(/[^a-zA-Z0-9]/g,''); }
+// FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
+// y en un puñado de campeones el "championName" que guarda la API de Riot
+// no coincide exactamente con el nombre real del archivo en DDragon. El
+// caso clásico es FiddleSticks: Riot lo guarda como "FiddleSticks" (S
+// mayúscula) pero el ícono real es "Fiddlesticks.png" (s minúscula).
+const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+function cleanChamp(name)   {
+  const clean = (name||'').replace(/[^a-zA-Z0-9]/g,'');
+  return CHAMPION_ID_OVERRIDES[clean] || clean;
+}
 
 async function loadData() {
   // FIX: raw.githubusercontent.com en vez de jsDelivr — más confiable y sin caché de horas.
