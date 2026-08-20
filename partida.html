@@ -253,9 +253,15 @@ window.addEventListener('load', () => {
   const champUrl  = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
   const spellUrl  = (name) => `${DDRAGON}/img/spell/${name}.png`;
   const itemUrl   = (id)   => `${DDRAGON}/img/item/${id}.png`;
-  // Splash art (la ilustración grande, no el ícono cuadrado) — no lleva
-  // versión de DDragon en la URL, es una ruta aparte.
-  const splashUrl = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${fmt(name)}_0.jpg`;
+  // "Loading screen" del campeón (no el splash art panorámico) — Riot ya
+  // la recorta a formato vertical (308x560, la misma que usa el cliente
+  // de LoL en la pantalla de carga), centrando al personaje bastante mejor
+  // que si recortáramos nosotros el splash panorámico a mano. El splash
+  // (1215x717) tiene al personaje en cualquier posición dentro del cuadro
+  // — a veces a la derecha, como Caitlyn — y como nuestro panel es angosto
+  // y alto, terminaba recortándolo por completo. Con esta versión vertical
+  // casi nunca hace falta recortar a los lados, solo un poco arriba/abajo.
+  const splashUrl = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${fmt(name)}_0.jpg`;
 
   // Roles — mismo mapeo que ya usa el resto del sitio (BOTTOM→ADC,
   // UTILITY→SUPPORT). Los iconos son los mismos minimalistas que Riot usa
