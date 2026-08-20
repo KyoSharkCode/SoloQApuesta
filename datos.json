@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T22:28:29.521309",
+  "ultimaActualizacion": "2026-08-20T22:30:45.739995",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -986,19 +986,9 @@
         "damage_taken": 40303,
         "campeon": "Nasus"
       },
-      "max_partidas_en_un_dia": 17,
-      "primera_victoria_hoy": {
-        "timestamp": 1787115285101,
-        "campeon": "Fiora",
-        "kda": "9/6/4 (2.17)",
-        "equipo": "red",
-        "duracion": "28:03",
-        "hechizos": [
-          "SummonerDot",
-          "SummonerFlash"
-        ]
-      },
-      "dia_referencia": 1787112000
+      "max_partidas_en_un_dia": 0,
+      "primera_victoria_hoy": null,
+      "dia_referencia": 1787198400
     },
     {
       "nombre": "Galactic Shark#AYK",
@@ -1669,19 +1659,9 @@
         "damage_taken": 43224,
         "campeon": "Lillia"
       },
-      "max_partidas_en_un_dia": 5,
-      "primera_victoria_hoy": {
-        "timestamp": 1787123681368,
-        "campeon": "Lillia",
-        "kda": "13/3/12 (8.33)",
-        "equipo": "blue",
-        "duracion": "33:10",
-        "hechizos": [
-          "SummonerFlash",
-          "SummonerSmite"
-        ]
-      },
-      "dia_referencia": 1787112000
+      "max_partidas_en_un_dia": 0,
+      "primera_victoria_hoy": null,
+      "dia_referencia": 1787198400
     },
     {
       "nombre": "El Buñuelito#KyA",
@@ -2604,7 +2584,7 @@
           "SummonerHaste"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787198400
     },
     {
       "nombre": "ゆうき まこと#1411",
@@ -3142,7 +3122,7 @@
           "SummonerFlash"
         ]
       },
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787198400
     },
     {
       "nombre": "adrianNOOBYT#LAN",
@@ -3902,7 +3882,7 @@
       },
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
-      "dia_referencia": 1787112000
+      "dia_referencia": 1787198400
     },
     {
       "nombre": "Ostia#LAN",
@@ -4691,19 +4671,9 @@
         "damage_taken": 30576,
         "campeon": "Swain"
       },
-      "max_partidas_en_un_dia": 14,
-      "primera_victoria_hoy": {
-        "timestamp": 1787129031287,
-        "campeon": "Lux",
-        "kda": "2/4/12 (3.5)",
-        "equipo": "blue",
-        "duracion": "32:00",
-        "hechizos": [
-          "SummonerFlash",
-          "SummonerDot"
-        ]
-      },
-      "dia_referencia": 1787112000
+      "max_partidas_en_un_dia": 0,
+      "primera_victoria_hoy": null,
+      "dia_referencia": 1787198400
     }
   ],
   "titulares": {
@@ -4739,6 +4709,15 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T22:30:42Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-20T22:20:33Z",
       "tipo": "badge_semanal",
@@ -5106,19 +5085,10 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "6 campeones distintos ganados"
-    },
-    {
-      "timestamp": "2026-08-19T09:04:10Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
-  "titular_primera_victoria_dia": "Pinea",
-  "dia_referencia_eventos": 1787112000,
+  "titular_primera_victoria_dia": "El Buñuelito",
+  "dia_referencia_eventos": 1787198400,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
     "Galactic Shark#AYK": 2,
