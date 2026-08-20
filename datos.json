@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T04:12:49.016406",
+  "ultimaActualizacion": "2026-08-20T04:15:52.361788",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1534,8 +1534,8 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver III",
-      "lp": 70,
-      "winrate": "48%",
+      "lp": 86,
+      "winrate": "49%",
       "record_lp_score": 1033,
       "record_lp_label": "Silver II (33 LP)",
       "rol_principal": "ADC",
@@ -1856,9 +1856,28 @@
           "lp": 70,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-20T04:15:31Z",
+          "lp": 86,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742471600",
+          "campeon": "Caitlyn",
+          "kda": "9/3/5 (4.67)",
+          "resultado": "Victoria",
+          "duracion": "25min",
+          "lp_change": 16,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerHaste"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742446050",
           "campeon": "Caitlyn",
@@ -1993,36 +2012,37 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "match_id": "LA1_1742190915",
-          "campeon": "Caitlyn",
-          "kda": "6/8/2 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "28min",
-          "lp_change": -23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
-      "kills_recientes": 54,
+      "kills_recientes": 57,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 16,
-      "kills_semana": 127,
+      "vision_promedio_reciente": 17,
+      "kills_semana": 133,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
-      "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 1.45,
+      "primeras_sangre_semana": 4,
+      "kda_promedio_semana": 1.5,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 5,
-      "asistencias_semana": 117,
+      "campeones_ganados_semana": 6,
+      "asistencias_semana": 118,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787199246.813,
+          "kills": 9,
+          "muertes": 3,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 19,
+          "campeon": "Caitlyn",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 167,
+          "duracion_seg": 1512,
+          "damage_taken": 11161,
+          "danio_recibido_pct": 13.3
+        },
         {
           "fin_seg": 1787195257.815,
           "kills": 12,
@@ -2378,29 +2398,11 @@
           "duracion_seg": 2247,
           "damage_taken": 33304,
           "danio_recibido_pct": 15.6
-        },
-        {
-          "fin_seg": 1787011493.408,
-          "kills": 3,
-          "muertes": 4,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 25,
-          "campeon": "Xayah",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 168,
-          "duracion_seg": 1499,
-          "damage_taken": 16727,
-          "danio_recibido_pct": 19.3
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 19
+        "partidas": 18
       },
       "cs_min_semana": {
         "cs_por_min": 7.1,
@@ -2412,8 +2414,18 @@
         "damage_taken": 42724,
         "campeon": "Jinx"
       },
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787199246813,
+        "campeon": "Caitlyn",
+        "kda": "9/3/5 (4.67)",
+        "equipo": "blue",
+        "duracion": "25:12",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerHaste"
+        ]
+      },
       "dia_referencia": 1787198400
     },
     {
@@ -4130,8 +4142,8 @@
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
-      "valor": 5,
-      "detalle": "5 campeones distintos ganados"
+      "valor": 6,
+      "detalle": "6 campeones distintos ganados"
     },
     "asistente": {
       "jugador": "Ostia",
@@ -4150,6 +4162,15 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T04:15:31Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-20T01:33:21Z",
       "tipo": "record_lp",
@@ -4388,6 +4409,6 @@
       "detalle": null
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "El Buñuelito",
   "dia_referencia_eventos": 1787198400
 }
