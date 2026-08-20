@@ -330,7 +330,17 @@ window.addEventListener('load', () => {
   }
   const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON_IMG_BASE}/${runasMap[perkId]}` : null;
 
-  const fmt = (name) => (name || '').replace(/[^a-zA-Z0-9]/g, '');
+  // FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
+  // y en un puñado de campeones el "championName" que guarda la API de Riot
+  // no coincide exactamente con el nombre real del archivo en DDragon. El
+  // caso clásico es FiddleSticks: Riot lo guarda como "FiddleSticks" (S
+  // mayúscula) pero el ícono real es "Fiddlesticks.png" (s minúscula) — por
+  // eso su imagen nunca cargaba aunque el resto del equipo sí.
+  const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+  const fmt = (name) => {
+    const clean = (name || '').replace(/[^a-zA-Z0-9]/g, '');
+    return CHAMPION_ID_OVERRIDES[clean] || clean;
+  };
   const champUrl  = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
   const spellUrl  = (name) => `${DDRAGON}/img/spell/${name}.png`;
   const itemUrl   = (id)   => `${DDRAGON}/img/item/${id}.png`;
