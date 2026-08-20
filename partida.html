@@ -28,6 +28,14 @@
   .topbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
   .back-btn{ display:inline-flex; align-items:center; color:var(--accent-soft); text-decoration:none; font-weight:600; font-size:14px; transition:color 0.2s; }
   .back-btn:hover{ color:#ffffff; }
+  .share-btn{
+    display:none; align-items:center; gap:8px; background:var(--panel-2);
+    border:1px solid var(--border); color:var(--text); padding:9px 16px;
+    border-radius:10px; font-weight:700; font-size:13px; cursor:pointer;
+    transition:border-color .2s ease, opacity .2s ease; font-family:inherit;
+  }
+  .share-btn:hover{ border-color:var(--accent-soft); }
+  .share-btn:disabled{ opacity:.6; cursor:default; }
 
   #state-msg{ text-align:center; padding:70px 20px; color:var(--text-dim); font-weight:600; }
   #state-msg.error{ color:var(--loss); }
@@ -164,6 +172,7 @@
 <div class="wrap">
   <div class="topbar">
     <a href="index.html" class="back-btn" id="back-link">← Volver</a>
+    <button id="btn-compartir" class="share-btn" type="button">📤 Compartir</button>
   </div>
 
   <div id="state-msg">Cargando partida…</div>
@@ -277,6 +286,183 @@ window.addEventListener('load', () => {
     return `<span title="${slug}">${emoji} ${valor||0}</span>`;
   }
 
+  // ── Tarjeta para compartir ──────────────────────────────────────────
+  // Genera una imagen (canvas, sin librerías externas) con el resumen de
+  // la partida del jugador identificado en la URL, para mandarla directo
+  // al chat del grupo sin tener que compartir el link. Si el navegador
+  // soporta compartir archivos (celulares, sobre todo) abre el share
+  // nativo; si no, descarga el PNG.
+  let ultimoRenderParaCompartir = null;
+
+  function cargarImagenSegura(src){
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous'; // si el servidor no permite CORS, falla el load en vez de "manchar" el canvas
+      img.onload  = () => resolve(img);
+      img.onerror = () => reject(new Error('no se pudo cargar: ' + src));
+      img.src = src;
+    });
+  }
+
+  async function generarTarjetaImagen(){
+    const { self, detalle, resultadoTexto } = ultimoRenderParaCompartir || {};
+    if (!self) throw new Error('sin datos de jugador para compartir');
+
+    const W = 1000, H = 560;
+    const canvas = document.createElement('canvas');
+    canvas.width = W; canvas.height = H;
+    const ctx = canvas.getContext('2d');
+
+    const colorResultado = self.victoria ? '#34d399' : '#f87171';
+
+    // Fondo
+    const grad = ctx.createRadialGradient(W / 2, 0, 0, W / 2, 0, 750);
+    grad.addColorStop(0, 'rgba(139,92,246,0.28)');
+    grad.addColorStop(1, '#0a0a0c');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = colorResultado;
+    ctx.fillRect(0, 0, 8, H);
+
+    // Resultado
+    ctx.fillStyle = colorResultado;
+    ctx.font = '900 42px Arial, sans-serif';
+    ctx.fillText((resultadoTexto || '').toUpperCase(), 60, 90);
+
+    // Campeón (círculo) + nombre + rol
+    const champX = 60, champY = 120, champSize = 120;
+    let champImg = null;
+    try { champImg = await cargarImagenSegura(champUrl(self.campeon)); } catch (e) { champImg = null; }
+
+    if (champImg) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(champImg, champX, champY, champSize, champSize);
+      ctx.restore();
+      ctx.strokeStyle = '#a78bfa';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = '#1d1d24';
+      ctx.beginPath();
+      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#a78bfa';
+      ctx.font = '700 42px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText((self.campeon || '?').slice(0, 2).toUpperCase(), champX + champSize / 2, champY + champSize / 2 + 15);
+      ctx.textAlign = 'left';
+    }
+
+    const textX = champX + champSize + 28;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '800 30px Arial, sans-serif';
+    ctx.fillText(self.campeon || '—', textX, champY + 46);
+    ctx.fillStyle = '#a1a1aa';
+    ctx.font = '600 18px Arial, sans-serif';
+    ctx.fillText(rolInfo(self.rol).label, textX, champY + 76);
+
+    // KDA grande, a la derecha
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 46px Arial, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(`${self.kills}/${self.muertes}/${self.asistencias}`, W - 60, champY + 56);
+    ctx.textAlign = 'left';
+
+    // Nombre del jugador
+    ctx.fillStyle = '#a78bfa';
+    ctx.font = '700 22px Arial, sans-serif';
+    ctx.fillText(self.nombre_grupo || '', 60, 288);
+
+    // Fila de stats
+    const stats = [
+      ['CS', `${self.cs} (${self.cs_por_min}/min)`],
+      ['DAÑO A CAMPEONES', (self.danio_a_campeones || 0).toLocaleString('es-ES')],
+      ['ORO', (self.oro || 0).toLocaleString('es-ES')],
+      ['VISIÓN', String(self.vision ?? 0)],
+    ];
+    const statW = (W - 120) / stats.length;
+    stats.forEach((s, i) => {
+      const x = 60 + i * statW;
+      ctx.fillStyle = '#9a9aa3';
+      ctx.font = '700 13px Arial, sans-serif';
+      ctx.fillText(s[0], x, 350);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '800 26px Arial, sans-serif';
+      ctx.fillText(s[1], x, 386);
+    });
+
+    // Duración + fecha
+    const durMin = Math.floor((detalle.duracion_seg || 0) / 60);
+    const durSeg = (detalle.duracion_seg || 0) % 60;
+    const fechaTxt = detalle.fecha ? new Date(detalle.fecha).toLocaleDateString('es-ES') : '';
+    ctx.fillStyle = '#71717a';
+    ctx.font = '600 16px Arial, sans-serif';
+    ctx.fillText(`${detalle.modo_juego || 'Ranked Solo/Duo'} · ${durMin}:${String(durSeg).padStart(2, '0')} · ${fechaTxt}`, 60, 440);
+
+    // Marca del sitio
+    ctx.fillStyle = '#8b5cf6';
+    ctx.font = '900 20px Arial, sans-serif';
+    ctx.fillText('SoloQReto', 60, H - 40);
+
+    return canvas;
+  }
+
+  async function compartirPartida(){
+    const btn = document.getElementById('btn-compartir');
+    if (btn.disabled) return;
+    const textoOriginal = btn.innerHTML;
+    btn.innerHTML = '⏳ Generando...';
+    btn.disabled = true;
+    try {
+      const canvas = await generarTarjetaImagen();
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) throw new Error('no se pudo generar la imagen');
+
+      const { self, resultadoTexto } = ultimoRenderParaCompartir;
+      const nombreArchivo = `soloqreto-${(self.campeon || 'partida').toLowerCase()}.png`;
+      const file = new File([blob], nombreArchivo, { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'SoloQReto',
+          text: `${self.nombre_grupo} — ${resultadoTexto} con ${self.campeon} (${self.kills}/${self.muertes}/${self.asistencias})`,
+        });
+        btn.innerHTML = textoOriginal;
+        btn.disabled = false;
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = nombreArchivo;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        btn.innerHTML = '✅ ¡Descargada!';
+        setTimeout(() => { btn.innerHTML = textoOriginal; btn.disabled = false; }, 2000);
+      }
+    } catch (e) {
+      if (e && e.name === 'AbortError') {
+        // La persona cerró el share sheet nativo sin elegir nada — no es un error real.
+        btn.innerHTML = textoOriginal;
+        btn.disabled = false;
+        return;
+      }
+      console.error(e);
+      btn.innerHTML = '⚠️ No se pudo generar';
+      setTimeout(() => { btn.innerHTML = textoOriginal; btn.disabled = false; }, 2500);
+    }
+  }
+
+  document.getElementById('btn-compartir').addEventListener('click', compartirPartida);
+
   if (!matchId) {
     showState('No se especificó ninguna partida.', true);
     return;
@@ -338,6 +524,12 @@ window.addEventListener('load', () => {
     const esRemake = detalle.modo_juego === 'Remake';
     const resultadoTexto = esRemake ? 'Remake' : (self ? (self.victoria ? 'Victoria' : 'Derrota') : (detalle.equipos?.blue?.victoria ? 'Victoria del Equipo Azul' : 'Victoria del Equipo Rojo'));
     const resultadoClase = esRemake ? 'remake' : (self ? (self.victoria ? 'victoria' : 'derrota') : (detalle.equipos?.blue?.victoria ? 'victoria' : 'derrota'));
+
+    // Guardado para el botón "Compartir" — solo tiene sentido con un
+    // jugador identificado (self) y una partida real (no Remake).
+    ultimoRenderParaCompartir = { self, detalle, resultadoTexto };
+    const btnCompartir = document.getElementById('btn-compartir');
+    btnCompartir.style.display = (self && !esRemake) ? 'inline-flex' : 'none';
 
     const mhBox = document.getElementById('mh-box');
     mhBox.className = `match-header ${resultadoClase}`;
