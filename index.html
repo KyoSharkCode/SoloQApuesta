@@ -499,7 +499,6 @@ window.addEventListener('load', () => {
   startCountdown();
 
   function init(){
-    cargarCatalogoRunas();
     refreshData();
     setInterval(refreshData, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
@@ -512,7 +511,15 @@ window.addEventListener('load', () => {
       // archivos de rama (@main) durante horas y la purga no era confiable.
       // raw.githubusercontent.com refleja el push casi al instante.
       const CDN = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
-      const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' });
+      // FIX: cargarCatalogoRunas() se disparaba en init() sin esperar
+      // ("fire and forget"), así que en la PRIMERA carga podía renderizarse
+      // el historial antes de que el catálogo de runas hubiera llegado —
+      // runeUrl() devolvía null para todo. Ahora se espera junto con
+      // datos.json, igual que ya se hacía en partida.html.
+      const [res] = await Promise.all([
+        fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache:'no-store' }),
+        cargarCatalogoRunas(),
+      ]);
       if(!res.ok) throw new Error();
       const rawData   = await res.json();
       const rawPlayers = Array.isArray(rawData) ? rawData : (rawData.jugadores || []);
