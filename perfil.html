@@ -413,7 +413,7 @@ window.addEventListener('load', () => {
     else              liveIndicatorTextEl.textContent = `Actualizado hace ${Math.floor(secs/60)}m`;
   }
 
-  function renderBadges(p, todos) {
+  function renderBadges(p, todos, reyTemporada) {
     const badgesEl = document.getElementById('badges-row');
     const badges   = [];
 
@@ -511,9 +511,15 @@ window.addEventListener('load', () => {
 
     // ── Evaluar badges para este jugador ──
 
+    // Rey de la Temporada — distinto de "Top 1 del Torneo" de abajo (que es
+    // la posición AHORA): esto es quién acumula más días TOTALES en el
+    // puesto #1 a lo largo de toda la temporada. Lo calcula el bot.
+    if (reyTemporada && reyTemporada.jugador === p.nombre.split('#')[0])
+      badges.push({ icon:'👑', label:`Rey de la Temporada · ${reyTemporada.dias} día${reyTemporada.dias === 1 ? '' : 's'} en el Top 1`, color:'gold' });
+
     // Top 1 / 2 / 3 ranking
     if (rankPosition === 1 && pScore > -1)
-      badges.push({ icon:'👑', label:'Top 1 del Torneo', color:'gold' });
+      badges.push({ icon:'🥇', label:'Top 1 del Torneo', color:'gold' });
     else if (rankPosition === 2 && pScore > -1)
       badges.push({ icon:'🥈', label:'Top 2 del Torneo', color:'blue' });
     else if (rankPosition === 3 && pScore > -1)
@@ -789,7 +795,7 @@ window.addEventListener('load', () => {
         : '<p class="item-sub" style="text-align:center;">No hay partidas registradas.</p>';
 
       // Cargar todos los jugadores para comparar badges
-      renderBadges(p, jugadores);
+      renderBadges(p, jugadores, data.rey_temporada);
 
       // Gráfica LP — espera un frame para que el layout esté listo
       lastProgreso = p.progreso_lp || [];
