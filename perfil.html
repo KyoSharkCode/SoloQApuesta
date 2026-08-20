@@ -32,49 +32,55 @@
   .pulse-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:pulse-live 2.2s infinite; }
   @keyframes pulse-live{ 0%{box-shadow:0 0 0 0 rgba(139,92,246,.35);} 70%{box-shadow:0 0 0 8px rgba(139,92,246,0);} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0);} }
 
-  /* HEADER PERFIL — splash art de fondo */
-  .profile-header {
-    position:relative; display:flex; align-items:center; gap:24px;
-    padding:32px 32px 32px; margin-bottom:40px;
-    border-radius:18px; overflow:hidden;
-    border:1px solid var(--border);
+  /* CABECERA PERFIL — dos columnas: logros+estado a la izquierda, tarjeta
+     vertical del campeón (splash "loading screen", igual que en la
+     tarjeta para compartir) a la derecha. Antes era una franja horizontal
+     usando el splash panorámico como fondo, pero ahí SÍ se lograba ver
+     al personaje completo en campeones centrados, se le veía solo el
+     torso — el splash panorámico no encaja bien en un recuadro angosto.
+     La versión "loading" ya viene recortada por Riot en vertical, así
+     que en esta tarjeta (que también es angosta y alta) se necesita
+     mucho menos recorte. */
+  .profile-layout{
+    display:grid; grid-template-columns:1fr 300px; gap:20px;
+    margin-bottom:40px; align-items:stretch;
   }
-  .profile-splash {
+  .profile-side{ display:flex; flex-direction:column; gap:12px; }
+  .badges-col{ display:flex; flex-direction:column; gap:10px; margin-bottom:0; }
+  .badges-col:empty{ display:none; }
+  .live-status-box{ margin-bottom:0; flex:1; }
+
+  .portrait-card{
+    position:relative; border-radius:18px; overflow:hidden;
+    border:1px solid var(--border); background:var(--panel);
+    min-height:480px; display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .portrait-splash{
     position:absolute; inset:0; width:100%; height:100%;
-    /* FIX: "center top" recortaba directo la cara en campeones cuyo splash
-       tiene mucho espacio vacío arriba (p.ej. Poppy, Lux) — se veía solo
-       un pedacito de cabeza. No hay forma de centrar perfecto para TODOS
-       los campeones sin datos manuales por campeón (Riot no expone dónde
-       queda el personaje dentro del splash), pero "35%" es un punto medio
-       que en la mayoría de los casos agarra cara+torso en vez de puro
-       fondo vacío. Como es solo textura de fondo al 18% de opacidad, no
-       hace falta que sea perfecto.  */
-    object-fit:cover; object-position:center 35%;
-    opacity:0.18; pointer-events:none; z-index:0;
+    object-fit:cover; object-position:center 15%;
   }
-  .profile-splash-overlay {
+  .portrait-overlay{
     position:absolute; inset:0;
-    background:linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.6) 60%, rgba(10,10,12,0.2) 100%);
-    z-index:1;
+    background:linear-gradient(180deg, rgba(10,10,12,0) 38%, rgba(10,10,12,.8) 72%, rgba(10,10,12,.97) 100%);
   }
-  .profile-avatar { position:relative; z-index:2; width:100px; height:100px; border-radius:20px; border:3px solid var(--accent); object-fit:cover; flex-shrink:0; }
-  .profile-info { position:relative; z-index:2; display:flex; flex-direction:column; gap:5px; }
-  .name-wrapper { display:flex; align-items:center; gap:12px; }
-  .profile-info h1 { margin:0; font-size:32px; font-weight:900; }
-  .profile-info p { margin:0; color:var(--text-faint); font-size:16px; font-weight:500; }
-  .profile-rank { position:relative; z-index:2; margin-left:auto; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
-  .profile-rank h2 { margin:0; font-size:28px; color:var(--gold); font-weight:800; }
-  .profile-rank .rank-tier-row { display:inline-flex; align-items:center; gap:8px; }
-  .profile-rank span { color:var(--text-faint); font-size:14px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; }
-  .profile-rank .tier-emblem { width:36px; height:36px; object-fit:contain; }
+  .portrait-footer{ position:relative; z-index:2; padding:18px 18px 20px; display:flex; flex-direction:column; gap:10px; }
+  .portrait-footer-top{ display:flex; align-items:center; gap:12px; }
+  .portrait-avatar{ width:52px; height:52px; border-radius:14px; border:2px solid var(--accent); object-fit:cover; flex-shrink:0; }
+  .portrait-name-block{ min-width:0; }
+  .portrait-name-block h1{ margin:0; font-size:19px; font-weight:900; color:#fff; line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .portrait-name-block p{ margin:2px 0 0; font-size:12px; color:var(--text-faint); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .portrait-rank-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.08); }
+  .portrait-rank-tier{ display:flex; align-items:center; gap:8px; color:var(--text-faint); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; }
+  .portrait-rank-tier img{ width:28px; height:28px; object-fit:contain; }
+  .portrait-lp{ font-size:19px; font-weight:900; color:var(--gold); white-space:nowrap; }
 
   /* RESPONSIVE */
+  @media (max-width:760px){
+    .profile-layout{ grid-template-columns:1fr; }
+    .portrait-card{ min-height:360px; }
+  }
   @media (max-width:640px){
     .wrap{ padding:24px 14px 60px; }
-    .profile-header{ flex-wrap:wrap; padding:24px 20px; gap:16px; }
-    .profile-splash-overlay{ background:linear-gradient(180deg, rgba(10,10,12,0.85) 0%, rgba(10,10,12,0.5) 100%); }
-    .profile-rank{ margin-left:0; text-align:left; align-items:flex-start; width:100%; }
-    .profile-info h1{ font-size:24px; }
     .stats-grid{ grid-template-columns:1fr; }
     .match{ grid-template-columns:auto 1fr auto; gap:10px; padding:10px 12px; }
     .topbar{ flex-direction:column; align-items:flex-start; gap:10px; }
@@ -83,7 +89,7 @@
   /* CAJA EN VIVO */
   .live-status-box{
     position:relative; background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:22px 24px; margin-bottom:40px;
+    border-radius:var(--radius); padding:22px 24px; margin-bottom:0;
     min-height:84px; display:flex; align-items:center; justify-content:center;
     transition:border-color .2s ease, box-shadow .2s ease;
   }
@@ -280,30 +286,36 @@
   <div id="error-msg">Jugador no encontrado.</div>
 
   <div id="profile-content" style="display:none;">
-    <div class="profile-header">
-      <img id="p-splash" class="profile-splash" src="" alt="">
-      <div class="profile-splash-overlay"></div>
-      <img id="p-avatar" class="profile-avatar" src="" alt="Avatar">
-      <div class="profile-info">
-        <div class="name-wrapper">
-          <h1 id="p-name">Cargando...</h1>
-        </div>
-        <p id="p-winrate">Winrate</p>
-      </div>
-      <div class="profile-rank">
-        <h2 id="p-lp">0 LP</h2>
-        <div class="rank-tier-row">
-          <img id="p-emblem" class="tier-emblem" src="" alt="Emblema de elo">
-          <span id="p-tier">Rango</span>
+    <div class="profile-layout">
+      <div class="profile-side">
+        <!-- BADGES -->
+        <div class="badges-col" id="badges-row"></div>
+
+        <div class="live-status-box offline" id="live-status-box">
+          <span class="live-offline-text">Cargando…</span>
         </div>
       </div>
-    </div>
 
-    <!-- BADGES -->
-    <div class="badges-row" id="badges-row"></div>
-
-    <div class="live-status-box offline" id="live-status-box">
-      <span class="live-offline-text">Cargando…</span>
+      <div class="portrait-card">
+        <img id="p-splash" class="portrait-splash" src="" alt="">
+        <div class="portrait-overlay"></div>
+        <div class="portrait-footer">
+          <div class="portrait-footer-top">
+            <img id="p-avatar" class="portrait-avatar" src="" alt="Avatar">
+            <div class="portrait-name-block">
+              <h1 id="p-name">Cargando...</h1>
+              <p id="p-winrate">Winrate</p>
+            </div>
+          </div>
+          <div class="portrait-rank-row">
+            <div class="portrait-rank-tier">
+              <img id="p-emblem" src="" alt="Emblema de elo">
+              <span id="p-tier">Rango</span>
+            </div>
+            <div class="portrait-lp" id="p-lp">0 LP</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="stats-grid">
@@ -724,7 +736,7 @@ window.addEventListener('load', () => {
       const topChamp = (p.maestrias && p.maestrias.length) ? p.maestrias[0].campeon.replace(/[^a-zA-Z0-9]/g,'') : null;
       const splashEl = document.getElementById('p-splash');
       if (topChamp) {
-        splashEl.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${topChamp}_0.jpg`;
+        splashEl.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${topChamp}_0.jpg`;
         splashEl.style.display = 'block';
       } else {
         splashEl.style.display = 'none';
