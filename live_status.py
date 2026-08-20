@@ -27,7 +27,6 @@ except ImportError:
         "El Buñuelito#KyA",
         "ゆうき まこと#1411",
         "adrianNOOBYT#LAN",
-        "Ostia#LAN",
     ]
 
 DDRAGON_VERSION = "16.16.1"
@@ -175,25 +174,33 @@ def actualizar_estado_en_vivo(jugadores):
                     None
                 )
 
-                # Mapeo de queue IDs a nombres legibles
+                # Mapeo de queue IDs a nombres legibles — Alex pidió que en vez
+                # de mostrar "Modo <id>" para lo que no reconocíamos, se
+                # agrupe todo en 5 categorías: los 4 modos "normales" de
+                # Grieta del Invocador (cada uno con su propio nombre),
+                # LoL Classic, ARAM, Arena, y "Modo Destacado" como cajón de
+                # sastre para cualquier otro modo rotativo/especial (URF,
+                # Nexus Blitz, Clash, Modo Definitivo, personalizadas, etc.)
+                # — así nunca más se ve un id crudo sin traducir.
                 QUEUE_NAMES = {
-                    420:  "Solo/Duo",
-                    440:  "Flex",
-                    400:  "Normal",
-                    430:  "Partida Rápida",
+                    490:  "Partida Rápida",   # Quickplay
+                    420:  "Solo/Duo",         # Ranked Solo/Duo
+                    400:  "Reclutamiento",    # Normal Draft Pick
+                    440:  "Flex",             # Ranked Flex
+                    430:  "LoL Classic",      # Normal Blind Pick (el modo "clásico" original)
                     450:  "ARAM",
-                    490:  "Quickplay",
-                    900:  "URF",
-                    1020: "OFA",
-                    1300: "Nexus Blitz",
-                    1400: "Modo Definitivo",
                     1700: "Arena",
-                    1900: "URF",
-                    2000: "Tutorial",
-                    0:    "Personalizada",
+                    1710: "Arena",
+                    1720: "Arena",
                 }
                 queue_id   = game_data.get("gameQueueConfigId", 0)
-                modo_juego = QUEUE_NAMES.get(queue_id, f"Modo {queue_id}")
+                # FIX: antes cualquier queue_id no mapeado (URF, Nexus Blitz,
+                # Modo Definitivo, Clash, personalizadas, tutorial, un modo
+                # rotativo nuevo que Riot agregue después...) se mostraba
+                # como "Modo 2400" — un número crudo que no le dice nada a
+                # nadie. Ahora todo lo que no sea uno de los modos de arriba
+                # cae en "Modo Destacado".
+                modo_juego = QUEUE_NAMES.get(queue_id, "Modo Destacado")
 
                 if participante:
                     champ_id = participante.get("championId")
