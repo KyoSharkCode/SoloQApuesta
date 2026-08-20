@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T08:41:49.685997",
+  "ultimaActualizacion": "2026-08-20T08:51:50.920026",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2437,11 +2437,11 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold III",
-      "lp": 45,
-      "winrate": "54%",
-      "elo_score": 1345,
-      "record_lp_score": 1345,
-      "record_lp_label": "Gold III (45 LP)",
+      "lp": 75,
+      "winrate": "57%",
+      "elo_score": 1375,
+      "record_lp_score": 1375,
+      "record_lp_label": "Gold III (75 LP)",
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -2456,22 +2456,22 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 4
-        },
-        {
-          "campeon": "Sion",
-          "cantidad": 2
+          "cantidad": 5
         },
         {
           "campeon": "Nasus",
           "cantidad": 2
+        },
+        {
+          "campeon": "Teemo",
+          "cantidad": 1
         }
       ],
       "maestrias": [
         {
           "campeon": "Poppy",
           "nivel": 81,
-          "puntos": "856.910"
+          "puntos": "858.387"
         },
         {
           "campeon": "Teemo",
@@ -2594,9 +2594,28 @@
           "lp": 45,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-20T08:51:34Z",
+          "lp": 75,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742530246",
+          "campeon": "Poppy",
+          "kda": "6/4/4 (2.5)",
+          "resultado": "Victoria",
+          "duracion": "27min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742528490",
           "campeon": "Poppy",
@@ -2713,34 +2732,37 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741021597",
-          "campeon": "Sion",
-          "kda": "2/11/4 (0.55)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerTeleport",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 62,
+      "kills_recientes": 66,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 43,
-      "kills_semana": 62,
+      "kills_semana": 68,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 43,
+      "vision_promedio_semana": 42,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.31,
+      "kda_promedio_semana": 2.32,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 102,
-      "partidas_semana": 10,
+      "asistencias_semana": 106,
+      "partidas_semana": 11,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787215397.597,
+          "kills": 6,
+          "muertes": 4,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 25,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 182,
+          "duracion_seg": 1637,
+          "damage_taken": 29324,
+          "danio_recibido_pct": 24.8
+        },
         {
           "fin_seg": 1787213337.993,
           "kills": 4,
@@ -2913,7 +2935,7 @@
         "damage_taken": 65627,
         "campeon": "Sion"
       },
-      "max_partidas_en_un_dia": 1,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787213337993,
         "campeon": "Poppy",
@@ -4423,6 +4445,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-20T08:51:34Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Gold III (75 LP)"
+    },
+    {
       "timestamp": "2026-08-20T08:09:24Z",
       "tipo": "record_lp",
       "icono": "📈",
@@ -4708,7 +4739,7 @@
     "adrianNOOBYT#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.06
+    "ゆうき まこと": 0.07
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
