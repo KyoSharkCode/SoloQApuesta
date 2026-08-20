@@ -41,7 +41,15 @@
   }
   .profile-splash {
     position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; object-position:center top;
+    /* FIX: "center top" recortaba directo la cara en campeones cuyo splash
+       tiene mucho espacio vacío arriba (p.ej. Poppy, Lux) — se veía solo
+       un pedacito de cabeza. No hay forma de centrar perfecto para TODOS
+       los campeones sin datos manuales por campeón (Riot no expone dónde
+       queda el personaje dentro del splash), pero "35%" es un punto medio
+       que en la mayoría de los casos agarra cara+torso en vez de puro
+       fondo vacío. Como es solo textura de fondo al 18% de opacidad, no
+       hace falta que sea perfecto.  */
+    object-fit:cover; object-position:center 35%;
     opacity:0.18; pointer-events:none; z-index:0;
   }
   .profile-splash-overlay {
