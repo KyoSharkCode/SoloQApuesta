@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T08:07:42.512524",
+  "ultimaActualizacion": "2026-08-20T08:09:31.791785",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2437,16 +2437,16 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold III",
-      "lp": 15,
-      "winrate": "50%",
-      "elo_score": 1315,
-      "record_lp_score": 1315,
-      "record_lp_label": "Gold III (15 LP)",
+      "lp": 45,
+      "winrate": "54%",
+      "elo_score": 1345,
+      "record_lp_score": 1345,
+      "record_lp_label": "Gold III (45 LP)",
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "rol": "Mid",
@@ -2456,7 +2456,7 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 3
+          "cantidad": 4
         },
         {
           "campeon": "Sion",
@@ -2588,91 +2588,343 @@
           "lp": 15,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-20T08:09:24Z",
+          "lp": 45,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742528490",
+          "campeon": "Poppy",
+          "kda": "4/5/12 (3.2)",
+          "resultado": "Victoria",
+          "duracion": "24min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1741815964",
           "campeon": "Poppy",
           "kda": "13/9/17 (3.33)",
           "resultado": "Victoria",
-          "duracion": "51min"
+          "duracion": "51min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741817023",
           "campeon": "Teemo",
           "kda": "1/8/5 (0.75)",
           "resultado": "Derrota",
-          "duracion": "42min"
+          "duracion": "42min",
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741570160",
           "campeon": "Sion",
           "kda": "6/7/8 (2.0)",
           "resultado": "Derrota",
-          "duracion": "34min"
+          "duracion": "34min",
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741558984",
           "campeon": "Hwei",
           "kda": "3/7/16 (2.71)",
           "resultado": "Derrota",
-          "duracion": "42min"
+          "duracion": "42min",
+          "lp_change": -10,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741546609",
           "campeon": "Nasus",
           "kda": "7/9/5 (1.33)",
           "resultado": "Victoria",
-          "duracion": "42min"
+          "duracion": "42min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerHaste",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741037646",
           "campeon": "Nasus",
           "kda": "7/4/15 (5.5)",
           "resultado": "Victoria",
-          "duracion": "50min"
+          "duracion": "50min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerHaste",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741039225",
           "campeon": "Poppy",
           "kda": "2/6/5 (1.17)",
           "resultado": "Derrota",
-          "duracion": "27min"
+          "duracion": "27min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741024967",
           "campeon": "Poppy",
           "kda": "17/5/15 (6.4)",
           "resultado": "Victoria",
-          "duracion": "43min"
+          "duracion": "43min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         },
         {
           "match_id": "LA1_1741021597",
           "campeon": "Sion",
           "kda": "2/11/4 (0.55)",
           "resultado": "Derrota",
-          "duracion": "32min"
+          "duracion": "32min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": []
         }
       ],
-      "kills_recientes": 58,
+      "kills_recientes": 62,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 0,
-      "kills_semana": 0,
+      "vision_promedio_reciente": 43,
+      "kills_semana": 62,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 0,
+      "vision_promedio_semana": 43,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 0,
+      "kda_promedio_semana": 2.31,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 0,
-      "asistencias_semana": 0,
-      "partidas_semana": 0,
-      "partidas_semana_detalle": [],
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 102,
+      "partidas_semana": 10,
+      "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787213337.993,
+          "kills": 4,
+          "muertes": 5,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 16,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 151,
+          "duracion_seg": 1469,
+          "damage_taken": 21385,
+          "danio_recibido_pct": 20.3
+        },
+        {
+          "fin_seg": 1786961518.787,
+          "kills": 13,
+          "muertes": 9,
+          "asistencias": 17,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 60,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 323,
+          "duracion_seg": 3071,
+          "damage_taken": 85887,
+          "danio_recibido_pct": 28.1
+        },
+        {
+          "fin_seg": 1786958069.739,
+          "kills": 1,
+          "muertes": 8,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 55,
+          "campeon": "Teemo",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 264,
+          "duracion_seg": 2529,
+          "damage_taken": 34019,
+          "danio_recibido_pct": 16.2
+        },
+        {
+          "fin_seg": 1786901812.072,
+          "kills": 6,
+          "muertes": 7,
+          "asistencias": 8,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 40,
+          "campeon": "Sion",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 266,
+          "duracion_seg": 2086,
+          "damage_taken": 64251,
+          "danio_recibido_pct": 34.2
+        },
+        {
+          "fin_seg": 1786899359.118,
+          "kills": 3,
+          "muertes": 7,
+          "asistencias": 16,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Hwei",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 284,
+          "duracion_seg": 2554,
+          "damage_taken": 32483,
+          "danio_recibido_pct": 10.1
+        },
+        {
+          "fin_seg": 1786888236.016,
+          "kills": 7,
+          "muertes": 9,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 47,
+          "campeon": "Nasus",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 231,
+          "duracion_seg": 2534,
+          "damage_taken": 78119,
+          "danio_recibido_pct": 35.3
+        },
+        {
+          "fin_seg": 1786714066.346,
+          "kills": 7,
+          "muertes": 4,
+          "asistencias": 15,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 47,
+          "campeon": "Nasus",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 335,
+          "duracion_seg": 3026,
+          "damage_taken": 87479,
+          "danio_recibido_pct": 27.1
+        },
+        {
+          "fin_seg": 1786710768.51,
+          "kills": 2,
+          "muertes": 6,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 40,
+          "campeon": "Poppy",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 171,
+          "duracion_seg": 1669,
+          "damage_taken": 25777,
+          "danio_recibido_pct": 20.6
+        },
+        {
+          "fin_seg": 1786695809.103,
+          "kills": 17,
+          "muertes": 5,
+          "asistencias": 15,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 65,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 213,
+          "duracion_seg": 2629,
+          "damage_taken": 59342,
+          "danio_recibido_pct": 24.4
+        },
+        {
+          "fin_seg": 1786692795.567,
+          "kills": 2,
+          "muertes": 11,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 29,
+          "campeon": "Sion",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 195,
+          "duracion_seg": 1959,
+          "damage_taken": 65627,
+          "danio_recibido_pct": 37.1
+        }
+      ],
       "duo_semana": null,
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "cs_min_semana": {
+        "cs_por_min": 7.7,
+        "cs": 266,
+        "campeon": "Sion"
+      },
+      "danio_recibido_semana": {
+        "danio_recibido_pct": 37.1,
+        "damage_taken": 65627,
+        "campeon": "Sion"
+      },
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787213337993,
+        "campeon": "Poppy",
+        "kda": "4/5/12 (3.2)",
+        "equipo": "blue",
+        "duracion": "24:29",
+        "hechizos": [
+          "SummonerTeleport",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1787198400
     },
     {
@@ -4164,12 +4416,31 @@
       "detalle": "9.7 CS/min con Akali"
     },
     "defensor": {
-      "jugador": "Pinea",
-      "valor": 32.8,
-      "detalle": "32.8% del daño de su equipo (40,303) con Nasus"
+      "jugador": "ゆうき まこと",
+      "valor": 37.1,
+      "detalle": "37.1% del daño de su equipo (65,627) con Sion"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T08:09:24Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Gold III (45 LP)"
+    },
+    {
+      "timestamp": "2026-08-20T08:09:24Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Pinea",
+      "detalle": "37.1% del daño de su equipo (65,627) con Sion"
+    },
     {
       "timestamp": "2026-08-20T07:01:27Z",
       "tipo": "rey_temporada",
