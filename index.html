@@ -393,12 +393,65 @@ window.addEventListener('load', () => {
     return `${MINI_CREST_BASE}${valid.includes(tier) ? tier : 'unranked'}.png`;
   }
 
-  const state = { players:[], liveData:{}, selectedId:null, filterElo:'ALL', lastUpdate:null };
+  const state = { players:[], liveData:{}, selectedId:null, filterElo:'ALL', lastUpdate:null, reyTemporada:null };
   const REFRESH_MS = 15000;
   // Historial de logros — null = todavía no se ha visto ningún evento en
   // esta sesión del navegador (se usa para no lanzar popups de cosas
   // viejas apenas se abre la página, solo de lo que pasa DESPUÉS).
   let eventosVistos = null;
+
+  // ─────────────────────────────────────────────────────
+  // Sonido + vibración para las notificaciones (toasts).
+  // Los navegadores bloquean el audio hasta que la persona haya
+  // interactuado al menos una vez con la página (política estándar
+  // "autoplay") — por eso se "desbloquea" el AudioContext en el primer
+  // click/tecla/touch que ocurra, así ya queda listo para cuando llegue
+  // el primer logro/adelantamiento real.
+  // ─────────────────────────────────────────────────────
+  let audioCtx = null;
+  function getAudioCtx(){
+    if(!audioCtx){
+      try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch(e){ return null; } // navegador sin soporte de Web Audio — no rompe nada
+    }
+    return audioCtx;
+  }
+  ['click','keydown','touchstart'].forEach(evt => {
+    window.addEventListener(evt, () => {
+      const ctx = getAudioCtx();
+      if(ctx && ctx.state === 'suspended') ctx.resume().catch(() => {});
+    }, { once:true, passive:true });
+  });
+
+  function reproducirSonidoLogro(){
+    const ctx = getAudioCtx();
+    if(!ctx) return;
+    if(ctx.state === 'suspended'){ ctx.resume().catch(() => {}); }
+    try{
+      const ahora = ctx.currentTime;
+      // Dos notas ascendentes cortas (estilo "ding-ding" de logro) — nada
+      // de archivos de audio externos, se generan con Web Audio API.
+      [660, 880].forEach((freq, i) => {
+        const inicio = ahora + i * 0.12;
+        const osc  = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, inicio);
+        gain.gain.linearRampToValueAtTime(0.15, inicio + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, inicio + 0.35);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(inicio);
+        osc.stop(inicio + 0.4);
+      });
+    }catch(e){ /* si algo falla generando el sonido, simplemente no suena */ }
+  }
+
+  function vibrarSiPosible(){
+    // Solo funciona en celulares Android con Chrome — iPhones no soportan
+    // la Vibration API, así que ahí simplemente no pasa nada (sin errores).
+    try{ if(navigator.vibrate) navigator.vibrate([80, 40, 80]); }catch(e){}
+  }
 
   const top1ContainerEl       = document.getElementById('top1-container');
   const highlightsContainerEl = document.getElementById('highlights-container');
@@ -477,6 +530,9 @@ window.addEventListener('load', () => {
           danioRecibidoSemana:    p.danio_recibido_semana     || null
         };
       }).sort((a,b) => rankScore(b) - rankScore(a));
+
+      // Rey de la Temporada — {"jugador":..,"dias":..} o null, ya calculado por el bot
+      state.reyTemporada = (!Array.isArray(rawData) && rawData.rey_temporada) || null;
 
       renderTop1();
       renderHighlights();    // primera victoria + 3 tops (últimas 10)
@@ -790,6 +846,17 @@ window.addEventListener('load', () => {
         </div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🛡️</div><div class="highlight-body"><p class="highlight-label">El Defensor</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
+    // Rey de la Temporada — a diferencia de "TOP 1 ACTUAL" (quién está
+    // primero AHORA), esto suma los días TOTALES que cada quien ha
+    // pasado en el puesto #1 desde que existe el ranking. Lo calcula el
+    // bot en cada corrida (rawData.rey_temporada); acá solo se muestra.
+    const rey = state.reyTemporada;
+    const reyPlayer = rey ? state.players.find(p => p.nombre.split('#')[0] === rey.jugador) : null;
+    const reyHtml = (rey && reyPlayer) ? `
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(reyPlayer.icono)}" alt="">
+        <div class="highlight-body"><p class="highlight-label">👑 Rey de la Temporada</p><p class="highlight-player">${reyPlayer.nombre}</p><p class="highlight-value" style="color:#fbbf24;">${rey.dias} día${rey.dias===1?'':'s'} acumulados en el Top 1</p></div></div>`
+      : `<div class="highlight-card"><div class="highlight-icon">👑</div><div class="highlight-body"><p class="highlight-label">Rey de la Temporada</p><p class="highlight-empty">Todavía no hay suficiente historial.</p></div></div>`;
+
     container.innerHTML = `
       <div class="highlight-card">
         <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
@@ -807,7 +874,7 @@ window.addEventListener('load', () => {
         <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
-      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}${duoHtml}${farmeadorHtml}${defensorHtml}`;
+      ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${sinRendirseHtml}${duoHtml}${farmeadorHtml}${defensorHtml}${reyHtml}`;
   }
 
   // ─────────────────────────────────────────────────────
@@ -841,6 +908,16 @@ window.addEventListener('load', () => {
     if(e.tipo === 'primera_victoria_dia'){
       return `<b>${e.jugador_nuevo}</b> consiguió la primera victoria del día`;
     }
+    if(e.tipo === 'adelantamiento'){
+      return e.top_posicion
+        ? `<b>${e.jugador_nuevo}</b> le ha quitado el Top ${e.top_posicion} a <b>${e.jugador_anterior}</b>`
+        : `<b>${e.jugador_nuevo}</b> ha superado a <b>${e.jugador_anterior}</b>`;
+    }
+    if(e.tipo === 'rey_temporada'){
+      return e.jugador_anterior
+        ? `<b>${e.jugador_nuevo}</b> es el nuevo Rey de la Temporada, se lo quitó a <b>${e.jugador_anterior}</b>`
+        : `<b>${e.jugador_nuevo}</b> es el primer Rey de la Temporada`;
+    }
     return `<b>${e.jugador_nuevo}</b> logró algo nuevo`;
   }
 
@@ -862,7 +939,7 @@ window.addEventListener('load', () => {
       </div>`).join('');
   }
 
-  function claveEvento(e){ return `${e.timestamp}|${e.tipo}|${e.categoria||''}|${e.jugador_nuevo}`; }
+  function claveEvento(e){ return `${e.timestamp}|${e.tipo}|${e.categoria||''}|${e.jugador_nuevo}|${e.jugador_anterior||''}`; }
 
   function procesarEventosNuevos(eventos){
     if(!Array.isArray(eventos)) return;
@@ -885,6 +962,8 @@ window.addEventListener('load', () => {
   function mostrarToast(evento){
     const container = document.getElementById('toast-container');
     if(!container) return;
+    reproducirSonidoLogro();
+    vibrarSiPosible();
     const el = document.createElement('div');
     el.className = 'toast';
     el.innerHTML = `
