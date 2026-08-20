@@ -413,6 +413,19 @@ window.addEventListener('load', () => {
   // FIX: raw.githubusercontent.com en vez de jsDelivr — más confiable y sin caché de horas.
   const CDN        = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
   const REFRESH_MS = 15000;
+
+  // FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
+  // y en un puñado de campeones el "championName" que guarda la API de Riot
+  // no coincide exactamente con el nombre real del archivo en DDragon. El
+  // caso clásico es FiddleSticks: Riot lo guarda como "FiddleSticks" (S
+  // mayúscula) pero el ícono real es "Fiddlesticks.png" (s minúscula) — por
+  // eso su imagen nunca cargaba aunque el resto sí. Se usa en todos los
+  // lugares de esta página que arman una URL de ícono de campeón.
+  const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+  const champKey = (name) => {
+    const clean = (name || '').replace(/[^a-zA-Z0-9]/g, '');
+    return CHAMPION_ID_OVERRIDES[clean] || clean;
+  };
   let lastUpdate   = null;
   let loadedOnce   = false;
   let lastProgreso = [];
@@ -696,7 +709,7 @@ window.addEventListener('load', () => {
         const campeon    = liveStatus.campeon || 'Desconocido';
         const modoJuego  = liveStatus.modo_juego || 'Partida';
         const champUrl   = liveStatus.campeon
-          ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${liveStatus.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
+          ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(liveStatus.campeon)}.png`
           : '';
         const hechizosHtml = (liveStatus.hechizos || []).map(h => `
           <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
@@ -716,7 +729,7 @@ window.addEventListener('load', () => {
             <span class="live-game-duo-label">🎮 Dúo con</span>
             ${duoDetalle.map(d => {
               const duoChampUrl = d.campeon
-                ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${d.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png`
+                ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(d.campeon)}.png`
                 : '';
               const duoSpellsHtml = (d.hechizos || []).map(h => `
                 <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
@@ -781,7 +794,7 @@ window.addEventListener('load', () => {
       const p        = jugadores.find(j => j.nombre === jugadorId);
       if (!p) throw new Error("No encontrado");
 
-      const fmt = (name) => name.replace(/[^a-zA-Z0-9]/g,'');
+      const fmt = champKey;
 
       const MINI_CREST_BASE = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
       const VALID_TIERS = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
@@ -795,7 +808,7 @@ window.addEventListener('load', () => {
       document.getElementById('p-emblem').src        = `${MINI_CREST_BASE}${VALID_TIERS.includes(tierSlug) ? tierSlug : 'unranked'}.png`;
 
       // Splash art del campeón con más maestría
-      const topChamp = (p.maestrias && p.maestrias.length) ? p.maestrias[0].campeon.replace(/[^a-zA-Z0-9]/g,'') : null;
+      const topChamp = (p.maestrias && p.maestrias.length) ? champKey(p.maestrias[0].campeon) : null;
       const splashEl = document.getElementById('p-splash');
       if (topChamp) {
         splashEl.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${topChamp}_0.jpg`;
