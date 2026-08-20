@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T02:18:26.512769",
+  "ultimaActualizacion": "2026-08-20T02:21:42.677744",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2643,8 +2643,8 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver IV",
-      "lp": 4,
-      "winrate": "44%",
+      "lp": 0,
+      "winrate": "43%",
       "record_lp_score": 804,
       "record_lp_label": "Silver IV (4 LP)",
       "rol_principal": "Mid",
@@ -2845,9 +2845,28 @@
           "lp": 4,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-20T02:21:20Z",
+          "lp": 0,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742426704",
+          "campeon": "Yone",
+          "kda": "2/13/7 (0.69)",
+          "resultado": "Derrota",
+          "duracion": "38min",
+          "lp_change": -4,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742416018",
           "campeon": "Akali",
@@ -2964,34 +2983,37 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741990251",
-          "campeon": "Yone",
-          "kda": "9/14/6 (1.07)",
-          "resultado": "Derrota",
-          "duracion": "52min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 98,
+      "kills_recientes": 91,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 23,
-      "kills_semana": 178,
+      "vision_promedio_reciente": 22,
+      "kills_semana": 177,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.01,
+      "kda_promedio_semana": 1.85,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 144,
+      "asistencias_semana": 142,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787192474.241,
+          "kills": 2,
+          "muertes": 13,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 12,
+          "campeon": "Yone",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 205,
+          "duracion_seg": 2319,
+          "damage_taken": 46483,
+          "danio_recibido_pct": 21.2
+        },
         {
           "fin_seg": 1787189506.404,
           "kills": 8,
@@ -3359,22 +3381,6 @@
           "duracion_seg": 1889,
           "damage_taken": 32671,
           "danio_recibido_pct": 19.4
-        },
-        {
-          "fin_seg": 1786852777.68,
-          "kills": 3,
-          "muertes": 1,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 22,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 145,
-          "duracion_seg": 1815,
-          "damage_taken": 22555,
-          "danio_recibido_pct": 17.4
         }
       ],
       "duo_semana": null,
@@ -3388,7 +3394,7 @@
         "damage_taken": 76492,
         "campeon": "Trundle"
       },
-      "max_partidas_en_un_dia": 7,
+      "max_partidas_en_un_dia": 8,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
