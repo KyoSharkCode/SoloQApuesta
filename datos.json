@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T00:36:25.078648",
+  "ultimaActualizacion": "2026-08-20T00:39:42.277736",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2495,32 +2495,28 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Bronze I",
-      "lp": 52,
-      "winrate": "40%",
+      "lp": 78,
+      "winrate": "42%",
       "record_lp_score": 779,
       "record_lp_label": "Bronze I (79 LP)",
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Top",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "campeon": "Yone",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Trundle",
           "cantidad": 1
         }
       ],
@@ -2689,9 +2685,28 @@
           "lp": 52,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-20T00:39:22Z",
+          "lp": 78,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742400430",
+          "campeon": "Akali",
+          "kda": "10/5/2 (2.4)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 26,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742388521",
           "campeon": "Akali",
@@ -2808,34 +2823,37 @@
             "SummonerFlash"
           ],
           "duo_con": []
-        },
-        {
-          "match_id": "LA1_1741938550",
-          "campeon": "Trundle",
-          "kda": "8/13/11 (1.46)",
-          "resultado": "Derrota",
-          "duracion": "41min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 91,
+      "kills_recientes": 93,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 24,
-      "kills_semana": 165,
+      "vision_promedio_reciente": 22,
+      "kills_semana": 175,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 1.93,
+      "kda_promedio_semana": 1.94,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 138,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 140,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787186334.375,
+          "kills": 10,
+          "muertes": 5,
+          "asistencias": 2,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 14,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 192,
+          "duracion_seg": 2032,
+          "damage_taken": 28450,
+          "danio_recibido_pct": 19.1
+        },
         {
           "fin_seg": 1787183821.582,
           "kills": 10,
@@ -3203,22 +3221,6 @@
           "duracion_seg": 1764,
           "damage_taken": 25490,
           "danio_recibido_pct": 20.3
-        },
-        {
-          "fin_seg": 1786828653.206,
-          "kills": 0,
-          "muertes": 0,
-          "asistencias": 0,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 1,
-          "campeon": "Ahri",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 16,
-          "duracion_seg": 271,
-          "damage_taken": 1132,
-          "danio_recibido_pct": 17.9
         }
       ],
       "duo_semana": null,
@@ -3232,7 +3234,7 @@
         "damage_taken": 76492,
         "campeon": "Trundle"
       },
-      "max_partidas_en_un_dia": 0,
+      "max_partidas_en_un_dia": 6,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
