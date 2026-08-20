@@ -455,7 +455,6 @@ window.addEventListener('load', () => {
   init();
 
   function init(){
-    cargarCatalogoRunas();
     refreshAll();
     setInterval(refreshAll, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
@@ -758,7 +757,17 @@ window.addEventListener('load', () => {
 
   async function loadProfileData() {
     try {
-      const res = await fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache: 'no-store' });
+      // FIX: cargarCatalogoRunas() se disparaba en init() sin esperar
+      // ("fire and forget"), así que en la PRIMERA carga esto podía
+      // renderizar el historial antes de que el catálogo de runas hubiera
+      // llegado — runeUrl() devolvía null para todo y no salía nada, o a
+      // veces el <img> alcanzaba a crearse con la carrera medio ganada
+      // pero sin datos todavía. Ahora se espera junto con datos.json,
+      // igual que ya se hacía en partida.html.
+      const [res] = await Promise.all([
+        fetch(`${CDN}/datos.json?t=${Date.now()}`, { cache: 'no-store' }),
+        cargarCatalogoRunas(),
+      ]);
       if(!res.ok) throw new Error();
       const data     = await res.json();
       const jugadores = Array.isArray(data) ? data : (data.jugadores || []);
