@@ -125,7 +125,11 @@
      dígitos) y el bloque de items terminaba empezando en una posición X
      distinta en cada fila → efecto "escalera". Con anchos fijos todas
      las filas alinean sus columnas exactamente igual. */
-  .p-row{ display:grid; grid-template-columns:64px 1fr 92px 128px 176px; align-items:center; gap:14px; padding:10px 16px; border-top:1px solid var(--border); font-size:13px; }
+  /* FIX: la primera columna (64px) estaba pensada solo para campeón+hechizos
+     (36+10+16=62px, justo). Al agregar las runas (otro ícono de 16px + gap)
+     el bloque .p-champ pasó a medir ~88px y se salía de esos 64px, empujando
+     y amontonando todo lo de al lado — por eso se ensancha a 96px. */
+  .p-row{ display:grid; grid-template-columns:96px 1fr 92px 128px 176px; align-items:center; gap:14px; padding:10px 16px; border-top:1px solid var(--border); font-size:13px; }
   .p-row:first-child{ border-top:none; }
   .p-row.self{ background:rgba(139,92,246,.08); }
   .p-champ{ display:flex; align-items:center; gap:10px; min-width:0; }
