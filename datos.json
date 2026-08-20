@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T06:59:47.261067",
+  "ultimaActualizacion": "2026-08-20T07:01:32.348959",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4171,6 +4171,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-20T07:01:27Z",
+      "tipo": "rey_temporada",
+      "icono": "👑",
+      "categoria_label": "Rey de la Temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "0.0 días acumulados en el Top 1"
+    },
+    {
       "timestamp": "2026-08-20T04:15:31Z",
       "tipo": "primera_victoria_dia",
       "icono": "🌅",
@@ -4427,6 +4436,11 @@
     "Ostia#LAN": 5,
     "adrianNOOBYT#LAN": 6
   },
-  "tiempo_top1": {},
-  "rey_temporada": null
+  "tiempo_top1": {
+    "ゆうき まこと": 0.0
+  },
+  "rey_temporada": {
+    "jugador": "ゆうき まこと",
+    "dias": 0.0
+  }
 }
