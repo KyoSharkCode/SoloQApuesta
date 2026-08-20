@@ -208,6 +208,8 @@
   .match-champ-img { width:48px; height:48px; border-radius:10px; }
   .match-spells{ display:flex; flex-direction:column; gap:3px; }
   .match-spells img{ width:20px; height:20px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
+  .match-runes{ display:flex; flex-direction:column; gap:3px; }
+  .match-runes img{ width:20px; height:20px; border-radius:50%; border:1px solid var(--border); background:#0a0a0c; object-fit:contain; padding:1px; }
   .match-champ{ font-size:15px; font-weight:700; color:#ffffff; }
   .match-kda{ font-size:13px; color:var(--text-faint); margin-top:3px; }
   .match-duo{ font-size:12px; font-weight:700; color:var(--accent-soft); margin-top:3px; }
@@ -406,6 +408,30 @@ window.addEventListener('load', () => {
   let loadedOnce   = false;
   let lastProgreso = [];
 
+  // Runas — igual que en partida.html/index.html: el id ya viene guardado
+  // en datos.json (historial de cada jugador), solo falta el catálogo de
+  // DDragon para resolver el ícono. Se pide una sola vez, no en cada
+  // refresh de 15s.
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  let runasMap = {};
+  let runasCatalogoPromise = null;
+  function cargarCatalogoRunas(){
+    if (runasCatalogoPromise) return runasCatalogoPromise;
+    runasCatalogoPromise = fetch(`${DDRAGON}/data/en_US/runesReforged.json`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        (data || []).forEach(estilo => {
+          runasMap[estilo.id] = estilo.icon;
+          (estilo.slots || []).forEach(slot => {
+            (slot.runes || []).forEach(r => { runasMap[r.id] = r.icon; });
+          });
+        });
+      })
+      .catch(e => console.error('no se pudo cargar el catálogo de runas', e));
+    return runasCatalogoPromise;
+  }
+  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON}/img/${runasMap[perkId]}` : null;
+
   window.addEventListener('resize', () => {
     requestAnimationFrame(() => renderLpChart(lastProgreso));
   });
@@ -420,6 +446,7 @@ window.addEventListener('load', () => {
   init();
 
   function init(){
+    cargarCatalogoRunas();
     refreshAll();
     setInterval(refreshAll, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
@@ -802,6 +829,16 @@ window.addEventListener('load', () => {
             const spellsHtml = (Array.isArray(h.hechizos) ? h.hechizos : []).map(s =>
               `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
+            // Runas — mismo criterio que partida.html/index.html: keystone
+            // arriba, árbol secundario abajo, se omiten en silencio si el
+            // catálogo todavía no cargó.
+            const keystoneUrl   = runeUrl(h.perk_principal);
+            const secundariaUrl = runeUrl(h.estilo_secundario);
+            const runesHtml = (keystoneUrl || secundariaUrl) ? `
+              <span class="match-runes">
+                ${keystoneUrl ? `<img src="${keystoneUrl}" alt="runa principal" onerror="this.style.visibility='hidden'">` : ''}
+                ${secundariaUrl ? `<img src="${secundariaUrl}" alt="árbol secundario" onerror="this.style.visibility='hidden'">` : ''}
+              </span>` : '';
             const duoCon = Array.isArray(h.duo_con) ? h.duo_con : [];
             const tag      = h.match_id ? 'a' : 'div';
             const hrefAttr = h.match_id ? `href="partida.html?match_id=${encodeURIComponent(h.match_id)}&jugador=${encodeURIComponent(jugadorId)}"` : '';
@@ -810,6 +847,7 @@ window.addEventListener('load', () => {
               <span class="match-icons">
                 <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
                 ${spellsHtml ? `<span class="match-spells">${spellsHtml}</span>` : ''}
+                ${runesHtml}
               </span>
               <div>
                 <div class="match-champ">${h.campeon}</div>
