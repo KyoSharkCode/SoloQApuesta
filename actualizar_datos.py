@@ -4,7 +4,7 @@ import time
 import calendar
 import requests
 from urllib.parse import quote
-from datetime import datetime
+from datetime import datetime, timedelta
 
 REGION_API  = "americas"
 REGION_GAME = "la1"
@@ -370,15 +370,26 @@ def obtener_datos():
     mes = ahora_utc.month
     offset_h = 2 if 3 < mes < 10 else 1
 
-    ahora_spain_h = (ahora_utc.hour + offset_h) % 24
-    if ahora_spain_h >= 6:
-        hoy_6am_spain  = ahora_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-        inicio_dia_utc = calendar.timegm(hoy_6am_spain.timetuple()) + (6 - offset_h) * 3600
+    # FIX: el cálculo anterior sacaba "ayer" restando 1 día a la FECHA UTC
+    # (ahora_utc - timedelta(days=1)).replace(hour=0...). Eso está mal
+    # justo en la ventana de las 2 horas (1 hora en invierno) después de
+    # medianoche en España: en esa ventana España YA cruzó a un nuevo día
+    # de calendario pero UTC todavía no (p.ej. 20-ago 22:00 UTC = 21-ago
+    # 00:00 España en verano). Restarle 1 día a la fecha UTC (19-ago) daba
+    # un corte de "hoy" con un día ENTERO de más de atraso (19-ago 6AM en
+    # vez de 20-ago 6AM), dejando "primera victoria del día" y "sin
+    # rendirse" pegados a un ganador de casi 24h atrás durante esa ventana
+    # — esto es lo que reportó el usuario viendo a Pinea todavía como
+    # "primera victoria" pasada la medianoche.
+    # Ahora se trabaja directamente sobre la hora local de España (sumando
+    # el offset a UTC primero) para sacar la fecha de calendario correcta,
+    # sin depender de en qué fecha UTC está el reloj.
+    ahora_spain = ahora_utc + timedelta(hours=offset_h)
+    if ahora_spain.hour >= 6:
+        dia_ref_spain = ahora_spain.replace(hour=6, minute=0, second=0, microsecond=0)
     else:
-        from datetime import timedelta
-        ayer_utc       = ahora_utc - timedelta(days=1)
-        ayer_6am_spain = ayer_utc.replace(hour=0, minute=0, second=0, microsecond=0)
-        inicio_dia_utc = calendar.timegm(ayer_6am_spain.timetuple()) + (6 - offset_h) * 3600
+        dia_ref_spain = (ahora_spain - timedelta(days=1)).replace(hour=6, minute=0, second=0, microsecond=0)
+    inicio_dia_utc = calendar.timegm(dia_ref_spain.timetuple()) - offset_h * 3600
 
     hace_7_dias = int(time.time()) - 7 * 24 * 60 * 60
     print(f"📅 Inicio del día (hora España 6AM → UTC ts): {inicio_dia_utc}")
