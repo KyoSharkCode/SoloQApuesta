@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T23:50:35.935991",
+  "ultimaActualizacion": "2026-08-20T23:52:38.011813",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -994,33 +994,29 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 64,
-      "winrate": "47%",
-      "elo_score": 1164,
+      "lp": 50,
+      "winrate": "45%",
+      "elo_score": 1150,
       "record_lp_score": 1190,
       "record_lp_label": "Silver I (90 LP)",
       "rol_principal": "Jungla",
       "top_roles": [
         {
           "rol": "Jungla",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
-          "rol": "ADC",
+          "rol": "Support",
           "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Lillia",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "campeon": "Maokai",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Twitch",
           "cantidad": 1
         }
       ],
@@ -1197,9 +1193,32 @@
           "lp": 64,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-20T23:52:20Z",
+          "lp": 50,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742621464",
+          "campeon": "Lillia",
+          "kda": "1/6/10 (1.83)",
+          "resultado": "Derrota",
+          "duracion": "27min",
+          "lp_change": -14,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8010,
+          "estilo_secundario": 8300
+        },
         {
           "match_id": "LA1_1742602038",
           "campeon": "Lillia",
@@ -1336,36 +1355,39 @@
           "duo_con": [],
           "perk_principal": 8010,
           "estilo_secundario": 8300
-        },
-        {
-          "match_id": "LA1_1741819940",
-          "campeon": "Twitch",
-          "kda": "8/10/4 (1.2)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200
         }
       ],
-      "kills_recientes": 63,
+      "kills_recientes": 56,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 44,
-      "kills_semana": 117,
+      "kills_semana": 118,
       "pentakills_semana": 0,
       "vision_promedio_semana": 42,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.71,
+      "kda_promedio_semana": 2.67,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 192,
-      "partidas_semana": 17,
+      "asistencias_semana": 202,
+      "partidas_semana": 18,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787269882.375,
+          "kills": 1,
+          "muertes": 6,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 39,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 174,
+          "duracion_seg": 1637,
+          "damage_taken": 29140,
+          "danio_recibido_pct": 21.0
+        },
         {
           "fin_seg": 1787264409.398,
           "kills": 3,
@@ -1646,7 +1668,7 @@
         }
       ],
       "duo_semana": {
-        "nombre": "Pinea",
+        "nombre": "Ostia",
         "partidas": 2
       },
       "cs_min_semana": {
@@ -1659,8 +1681,18 @@
         "damage_taken": 43224,
         "campeon": "Lillia"
       },
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "max_partidas_en_un_dia": 4,
+      "primera_victoria_hoy": {
+        "timestamp": 1787258784345,
+        "campeon": "Lillia",
+        "kda": "2/3/10 (4.0)",
+        "equipo": "blue",
+        "duracion": "24:17",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
       "dia_referencia": 1787198400
     },
     {
@@ -3888,9 +3920,9 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 41,
-      "winrate": "64%",
-      "elo_score": 841,
+      "lp": 28,
+      "winrate": "62%",
+      "elo_score": 828,
       "record_lp_score": 841,
       "record_lp_label": "Silver IV (41 LP)",
       "rol_principal": "Support",
@@ -3903,11 +3935,7 @@
       "top_recientes": [
         {
           "campeon": "Swain",
-          "cantidad": 8
-        },
-        {
-          "campeon": "Lux",
-          "cantidad": 1
+          "cantidad": 9
         }
       ],
       "maestrias": [
@@ -4053,9 +4081,32 @@
           "lp": 41,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-20T23:52:20Z",
+          "lp": 28,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742621464",
+          "campeon": "Swain",
+          "kda": "3/8/5 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "27min",
+          "lp_change": -13,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
+        },
         {
           "match_id": "LA1_1742601278",
           "campeon": "Swain",
@@ -4206,38 +4257,39 @@
           ],
           "perk_principal": 8112,
           "estilo_secundario": 8000
-        },
-        {
-          "match_id": "LA1_1742363620",
-          "campeon": "Lux",
-          "kda": "2/6/13 (2.5)",
-          "resultado": "Victoria",
-          "duracion": "30min",
-          "lp_change": 28,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8229,
-          "estilo_secundario": 8100
         }
       ],
-      "kills_recientes": 20,
+      "kills_recientes": 21,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 54,
-      "kills_semana": 82,
+      "vision_promedio_reciente": 51,
+      "kills_semana": 80,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 52,
+      "vision_promedio_semana": 53,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.73,
+      "kda_promedio_semana": 2.68,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 232,
+      "asistencias_semana": 234,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787269882.375,
+          "kills": 3,
+          "muertes": 8,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 41,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 34,
+          "duracion_seg": 1637,
+          "damage_taken": 25081,
+          "danio_recibido_pct": 18.1
+        },
         {
           "fin_seg": 1787264230.523,
           "kills": 2,
@@ -4637,29 +4689,11 @@
           "duracion_seg": 1949,
           "damage_taken": 16414,
           "danio_recibido_pct": 10.8
-        },
-        {
-          "fin_seg": 1786990813.636,
-          "kills": 5,
-          "muertes": 6,
-          "asistencias": 3,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 17,
-          "campeon": "Veigar",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 176,
-          "duracion_seg": 1764,
-          "damage_taken": 23907,
-          "danio_recibido_pct": 16.8
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 16
+        "partidas": 15
       },
       "cs_min_semana": {
         "cs_por_min": 6.0,
@@ -4671,8 +4705,18 @@
         "damage_taken": 30576,
         "campeon": "Swain"
       },
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "max_partidas_en_un_dia": 5,
+      "primera_victoria_hoy": {
+        "timestamp": 1787259095028,
+        "campeon": "Swain",
+        "kda": "2/2/12 (7.0)",
+        "equipo": "red",
+        "duracion": "39:00",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerDot"
+        ]
+      },
       "dia_referencia": 1787198400
     }
   ],
@@ -4684,8 +4728,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.73,
-      "detalle": "2.73 KDA"
+      "valor": 2.68,
+      "detalle": "2.68 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4694,8 +4738,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 232,
-      "detalle": "232 asistencias"
+      "valor": 234,
+      "detalle": "234 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
