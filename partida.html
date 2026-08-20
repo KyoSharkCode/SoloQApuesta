@@ -132,6 +132,11 @@
   .p-champ img.p-champ-img{ width:36px; height:36px; border-radius:8px; background:#1d1d24; object-fit:cover; flex-shrink:0; }
   .p-spells{ display:flex; flex-direction:column; gap:2px; flex-shrink:0; }
   .p-spells img{ width:16px; height:16px; border-radius:4px; border:1px solid var(--border); background:#1d1d24; }
+  /* RUNAS — keystone arriba (círculo, fondo oscuro típico de Riot) + árbol
+     secundario abajo, mismo tamaño que los hechizos para que la fila no
+     se desarme. */
+  .p-runes{ display:flex; flex-direction:column; gap:2px; flex-shrink:0; }
+  .p-runes img{ width:16px; height:16px; border-radius:50%; border:1px solid var(--border); background:#0a0a0c; object-fit:contain; padding:1px; }
   .p-name-block{ min-width:0; display:flex; flex-direction:column; line-height:1.3; }
   .p-name{ font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px; }
   .p-name.group-name{ color:var(--accent-soft); }
@@ -280,6 +285,30 @@ window.addEventListener('load', () => {
     backLink.href = `perfil.html?jugador=${encodeURIComponent(jugadorId)}`;
     backLink.textContent = '← Volver al Perfil';
   }
+
+  // Runas — a diferencia de campeones/items/hechizos, Riot NO expone un
+  // patrón de URL predecible por id de runa (p.ej. "8005.png" no existe).
+  // Hay que descargar el catálogo runesReforged.json una vez (json chico,
+  // ~15kb, cacheable) y armar un mapa id→ruta de ícono. El dato del id de
+  // la runa en sí (perk_principal / estilo_secundario) ya viene guardado
+  // en datos_partidas.json desde antes — no hace falta tocar el bot.
+  let runasMap = {};
+  async function cargarCatalogoRunas(){
+    try {
+      const res = await fetch(`${DDRAGON}/data/en_US/runesReforged.json`);
+      if (!res.ok) return;
+      const data = await res.json();
+      (data || []).forEach(estilo => {
+        runasMap[estilo.id] = estilo.icon;
+        (estilo.slots || []).forEach(slot => {
+          (slot.runes || []).forEach(r => { runasMap[r.id] = r.icon; });
+        });
+      });
+    } catch (e) {
+      console.error('no se pudo cargar el catálogo de runas', e);
+    }
+  }
+  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON}/img/${runasMap[perkId]}` : null;
 
   const fmt = (name) => (name || '').replace(/[^a-zA-Z0-9]/g, '');
   const champUrl  = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
@@ -471,10 +500,59 @@ window.addEventListener('load', () => {
     // ── KDA grande ──
     ctx.fillStyle = '#ffffff';
     ctx.font = '900 42px Arial, sans-serif';
-    ctx.fillText(`${self.kills}/${self.muertes}/${self.asistencias}`, contentX, 200);
+    const kdaTexto = `${self.kills}/${self.muertes}/${self.asistencias}`;
+    ctx.fillText(kdaTexto, contentX, 200);
+    const kdaAncho = ctx.measureText(kdaTexto).width;
     ctx.fillStyle = '#71717a';
     ctx.font = '700 13px Arial, sans-serif';
     ctx.fillText('KDA', contentX, 220);
+
+    // ── Runas: keystone (principal) + escudo del árbol secundario, estilo
+    // OP.GG — se ubican a la derecha del número de KDA, con margen dinámico
+    // según su ancho real para que nunca se encimen (KDA con más muertes/
+    // asistencias mide más ancho). Se dibujan sobre el mismo canvas oscuro
+    // porque los íconos de runas de Riot ya vienen con fondo transparente. ──
+    const keystoneUrl = runeUrl(self.perk_principal);
+    const secundariaUrl = runeUrl(self.estilo_secundario);
+    if (keystoneUrl || secundariaUrl) {
+      const [keystoneImg, secundariaImg] = await Promise.all([
+        keystoneUrl ? cargarImagenSegura(keystoneUrl).catch(() => null) : Promise.resolve(null),
+        secundariaUrl ? cargarImagenSegura(secundariaUrl).catch(() => null) : Promise.resolve(null),
+      ]);
+      const runeX = contentX + kdaAncho + 26;
+      const runeY = 155;
+      if (keystoneImg) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(runeX + 20, runeY + 20, 20, 0, Math.PI * 2);
+        ctx.fillStyle = '#0a0a0c';
+        ctx.fill();
+        ctx.clip();
+        ctx.drawImage(keystoneImg, runeX, runeY, 40, 40);
+        ctx.restore();
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(runeX + 20, runeY + 20, 20, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      if (secundariaImg) {
+        const sx = runeX + 27, sy = runeY + 27, sr = 13;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(sx + sr, sy + sr, sr, 0, Math.PI * 2);
+        ctx.fillStyle = '#131317';
+        ctx.fill();
+        ctx.clip();
+        ctx.drawImage(secundariaImg, sx, sy, sr * 2, sr * 2);
+        ctx.restore();
+        ctx.strokeStyle = '#0a0a0c';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(sx + sr, sy + sr, sr, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
 
     // ── Cajitas de stats, apiladas verticalmente ──
     const stats = [
@@ -717,7 +795,13 @@ window.addEventListener('load', () => {
   async function cargar(){
     showState('Cargando partida…', false);
     try {
-      const res = await fetch(`${CDN}/datos_partidas.json?t=${Date.now()}`, { cache: 'no-store' });
+      // El catálogo de runas se pide en paralelo — si tarda o falla, la
+      // partida se muestra igual (runeUrl() simplemente devuelve null y
+      // esos íconos no se pintan, ver filaJugador/generarTarjetaImagen).
+      const [res] = await Promise.all([
+        fetch(`${CDN}/datos_partidas.json?t=${Date.now()}`, { cache: 'no-store' }),
+        cargarCatalogoRunas(),
+      ]);
       // FIX: un 404 (el archivo todavía no existe en el repo, p.ej. recién
       // agregada la función o el bot no ha vuelto a correr) NO es un error
       // de conexión — es el mismo caso de "esta partida no tiene detalle
@@ -870,6 +954,16 @@ window.addEventListener('load', () => {
         ? `<img src="${itemUrl(id)}" alt="" onerror="this.style.visibility='hidden'">`
         : `<div class="item-empty"></div>`
     ).join('');
+    // Keystone (perk_principal) + árbol secundario (estilo_secundario) —
+    // ya vienen guardados en datos_partidas.json, solo falta resolver el
+    // id a un ícono vía el catálogo cargado en cargarCatalogoRunas().
+    const keystoneUrl = runeUrl(j.perk_principal);
+    const secundariaUrl = runeUrl(j.estilo_secundario);
+    const runesHtml = (keystoneUrl || secundariaUrl) ? `
+      <div class="p-runes">
+        ${keystoneUrl ? `<img src="${keystoneUrl}" alt="runa principal" onerror="this.style.visibility='hidden'">` : ''}
+        ${secundariaUrl ? `<img src="${secundariaUrl}" alt="árbol secundario" onerror="this.style.visibility='hidden'">` : ''}
+      </div>` : '';
     return `
       <div class="p-row ${esSelf ? 'self' : ''}">
         <div class="p-champ">
@@ -877,6 +971,7 @@ window.addEventListener('load', () => {
           <div class="p-spells">
             ${(j.hechizos||[]).map(s => `<img src="${spellUrl(s)}" alt="" onerror="this.style.visibility='hidden'">`).join('')}
           </div>
+          ${runesHtml}
         </div>
         <div class="p-name-block">
           <span class="${nombreClase}">${nombreMostrar}</span>
