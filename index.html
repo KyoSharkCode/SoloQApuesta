@@ -20,6 +20,17 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+
+  /* Scrollbar personalizado — reemplaza el feo scrollbar blanco nativo del
+     sistema (Windows/etc) por uno delgado y oscuro que combina con el resto
+     del sitio. Se aplica a TODO (*) así que cubre tanto el scroll de la
+     página como cualquier cajita interna con overflow:auto. */
+  *{ scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
+  *::-webkit-scrollbar{ width:10px; height:10px; }
+  *::-webkit-scrollbar-track{ background:transparent; }
+  *::-webkit-scrollbar-thumb{ background-color:var(--border); border-radius:8px; border:2px solid var(--bg); background-clip:padding-box; }
+  *::-webkit-scrollbar-thumb:hover{ background-color:var(--accent); }
+  *::-webkit-scrollbar-corner{ background:transparent; }
   body{
     margin:0; background: radial-gradient(1200px 500px at 50% -10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
     color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
