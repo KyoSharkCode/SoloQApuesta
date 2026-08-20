@@ -153,7 +153,7 @@
   </section>
 
   <footer class="site-footer">
-    <img src="logoSoloQReto.png" alt="Logo SoloQ Reto" class="footer-logo">
+    <img src="SoloQRetoLogo.svg" alt="Logo SoloQ Reto" class="footer-logo">
     <p>creado por KyoSumiVT</p>
   </footer>
 </div>
@@ -185,7 +185,17 @@
 <script>
 window.addEventListener('load', () => {
   function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${iconId||1}.png`; }
-  function getChampImg(campeon){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(campeon||'').replace(/[^a-zA-Z0-9]/g,'')}.png`; }
+  // FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
+  // y en un puñado de campeones el "championName" que guarda la API de Riot
+  // no coincide exactamente con el nombre real del archivo en DDragon. El
+  // caso clásico es FiddleSticks: Riot lo guarda como "FiddleSticks" (S
+  // mayúscula) pero el ícono real es "Fiddlesticks.png" (s minúscula).
+  const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+  function champKey(campeon){
+    const clean = (campeon||'').replace(/[^a-zA-Z0-9]/g,'');
+    return CHAMPION_ID_OVERRIDES[clean] || clean;
+  }
+  function getChampImg(campeon){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(campeon)}.png`; }
 
   const kpiContainer   = document.getElementById('kpi-container');
   const barsContainer  = document.getElementById('bars-container');
