@@ -250,9 +250,12 @@ window.addEventListener('load', () => {
   }
 
   const fmt = (name) => (name || '').replace(/[^a-zA-Z0-9]/g, '');
-  const champUrl = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
-  const spellUrl = (name) => `${DDRAGON}/img/spell/${name}.png`;
-  const itemUrl  = (id)   => `${DDRAGON}/img/item/${id}.png`;
+  const champUrl  = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
+  const spellUrl  = (name) => `${DDRAGON}/img/spell/${name}.png`;
+  const itemUrl   = (id)   => `${DDRAGON}/img/item/${id}.png`;
+  // Splash art (la ilustración grande, no el ícono cuadrado) — no lleva
+  // versión de DDragon en la URL, es una ruta aparte.
+  const splashUrl = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${fmt(name)}_0.png`;
 
   // Roles — mismo mapeo que ya usa el resto del sitio (BOTTOM→ADC,
   // UTILITY→SUPPORT). Los iconos son los mismos minimalistas que Riot usa
@@ -304,111 +307,235 @@ window.addEventListener('load', () => {
     });
   }
 
+  // Dibuja el borde de un rectángulo redondeado (sin fill/stroke — el que
+  // llama decide qué hacer con el path después).
+  function roundRect(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y,     x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x,     y + h, r);
+    ctx.arcTo(x,     y + h, x,     y,     r);
+    ctx.arcTo(x,     y,     x + w, y,     r);
+    ctx.closePath();
+  }
+
+  // "background-size: cover" pero recortando desde la imagen ORIGEN (mejor
+  // calidad que escalar y luego recortar) — usado para el splash art, que
+  // es panorámico y hay que encajarlo en un panel más angosto y alto.
+  function drawCoverImage(ctx, img, x, y, w, h){
+    const imgRatio = img.width / img.height;
+    const boxRatio = w / h;
+    let sx, sy, sw, sh;
+    if (imgRatio > boxRatio) {
+      sh = img.height; sw = sh * boxRatio; sx = (img.width - sw) / 2; sy = 0;
+    } else {
+      sw = img.width; sh = sw / boxRatio; sx = 0; sy = (img.height - sh) / 2;
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
+
   async function generarTarjetaImagen(){
-    const { self, detalle, resultadoTexto } = ultimoRenderParaCompartir || {};
+    const { self, detalle, resultadoTexto, jugadores } = ultimoRenderParaCompartir || {};
     if (!self) throw new Error('sin datos de jugador para compartir');
 
-    const W = 1000, H = 560;
+    const W = 1100, H = 620;
     const canvas = document.createElement('canvas');
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
 
     const colorResultado = self.victoria ? '#34d399' : '#f87171';
 
-    // Fondo
-    const grad = ctx.createRadialGradient(W / 2, 0, 0, W / 2, 0, 750);
-    grad.addColorStop(0, 'rgba(139,92,246,0.28)');
-    grad.addColorStop(1, '#0a0a0c');
-    ctx.fillStyle = grad;
+    // ── Fondo base (degradado del panel derecho) ──
+    const gradBg = ctx.createLinearGradient(0, 0, W, H);
+    gradBg.addColorStop(0, '#18181d');
+    gradBg.addColorStop(1, '#0a0a0c');
+    ctx.fillStyle = gradBg;
     ctx.fillRect(0, 0, W, H);
-    ctx.fillStyle = colorResultado;
-    ctx.fillRect(0, 0, 8, H);
 
-    // Resultado
-    ctx.fillStyle = colorResultado;
-    ctx.font = '900 42px Arial, sans-serif';
-    ctx.fillText((resultadoTexto || '').toUpperCase(), 60, 90);
+    // ── Panel izquierdo: splash art del campeón, recortado con un corte
+    // diagonal (más angosto arriba que abajo, para que se sienta dinámico) ──
+    const xTop = 460, xBottom = 560, anchoSplash = Math.max(xTop, xBottom);
 
-    // Campeón (círculo) + nombre + rol
-    const champX = 60, champY = 120, champSize = 120;
-    let champImg = null;
-    try { champImg = await cargarImagenSegura(champUrl(self.campeon)); } catch (e) { champImg = null; }
+    let splashImg = null;
+    try { splashImg = await cargarImagenSegura(splashUrl(self.campeon)); } catch (e) { splashImg = null; }
 
-    if (champImg) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
-      ctx.closePath();
-      ctx.clip();
-      ctx.drawImage(champImg, champX, champY, champSize, champSize);
-      ctx.restore();
-      ctx.strokeStyle = '#a78bfa';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
-      ctx.stroke();
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(xTop, 0);
+    ctx.lineTo(xBottom, H);
+    ctx.lineTo(0, H);
+    ctx.closePath();
+    ctx.clip();
+
+    if (splashImg) {
+      drawCoverImage(ctx, splashImg, 0, 0, anchoSplash, H);
     } else {
       ctx.fillStyle = '#1d1d24';
-      ctx.beginPath();
-      ctx.arc(champX + champSize / 2, champY + champSize / 2, champSize / 2, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fillRect(0, 0, anchoSplash, H);
       ctx.fillStyle = '#a78bfa';
-      ctx.font = '700 42px Arial, sans-serif';
+      ctx.font = '900 100px Arial, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText((self.campeon || '?').slice(0, 2).toUpperCase(), champX + champSize / 2, champY + champSize / 2 + 15);
+      ctx.fillText((self.campeon || '?').slice(0, 2).toUpperCase(), anchoSplash / 2, H / 2 + 34);
       ctx.textAlign = 'left';
     }
+    // Sombreado leve — que se note el corte sin importar qué tan clara sea la ilustración
+    const overlayL = ctx.createLinearGradient(0, 0, 0, H);
+    overlayL.addColorStop(0,    'rgba(10,10,12,0.05)');
+    overlayL.addColorStop(0.7,  'rgba(10,10,12,0.12)');
+    overlayL.addColorStop(1,    'rgba(10,10,12,0.6)');
+    ctx.fillStyle = overlayL;
+    ctx.fillRect(0, 0, anchoSplash, H);
+    ctx.restore();
 
-    const textX = champX + champSize + 28;
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '800 30px Arial, sans-serif';
-    ctx.fillText(self.campeon || '—', textX, champY + 46);
-    ctx.fillStyle = '#a1a1aa';
-    ctx.font = '600 18px Arial, sans-serif';
-    ctx.fillText(rolInfo(self.rol).label, textX, champY + 76);
+    // Línea de acento sobre la diagonal
+    ctx.strokeStyle = '#8b5cf6';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(xTop, 0);
+    ctx.lineTo(xBottom, H);
+    ctx.stroke();
 
-    // KDA grande, a la derecha
+    // ── Cinta oscura que cruza justo la diagonal — ahí va el nombre ──
+    const nameBandY = 34, nameBandH = 94;
+    const nameGrad = ctx.createLinearGradient(xTop - 70, 0, xTop + 300, 0);
+    nameGrad.addColorStop(0,    'rgba(10,10,12,0)');
+    nameGrad.addColorStop(0.35, 'rgba(10,10,12,0.88)');
+    nameGrad.addColorStop(1,    'rgba(10,10,12,0.88)');
+    ctx.fillStyle = nameGrad;
+    ctx.fillRect(xTop - 70, nameBandY, W - (xTop - 70), nameBandH);
+
+    const nameX = xTop + 24;
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 46px Arial, sans-serif';
+    ctx.font = '900 34px Arial, sans-serif';
+    ctx.fillText(self.campeon || '—', nameX, nameBandY + 46);
+    ctx.fillStyle = '#a78bfa';
+    ctx.font = '700 16px Arial, sans-serif';
+    ctx.fillText(`${rolInfo(self.rol).label} · ${self.nombre_grupo || ''}`, nameX, nameBandY + 74);
+
+    // ── Resultado, arriba a la derecha ──
+    ctx.fillStyle = colorResultado;
+    ctx.font = '900 30px Arial, sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText(`${self.kills}/${self.muertes}/${self.asistencias}`, W - 60, champY + 56);
+    ctx.fillText((resultadoTexto || '').toUpperCase(), W - 44, 64);
     ctx.textAlign = 'left';
 
-    // Nombre del jugador
-    ctx.fillStyle = '#a78bfa';
-    ctx.font = '700 22px Arial, sans-serif';
-    ctx.fillText(self.nombre_grupo || '', 60, 288);
+    // A partir de acá, todo el contenido usa esta X — queda siempre a la
+    // derecha del corte diagonal sin importar la altura (xBottom es el
+    // punto más ancho de la diagonal, así que +30 siempre da margen).
+    const contentX = xBottom + 30;
 
-    // Fila de stats
+    // ── KDA grande ──
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 42px Arial, sans-serif';
+    ctx.fillText(`${self.kills}/${self.muertes}/${self.asistencias}`, contentX, 200);
+    ctx.fillStyle = '#71717a';
+    ctx.font = '700 13px Arial, sans-serif';
+    ctx.fillText('KDA', contentX, 220);
+
+    // ── Cajitas de stats, apiladas verticalmente ──
     const stats = [
-      ['CS', `${self.cs} (${self.cs_por_min}/min)`],
+      ['CS / MIN', `${self.cs} (${self.cs_por_min}/min)`],
       ['DAÑO A CAMPEONES', (self.danio_a_campeones || 0).toLocaleString('es-ES')],
-      ['ORO', (self.oro || 0).toLocaleString('es-ES')],
+      ['ORO TOTAL', (self.oro || 0).toLocaleString('es-ES')],
       ['VISIÓN', String(self.vision ?? 0)],
     ];
-    const statW = (W - 120) / stats.length;
-    stats.forEach((s, i) => {
-      const x = 60 + i * statW;
+    const boxW = 200, boxH = 48, boxGap = 10;
+    let boxY = 250;
+    stats.forEach(([label, value]) => {
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      roundRect(ctx, contentX, boxY, boxW, boxH, 8);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+      ctx.lineWidth = 1;
+      roundRect(ctx, contentX, boxY, boxW, boxH, 8);
+      ctx.stroke();
+
       ctx.fillStyle = '#9a9aa3';
-      ctx.font = '700 13px Arial, sans-serif';
-      ctx.fillText(s[0], x, 350);
+      ctx.font = '700 10px Arial, sans-serif';
+      ctx.fillText(label, contentX + 12, boxY + 19);
       ctx.fillStyle = '#ffffff';
-      ctx.font = '800 26px Arial, sans-serif';
-      ctx.fillText(s[1], x, 386);
+      ctx.font = '800 18px Arial, sans-serif';
+      ctx.fillText(value, contentX + 12, boxY + 38);
+
+      boxY += boxH + boxGap;
     });
 
-    // Duración + fecha
+    // ── Badges de desempeño (los mismos de la página), apilados a la
+    // derecha de las cajitas de stats — ancho de cada uno según su texto,
+    // para que nunca se vea cortado. ──
+    let equipo = [];
+    if (Array.isArray(jugadores)) equipo = jugadores.filter(j => j.equipo === self.equipo);
+    const badges = equipo.length >= 2 ? calcularBadgesEquipo(self, equipo) : [];
+
+    const badgeX = contentX + boxW + 20;
+    const badgeMaxW = W - badgeX - 40;
+    let badgeY = 250;
+    ctx.font = '700 12.5px Arial, sans-serif';
+    badges.forEach(b => {
+      const texto = `${b.icono} ${b.label}`;
+      const pillW = Math.min(ctx.measureText(texto).width + 34, badgeMaxW);
+      const colorBadge = b.tipo === 'good' ? '#34d399' : '#f87171';
+      const bgBadge    = b.tipo === 'good' ? 'rgba(52,211,153,0.12)' : 'rgba(248,113,113,0.12)';
+
+      ctx.fillStyle = bgBadge;
+      roundRect(ctx, badgeX, badgeY, pillW, 40, 20);
+      ctx.fill();
+      ctx.strokeStyle = colorBadge;
+      ctx.lineWidth = 1.3;
+      roundRect(ctx, badgeX, badgeY, pillW, 40, 20);
+      ctx.stroke();
+
+      ctx.fillStyle = colorBadge;
+      ctx.font = '700 12.5px Arial, sans-serif';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(texto, badgeX + 17, badgeY + 21);
+      ctx.textBaseline = 'alphabetic';
+
+      badgeY += 40 + boxGap;
+    });
+
+    // ── Build de items, franja inferior a lo ancho del degradado ──
+    const buildLabelY = 502, buildY = 516, itemSize = 56, itemGap = 10;
+    ctx.fillStyle = '#71717a';
+    ctx.font = '700 12px Arial, sans-serif';
+    ctx.fillText('BUILD', contentX, buildLabelY);
+
+    const itemIds = (self.items || []).filter(id => id > 0);
+    const itemImgs = await Promise.all(itemIds.map(id => cargarImagenSegura(itemUrl(id)).catch(() => null)));
+    let itemX = contentX;
+    itemImgs.forEach(img => {
+      if (img) {
+        ctx.save();
+        roundRect(ctx, itemX, buildY, itemSize, itemSize, 10);
+        ctx.clip();
+        ctx.drawImage(img, itemX, buildY, itemSize, itemSize);
+        ctx.restore();
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,0.05)';
+        roundRect(ctx, itemX, buildY, itemSize, itemSize, 10);
+        ctx.fill();
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1;
+      roundRect(ctx, itemX, buildY, itemSize, itemSize, 10);
+      ctx.stroke();
+      itemX += itemSize + itemGap;
+    });
+
+    // ── Pie: duración/fecha + marca del sitio ──
     const durMin = Math.floor((detalle.duracion_seg || 0) / 60);
     const durSeg = (detalle.duracion_seg || 0) % 60;
     const fechaTxt = detalle.fecha ? new Date(detalle.fecha).toLocaleDateString('es-ES') : '';
     ctx.fillStyle = '#71717a';
-    ctx.font = '600 16px Arial, sans-serif';
-    ctx.fillText(`${detalle.modo_juego || 'Ranked Solo/Duo'} · ${durMin}:${String(durSeg).padStart(2, '0')} · ${fechaTxt}`, 60, 440);
+    ctx.font = '600 13px Arial, sans-serif';
+    ctx.fillText(`${detalle.modo_juego || 'Ranked Solo/Duo'} · ${durMin}:${String(durSeg).padStart(2, '0')} · ${fechaTxt}`, contentX, H - 24);
 
-    // Marca del sitio
     ctx.fillStyle = '#8b5cf6';
     ctx.font = '900 20px Arial, sans-serif';
-    ctx.fillText('SoloQReto', 60, H - 40);
+    ctx.textAlign = 'right';
+    ctx.fillText('SoloQReto', W - 44, H - 24);
+    ctx.textAlign = 'left';
 
     return canvas;
   }
@@ -527,7 +654,7 @@ window.addEventListener('load', () => {
 
     // Guardado para el botón "Compartir" — solo tiene sentido con un
     // jugador identificado (self) y una partida real (no Remake).
-    ultimoRenderParaCompartir = { self, detalle, resultadoTexto };
+    ultimoRenderParaCompartir = { self, detalle, resultadoTexto, jugadores };
     const btnCompartir = document.getElementById('btn-compartir');
     btnCompartir.style.display = (self && !esRemake) ? 'inline-flex' : 'none';
 
