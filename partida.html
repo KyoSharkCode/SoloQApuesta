@@ -288,6 +288,13 @@ window.addEventListener('load', () => {
 
   const CDN     = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
   const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  // FIX: a diferencia de campeón/item/hechizo (que sí viven bajo la carpeta
+  // versionada /cdn/<version>/img/...), los íconos de runas NO están
+  // versionados en DDragon — viven en /cdn/img/... a secas (el mismo patrón
+  // que ya usa el splash art: /cdn/img/champion/loading/...). Pedirlos con
+  // el número de versión delante daba 403 y por eso nunca cargaban, aunque
+  // el catálogo (que sí es versionado) se descargaba bien.
+  const DDRAGON_IMG_BASE = 'https://ddragon.leagueoflegends.com/cdn/img';
 
   const backLink = document.getElementById('back-link');
   if (jugadorId) {
@@ -317,7 +324,7 @@ window.addEventListener('load', () => {
       console.error('no se pudo cargar el catálogo de runas', e);
     }
   }
-  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON}/img/${runasMap[perkId]}` : null;
+  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON_IMG_BASE}/${runasMap[perkId]}` : null;
 
   const fmt = (name) => (name || '').replace(/[^a-zA-Z0-9]/g, '');
   const champUrl  = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
