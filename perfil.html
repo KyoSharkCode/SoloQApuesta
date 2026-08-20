@@ -422,6 +422,13 @@ window.addEventListener('load', () => {
   // DDragon para resolver el ícono. Se pide una sola vez, no en cada
   // refresh de 15s.
   const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  // FIX: a diferencia de campeón/item/hechizo (que sí viven bajo la carpeta
+  // versionada /cdn/<version>/img/...), los íconos de runas NO están
+  // versionados en DDragon — viven en /cdn/img/... a secas (el mismo patrón
+  // que ya usa el splash art más arriba: /cdn/img/champion/loading/...).
+  // Pedirlos con el número de versión delante daba 403 y por eso nunca
+  // cargaban, aunque el catálogo (que sí es versionado) se descargaba bien.
+  const DDRAGON_IMG_BASE = 'https://ddragon.leagueoflegends.com/cdn/img';
   let runasMap = {};
   let runasCatalogoPromise = null;
   function cargarCatalogoRunas(){
@@ -439,7 +446,7 @@ window.addEventListener('load', () => {
       .catch(e => console.error('no se pudo cargar el catálogo de runas', e));
     return runasCatalogoPromise;
   }
-  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON}/img/${runasMap[perkId]}` : null;
+  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON_IMG_BASE}/${runasMap[perkId]}` : null;
 
   window.addEventListener('resize', () => {
     requestAnimationFrame(() => renderLpChart(lastProgreso));
