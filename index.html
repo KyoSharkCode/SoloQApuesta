@@ -405,6 +405,19 @@ window.addEventListener('load', () => {
   const state = { players:[], liveData:{}, selectedId:null, filterElo:'ALL', lastUpdate:null, reyTemporada:null };
   const REFRESH_MS = 15000;
 
+  // FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
+  // y en un puñado de campeones el "championName" que guarda la API de Riot
+  // no coincide exactamente con el nombre real del archivo en DDragon. El
+  // caso clásico es FiddleSticks: Riot lo guarda como "FiddleSticks" (S
+  // mayúscula) pero el ícono real es "Fiddlesticks.png" (s minúscula) — por
+  // eso su imagen nunca cargaba aunque el resto sí. Se usa en todos los
+  // lugares de esta página que arman una URL de ícono de campeón.
+  const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+  const champKey = (name) => {
+    const clean = (name || '').replace(/[^a-zA-Z0-9]/g, '');
+    return CHAMPION_ID_OVERRIDES[clean] || clean;
+  };
+
   // Runas — igual que en partida.html: el id de la runa (perk_principal /
   // estilo_secundario) ya viene guardado en datos.json (historial de cada
   // jugador), pero el ÍCONO hay que resolverlo vía el catálogo de DDragon.
@@ -672,7 +685,7 @@ window.addEventListener('load', () => {
     if(pvPlayer){
       const pv        = pvPlayer.primeraVictoriaHoy;
       const hora      = new Date(pv.timestamp).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
-      const champClean= (pv.campeon||'').replace(/[^a-zA-Z0-9]/g,'');
+      const champClean= champKey(pv.campeon);
       const spells    = (pv.hechizos||[]).map(h =>
         `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
@@ -829,7 +842,7 @@ window.addEventListener('load', () => {
     if(!grinder)   grinder  =state.players[0];
     if(!otpChamp)  otpChamp ='Desconocido';
 
-    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${otpChamp.replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(otpChamp)}.png`;
 
     // FIX: ahora exige maxClimb>0 igual que el perfil — antes con
     // cualquier climber no-null se mostraba, incluso con LP negativo o
@@ -874,7 +887,7 @@ window.addEventListener('load', () => {
         <div class="highlight-body"><p class="highlight-label">🎮 Dúo Dinámico</p><p class="highlight-player">${duoPlayer.nombre.split('#')[0]} &amp; ${duoCompanero}</p><p class="highlight-value">${maxDuo} partida${maxDuo===1?'':'s'} juntos esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🎮</div><div class="highlight-body"><p class="highlight-label">Dúo Dinámico</p><p class="highlight-empty">Nadie ha jugado en dúo esta semana.</p></div></div>`;
 
-    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(farmeadorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(farmeadorChamp)}.png`;
     const farmeadorHtml=(farmeador&&maxCsMin>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(farmeador.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">🌾 El Farmeador</p><p class="highlight-player">${farmeador.nombre}</p>
@@ -885,7 +898,7 @@ window.addEventListener('load', () => {
         </div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🌾</div><div class="highlight-body"><p class="highlight-label">El Farmeador</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
-    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${(defensorChamp||'').replace(/[^a-zA-Z0-9]/g,'')}.png`;
+    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(defensorChamp)}.png`;
     const defensorHtml=(defensor&&maxDanioPct>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="">
         <div class="highlight-body"><p class="highlight-label">🛡️ El Defensor</p><p class="highlight-player">${defensor.nombre}</p>
@@ -1116,7 +1129,7 @@ window.addEventListener('load', () => {
       return `
       <${tag} class="match" ${hrefAttr}>
         <span class="match-icons">
-          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${m.campeon.replace(/[^a-zA-Z0-9]/g,'')}.png" onerror="this.style.visibility='hidden'">
+          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(m.campeon)}.png" onerror="this.style.visibility='hidden'">
           ${spellsHtml?`<span class="match-spells">${spellsHtml}</span>`:''}
           ${runesHtml}
         </span>
