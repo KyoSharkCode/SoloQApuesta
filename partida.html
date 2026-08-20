@@ -37,6 +37,32 @@
   .share-btn:hover{ border-color:var(--accent-soft); }
   .share-btn:disabled{ opacity:.6; cursor:default; }
 
+  /* Menú "Compartir" — antes usábamos navigator.share() y dejábamos que el
+     sistema operativo decidiera qué hacer con "Copiar", pero eso se
+     comportaba distinto (y mal) en cada plataforma: en Windows el Ctrl+V
+     no pegaba nada, en Mac se pegaba la imagen dos veces. Ahora controlamos
+     nosotros mismos las dos acciones con la Clipboard API y la descarga
+     normal, así el comportamiento es el mismo en todos lados. */
+  .share-wrap{ position:relative; }
+  .share-menu{
+    position:absolute; top:calc(100% + 8px); right:0; z-index:30;
+    background:var(--panel); border:1px solid var(--border); border-radius:12px;
+    padding:6px; display:flex; flex-direction:column; gap:2px; min-width:230px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  }
+  .share-menu[hidden]{ display:none; }
+  .share-menu-item{
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    background:transparent; border:none; color:var(--text); padding:10px 12px;
+    border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;
+    font-family:inherit; transition:background .15s ease;
+  }
+  .share-menu-item:hover:not(:disabled){ background:var(--panel-2); }
+  .share-menu-item:disabled{ opacity:.4; cursor:default; }
+  .share-menu-item.success{ color:var(--win); }
+  .share-menu-item.error{ color:var(--loss); }
+  .share-menu-hint{ padding:6px 12px 4px; font-size:11px; color:var(--text-dim); }
+
   #state-msg{ text-align:center; padding:70px 20px; color:var(--text-dim); font-weight:600; }
   #state-msg.error{ color:var(--loss); }
   .retry-btn{ margin-top:16px; background:var(--panel-2); border:1px solid var(--border); color:var(--text); padding:9px 18px; border-radius:10px; font-weight:700; cursor:pointer; font-size:13px; }
@@ -172,7 +198,13 @@
 <div class="wrap">
   <div class="topbar">
     <a href="index.html" class="back-btn" id="back-link">← Volver</a>
-    <button id="btn-compartir" class="share-btn" type="button">📤 Compartir</button>
+    <div class="share-wrap" id="share-wrap">
+      <button id="btn-compartir" class="share-btn" type="button">📤 Compartir</button>
+      <div class="share-menu" id="share-menu" hidden>
+        <button class="share-menu-item" id="btn-copiar" type="button">📋 Copiar al portapapeles</button>
+        <button class="share-menu-item" id="btn-descargar" type="button">💾 Descargar imagen</button>
+      </div>
+    </div>
   </div>
 
   <div id="state-msg">Cargando partida…</div>
@@ -560,9 +592,34 @@ window.addEventListener('load', () => {
     return canvas;
   }
 
-  async function compartirPartida(){
-    const btn = document.getElementById('btn-compartir');
+  // Blob de la última tarjeta generada — se genera una vez al abrir el
+  // menú y se reutiliza tanto para "Copiar" como para "Descargar", para no
+  // tener que volver a dibujar el canvas por cada acción.
+  let tarjetaBlobCache = null;
+
+  function cerrarMenuFuera(e){
+    const wrap = document.getElementById('share-wrap');
+    if (!wrap.contains(e.target)) cerrarMenuCompartir();
+  }
+
+  function cerrarMenuCompartir(){
+    document.getElementById('share-menu').hidden = true;
+    document.removeEventListener('click', cerrarMenuFuera, { capture: true });
+    document.removeEventListener('keydown', cerrarMenuConEscape);
+  }
+
+  function cerrarMenuConEscape(e){
+    if (e.key === 'Escape') cerrarMenuCompartir();
+  }
+
+  async function abrirMenuCompartir(){
+    const btn  = document.getElementById('btn-compartir');
+    const menu = document.getElementById('share-menu');
     if (btn.disabled) return;
+
+    // Si ya está abierto, un segundo clic lo cierra.
+    if (!menu.hidden) { cerrarMenuCompartir(); return; }
+
     const textoOriginal = btn.innerHTML;
     btn.innerHTML = '⏳ Generando...';
     btn.disabled = true;
@@ -570,45 +627,74 @@ window.addEventListener('load', () => {
       const canvas = await generarTarjetaImagen();
       const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
       if (!blob) throw new Error('no se pudo generar la imagen');
+      tarjetaBlobCache = blob;
 
-      const { self, resultadoTexto } = ultimoRenderParaCompartir;
-      const nombreArchivo = `soloqreto-${(self.campeon || 'partida').toLowerCase()}.png`;
-      const file = new File([blob], nombreArchivo, { type: 'image/png' });
+      const btnCopiar = document.getElementById('btn-copiar');
+      const soportaCopiar = !!(navigator.clipboard && window.ClipboardItem);
+      btnCopiar.disabled = !soportaCopiar;
+      btnCopiar.innerHTML = soportaCopiar
+        ? '📋 Copiar al portapapeles'
+        : '📋 Copiar (no disponible en este navegador)';
 
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'SoloQReto',
-          text: `${self.nombre_grupo} — ${resultadoTexto} con ${self.campeon} (${self.kills}/${self.muertes}/${self.asistencias})`,
-        });
-        btn.innerHTML = textoOriginal;
-        btn.disabled = false;
-      } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = nombreArchivo;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 5000);
-        btn.innerHTML = '✅ ¡Descargada!';
-        setTimeout(() => { btn.innerHTML = textoOriginal; btn.disabled = false; }, 2000);
-      }
+      btn.innerHTML = textoOriginal;
+      btn.disabled = false;
+      menu.hidden = false;
+      // El listener se agrega en la siguiente vuelta del loop de eventos
+      // para que el clic que abrió el menú no lo cierre de inmediato.
+      setTimeout(() => {
+        document.addEventListener('click', cerrarMenuFuera, { capture: true });
+        document.addEventListener('keydown', cerrarMenuConEscape);
+      }, 0);
     } catch (e) {
-      if (e && e.name === 'AbortError') {
-        // La persona cerró el share sheet nativo sin elegir nada — no es un error real.
-        btn.innerHTML = textoOriginal;
-        btn.disabled = false;
-        return;
-      }
       console.error(e);
       btn.innerHTML = '⚠️ No se pudo generar';
       setTimeout(() => { btn.innerHTML = textoOriginal; btn.disabled = false; }, 2500);
     }
   }
 
-  document.getElementById('btn-compartir').addEventListener('click', compartirPartida);
+  async function copiarAlPortapapeles(){
+    const item = document.getElementById('btn-copiar');
+    if (item.disabled || !tarjetaBlobCache) return;
+    const textoOriginal = item.innerHTML;
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': tarjetaBlobCache }),
+      ]);
+      item.innerHTML = '✅ ¡Copiada!';
+      item.classList.add('success');
+      setTimeout(cerrarMenuCompartir, 900);
+    } catch (e) {
+      console.error(e);
+      item.innerHTML = '⚠️ No se pudo copiar';
+      item.classList.add('error');
+      setTimeout(() => {
+        item.innerHTML = textoOriginal;
+        item.classList.remove('error');
+      }, 2200);
+    }
+  }
+
+  function descargarTarjeta(){
+    const item = document.getElementById('btn-descargar');
+    if (!tarjetaBlobCache) return;
+    const { self } = ultimoRenderParaCompartir || {};
+    const nombreArchivo = `soloqreto-${(self && self.campeon || 'partida').toLowerCase()}.png`;
+    const url = URL.createObjectURL(tarjetaBlobCache);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = nombreArchivo;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+
+    item.innerHTML = '✅ ¡Descargada!';
+    setTimeout(cerrarMenuCompartir, 900);
+  }
+
+  document.getElementById('btn-compartir').addEventListener('click', abrirMenuCompartir);
+  document.getElementById('btn-copiar').addEventListener('click', copiarAlPortapapeles);
+  document.getElementById('btn-descargar').addEventListener('click', descargarTarjeta);
 
   if (!matchId) {
     showState('No se especificó ninguna partida.', true);
