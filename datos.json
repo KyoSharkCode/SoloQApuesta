@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T13:42:27.786006",
+  "ultimaActualizacion": "2026-08-20T13:45:43.517229",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3720,9 +3720,9 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 11,
-      "winrate": "67%",
-      "elo_score": 811,
+      "lp": 0,
+      "winrate": "64%",
+      "elo_score": 800,
       "record_lp_score": 811,
       "record_lp_label": "Silver IV (11 LP)",
       "rol_principal": "Support",
@@ -3739,11 +3739,11 @@
       "top_recientes": [
         {
           "campeon": "Swain",
-          "cantidad": 4
+          "cantidad": 5
         },
         {
           "campeon": "Lux",
-          "cantidad": 4
+          "cantidad": 3
         },
         {
           "campeon": "Veigar",
@@ -3869,23 +3869,46 @@
           "lp": 11,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-20T13:45:34Z",
+          "lp": 0,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742540432",
+          "campeon": "Swain",
+          "kda": "1/1/4 (5.0)",
+          "resultado": "Derrota",
+          "duracion": "24min",
+          "lp_change": -11,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
+        },
         {
           "match_id": "LA1_1742398116",
           "campeon": "Swain",
           "kda": "1/1/4 (5.0)",
           "resultado": "Victoria",
           "duracion": "10min",
-          "lp_change": null,
+          "lp_change": -11,
           "hechizos": [
             "SummonerFlash",
             "SummonerDot"
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
         },
         {
           "match_id": "LA1_1742393738",
@@ -3900,7 +3923,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
         },
         {
           "match_id": "LA1_1742384623",
@@ -3915,7 +3940,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
         },
         {
           "match_id": "LA1_1742375856",
@@ -3930,7 +3957,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
         },
         {
           "match_id": "LA1_1742369962",
@@ -3945,7 +3974,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000
         },
         {
           "match_id": "LA1_1742363620",
@@ -3960,7 +3991,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8229,
+          "estilo_secundario": 8100
         },
         {
           "match_id": "LA1_1742357949",
@@ -3975,7 +4008,9 @@
           ],
           "duo_con": [
             "Pinea"
-          ]
+          ],
+          "perk_principal": 8229,
+          "estilo_secundario": 8100
         },
         {
           "match_id": "LA1_1742353065",
@@ -3988,7 +4023,9 @@
             "SummonerFlash",
             "SummonerDot"
           ],
-          "duo_con": []
+          "duo_con": [],
+          "perk_principal": 8229,
+          "estilo_secundario": 8100
         },
         {
           "match_id": "LA1_1742343447",
@@ -4001,37 +4038,40 @@
             "SummonerFlash",
             "SummonerTeleport"
           ],
-          "duo_con": []
-        },
-        {
-          "match_id": "LA1_1742301902",
-          "campeon": "Lux",
-          "kda": "3/4/12 (3.75)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Galactic Shark"
-          ]
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8200
         }
       ],
-      "kills_recientes": 38,
+      "kills_recientes": 36,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 50,
-      "kills_semana": 81,
+      "vision_promedio_reciente": 44,
+      "kills_semana": 82,
       "pentakills_semana": 0,
       "vision_promedio_semana": 48,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.89,
+      "kda_promedio_semana": 2.91,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 199,
-      "partidas_semana": 21,
+      "asistencias_semana": 203,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787233524.354,
+          "kills": 1,
+          "muertes": 1,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 42,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 31,
+          "duracion_seg": 1483,
+          "damage_taken": 13298,
+          "danio_recibido_pct": 13.6
+        },
         {
           "fin_seg": 1787184053.562,
           "kills": 1,
@@ -4413,7 +4453,7 @@
         "damage_taken": 29492,
         "campeon": "Ekko"
       },
-      "max_partidas_en_un_dia": 0,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787198400
     }
@@ -4426,8 +4466,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.89,
-      "detalle": "2.89 KDA"
+      "valor": 2.91,
+      "detalle": "2.91 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4436,8 +4476,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 199,
-      "detalle": "199 asistencias"
+      "valor": 203,
+      "detalle": "203 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -4451,6 +4491,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T13:45:34Z",
+      "tipo": "adelantamiento",
+      "icono": "⚔️",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Ostia",
+      "top_posicion": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-20T08:51:34Z",
       "tipo": "record_lp",
@@ -4742,8 +4792,8 @@
     "Galactic Shark#AYK": 2,
     "El Buñuelito#KyA": 3,
     "Pinea#Pinea": 4,
-    "Ostia#LAN": 5,
-    "adrianNOOBYT#LAN": 6
+    "adrianNOOBYT#LAN": 5,
+    "Ostia#LAN": 6
   },
   "tiempo_top1": {
     "ゆうき まこと": 0.11
