@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-20T06:39:35.209332",
+  "ultimaActualizacion": "2026-08-20T06:42:31.472280",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1533,8 +1533,8 @@
     {
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
-      "rango": "Silver III",
-      "lp": 86,
+      "rango": "Silver II",
+      "lp": 18,
       "winrate": "49%",
       "record_lp_score": 1033,
       "record_lp_label": "Silver II (33 LP)",
@@ -1542,7 +1542,7 @@
       "top_roles": [
         {
           "rol": "ADC",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
           "rol": "Mid",
@@ -1551,15 +1551,15 @@
       ],
       "top_recientes": [
         {
-          "campeon": "Caitlyn",
-          "cantidad": 3
-        },
-        {
-          "campeon": "Jinx",
+          "campeon": "Seraphine",
           "cantidad": 2
         },
         {
-          "campeon": "Ezreal",
+          "campeon": "Caitlyn",
+          "cantidad": 2
+        },
+        {
+          "campeon": "Jinx",
           "cantidad": 2
         }
       ],
@@ -1567,7 +1567,7 @@
         {
           "campeon": "Seraphine",
           "nivel": 22,
-          "puntos": "229.046"
+          "puntos": "230.891"
         },
         {
           "campeon": "Zoe",
@@ -1862,9 +1862,28 @@
           "lp": 86,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-20T06:42:21Z",
+          "lp": 18,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742514222",
+          "campeon": "Seraphine",
+          "kda": "6/11/26 (2.91)",
+          "resultado": "Victoria",
+          "duracion": "37min",
+          "lp_change": 32,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerHeal"
+          ],
+          "duo_con": []
+        },
         {
           "match_id": "LA1_1742471600",
           "campeon": "Caitlyn",
@@ -1997,36 +2016,37 @@
           "duo_con": [
             "Pinea"
           ]
-        },
-        {
-          "match_id": "LA1_1742205697",
-          "campeon": "Caitlyn",
-          "kda": "6/8/10 (2.0)",
-          "resultado": "Derrota",
-          "duracion": "24min",
-          "lp_change": -23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [
-            "Pinea"
-          ]
         }
       ],
       "kills_recientes": 57,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 17,
-      "kills_semana": 133,
+      "vision_promedio_reciente": 24,
+      "kills_semana": 135,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 22,
+      "vision_promedio_semana": 24,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 1.5,
+      "kda_promedio_semana": 1.64,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 118,
+      "asistencias_semana": 136,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787208098.111,
+          "kills": 6,
+          "muertes": 11,
+          "asistencias": 26,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 86,
+          "campeon": "Seraphine",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 80,
+          "duracion_seg": 2227,
+          "damage_taken": 27355,
+          "danio_recibido_pct": 17.6
+        },
         {
           "fin_seg": 1787199246.813,
           "kills": 9,
@@ -2380,29 +2400,11 @@
           "duracion_seg": 1714,
           "damage_taken": 19049,
           "danio_recibido_pct": 17.7
-        },
-        {
-          "fin_seg": 1787014019.863,
-          "kills": 4,
-          "muertes": 13,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 31,
-          "campeon": "Caitlyn",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 221,
-          "duracion_seg": 2247,
-          "damage_taken": 33304,
-          "danio_recibido_pct": 15.6
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 18
+        "partidas": 17
       },
       "cs_min_semana": {
         "cs_por_min": 7.1,
@@ -2414,7 +2416,7 @@
         "damage_taken": 42724,
         "campeon": "Jinx"
       },
-      "max_partidas_en_un_dia": 1,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787199246813,
         "campeon": "Caitlyn",
