@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-19T23:57:39.377689",
+  "ultimaActualizacion": "2026-08-20T00:01:04.216998",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -887,19 +887,9 @@
         "damage_taken": 40303,
         "campeon": "Nasus"
       },
-      "max_partidas_en_un_dia": 19,
-      "primera_victoria_hoy": {
-        "timestamp": 1787080996778,
-        "campeon": "Ekko",
-        "kda": "10/7/8 (2.57)",
-        "equipo": "blue",
-        "duracion": "33:53",
-        "hechizos": [
-          "SummonerDot",
-          "SummonerFlash"
-        ]
-      },
-      "dia_referencia": 1787025600
+      "max_partidas_en_un_dia": 0,
+      "primera_victoria_hoy": null,
+      "dia_referencia": 1787112000
     },
     {
       "nombre": "Galactic Shark#AYK",
@@ -1488,7 +1478,7 @@
           "SummonerSmite"
         ]
       },
-      "dia_referencia": 1787025600
+      "dia_referencia": 1787112000
     },
     {
       "nombre": "El Buñuelito#KyA",
@@ -2242,7 +2232,7 @@
           "SummonerBarrier"
         ]
       },
-      "dia_referencia": 1787025600
+      "dia_referencia": 1787112000
     },
     {
       "nombre": "ゆうき まこと#1411",
@@ -2483,7 +2473,7 @@
       "danio_recibido_semana": null,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
-      "dia_referencia": 1787025600
+      "dia_referencia": 1787112000
     },
     {
       "nombre": "adrianNOOBYT#LAN",
@@ -3226,7 +3216,7 @@
         "damage_taken": 76492,
         "campeon": "Trundle"
       },
-      "max_partidas_en_un_dia": 7,
+      "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": {
         "timestamp": 1787112601639,
         "campeon": "Akali",
@@ -3238,16 +3228,16 @@
           "SummonerFlash"
         ]
       },
-      "dia_referencia": 1787025600
+      "dia_referencia": 1787112000
     },
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Bronze I",
-      "lp": 53,
-      "winrate": "65%",
-      "record_lp_score": 753,
-      "record_lp_label": "Bronze I (53 LP)",
+      "rango": "Silver IV",
+      "lp": 11,
+      "winrate": "67%",
+      "record_lp_score": 811,
+      "record_lp_label": "Silver IV (11 LP)",
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -3261,12 +3251,12 @@
       ],
       "top_recientes": [
         {
-          "campeon": "Lux",
-          "cantidad": 5
+          "campeon": "Swain",
+          "cantidad": 4
         },
         {
-          "campeon": "Swain",
-          "cantidad": 3
+          "campeon": "Lux",
+          "cantidad": 4
         },
         {
           "campeon": "Veigar",
@@ -3282,7 +3272,7 @@
         {
           "campeon": "Swain",
           "nivel": 12,
-          "puntos": "104.122"
+          "puntos": "104.750"
         },
         {
           "campeon": "Kayn",
@@ -3386,9 +3376,30 @@
           "lp": 53,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-20T00:00:53Z",
+          "lp": 11,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742398116",
+          "campeon": "Swain",
+          "kda": "1/1/4 (5.0)",
+          "resultado": "Victoria",
+          "duracion": "10min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ]
+        },
         {
           "match_id": "LA1_1742393738",
           "campeon": "Swain",
@@ -3519,34 +3530,39 @@
           "duo_con": [
             "Galactic Shark"
           ]
-        },
-        {
-          "match_id": "LA1_1742300299",
-          "campeon": "Lux",
-          "kda": "2/4/12 (3.5)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": []
         }
       ],
-      "kills_recientes": 39,
+      "kills_recientes": 38,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 56,
-      "kills_semana": 80,
+      "vision_promedio_reciente": 50,
+      "kills_semana": 81,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 50,
+      "vision_promedio_semana": 48,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.86,
+      "kda_promedio_semana": 2.89,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 195,
-      "partidas_semana": 20,
+      "asistencias_semana": 199,
+      "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787184053.562,
+          "kills": 1,
+          "muertes": 1,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 12,
+          "campeon": "Swain",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 17,
+          "duracion_seg": 622,
+          "damage_taken": 3823,
+          "danio_recibido_pct": 17.0
+        },
         {
           "fin_seg": 1787181981.932,
           "kills": 2,
@@ -3898,7 +3914,7 @@
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 13
+        "partidas": 14
       },
       "cs_min_semana": {
         "cs_por_min": 6.0,
@@ -3910,19 +3926,19 @@
         "damage_taken": 29492,
         "campeon": "Ekko"
       },
-      "max_partidas_en_un_dia": 16,
+      "max_partidas_en_un_dia": 10,
       "primera_victoria_hoy": {
-        "timestamp": 1787043320707,
-        "campeon": "Veigar",
-        "kda": "6/9/11 (1.89)",
+        "timestamp": 1787129031287,
+        "campeon": "Lux",
+        "kda": "2/4/12 (3.5)",
         "equipo": "blue",
-        "duracion": "38:36",
+        "duracion": "32:00",
         "hechizos": [
           "SummonerFlash",
-          "SummonerTeleport"
+          "SummonerDot"
         ]
       },
-      "dia_referencia": 1787025600
+      "dia_referencia": 1787112000
     }
   ],
   "titulares": {
@@ -3933,8 +3949,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.86,
-      "detalle": "2.86 KDA"
+      "valor": 2.89,
+      "detalle": "2.89 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -3943,8 +3959,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 195,
-      "detalle": "195 asistencias"
+      "valor": 199,
+      "detalle": "199 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -3958,6 +3974,24 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-20T00:00:53Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Silver IV (11 LP)"
+    },
+    {
+      "timestamp": "2026-08-20T00:00:53Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-19T23:44:31Z",
       "tipo": "badge_semanal",
@@ -4160,6 +4194,6 @@
       "detalle": null
     }
   ],
-  "titular_primera_victoria_dia": "Ostia",
-  "dia_referencia_eventos": 1787025600
+  "titular_primera_victoria_dia": "adrianNOOBYT",
+  "dia_referencia_eventos": 1787112000
 }
