@@ -434,6 +434,16 @@ def obtener_datos():
     # datos_partidas.json — se rellena solo con partidas realmente nuevas
     # que se descargan en esta corrida (CASO B); no pide nada extra a Riot.
     partidas_recolectadas = {}
+    # FIX: caché de partidas COMPARTIDA entre los 6 jugadores del grupo (antes
+    # era un dict nuevo por cada jugador, dentro de su propio bucle). Cuando
+    # 2+ del grupo juegan la misma partida juntos — algo muy común en un
+    # grupo que hace SoloQ/Duo entre sí — esa partida se descargaba de la API
+    # de Riot una vez POR CADA jugador que la tuviera en su ventana (10
+    # recientes / 7 días), multiplicando llamadas innecesariamente y
+    # alargando la corrida (con más riesgo de pegar contra el rate limit de
+    # Riot). Con la caché a este nivel, cada match_id se pide UNA sola vez
+    # sin importar a cuántos del grupo les aparezca.
+    detalles_por_id_cache = {}
     lista_final  = []
     # FIX: se guarda explícitamente en UTC con sufijo "Z". Antes se usaba
     # datetime.now() sin zona horaria, y el navegador (JS) interpretaba esa
@@ -619,12 +629,16 @@ def obtener_datos():
                 url_ids_semana = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue=420&startTime={hace_7_dias}&count=25"
                 ids_semana     = get_con_reintento(url_ids_semana, headers).json()
 
-                # Descargar detalles sin duplicar
+                # Descargar detalles sin duplicar — primero se revisa la
+                # caché COMPARTIDA (detalles_por_id_cache): si otro jugador
+                # del grupo ya trajo esta misma partida en esta corrida, no
+                # se vuelve a pedir a Riot.
                 ids_a_consultar = list(dict.fromkeys(ids_recientes + ids_semana))
-                detalles_por_id = {}
                 for match_id in ids_a_consultar:
-                    url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
-                    detalles_por_id[match_id] = get_con_reintento(url_match, headers).json()
+                    if match_id not in detalles_por_id_cache:
+                        url_match = f"https://{REGION_API}.api.riotgames.com/lol/match/v5/matches/{match_id}"
+                        detalles_por_id_cache[match_id] = get_con_reintento(url_match, headers).json()
+                detalles_por_id = detalles_por_id_cache
 
                 # ── Detalle completo para datos_partidas.json ──
                 # Solo las que aparecen en el historial visible (últimas 10)
