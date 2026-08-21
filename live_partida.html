@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partida en Vivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
+    --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
+    --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --win:#34d399; --win-bg:rgba(52,211,153,.12);
+    --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
+    --gold:#fbbf24; --blue:#60a5fa; --red:#f87171;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  *{ scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
+  *::-webkit-scrollbar{ width:10px; height:10px; }
+  *::-webkit-scrollbar-track{ background:transparent; }
+  *::-webkit-scrollbar-thumb{ background-color:var(--border); border-radius:8px; border:2px solid var(--bg); background-clip:padding-box; }
+  *::-webkit-scrollbar-thumb:hover{ background-color:var(--accent); }
+  *::-webkit-scrollbar-corner{ background:transparent; }
+
+  body{
+    margin:0; background: radial-gradient(800px 400px at 50% 0%, rgba(239,68,68,.12), transparent), var(--bg);
+    color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
+  }
+  .wrap{ max-width:980px; margin:0 auto; padding:40px 20px 100px; }
+
+  .topbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:24px; }
+  .back-btn{ display:inline-flex; align-items:center; color:var(--accent-soft); text-decoration:none; font-weight:600; font-size:14px; transition:color 0.2s; }
+  .back-btn:hover{ color:#ffffff; }
+
+  #state-msg{ text-align:center; padding:70px 20px; color:var(--text-dim); font-weight:600; }
+  #state-msg.error{ color:var(--loss); }
+  .retry-btn{ margin-top:16px; background:var(--panel-2); border:1px solid var(--border); color:var(--text); padding:9px 18px; border-radius:10px; font-weight:700; cursor:pointer; font-size:13px; text-decoration:none; display:inline-block; }
+  .retry-btn:hover{ border-color:var(--accent-soft); }
+
+  /* CABECERA DE LA PARTIDA EN VIVO */
+  .live-header{
+    display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+    padding:22px 26px; margin-bottom:28px; border-radius:18px;
+    border:1px solid rgba(239,68,68,.35); background:var(--panel);
+    border-left:5px solid var(--loss);
+    box-shadow:0 0 30px rgba(239,68,68,.12);
+  }
+  .lh-badge{
+    display:inline-flex; align-items:center; gap:8px; font-weight:900; font-size:13px;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--loss);
+  }
+  .lh-badge::before{
+    content:''; width:9px; height:9px; border-radius:50%; background:var(--loss);
+    box-shadow:0 0 0 0 rgba(239,68,68,.6); animation:live-dot-pulse 1.6s infinite;
+  }
+  @keyframes live-dot-pulse{
+    0%   { box-shadow:0 0 0 0 rgba(239,68,68,.55); }
+    70%  { box-shadow:0 0 0 8px rgba(239,68,68,0); }
+    100% { box-shadow:0 0 0 0 rgba(239,68,68,0); }
+  }
+  .lh-mode{ color:var(--text-faint); font-weight:600; font-size:13px; }
+  .lh-duration{
+    margin-left:auto; font-size:26px; font-weight:900; color:var(--gold);
+    font-variant-numeric:tabular-nums;
+  }
+  .lh-duration-label{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); text-align:right; }
+
+  /* TARJETAS POR EQUIPO — estilo "carta de juego de mesa": retrato vertical
+     con el splash del campeón de fondo, ícono de invocador + nombre + build
+     encima en un degradado. Borde de color según quién es: dorado = el
+     jugador que estás viendo, verde = su dúo detectado esta partida. */
+  .team-block{ margin-bottom:22px; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
+  .team-head{ display:flex; align-items:center; justify-content:space-between; padding:11px 16px; font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+  .team-head.blue{ background:rgba(96,165,250,.12); color:var(--blue); border-bottom:1px solid rgba(96,165,250,.25); }
+  .team-head.red{ background:rgba(248,113,113,.12); color:var(--red); border-bottom:1px solid rgba(248,113,113,.25); }
+  .team-cards{ background:var(--panel); display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:12px; padding:16px; }
+
+  .player-card{
+    position:relative; aspect-ratio:3/4; border-radius:12px; overflow:hidden;
+    border:2px solid var(--border); background:#0d0d10;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .player-card:hover{ transform:translateY(-3px); }
+  .player-card.self{ border-color:var(--gold); box-shadow:0 0 16px rgba(251,191,36,.35); }
+  .player-card.duo{ border-color:var(--win); box-shadow:0 0 16px rgba(52,211,153,.3); }
+
+  .pc-splash{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 18%; background:#1d1d24; }
+  .pc-gradient{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 48%, rgba(0,0,0,0) 78%); pointer-events:none; }
+
+  .pc-tag{
+    position:absolute; top:8px; left:8px; z-index:2; font-size:9.5px; font-weight:900;
+    text-transform:uppercase; letter-spacing:.05em; padding:3px 8px; border-radius:999px;
+  }
+  .pc-tag.self{ background:var(--gold); color:#1a1400; }
+  .pc-tag.duo{ background:var(--win); color:#03150c; }
+
+  .pc-body{ position:relative; z-index:2; padding:9px 9px 11px; display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .pc-id{ display:flex; align-items:center; gap:6px; min-width:0; }
+  .pc-icon{ width:26px; height:26px; border-radius:50%; border:2px solid rgba(255,255,255,.75); object-fit:cover; background:#1d1d24; flex-shrink:0; }
+  .pc-name{ font-weight:800; font-size:12px; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0; }
+  .pc-name.self-name{ color:var(--gold); }
+  .pc-name.duo-name{ color:var(--win); }
+  .pc-champ{ font-size:11px; color:var(--text-faint); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pc-loadout{ display:flex; align-items:center; gap:5px; }
+  .pc-spells, .pc-runes{ display:flex; gap:3px; }
+  .pc-spells img{ width:17px; height:17px; border-radius:4px; border:1px solid rgba(255,255,255,.25); background:#1d1d24; }
+  .pc-runes img{ width:17px; height:17px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:#0a0a0c; object-fit:contain; padding:1px; }
+
+  .site-footer{ margin-top:60px; padding-top:40px; border-top:1px solid var(--border); text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .footer-logo{ width:70px; height:auto; margin-bottom:12px; }
+  .site-footer p{ margin:0; font-size:14px; color:var(--text-dim); font-weight:500; }
+
+  @media (max-width:560px){
+    .lh-duration{ margin-left:0; width:100%; text-align:left; }
+    .lh-duration-label{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html" class="back-btn" id="back-link">← Volver</a>
+    </div>
+
+    <div id="state-msg">Cargando partida en vivo…</div>
+
+    <div id="live-content" style="display:none;">
+      <div class="live-header">
+        <span class="lh-badge">En vivo</span>
+        <span class="lh-mode" id="lh-mode"></span>
+        <div>
+          <div class="lh-duration" id="lh-duration">--:--</div>
+          <div class="lh-duration-label">Duración</div>
+        </div>
+      </div>
+      <div id="scoreboard"></div>
+    </div>
+
+    <footer class="site-footer">
+      <img src="SoloQRetoLogo.svg" alt="Logo SoloQ Reto" class="footer-logo">
+      <p>creado por KyoSumiVT</p>
+    </footer>
+  </div>
+
+<script>
+window.addEventListener('load', () => {
+  const params    = new URLSearchParams(window.location.search);
+  const jugadorId = params.get('jugador'); // "Nombre#Tag" completo
+
+  const CDN     = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  const DDRAGON_IMG_BASE = 'https://ddragon.leagueoflegends.com/cdn/img';
+
+  const backLink = document.getElementById('back-link');
+  if (jugadorId) {
+    backLink.href = `perfil.html?jugador=${encodeURIComponent(jugadorId)}`;
+    backLink.textContent = '← Volver al Perfil';
+  }
+
+  const stateMsgEl    = document.getElementById('state-msg');
+  const liveContentEl = document.getElementById('live-content');
+  const scoreboardEl  = document.getElementById('scoreboard');
+  const modeEl        = document.getElementById('lh-mode');
+  const durationEl    = document.getElementById('lh-duration');
+
+  // Runas — mismo catálogo/patrón que index.html/perfil.html/partida.html.
+  let runasMap = {};
+  let runasCatalogoPromise = null;
+  function cargarCatalogoRunas(){
+    if (runasCatalogoPromise) return runasCatalogoPromise;
+    runasCatalogoPromise = fetch(`${DDRAGON}/data/en_US/runesReforged.json`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        (data || []).forEach(estilo => {
+          runasMap[estilo.id] = estilo.icon;
+          (estilo.slots || []).forEach(slot => {
+            (slot.runes || []).forEach(r => { runasMap[r.id] = r.icon; });
+          });
+        });
+      })
+      .catch(e => console.error('no se pudo cargar el catálogo de runas', e));
+    return runasCatalogoPromise;
+  }
+  const runeUrl = (perkId) => (perkId && runasMap[perkId]) ? `${DDRAGON_IMG_BASE}/${runasMap[perkId]}` : null;
+
+  // FIX: mismo ajuste de nombre de archivo que ya usan index/perfil/partida
+  // — Riot guarda "FiddleSticks" con S mayúscula pero DDragon lo sirve como
+  // "Fiddlesticks.png".
+  const CHAMPION_ID_OVERRIDES = { FiddleSticks: 'Fiddlesticks' };
+  const fmt = (name) => {
+    const clean = (name || '').replace(/[^a-zA-Z0-9]/g, '');
+    return CHAMPION_ID_OVERRIDES[clean] || clean;
+  };
+  // "Loading screen" del campeón (retrato vertical) — el mismo que usa el
+  // perfil para el splash del campeón con más maestría, ideal para el
+  // formato "carta" (más alto que ancho).
+  const splashUrl = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${fmt(name)}_0.jpg`;
+  const iconUrl    = (id)   => (id ? `${DDRAGON}/img/profileicon/${id}.png` : '');
+
+  let gameStartTime = null;
+  let durationTimer = null;
+  function tickDuration(){
+    if (!gameStartTime) { durationEl.textContent = '--:--'; return; }
+    const secs = Math.max(0, Math.floor((Date.now() - gameStartTime) / 1000));
+    const mm = Math.floor(secs / 60);
+    const ss = secs % 60;
+    durationEl.textContent = `${mm}:${String(ss).padStart(2, '0')}`;
+  }
+
+  // duoNames: nombres cortos (sin "#tag") de quienes están en dúo detectado
+  // con el jugador que se está viendo — mismo criterio que ya usa el resto
+  // del sitio (coincidir en partida + equipo), calculado por live_status.py
+  // solo entre los 6 del grupo.
+  function tarjetaJugador(participante, duoNames){
+    const esSelf = jugadorId && participante.nombre === jugadorId;
+    const nombreCorto = (participante.nombre || '').split('#')[0];
+    const esDuo = !esSelf && duoNames.includes(nombreCorto);
+
+    const cardClass = esSelf ? 'self' : (esDuo ? 'duo' : '');
+    const nameClass = esSelf ? 'self-name' : (esDuo ? 'duo-name' : '');
+    const tagHtml   = esSelf
+      ? '<span class="pc-tag self">Tú</span>'
+      : (esDuo ? '<span class="pc-tag duo">Dúo</span>' : '');
+
+    const keystoneUrl   = runeUrl(participante.runas && participante.runas.principal);
+    const secundariaUrl = runeUrl(participante.runas && participante.runas.secundario);
+    const runesHtml = (keystoneUrl || secundariaUrl) ? `
+      <div class="pc-runes">
+        ${keystoneUrl ? `<img src="${keystoneUrl}" alt="runa principal" onerror="this.style.visibility='hidden'">` : ''}
+        ${secundariaUrl ? `<img src="${secundariaUrl}" alt="árbol secundario" onerror="this.style.visibility='hidden'">` : ''}
+      </div>` : '';
+    const spellsHtml = (participante.hechizos || []).map(h => `
+      <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
+           title="${h.nombre || ''}" alt="${h.nombre || ''}"
+           onerror="this.style.visibility='hidden'">
+    `).join('');
+
+    return `
+      <div class="player-card ${cardClass}">
+        <img class="pc-splash" src="${splashUrl(participante.campeon)}" alt="" onerror="this.style.visibility='hidden'">
+        <div class="pc-gradient"></div>
+        ${tagHtml}
+        <div class="pc-body">
+          <div class="pc-id">
+            <img class="pc-icon" src="${iconUrl(participante.icono_invocador)}" alt="" onerror="this.style.visibility='hidden'">
+            <span class="pc-name ${nameClass}">${nombreCorto || 'Desconocido'}</span>
+          </div>
+          <div class="pc-champ">${participante.campeon || 'Desconocido'}</div>
+          <div class="pc-loadout">
+            <div class="pc-spells">${spellsHtml}</div>
+            ${runesHtml}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function mostrarPartida(partida, duoNames){
+    liveContentEl.style.display = 'block';
+    stateMsgEl.style.display = 'none';
+
+    modeEl.textContent  = partida.modo_juego || 'Partida';
+    gameStartTime = (typeof partida.game_start_time === 'number' && partida.game_start_time > 0)
+      ? partida.game_start_time : null;
+    tickDuration();
+    if (!durationTimer) durationTimer = setInterval(tickDuration, 1000);
+
+    const participantes = Array.isArray(partida.participantes) ? partida.participantes : [];
+    const equiposOrden = ['blue', 'red'];
+    scoreboardEl.innerHTML = equiposOrden.map(lado => {
+      const jugs = participantes.filter(p => p.equipo === lado);
+      const nombreLado = lado === 'blue' ? 'Equipo Azul' : 'Equipo Rojo';
+      return `
+        <div class="team-block">
+          <div class="team-head ${lado}">
+            <span>${nombreLado}</span>
+          </div>
+          <div class="team-cards">
+            ${jugs.map(j => tarjetaJugador(j, duoNames)).join('') || '<div style="padding:16px;color:var(--text-dim);">Sin datos de este equipo todavía.</div>'}
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function mostrarEstado(mensaje, esError){
+    if (durationTimer) { clearInterval(durationTimer); durationTimer = null; }
+    liveContentEl.style.display = 'none';
+    stateMsgEl.style.display = 'block';
+    stateMsgEl.className = esError ? 'error' : '';
+    stateMsgEl.innerHTML = `${mensaje}<br><a class="retry-btn" href="${jugadorId ? `perfil.html?jugador=${encodeURIComponent(jugadorId)}` : 'index.html'}">Volver al perfil</a>`;
+  }
+
+  async function cargar(){
+    if (!jugadorId) {
+      mostrarEstado('Falta indicar de qué jugador es la partida.', true);
+      return;
+    }
+    try {
+      const [liveRes] = await Promise.all([
+        fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache: 'no-store' }),
+        cargarCatalogoRunas(),
+      ]);
+      if (!liveRes.ok) throw new Error('No se pudo leer live_data.json');
+      const liveData   = await liveRes.json();
+      const liveStatus = liveData[jugadorId];
+
+      if (!liveStatus || !liveStatus.en_partida || liveStatus.game_id == null) {
+        mostrarEstado('Esta partida ya terminó (o todavía no empezó otra).');
+        return;
+      }
+
+      const partidasActivas = liveData._partidas_activas || {};
+      const partida = partidasActivas[liveStatus.game_id];
+      if (!partida) {
+        mostrarEstado('La partida sigue en curso, pero todavía no hay datos del lobby completo — probá de nuevo en un momento.');
+        return;
+      }
+
+      const duoNames = Array.isArray(liveStatus.duo_con) ? liveStatus.duo_con : [];
+      mostrarPartida(partida, duoNames);
+    } catch (e) {
+      console.error(e);
+      mostrarEstado('No se pudo cargar la partida en vivo.', true);
+    }
+  }
+
+  cargar();
+  setInterval(cargar, 15000);
+});
+</script>
+</body>
+</html>
