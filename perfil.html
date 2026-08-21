@@ -694,6 +694,19 @@ window.addEventListener('load', () => {
     if (loseStreak >= 3)
       badges.push({ icon:'❄️', label:`Racha fría · ${loseStreak} derrotas`, color:'blue' });
 
+    // Ciego — no compró wards de control en 6 o más de sus últimas 10
+    // partidas. Es un badge PERSONAL (no compara contra nadie más, a
+    // diferencia de casi todos los de arriba) — igual de fácil te lo
+    // ganas jugando solo o con todo el grupo. Solo cuentan las partidas
+    // que ya tienen el dato "wards_control" guardado (número real, no
+    // null/undefined) — las partidas viejas de antes de este badge, y
+    // los Remakes, quedan afuera del conteo en vez de contarse como "sin
+    // ward" por error.
+    const partidasConDatoWard = pHistorial.filter(m => typeof m.wards_control === 'number');
+    const partidasSinWardControl = partidasConDatoWard.filter(m => m.wards_control === 0).length;
+    if (partidasSinWardControl >= 6)
+      badges.push({ icon:'🦯', label:`Ciego · ${partidasSinWardControl}/${partidasConDatoWard.length} partidas sin ward de control`, color:'red' });
+
     if (badges.length === 0) {
       badgesEl.style.display = 'none';
       return;
