@@ -85,6 +85,45 @@ def get_con_reintento(url, headers, timeout=10, max_reintentos=2):
     return resp
 
 
+def extraer_nombre_riot(participante):
+    """
+    Nombre de invocador (Riot ID) de un participante de Spectator v5.
+    Defensivo ante variantes de esquema: la API mandó el nombre como campo
+    único "riotId" en algún momento, pero por si acaso también se prueban
+    los campos separados (gameName/tagLine) y el summonerName viejo antes
+    de rendirse con "Desconocido" — así nunca revienta si Riot ajusta el
+    formato, solo deja de mostrar el nombre de ese jugador puntual.
+    """
+    riot_id = participante.get("riotId")
+    if riot_id:
+        return riot_id
+    game_name = participante.get("riotIdGameName") or participante.get("gameName")
+    tag_line  = participante.get("riotIdTagline")  or participante.get("tagLine")
+    if game_name and tag_line:
+        return f"{game_name}#{tag_line}"
+    if game_name:
+        return game_name
+    return participante.get("summonerName") or "Desconocido"
+
+
+def extraer_runas(participante):
+    """
+    Runa principal (keystone) y árbol secundario de un participante en vivo.
+    Spectator v5 trae esto en "perks": {perkIds, perkStyle, perkSubStyle}.
+    perkIds[0] es siempre la keystone (la primera runa elegida del árbol
+    principal); perkSubStyle es el id del árbol secundario completo — el
+    mismo tipo de id que ya sabe resolver runeUrl() en el frontend, porque
+    el catálogo de DDragon mapea tanto ids de árbol como ids de runa
+    individual al mismo diccionario.
+    """
+    perks    = participante.get("perks") or {}
+    perk_ids = perks.get("perkIds") or []
+    return {
+        "principal":  perk_ids[0] if perk_ids else None,
+        "secundario": perks.get("perkSubStyle") or None,
+    }
+
+
 def estados_son_iguales(estado_anterior, estado_nuevo):
     """
     Compara dos dicts de estado de forma robusta usando json.dumps ordenado.
@@ -116,6 +155,14 @@ def actualizar_estado_en_vivo(jugadores):
     datos_json  = {}
     errores_auth = 0
     diccionario_campeones, diccionario_hechizos = cargar_diccionarios_ddragon()
+
+    # Lobby completo (los 10 jugadores) por partida en vivo, para las
+    # tarjetas de live_partida.html. Se llena UNA vez por gameId aunque dos
+    # del grupo estén en la misma partida — Spectator no tiene un endpoint
+    # "por gameId", así que la llamada a Riot toca hacerla igual por cada
+    # jugador del grupo (por-summoner), pero no hace falta reconstruir ni
+    # guardar el lobby dos veces si ya se armó con la respuesta de otro.
+    partidas_activas = {}
 
     for jugador in jugadores:
         print(f"\nRevisando: {jugador}")
@@ -207,19 +254,56 @@ def actualizar_estado_en_vivo(jugadores):
                     equipo   = "blue" if participante.get("teamId") == 100 else "red"
                     spell1   = diccionario_hechizos.get(participante.get("spell1Id"), {"nombre": "?", "icono": ""})
                     spell2   = diccionario_hechizos.get(participante.get("spell2Id"), {"nombre": "?", "icono": ""})
+                    game_id  = game_data.get("gameId")
                     info_partida.update({
                         "campeon":    diccionario_campeones.get(champ_id, "Desconocido"),
                         "equipo":     equipo,
                         "hechizos":   [spell1, spell2],
+                        "runas":      extraer_runas(participante),
                         "modo_juego": modo_juego,
+                        # game_start_time (epoch ms) — para que el frontend
+                        # cuente la duración en vivo con JS (Date.now() -
+                        # esto), sin depender de que el bot se refresque
+                        # segundo a segundo. game_id (permanente, sin guión
+                        # bajo) queda para que perfil/live_partida.html
+                        # puedan buscar el lobby completo en
+                        # "_partidas_activas" más abajo.
+                        "game_start_time": game_data.get("gameStartTime"),
+                        "game_id":         game_id,
                         # FIX: gameId + teamId temporales, para poder cruzar
                         # más abajo si alguien más del grupo está en la misma
                         # partida y equipo (dúo en vivo). Se quitan del
                         # resultado final antes de guardar.
-                        "_gameId":    game_data.get("gameId"),
+                        "_gameId":    game_id,
                         "_teamId":    participante.get("teamId"),
                     })
                     print(f"  🎮 Modo: {modo_juego}")
+
+                    # Lobby completo (los 10) — una sola vez por gameId.
+                    if game_id is not None and game_id not in partidas_activas:
+                        todos_participantes = game_data.get("participants", [])
+                        partidas_activas[game_id] = {
+                            "game_start_time": game_data.get("gameStartTime"),
+                            "modo_juego":      modo_juego,
+                            "participantes": [
+                                {
+                                    "nombre":         extraer_nombre_riot(part),
+                                    "campeon":        diccionario_campeones.get(part.get("championId"), "Desconocido"),
+                                    "equipo":         "blue" if part.get("teamId") == 100 else "red",
+                                    # Ícono de invocador — para la "carta" de
+                                    # cada jugador en live_partida.html. Ya
+                                    # viene en la misma respuesta de
+                                    # Spectator, cero llamadas extra.
+                                    "icono_invocador": part.get("profileIconId"),
+                                    "hechizos": [
+                                        diccionario_hechizos.get(part.get("spell1Id"), {"nombre": "?", "icono": ""}),
+                                        diccionario_hechizos.get(part.get("spell2Id"), {"nombre": "?", "icono": ""}),
+                                    ],
+                                    "runas": extraer_runas(part),
+                                }
+                                for part in todos_participantes
+                            ],
+                        }
             except Exception as e:
                 print(f"  ⚠️ No se pudo leer el detalle de la partida: {e}")
             datos_json[jugador] = info_partida
@@ -275,6 +359,14 @@ def actualizar_estado_en_vivo(jugadores):
     for info in datos_json.values():
         info.pop("_gameId", None)
         info.pop("_teamId", None)
+
+    # Lobby completo de cada partida en vivo — se agrega DESPUÉS del loop de
+    # arriba (que solo limpia campos temporales de cada jugador) para no
+    # mezclarlo con esa lógica. La clave con guión bajo indica "no es un
+    # jugador" — nunca va a chocar con un nombre real porque todos los
+    # nombres de jugadores tienen "#" (Riot ID).
+    if partidas_activas:
+        datos_json["_partidas_activas"] = partidas_activas
 
     # ── Failsafe: si la key falló para todos, no sobreescribir ──
     if jugadores and errores_auth >= len(jugadores):
