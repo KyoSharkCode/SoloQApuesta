@@ -110,6 +110,12 @@
   .pc-tag.self{ background:var(--gold); color:#1a1400; }
   .pc-tag.duo{ background:var(--win); color:#03150c; }
   .pc-tag.jungla{ background:var(--accent); color:#fff; }
+  /* Rol estimado por campeón (Top/Mid/ADC/Support) — a diferencia de
+     Jungla (dato confiable, viene del hechizo Smite), esto es una
+     suposición basada en qué clase de campeón es, así que se muestra
+     más discreta: fondo translúcido, borde punteado y el prefijo "~"
+     para que quede claro que es una estimación, no un dato confirmado. */
+  .pc-tag.rol-estimado{ background:rgba(255,255,255,.08); color:var(--text-dim); border:1px dashed rgba(255,255,255,.35); }
   /* Cuando hay dos tags (p.ej. TÚ + Jungla), se apilan una debajo de otra */
   .pc-tags{ position:absolute; top:8px; left:8px; z-index:2; display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
   .pc-tags .pc-tag{ position:static; }
@@ -235,19 +241,79 @@ window.addEventListener('load', () => {
   // Rol aproximado — Riot no manda posición (Top/Jungla/Mid/ADC/Support) en
   // partidas en vivo, ni siquiera en SoloQ: eso lo calcula Riot DESPUÉS,
   // analizando cómo se jugó realmente (algo que solo existe en el detalle
-  // post-partida, ver rolOrden() en partida.html). En vivo la única señal
-  // confiable es el hechizo Smite — casi nadie lo lleva fuera de la jungla
-  // — así que solo se reordena esa posición; el resto queda como Riot los
-  // manda, en vez de arriesgar una etiqueta de rol equivocada.
+  // post-partida, ver rolOrden() en partida.html). La Jungla se detecta con
+  // una señal confiable (el hechizo Smite). Para Top/Mid/ADC/Support no hay
+  // ninguna señal así de segura — se estima según la "clase" que Riot le
+  // asigna a cada campeón en Data Dragon (Fighter/Mage/Marksman/Support/
+  // Tank/Assassin), que ya se descarga de todos modos para mostrar los
+  // nombres — cero llamadas extra a Riot, y se recalcula en cada corrida
+  // así que nunca queda desactualizado con campeones nuevos. Es una
+  // ESTIMACIÓN, no un dato confirmado — por eso se muestra con una
+  // etiqueta distinta (ver .pc-tag.rol-estimado) y solo se acepta cuando
+  // es la única candidata a ese rol en el equipo (si dos campeones
+  // apuntan al mismo rol, ninguno de los dos se etiqueta).
   function esHechizoSmite(h){ return (h && h.icono || '').toLowerCase().includes('smite'); }
+
+  // Excepciones puntuales a la regla de clases — campeones cuyo rol
+  // dominante no coincide con lo que sugiere su tag de Riot (p.ej. Ashe
+  // es abrumadoramente ADC aunque tenga tag de Support; Fizz/Naafiri son
+  // Fighter+Assassin como varios top laners, pero se juegan de Mid; Jayce,
+  // Kayle, Teemo y Shen cargan un tag secundario que no coincide con su
+  // carril real).
+  const ROL_OVERRIDES = {
+    Ashe: 'BOTTOM', Fizz: 'MIDDLE', Naafiri: 'MIDDLE',
+    Jayce: 'TOP', Kayle: 'TOP', Teemo: 'TOP', Shen: 'TOP',
+  };
+  const ROL_LABELS = { TOP: 'Top', MIDDLE: 'Mid', BOTTOM: 'ADC', UTILITY: 'Support' };
+
+  function estimarRolPorTags(participante){
+    if (ROL_OVERRIDES[participante.campeon]) return ROL_OVERRIDES[participante.campeon];
+    const tags = participante.tags || [];
+    // Orden de prioridad: Support primero (los ítems de soporte son la
+    // señal más fuerte de rol), después Marksman. Fighter/Tank se revisa
+    // ANTES que Mage/Assassin porque varios duelistas de Top llevan
+    // "Assassin" como tag secundario (Fiora, Camille, Riven, LeeSin) —
+    // sin este orden, ese grupo caía siempre en Mid.
+    if (tags.includes('Support'))                          return 'UTILITY';
+    if (tags.includes('Marksman'))                          return 'BOTTOM';
+    if (tags.includes('Fighter') || tags.includes('Tank'))   return 'TOP';
+    if (tags.includes('Mage') || tags.includes('Assassin'))  return 'MIDDLE';
+    return null; // clase desconocida (campeón sin tags, o dato viejo) — no se adivina
+  }
+
+  // Reparte los 4 jugadores que no son Jungla entre Top/Mid/ADC/Support.
+  // Si dos terminan apuntando al mismo rol, ninguno de los dos se
+  // etiqueta — mejor dejarlos sin estimar que adivinar mal con dos
+  // candidatos iguales.
+  function estimarRolesEquipo(jugadores){
+    const estimados = jugadores.map(estimarRolPorTags);
+    const conteo = {};
+    estimados.forEach(r => { if (r) conteo[r] = (conteo[r] || 0) + 1; });
+    return jugadores.map((j, i) => ({
+      ...j,
+      rolEstimado: (estimados[i] && conteo[estimados[i]] === 1) ? estimados[i] : null,
+    }));
+  }
 
   function ordenarPorRolAproximado(jugs){
     const idxJungla = jugs.findIndex(j => (j.hechizos || []).some(esHechizoSmite));
-    if (idxJungla === -1) return jugs;
-    const jungla = jugs[idxJungla];
-    const resto  = jugs.filter((_, i) => i !== idxJungla);
-    const posicion = Math.min(1, resto.length); // 2do lugar, como en Top-Jungla-Mid-ADC-Support
-    return [...resto.slice(0, posicion), jungla, ...resto.slice(posicion)];
+    const jungla    = idxJungla !== -1 ? jugs[idxJungla] : null;
+    const resto     = jugs.filter((_, i) => i !== idxJungla);
+
+    const conEstimacion = estimarRolesEquipo(resto);
+    const slots = { TOP: null, MIDDLE: null, BOTTOM: null, UTILITY: null };
+    const sinResolver = [];
+    conEstimacion.forEach(j => {
+      if (j.rolEstimado && !slots[j.rolEstimado]) slots[j.rolEstimado] = j;
+      else sinResolver.push(j);
+    });
+
+    // Orden canónico Top-Jungla-Mid-ADC-Support. Los huecos que no se
+    // pudieron resolver (incluida la Jungla, si no se detectó Smite) se
+    // rellenan con lo que sobró, en su orden original.
+    const posiciones = [slots.TOP, jungla, slots.MIDDLE, slots.BOTTOM, slots.UTILITY];
+    let cursor = 0;
+    return posiciones.map(p => p !== null ? p : sinResolver[cursor++]);
   }
 
   function tarjetaJugador(participante, duoNames){
@@ -261,7 +327,11 @@ window.addEventListener('load', () => {
     const tags = [];
     if (esSelf) tags.push('<span class="pc-tag self">Tú</span>');
     else if (esDuo) tags.push('<span class="pc-tag duo">Dúo</span>');
-    if (esJungla) tags.push('<span class="pc-tag jungla">Jungla</span>');
+    if (esJungla) {
+      tags.push('<span class="pc-tag jungla">Jungla</span>');
+    } else if (participante.rolEstimado) {
+      tags.push(`<span class="pc-tag rol-estimado">~ ${ROL_LABELS[participante.rolEstimado]}</span>`);
+    }
     const tagHtml = tags.length ? `<div class="pc-tags">${tags.join('')}</div>` : '';
 
     const keystoneUrl   = runeUrl(participante.runas && participante.runas.principal);
