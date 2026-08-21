@@ -39,6 +39,50 @@ def elo_score_simple(rango, division, lp):
     return (ti * 4 + dn) * 100 + max(0, min(100, lp or 0))
 
 
+def calcular_climb_semana(historial_lp, rango_actual, division_actual, lp_actual, corte_epoch):
+    """
+    Cuánto subió (o bajó) el elo_score de un jugador en los últimos 7 días —
+    versión Python de la misma cuenta que ya hacía el frontend (index.html/
+    perfil.html) para "El Escalador", portada acá para que el backend pueda
+    detectar cuándo cambia el líder del grupo y generar un evento de
+    historial/notificación. Mismo criterio: el punto más viejo DENTRO de la
+    ventana de 7 días es la base de comparación contra el elo actual: si ese
+    punto más viejo es "Unranked" (sin rango válido — el jugador todavía no
+    había hecho sus colocaciones), se trata como el fondo de la escala en
+    vez de descartar al jugador entero, igual que ya hace rankScore() en el
+    frontend.
+    """
+    puntos_semana = []
+    for p in (historial_lp or []):
+        if not isinstance(p, dict) or not p.get("fecha"):
+            continue
+        try:
+            ts = datetime.fromisoformat(p["fecha"]).timestamp()
+        except (ValueError, TypeError):
+            continue
+        if ts >= corte_epoch:
+            puntos_semana.append((ts, p))
+    if not puntos_semana:
+        return None
+
+    puntos_semana.sort(key=lambda x: x[0])
+    primero = puntos_semana[0][1]
+
+    cur_sc = elo_score_simple(rango_actual, division_actual, lp_actual)
+    if cur_sc is None:
+        return None
+
+    first_sc = elo_score_simple(
+        primero.get("rango") or rango_actual,
+        primero.get("division") if primero.get("division") is not None else division_actual,
+        primero.get("lp"),
+    )
+    if first_sc is None:
+        first_sc = -100000
+
+    return cur_sc - first_sc
+
+
 def calcular_lp_por_partida(md, progreso_lp_ordenado):
     info   = md.get("info", {})
     fin_ms = info.get("gameEndTimestamp")
@@ -309,6 +353,29 @@ def calcular_titulares_grupo(lista_final):
             "detalle": extractor_detalle(mejor) if extractor_detalle else None,
         }
 
+    def lider_min(extractor_valor, extractor_detalle=None):
+        """
+        Igual que lider(), pero se queda con el valor MÁS BAJO en vez del más
+        alto — para categorías como "El Tortuga" (menos partidas jugadas).
+        El extractor debe devolver None (no 0) para excluir a alguien del
+        cálculo — a diferencia de lider(), acá 0 sí sería un valor válido a
+        comparar, así que no se puede usar como "vacío".
+        """
+        mejor, mejor_valor = None, None
+        for j in lista_final:
+            v = extractor_valor(j)
+            if v is None:
+                continue
+            if mejor_valor is None or v < mejor_valor:
+                mejor_valor, mejor = v, j
+        if mejor is None:
+            return None
+        return {
+            "jugador": mejor["nombre"].split("#", 1)[0],
+            "valor":   mejor_valor,
+            "detalle": extractor_detalle(mejor) if extractor_detalle else None,
+        }
+
     return {
         "agresivo": lider(
             lambda j: j.get("primeras_sangre_semana"),
@@ -328,6 +395,27 @@ def calcular_titulares_grupo(lista_final):
         "defensor": lider(
             lambda j: (j.get("danio_recibido_semana") or {}).get("danio_recibido_pct"),
             lambda j: f"{j['danio_recibido_semana']['danio_recibido_pct']}% del daño de su equipo ({j['danio_recibido_semana']['damage_taken']:,}) con {j['danio_recibido_semana']['campeon']}"),
+        "pentakills": lider(
+            lambda j: j.get("pentakills_semana"),
+            lambda j: f"{j['pentakills_semana']} pentakill{'s' if j['pentakills_semana'] != 1 else ''}"),
+        "escalador": lider(
+            lambda j: j.get("escalador_semana"),
+            lambda j: "Mejor jugador de la semana"),
+        "tortuga": lider_min(
+            lambda j: j.get("partidas_semana") if (j.get("partidas_semana") or 0) > 0 else None,
+            lambda j: f"{j['partidas_semana']} partida{'s' if j['partidas_semana'] != 1 else ''} esta semana"),
+        "duo_dinamico": lider(
+            lambda j: (j.get("duo_semana") or {}).get("partidas"),
+            lambda j: f"con {j['duo_semana']['nombre']} ({j['duo_semana']['partidas']} partida{'s' if j['duo_semana']['partidas'] != 1 else ''} juntos)"),
+        "ladron": lider(
+            lambda j: j.get("objetivos_robados_semana"),
+            lambda j: f"{j['objetivos_robados_semana']} objetivo{'s' if j['objetivos_robados_semana'] != 1 else ''} robado{'s' if j['objetivos_robados_semana'] != 1 else ''}"),
+        "destructor": lider(
+            lambda j: j.get("estructuras_destruidas_semana"),
+            lambda j: f"{j['estructuras_destruidas_semana']} estructura{'s' if j['estructuras_destruidas_semana'] != 1 else ''} destruida{'s' if j['estructuras_destruidas_semana'] != 1 else ''}"),
+        "stop": lider(
+            lambda j: j.get("tiempo_cc_semana"),
+            lambda j: f"{round(j['tiempo_cc_semana'])}s de CC aplicado"),
     }
 
 
@@ -544,6 +632,13 @@ def obtener_datos():
                     "division": division
                 })
             historial_lp_jugador = historial_lp_jugador[-MAX_PUNTOS_HISTORIAL:]
+
+            # El Escalador (semana) — cuánto subió el elo_score en los
+            # últimos 7 días. Se calcula acá (no solo en el frontend) para
+            # que el backend pueda detectar cambios de líder y generar
+            # evento de historial/notificación, igual que las demás
+            # categorías semanales.
+            escalador_semana = calcular_climb_semana(historial_lp_jugador, rango, division, lp, hace_7_dias)
 
             # ── Top 3 Maestrías ──
             url_mast  = f"https://{REGION_GAME}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}"
@@ -930,6 +1025,9 @@ def obtener_datos():
                 # Récord de LP de temporada — {"record_lp_score":.., "record_lp_label":..}
                 "record_lp_score":           record_lp_score,
                 "record_lp_label":           record_lp_label,
+                # El Escalador (semana) — subida de elo_score en 7 días, o
+                # None si no hay suficiente historial todavía.
+                "escalador_semana":          escalador_semana,
                 "rol_principal":             rol_mas_jugado,
                 "top_roles":                 top_2_roles,
                 "top_recientes":             top_3_recientes,
@@ -1003,6 +1101,7 @@ def obtener_datos():
                 anterior.setdefault("elo_score",                None)
                 anterior.setdefault("record_lp_score",          None)
                 anterior.setdefault("record_lp_label",          None)
+                anterior.setdefault("escalador_semana",         None)
                 anterior.setdefault("max_partidas_en_un_dia",   0)
                 anterior.setdefault("primera_victoria_hoy",     None)
                 anterior.setdefault("dia_referencia",           None)
@@ -1055,6 +1154,16 @@ def obtener_datos():
         "kda_player":    {"icono": "📊", "label": "KDA Player"},
         "asistente":     {"icono": "🤝", "label": "El Asistente"},
         "champion_pool": {"icono": "🎭", "label": "Maestro del Champion Pool"},
+        # Agregados a pedido de Alex — antes se actualizaban en silencio,
+        # sin generar evento de historial ni notificación, porque nunca se
+        # habían sumado a esta lista cuando se crearon sus tarjetas.
+        "pentakills":    {"icono": "💀", "label": "Pentakills"},
+        "escalador":     {"icono": "📈", "label": "El Escalador"},
+        "tortuga":       {"icono": "🐢", "label": "El Tortuga"},
+        "duo_dinamico":  {"icono": "🎮", "label": "Dúo Dinámico"},
+        "ladron":        {"icono": "🥷", "label": "El Ladrón"},
+        "destructor":    {"icono": "💥", "label": "El Destructor"},
+        "stop":          {"icono": "🛑", "label": "Stop"},
     }
 
     titulares_nuevos = calcular_titulares_grupo(lista_final)
