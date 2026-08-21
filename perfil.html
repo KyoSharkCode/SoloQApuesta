@@ -139,16 +139,32 @@
     display:flex; flex-direction:column;
     width:100%; gap:16px; padding-top:8px;
   }
+  /* El preview entero es clickeable → live_partida.html */
+  a.live-game-link{ color:inherit; text-decoration:none; cursor:pointer; position:relative; }
+  a.live-game-link:hover .live-game-champ span{ color:var(--accent-soft); }
   .live-game-top{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
   .live-game-champ{ display:flex; align-items:center; gap:12px; }
   .live-game-champ img{ width:52px; height:52px; border-radius:12px; border:2px solid var(--accent-soft); object-fit:cover; background:#1d1d24; }
-  .live-game-champ span{ font-weight:800; font-size:17px; color:#fff; }
+  .live-game-champ span{ font-weight:800; font-size:17px; color:#fff; transition:color .15s ease; }
+  .live-game-top-right{ display:flex; align-items:center; gap:12px; }
   .live-game-spells{ display:flex; gap:8px; }
   .live-game-spells img{ width:36px; height:36px; border-radius:8px; border:1px solid var(--border); background:#1d1d24; }
-  .live-game-meta{ display:flex; gap:10px; flex-wrap:wrap; }
+  .live-game-runes{ display:flex; flex-direction:column; gap:4px; }
+  .live-game-runes img{ width:24px; height:24px; border-radius:50%; border:1px solid var(--border); background:#0a0a0c; object-fit:contain; padding:1px; }
+  .live-game-meta{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .live-game-duration{
+    font-weight:800; font-size:13px; font-variant-numeric:tabular-nums;
+    color:#fbbf24; background:rgba(251,191,36,.12); border:1px solid rgba(251,191,36,.3);
+    padding:7px 14px; border-radius:8px;
+  }
   .live-game-side{ font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; padding:7px 16px; border-radius:8px; }
   .live-game-side.side-blue{ color:#60a5fa; background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.3); }
   .live-game-side.side-red{ color:#f87171; background:rgba(248,113,113,.12); border:1px solid rgba(248,113,113,.3); }
+  .live-game-cta{
+    align-self:flex-end; font-weight:700; font-size:12px; color:var(--accent-soft);
+    opacity:.75;
+  }
+  a.live-game-link:hover .live-game-cta{ opacity:1; text-decoration:underline; }
 
   /* Bloque de dúo dentro de "En partida" — nombre + campeón + hechizos del compañero */
   .live-game-duo-box{
@@ -441,6 +457,7 @@ window.addEventListener('load', () => {
   let lastUpdate   = null;
   let loadedOnce   = false;
   let lastProgreso = [];
+  let liveGameStartTime = null; // ms — para contar en vivo la duración de la partida actual
 
   // Runas — igual que en partida.html/index.html: el id ya viene guardado
   // en datos.json (historial de cada jugador), solo falta el catálogo de
@@ -490,6 +507,7 @@ window.addEventListener('load', () => {
     refreshAll();
     setInterval(refreshAll, REFRESH_MS);
     setInterval(tickLiveIndicator, 1000);
+    setInterval(tickLiveGameDuration, 1000);
     document.addEventListener('visibilitychange', () => {
       if(!document.hidden) refreshAll();
     });
@@ -741,7 +759,15 @@ window.addEventListener('load', () => {
   async function checkLiveStatus() {
     const box = document.getElementById('live-status-box');
     try {
-      const liveRes = await fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache: 'no-store' });
+      // FIX: mismo motivo que en loadProfileData — si el catálogo de runas
+      // todavía no cargó la primera vez, runeUrl() devolvía null y las
+      // runas de la partida en vivo no se veían hasta el siguiente refresh.
+      // cargarCatalogoRunas() cachea la promesa, así que esto es gratis si
+      // ya se pidió desde loadProfileData.
+      const [liveRes] = await Promise.all([
+        fetch(`${CDN}/live_data.json?t=${Date.now()}`, { cache: 'no-store' }),
+        cargarCatalogoRunas(),
+      ]);
       if (!liveRes.ok) return;
       const liveData   = await liveRes.json();
       const liveStatus = liveData[jugadorId];
@@ -755,6 +781,25 @@ window.addEventListener('load', () => {
         const champUrl   = liveStatus.campeon
           ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(liveStatus.campeon)}.png`
           : '';
+
+        // Runas de la partida en vivo — mismo patrón que el historial
+        // (keystone arriba, árbol secundario abajo), usando runeUrl() ya
+        // cargado más arriba.
+        const runasLive     = liveStatus.runas || {};
+        const keystoneLiveUrl   = runeUrl(runasLive.principal);
+        const secundariaLiveUrl = runeUrl(runasLive.secundario);
+        const runesLiveHtml = (keystoneLiveUrl || secundariaLiveUrl) ? `
+          <span class="live-game-runes">
+            ${keystoneLiveUrl ? `<img src="${keystoneLiveUrl}" alt="runa principal" onerror="this.style.visibility='hidden'">` : ''}
+            ${secundariaLiveUrl ? `<img src="${secundariaLiveUrl}" alt="árbol secundario" onerror="this.style.visibility='hidden'">` : ''}
+          </span>` : '';
+
+        // Duración en vivo — se cuenta con JS a partir de game_start_time
+        // (Spectator ya lo trae, no cuesta nada extra); tickLiveGameDuration()
+        // la va actualizando cada segundo sin esperar al próximo refresh.
+        liveGameStartTime = (typeof liveStatus.game_start_time === 'number' && liveStatus.game_start_time > 0)
+          ? liveStatus.game_start_time : null;
+
         const hechizosHtml = (liveStatus.hechizos || []).map(h => `
           <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
                title="${h.nombre}" alt="${h.nombre}"
@@ -795,28 +840,44 @@ window.addEventListener('load', () => {
         box.className = 'live-status-box in-game';
         box.innerHTML = `
           <span class="live-corner-badge">En Partida</span>
-          <div class="live-game-content">
+          <a class="live-game-content live-game-link" href="live_partida.html?jugador=${encodeURIComponent(jugadorId)}">
             <div class="live-game-top">
               <div class="live-game-champ">
                 <img src="${champUrl}" alt="${campeon}" onerror="this.style.visibility='hidden'">
                 <span>${campeon}</span>
               </div>
-              <div class="live-game-spells">${hechizosHtml}</div>
+              <div class="live-game-top-right">
+                <div class="live-game-spells">${hechizosHtml}</div>
+                ${runesLiveHtml}
+              </div>
             </div>
             ${duoHtml}
             <div class="live-game-meta">
+              <div class="live-game-duration" id="live-game-duration">--:--</div>
               <div class="live-game-mode">${modoJuego}</div>
               <div class="live-game-side ${ladoClase}">${ladoTexto}</div>
             </div>
-          </div>
+            <span class="live-game-cta">Ver partida en vivo →</span>
+          </a>
         `;
+        tickLiveGameDuration();
       } else {
+        liveGameStartTime = null;
         box.className = 'live-status-box offline';
         box.innerHTML = `<span class="live-offline-text">Offline</span>`;
       }
     } catch (e) {
       console.log("Error verificando estado en vivo:", e);
     }
+  }
+
+  function tickLiveGameDuration(){
+    const el = document.getElementById('live-game-duration');
+    if (!el || !liveGameStartTime) return;
+    const secs = Math.max(0, Math.floor((Date.now() - liveGameStartTime) / 1000));
+    const mm = Math.floor(secs / 60);
+    const ss = secs % 60;
+    el.textContent = `${mm}:${String(ss).padStart(2, '0')}`;
   }
 
   async function loadProfileData() {
