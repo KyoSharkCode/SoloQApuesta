@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T12:32:25.157926",
+  "ultimaActualizacion": "2026-08-21T12:34:26.140796",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3076,15 +3076,15 @@
       "kills_recientes": 71,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 41,
-      "kills_semana": 71,
+      "kills_semana": 69,
       "pentakills_semana": 0,
       "vision_promedio_semana": 41,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.75,
+      "kda_promedio_semana": 2.91,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 105,
-      "partidas_semana": 10,
+      "asistencias_semana": 100,
+      "partidas_semana": 9,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787218169.114,
@@ -3229,22 +3229,6 @@
           "duracion_seg": 3026,
           "damage_taken": 87479,
           "danio_recibido_pct": 27.1
-        },
-        {
-          "fin_seg": 1786710768.51,
-          "kills": 2,
-          "muertes": 6,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 40,
-          "campeon": "Poppy",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 171,
-          "duracion_seg": 1669,
-          "damage_taken": 25777,
-          "danio_recibido_pct": 20.6
         }
       ],
       "duo_semana": null,
@@ -4837,9 +4821,9 @@
       "detalle": "6 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Ostia",
-      "valor": 2.76,
-      "detalle": "2.76 KDA"
+      "jugador": "ゆうき まこと",
+      "valor": 2.91,
+      "detalle": "2.91 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4863,6 +4847,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-21T12:34:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Ostia",
+      "detalle": "2.91 KDA"
+    },
     {
       "timestamp": "2026-08-21T08:24:24Z",
       "tipo": "badge_semanal",
@@ -5225,15 +5219,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Silver II (1 LP)"
-    },
-    {
-      "timestamp": "2026-08-19T22:17:16Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Bronze II (96 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
