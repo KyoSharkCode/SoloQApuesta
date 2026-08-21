@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T06:16:26.410763",
+  "ultimaActualizacion": "2026-08-21T06:18:28.546956",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1769,30 +1769,30 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver I",
-      "lp": 2,
+      "lp": 21,
       "winrate": "49%",
-      "elo_score": 1102,
-      "record_lp_score": 1102,
-      "record_lp_label": "Silver I (2 LP)",
+      "elo_score": 1121,
+      "record_lp_score": 1121,
+      "record_lp_label": "Silver I (21 LP)",
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "rol": "ADC",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Ahri",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Caitlyn",
-          "cantidad": 3
+          "cantidad": 2
         },
         {
           "campeon": "Zoe",
@@ -2146,9 +2146,30 @@
           "lp": 2,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-21T06:18:21Z",
+          "lp": 21,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742739316",
+          "campeon": "Ahri",
+          "kda": "8/6/9 (2.83)",
+          "resultado": "Victoria",
+          "duracion": "37min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8992,
+          "estilo_secundario": 8100
+        },
         {
           "match_id": "LA1_1742721331",
           "campeon": "Ahri",
@@ -2295,38 +2316,37 @@
           "duo_con": [],
           "perk_principal": 8369,
           "estilo_secundario": 8200
-        },
-        {
-          "match_id": "LA1_1742446050",
-          "campeon": "Caitlyn",
-          "kda": "12/11/10 (2.0)",
-          "resultado": "Derrota",
-          "duracion": "31min",
-          "lp_change": -24,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerHaste"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200
         }
       ],
-      "kills_recientes": 64,
+      "kills_recientes": 60,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 134,
+      "kills_semana": 135,
       "pentakills_semana": 0,
       "vision_promedio_semana": 21,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 1.91,
+      "kda_promedio_semana": 1.95,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 158,
+      "asistencias_semana": 165,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787292991.855,
+          "kills": 8,
+          "muertes": 6,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 20,
+          "campeon": "Ahri",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 231,
+          "duracion_seg": 2220,
+          "damage_taken": 36424,
+          "danio_recibido_pct": 17.6
+        },
         {
           "fin_seg": 1787289620.009,
           "kills": 9,
@@ -2716,22 +2736,6 @@
           "duracion_seg": 2280,
           "damage_taken": 42724,
           "danio_recibido_pct": 22.4
-        },
-        {
-          "fin_seg": 1787093923.539,
-          "kills": 7,
-          "muertes": 5,
-          "asistencias": 2,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 30,
-          "campeon": "Zoe",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 225,
-          "duracion_seg": 2123,
-          "damage_taken": 23991,
-          "danio_recibido_pct": 13.2
         }
       ],
       "duo_semana": {
@@ -2748,7 +2752,7 @@
         "damage_taken": 41386,
         "campeon": "Ahri"
       },
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787286710410,
         "campeon": "Ahri",
@@ -4892,6 +4896,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-21T06:18:21Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Silver I (21 LP)"
+    },
+    {
       "timestamp": "2026-08-21T05:20:31Z",
       "tipo": "record_lp",
       "icono": "📈",
@@ -5251,16 +5264,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-08-19T21:48:35Z",
-      "tipo": "badge_semanal",
-      "categoria": "asistente",
-      "categoria_label": "El Asistente",
-      "icono": "🤝",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "Galactic Shark",
-      "detalle": "172 asistencias"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
