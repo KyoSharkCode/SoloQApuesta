@@ -259,6 +259,9 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
             "vision":            pp.get("visionScore", 0),
             "wards_colocadas":   pp.get("wardsPlaced", 0),
             "wards_destruidas":  pp.get("wardsKilled", 0),
+            # Wards de control (ver comentario junto a "wards_control" en el
+            # historial más abajo) — para el badge "Ciego" en partida.html.
+            "wards_control":     pp.get("visionWardsBoughtInGame", 0),
             "rol":               pp.get("teamPosition", ""),
             "victoria":          bool(pp.get("win")),
         })
@@ -695,8 +698,19 @@ def obtener_datos():
                     # el historial (index y perfil) igual que ya se muestran
                     # en partida.html. Cero llamadas extra a Riot.
                     perk_principal_jug, estilo_secundario_jug = extraer_runas(pp)
+                    # Wards de control compradas — "visionWardsBoughtInGame" es
+                    # el nombre histórico del campo en la API de Riot para esto
+                    # (se llamaba "vision ward" antes de que el ítem pasara a
+                    # llamarse "Control Ward"), pero sigue siendo el conteo de
+                    # cuántas wards de control se COMPRARON en la partida. Para
+                    # el badge "Ciego" (0 compradas).
+                    wards_control_jug = pp.get("visionWardsBoughtInGame", 0)
 
-                    # Remake — aparece en historial pero NO suma stats
+                    # Remake — aparece en historial pero NO suma stats. No se
+                    # guarda wards_control (None): un remake no refleja una
+                    # decisión real de estrategia de visión, así que se
+                    # excluye del conteo "Ciego" en el perfil (el frontend
+                    # solo cuenta entradas donde wards_control es un número).
                     if dur_seg < 210:
                         historial.append({
                             "match_id":  match_id,
@@ -709,6 +723,7 @@ def obtener_datos():
                             "duo_con":   duo_con_jug,
                             "perk_principal":    perk_principal_jug,
                             "estilo_secundario": estilo_secundario_jug,
+                            "wards_control":     None,
                         })
                         continue
 
@@ -735,6 +750,7 @@ def obtener_datos():
                         "duo_con":   duo_con_jug,
                         "perk_principal":    perk_principal_jug,
                         "estilo_secundario": estilo_secundario_jug,
+                        "wards_control":     wards_control_jug,
                     })
 
                 vision_promedio_reciente = (
