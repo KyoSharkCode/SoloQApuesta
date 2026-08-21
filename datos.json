@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T23:24:26.968293",
+  "ultimaActualizacion": "2026-08-21T23:26:32.136756",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4058,12 +4058,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 68,
-      "winrate": "53%",
-      "elo_score": 868,
+      "lp": 49,
+      "winrate": "51%",
+      "elo_score": 849,
       "record_lp_score": 868,
       "record_lp_label": "Silver IV (68 LP)",
-      "escalador_semana": 100868,
+      "escalador_semana": 100849,
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -4074,11 +4074,11 @@
       "top_recientes": [
         {
           "campeon": "Swain",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Lux",
-          "cantidad": 5
+          "cantidad": 4
         }
       ],
       "maestrias": [
@@ -4090,7 +4090,7 @@
         {
           "campeon": "Swain",
           "nivel": 13,
-          "puntos": "115.536"
+          "puntos": "116.665"
         },
         {
           "campeon": "Kayn",
@@ -4260,16 +4260,38 @@
           "lp": 68,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-21T23:26:21Z",
+          "lp": 49,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742850021",
+          "campeon": "Swain",
+          "kda": "6/8/18 (3.0)",
+          "resultado": "Derrota",
+          "duracion": "48min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 0
+        },
         {
           "match_id": "LA1_1742839867",
           "campeon": "Swain",
           "kda": "2/4/7 (2.25)",
           "resultado": "Derrota",
           "duracion": "26min",
-          "lp_change": null,
+          "lp_change": -19,
           "hechizos": [
             "SummonerFlash",
             "SummonerDot"
@@ -4285,7 +4307,7 @@
           "kda": "8/10/20 (2.8)",
           "resultado": "Derrota",
           "duracion": "43min",
-          "lp_change": null,
+          "lp_change": -19,
           "hechizos": [
             "SummonerFlash",
             "SummonerDot"
@@ -4412,37 +4434,40 @@
           "perk_principal": 8229,
           "estilo_secundario": 8100,
           "wards_control": 6
-        },
-        {
-          "match_id": "LA1_1742631483",
-          "campeon": "Lux",
-          "kda": "5/4/7 (3.0)",
-          "resultado": "Derrota",
-          "duracion": "31min",
-          "lp_change": -14,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8229,
-          "estilo_secundario": 8100,
-          "wards_control": 6
         }
       ],
-      "kills_recientes": 44,
+      "kills_recientes": 45,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 63,
-      "kills_semana": 91,
+      "vision_promedio_reciente": 69,
+      "kills_semana": 94,
       "pentakills_semana": 0,
       "vision_promedio_semana": 58,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.06,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 3.03,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 249,
+      "asistencias_semana": 255,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787354725.495,
+          "kills": 6,
+          "muertes": 8,
+          "asistencias": 18,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 100,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 102,
+          "duracion_seg": 2900,
+          "damage_taken": 74168,
+          "danio_recibido_pct": 23.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 69
+        },
         {
           "fin_seg": 1787351472.364,
           "kills": 2,
@@ -4905,27 +4930,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 14
-        },
-        {
-          "fin_seg": 1787133428.986,
-          "kills": 3,
-          "muertes": 4,
-          "asistencias": 12,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 91,
-          "campeon": "Lux",
-          "victoria": false,
-          "duo_con": [
-            "Galactic Shark"
-          ],
-          "cs": 110,
-          "duracion_seg": 2085,
-          "damage_taken": 14392,
-          "danio_recibido_pct": 8.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 53
         }
       ],
       "duo_semana": {
@@ -4944,8 +4948,8 @@
       },
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 14,
-      "tiempo_cc_semana": 929,
-      "max_partidas_en_un_dia": 8,
+      "tiempo_cc_semana": 945,
+      "max_partidas_en_un_dia": 9,
       "primera_victoria_hoy": {
         "timestamp": 1787336815720,
         "campeon": "Swain",
@@ -4968,8 +4972,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.06,
-      "detalle": "3.06 KDA"
+      "valor": 3.03,
+      "detalle": "3.03 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4978,8 +4982,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 249,
-      "detalle": "249 asistencias"
+      "valor": 255,
+      "detalle": "255 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -4994,7 +4998,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Ostia",
-      "valor": 100868,
+      "valor": 100849,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5019,8 +5023,8 @@
     },
     "stop": {
       "jugador": "Ostia",
-      "valor": 929,
-      "detalle": "929s de CC aplicado"
+      "valor": 945,
+      "detalle": "945s de CC aplicado"
     }
   },
   "eventos": [
