@@ -247,7 +247,7 @@ def extraer_runas(pp):
     return perk_principal, estilo_secundario
 
 
-def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos):
+def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos, diccionario_campeones):
     """
     Arma el detalle completo de UNA partida (los 10 jugadores, ambos
     equipos, objetivos) a partir del match ya descargado (md) — no pide
@@ -263,6 +263,20 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
     for t in info.get("teams", []):
         lado = "blue" if t.get("teamId") == 100 else "red"
         obj  = t.get("objectives", {}) or {}
+        # Baneos — Match-v5 los guarda por equipo como {championId, pickTurn},
+        # sin nombre. Mismo detalle de partida ya descargado, cero llamadas
+        # extra a Riot — solo hace falta el diccionario id→nombre que ya se
+        # arma al principio de obtener_datos(). championId -1 (o ausente)
+        # significa que ese equipo no completó ese slot de baneo.
+        baneos_equipo = [
+            {
+                "campeon": (
+                    diccionario_campeones.get(b.get("championId"), "Desconocido")
+                    if b.get("championId", -1) != -1 else None
+                ),
+            }
+            for b in sorted(t.get("bans", []) or [], key=lambda b: b.get("pickTurn", 0))
+        ]
         equipos_info[lado] = {
             "victoria":     bool(t.get("win")),
             "barones":      obj.get("baron", {}).get("kills", 0),
@@ -273,6 +287,7 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
             "vacuolarvas":  obj.get("horde", {}).get("kills", 0),
             "torres":       obj.get("tower", {}).get("kills", 0),
             "inhibidores":  obj.get("inhibitor", {}).get("kills", 0),
+            "baneos":       baneos_equipo,
         }
 
     jugadores_detalle = []
@@ -771,7 +786,7 @@ def obtener_datos():
                     md_r = detalles_por_id.get(match_id)
                     if md_r:
                         partidas_recolectadas[match_id] = construir_detalle_partida(
-                            match_id, md_r, nombre_por_puuid, diccionario_hechizos
+                            match_id, md_r, nombre_por_puuid, diccionario_hechizos, diccionario_campeones
                         )
 
                 # ── Historial visible (últimas 10) ──
@@ -781,6 +796,16 @@ def obtener_datos():
                 kills_recientes_total  = 0
                 pentakills_recientes_total = 0
                 vision_scores_recientes    = []
+
+                # Para detectar logros de un solo evento (Partida Perfecta,
+                # Ace Perfecto, Terminador) solo sobre partidas que no
+                # existían ya en el historial guardado la corrida pasada —
+                # así cada logro se dispara una única vez por partida, sin
+                # necesidad de guardar ningún estado nuevo.
+                match_ids_previos = {
+                    h.get("match_id") for h in (anterior or {}).get("historial", [])
+                    if isinstance(h, dict) and h.get("match_id")
+                }
 
                 for match_id in ids_recientes:
                     md = detalles_por_id.get(match_id)
@@ -835,6 +860,55 @@ def obtener_datos():
 
                     k, d, a = pp["kills"], pp["deaths"], pp["assists"]
                     kda     = "Perfect" if d == 0 else f"{round((k + a) / d, 2)}"
+
+                    # ── Logros de un solo evento ─────────────────────────
+                    # Partida Perfecta / Ace Perfecto / Terminador — mismos
+                    # datos de "pp" ya descargados, cero llamadas extra a
+                    # Riot. "categoria" incluye el match_id para que el
+                    # dedup de toasts del frontend (claveEvento) nunca
+                    # colisione entre dos logros del mismo jugador en la
+                    # misma corrida.
+                    if match_id not in match_ids_previos:
+                        challenges_jug = pp.get("challenges") or {}
+                        duracion_logro = f"{dur_seg // 60}:{dur_seg % 60:02d}"
+                        nombre_corto   = nombre_completo.split("#", 1)[0]
+                        if d == 0 and (k > 0 or a > 0):
+                            eventos_nuevos.append({
+                                "timestamp":        fecha_actual,
+                                "tipo":             "logro_partida",
+                                "categoria":        f"perfecta:{match_id}",
+                                "icono":            "🌟",
+                                "categoria_label":  "Partida Perfecta",
+                                "jugador_nuevo":    nombre_corto,
+                                "jugador_anterior": None,
+                                "detalle":          f"{campeon_jug} · {k}/{d}/{a} en {duracion_logro}",
+                            })
+                            print(f"  🌟 Nuevo evento: {nombre_corto} logró Partida Perfecta ({campeon_jug})")
+                        if challenges_jug.get("flawlessAces", 0) > 0:
+                            eventos_nuevos.append({
+                                "timestamp":        fecha_actual,
+                                "tipo":             "logro_partida",
+                                "categoria":        f"ace:{match_id}",
+                                "icono":            "⚔️",
+                                "categoria_label":  "Ace Perfecto",
+                                "jugador_nuevo":    nombre_corto,
+                                "jugador_anterior": None,
+                                "detalle":          f"{campeon_jug} aniquiló al equipo rival sin bajas propias",
+                            })
+                            print(f"  ⚔️ Nuevo evento: {nombre_corto} logró Ace Perfecto ({campeon_jug})")
+                        if pp.get("nexusKills", 0) > 0:
+                            eventos_nuevos.append({
+                                "timestamp":        fecha_actual,
+                                "tipo":             "logro_partida",
+                                "categoria":        f"terminador:{match_id}",
+                                "icono":            "💣",
+                                "categoria_label":  "Terminador",
+                                "jugador_nuevo":    nombre_corto,
+                                "jugador_anterior": None,
+                                "detalle":          f"{campeon_jug} dio el golpe final al Nexus",
+                            })
+                            print(f"  💣 Nuevo evento: {nombre_corto} logró Terminador ({campeon_jug})")
+
                     rol_api = pp.get("teamPosition", "")
                     if rol_api in roles_count:
                         roles_count[rol_api] += 1
