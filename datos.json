@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T22:12:24.218014",
+  "ultimaActualizacion": "2026-08-21T22:36:48.560095",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4054,7 +4054,7 @@
       "icono": 6205,
       "rango": "Silver IV",
       "lp": 68,
-      "winrate": "54%",
+      "winrate": "53%",
       "elo_score": 868,
       "record_lp_score": 868,
       "record_lp_label": "Silver IV (68 LP)",
@@ -4084,7 +4084,7 @@
         {
           "campeon": "Swain",
           "nivel": 13,
-          "puntos": "114.939"
+          "puntos": "115.536"
         },
         {
           "campeon": "Kayn",
@@ -4258,6 +4258,22 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1742839867",
+          "campeon": "Swain",
+          "kda": "2/4/7 (2.25)",
+          "resultado": "Derrota",
+          "duracion": "26min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 4
+        },
+        {
           "match_id": "LA1_1742833241",
           "campeon": "Swain",
           "kda": "8/10/20 (2.8)",
@@ -4406,39 +4422,40 @@
           "perk_principal": 8229,
           "estilo_secundario": 8100,
           "wards_control": 6
-        },
-        {
-          "match_id": "LA1_1742621464",
-          "campeon": "Swain",
-          "kda": "3/8/5 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "27min",
-          "lp_change": -13,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Galactic Shark"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 3
         }
       ],
-      "kills_recientes": 45,
+      "kills_recientes": 44,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 64,
+      "vision_promedio_reciente": 63,
       "kills_semana": 91,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 59,
+      "vision_promedio_semana": 58,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.11,
+      "kda_promedio_semana": 3.06,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 254,
+      "asistencias_semana": 249,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787351472.364,
+          "kills": 2,
+          "muertes": 4,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 31,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 25,
+          "duracion_seg": 1584,
+          "damage_taken": 17532,
+          "danio_recibido_pct": 18.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
+        },
         {
           "fin_seg": 1787349506.704,
           "kills": 8,
@@ -4453,7 +4470,10 @@
           "cs": 94,
           "duracion_seg": 2614,
           "damage_taken": 68098,
-          "danio_recibido_pct": 26.7
+          "danio_recibido_pct": 26.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 60
         },
         {
           "fin_seg": 1787341876.004,
@@ -4471,7 +4491,10 @@
           "cs": 30,
           "duracion_seg": 1138,
           "damage_taken": 15103,
-          "danio_recibido_pct": 23.9
+          "danio_recibido_pct": 23.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
         },
         {
           "fin_seg": 1787339653.796,
@@ -4487,7 +4510,10 @@
           "cs": 94,
           "duracion_seg": 1964,
           "damage_taken": 15675,
-          "danio_recibido_pct": 10.8
+          "danio_recibido_pct": 10.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 45
         },
         {
           "fin_seg": 1787336815.72,
@@ -4503,7 +4529,10 @@
           "cs": 52,
           "duracion_seg": 1566,
           "damage_taken": 23859,
-          "danio_recibido_pct": 21.8
+          "danio_recibido_pct": 21.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 51
         },
         {
           "fin_seg": 1787332302.653,
@@ -4521,7 +4550,10 @@
           "cs": 80,
           "duracion_seg": 2289,
           "damage_taken": 21809,
-          "danio_recibido_pct": 10.9
+          "danio_recibido_pct": 10.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 57
         },
         {
           "fin_seg": 1787329107.805,
@@ -4537,7 +4569,10 @@
           "cs": 112,
           "duracion_seg": 2337,
           "damage_taken": 17346,
-          "danio_recibido_pct": 11.9
+          "danio_recibido_pct": 11.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 53
         },
         {
           "fin_seg": 1787320232.042,
@@ -4553,7 +4588,10 @@
           "cs": 61,
           "duracion_seg": 1615,
           "damage_taken": 28300,
-          "danio_recibido_pct": 22.2
+          "danio_recibido_pct": 22.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 37
         },
         {
           "fin_seg": 1787274734.764,
@@ -4571,7 +4609,10 @@
           "cs": 88,
           "duracion_seg": 1802,
           "damage_taken": 14867,
-          "danio_recibido_pct": 10.7
+          "danio_recibido_pct": 10.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 61
         },
         {
           "fin_seg": 1787272439.181,
@@ -4587,7 +4628,10 @@
           "cs": 67,
           "duracion_seg": 1877,
           "damage_taken": 14855,
-          "danio_recibido_pct": 10.8
+          "danio_recibido_pct": 10.8,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 24
         },
         {
           "fin_seg": 1787269882.375,
@@ -4605,7 +4649,10 @@
           "cs": 34,
           "duracion_seg": 1637,
           "damage_taken": 25081,
-          "danio_recibido_pct": 18.1
+          "danio_recibido_pct": 18.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 29
         },
         {
           "fin_seg": 1787264230.523,
@@ -4623,7 +4670,10 @@
           "cs": 55,
           "duracion_seg": 2635,
           "damage_taken": 51847,
-          "danio_recibido_pct": 21.9
+          "danio_recibido_pct": 21.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 41
         },
         {
           "fin_seg": 1787261181.691,
@@ -4641,7 +4691,10 @@
           "cs": 21,
           "duracion_seg": 1673,
           "damage_taken": 30576,
-          "danio_recibido_pct": 22.2
+          "danio_recibido_pct": 22.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 40
         },
         {
           "fin_seg": 1787259095.028,
@@ -4659,7 +4712,10 @@
           "cs": 43,
           "duracion_seg": 2340,
           "damage_taken": 21580,
-          "danio_recibido_pct": 14.4
+          "danio_recibido_pct": 14.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 33
         },
         {
           "fin_seg": 1787233524.354,
@@ -4675,7 +4731,10 @@
           "cs": 31,
           "duracion_seg": 1483,
           "damage_taken": 13298,
-          "danio_recibido_pct": 13.6
+          "danio_recibido_pct": 13.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 38
         },
         {
           "fin_seg": 1787184053.562,
@@ -4693,7 +4752,10 @@
           "cs": 17,
           "duracion_seg": 622,
           "damage_taken": 3823,
-          "danio_recibido_pct": 17.0
+          "danio_recibido_pct": 17.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 17
         },
         {
           "fin_seg": 1787181981.932,
@@ -4711,7 +4773,10 @@
           "cs": 69,
           "duracion_seg": 1782,
           "damage_taken": 17315,
-          "danio_recibido_pct": 12.8
+          "danio_recibido_pct": 12.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 31
         },
         {
           "fin_seg": 1787179739.213,
@@ -4729,7 +4794,10 @@
           "cs": 57,
           "duracion_seg": 1546,
           "damage_taken": 19872,
-          "danio_recibido_pct": 17.0
+          "danio_recibido_pct": 17.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 42
         },
         {
           "fin_seg": 1787177617.042,
@@ -4747,7 +4815,10 @@
           "cs": 31,
           "duracion_seg": 928,
           "damage_taken": 3416,
-          "danio_recibido_pct": 9.1
+          "danio_recibido_pct": 9.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
         },
         {
           "fin_seg": 1787175956.931,
@@ -4765,7 +4836,10 @@
           "cs": 113,
           "duracion_seg": 1851,
           "damage_taken": 16190,
-          "danio_recibido_pct": 13.2
+          "danio_recibido_pct": 13.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 36
         },
         {
           "fin_seg": 1787173712.377,
@@ -4783,7 +4857,10 @@
           "cs": 33,
           "duracion_seg": 912,
           "damage_taken": 4156,
-          "danio_recibido_pct": 9.8
+          "danio_recibido_pct": 9.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 22
         },
         {
           "fin_seg": 1787172423.439,
@@ -4799,7 +4876,10 @@
           "cs": 198,
           "duracion_seg": 3015,
           "damage_taken": 29704,
-          "danio_recibido_pct": 8.8
+          "danio_recibido_pct": 8.8,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 49
         },
         {
           "fin_seg": 1787168347.771,
@@ -4815,7 +4895,10 @@
           "cs": 204,
           "duracion_seg": 2112,
           "damage_taken": 29546,
-          "danio_recibido_pct": 15.7
+          "danio_recibido_pct": 15.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 14
         },
         {
           "fin_seg": 1787133428.986,
@@ -4833,23 +4916,10 @@
           "cs": 110,
           "duracion_seg": 2085,
           "damage_taken": 14392,
-          "danio_recibido_pct": 8.3
-        },
-        {
-          "fin_seg": 1787129031.287,
-          "kills": 2,
-          "muertes": 4,
-          "asistencias": 12,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 73,
-          "campeon": "Lux",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 73,
-          "duracion_seg": 1920,
-          "damage_taken": 15568,
-          "danio_recibido_pct": 10.4
+          "danio_recibido_pct": 8.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 53
         }
       ],
       "duo_semana": {
@@ -4866,10 +4936,10 @@
         "damage_taken": 68098,
         "campeon": "Swain"
       },
-      "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 0,
-      "tiempo_cc_semana": 0,
-      "max_partidas_en_un_dia": 7,
+      "objetivos_robados_semana": 2,
+      "estructuras_destruidas_semana": 14,
+      "tiempo_cc_semana": 929,
+      "max_partidas_en_un_dia": 8,
       "primera_victoria_hoy": {
         "timestamp": 1787336815720,
         "campeon": "Swain",
@@ -4892,8 +4962,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.11,
-      "detalle": "3.11 KDA"
+      "valor": 3.06,
+      "detalle": "3.06 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4902,8 +4972,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 254,
-      "detalle": "254 asistencias"
+      "valor": 249,
+      "detalle": "249 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -5303,7 +5373,7 @@
     "adrianNOOBYT#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.11
+    "ゆうき まこと": 0.13
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
