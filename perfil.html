@@ -547,6 +547,9 @@ window.addEventListener('load', () => {
     const pMaxDia         = p.max_partidas_en_un_dia || 0;
     const pPrimVictoria   = p.primera_victoria_hoy || null;
     const pDuoSemana      = p.duo_semana || null;
+    const pRobados        = p.objetivos_robados_semana || 0;
+    const pEstructuras    = p.estructuras_destruidas_semana || 0;
+    const pCc             = p.tiempo_cc_semana || 0;
 
     // Calcular estadísticas de todos para comparar
     const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -559,6 +562,7 @@ window.addEventListener('load', () => {
     let pTopChamp   = '';
     let maxPrimSangre = -1, maxKdaProm = -1, maxChampsGan = -1;
     let maxAsistencias = -1, minPartidasSemana = Infinity, maxDia = -1;
+    let maxRobados = -1, maxEstructuras = -1, maxCc = -1;
 
     // ordenar jugadores por score para saber si es top1/2/3
     const sortedByScore = [...todos].sort((a, b) => {
@@ -581,6 +585,9 @@ window.addEventListener('load', () => {
       if ((j.asistencias_semana || 0) > maxAsistencias) maxAsistencias = j.asistencias_semana || 0;
       if ((j.partidas_semana || 0) > 0 && (j.partidas_semana || 0) < minPartidasSemana) minPartidasSemana = j.partidas_semana;
       if ((j.max_partidas_en_un_dia || 0) > maxDia) maxDia = j.max_partidas_en_un_dia || 0;
+      if ((j.objetivos_robados_semana || 0) > maxRobados) maxRobados = j.objetivos_robados_semana || 0;
+      if ((j.estructuras_destruidas_semana || 0) > maxEstructuras) maxEstructuras = j.estructuras_destruidas_semana || 0;
+      if ((j.tiempo_cc_semana || 0) > maxCc) maxCc = j.tiempo_cc_semana || 0;
 
       // Escalador: LP ganados esta semana
       const hist = (j.progreso_lp || []).filter(pt => pt.fecha && now - new Date(pt.fecha).getTime() <= ONE_WEEK)
@@ -669,6 +676,18 @@ window.addEventListener('load', () => {
     // Dúo más frecuente de la semana
     if (pDuoSemana && pDuoSemana.nombre && pDuoSemana.partidas > 0)
       badges.push({ icon:'🎮', label:`Dúo Frecuente · ${pDuoSemana.nombre} (${pDuoSemana.partidas} partida${pDuoSemana.partidas === 1 ? '' : 's'} juntos)`, color:'blue' });
+
+    // El Ladrón — más objetivos robados esta semana
+    if (pRobados > 0 && pRobados >= maxRobados)
+      badges.push({ icon:'🥷', label:`El Ladrón · ${pRobados} objetivo${pRobados === 1 ? '' : 's'} robado${pRobados === 1 ? '' : 's'}`, color:'purple' });
+
+    // El Destructor — más estructuras destruidas esta semana
+    if (pEstructuras > 0 && pEstructuras >= maxEstructuras)
+      badges.push({ icon:'💥', label:`El Destructor · ${pEstructuras} estructura${pEstructuras === 1 ? '' : 's'} destruida${pEstructuras === 1 ? '' : 's'}`, color:'red' });
+
+    // Stop — más tiempo de CC aplicado a enemigos esta semana
+    if (pCc > 0 && pCc >= maxCc)
+      badges.push({ icon:'🛑', label:`Stop · ${Math.round(pCc)}s de CC esta semana`, color:'blue' });
 
     // Primera victoria del día — FIX: es objeto con .timestamp (ms)
     if (pPrimVictoria && typeof pPrimVictoria === 'object' && pPrimVictoria.timestamp) {
