@@ -37,11 +37,20 @@ def cargar_diccionarios_ddragon():
     """Descarga los diccionarios de campeones y hechizos de invocador."""
     diccionario_campeones = {}
     diccionario_hechizos  = {}
+    # "Clases" de cada campeón (Fighter/Mage/Marksman/Support/Tank/Assassin)
+    # tal como las define Riot en Data Dragon — se usan en live_partida.html
+    # para estimar Top/Mid/ADC/Support del resto del equipo (la Jungla ya se
+    # detecta aparte, por Smite). Viene de la MISMA respuesta que ya se
+    # descarga para el diccionario de campeones, cero llamadas extra a Riot,
+    # y se recalcula en cada corrida — así el mapeo nunca queda desactualizado
+    # si Riot agrega un campeón nuevo o le cambia la clase a uno existente.
+    diccionario_roles_campeon = {}
 
     try:
         url_champ = f"https://ddragon.leagueoflegends.com/cdn/{DDRAGON_VERSION}/data/es_ES/champion.json"
         champ_data = requests.get(url_champ, timeout=15).json()["data"]
         diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
+        diccionario_roles_campeon = {nombre: info.get("tags", []) for nombre, info in champ_data.items()}
         print(f"✅ Diccionario de campeones cargado ({len(diccionario_campeones)} entradas)")
     except Exception as e:
         print(f"⚠️ No se pudo descargar el diccionario de campeones: {e}")
@@ -57,7 +66,7 @@ def cargar_diccionarios_ddragon():
     except Exception as e:
         print(f"⚠️ No se pudo descargar el diccionario de hechizos: {e}")
 
-    return diccionario_campeones, diccionario_hechizos
+    return diccionario_campeones, diccionario_hechizos, diccionario_roles_campeon
 
 
 def get_con_reintento(url, headers, timeout=10, max_reintentos=2):
@@ -155,7 +164,7 @@ def actualizar_estado_en_vivo(jugadores):
 
     datos_json  = {}
     errores_auth = 0
-    diccionario_campeones, diccionario_hechizos = cargar_diccionarios_ddragon()
+    diccionario_campeones, diccionario_hechizos, diccionario_roles_campeon = cargar_diccionarios_ddragon()
 
     # Lobby completo (los 10 jugadores) por partida en vivo, para las
     # tarjetas de live_partida.html. Se llena UNA vez por gameId aunque dos
@@ -321,6 +330,16 @@ def actualizar_estado_en_vivo(jugadores):
                                         diccionario_hechizos.get(part.get("spell2Id"), {"nombre": "?", "icono": ""}),
                                     ],
                                     "runas": extraer_runas(part),
+                                    # Clases del campeón (Fighter/Mage/Marksman/
+                                    # Support/Tank/Assassin) — para que el
+                                    # frontend estime Top/Mid/ADC/Support del
+                                    # resto del equipo (la Jungla ya se detecta
+                                    # aparte, por Smite). Mismo diccionario que
+                                    # ya se descarga para los nombres de
+                                    # campeón, cero llamadas extra a Riot.
+                                    "tags": diccionario_roles_campeon.get(
+                                        diccionario_campeones.get(part.get("championId"), ""), []
+                                    ),
                                 }
                                 for part in todos_participantes
                             ],
