@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T18:16:27.852051",
+  "ultimaActualizacion": "2026-08-21T18:18:32.291939",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1775,30 +1775,30 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Silver I",
-      "lp": 21,
-      "winrate": "49%",
-      "elo_score": 1121,
-      "record_lp_score": 1121,
-      "record_lp_label": "Silver I (21 LP)",
+      "lp": 41,
+      "winrate": "50%",
+      "elo_score": 1141,
+      "record_lp_score": 1141,
+      "record_lp_label": "Silver I (41 LP)",
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "ADC",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Ahri",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "campeon": "Caitlyn",
-          "cantidad": 2
+          "cantidad": 1
         },
         {
           "campeon": "Zoe",
@@ -2158,9 +2158,30 @@
           "lp": 21,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-21T18:18:22Z",
+          "lp": 41,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742798639",
+          "campeon": "Ahri",
+          "kda": "10/3/4 (4.67)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8992,
+          "estilo_secundario": 8100
+        },
         {
           "match_id": "LA1_1742739316",
           "campeon": "Ahri",
@@ -2307,36 +2328,37 @@
           "duo_con": [],
           "perk_principal": 8229,
           "estilo_secundario": 8300
-        },
-        {
-          "match_id": "LA1_1742471600",
-          "campeon": "Caitlyn",
-          "kda": "9/3/5 (4.67)",
-          "resultado": "Victoria",
-          "duracion": "25min",
-          "lp_change": 16,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerHaste"
-          ],
-          "duo_con": [],
-          "perk_principal": 8369,
-          "estilo_secundario": 8200
         }
       ],
-      "kills_recientes": 60,
+      "kills_recientes": 61,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 135,
+      "kills_semana": 145,
       "pentakills_semana": 0,
       "vision_promedio_semana": 21,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 1.95,
+      "kda_promedio_semana": 2.0,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 165,
-      "partidas_semana": 23,
+      "asistencias_semana": 169,
+      "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787336230.981,
+          "kills": 10,
+          "muertes": 3,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 22,
+          "campeon": "Ahri",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 158,
+          "duracion_seg": 1791,
+          "damage_taken": 21805,
+          "danio_recibido_pct": 15.6
+        },
         {
           "fin_seg": 1787292991.855,
           "kills": 8,
@@ -2758,7 +2780,7 @@
         "damage_taken": 41386,
         "campeon": "Ahri"
       },
-      "max_partidas_en_un_dia": 3,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787286710410,
         "campeon": "Ahri",
@@ -4834,6 +4856,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-21T18:18:22Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Silver I (41 LP)"
+    },
+    {
       "timestamp": "2026-08-21T13:28:23Z",
       "tipo": "badge_semanal",
       "categoria": "kda_player",
@@ -5197,15 +5228,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Silver II (20 LP)"
-    },
-    {
-      "timestamp": "2026-08-19T22:50:40Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Bronze I (24 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
