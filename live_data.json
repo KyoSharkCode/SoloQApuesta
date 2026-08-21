@@ -1,38 +1,6 @@
 {
     "Pinea#Pinea": {
-        "en_partida": true,
-        "campeon": "Fiora",
-        "equipo": "blue",
-        "hechizos": [
-            {
-                "nombre": "Prender",
-                "icono": "SummonerDot.png"
-            },
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            }
-        ],
-        "modo_juego": "Solo/Duo",
-        "duo_con": [
-            "Ostia"
-        ],
-        "duo_detalle": [
-            {
-                "nombre": "Ostia",
-                "campeon": "Swain",
-                "hechizos": [
-                    {
-                        "nombre": "Destello",
-                        "icono": "SummonerFlash.png"
-                    },
-                    {
-                        "nombre": "Prender",
-                        "icono": "SummonerDot.png"
-                    }
-                ]
-            }
-        ]
+        "en_partida": false
     },
     "Galactic Shark#AYK": {
         "en_partida": false
@@ -47,38 +15,6 @@
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": true,
-        "campeon": "Swain",
-        "equipo": "blue",
-        "hechizos": [
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            },
-            {
-                "nombre": "Prender",
-                "icono": "SummonerDot.png"
-            }
-        ],
-        "modo_juego": "Solo/Duo",
-        "duo_con": [
-            "Pinea"
-        ],
-        "duo_detalle": [
-            {
-                "nombre": "Pinea",
-                "campeon": "Fiora",
-                "hechizos": [
-                    {
-                        "nombre": "Prender",
-                        "icono": "SummonerDot.png"
-                    },
-                    {
-                        "nombre": "Destello",
-                        "icono": "SummonerFlash.png"
-                    }
-                ]
-            }
-        ]
+        "en_partida": false
     }
 }
