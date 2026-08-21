@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T21:58:26.433012",
+  "ultimaActualizacion": "2026-08-21T22:01:07.478207",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4039,7 +4039,7 @@
       "icono": 6205,
       "rango": "Silver IV",
       "lp": 68,
-      "winrate": "56%",
+      "winrate": "54%",
       "elo_score": 868,
       "record_lp_score": 868,
       "record_lp_label": "Silver IV (68 LP)",
@@ -4243,6 +4243,22 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1742833241",
+          "campeon": "Swain",
+          "kda": "8/10/20 (2.8)",
+          "resultado": "Derrota",
+          "duracion": "43min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 4
+        },
+        {
           "match_id": "LA1_1742815202",
           "campeon": "Swain",
           "kda": "3/2/10 (6.5)",
@@ -4393,39 +4409,37 @@
           "perk_principal": 8112,
           "estilo_secundario": 8000,
           "wards_control": 3
-        },
-        {
-          "match_id": "LA1_1742601278",
-          "campeon": "Swain",
-          "kda": "2/5/16 (3.6)",
-          "resultado": "Victoria",
-          "duracion": "43min",
-          "lp_change": 27,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 6
         }
       ],
-      "kills_recientes": 39,
+      "kills_recientes": 45,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 66,
-      "kills_semana": 88,
+      "vision_promedio_reciente": 64,
+      "kills_semana": 91,
       "pentakills_semana": 0,
       "vision_promedio_semana": 59,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.26,
+      "kda_promedio_semana": 3.11,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 245,
+      "asistencias_semana": 254,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787349506.704,
+          "kills": 8,
+          "muertes": 10,
+          "asistencias": 20,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 84,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 94,
+          "duracion_seg": 2614,
+          "damage_taken": 68098,
+          "danio_recibido_pct": 26.7
+        },
         {
           "fin_seg": 1787341876.004,
           "kills": 3,
@@ -4821,29 +4835,11 @@
           "duracion_seg": 1920,
           "damage_taken": 15568,
           "danio_recibido_pct": 10.4
-        },
-        {
-          "fin_seg": 1787093281.138,
-          "kills": 5,
-          "muertes": 1,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 71,
-          "campeon": "Lux",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 77,
-          "duracion_seg": 1794,
-          "damage_taken": 9413,
-          "danio_recibido_pct": 8.9
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 13
+        "partidas": 12
       },
       "cs_min_semana": {
         "cs_por_min": 5.8,
@@ -4851,11 +4847,11 @@
         "campeon": "Veigar"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 23.9,
-        "damage_taken": 15103,
+        "danio_recibido_pct": 26.7,
+        "damage_taken": 68098,
         "campeon": "Swain"
       },
-      "max_partidas_en_un_dia": 6,
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1787336815720,
         "campeon": "Swain",
@@ -4878,8 +4874,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.26,
-      "detalle": "3.26 KDA"
+      "valor": 3.11,
+      "detalle": "3.11 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4888,8 +4884,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 245,
-      "detalle": "245 asistencias"
+      "valor": 254,
+      "detalle": "254 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
