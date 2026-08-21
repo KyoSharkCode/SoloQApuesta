@@ -150,6 +150,14 @@ def calcular_agregados_semana(detalle):
         "duo_mas_frecuente":        duo_mas_frecuente,
         "mejor_cs_min_semana":      mejor_cs_min,
         "mayor_danio_recibido_semana": mayor_danio_recibido,
+        # El Ladrón / El Destructor / Stop — sumas de la semana. Igual que
+        # "cs"/"danio_recibido_pct" arriba, estos campos solo existen en
+        # partidas guardadas después de este cambio; ".get(..., 0)" hace
+        # que las entradas viejas simplemente sumen 0 en vez de romper,
+        # hasta que se caigan de la ventana de 7 días por sí solas.
+        "objetivos_robados_semana":      sum(d.get("objetivos_robados", 0) for d in detalle),
+        "estructuras_destruidas_semana": sum(d.get("estructuras_destruidas", 0) for d in detalle),
+        "tiempo_cc_semana":              sum(d.get("tiempo_cc", 0) for d in detalle),
     }
 
 
@@ -601,6 +609,9 @@ def obtener_datos():
                 duo_semana                    = agregados_semana["duo_mas_frecuente"]
                 cs_min_semana                 = agregados_semana["mejor_cs_min_semana"]
                 danio_semana                  = agregados_semana["mayor_danio_recibido_semana"]
+                objetivos_robados_semana      = agregados_semana["objetivos_robados_semana"]
+                estructuras_destruidas_semana = agregados_semana["estructuras_destruidas_semana"]
+                tiempo_cc_semana              = agregados_semana["tiempo_cc_semana"]
 
                 # Recalcular partidas de HOY y primera victoria desde historial guardado
                 # El historial guarda match_id pero no timestamp — usamos primera_victoria_hoy
@@ -822,6 +833,14 @@ def obtener_datos():
                         "duracion_seg":        md["info"].get("gameDuration", 0),
                         "damage_taken":        danio_propio,
                         "danio_recibido_pct":  danio_recibido_pct,
+                        # Para "El Ladrón" (objetivos robados), "El Destructor"
+                        # (estructuras destruidas) y "Stop" (tiempo de CC) —
+                        # mismo criterio de arriba: ya vienen en el detalle de
+                        # la partida que se descarga de todos modos, cero
+                        # llamadas extra a Riot.
+                        "objetivos_robados":   pp.get("objectivesStolen", 0),
+                        "estructuras_destruidas": pp.get("turretKills", 0) + pp.get("inhibitorKills", 0),
+                        "tiempo_cc":           pp.get("timeCCingOthers", 0),
                     })
 
                     if fin_seg >= inicio_dia_utc:
@@ -858,6 +877,9 @@ def obtener_datos():
                 duo_semana                    = agregados_semana["duo_mas_frecuente"]
                 cs_min_semana                 = agregados_semana["mejor_cs_min_semana"]
                 danio_semana                  = agregados_semana["mayor_danio_recibido_semana"]
+                objetivos_robados_semana      = agregados_semana["objetivos_robados_semana"]
+                estructuras_destruidas_semana = agregados_semana["estructuras_destruidas_semana"]
+                tiempo_cc_semana              = agregados_semana["tiempo_cc_semana"]
 
             print(f"    📊 {nombre_completo}: semana={n_semana}p, hoy={max_partidas_en_un_dia}p, asistencias={total_asistencias_semana}, primera_victoria={'sí' if primera_victoria_hoy else 'no'}")
 
@@ -941,6 +963,10 @@ def obtener_datos():
                 # sola partida de la semana (no daño en bruto, ver fix arriba)
                 # {"danio_recibido_pct":.., "damage_taken":.., "campeon":..} o None
                 "danio_recibido_semana":     danio_semana,
+                # El Ladrón / El Destructor / Stop — sumas de la semana
+                "objetivos_robados_semana":      objetivos_robados_semana,
+                "estructuras_destruidas_semana": estructuras_destruidas_semana,
+                "tiempo_cc_semana":              tiempo_cc_semana,
                 # Diarios (desde 6AM España de hoy)
                 "max_partidas_en_un_dia":    max_partidas_en_un_dia,
                 "primera_victoria_hoy":      primera_victoria_hoy,
@@ -971,6 +997,9 @@ def obtener_datos():
                 anterior.setdefault("duo_semana",               None)
                 anterior.setdefault("cs_min_semana",            None)
                 anterior.setdefault("danio_recibido_semana",    None)
+                anterior.setdefault("objetivos_robados_semana",      0)
+                anterior.setdefault("estructuras_destruidas_semana", 0)
+                anterior.setdefault("tiempo_cc_semana",              0)
                 anterior.setdefault("elo_score",                None)
                 anterior.setdefault("record_lp_score",          None)
                 anterior.setdefault("record_lp_label",          None)
