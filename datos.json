@@ -1,13 +1,13 @@
 {
-  "ultimaActualizacion": "2026-08-21T17:10:39.916739",
+  "ultimaActualizacion": "2026-08-21T17:12:44.802341",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Silver II",
-      "lp": 73,
-      "winrate": "53%",
-      "elo_score": 1073,
+      "lp": 54,
+      "winrate": "52%",
+      "elo_score": 1054,
       "record_lp_score": 1073,
       "record_lp_label": "Silver II (73 LP)",
       "rol_principal": "Top",
@@ -20,11 +20,11 @@
       "top_recientes": [
         {
           "campeon": "Fiora",
-          "cantidad": 9
+          "cantidad": 8
         },
         {
           "campeon": "Nasus",
-          "cantidad": 1
+          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -422,9 +422,32 @@
           "lp": 73,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-21T17:12:28Z",
+          "lp": 54,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742788511",
+          "campeon": "Nasus",
+          "kda": "6/8/14 (2.5)",
+          "resultado": "Derrota",
+          "duracion": "38min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerHaste",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8214,
+          "estilo_secundario": 8300
+        },
         {
           "match_id": "LA1_1742721331",
           "campeon": "Fiora",
@@ -577,38 +600,39 @@
           ],
           "perk_principal": 8010,
           "estilo_secundario": 8400
-        },
+        }
+      ],
+      "kills_recientes": 66,
+      "pentakills_recientes": 0,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 154,
+      "pentakills_semana": 0,
+      "vision_promedio_semana": 27,
+      "primeras_sangre_semana": 6,
+      "kda_promedio_semana": 1.99,
+      "kda_perfecto_semana": false,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 127,
+      "partidas_semana": 24,
+      "partidas_semana_detalle": [
         {
-          "match_id": "LA1_1742585351",
-          "campeon": "Fiora",
-          "kda": "8/9/7 (1.67)",
-          "resultado": "Victoria",
-          "duracion": "39min",
-          "lp_change": 19,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
+          "fin_seg": 1787332302.653,
+          "kills": 6,
+          "muertes": 8,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 40,
+          "campeon": "Nasus",
+          "victoria": false,
           "duo_con": [
             "Ostia"
           ],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400
-        }
-      ],
-      "kills_recientes": 68,
-      "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 157,
-      "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
-      "primeras_sangre_semana": 6,
-      "kda_promedio_semana": 1.97,
-      "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 117,
-      "partidas_semana": 24,
-      "partidas_semana_detalle": [
+          "cs": 213,
+          "duracion_seg": 2289,
+          "damage_taken": 52440,
+          "danio_recibido_pct": 26.1
+        },
         {
           "fin_seg": 1787289620.009,
           "kills": 4,
@@ -1022,29 +1046,11 @@
           "duracion_seg": 1818,
           "damage_taken": 45979,
           "danio_recibido_pct": 25.5
-        },
-        {
-          "fin_seg": 1787115285.101,
-          "kills": 9,
-          "muertes": 6,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 23,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 167,
-          "duracion_seg": 1683,
-          "damage_taken": 24735,
-          "danio_recibido_pct": 22.7
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 14
+        "partidas": 13
       },
       "cs_min_semana": {
         "cs_por_min": 7.8,
@@ -1056,7 +1062,7 @@
         "damage_taken": 40303,
         "campeon": "Nasus"
       },
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787286710410,
         "campeon": "Fiora",
@@ -3995,7 +4001,7 @@
       "icono": 6205,
       "rango": "Silver IV",
       "lp": 0,
-      "winrate": "53%",
+      "winrate": "52%",
       "elo_score": 800,
       "record_lp_score": 841,
       "record_lp_label": "Silver IV (41 LP)",
@@ -4009,11 +4015,11 @@
       "top_recientes": [
         {
           "campeon": "Swain",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "campeon": "Lux",
-          "cantidad": 3
+          "cantidad": 4
         }
       ],
       "maestrias": [
@@ -4181,6 +4187,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1742788511",
+          "campeon": "Lux",
+          "kda": "5/7/15 (2.86)",
+          "resultado": "Derrota",
+          "duracion": "38min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ],
+          "perk_principal": 8229,
+          "estilo_secundario": 8100
+        },
+        {
           "match_id": "LA1_1742782513",
           "campeon": "Lux",
           "kda": "5/3/10 (5.0)",
@@ -4324,38 +4347,39 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000
-        },
+        }
+      ],
+      "kills_recientes": 28,
+      "pentakills_recientes": 0,
+      "vision_promedio_reciente": 64,
+      "kills_semana": 81,
+      "pentakills_semana": 0,
+      "vision_promedio_semana": 58,
+      "primeras_sangre_semana": 0,
+      "kda_promedio_semana": 2.98,
+      "kda_perfecto_semana": false,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 244,
+      "partidas_semana": 24,
+      "partidas_semana_detalle": [
         {
-          "match_id": "LA1_1742398116",
-          "campeon": "Swain",
-          "kda": "1/1/4 (5.0)",
-          "resultado": "Victoria",
-          "duracion": "10min",
-          "lp_change": -11,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
+          "fin_seg": 1787332302.653,
+          "kills": 5,
+          "muertes": 7,
+          "asistencias": 15,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 93,
+          "campeon": "Lux",
+          "victoria": false,
           "duo_con": [
             "Pinea"
           ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000
-        }
-      ],
-      "kills_recientes": 24,
-      "pentakills_recientes": 0,
-      "vision_promedio_reciente": 56,
-      "kills_semana": 82,
-      "pentakills_semana": 0,
-      "vision_promedio_semana": 57,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.07,
-      "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 2,
-      "asistencias_semana": 246,
-      "partidas_semana": 24,
-      "partidas_semana_detalle": [
+          "cs": 80,
+          "duracion_seg": 2289,
+          "damage_taken": 21809,
+          "danio_recibido_pct": 10.9
+        },
         {
           "fin_seg": 1787329107.805,
           "kills": 5,
@@ -4755,24 +4779,6 @@
           "duracion_seg": 2372,
           "damage_taken": 26663,
           "danio_recibido_pct": 11.7
-        },
-        {
-          "fin_seg": 1787080996.778,
-          "kills": 6,
-          "muertes": 5,
-          "asistencias": 17,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 77,
-          "campeon": "Lux",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 65,
-          "duracion_seg": 2033,
-          "damage_taken": 18068,
-          "danio_recibido_pct": 11.7
         }
       ],
       "duo_semana": {
@@ -4789,7 +4795,7 @@
         "damage_taken": 28300,
         "campeon": "Swain"
       },
-      "max_partidas_en_un_dia": 2,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787284800
     }
@@ -4802,8 +4808,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.07,
-      "detalle": "3.07 KDA"
+      "valor": 2.98,
+      "detalle": "2.98 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4812,8 +4818,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 246,
-      "detalle": "246 asistencias"
+      "valor": 244,
+      "detalle": "244 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
