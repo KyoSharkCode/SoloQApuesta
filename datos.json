@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T23:12:29.531212",
+  "ultimaActualizacion": "2026-08-21T23:14:26.589018",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -10,6 +10,7 @@
       "elo_score": 1074,
       "record_lp_score": 1074,
       "record_lp_label": "Silver II (74 LP)",
+      "escalador_semana": 16,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -1104,6 +1105,7 @@
       "elo_score": 1150,
       "record_lp_score": 1190,
       "record_lp_label": "Silver I (90 LP)",
+      "escalador_semana": -5,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1802,6 +1804,7 @@
       "elo_score": 1141,
       "record_lp_score": 1141,
       "record_lp_label": "Silver I (41 LP)",
+      "escalador_semana": -16,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2828,6 +2831,7 @@
       "elo_score": 1365,
       "record_lp_score": 1375,
       "record_lp_label": "Gold III (75 LP)",
+      "escalador_semana": -10,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -3295,6 +3299,7 @@
       "elo_score": 800,
       "record_lp_score": 804,
       "record_lp_label": "Silver IV (4 LP)",
+      "escalador_semana": 0,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4058,6 +4063,7 @@
       "elo_score": 868,
       "record_lp_score": 868,
       "record_lp_label": "Silver IV (68 LP)",
+      "escalador_semana": 100868,
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -4984,9 +4990,100 @@
       "jugador": "ゆうき まこと",
       "valor": 35.3,
       "detalle": "35.3% del daño de su equipo (78,119) con Nasus"
+    },
+    "pentakills": null,
+    "escalador": {
+      "jugador": "Ostia",
+      "valor": 100868,
+      "detalle": "Mejor jugador de la semana"
+    },
+    "tortuga": {
+      "jugador": "ゆうき まこと",
+      "valor": 8,
+      "detalle": "8 partidas esta semana"
+    },
+    "duo_dinamico": {
+      "jugador": "El Buñuelito",
+      "valor": 19,
+      "detalle": "con Pinea (19 partidas juntos)"
+    },
+    "ladron": {
+      "jugador": "Ostia",
+      "valor": 2,
+      "detalle": "2 objetivos robados"
+    },
+    "destructor": {
+      "jugador": "Ostia",
+      "valor": 14,
+      "detalle": "14 estructuras destruidas"
+    },
+    "stop": {
+      "jugador": "Ostia",
+      "valor": 929,
+      "detalle": "929s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "escalador",
+      "categoria_label": "El Escalador",
+      "icono": "📈",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Mejor jugador de la semana"
+    },
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "8 partidas esta semana"
+    },
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "duo_dinamico",
+      "categoria_label": "Dúo Dinámico",
+      "icono": "🎮",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "con Pinea (19 partidas juntos)"
+    },
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "ladron",
+      "categoria_label": "El Ladrón",
+      "icono": "🥷",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "2 objetivos robados"
+    },
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "14 estructuras destruidas"
+    },
+    {
+      "timestamp": "2026-08-21T23:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "stop",
+      "categoria_label": "Stop",
+      "icono": "🛑",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "929s de CC aplicado"
+    },
     {
       "timestamp": "2026-08-21T19:52:21Z",
       "tipo": "record_lp",
@@ -5305,61 +5402,6 @@
       "jugador_nuevo": "ゆうき まこと",
       "jugador_anterior": null,
       "detalle": "0.0 días acumulados en el Top 1"
-    },
-    {
-      "timestamp": "2026-08-20T04:15:31Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-20T01:33:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Silver IV (4 LP)"
-    },
-    {
-      "timestamp": "2026-08-20T00:03:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Silver II (60 LP)"
-    },
-    {
-      "timestamp": "2026-08-20T00:00:53Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Silver IV (11 LP)"
-    },
-    {
-      "timestamp": "2026-08-20T00:00:53Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-19T23:44:31Z",
-      "tipo": "badge_semanal",
-      "categoria": "defensor",
-      "categoria_label": "El Defensor",
-      "icono": "🛡️",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "Galactic Shark",
-      "detalle": "32.8% del daño de su equipo (40,303) con Nasus"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
