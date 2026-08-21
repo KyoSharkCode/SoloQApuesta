@@ -129,6 +129,16 @@
   .team-head.red{ background:rgba(248,113,113,.12); color:var(--red); border-bottom:1px solid rgba(248,113,113,.25); }
   .team-objectives{ display:flex; gap:14px; font-size:11.5px; font-weight:600; color:var(--text-faint); }
   .team-objectives span{ white-space:nowrap; }
+  .team-bans{ background:var(--panel); display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:10px 16px; border-bottom:1px solid var(--border); }
+  .team-bans-label{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); margin-right:2px; }
+  .ban-icon{ position:relative; width:26px; height:26px; border-radius:6px; overflow:hidden; flex-shrink:0; filter:grayscale(1) brightness(.55); }
+  .ban-icon img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ban-icon::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(45deg, transparent 44%, var(--red) 47%, var(--red) 53%, transparent 56%);
+  }
+  .ban-icon.empty{ background:var(--panel-2); border:1px dashed var(--border); filter:none; }
+  .ban-icon.empty::after{ content:none; }
   .team-rows{ background:var(--panel); }
   /* FIX: columnas con ancho FIJO (no "auto") — cada .p-row es su propio
      grid independiente, así que con "auto" cada fila calculaba el ancho
@@ -395,6 +405,22 @@ window.addEventListener('load', () => {
   // en emoji — se ven bien y no dependen de adivinar una URL que rompa.
   function objIconHtml(slug, emoji, valor){
     return `<span title="${slug}">${emoji} ${valor||0}</span>`;
+  }
+
+  // Fila de campeones baneados por equipo — dato que ya viene en el mismo
+  // detalle de partida que se descarga de Riot (Match-v5 lo guarda por
+  // equipo en "bans"), cero llamadas extra. Si el equipo no baneó nada
+  // (modos sin fase de baneo) la fila entera no se muestra.
+  function baneosHtml(baneos){
+    if (!Array.isArray(baneos) || !baneos.length) return '';
+    return `
+      <div class="team-bans">
+        <span class="team-bans-label">Baneos</span>
+        ${baneos.map(b => b.campeon
+          ? `<div class="ban-icon" title="${b.campeon}"><img src="${champUrl(b.campeon)}" alt="${b.campeon}" onerror="this.style.visibility='hidden'"></div>`
+          : `<div class="ban-icon empty" title="Sin baneo"></div>`
+        ).join('')}
+      </div>`;
   }
 
   // ── Tarjeta para compartir ──────────────────────────────────────────
@@ -979,6 +1005,7 @@ window.addEventListener('load', () => {
                 ${objIconHtml('inhibitor', '🏰', eqInfo.inhibidores)}
               </span>
             </div>
+            ${baneosHtml(eqInfo.baneos)}
             <div class="team-rows">
               ${jugs.map(j => filaJugador(j, self)).join('')}
             </div>
