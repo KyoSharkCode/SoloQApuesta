@@ -62,6 +62,8 @@
   .highlight-card.rey-card .highlight-player{ font-size:16px; }
   .highlight-icon { font-size:26px; line-height:1; flex-shrink:0; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--panel-2); border-radius:12px; }
   .highlight-avatar { width:44px; height:44px; border-radius:12px; border:1px solid var(--border); object-fit:cover; flex-shrink:0; }
+  .highlight-avatars-multi { display:flex; flex-shrink:0; }
+  .highlight-avatars-multi .highlight-avatar { border:1px solid var(--panel); box-shadow:0 0 0 1px var(--border); }
   .highlight-body { min-width:0; }
   .highlight-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin:0 0 4px; }
   .highlight-player { font-size:14px; font-weight:800; color:#fff; margin:0 0 2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
@@ -655,6 +657,22 @@ window.addEventListener('load', () => {
   function rankScore(p){ const s = eloScore(p.rango,p.division,p.lp); return s===null?-100000:s; }
   function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${iconId}.png`; }
 
+  // ── Empates en highlights ──
+  // El perfil (renderBadges en perfil.html) usa comparaciones INCLUSIVAS
+  // (>=) para que, si dos jugadores quedan empatados en una estadística
+  // semanal, AMBOS reciban el badge en su propio perfil. Estas dos
+  // funciones permiten que las highlight-cards del index reflejen el
+  // mismo empate en vez de quedarse solo con el primero que aparezca en
+  // state.players (que era la causa de inconsistencias como "Maestro del
+  // Pool" mostrando a alguien distinto que en su perfil).
+  function avatarStackHtml(players){
+    if(players.length<=1) return `<img class="highlight-avatar" src="${getAvatarUrl(players[0].icono)}" alt="">`;
+    return `<div class="highlight-avatars-multi">${players.slice(0,4).map((p,i)=>
+      `<img class="highlight-avatar" src="${getAvatarUrl(p.icono)}" alt="" style="z-index:${10-i};${i>0?'margin-left:-14px;':''}">`
+    ).join('')}</div>`;
+  }
+  function namesJoined(players){ return players.map(p=>p.nombre.split('#')[0]).join(' & '); }
+
   function renderTop1(){
     if(!state.players.length) return;
     const tp = state.players[0];
@@ -736,9 +754,14 @@ window.addEventListener('load', () => {
       { icon:'👁️', label:'Top Observador (10p)', campo:'visionPromedioReciente', sufijo:'visión prom.', vacio:'Sin datos de visión aún.' },
     ];
     const topsHtml = categorias.map(cat => {
-      const lider = [...state.players].sort((a,b) => (b[cat.campo]||0)-(a[cat.campo]||0))[0];
-      const valor = lider ? (lider[cat.campo]||0) : 0;
-      if(!lider || valor <= 0) return `
+      // FIX: antes se usaba sort()[0], que se queda con un solo "ganador"
+      // arbitrario (orden de array) aunque haya empate real — igual que
+      // pasaba con "Maestro del Pool". Ahora, igual que el perfil (>=),
+      // se juntan TODOS los jugadores empatados en el máximo.
+      let max=-1;
+      state.players.forEach(p => { const v=p[cat.campo]||0; if(v>max) max=v; });
+      const lideres = max>0 ? state.players.filter(p => (p[cat.campo]||0) >= max) : [];
+      if(!lideres.length) return `
         <div class="highlight-card">
           <div class="highlight-icon">${cat.icon}</div>
           <div class="highlight-body"><p class="highlight-label">${cat.label}</p><p class="highlight-empty">${cat.vacio}</p></div>
@@ -748,8 +771,8 @@ window.addEventListener('load', () => {
           <div class="highlight-icon">${cat.icon}</div>
           <div class="highlight-body">
             <p class="highlight-label">${cat.label}</p>
-            <p class="highlight-player">${lider.nombre}</p>
-            <p class="highlight-value">${valor} ${cat.sufijo}</p>
+            <p class="highlight-player" title="${namesJoined(lideres)}">${namesJoined(lideres)}</p>
+            <p class="highlight-value">${max} ${cat.sufijo}</p>
           </div>
         </div>`;
     }).join('');
@@ -767,17 +790,29 @@ window.addEventListener('load', () => {
     if(!state.players.length){ container.innerHTML=''; return; }
 
     let otpPlayer=null, otpChamp='', otpPercent=0;
-    let climber=null, maxClimb=-Infinity;
     let grinder=null, maxTime=0;
-    let agresivo=null, maxSangre=-1;
-    let kdaPlayer=null, maxKda=-1, kdaPlayerPerfecto=false;
-    let champPoolMaster=null, maxChamps=-1;
-    let tortuga=null, minPartidas=Infinity;
-    let asistente=null, maxAsistencias=-1;
-    let sinRendirse=null, maxDia=-1;
     let duoPlayer=null, duoCompanero='', maxDuo=-1;
     let farmeador=null, maxCsMin=-1, farmeadorChamp='';
     let defensor=null, maxDanioPct=-1, defensorChamp='', defensorDanioBruto=0;
+
+    // FIX (consistencia con el perfil): estas 7 categorías también existen
+    // como badge en perfil.html, que usa comparaciones INCLUSIVAS (>=) —
+    // si dos jugadores empatan, el perfil se lo muestra a AMBOS. Acá antes
+    // se usaba ">" estricto guardando un solo "ganador" (el primero que
+    // apareciera en state.players), así que en un empate el index sólo
+    // mostraba a uno de los dos aunque el perfil se lo mostrara a los dos
+    // (ej: "Maestro del Pool" mostrando a Buñuelito en el index mientras
+    // el perfil de Ostia, empatada con él, también se lo mostraba a ella).
+    // Ahora se guardan TODOS los datos por jugador y se arma el set de
+    // empatados después, igual que hace el perfil.
+    const climbData=[];               // {p, d}
+    let maxClimb=-Infinity;
+    let maxSangre=-1;
+    let maxKda=-1;
+    let maxChamps=-1;
+    let minPartidas=Infinity;
+    let maxAsistencias=-1;
+    let maxDia=-1;
 
     const now=Date.now(), ONE_WEEK=7*24*60*60*1000;
 
@@ -796,8 +831,19 @@ window.addEventListener('load', () => {
         const hist=[...p.historialLP].filter(pt=>pt.fecha&&(now-new Date(pt.fecha).getTime()<=ONE_WEEK)).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
         if(hist.length>0){
           const curSc  =eloScore(p.rango,p.division,p.lp);
-          const firstSc=eloScore(hist[0].rango||p.rango,hist[0].division!==undefined?hist[0].division:p.division,hist[0].lp);
-          if(curSc!==null&&firstSc!==null){ const d=curSc-firstSc; if(d>maxClimb){maxClimb=d;climber=p;} }
+          let firstSc=eloScore(hist[0].rango||p.rango,hist[0].division!==undefined?hist[0].division:p.division,hist[0].lp);
+          // FIX: si el punto más viejo de la semana es "Unranked" (el
+          // jugador todavía no había hecho sus partidas de colocación),
+          // eloScore no puede convertirlo a un número y devuelve null —
+          // antes eso descartaba al jugador ENTERO del cálculo, así que
+          // alguien que subió de Unranked a un rango real esta semana
+          // (un progreso enorme) nunca se consideraba para el badge.
+          // Ahora, igual que ya hace rankScore() para el ranking general,
+          // un punto de partida sin rango válido se trata como el fondo
+          // de la escala — así su rango actual sí cuenta como una subida
+          // completa desde cero, en vez de dejarlo afuera del cálculo.
+          if(firstSc===null) firstSc = -100000;
+          if(curSc!==null&&firstSc!==null){ const d=curSc-firstSc; climbData.push({p,d}); if(d>maxClimb) maxClimb=d; }
         }
       }
       // Grinder — duración acumulada últimas 10
@@ -808,16 +854,21 @@ window.addEventListener('load', () => {
         });
         if(t>maxTime){maxTime=t;grinder=p;}
       }
-      // Campos semana
-      if((p.primerasSangreSemana||0)>maxSangre)    { maxSangre=p.primerasSangreSemana||0; agresivo=p; }
-      if((p.kdaPromedioSemana||0)>maxKda)           { maxKda=p.kdaPromedioSemana||0; kdaPlayer=p; kdaPlayerPerfecto=p.kdaPerfectoSemana; }
-      if((p.campeonesGanadosSemana||0)>maxChamps)   { maxChamps=p.campeonesGanadosSemana||0; champPoolMaster=p; }
+      // Campos semana — sólo se guarda el máximo acá; el/los ganador(es)
+      // se calculan después de este forEach con un segundo filtro >=,
+      // para poder capturar empates (ver comentario arriba).
+      if((p.primerasSangreSemana||0)>maxSangre)    maxSangre = p.primerasSangreSemana||0;
+      if((p.kdaPromedioSemana||0)>maxKda)          maxKda    = p.kdaPromedioSemana||0;
+      if((p.campeonesGanadosSemana||0)>maxChamps)  maxChamps = p.campeonesGanadosSemana||0;
       // Tortuga — menos partidas de la semana (mínimo 1 para aparecer)
-      if(p.partidasSemana > 0 && p.partidasSemana < minPartidas){ minPartidas=p.partidasSemana; tortuga=p; }
+      if(p.partidasSemana > 0 && p.partidasSemana < minPartidas) minPartidas = p.partidasSemana;
       // Asistente — más asistencias de la semana
-      if((p.asistenciasSemana||0) > maxAsistencias){ maxAsistencias=p.asistenciasSemana||0; asistente=p; }
-      // Sin rendirse — más partidas jugadas HOY (desde 6AM España), mínimo 1
-      if((p.maxPartidasEnUnDia||0) > maxDia){ maxDia=p.maxPartidasEnUnDia||0; sinRendirse=p; }
+      if((p.asistenciasSemana||0) > maxAsistencias) maxAsistencias = p.asistenciasSemana||0;
+      // Sin rendirse — más partidas jugadas HOY (desde 6AM España). FIX:
+      // ahora exige mínimo 3 partidas en el día, igual que el perfil
+      // (antes el index lo mostraba con solo 1 partida, un umbral más
+      // bajo que el del perfil — otra inconsistencia entre ambas páginas).
+      if((p.maxPartidasEnUnDia||0) > maxDia) maxDia = p.maxPartidasEnUnDia||0;
       // Dúo Dinámico — la pareja que más veces jugó junta esta semana
       if(p.duoSemana && (p.duoSemana.partidas||0) > maxDuo){
         maxDuo=p.duoSemana.partidas; duoPlayer=p; duoCompanero=p.duoSemana.nombre;
@@ -844,54 +895,57 @@ window.addEventListener('load', () => {
     });
 
     if(!otpPlayer) otpPlayer=state.players[0];
-    // FIX: antes había un "if(!climber) climber = state.players[0]" — si
-    // nadie tenía datos válidos de escalada, se le ponía por error el
-    // badge al jugador #1 del ranking general aunque no hubiera subido
-    // nada de LP esa semana. Ahora, sin fallback: si maxClimb no quedó
-    // en positivo, climberHtml (abajo) muestra el estado vacío en vez de
-    // inventarle el logro a alguien — mismo criterio que ya usa el perfil.
     if(!grinder)   grinder  =state.players[0];
     if(!otpChamp)  otpChamp ='Desconocido';
 
     const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(otpChamp)}.png`;
 
-    // FIX: ahora exige maxClimb>0 igual que el perfil — antes con
-    // cualquier climber no-null se mostraba, incluso con LP negativo o
-    // con el fallback roto al jugador #1 del ranking general.
-    const climberHtml=(climber&&maxClimb>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(climber.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player">${climber.nombre}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div></div>`
+    // Sets de ganadores empatados (>= / <= inclusivo, igual que el perfil).
+    const climbers        = maxClimb>0        ? climbData.filter(cd=>cd.d>=maxClimb).map(cd=>cd.p) : [];
+    const agresivos        = maxSangre>0        ? state.players.filter(p=>(p.primerasSangreSemana||0)>=maxSangre) : [];
+    const kdaWinners        = maxKda>0        ? state.players.filter(p=>(p.kdaPromedioSemana||0)>=maxKda) : [];
+    const kdaPlayerPerfecto = kdaWinners.length>0 && kdaWinners.every(p=>p.kdaPerfectoSemana);
+    const champPoolWinners = maxChamps>0        ? state.players.filter(p=>(p.campeonesGanadosSemana||0)>=maxChamps) : [];
+    const tortugas         = minPartidas<Infinity ? state.players.filter(p=>(p.partidasSemana||0)>0 && (p.partidasSemana||0)<=minPartidas) : [];
+    const asistentes        = maxAsistencias>0 ? state.players.filter(p=>(p.asistenciasSemana||0)>=maxAsistencias) : [];
+    const sinRendirseWinners = maxDia>=3        ? state.players.filter(p=>(p.maxPartidasEnUnDia||0)>=3 && (p.maxPartidasEnUnDia||0)>=maxDia) : [];
+
+    const climberHtml=climbers.length>0?`
+      <div class="highlight-card">${avatarStackHtml(climbers)}
+        <div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-player" title="${namesJoined(climbers)}">${namesJoined(climbers)}</p><p class="highlight-value" style="color:var(--win);">Mejor jugador de la semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">📈</div><div class="highlight-body"><p class="highlight-label">El Escalador</p><p class="highlight-empty">Nadie ha subido de LP esta semana todavía.</p></div></div>`;
 
-    const agresivoHtml=(agresivo&&maxSangre>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(agresivo.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🩸 Agresivo</p><p class="highlight-player">${agresivo.nombre}</p><p class="highlight-value">${maxSangre} primera${maxSangre===1?'':'s'} sangre</p></div></div>`
+    const agresivoHtml=agresivos.length>0?`
+      <div class="highlight-card">${avatarStackHtml(agresivos)}
+        <div class="highlight-body"><p class="highlight-label">🩸 Agresivo</p><p class="highlight-player" title="${namesJoined(agresivos)}">${namesJoined(agresivos)}</p><p class="highlight-value">${maxSangre} primera${maxSangre===1?'':'s'} sangre</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🩸</div><div class="highlight-body"><p class="highlight-label">Agresivo</p><p class="highlight-empty">Nadie ha conseguido primera sangre esta semana.</p></div></div>`;
 
-    const kdaHtml=(kdaPlayer&&maxKda>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(kdaPlayer.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">📊 KDA Player</p><p class="highlight-player">${kdaPlayer.nombre}</p><p class="highlight-value">${kdaPlayerPerfecto?'Perfect':maxKda} KDA</p></div></div>`
+    const kdaHtml=kdaWinners.length>0?`
+      <div class="highlight-card">${avatarStackHtml(kdaWinners)}
+        <div class="highlight-body"><p class="highlight-label">📊 KDA Player</p><p class="highlight-player" title="${namesJoined(kdaWinners)}">${namesJoined(kdaWinners)}</p><p class="highlight-value">${kdaPlayerPerfecto?'Perfect':maxKda} KDA</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">📊</div><div class="highlight-body"><p class="highlight-label">KDA Player</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
-    const champPoolHtml=(champPoolMaster&&maxChamps>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(champPoolMaster.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🎭 Maestro del Champion Pool</p><p class="highlight-player">${champPoolMaster.nombre}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div></div>`
+    const champPoolHtml=champPoolWinners.length>0?`
+      <div class="highlight-card">${avatarStackHtml(champPoolWinners)}
+        <div class="highlight-body"><p class="highlight-label">🎭 Maestro del Champion Pool</p><p class="highlight-player" title="${namesJoined(champPoolWinners)}">${namesJoined(champPoolWinners)}</p><p class="highlight-value">${maxChamps} campeones distintos ganados</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🎭</div><div class="highlight-body"><p class="highlight-label">Maestro del Champion Pool</p><p class="highlight-empty">Nadie ha ganado esta semana todavía.</p></div></div>`;
 
-    const tortugaHtml=tortuga?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(tortuga.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🐢 El Tortuga</p><p class="highlight-player">${tortuga.nombre}</p><p class="highlight-value">${minPartidas} partida${minPartidas===1?'':'s'} esta semana</p></div></div>`
+    const tortugaHtml=tortugas.length>0?`
+      <div class="highlight-card">${avatarStackHtml(tortugas)}
+        <div class="highlight-body"><p class="highlight-label">🐢 El Tortuga</p><p class="highlight-player" title="${namesJoined(tortugas)}">${namesJoined(tortugas)}</p><p class="highlight-value">${minPartidas} partida${minPartidas===1?'':'s'} esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🐢</div><div class="highlight-body"><p class="highlight-label">El Tortuga</p><p class="highlight-empty">Nadie ha jugado esta semana aún.</p></div></div>`;
 
-    const asistenteHtml=(asistente&&maxAsistencias>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(asistente.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">🤝 El Asistente</p><p class="highlight-player">${asistente.nombre}</p><p class="highlight-value">${maxAsistencias} asistencias esta semana</p></div></div>`
+    const asistenteHtml=asistentes.length>0?`
+      <div class="highlight-card">${avatarStackHtml(asistentes)}
+        <div class="highlight-body"><p class="highlight-label">🤝 El Asistente</p><p class="highlight-player" title="${namesJoined(asistentes)}">${namesJoined(asistentes)}</p><p class="highlight-value">${maxAsistencias} asistencias esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-body"><p class="highlight-label">El Asistente</p><p class="highlight-empty">Sin datos de asistencias aún.</p></div></div>`;
 
-    const sinRendirseHtml=(sinRendirse&&maxDia>=1)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(sinRendirse.icono)}" alt="">
-        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player">${sinRendirse.nombre}</p><p class="highlight-value">${maxDia} partida${maxDia===1?'':'s'} jugadas hoy</p></div></div>`
-      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado hoy todavía.</p></div></div>`;
+    // FIX: ahora exige mínimo 3 partidas en el día, igual que el perfil
+    // (antes bastaba con 1 sola partida — ver comentario en el forEach).
+    const sinRendirseHtml=sinRendirseWinners.length>0?`
+      <div class="highlight-card">${avatarStackHtml(sinRendirseWinners)}
+        <div class="highlight-body"><p class="highlight-label">😤 Sin rendirse</p><p class="highlight-player" title="${namesJoined(sinRendirseWinners)}">${namesJoined(sinRendirseWinners)}</p><p class="highlight-value">${maxDia} partida${maxDia===1?'':'s'} jugadas hoy</p></div></div>`
+      :`<div class="highlight-card"><div class="highlight-icon">😤</div><div class="highlight-body"><p class="highlight-label">Sin rendirse</p><p class="highlight-empty">Nadie ha jugado 3 o más partidas hoy todavía.</p></div></div>`;
 
     const duoHtml=(duoPlayer&&maxDuo>0)?`
       <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(duoPlayer.icono)}" alt="">
