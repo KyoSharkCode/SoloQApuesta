@@ -286,6 +286,26 @@ def actualizar_estado_en_vivo(jugadores):
                         partidas_activas[game_id] = {
                             "game_start_time": game_data.get("gameStartTime"),
                             "modo_juego":      modo_juego,
+                            # Campeones baneados — ya vienen en esta misma
+                            # respuesta de Spectator (bannedChampions), cero
+                            # llamadas extra a Riot. championId -1 significa
+                            # que ese equipo no completó ese slot de baneo
+                            # (pasa en algunos modos/objetos custom), se deja
+                            # como None para que el frontend muestre un
+                            # espacio vacío en vez de "Desconocido".
+                            "baneos": [
+                                {
+                                    "campeon": (
+                                        diccionario_campeones.get(b.get("championId"), "Desconocido")
+                                        if b.get("championId", -1) != -1 else None
+                                    ),
+                                    "equipo": "blue" if b.get("teamId") == 100 else "red",
+                                }
+                                for b in sorted(
+                                    game_data.get("bannedChampions", []) or [],
+                                    key=lambda b: b.get("pickTurn", 0)
+                                )
+                            ],
                             "participantes": [
                                 {
                                     "nombre":         extraer_nombre_riot(part),
