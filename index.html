@@ -1161,6 +1161,9 @@ window.addEventListener('load', () => {
     if(e.tipo === 'rivalidad'){
       return `<b>${e.jugador_nuevo}</b> está en contra de <b>${e.jugador_anterior}</b> esta partida`;
     }
+    if(e.tipo === 'logro_partida'){
+      return `<b>${e.jugador_nuevo}</b> logró ${e.categoria_label}`;
+    }
     return `<b>${e.jugador_nuevo}</b> logró algo nuevo`;
   }
 

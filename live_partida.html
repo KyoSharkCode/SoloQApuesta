@@ -79,6 +79,17 @@
   .team-head.red{ background:rgba(248,113,113,.12); color:var(--red); border-bottom:1px solid rgba(248,113,113,.25); }
   .team-cards{ background:var(--panel); display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:12px; padding:16px; }
 
+  .team-bans{ background:var(--panel); display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:10px 16px; border-bottom:1px solid var(--border); }
+  .team-bans-label{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--text-dim); margin-right:2px; }
+  .ban-icon{ position:relative; width:28px; height:28px; border-radius:6px; overflow:hidden; flex-shrink:0; filter:grayscale(1) brightness(.55); }
+  .ban-icon img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ban-icon::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(45deg, transparent 44%, var(--red) 47%, var(--red) 53%, transparent 56%);
+  }
+  .ban-icon.empty{ background:var(--panel-2); border:1px dashed var(--border); filter:none; }
+  .ban-icon.empty::after{ content:none; }
+
   .player-card{
     position:relative; aspect-ratio:3/4; border-radius:12px; overflow:hidden;
     border:2px solid var(--border); background:#0d0d10;
@@ -203,7 +214,8 @@ window.addEventListener('load', () => {
   // "Loading screen" del campeón (retrato vertical) — el mismo que usa el
   // perfil para el splash del campeón con más maestría, ideal para el
   // formato "carta" (más alto que ancho).
-  const splashUrl = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${fmt(name)}_0.jpg`;
+  const splashUrl   = (name) => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${fmt(name)}_0.jpg`;
+  const champIconUrl = (name) => `${DDRAGON}/img/champion/${fmt(name)}.png`;
   const iconUrl    = (id)   => (id ? `${DDRAGON}/img/profileicon/${id}.png` : '');
 
   let gameStartTime = null;
@@ -284,6 +296,23 @@ window.addEventListener('load', () => {
       </div>`;
   }
 
+  // Fila de campeones baneados por equipo — dato que ya viene en el mismo
+  // JSON del lobby (live_status.py lo arma desde "bannedChampions" de
+  // Spectator v5), cero llamadas extra a Riot. Si el equipo no baneó nada
+  // (modos sin fase de baneo, p.ej. ARAM) la fila entera no se muestra.
+  function baneosHtml(baneos, lado){
+    const delEquipo = (baneos || []).filter(b => b.equipo === lado);
+    if (!delEquipo.length) return '';
+    return `
+      <div class="team-bans">
+        <span class="team-bans-label">Baneos</span>
+        ${delEquipo.map(b => b.campeon
+          ? `<div class="ban-icon" title="${b.campeon}"><img src="${champIconUrl(b.campeon)}" alt="${b.campeon}" onerror="this.style.visibility='hidden'"></div>`
+          : `<div class="ban-icon empty" title="Sin baneo"></div>`
+        ).join('')}
+      </div>`;
+  }
+
   function mostrarPartida(partida, duoNames){
     liveContentEl.style.display = 'block';
     stateMsgEl.style.display = 'none';
@@ -304,6 +333,7 @@ window.addEventListener('load', () => {
           <div class="team-head ${lado}">
             <span>${nombreLado}</span>
           </div>
+          ${baneosHtml(partida.baneos, lado)}
           <div class="team-cards">
             ${jugs.map(j => tarjetaJugador(j, duoNames)).join('') || '<div style="padding:16px;color:var(--text-dim);">Sin datos de este equipo todavía.</div>'}
           </div>
