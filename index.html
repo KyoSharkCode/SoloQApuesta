@@ -490,7 +490,13 @@ window.addEventListener('load', () => {
   // Historial de logros — null = todavía no se ha visto ningún evento en
   // esta sesión del navegador (se usa para no lanzar popups de cosas
   // viejas apenas se abre la página, solo de lo que pasa DESPUÉS).
+  // Dos sets separados (uno por stream: historial de logros vs.
+  // rivalidades en vivo) para que cada uno tenga su propio "primer
+  // vistazo" — si compartieran uno solo, el segundo stream en procesarse
+  // en cada refresco encontraría el set ya inicializado por el primero y
+  // lanzaría toasts de TODO lo viejo la primera vez que abrís la página.
   let eventosVistos = null;
+  let eventosVistosVivo = null;
 
   // ─────────────────────────────────────────────────────
   // Sonido + vibración para las notificaciones (toasts).
@@ -650,6 +656,17 @@ window.addEventListener('load', () => {
       const eventos = Array.isArray(rawData.eventos) ? rawData.eventos : [];
       renderHistorialLogros(eventos);
       procesarEventosNuevos(eventos);
+
+      // Rivalidades en vivo ("X está en contra de Y") — vienen de
+      // live_data.json (las genera live_status.py, no actualizar_datos.py),
+      // así que es un stream de eventos aparte. Solo se avisa como toast —
+      // a diferencia del historial de logros de arriba, no queda en el feed
+      // permanente, porque es información puntual de una partida en curso,
+      // no un logro de temporada. Reusa el mismo pipeline (procesarEventosNuevos/
+      // mostrarToast) porque claveEvento() ya distingue por tipo+jugadores.
+      const eventosVivo = Array.isArray(state.liveData && state.liveData._eventos_vivo)
+        ? state.liveData._eventos_vivo : [];
+      procesarEventosVivoNuevos(eventosVivo);
 
       const seleccionValida = state.players.some(p => p.id === state.selectedId);
       if(state.players.length){
@@ -1141,6 +1158,9 @@ window.addEventListener('load', () => {
         ? `<b>${e.jugador_nuevo}</b> es el nuevo Rey de la Temporada, se lo quitó a <b>${e.jugador_anterior}</b>`
         : `<b>${e.jugador_nuevo}</b> es el primer Rey de la Temporada`;
     }
+    if(e.tipo === 'rivalidad'){
+      return `<b>${e.jugador_nuevo}</b> está en contra de <b>${e.jugador_anterior}</b> esta partida`;
+    }
     return `<b>${e.jugador_nuevo}</b> logró algo nuevo`;
   }
 
@@ -1164,22 +1184,33 @@ window.addEventListener('load', () => {
 
   function claveEvento(e){ return `${e.timestamp}|${e.tipo}|${e.categoria||''}|${e.jugador_nuevo}|${e.jugador_anterior||''}`; }
 
-  function procesarEventosNuevos(eventos){
+  // Genérico: procesa un stream de eventos contra SU PROPIO set de
+  // "vistos" (getSet/setSet apuntan a la variable correspondiente) — así
+  // el historial de logros y las rivalidades en vivo no se pisan entre sí.
+  function procesarStreamEventos(eventos, getSet, setSet){
     if(!Array.isArray(eventos)) return;
-    if(eventosVistos === null){
-      // Primera carga de esta pestaña — no lanzamos popups de logros
-      // viejos, solo marcamos lo que ya existe como "visto".
-      eventosVistos = new Set(eventos.map(claveEvento));
+    if(getSet() === null){
+      // Primera carga de esta pestaña — no lanzamos popups de cosas
+      // viejas, solo marcamos lo que ya existe como "visto".
+      setSet(new Set(eventos.map(claveEvento)));
       return;
     }
     // Del más viejo al más nuevo, para que si hay varios se muestren en orden.
     [...eventos].reverse().forEach(e => {
       const clave = claveEvento(e);
-      if(!eventosVistos.has(clave)){
-        eventosVistos.add(clave);
+      if(!getSet().has(clave)){
+        getSet().add(clave);
         mostrarToast(e);
       }
     });
+  }
+
+  function procesarEventosNuevos(eventos){
+    procesarStreamEventos(eventos, () => eventosVistos, s => { eventosVistos = s; });
+  }
+
+  function procesarEventosVivoNuevos(eventos){
+    procesarStreamEventos(eventos, () => eventosVistosVivo, s => { eventosVistosVivo = s; });
   }
 
   function mostrarToast(evento){
