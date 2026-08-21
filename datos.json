@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-21T07:32:29.756963",
+  "ultimaActualizacion": "2026-08-21T07:34:26.199048",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3076,15 +3076,15 @@
       "kills_recientes": 71,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 41,
-      "kills_semana": 90,
+      "kills_semana": 88,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 42,
+      "vision_promedio_semana": 43,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.67,
+      "kda_promedio_semana": 3.01,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 124,
-      "partidas_semana": 12,
+      "asistencias_semana": 120,
+      "partidas_semana": 11,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787218169.114,
@@ -3261,22 +3261,6 @@
           "duracion_seg": 2629,
           "damage_taken": 59342,
           "danio_recibido_pct": 24.4
-        },
-        {
-          "fin_seg": 1786692795.567,
-          "kills": 2,
-          "muertes": 11,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 29,
-          "campeon": "Sion",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 195,
-          "duracion_seg": 1959,
-          "damage_taken": 65627,
-          "danio_recibido_pct": 37.1
         }
       ],
       "duo_semana": null,
@@ -3286,9 +3270,9 @@
         "campeon": "Sion"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 37.1,
-        "damage_taken": 65627,
-        "campeon": "Sion"
+        "danio_recibido_pct": 35.3,
+        "damage_taken": 78119,
+        "campeon": "Nasus"
       },
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
@@ -4869,9 +4853,9 @@
       "detalle": "6 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Ostia",
-      "valor": 2.76,
-      "detalle": "2.76 KDA"
+      "jugador": "ゆうき まこと",
+      "valor": 3.01,
+      "detalle": "3.01 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -4890,11 +4874,21 @@
     },
     "defensor": {
       "jugador": "ゆうき まこと",
-      "valor": 37.1,
-      "detalle": "37.1% del daño de su equipo (65,627) con Sion"
+      "valor": 35.3,
+      "detalle": "35.3% del daño de su equipo (78,119) con Nasus"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-21T07:34:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Ostia",
+      "detalle": "3.01 KDA"
+    },
     {
       "timestamp": "2026-08-21T06:18:21Z",
       "tipo": "record_lp",
@@ -5253,15 +5247,6 @@
       "icono": "🌅",
       "categoria_label": "Primera Victoria del Día",
       "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-19T22:01:38Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": null
     }
