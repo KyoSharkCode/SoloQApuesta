@@ -3,6 +3,7 @@ import sys
 import json
 import time
 import requests
+from datetime import datetime
 from urllib.parse import quote
 
 # ================= CONFIGURACIÓN =================
@@ -355,6 +356,51 @@ def actualizar_estado_en_vivo(jugadores):
             nombres_legibles = ', '.join(m.split('#', 1)[0] for m in companeros)
             print(f"  🎮🎮 {jugador} está jugando en dúo con: {nombres_legibles}")
 
+    # ── Rivalidad en vivo ─────────────────────────────────────────────────
+    # Cuando dos del grupo caen en la MISMA partida pero en equipos
+    # distintos, es tan interesante como el dúo — "Fulano está en contra de
+    # Mengano". A diferencia del dúo (que es un estado que se muestra todo
+    # el tiempo que dure la partida), esto se guarda como una notificación
+    # puntual (_eventos_vivo) que se dispara UNA sola vez por partida, no
+    # en cada corrida mientras siga en curso.
+    jugadores_por_partida = {}
+    for jugador, info in datos_json.items():
+        if info.get("en_partida") and info.get("_gameId") is not None:
+            jugadores_por_partida.setdefault(info["_gameId"], []).append(jugador)
+
+    def jugador_era_nuevo_en_partida(jugador, game_id_actual):
+        """True si, en la última corrida guardada, este jugador NO estaba ya
+        en esta misma partida (game_id distinto o recién entró) — así el
+        aviso de rivalidad sale una sola vez por partida."""
+        info_anterior = data_cargada.get(jugador) or {}
+        return info_anterior.get("game_id") != game_id_actual
+
+    eventos_vivo_nuevos = []
+    fecha_actual_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    for game_id, miembros in jugadores_por_partida.items():
+        if len(miembros) < 2:
+            continue
+        for i in range(len(miembros)):
+            for j in range(i + 1, len(miembros)):
+                jugador_a, jugador_b = miembros[i], miembros[j]
+                if datos_json[jugador_a].get("_teamId") == datos_json[jugador_b].get("_teamId"):
+                    continue  # mismo equipo → ya es dúo, no rival
+                if not (jugador_era_nuevo_en_partida(jugador_a, game_id)
+                        or jugador_era_nuevo_en_partida(jugador_b, game_id)):
+                    continue  # ya se avisó esta rivalidad en una corrida anterior
+                nombre_a = jugador_a.split("#", 1)[0]
+                nombre_b = jugador_b.split("#", 1)[0]
+                eventos_vivo_nuevos.append({
+                    "timestamp":        fecha_actual_iso,
+                    "tipo":             "rivalidad",
+                    "icono":            "🆚",
+                    "categoria_label":  "Equipos rivales",
+                    "jugador_nuevo":    nombre_a,
+                    "jugador_anterior": nombre_b,
+                    "detalle":          None,
+                })
+                print(f"  🆚 Nuevo evento: {nombre_a} está en contra de {nombre_b} esta partida")
+
     # Limpiar los campos temporales antes de guardar
     for info in datos_json.values():
         info.pop("_gameId", None)
@@ -367,6 +413,14 @@ def actualizar_estado_en_vivo(jugadores):
     # nombres de jugadores tienen "#" (Riot ID).
     if partidas_activas:
         datos_json["_partidas_activas"] = partidas_activas
+
+    # Notificaciones de rivalidad — se guardan las últimas 20, más
+    # recientes primero, igual que el historial de logros de
+    # actualizar_datos.py (mismo patrón, archivo distinto).
+    eventos_vivo_previos  = data_cargada.get("_eventos_vivo", []) or []
+    eventos_vivo_totales  = (eventos_vivo_nuevos + eventos_vivo_previos)[:20]
+    if eventos_vivo_totales:
+        datos_json["_eventos_vivo"] = eventos_vivo_totales
 
     # ── Failsafe: si la key falló para todos, no sobreescribir ──
     if jugadores and errores_auth >= len(jugadores):
