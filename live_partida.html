@@ -98,6 +98,10 @@
   }
   .pc-tag.self{ background:var(--gold); color:#1a1400; }
   .pc-tag.duo{ background:var(--win); color:#03150c; }
+  .pc-tag.jungla{ background:var(--accent); color:#fff; }
+  /* Cuando hay dos tags (p.ej. TÚ + Jungla), se apilan una debajo de otra */
+  .pc-tags{ position:absolute; top:8px; left:8px; z-index:2; display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
+  .pc-tags .pc-tag{ position:static; }
 
   .pc-body{ position:relative; z-index:2; padding:9px 9px 11px; display:flex; flex-direction:column; gap:5px; min-width:0; }
   .pc-id{ display:flex; align-items:center; gap:6px; min-width:0; }
@@ -216,16 +220,37 @@ window.addEventListener('load', () => {
   // con el jugador que se está viendo — mismo criterio que ya usa el resto
   // del sitio (coincidir en partida + equipo), calculado por live_status.py
   // solo entre los 6 del grupo.
+  // Rol aproximado — Riot no manda posición (Top/Jungla/Mid/ADC/Support) en
+  // partidas en vivo, ni siquiera en SoloQ: eso lo calcula Riot DESPUÉS,
+  // analizando cómo se jugó realmente (algo que solo existe en el detalle
+  // post-partida, ver rolOrden() en partida.html). En vivo la única señal
+  // confiable es el hechizo Smite — casi nadie lo lleva fuera de la jungla
+  // — así que solo se reordena esa posición; el resto queda como Riot los
+  // manda, en vez de arriesgar una etiqueta de rol equivocada.
+  function esHechizoSmite(h){ return (h && h.icono || '').toLowerCase().includes('smite'); }
+
+  function ordenarPorRolAproximado(jugs){
+    const idxJungla = jugs.findIndex(j => (j.hechizos || []).some(esHechizoSmite));
+    if (idxJungla === -1) return jugs;
+    const jungla = jugs[idxJungla];
+    const resto  = jugs.filter((_, i) => i !== idxJungla);
+    const posicion = Math.min(1, resto.length); // 2do lugar, como en Top-Jungla-Mid-ADC-Support
+    return [...resto.slice(0, posicion), jungla, ...resto.slice(posicion)];
+  }
+
   function tarjetaJugador(participante, duoNames){
     const esSelf = jugadorId && participante.nombre === jugadorId;
     const nombreCorto = (participante.nombre || '').split('#')[0];
     const esDuo = !esSelf && duoNames.includes(nombreCorto);
+    const esJungla = (participante.hechizos || []).some(esHechizoSmite);
 
     const cardClass = esSelf ? 'self' : (esDuo ? 'duo' : '');
     const nameClass = esSelf ? 'self-name' : (esDuo ? 'duo-name' : '');
-    const tagHtml   = esSelf
-      ? '<span class="pc-tag self">Tú</span>'
-      : (esDuo ? '<span class="pc-tag duo">Dúo</span>' : '');
+    const tags = [];
+    if (esSelf) tags.push('<span class="pc-tag self">Tú</span>');
+    else if (esDuo) tags.push('<span class="pc-tag duo">Dúo</span>');
+    if (esJungla) tags.push('<span class="pc-tag jungla">Jungla</span>');
+    const tagHtml = tags.length ? `<div class="pc-tags">${tags.join('')}</div>` : '';
 
     const keystoneUrl   = runeUrl(participante.runas && participante.runas.principal);
     const secundariaUrl = runeUrl(participante.runas && participante.runas.secundario);
@@ -272,7 +297,7 @@ window.addEventListener('load', () => {
     const participantes = Array.isArray(partida.participantes) ? partida.participantes : [];
     const equiposOrden = ['blue', 'red'];
     scoreboardEl.innerHTML = equiposOrden.map(lado => {
-      const jugs = participantes.filter(p => p.equipo === lado);
+      const jugs = ordenarPorRolAproximado(participantes.filter(p => p.equipo === lado));
       const nombreLado = lado === 'blue' ? 'Equipo Azul' : 'Equipo Rojo';
       return `
         <div class="team-block">
