@@ -933,6 +933,7 @@ window.addEventListener('load', () => {
         { label:'Visión', value:self.vision },
         { label:'Wards puestos', value:self.wards_colocadas },
         { label:'Wards destruidos', value:self.wards_destruidas },
+        { label:'Wards de control', value:(self.wards_control ?? '—') },
       ];
       statsEl.innerHTML = tiles.map(t => `
         <div class="stat-tile"><div class="st-label">${t.label}</div><div class="st-value">${t.value}</div></div>`).join('');
@@ -1064,6 +1065,17 @@ window.addEventListener('load', () => {
     evaluar('oro',   j => j.oro||0,                 '💰', 'Más oro del equipo',      '🪙', 'Menos oro del equipo');
     evaluar('kda',   j => (j.kills + j.asistencias) / Math.max(1, j.muertes), '📊', 'Mejor KDA del equipo', '📉', 'Peor KDA del equipo');
     evaluar('muertes', j => -(j.muertes||0),        '🛡️', 'Menos muertes del equipo', '💀', 'Más muertes del equipo');
+
+    // Ciego — no compró NINGUNA ward de control en toda la partida. A
+    // diferencia de los badges de arriba (comparativos contra el equipo,
+    // via evaluar()), este es un hecho absoluto, igual que lo muestra
+    // Porofessor: no importa qué tan bien le fue al resto del equipo, si
+    // compraste 0 wards de control, aplica. Comparación estricta (===0,
+    // sin "||0") para que partidas viejas sin este dato (wards_control
+    // === undefined) NO disparen el badge por error.
+    if (self.wards_control === 0) {
+      badges.push({ tipo:'bad', icono:'🦯', label:'Ciego · No compró wards de control' });
+    }
 
     return badges;
   }
