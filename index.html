@@ -149,7 +149,14 @@
   }
 
   /* HIGHLIGHTS — grid normal para los 3 tops */
-  .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:50px; }
+  /* Columnas FIJAS en 3 (no auto-fit) — con auto-fit, la fila de arriba
+     (primera victoria a ancho completo + 3 badges de últimas 10 partidas)
+     hacía que el grid calculara 4 columnas para caber en el ancho del
+     contenedor, dejando una 4ª columna vacía y los 3 badges corridos a la
+     izquierda. Con 3 fijas, esa fila queda pareja y la de "Destacados de
+     la Semana" (15 items) también cierra en una cuadrícula completa de
+     3×5 en vez de dejar 3 sueltos en una fila de 4. */
+  .highlights-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:50px; }
   .highlight-card { display:flex; align-items:center; gap:14px; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
   /* Rey de la Temporada — es un logro de TODA la temporada (como Top 1
      Actual), no un badge semanal más, así que ocupa el ancho completo de
@@ -270,10 +277,10 @@
       radial-gradient(circle at 22% 145%, rgba(250,204,21,.3), transparent 38%),
       radial-gradient(circle at 5% 110%, rgba(239,68,68,.28), transparent 36%);
     animation:emberRise 2.6s ease-in-out infinite; }
-  @keyframes streakFirePulse{ 0%,100%{ box-shadow:0 0 14px rgba(251,146,60,.18); } 50%{ box-shadow:0 0 28px rgba(251,146,60,.36); } }
+  @keyframes streakFirePulse{ 0%,100%{ box-shadow:inset 0 0 14px rgba(251,146,60,.22); } 50%{ box-shadow:inset 0 0 22px rgba(251,146,60,.4); } }
   @keyframes emberRise{ 0%{ opacity:.5; transform:translateY(0); } 50%{ opacity:1; transform:translateY(-5px); } 100%{ opacity:.5; transform:translateY(0); } }
 
-  .rank-row.streak-ice{ border-color:rgba(125,211,252,.45); background:linear-gradient(90deg, rgba(125,211,252,.09), var(--panel) 60%); box-shadow:0 0 14px rgba(125,211,252,.16); }
+  .rank-row.streak-ice{ border-color:rgba(125,211,252,.45); background:linear-gradient(90deg, rgba(125,211,252,.09), var(--panel) 60%); box-shadow:inset 0 0 16px rgba(125,211,252,.22); }
   .rank-row.streak-ice:hover{ border-color:rgba(125,211,252,.8); }
   .rank-row.streak-ice::before{ content:''; position:absolute; z-index:0; inset:0; pointer-events:none; opacity:.4;
     background-image:radial-gradient(rgba(224,242,254,.6) 1px, transparent 1.6px);
