@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T16:10:36.233082",
+  "ultimaActualizacion": "2026-08-22T16:12:32.802250",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -469,6 +469,22 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1743029248",
+          "campeon": "Fiora",
+          "kda": "6/2/3 (4.5)",
+          "resultado": "Derrota",
+          "duracion": "18min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8300,
+          "wards_control": 0
+        },
+        {
           "match_id": "LA1_1742964369",
           "campeon": "Fiora",
           "kda": "7/4/6 (3.25)",
@@ -629,39 +645,40 @@
           "perk_principal": 8005,
           "estilo_secundario": 8300,
           "wards_control": 0
-        },
-        {
-          "match_id": "LA1_1742705083",
-          "campeon": "Fiora",
-          "kda": "1/0/0 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "3min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8300,
-          "wards_control": 0
         }
       ],
-      "kills_recientes": 68,
+      "kills_recientes": 73,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 169,
+      "vision_promedio_reciente": 28,
+      "kills_semana": 164,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 29,
-      "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 2.23,
+      "vision_promedio_semana": 28,
+      "primeras_sangre_semana": 3,
+      "kda_promedio_semana": 2.24,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 141,
+      "asistencias_semana": 139,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787415071.3,
+          "kills": 6,
+          "muertes": 2,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 16,
+          "campeon": "Fiora",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 139,
+          "duracion_seg": 1134,
+          "damage_taken": 17868,
+          "danio_recibido_pct": 28.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 3
+        },
         {
           "fin_seg": 1787376615.49,
           "kills": 7,
@@ -1144,27 +1161,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 1
-        },
-        {
-          "fin_seg": 1787181981.932,
-          "kills": 11,
-          "muertes": 6,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 25,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "Ostia"
-          ],
-          "cs": 215,
-          "duracion_seg": 1782,
-          "damage_taken": 40413,
-          "danio_recibido_pct": 29.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 14
         }
       ],
       "duo_semana": {
@@ -1182,9 +1178,9 @@
         "campeon": "Nasus"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 45,
-      "tiempo_cc_semana": 370,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 43,
+      "tiempo_cc_semana": 359,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787372366223,
         "campeon": "Fiora",
@@ -5567,8 +5563,8 @@
     },
     "destructor": {
       "jugador": "Pinea",
-      "valor": 45,
-      "detalle": "45 estructuras destruidas"
+      "valor": 43,
+      "detalle": "43 estructuras destruidas"
     },
     "stop": {
       "jugador": "Ostia",
@@ -5976,7 +5972,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.466793
+    "ゆうき まこと": 0.468017
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
