@@ -1395,7 +1395,19 @@ def obtener_datos():
         "ranking_posiciones": ranking_posiciones_actual,
         # Días acumulados en el puesto #1 por jugador (nombre corto → días) y
         # quién tiene más ahora mismo — "Rey de la Temporada".
-        "tiempo_top1": {k: round(v, 2) for k, v in tiempo_top1.items()},
+        # FIX: antes se redondeaba a 2 decimales ACÁ, en el valor que se
+        # persiste y se vuelve a leer la próxima corrida como base para
+        # seguir sumando. Con corridas cada ~2 min, cada incremento real es
+        # ~0.0014 días — por debajo del umbral de redondeo (0.005) — así que
+        # el redondeo lo borraba ANTES de poder acumularse: cada corrida
+        # sumaba su pedacito a la versión ya redondeada de la corrida
+        # anterior, y el resultado volvía a redondear para abajo al mismo
+        # valor de siempre. Por eso "Rey de la Temporada" se quedó pegado en
+        # 0.11 días durante 36 horas seguidas. Ahora se guarda con precisión
+        # completa (redondeando solo a 6 decimales, de sobra por debajo de
+        # cualquier incremento real) — el redondeo "bonito" para mostrar en
+        # pantalla ya lo hace "rey_temporada.dias" más abajo.
+        "tiempo_top1": {k: round(v, 6) for k, v in tiempo_top1.items()},
         "rey_temporada": (
             {"jugador": rey_actual_nombre, "dias": round(tiempo_top1[rey_actual_nombre], 1)}
             if rey_actual_nombre else None
