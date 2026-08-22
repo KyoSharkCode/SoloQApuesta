@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T06:20:45.060294",
+  "ultimaActualizacion": "2026-08-22T06:22:28.409363",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3531,17 +3531,17 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver IV",
-      "lp": 26,
-      "winrate": "45%",
-      "elo_score": 826,
-      "record_lp_score": 826,
-      "record_lp_label": "Silver IV (26 LP)",
-      "escalador_semana": 26,
+      "lp": 78,
+      "winrate": "47%",
+      "elo_score": 878,
+      "record_lp_score": 878,
+      "record_lp_label": "Silver IV (78 LP)",
+      "escalador_semana": 78,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
           "rol": "Top",
@@ -3551,14 +3551,14 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
-          "campeon": "Trundle",
+          "campeon": "Poppy",
           "cantidad": 1
         },
         {
-          "campeon": "Yone",
+          "campeon": "Trundle",
           "cantidad": 1
         }
       ],
@@ -3751,9 +3751,31 @@
           "lp": 26,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-22T06:22:21Z",
+          "lp": 78,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1742983079",
+          "campeon": "Poppy",
+          "kda": "5/2/11 (8.0)",
+          "resultado": "Victoria",
+          "duracion": "28min",
+          "lp_change": 52,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 9923,
+          "estilo_secundario": 8300,
+          "wards_control": 4
+        },
         {
           "match_id": "LA1_1742969132",
           "campeon": "Trundle",
@@ -3897,37 +3919,40 @@
           "perk_principal": 8112,
           "estilo_secundario": 8400,
           "wards_control": 1
-        },
-        {
-          "match_id": "LA1_1742223911",
-          "campeon": "Akali",
-          "kda": "2/8/5 (0.88)",
-          "resultado": "Derrota",
-          "duracion": "27min",
-          "lp_change": -11,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1
         }
       ],
-      "kills_recientes": 81,
+      "kills_recientes": 84,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 23,
-      "kills_semana": 180,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 184,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 23,
+      "vision_promedio_semana": 24,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 1.82,
+      "kda_promedio_semana": 1.9,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 145,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 146,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787379717.433,
+          "kills": 5,
+          "muertes": 2,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 58,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 64,
+          "duracion_seg": 1680,
+          "damage_taken": 16242,
+          "danio_recibido_pct": 12.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 27
+        },
         {
           "fin_seg": 1787377528.712,
           "kills": 3,
@@ -4383,25 +4408,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1786859964.809,
-          "kills": 1,
-          "muertes": 7,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 25,
-          "campeon": "Trundle",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 137,
-          "duracion_seg": 1889,
-          "damage_taken": 32671,
-          "danio_recibido_pct": 19.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 32
         }
       ],
       "duo_semana": null,
@@ -4416,9 +4422,9 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 33,
-      "tiempo_cc_semana": 232,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 34,
+      "tiempo_cc_semana": 227,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787377528712,
         "campeon": "Trundle",
@@ -5401,6 +5407,45 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-22T06:22:21Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1742983079",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Poppy aniquiló al equipo rival sin bajas propias"
+    },
+    {
+      "timestamp": "2026-08-22T06:22:21Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1742983079",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Poppy dio el golpe final al Nexus"
+    },
+    {
+      "timestamp": "2026-08-22T06:22:21Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Silver IV (78 LP)"
+    },
+    {
+      "timestamp": "2026-08-22T06:22:21Z",
+      "tipo": "adelantamiento",
+      "icono": "⚔️",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Ostia",
+      "top_posicion": null,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-08-22T05:46:22Z",
       "tipo": "logro_partida",
       "categoria": "terminador:LA1_1742969132",
@@ -5745,43 +5790,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "Silver II (83 LP)"
-    },
-    {
-      "timestamp": "2026-08-21T04:32:23Z",
-      "tipo": "badge_semanal",
-      "categoria": "agresivo",
-      "categoria_label": "Agresivo",
-      "icono": "🩸",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "5 primeras sangre"
-    },
-    {
-      "timestamp": "2026-08-21T04:32:23Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-21T03:58:23Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Silver II (64 LP)"
-    },
-    {
-      "timestamp": "2026-08-21T03:18:24Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Silver II (46 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -5791,8 +5799,8 @@
     "El Buñuelito#KyA": 2,
     "Galactic Shark#AYK": 3,
     "Pinea#Pinea": 4,
-    "Ostia#LAN": 5,
-    "adrianNOOBYT#LAN": 6
+    "adrianNOOBYT#LAN": 5,
+    "Ostia#LAN": 6
   },
   "tiempo_top1": {
     "ゆうき まこと": 0.13
