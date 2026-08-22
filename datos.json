@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T19:06:24.648450",
+  "ultimaActualizacion": "2026-08-22T19:08:29.610785",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4592,12 +4592,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 30,
-      "winrate": "50%",
-      "elo_score": 830,
+      "lp": 51,
+      "winrate": "51%",
+      "elo_score": 851,
       "record_lp_score": 868,
       "record_lp_label": "Silver IV (68 LP)",
-      "escalador_semana": 100830,
+      "escalador_semana": 100851,
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -4806,9 +4806,32 @@
           "lp": 30,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-22T19:08:22Z",
+          "lp": 51,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743047954",
+          "campeon": "Swain",
+          "kda": "4/9/26 (3.33)",
+          "resultado": "Victoria",
+          "duracion": "49min",
+          "lp_change": 21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 7,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1742861195",
           "campeon": "Swain",
@@ -4823,7 +4846,8 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 6
+          "wards_control": 6,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742850021",
@@ -4839,7 +4863,8 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 0
+          "wards_control": 0,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742839867",
@@ -4855,7 +4880,8 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742833241",
@@ -4871,7 +4897,8 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742815202",
@@ -4889,7 +4916,8 @@
           ],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742805765",
@@ -4905,7 +4933,8 @@
           "duo_con": [],
           "perk_principal": 8229,
           "estilo_secundario": 8100,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742798951",
@@ -4921,7 +4950,8 @@
           "duo_con": [],
           "perk_principal": 8112,
           "estilo_secundario": 8000,
-          "wards_control": 6
+          "wards_control": 6,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742788511",
@@ -4939,7 +4969,8 @@
           ],
           "perk_principal": 8229,
           "estilo_secundario": 8100,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742782513",
@@ -4955,38 +4986,42 @@
           "duo_con": [],
           "perk_principal": 8229,
           "estilo_secundario": 8100,
-          "wards_control": 7
-        },
-        {
-          "match_id": "LA1_1742771912",
-          "campeon": "Swain",
-          "kda": "2/3/13 (5.0)",
-          "resultado": "Derrota",
-          "duracion": "26min",
-          "lp_change": 22,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 4
+          "wards_control": 7,
+          "posible_egida": false
         }
       ],
-      "kills_recientes": 49,
+      "kills_recientes": 51,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 74,
-      "kills_semana": 90,
+      "vision_promedio_reciente": 79,
+      "kills_semana": 83,
       "pentakills_semana": 0,
       "vision_promedio_semana": 61,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.04,
+      "kda_promedio_semana": 3.03,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 257,
+      "asistencias_semana": 269,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787425629.151,
+          "kills": 4,
+          "muertes": 9,
+          "asistencias": 26,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 105,
+          "campeon": "Swain",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 68,
+          "duracion_seg": 2961,
+          "damage_taken": 63611,
+          "danio_recibido_pct": 23.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 45
+        },
         {
           "fin_seg": 1787357359.088,
           "kills": 6,
@@ -5449,25 +5484,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 22
-        },
-        {
-          "fin_seg": 1787172423.439,
-          "kills": 11,
-          "muertes": 7,
-          "asistencias": 14,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 103,
-          "campeon": "Lux",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 198,
-          "duracion_seg": 3015,
-          "damage_taken": 29704,
-          "danio_recibido_pct": 8.8,
-          "objetivos_robados": 1,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 49
         }
       ],
       "duo_semana": {
@@ -5475,8 +5491,8 @@
         "partidas": 12
       },
       "cs_min_semana": {
-        "cs_por_min": 3.9,
-        "cs": 198,
+        "cs_por_min": 3.7,
+        "cs": 113,
         "campeon": "Lux"
       },
       "danio_recibido_semana": {
@@ -5484,11 +5500,21 @@
         "damage_taken": 68098,
         "campeon": "Swain"
       },
-      "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 14,
-      "tiempo_cc_semana": 974,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "objetivos_robados_semana": 1,
+      "estructuras_destruidas_semana": 15,
+      "tiempo_cc_semana": 970,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787425629151,
+        "campeon": "Swain",
+        "kda": "4/9/26 (3.33)",
+        "equipo": "blue",
+        "duracion": "49:21",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerDot"
+        ]
+      },
       "dia_referencia": 1787371200
     }
   ],
@@ -5500,8 +5526,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.04,
-      "detalle": "3.04 KDA"
+      "valor": 3.03,
+      "detalle": "3.03 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -5510,8 +5536,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 257,
-      "detalle": "257 asistencias"
+      "valor": 269,
+      "detalle": "269 asistencias"
     },
     "farmeador": {
       "jugador": "adrianNOOBYT",
@@ -5526,7 +5552,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Ostia",
-      "valor": 100830,
+      "valor": 100851,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5551,8 +5577,8 @@
     },
     "stop": {
       "jugador": "Ostia",
-      "valor": 974,
-      "detalle": "974s de CC aplicado"
+      "valor": 970,
+      "detalle": "970s de CC aplicado"
     }
   },
   "eventos": [
@@ -5955,7 +5981,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.58454
+    "ゆうき まこと": 0.585905
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
