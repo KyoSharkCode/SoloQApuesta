@@ -1136,6 +1136,22 @@ window.addEventListener('load', () => {
     return `hace ${dias} día${dias===1?'':'s'}`;
   }
 
+  // La mayoría de los eventos usan un emoji como ícono ("🌟", "⚔️", etc.),
+  // pero "posible_egida" usa el ícono real de Riot para Égida de Valor
+  // (guardado local en icons/, no un emoji) — si "icono" termina en una
+  // extensión de imagen se muestra como <img>, si no, se muestra tal cual
+  // (el emoji). Así el resto de los eventos no necesita tocarse.
+  function iconoHtml(icono){
+    if (typeof icono === 'string' && /\.(svg|png)$/i.test(icono)) {
+      // Tamaño fijo (no %) porque ni .toast-icon ni .historial-icon tienen
+      // un ancho definido propio — se dimensionan solos por el font-size
+      // del emoji que normalmente contienen, así que un % no tendría contra
+      // qué calcularse.
+      return `<img src="${icono}" alt="" style="width:22px;height:22px;object-fit:contain;">`;
+    }
+    return icono || '🏅';
+  }
+
   function textoEvento(e){
     if(e.tipo === 'badge_semanal'){
       return e.jugador_anterior
@@ -1164,6 +1180,12 @@ window.addEventListener('load', () => {
     if(e.tipo === 'logro_partida'){
       return `<b>${e.jugador_nuevo}</b> logró ${e.categoria_label}`;
     }
+    if(e.tipo === 'posible_egida'){
+      // "Posible" a propósito en el texto: Riot no confirma esto en ninguna
+      // API, es una estimación nuestra por comparación de LP (ver
+      // marcar_posibles_egida() en actualizar_datos.py).
+      return `<b>${e.jugador_nuevo}</b> posiblemente le tocó Égida de Valor (${e.detalle || 'LP doble'})`;
+    }
     return `<b>${e.jugador_nuevo}</b> logró algo nuevo`;
   }
 
@@ -1176,7 +1198,7 @@ window.addEventListener('load', () => {
     }
     container.innerHTML = eventos.slice(0, 15).map(e => `
       <div class="historial-item">
-        <div class="historial-icon">${e.icono || '🏅'}</div>
+        <div class="historial-icon">${iconoHtml(e.icono)}</div>
         <div class="historial-body">
           <p class="historial-text">${textoEvento(e)}</p>
           ${e.detalle ? `<p class="historial-detalle">${e.detalle}</p>` : ''}
@@ -1224,7 +1246,7 @@ window.addEventListener('load', () => {
     const el = document.createElement('div');
     el.className = 'toast';
     el.innerHTML = `
-      <div class="toast-icon">${evento.icono || '🏅'}</div>
+      <div class="toast-icon">${iconoHtml(evento.icono)}</div>
       <div class="toast-body">
         <p class="toast-title">${textoEvento(evento)}</p>
         ${evento.detalle ? `<p class="toast-sub">${evento.detalle}</p>` : ''}
