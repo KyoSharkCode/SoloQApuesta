@@ -6,7 +6,26 @@
         "en_partida": false
     },
     "El Buñuelito#KyA": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Ahri",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Teleportar",
+                "icono": "SummonerTeleport.png"
+            }
+        ],
+        "runas": {
+            "principal": 8112,
+            "secundario": 8300
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1787416262901,
+        "game_id": 1743035092
     },
     "ゆうき まこと#1411": {
         "en_partida": false
@@ -16,5 +35,293 @@
     },
     "Ostia#LAN": {
         "en_partida": false
+    },
+    "_partidas_activas": {
+        "1743035092": {
+            "game_start_time": 1787416262901,
+            "modo_juego": "Solo/Duo",
+            "baneos": [
+                {
+                    "campeon": "Briar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Nocturne",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Alistar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Neeko",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Garen",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Graves",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Teemo",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Malzahar",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Yasuo",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Zed",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "Sanguchito#cami",
+                    "campeon": "Ryze",
+                    "equipo": "blue",
+                    "icono_invocador": 6503,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Kambalam#LAN",
+                    "campeon": "Ashe",
+                    "equipo": "blue",
+                    "icono_invocador": 1604,
+                    "hechizos": [
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Chonpetas#LAN",
+                    "campeon": "Trundle",
+                    "equipo": "blue",
+                    "icono_invocador": 665,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Tengo Calor#Gaa",
+                    "campeon": "Draven",
+                    "equipo": "blue",
+                    "icono_invocador": 3798,
+                    "hechizos": [
+                        {
+                            "nombre": "Barrera",
+                            "icono": "SummonerBarrier.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "DrMundo",
+                    "campeon": "DrMundo",
+                    "equipo": "blue",
+                    "icono_invocador": 7178,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Fantasmal",
+                            "icono": "SummonerHaste.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8437,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Tank",
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "Yunnjia#WRY",
+                    "campeon": "Nasus",
+                    "equipo": "red",
+                    "icono_invocador": 7091,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Fantasmal",
+                            "icono": "SummonerHaste.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8021,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "PanLúh#LAN",
+                    "campeon": "Seraphine",
+                    "equipo": "red",
+                    "icono_invocador": 3589,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8214,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Support",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "El buñuelito#KyA",
+                    "campeon": "Ahri",
+                    "equipo": "red",
+                    "icono_invocador": 5453,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Mage",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "Nyanko 1412#LAN",
+                    "campeon": "Xerath",
+                    "equipo": "red",
+                    "icono_invocador": 1296,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "MaximumWade#LAN",
+                    "campeon": "MasterYi",
+                    "equipo": "red",
+                    "icono_invocador": 16,
+                    "hechizos": [
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 9923,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Assassin"
+                    ]
+                }
+            ]
+        }
     }
 }
