@@ -7,16 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon" alt="logo">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
-    --border:#232329; --text:#ffffff; --text-dim:#9a9aa3;
-    --text-faint:#a1a1aa; --accent:#8b5cf6; --accent-soft:#a78bfa;
+    --bg:#050508; --panel:rgba(22,20,32,.6); --panel-2:rgba(28,26,40,.65);
+    --border:#332f47; --text:#ffffff; --text-dim:#a8a8c0;
+    --text-faint:#8888a3; --accent:#a855f7; --accent-soft:#22d3ee;
+    --accent-glow:rgba(168,85,247,.45);
     --win:#34d399; --win-bg:rgba(52,211,153,.12);
-    --loss:#f87171; --loss-bg:rgba(248,113,113,.12);
-    --gold:#fbbf24; --blue:#60a5fa; --red:#f87171;
-    --radius:14px;
+    --loss:#fb7185; --loss-bg:rgba(251,113,133,.12);
+    --gold:#facc15; --blue:#60a5fa; --red:#fb7185;
+    --radius:16px;
   }
   *{box-sizing:border-box;}
   *{ scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
@@ -27,7 +28,11 @@
   *::-webkit-scrollbar-corner{ background:transparent; }
 
   body{
-    margin:0; background: radial-gradient(800px 400px at 50% 0%, rgba(239,68,68,.12), transparent), var(--bg);
+    margin:0;
+    background:
+      radial-gradient(900px 500px at 12% 0%, rgba(168,85,247,.16), transparent 60%),
+      radial-gradient(900px 500px at 88% 8%, rgba(34,211,238,.12), transparent 60%),
+      var(--bg);
     color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
   }
   .wrap{ max-width:980px; margin:0 auto; padding:40px 20px 100px; }
@@ -45,27 +50,35 @@
   .live-header{
     display:flex; align-items:center; gap:20px; flex-wrap:wrap;
     padding:22px 26px; margin-bottom:28px; border-radius:18px;
-    border:1px solid rgba(239,68,68,.35); background:var(--panel);
+    border:1px solid rgba(251,113,133,.35); background:var(--panel); backdrop-filter:blur(14px);
     border-left:5px solid var(--loss);
-    box-shadow:0 0 30px rgba(239,68,68,.12);
+    box-shadow:0 0 30px rgba(251,113,133,.16), 0 0 60px rgba(251,113,133,.08);
+    animation:liveHeaderPulse 3s ease-in-out infinite;
+  }
+  @keyframes liveHeaderPulse{
+    0%,100%{ box-shadow:0 0 30px rgba(251,113,133,.16), 0 0 60px rgba(251,113,133,.08); }
+    50%{ box-shadow:0 0 40px rgba(251,113,133,.26), 0 0 76px rgba(251,113,133,.14); }
   }
   .lh-badge{
     display:inline-flex; align-items:center; gap:8px; font-weight:900; font-size:13px;
     text-transform:uppercase; letter-spacing:.06em; color:var(--loss);
+    font-family:'Rajdhani',sans-serif;
   }
   .lh-badge::before{
     content:''; width:9px; height:9px; border-radius:50%; background:var(--loss);
-    box-shadow:0 0 0 0 rgba(239,68,68,.6); animation:live-dot-pulse 1.6s infinite;
+    box-shadow:0 0 0 0 rgba(251,113,133,.6); animation:live-dot-pulse 1.6s infinite;
   }
   @keyframes live-dot-pulse{
-    0%   { box-shadow:0 0 0 0 rgba(239,68,68,.55); }
-    70%  { box-shadow:0 0 0 8px rgba(239,68,68,0); }
-    100% { box-shadow:0 0 0 0 rgba(239,68,68,0); }
+    0%   { box-shadow:0 0 0 0 rgba(251,113,133,.55); }
+    70%  { box-shadow:0 0 0 8px rgba(251,113,133,0); }
+    100% { box-shadow:0 0 0 0 rgba(251,113,133,0); }
   }
   .lh-mode{ color:var(--text-faint); font-weight:600; font-size:13px; }
   .lh-duration{
-    margin-left:auto; font-size:26px; font-weight:900; color:var(--gold);
-    font-variant-numeric:tabular-nums;
+    margin-left:auto; font-size:28px; font-weight:900;
+    font-variant-numeric:tabular-nums; font-family:'Rajdhani',sans-serif;
+    background:linear-gradient(90deg, var(--gold), #fff3c4);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .lh-duration-label{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); text-align:right; }
 
@@ -73,10 +86,10 @@
      con el splash del campeón de fondo, ícono de invocador + nombre + build
      encima en un degradado. Borde de color según quién es: dorado = el
      jugador que estás viendo, verde = su dúo detectado esta partida. */
-  .team-block{ margin-bottom:22px; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
-  .team-head{ display:flex; align-items:center; justify-content:space-between; padding:11px 16px; font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+  .team-block{ margin-bottom:22px; border-radius:14px; overflow:hidden; border:1px solid var(--border); backdrop-filter:blur(12px); }
+  .team-head{ display:flex; align-items:center; justify-content:space-between; padding:11px 16px; font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-family:'Rajdhani',sans-serif; }
   .team-head.blue{ background:rgba(96,165,250,.12); color:var(--blue); border-bottom:1px solid rgba(96,165,250,.25); }
-  .team-head.red{ background:rgba(248,113,113,.12); color:var(--red); border-bottom:1px solid rgba(248,113,113,.25); }
+  .team-head.red{ background:rgba(251,113,133,.12); color:var(--red); border-bottom:1px solid rgba(251,113,133,.25); }
   .team-cards{ background:var(--panel); display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:12px; padding:16px; }
 
   .team-bans{ background:var(--panel); display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:10px 16px; border-bottom:1px solid var(--border); }
