@@ -392,7 +392,24 @@
         "heraldos": 1,
         "vacuolarvas": 3,
         "torres": 11,
-        "inhibidores": 4
+        "inhibidores": 4,
+        "baneos": [
+          {
+            "campeon": "Locke"
+          },
+          {
+            "campeon": "Nasus"
+          },
+          {
+            "campeon": "Jhin"
+          },
+          {
+            "campeon": "Diana"
+          },
+          {
+            "campeon": "Malzahar"
+          }
+        ]
       },
       "red": {
         "victoria": false,
@@ -401,7 +418,24 @@
         "heraldos": 0,
         "vacuolarvas": 0,
         "torres": 0,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Naafiri"
+          },
+          {
+            "campeon": "Yorick"
+          },
+          {
+            "campeon": "Ambessa"
+          },
+          {
+            "campeon": "Mel"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -437,6 +471,7 @@
         "vision": 32,
         "wards_colocadas": 12,
         "wards_destruidas": 2,
+        "wards_control": 2,
         "rol": "TOP",
         "victoria": true
       },
@@ -472,6 +507,7 @@
         "vision": 21,
         "wards_colocadas": 8,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -507,6 +543,7 @@
         "vision": 19,
         "wards_colocadas": 7,
         "wards_destruidas": 1,
+        "wards_control": 2,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -542,6 +579,7 @@
         "vision": 4,
         "wards_colocadas": 1,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -577,6 +615,7 @@
         "vision": 68,
         "wards_colocadas": 22,
         "wards_destruidas": 7,
+        "wards_control": 7,
         "rol": "UTILITY",
         "victoria": true
       },
@@ -612,6 +651,7 @@
         "vision": 24,
         "wards_colocadas": 9,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -647,6 +687,7 @@
         "vision": 21,
         "wards_colocadas": 9,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -682,6 +723,7 @@
         "vision": 10,
         "wards_colocadas": 5,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -717,6 +759,7 @@
         "vision": 7,
         "wards_colocadas": 4,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -752,6 +795,7 @@
         "vision": 61,
         "wards_colocadas": 22,
         "wards_destruidas": 10,
+        "wards_control": 7,
         "rol": "UTILITY",
         "victoria": false
       }
@@ -771,7 +815,24 @@
         "heraldos": 0,
         "vacuolarvas": 3,
         "torres": 7,
-        "inhibidores": 1
+        "inhibidores": 1,
+        "baneos": [
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Briar"
+          },
+          {
+            "campeon": "Morgana"
+          },
+          {
+            "campeon": "Seraphine"
+          },
+          {
+            "campeon": "Ambessa"
+          }
+        ]
       },
       "red": {
         "victoria": true,
@@ -780,7 +841,24 @@
         "heraldos": 1,
         "vacuolarvas": 0,
         "torres": 9,
-        "inhibidores": 1
+        "inhibidores": 1,
+        "baneos": [
+          {
+            "campeon": "Caitlyn"
+          },
+          {
+            "campeon": "Fizz"
+          },
+          {
+            "campeon": "Nasus"
+          },
+          {
+            "campeon": "Blitzcrank"
+          },
+          {
+            "campeon": "Illaoi"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -816,6 +894,7 @@
         "vision": 13,
         "wards_colocadas": 7,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -851,6 +930,7 @@
         "vision": 34,
         "wards_colocadas": 15,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -886,6 +966,7 @@
         "vision": 30,
         "wards_colocadas": 4,
         "wards_destruidas": 7,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -921,6 +1002,7 @@
         "vision": 26,
         "wards_colocadas": 14,
         "wards_destruidas": 2,
+        "wards_control": 1,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -956,6 +1038,7 @@
         "vision": 102,
         "wards_colocadas": 40,
         "wards_destruidas": 3,
+        "wards_control": 4,
         "rol": "UTILITY",
         "victoria": false
       },
@@ -991,6 +1074,7 @@
         "vision": 41,
         "wards_colocadas": 16,
         "wards_destruidas": 2,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": true
       },
@@ -1026,6 +1110,7 @@
         "vision": 36,
         "wards_colocadas": 14,
         "wards_destruidas": 2,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -1061,6 +1146,7 @@
         "vision": 37,
         "wards_colocadas": 16,
         "wards_destruidas": 3,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -1096,6 +1182,7 @@
         "vision": 27,
         "wards_colocadas": 8,
         "wards_destruidas": 2,
+        "wards_control": 2,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -1131,6 +1218,7 @@
         "vision": 51,
         "wards_colocadas": 33,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": true
       }
@@ -1150,7 +1238,24 @@
         "heraldos": 1,
         "vacuolarvas": 3,
         "torres": 4,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Lux"
+          },
+          {
+            "campeon": "Darius"
+          },
+          {
+            "campeon": "Jinx"
+          },
+          {
+            "campeon": "Aurora"
+          },
+          {
+            "campeon": "Belveth"
+          }
+        ]
       },
       "red": {
         "victoria": false,
@@ -1159,7 +1264,24 @@
         "heraldos": 0,
         "vacuolarvas": 0,
         "torres": 0,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Renekton"
+          },
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Velkoz"
+          },
+          {
+            "campeon": "Zed"
+          },
+          {
+            "campeon": "Mel"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -1195,6 +1317,7 @@
         "vision": 12,
         "wards_colocadas": 6,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": true
       },
@@ -1230,6 +1353,7 @@
         "vision": 6,
         "wards_colocadas": 4,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -1265,6 +1389,7 @@
         "vision": 5,
         "wards_colocadas": 5,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -1300,6 +1425,7 @@
         "vision": 15,
         "wards_colocadas": 8,
         "wards_destruidas": 1,
+        "wards_control": 1,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -1335,6 +1461,7 @@
         "vision": 29,
         "wards_colocadas": 10,
         "wards_destruidas": 3,
+        "wards_control": 3,
         "rol": "UTILITY",
         "victoria": true
       },
@@ -1370,6 +1497,7 @@
         "vision": 4,
         "wards_colocadas": 2,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -1405,6 +1533,7 @@
         "vision": 13,
         "wards_colocadas": 6,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -1440,6 +1569,7 @@
         "vision": 18,
         "wards_colocadas": 7,
         "wards_destruidas": 1,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -1475,6 +1605,7 @@
         "vision": 9,
         "wards_colocadas": 4,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -1510,6 +1641,7 @@
         "vision": 42,
         "wards_colocadas": 13,
         "wards_destruidas": 5,
+        "wards_control": 4,
         "rol": "UTILITY",
         "victoria": false
       }
@@ -1529,7 +1661,24 @@
         "heraldos": 1,
         "vacuolarvas": 2,
         "torres": 3,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Lillia"
+          },
+          {
+            "campeon": "Sett"
+          },
+          {
+            "campeon": "Seraphine"
+          },
+          {
+            "campeon": "Yuumi"
+          },
+          {
+            "campeon": "Zed"
+          }
+        ]
       },
       "red": {
         "victoria": true,
@@ -1538,7 +1687,24 @@
         "heraldos": 0,
         "vacuolarvas": 1,
         "torres": 8,
-        "inhibidores": 2
+        "inhibidores": 2,
+        "baneos": [
+          {
+            "campeon": "Pyke"
+          },
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Mordekaiser"
+          },
+          {
+            "campeon": "Shaco"
+          },
+          {
+            "campeon": "Jhin"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -1574,6 +1740,7 @@
         "vision": 20,
         "wards_colocadas": 8,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -1609,6 +1776,7 @@
         "vision": 34,
         "wards_colocadas": 8,
         "wards_destruidas": 3,
+        "wards_control": 5,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -1644,6 +1812,7 @@
         "vision": 27,
         "wards_colocadas": 13,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -1679,6 +1848,7 @@
         "vision": 24,
         "wards_colocadas": 10,
         "wards_destruidas": 3,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -1714,6 +1884,7 @@
         "vision": 99,
         "wards_colocadas": 46,
         "wards_destruidas": 10,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": false
       },
@@ -1749,6 +1920,7 @@
         "vision": 16,
         "wards_colocadas": 7,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": true
       },
@@ -1784,6 +1956,7 @@
         "vision": 34,
         "wards_colocadas": 16,
         "wards_destruidas": 3,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -1819,6 +1992,7 @@
         "vision": 39,
         "wards_colocadas": 13,
         "wards_destruidas": 3,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -1854,6 +2028,7 @@
         "vision": 39,
         "wards_colocadas": 14,
         "wards_destruidas": 6,
+        "wards_control": 2,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -1889,6 +2064,7 @@
         "vision": 68,
         "wards_colocadas": 27,
         "wards_destruidas": 6,
+        "wards_control": 4,
         "rol": "UTILITY",
         "victoria": true
       }
@@ -1908,7 +2084,24 @@
         "heraldos": 0,
         "vacuolarvas": 3,
         "torres": 10,
-        "inhibidores": 2
+        "inhibidores": 2,
+        "baneos": [
+          {
+            "campeon": "Leona"
+          },
+          {
+            "campeon": "Kayn"
+          },
+          {
+            "campeon": "Fizz"
+          },
+          {
+            "campeon": "Yorick"
+          },
+          {
+            "campeon": "Caitlyn"
+          }
+        ]
       },
       "red": {
         "victoria": false,
@@ -1917,7 +2110,24 @@
         "heraldos": 1,
         "vacuolarvas": 0,
         "torres": 1,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Shaco"
+          },
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": null
+          },
+          {
+            "campeon": "Mordekaiser"
+          },
+          {
+            "campeon": "Viego"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -1953,6 +2163,7 @@
         "vision": 23,
         "wards_colocadas": 6,
         "wards_destruidas": 1,
+        "wards_control": 2,
         "rol": "TOP",
         "victoria": true
       },
@@ -1988,6 +2199,7 @@
         "vision": 18,
         "wards_colocadas": 10,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -2023,6 +2235,7 @@
         "vision": 32,
         "wards_colocadas": 10,
         "wards_destruidas": 9,
+        "wards_control": 7,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -2058,6 +2271,7 @@
         "vision": 19,
         "wards_colocadas": 11,
         "wards_destruidas": 1,
+        "wards_control": 1,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -2093,6 +2307,7 @@
         "vision": 30,
         "wards_colocadas": 11,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": true
       },
@@ -2128,6 +2343,7 @@
         "vision": 9,
         "wards_colocadas": 1,
         "wards_destruidas": 2,
+        "wards_control": 1,
         "rol": "TOP",
         "victoria": false
       },
@@ -2163,6 +2379,7 @@
         "vision": 18,
         "wards_colocadas": 9,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -2198,6 +2415,7 @@
         "vision": 26,
         "wards_colocadas": 6,
         "wards_destruidas": 2,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -2233,6 +2451,7 @@
         "vision": 27,
         "wards_colocadas": 10,
         "wards_destruidas": 3,
+        "wards_control": 1,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -2268,385 +2487,7 @@
         "vision": 57,
         "wards_colocadas": 25,
         "wards_destruidas": 2,
-        "rol": "UTILITY",
-        "victoria": false
-      }
-    ]
-  },
-  "LA1_1742012136": {
-    "match_id": "LA1_1742012136",
-    "fecha": "2026-08-18T04:34:51Z",
-    "duracion_seg": 2033,
-    "modo_juego": "Ranked Solo/Duo",
-    "parche": "16.16",
-    "equipos": {
-      "blue": {
-        "victoria": true,
-        "barones": 1,
-        "dragones": 3,
-        "heraldos": 0,
-        "vacuolarvas": 3,
-        "torres": 9,
-        "inhibidores": 2
-      },
-      "red": {
-        "victoria": false,
-        "barones": 0,
-        "dragones": 1,
-        "heraldos": 1,
-        "vacuolarvas": 0,
-        "torres": 3,
-        "inhibidores": 0
-      }
-    },
-    "jugadores": [
-      {
-        "nombre_grupo": null,
-        "riot_id": "Kayo Perico#2006",
-        "equipo": "blue",
-        "campeon": "Sion",
-        "nivel": 18,
-        "hechizos": [
-          "SummonerFlash",
-          "SummonerTeleport"
-        ],
-        "items": [
-          3084,
-          3075,
-          3047,
-          3068,
-          1033,
-          0,
-          3340
-        ],
-        "perk_principal": 8437,
-        "estilo_secundario": 8000,
-        "kills": 3,
-        "muertes": 5,
-        "asistencias": 18,
-        "cs": 118,
-        "cs_por_min": 3.5,
-        "oro": 11290,
-        "danio_a_campeones": 27687,
-        "danio_recibido": 42829,
-        "vision": 35,
-        "wards_colocadas": 14,
-        "wards_destruidas": 2,
-        "rol": "TOP",
-        "victoria": true
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "vL laker32#2804",
-        "equipo": "blue",
-        "campeon": "FiddleSticks",
-        "nivel": 17,
-        "hechizos": [
-          "SummonerSmite",
-          "SummonerFlash"
-        ],
-        "items": [
-          4645,
-          3152,
-          3157,
-          3020,
-          4646,
-          1058,
-          3330
-        ],
-        "perk_principal": 8112,
-        "estilo_secundario": 8200,
-        "kills": 14,
-        "muertes": 8,
-        "asistencias": 11,
-        "cs": 195,
-        "cs_por_min": 5.8,
-        "oro": 15665,
-        "danio_a_campeones": 32059,
-        "danio_recibido": 39242,
-        "vision": 38,
-        "wards_colocadas": 0,
-        "wards_destruidas": 1,
-        "rol": "JUNGLE",
-        "victoria": true
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "morcitas#bulk",
-        "equipo": "blue",
-        "campeon": "Irelia",
-        "nivel": 16,
-        "hechizos": [
-          "SummonerDot",
-          "SummonerFlash"
-        ],
-        "items": [
-          6333,
-          3153,
-          3091,
-          2019,
-          3173,
-          0,
-          3340
-        ],
-        "perk_principal": 8010,
-        "estilo_secundario": 8400,
-        "kills": 7,
-        "muertes": 9,
-        "asistencias": 12,
-        "cs": 166,
-        "cs_por_min": 4.9,
-        "oro": 13021,
-        "danio_a_campeones": 23002,
-        "danio_recibido": 35764,
-        "vision": 14,
-        "wards_colocadas": 8,
-        "wards_destruidas": 1,
-        "rol": "MIDDLE",
-        "victoria": true
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "tronic#LAN",
-        "equipo": "blue",
-        "campeon": "Tristana",
-        "nivel": 16,
-        "hechizos": [
-          "SummonerBarrier",
-          "SummonerFlash"
-        ],
-        "items": [
-          0,
-          3032,
-          3031,
-          6675,
-          3036,
-          2019,
-          3340
-        ],
-        "perk_principal": 8008,
-        "estilo_secundario": 8300,
-        "kills": 12,
-        "muertes": 5,
-        "asistencias": 5,
-        "cs": 235,
-        "cs_por_min": 6.9,
-        "oro": 17961,
-        "danio_a_campeones": 27213,
-        "danio_recibido": 21439,
-        "vision": 27,
-        "wards_colocadas": 13,
-        "wards_destruidas": 1,
-        "rol": "BOTTOM",
-        "victoria": true
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "ChickenJockey#LAVA",
-        "equipo": "blue",
-        "campeon": "Bard",
-        "nivel": 16,
-        "hechizos": [
-          "SummonerFlash",
-          "SummonerDot"
-        ],
-        "items": [
-          3190,
-          3107,
-          3876,
-          3742,
-          3009,
-          3147,
-          3364
-        ],
-        "perk_principal": 8112,
-        "estilo_secundario": 8200,
-        "kills": 4,
-        "muertes": 1,
-        "asistencias": 23,
-        "cs": 52,
-        "cs_por_min": 1.5,
-        "oro": 12118,
-        "danio_a_campeones": 20482,
-        "danio_recibido": 18175,
-        "vision": 110,
-        "wards_colocadas": 36,
-        "wards_destruidas": 11,
-        "rol": "UTILITY",
-        "victoria": true
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "Voy al 7 ELEVEN#LAN",
-        "equipo": "red",
-        "campeon": "Gnar",
-        "nivel": 16,
-        "hechizos": [
-          "SummonerFlash",
-          "SummonerTeleport"
-        ],
-        "items": [
-          1055,
-          3047,
-          3078,
-          3124,
-          1028,
-          0,
-          3340
-        ],
-        "perk_principal": 8021,
-        "estilo_secundario": 8400,
-        "kills": 3,
-        "muertes": 7,
-        "asistencias": 3,
-        "cs": 122,
-        "cs_por_min": 3.6,
-        "oro": 9499,
-        "danio_a_campeones": 22256,
-        "danio_recibido": 26403,
-        "vision": 31,
-        "wards_colocadas": 11,
-        "wards_destruidas": 5,
-        "rol": "TOP",
-        "victoria": false
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "darknes12xd#LAN",
-        "equipo": "red",
-        "campeon": "Viego",
-        "nivel": 15,
-        "hechizos": [
-          "SummonerSmite",
-          "SummonerFlash"
-        ],
-        "items": [
-          6676,
-          6672,
-          3047,
-          3036,
-          1038,
-          0,
-          3340
-        ],
-        "perk_principal": 9923,
-        "estilo_secundario": 8000,
-        "kills": 6,
-        "muertes": 10,
-        "asistencias": 5,
-        "cs": 180,
-        "cs_por_min": 5.3,
-        "oro": 12753,
-        "danio_a_campeones": 24582,
-        "danio_recibido": 36014,
-        "vision": 22,
-        "wards_colocadas": 6,
-        "wards_destruidas": 3,
-        "rol": "JUNGLE",
-        "victoria": false
-      },
-      {
-        "nombre_grupo": "adrianNOOBYT",
-        "riot_id": "adrianNOOBYT#LAN",
-        "equipo": "red",
-        "campeon": "Akali",
-        "nivel": 17,
-        "hechizos": [
-          "SummonerDot",
-          "SummonerFlash"
-        ],
-        "items": [
-          3146,
-          3157,
-          3170,
-          4645,
-          3145,
-          3113,
-          3364
-        ],
-        "perk_principal": 8112,
-        "estilo_secundario": 8400,
-        "kills": 13,
-        "muertes": 8,
-        "asistencias": 7,
-        "cs": 170,
-        "cs_por_min": 5.0,
-        "oro": 13407,
-        "danio_a_campeones": 43025,
-        "danio_recibido": 36244,
-        "vision": 24,
-        "wards_colocadas": 6,
-        "wards_destruidas": 2,
-        "rol": "MIDDLE",
-        "victoria": false
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "xAlex305x#LAN",
-        "equipo": "red",
-        "campeon": "Xayah",
-        "nivel": 15,
-        "hechizos": [
-          "SummonerExhaust",
-          "SummonerFlash"
-        ],
-        "items": [
-          6675,
-          3031,
-          3032,
-          3036,
-          1043,
-          1042,
-          3340
-        ],
-        "perk_principal": 8010,
-        "estilo_secundario": 8300,
-        "kills": 4,
-        "muertes": 11,
-        "asistencias": 9,
-        "cs": 247,
-        "cs_por_min": 7.3,
-        "oro": 15275,
-        "danio_a_campeones": 25543,
-        "danio_recibido": 28942,
-        "vision": 15,
-        "wards_colocadas": 8,
-        "wards_destruidas": 3,
-        "rol": "BOTTOM",
-        "victoria": false
-      },
-      {
-        "nombre_grupo": null,
-        "riot_id": "Saithos#M95",
-        "equipo": "red",
-        "campeon": "Rakan",
-        "nivel": 14,
-        "hechizos": [
-          "SummonerHeal",
-          "SummonerFlash"
-        ],
-        "items": [
-          3869,
-          3190,
-          3050,
-          3158,
-          0,
-          3109,
-          3364
-        ],
-        "perk_principal": 8465,
-        "estilo_secundario": 8100,
-        "kills": 2,
-        "muertes": 4,
-        "asistencias": 12,
-        "cs": 38,
-        "cs_por_min": 1.1,
-        "oro": 9141,
-        "danio_a_campeones": 9004,
-        "danio_recibido": 24595,
-        "vision": 84,
-        "wards_colocadas": 31,
-        "wards_destruidas": 8,
+        "wards_control": 2,
         "rol": "UTILITY",
         "victoria": false
       }
@@ -2666,7 +2507,24 @@
         "heraldos": 0,
         "vacuolarvas": 2,
         "torres": 11,
-        "inhibidores": 3
+        "inhibidores": 3,
+        "baneos": [
+          {
+            "campeon": "MissFortune"
+          },
+          {
+            "campeon": "Malzahar"
+          },
+          {
+            "campeon": "Lux"
+          },
+          {
+            "campeon": "Tryndamere"
+          },
+          {
+            "campeon": "Briar"
+          }
+        ]
       },
       "red": {
         "victoria": false,
@@ -2675,7 +2533,24 @@
         "heraldos": 1,
         "vacuolarvas": 1,
         "torres": 9,
-        "inhibidores": 2
+        "inhibidores": 2,
+        "baneos": [
+          {
+            "campeon": "Xerath"
+          },
+          {
+            "campeon": "Teemo"
+          },
+          {
+            "campeon": "MasterYi"
+          },
+          {
+            "campeon": "Rammus"
+          },
+          {
+            "campeon": "Pyke"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -2711,6 +2586,7 @@
         "vision": 40,
         "wards_colocadas": 13,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": true
       },
@@ -2746,6 +2622,7 @@
         "vision": 42,
         "wards_colocadas": 16,
         "wards_destruidas": 3,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -2781,6 +2658,7 @@
         "vision": 22,
         "wards_colocadas": 12,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -2816,6 +2694,7 @@
         "vision": 47,
         "wards_colocadas": 18,
         "wards_destruidas": 4,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -2851,6 +2730,7 @@
         "vision": 105,
         "wards_colocadas": 35,
         "wards_destruidas": 14,
+        "wards_control": 6,
         "rol": "UTILITY",
         "victoria": true
       },
@@ -2886,6 +2766,7 @@
         "vision": 26,
         "wards_colocadas": 6,
         "wards_destruidas": 3,
+        "wards_control": 2,
         "rol": "TOP",
         "victoria": false
       },
@@ -2921,6 +2802,7 @@
         "vision": 62,
         "wards_colocadas": 20,
         "wards_destruidas": 2,
+        "wards_control": 4,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -2956,6 +2838,7 @@
         "vision": 30,
         "wards_colocadas": 16,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -2991,6 +2874,7 @@
         "vision": 45,
         "wards_colocadas": 21,
         "wards_destruidas": 3,
+        "wards_control": 3,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -3026,6 +2910,7 @@
         "vision": 121,
         "wards_colocadas": 45,
         "wards_destruidas": 14,
+        "wards_control": 7,
         "rol": "UTILITY",
         "victoria": false
       }
@@ -3045,7 +2930,24 @@
         "heraldos": 0,
         "vacuolarvas": 3,
         "torres": 3,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "KSante"
+          },
+          {
+            "campeon": "Caitlyn"
+          },
+          {
+            "campeon": "Malzahar"
+          },
+          {
+            "campeon": "Singed"
+          },
+          {
+            "campeon": "MissFortune"
+          }
+        ]
       },
       "red": {
         "victoria": true,
@@ -3054,7 +2956,24 @@
         "heraldos": 1,
         "vacuolarvas": 0,
         "torres": 11,
-        "inhibidores": 4
+        "inhibidores": 4,
+        "baneos": [
+          {
+            "campeon": "Sett"
+          },
+          {
+            "campeon": "Pyke"
+          },
+          {
+            "campeon": "Shaco"
+          },
+          {
+            "campeon": "Malzahar"
+          },
+          {
+            "campeon": "Tristana"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -3090,6 +3009,7 @@
         "vision": 29,
         "wards_colocadas": 13,
         "wards_destruidas": 3,
+        "wards_control": 3,
         "rol": "TOP",
         "victoria": false
       },
@@ -3125,6 +3045,7 @@
         "vision": 12,
         "wards_colocadas": 1,
         "wards_destruidas": 1,
+        "wards_control": 1,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -3160,6 +3081,7 @@
         "vision": 12,
         "wards_colocadas": 7,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -3195,6 +3117,7 @@
         "vision": 19,
         "wards_colocadas": 10,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -3230,6 +3153,7 @@
         "vision": 43,
         "wards_colocadas": 17,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": false
       },
@@ -3265,6 +3189,7 @@
         "vision": 30,
         "wards_colocadas": 12,
         "wards_destruidas": 3,
+        "wards_control": 1,
         "rol": "TOP",
         "victoria": true
       },
@@ -3300,6 +3225,7 @@
         "vision": 38,
         "wards_colocadas": 13,
         "wards_destruidas": 2,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -3335,6 +3261,7 @@
         "vision": 14,
         "wards_colocadas": 3,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -3370,6 +3297,7 @@
         "vision": 28,
         "wards_colocadas": 12,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -3405,6 +3333,7 @@
         "vision": 71,
         "wards_colocadas": 33,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": true
       }
@@ -3424,7 +3353,24 @@
         "heraldos": 1,
         "vacuolarvas": 3,
         "torres": 6,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Draven"
+          },
+          {
+            "campeon": "Heimerdinger"
+          },
+          {
+            "campeon": "MasterYi"
+          },
+          {
+            "campeon": "Ornn"
+          },
+          {
+            "campeon": "Fizz"
+          }
+        ]
       },
       "red": {
         "victoria": true,
@@ -3433,7 +3379,24 @@
         "heraldos": 0,
         "vacuolarvas": 0,
         "torres": 8,
-        "inhibidores": 1
+        "inhibidores": 1,
+        "baneos": [
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Leona"
+          },
+          {
+            "campeon": "Garen"
+          },
+          {
+            "campeon": "Lux"
+          },
+          {
+            "campeon": "Briar"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -3469,6 +3432,7 @@
         "vision": 25,
         "wards_colocadas": 11,
         "wards_destruidas": 0,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -3504,6 +3468,7 @@
         "vision": 51,
         "wards_colocadas": 17,
         "wards_destruidas": 3,
+        "wards_control": 5,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -3539,6 +3504,7 @@
         "vision": 20,
         "wards_colocadas": 12,
         "wards_destruidas": 1,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -3574,6 +3540,7 @@
         "vision": 22,
         "wards_colocadas": 7,
         "wards_destruidas": 7,
+        "wards_control": 3,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -3609,6 +3576,7 @@
         "vision": 49,
         "wards_colocadas": 18,
         "wards_destruidas": 3,
+        "wards_control": 6,
         "rol": "UTILITY",
         "victoria": false
       },
@@ -3644,6 +3612,7 @@
         "vision": 36,
         "wards_colocadas": 11,
         "wards_destruidas": 4,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": true
       },
@@ -3679,6 +3648,7 @@
         "vision": 36,
         "wards_colocadas": 5,
         "wards_destruidas": 8,
+        "wards_control": 0,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -3714,6 +3684,7 @@
         "vision": 22,
         "wards_colocadas": 14,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -3749,6 +3720,7 @@
         "vision": 18,
         "wards_colocadas": 10,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -3784,6 +3756,7 @@
         "vision": 28,
         "wards_colocadas": 16,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "UTILITY",
         "victoria": true
       }
@@ -3803,7 +3776,24 @@
         "heraldos": 1,
         "vacuolarvas": 2,
         "torres": 14,
-        "inhibidores": 2
+        "inhibidores": 2,
+        "baneos": [
+          {
+            "campeon": "Tryndamere"
+          },
+          {
+            "campeon": null
+          },
+          {
+            "campeon": "Akali"
+          },
+          {
+            "campeon": "Brand"
+          },
+          {
+            "campeon": "MasterYi"
+          }
+        ]
       },
       "red": {
         "victoria": false,
@@ -3812,7 +3802,24 @@
         "heraldos": 0,
         "vacuolarvas": 1,
         "torres": 4,
-        "inhibidores": 0
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": null
+          },
+          {
+            "campeon": "Brand"
+          },
+          {
+            "campeon": "Draven"
+          },
+          {
+            "campeon": "Illaoi"
+          },
+          {
+            "campeon": "Graves"
+          }
+        ]
       }
     },
     "jugadores": [
@@ -3848,6 +3855,7 @@
         "vision": 36,
         "wards_colocadas": 14,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "TOP",
         "victoria": true
       },
@@ -3883,6 +3891,7 @@
         "vision": 34,
         "wards_colocadas": 3,
         "wards_destruidas": 6,
+        "wards_control": 1,
         "rol": "JUNGLE",
         "victoria": true
       },
@@ -3918,6 +3927,7 @@
         "vision": 26,
         "wards_colocadas": 13,
         "wards_destruidas": 0,
+        "wards_control": 1,
         "rol": "MIDDLE",
         "victoria": true
       },
@@ -3953,6 +3963,7 @@
         "vision": 35,
         "wards_colocadas": 16,
         "wards_destruidas": 4,
+        "wards_control": 0,
         "rol": "BOTTOM",
         "victoria": true
       },
@@ -3988,6 +3999,7 @@
         "vision": 82,
         "wards_colocadas": 32,
         "wards_destruidas": 6,
+        "wards_control": 7,
         "rol": "UTILITY",
         "victoria": true
       },
@@ -4023,6 +4035,7 @@
         "vision": 34,
         "wards_colocadas": 17,
         "wards_destruidas": 2,
+        "wards_control": 0,
         "rol": "TOP",
         "victoria": false
       },
@@ -4058,6 +4071,7 @@
         "vision": 49,
         "wards_colocadas": 16,
         "wards_destruidas": 1,
+        "wards_control": 2,
         "rol": "JUNGLE",
         "victoria": false
       },
@@ -4093,6 +4107,7 @@
         "vision": 12,
         "wards_colocadas": 3,
         "wards_destruidas": 1,
+        "wards_control": 0,
         "rol": "MIDDLE",
         "victoria": false
       },
@@ -4128,6 +4143,7 @@
         "vision": 10,
         "wards_colocadas": 5,
         "wards_destruidas": 3,
+        "wards_control": 1,
         "rol": "BOTTOM",
         "victoria": false
       },
@@ -4163,6 +4179,7 @@
         "vision": 116,
         "wards_colocadas": 32,
         "wards_destruidas": 12,
+        "wards_control": 10,
         "rol": "UTILITY",
         "victoria": false
       }
@@ -20259,6 +20276,429 @@
         "wards_control": 3,
         "rol": "UTILITY",
         "victoria": true
+      }
+    ]
+  },
+  "LA1_1742969132": {
+    "match_id": "LA1_1742969132",
+    "fecha": "2026-08-22T05:45:28Z",
+    "duracion_seg": 1933,
+    "modo_juego": "Ranked Solo/Duo",
+    "parche": "16.16",
+    "equipos": {
+      "blue": {
+        "victoria": true,
+        "barones": 1,
+        "dragones": 4,
+        "heraldos": 1,
+        "vacuolarvas": 2,
+        "torres": 11,
+        "inhibidores": 2,
+        "baneos": [
+          {
+            "campeon": "Braum"
+          },
+          {
+            "campeon": "Graves"
+          },
+          {
+            "campeon": "Katarina"
+          },
+          {
+            "campeon": "Syndra"
+          },
+          {
+            "campeon": "Zed"
+          }
+        ]
+      },
+      "red": {
+        "victoria": false,
+        "barones": 0,
+        "dragones": 0,
+        "heraldos": 0,
+        "vacuolarvas": 1,
+        "torres": 3,
+        "inhibidores": 0,
+        "baneos": [
+          {
+            "campeon": "Kassadin"
+          },
+          {
+            "campeon": "Olaf"
+          },
+          {
+            "campeon": "Rammus"
+          },
+          {
+            "campeon": "Malzahar"
+          },
+          {
+            "campeon": "Senna"
+          }
+        ]
+      }
+    },
+    "jugadores": [
+      {
+        "nombre_grupo": "adrianNOOBYT",
+        "riot_id": "adrianNOOBYT#LAN",
+        "equipo": "blue",
+        "campeon": "Trundle",
+        "nivel": 18,
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ],
+        "items": [
+          3074,
+          3078,
+          3009,
+          1028,
+          3181,
+          3211,
+          3340
+        ],
+        "perk_principal": 8008,
+        "estilo_secundario": 8400,
+        "kills": 3,
+        "muertes": 7,
+        "asistencias": 3,
+        "cs": 222,
+        "cs_por_min": 6.9,
+        "oro": 13078,
+        "danio_a_campeones": 19429,
+        "danio_recibido": 40278,
+        "vision": 33,
+        "wards_colocadas": 12,
+        "wards_destruidas": 1,
+        "wards_control": 0,
+        "rol": "TOP",
+        "victoria": true
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "Jarro Plumaluuz#LAN",
+        "equipo": "blue",
+        "campeon": "Kayn",
+        "nivel": 18,
+        "hechizos": [
+          "SummonerSmite",
+          "SummonerFlash"
+        ],
+        "items": [
+          6696,
+          6699,
+          3158,
+          6694,
+          3814,
+          2019,
+          3340
+        ],
+        "perk_principal": 8128,
+        "estilo_secundario": 8300,
+        "kills": 16,
+        "muertes": 5,
+        "asistencias": 7,
+        "cs": 219,
+        "cs_por_min": 6.8,
+        "oro": 17717,
+        "danio_a_campeones": 36349,
+        "danio_recibido": 30167,
+        "vision": 41,
+        "wards_colocadas": 14,
+        "wards_destruidas": 2,
+        "wards_control": 1,
+        "rol": "JUNGLE",
+        "victoria": true
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "OOOOOLOOOOO#LAN",
+        "equipo": "blue",
+        "campeon": "Galio",
+        "nivel": 16,
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerDot"
+        ],
+        "items": [
+          1056,
+          0,
+          3152,
+          3173,
+          4005,
+          3075,
+          3340
+        ],
+        "perk_principal": 8439,
+        "estilo_secundario": 8200,
+        "kills": 6,
+        "muertes": 4,
+        "asistencias": 5,
+        "cs": 139,
+        "cs_por_min": 4.3,
+        "oro": 11006,
+        "danio_a_campeones": 13250,
+        "danio_recibido": 25124,
+        "vision": 23,
+        "wards_colocadas": 11,
+        "wards_destruidas": 2,
+        "wards_control": 0,
+        "rol": "MIDDLE",
+        "victoria": true
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "Señor Locutor#DCP",
+        "equipo": "blue",
+        "campeon": "Caitlyn",
+        "nivel": 15,
+        "hechizos": [
+          "SummonerBarrier",
+          "SummonerFlash"
+        ],
+        "items": [
+          1055,
+          2523,
+          3094,
+          3031,
+          1036,
+          0,
+          3340
+        ],
+        "perk_principal": 8021,
+        "estilo_secundario": 8200,
+        "kills": 1,
+        "muertes": 4,
+        "asistencias": 5,
+        "cs": 257,
+        "cs_por_min": 8.0,
+        "oro": 13065,
+        "danio_a_campeones": 28168,
+        "danio_recibido": 22673,
+        "vision": 18,
+        "wards_colocadas": 7,
+        "wards_destruidas": 5,
+        "wards_control": 1,
+        "rol": "BOTTOM",
+        "victoria": true
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "cwest#LAN",
+        "equipo": "blue",
+        "campeon": "Soraka",
+        "nivel": 14,
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerHeal"
+        ],
+        "items": [
+          6617,
+          3504,
+          3114,
+          3158,
+          1052,
+          3870,
+          3364
+        ],
+        "perk_principal": 8214,
+        "estilo_secundario": 8400,
+        "kills": 0,
+        "muertes": 5,
+        "asistencias": 9,
+        "cs": 14,
+        "cs_por_min": 0.4,
+        "oro": 8348,
+        "danio_a_campeones": 5007,
+        "danio_recibido": 13705,
+        "vision": 93,
+        "wards_colocadas": 35,
+        "wards_destruidas": 5,
+        "wards_control": 9,
+        "rol": "UTILITY",
+        "victoria": true
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "KRATOS1895#LAN",
+        "equipo": "red",
+        "campeon": "XinZhao",
+        "nivel": 17,
+        "hechizos": [
+          "SummonerDot",
+          "SummonerHaste"
+        ],
+        "items": [
+          3111,
+          3071,
+          6610,
+          3072,
+          1028,
+          0,
+          3340
+        ],
+        "perk_principal": 8008,
+        "estilo_secundario": 8200,
+        "kills": 4,
+        "muertes": 5,
+        "asistencias": 5,
+        "cs": 199,
+        "cs_por_min": 6.2,
+        "oro": 12077,
+        "danio_a_campeones": 21392,
+        "danio_recibido": 37101,
+        "vision": 27,
+        "wards_colocadas": 12,
+        "wards_destruidas": 0,
+        "wards_control": 0,
+        "rol": "TOP",
+        "victoria": false
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "Fafy#DEB",
+        "equipo": "red",
+        "campeon": "Quinn",
+        "nivel": 16,
+        "hechizos": [
+          "SummonerSmite",
+          "SummonerFlash"
+        ],
+        "items": [
+          6676,
+          3009,
+          6697,
+          3036,
+          3134,
+          2021,
+          3363
+        ],
+        "perk_principal": 8112,
+        "estilo_secundario": 8200,
+        "kills": 10,
+        "muertes": 7,
+        "asistencias": 9,
+        "cs": 157,
+        "cs_por_min": 4.9,
+        "oro": 13422,
+        "danio_a_campeones": 30581,
+        "danio_recibido": 27162,
+        "vision": 27,
+        "wards_colocadas": 12,
+        "wards_destruidas": 1,
+        "wards_control": 0,
+        "rol": "JUNGLE",
+        "victoria": false
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "IvanchoBene0405#LAN",
+        "equipo": "red",
+        "campeon": "Akali",
+        "nivel": 15,
+        "hechizos": [
+          "SummonerTeleport",
+          "SummonerFlash"
+        ],
+        "items": [
+          3146,
+          4645,
+          3175,
+          2055,
+          3916,
+          1026,
+          3363
+        ],
+        "perk_principal": 8021,
+        "estilo_secundario": 8400,
+        "kills": 5,
+        "muertes": 3,
+        "asistencias": 7,
+        "cs": 176,
+        "cs_por_min": 5.5,
+        "oro": 10362,
+        "danio_a_campeones": 12135,
+        "danio_recibido": 23038,
+        "vision": 29,
+        "wards_colocadas": 15,
+        "wards_destruidas": 0,
+        "wards_control": 6,
+        "rol": "MIDDLE",
+        "victoria": false
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "DestroyerViking#00001",
+        "equipo": "red",
+        "campeon": "Ezreal",
+        "nivel": 15,
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerHeal"
+        ],
+        "items": [
+          3042,
+          6694,
+          0,
+          0,
+          3078,
+          0,
+          3363
+        ],
+        "perk_principal": 8010,
+        "estilo_secundario": 8100,
+        "kills": 3,
+        "muertes": 5,
+        "asistencias": 5,
+        "cs": 167,
+        "cs_por_min": 5.2,
+        "oro": 11438,
+        "danio_a_campeones": 19426,
+        "danio_recibido": 16764,
+        "vision": 20,
+        "wards_colocadas": 10,
+        "wards_destruidas": 1,
+        "wards_control": 0,
+        "rol": "BOTTOM",
+        "victoria": false
+      },
+      {
+        "nombre_grupo": null,
+        "riot_id": "YEISON ORIGINAL #LAN",
+        "equipo": "red",
+        "campeon": "Mel",
+        "nivel": 13,
+        "hechizos": [
+          "SummonerHeal",
+          "SummonerFlash"
+        ],
+        "items": [
+          3871,
+          3020,
+          6655,
+          3145,
+          6653,
+          0,
+          3364
+        ],
+        "perk_principal": 8229,
+        "estilo_secundario": 8100,
+        "kills": 3,
+        "muertes": 6,
+        "asistencias": 5,
+        "cs": 84,
+        "cs_por_min": 2.6,
+        "oro": 9623,
+        "danio_a_campeones": 16171,
+        "danio_recibido": 22708,
+        "vision": 83,
+        "wards_colocadas": 31,
+        "wards_destruidas": 11,
+        "wards_control": 11,
+        "rol": "UTILITY",
+        "victoria": false
       }
     ]
   }
