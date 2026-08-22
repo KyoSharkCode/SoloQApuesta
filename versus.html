@@ -7,14 +7,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="shortcut icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/764bbd9c-6d80-481d-8136-96848f01e843/ddx6q22-c6936a5b-73d6-409d-b248-0b370494f90f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi83NjRiYmQ5Yy02ZDgwLTQ4MWQtODEzNi05Njg0OGYwMWU4NDMvZGR4NnEyMi1jNjkzNmE1Yi03M2Q2LTQwOWQtYjI0OC0wYjM3MDQ5NGY5MGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5gC4gH1VsNiJXARJGlpuWTYklhg8sRjJiXKO7IpdYeQ" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0a0a0c; --panel:#131317; --panel-2:#18181d;
-    --border:#232329; --text:#ffffff; --text-faint:#a1a1aa;
-    --accent:#8b5cf6; --accent-soft:#a78bfa;
-    --accent-glow:rgba(139,92,246,.35);
-    --gold:#fbbf24; --win:#34d399; --loss:#f87171;
+    --bg:#050508; --panel:rgba(22,20,32,.6); --panel-2:rgba(28,26,40,.65);
+    --border:#332f47; --text:#ffffff; --text-faint:#8888a3;
+    --accent:#a855f7; --accent-soft:#22d3ee;
+    --accent-glow:rgba(168,85,247,.45);
+    --gold:#facc15; --win:#34d399; --loss:#fb7185;
     --radius:16px;
   }
   * { box-sizing:border-box; }
@@ -31,17 +31,24 @@
 
   body {
     margin:0;
-    background: radial-gradient(1200px 400px at 50% -10%, rgba(139,92,246,.10), transparent 60%), var(--bg);
+    background:
+      radial-gradient(900px 500px at 12% 0%, rgba(168,85,247,.16), transparent 60%),
+      radial-gradient(900px 500px at 88% 8%, rgba(34,211,238,.12), transparent 60%),
+      var(--bg);
     color:var(--text); font-family:'Inter',system-ui,sans-serif; min-height:100vh;
   }
-  .wrap { max-width:960px; margin:0 auto; padding:40px 20px 80px; }
+  .wrap { max-width:1000px; margin:0 auto; padding:40px 20px 80px; }
 
   /* TOPBAR */
   .topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:12px; }
   .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--accent-soft); text-decoration:none; font-weight:600; font-size:14px; transition:color .2s; }
   .back-btn:hover { color:#fff; }
-  .page-title { font-size:clamp(22px,4vw,32px); font-weight:900; margin:0; letter-spacing:-.02em; }
-  .page-title span { color:var(--accent-soft); }
+  .page-title { font-size:clamp(24px,4.2vw,36px); font-weight:700; margin:0; letter-spacing:.01em;
+    font-family:'Rajdhani',sans-serif; text-transform:uppercase; }
+  .page-title span {
+    background:linear-gradient(90deg, var(--accent-soft), var(--accent));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
 
   /* SELECTORES */
   .selectors { display:grid; grid-template-columns:1fr 64px 1fr; align-items:center; gap:16px; margin-bottom:40px; }
@@ -51,7 +58,7 @@
     background:var(--panel); color:var(--text); border:1px solid var(--border);
     padding:12px 16px; border-radius:10px; font-family:inherit; font-size:14px;
     font-weight:600; cursor:pointer; outline:none; width:100%;
-    transition:border-color .2s;
+    transition:border-color .2s; backdrop-filter:blur(10px);
   }
   .selector-side select:focus { border-color:var(--accent); }
   .vs-badge {
@@ -59,7 +66,8 @@
     background:var(--panel); border:1px solid var(--border);
     border-radius:50%; width:56px; height:56px; display:flex;
     align-items:center; justify-content:center; margin:0 auto;
-    box-shadow:0 0 20px var(--accent-glow);
+    box-shadow:0 0 20px var(--accent-glow); backdrop-filter:blur(10px);
+    font-family:'Rajdhani',sans-serif;
   }
 
   /* TARJETAS ENFRENTADAS */
@@ -69,9 +77,13 @@
     background:var(--panel); border:2px solid var(--border);
     border-radius:var(--radius); overflow:hidden;
     transition:border-color .3s;
-    position:relative;
+    position:relative; backdrop-filter:blur(14px);
   }
-  .player-card.winner { border-color:var(--accent); box-shadow:0 0 30px var(--accent-glow); }
+  .player-card.winner { border-color:var(--accent); box-shadow:0 0 30px var(--accent-glow), 0 0 60px rgba(34,211,238,.14); animation:versusWinnerPulse 3.2s ease-in-out infinite; }
+  @keyframes versusWinnerPulse{
+    0%,100%{ box-shadow:0 0 30px var(--accent-glow), 0 0 60px rgba(34,211,238,.14); }
+    50%{ box-shadow:0 0 42px var(--accent-glow), 0 0 78px rgba(34,211,238,.24); }
+  }
   .player-card.loser  { opacity:.75; }
 
   .card-splash {
@@ -115,12 +127,12 @@
   /* STATS COMPARACIÓN */
   .stats-section {
     background:var(--panel); border:1px solid var(--border);
-    border-radius:var(--radius); padding:36px 32px;
+    border-radius:var(--radius); padding:36px 32px; backdrop-filter:blur(14px);
   }
   .stats-section h3 {
-    margin:0 0 28px; font-size:16px; font-weight:900;
-    text-transform:uppercase; letter-spacing:.08em;
-    color:#fff; text-align:center;
+    margin:0 0 28px; font-size:16px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em;
+    color:#fff; text-align:center; font-family:'Rajdhani',sans-serif;
   }
 
   /*
@@ -176,13 +188,17 @@
   /* SCORE FINAL */
   .score-banner {
     margin-top:24px; padding:20px 24px;
-    background:linear-gradient(135deg, rgba(139,92,246,.15), rgba(139,92,246,.05));
+    background:linear-gradient(135deg, rgba(168,85,247,.15), rgba(34,211,238,.06));
     border:1px solid var(--accent); border-radius:var(--radius);
     display:flex; align-items:center; justify-content:center; gap:20px;
-    flex-wrap:wrap; text-align:center;
+    flex-wrap:wrap; text-align:center; backdrop-filter:blur(14px);
+    box-shadow:0 0 30px var(--accent-glow);
   }
-  .score-num { font-size:42px; font-weight:900; line-height:1; }
-  .score-num.left { color:var(--accent-soft); }
+  .score-num { font-size:46px; font-weight:900; line-height:1; font-family:'Rajdhani',sans-serif; }
+  .score-num.left {
+    background:linear-gradient(90deg, var(--accent-soft), var(--accent));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
   .score-num.right { color:var(--text-faint); }
   .score-dash { font-size:28px; font-weight:900; color:var(--border); }
   .score-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-faint); margin-top:4px; }
@@ -208,12 +224,12 @@
   .fab-menu{ position:fixed; right:28px; bottom:28px; z-index:999; display:flex; flex-direction:column; align-items:flex-end; gap:14px; }
   .fab-main{
     width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
-    background:var(--accent); color:#fff; font-size:26px; font-weight:400; line-height:1;
+    background:linear-gradient(135deg, var(--accent), var(--accent-soft)); color:#fff; font-size:26px; font-weight:400; line-height:1;
     display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 24px rgba(139,92,246,.55);
+    box-shadow:0 4px 24px rgba(168,85,247,.5), 0 4px 24px rgba(34,211,238,.25);
     transition:transform .25s ease, box-shadow .2s ease;
   }
-  .fab-main:hover{ box-shadow:0 6px 32px rgba(139,92,246,.75); }
+  .fab-main:hover{ box-shadow:0 6px 32px rgba(168,85,247,.7), 0 6px 32px rgba(34,211,238,.35); }
   .fab-menu.open .fab-main{ transform:rotate(45deg); }
   .fab-options{ display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
   .fab-option{
