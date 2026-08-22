@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T08:40:40.878319",
+  "ultimaActualizacion": "2026-08-22T09:02:55.084493",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1233,7 +1233,7 @@
         {
           "campeon": "Akali",
           "nivel": 31,
-          "puntos": "330.654"
+          "puntos": "332.529"
         },
         {
           "campeon": "Poppy",
@@ -3531,12 +3531,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver IV",
-      "lp": 88,
-      "winrate": "47%",
-      "elo_score": 888,
+      "lp": 73,
+      "winrate": "45%",
+      "elo_score": 873,
       "record_lp_score": 888,
       "record_lp_label": "Silver IV (88 LP)",
-      "escalador_semana": 88,
+      "escalador_semana": 73,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -3551,14 +3551,14 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 7
+          "cantidad": 6
+        },
+        {
+          "campeon": "Yone",
+          "cantidad": 2
         },
         {
           "campeon": "Poppy",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Trundle",
           "cantidad": 1
         }
       ],
@@ -3769,9 +3769,31 @@
           "lp": 88,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-22T09:02:41Z",
+          "lp": 73,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743002996",
+          "campeon": "Yone",
+          "kda": "10/14/7 (1.21)",
+          "resultado": "Derrota",
+          "duracion": "44min",
+          "lp_change": -15,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8400,
+          "wards_control": 0
+        },
         {
           "match_id": "LA1_1742997959",
           "campeon": "Akali",
@@ -3915,37 +3937,40 @@
           "perk_principal": 8112,
           "estilo_secundario": 8400,
           "wards_control": 0
-        },
-        {
-          "match_id": "LA1_1742263905",
-          "campeon": "Akali",
-          "kda": "8/11/9 (1.55)",
-          "resultado": "Derrota",
-          "duracion": "39min",
-          "lp_change": -13,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1
         }
       ],
-      "kills_recientes": 71,
+      "kills_recientes": 73,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 198,
+      "vision_promedio_reciente": 25,
+      "kills_semana": 194,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
+      "vision_promedio_semana": 25,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 1.93,
+      "kda_promedio_semana": 1.86,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 156,
+      "asistencias_semana": 161,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787388765.98,
+          "kills": 10,
+          "muertes": 14,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 17,
+          "campeon": "Yone",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 292,
+          "duracion_seg": 2664,
+          "damage_taken": 55006,
+          "danio_recibido_pct": 21.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 4,
+          "tiempo_cc": 19
+        },
         {
           "fin_seg": 1787385704.257,
           "kills": 14,
@@ -4401,25 +4426,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 2
-        },
-        {
-          "fin_seg": 1786866086.228,
-          "kills": 14,
-          "muertes": 6,
-          "asistencias": 2,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 21,
-          "campeon": "Akali",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 148,
-          "duracion_seg": 1732,
-          "damage_taken": 32067,
-          "danio_recibido_pct": 20.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 4
         }
       ],
       "duo_semana": null,
@@ -4434,9 +4440,9 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 36,
-      "tiempo_cc_semana": 216,
-      "max_partidas_en_un_dia": 4,
+      "estructuras_destruidas_semana": 40,
+      "tiempo_cc_semana": 231,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787377528712,
         "campeon": "Trundle",
@@ -5816,7 +5822,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.165046
+    "ゆうき まこと": 0.180335
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
