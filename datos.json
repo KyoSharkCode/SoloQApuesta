@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T22:24:25.929900",
+  "ultimaActualizacion": "2026-08-22T22:26:29.447675",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1198,12 +1198,12 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Gold IV",
-      "lp": 14,
-      "winrate": "47%",
-      "elo_score": 1214,
+      "lp": 0,
+      "winrate": "46%",
+      "elo_score": 1200,
       "record_lp_score": 1214,
       "record_lp_label": "Gold IV (14 LP)",
-      "escalador_semana": -46,
+      "escalador_semana": -60,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1426,9 +1426,32 @@
           "lp": 14,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-22T22:26:19Z",
+          "lp": 0,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743098098",
+          "campeon": "Lillia",
+          "kda": "6/6/4 (1.67)",
+          "resultado": "Derrota",
+          "duracion": "28min",
+          "lp_change": -14,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8300,
+          "wards_control": 9,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743022023",
           "campeon": "Neeko",
@@ -1443,7 +1466,8 @@
           "duo_con": [],
           "perk_principal": 8229,
           "estilo_secundario": 8300,
-          "wards_control": 27
+          "wards_control": 27,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1743021082",
@@ -1459,7 +1483,8 @@
           "duo_con": [],
           "perk_principal": 8005,
           "estilo_secundario": 8100,
-          "wards_control": 4
+          "wards_control": 4,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1743013954",
@@ -1475,7 +1500,8 @@
           "duo_con": [],
           "perk_principal": 8005,
           "estilo_secundario": 8100,
-          "wards_control": 11
+          "wards_control": 11,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742621464",
@@ -1493,7 +1519,8 @@
           ],
           "perk_principal": 8010,
           "estilo_secundario": 8300,
-          "wards_control": 6
+          "wards_control": 6,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742602038",
@@ -1509,7 +1536,8 @@
           "duo_con": [],
           "perk_principal": 8010,
           "estilo_secundario": 8300,
-          "wards_control": 7
+          "wards_control": 7,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742593698",
@@ -1525,7 +1553,8 @@
           "duo_con": [],
           "perk_principal": 8439,
           "estilo_secundario": 8300,
-          "wards_control": 11
+          "wards_control": 11,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742589079",
@@ -1541,7 +1570,8 @@
           "duo_con": [],
           "perk_principal": 8010,
           "estilo_secundario": 8300,
-          "wards_control": 6
+          "wards_control": 6,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742301902",
@@ -1559,7 +1589,8 @@
           ],
           "perk_principal": 8010,
           "estilo_secundario": 8300,
-          "wards_control": 10
+          "wards_control": 10,
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1742286931",
@@ -1575,38 +1606,42 @@
           "duo_con": [],
           "perk_principal": 8010,
           "estilo_secundario": 8300,
-          "wards_control": 7
-        },
-        {
-          "match_id": "LA1_1742131148",
-          "campeon": "Lillia",
-          "kda": "13/5/21 (6.8)",
-          "resultado": "Victoria",
-          "duracion": "43min",
-          "lp_change": 28,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8300,
-          "wards_control": 8
+          "wards_control": 7,
+          "posible_egida": false
         }
       ],
-      "kills_recientes": 40,
+      "kills_recientes": 33,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 53,
-      "kills_semana": 102,
+      "vision_promedio_reciente": 50,
+      "kills_semana": 108,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 47,
+      "vision_promedio_semana": 46,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.39,
+      "kda_promedio_semana": 2.36,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 216,
-      "partidas_semana": 19,
+      "asistencias_semana": 220,
+      "partidas_semana": 20,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787437476.613,
+          "kills": 6,
+          "muertes": 6,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 31,
+          "campeon": "Lillia",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 161,
+          "duracion_seg": 1689,
+          "damage_taken": 32938,
+          "danio_recibido_pct": 27.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 22
+        },
         {
           "fin_seg": 1787410840.937,
           "kills": 3,
@@ -1991,8 +2026,8 @@
       },
       "objetivos_robados_semana": 5,
       "estructuras_destruidas_semana": 8,
-      "tiempo_cc_semana": 560,
-      "max_partidas_en_un_dia": 3,
+      "tiempo_cc_semana": 582,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787404442799,
         "campeon": "Briar",
@@ -5989,7 +6024,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.717036
+    "ゆうき まこと": 0.718353
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
