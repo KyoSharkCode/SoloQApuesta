@@ -249,6 +249,11 @@
   .lp-change{ font-size:11px; font-weight:800; }
   .lp-change.win{ color:var(--win); }
   .lp-change.loss{ color:var(--loss); }
+  /* "~ Égida de Valor" — igual que .pc-tag.rol-estimado en live_partida.html:
+     borde punteado + gris para dejar claro que es una ESTIMACIÓN nuestra por
+     comparación de LP, no un dato que Riot confirme directamente. */
+  .egida-tag{ font-size:10px; font-weight:700; color:var(--text-dim); background:rgba(255,255,255,.08); border:1px dashed rgba(255,255,255,.35); border-radius:99px; padding:2px 8px; white-space:nowrap; display:inline-flex; align-items:center; gap:4px; }
+  .egida-tag img{ width:12px; height:12px; object-fit:contain; }
 
   #error-msg { text-align:center; padding:50px; color:var(--loss); font-weight:bold; display:none; }
 
@@ -969,6 +974,16 @@ window.addEventListener('load', () => {
             const lpHtml = lpVal !== null
               ? `<span class="lp-change ${lpVal >= 0 ? 'win' : 'loss'}">${lpVal >= 0 ? '+' : ''}${lpVal} LP</span>`
               : h.duracion ? `<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${h.duracion}</span>` : '';
+            // "~ Égida de Valor" — Riot no manda si esta victoria tuvo LP
+            // doble por autocompletado, así que es una estimación nuestra
+            // (ver marcar_posibles_egida() en actualizar_datos.py): esta
+            // victoria ganó bastante más LP que las otras victorias
+            // recientes del mismo jugador. Por eso lleva "~" y el mismo
+            // estilo punteado/gris que el rol estimado en la partida en vivo
+            // — no es un dato confirmado, es un indicio.
+            const egidaHtml = h.posible_egida
+              ? `<span class="egida-tag" title="Ganaste bastante más LP de lo normal en esta partida — probablemente te tocó Égida de Valor (LP doble por autocompletado). Riot no confirma esto directamente, es una estimación.">~ <img src="icons/egida-de-valor.svg" alt=""> Égida de Valor</span>`
+              : '';
             const spellsHtml = (Array.isArray(h.hechizos) ? h.hechizos : []).map(s =>
               `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
@@ -1000,6 +1015,7 @@ window.addEventListener('load', () => {
               <div class="match-result-block">
                 <span class="result-chip ${h.resultado.toLowerCase()}">${h.resultado}</span>
                 ${lpHtml}
+                ${egidaHtml}
               </div>
             </${tag}>`;
           }).join('')

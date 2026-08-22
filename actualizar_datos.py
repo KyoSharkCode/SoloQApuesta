@@ -117,6 +117,42 @@ def calcular_lp_por_partida(md, progreso_lp_ordenado):
     return s_despues - s_antes
 
 
+def marcar_posibles_egida(historial):
+    """
+    Marca, dentro del historial visible (últimas 10 partidas), cuáles victorias
+    parecen haber tenido LP doble por "Égida de Valor" — el sistema de Season
+    2026 que duplica el LP ganado si te tocó autocompletado (ver /dev: Ranked
+    2026 de Riot). Riot NO expone en ninguna API si un jugador fue
+    autocompletado ni si Égida se activó — ni Match-V5 ni League-V4 traen ese
+    campo, es 100% cálculo interno del cliente del juego. Así que esto es una
+    ESTIMACIÓN por comparación estadística contra el propio historial del
+    jugador, no un dato confirmado — por eso el frontend lo marca con "~",
+    igual que ya se hace con el rol estimado en live_partida.html.
+    Solo se evalúa en victorias: desde el parche 26.15 Égida ya no protege LP
+    en derrota, solo duplica en victoria.
+    Compara cada victoria contra la MEDIANA de LP ganado en las OTRAS
+    victorias del mismo historial (la mediana, no el promedio, para que una
+    sola partida ya marcada no infle la base de comparación de las demás).
+    Con menos de 5 victorias de referencia no hay base suficiente y no se
+    marca nada, para no arriesgar falsos positivos con poca información.
+    """
+    victorias = [
+        h for h in historial
+        if h.get("resultado") == "Victoria" and isinstance(h.get("lp_change"), (int, float)) and h["lp_change"] > 0
+    ]
+    for h in historial:
+        h["posible_egida"] = False
+        if h not in victorias:
+            continue
+        otras = sorted(v["lp_change"] for v in victorias if v is not h)
+        n = len(otras)
+        if n < 5:
+            continue
+        mediana = otras[n // 2] if n % 2 else (otras[n // 2 - 1] + otras[n // 2]) / 2
+        if mediana > 0 and h["lp_change"] >= mediana * 1.6:
+            h["posible_egida"] = True
+
+
 def calcular_agregados_semana(detalle):
     """
     Recalcula los destacados semanales a partir del detalle de partidas
@@ -932,6 +968,33 @@ def obtener_datos():
                         "estilo_secundario": estilo_secundario_jug,
                         "wards_control":     wards_control_jug,
                     })
+
+                # Posible Égida de Valor (LP doble) — necesita el historial YA
+                # completo para comparar cada victoria contra las demás, así
+                # que se calcula una sola vez acá, después del for de arriba
+                # (no se puede resolver partida por partida dentro del loop).
+                marcar_posibles_egida(historial)
+                for h in historial:
+                    if h.get("posible_egida") and h["match_id"] not in match_ids_previos:
+                        nombre_corto = nombre_completo.split("#", 1)[0]
+                        eventos_nuevos.append({
+                            "timestamp":        fecha_actual,
+                            "tipo":             "posible_egida",
+                            # Ícono real de Riot para Égida de Valor, guardado
+                            # local en icons/ (no viene de un CDN oficial de
+                            # Riot como el resto de los íconos del sitio, así
+                            # que se prefirió bajarlo una vez a mantenerlo
+                            # enlazado a una wiki de terceros). El frontend
+                            # (iconoHtml() en index.html) reconoce que termina
+                            # en ".svg" y lo muestra como imagen en vez de
+                            # tratarlo como un emoji.
+                            "icono":            "icons/egida-de-valor.svg",
+                            "categoria_label":  "Posible Égida de Valor",
+                            "jugador_nuevo":    nombre_corto,
+                            "jugador_anterior": None,
+                            "detalle":          f"{h['campeon']} · +{h['lp_change']} LP",
+                        })
+                        print(f"  🛡️ Nuevo evento: {nombre_corto} tuvo posible Égida de Valor (+{h['lp_change']} LP)")
 
                 vision_promedio_reciente = (
                     round(sum(vision_scores_recientes) / len(vision_scores_recientes))
