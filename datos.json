@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-22T13:12:24.968999",
+  "ultimaActualizacion": "2026-08-22T13:14:31.729452",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1202,12 +1202,12 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Silver I",
-      "lp": 50,
-      "winrate": "45%",
-      "elo_score": 1150,
+      "lp": 76,
+      "winrate": "47%",
+      "elo_score": 1176,
       "record_lp_score": 1190,
       "record_lp_label": "Silver I (90 LP)",
-      "escalador_semana": -5,
+      "escalador_semana": 21,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1222,7 +1222,11 @@
       "top_recientes": [
         {
           "campeon": "Lillia",
-          "cantidad": 9
+          "cantidad": 8
+        },
+        {
+          "campeon": "Briar",
+          "cantidad": 1
         },
         {
           "campeon": "Maokai",
@@ -1408,9 +1412,31 @@
           "lp": 50,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-22T13:14:21Z",
+          "lp": 76,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743013954",
+          "campeon": "Briar",
+          "kda": "1/8/12 (1.62)",
+          "resultado": "Victoria",
+          "duracion": "39min",
+          "lp_change": 26,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8100,
+          "wards_control": 11
+        },
         {
           "match_id": "LA1_1742621464",
           "campeon": "Lillia",
@@ -1426,7 +1452,8 @@
             "Ostia"
           ],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 6
         },
         {
           "match_id": "LA1_1742602038",
@@ -1441,7 +1468,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 7
         },
         {
           "match_id": "LA1_1742593698",
@@ -1456,7 +1484,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8439,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 11
         },
         {
           "match_id": "LA1_1742589079",
@@ -1471,7 +1500,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 6
         },
         {
           "match_id": "LA1_1742301902",
@@ -1488,7 +1518,8 @@
             "Ostia"
           ],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 10
         },
         {
           "match_id": "LA1_1742286931",
@@ -1503,7 +1534,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 7
         },
         {
           "match_id": "LA1_1742131148",
@@ -1518,7 +1550,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 8
         },
         {
           "match_id": "LA1_1742096775",
@@ -1533,7 +1566,8 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 9
         },
         {
           "match_id": "LA1_1741849535",
@@ -1548,37 +1582,42 @@
           ],
           "duo_con": [],
           "perk_principal": 8010,
-          "estilo_secundario": 8300
-        },
-        {
-          "match_id": "LA1_1741825128",
-          "campeon": "Lillia",
-          "kda": "7/7/21 (4.0)",
-          "resultado": "Victoria",
-          "duracion": "35min",
-          "lp_change": 29,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8300
+          "estilo_secundario": 8300,
+          "wards_control": 8
         }
       ],
-      "kills_recientes": 56,
+      "kills_recientes": 50,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 44,
-      "kills_semana": 118,
+      "vision_promedio_reciente": 45,
+      "kills_semana": 119,
       "pentakills_semana": 0,
       "vision_promedio_semana": 42,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.67,
+      "kda_promedio_semana": 2.6,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 1,
-      "asistencias_semana": 202,
-      "partidas_semana": 18,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 214,
+      "partidas_semana": 19,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787404442.799,
+          "kills": 1,
+          "muertes": 8,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 52,
+          "campeon": "Briar",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 224,
+          "duracion_seg": 2378,
+          "damage_taken": 41467,
+          "danio_recibido_pct": 21.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 23
+        },
         {
           "fin_seg": 1787269882.375,
           "kills": 1,
@@ -1595,7 +1634,10 @@
           "cs": 174,
           "duracion_seg": 1637,
           "damage_taken": 29140,
-          "danio_recibido_pct": 21.0
+          "danio_recibido_pct": 21.0,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 21
         },
         {
           "fin_seg": 1787264409.398,
@@ -1611,7 +1653,10 @@
           "cs": 196,
           "duracion_seg": 2152,
           "damage_taken": 51761,
-          "danio_recibido_pct": 24.1
+          "danio_recibido_pct": 24.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 23
         },
         {
           "fin_seg": 1787261218.139,
@@ -1627,7 +1672,10 @@
           "cs": 28,
           "duracion_seg": 1411,
           "damage_taken": 14312,
-          "danio_recibido_pct": 14.7
+          "danio_recibido_pct": 14.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 29
         },
         {
           "fin_seg": 1787258784.345,
@@ -1643,7 +1691,10 @@
           "cs": 161,
           "duracion_seg": 1457,
           "damage_taken": 20874,
-          "danio_recibido_pct": 20.9
+          "danio_recibido_pct": 20.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 15
         },
         {
           "fin_seg": 1787133428.986,
@@ -1661,7 +1712,10 @@
           "cs": 195,
           "duracion_seg": 2085,
           "damage_taken": 42858,
-          "danio_recibido_pct": 24.9
+          "danio_recibido_pct": 24.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 25
         },
         {
           "fin_seg": 1787123681.368,
@@ -1677,7 +1731,10 @@
           "cs": 235,
           "duracion_seg": 1990,
           "damage_taken": 43224,
-          "danio_recibido_pct": 31.5
+          "danio_recibido_pct": 31.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 43
         },
         {
           "fin_seg": 1787088757.409,
@@ -1693,7 +1750,10 @@
           "cs": 257,
           "duracion_seg": 2592,
           "damage_taken": 68248,
-          "danio_recibido_pct": 24.1
+          "danio_recibido_pct": 24.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
         },
         {
           "fin_seg": 1787078180.963,
@@ -1709,7 +1769,10 @@
           "cs": 211,
           "duracion_seg": 2276,
           "damage_taken": 43193,
-          "danio_recibido_pct": 27.6
+          "danio_recibido_pct": 27.6,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
         },
         {
           "fin_seg": 1786991577.089,
@@ -1725,7 +1788,10 @@
           "cs": 296,
           "duracion_seg": 2575,
           "damage_taken": 55940,
-          "danio_recibido_pct": 28.9
+          "danio_recibido_pct": 28.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 29
         },
         {
           "fin_seg": 1786974092.435,
@@ -1741,7 +1807,10 @@
           "cs": 203,
           "duracion_seg": 2108,
           "damage_taken": 43152,
-          "danio_recibido_pct": 29.2
+          "danio_recibido_pct": 29.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 32
         },
         {
           "fin_seg": 1786971410.319,
@@ -1757,7 +1826,10 @@
           "cs": 194,
           "duracion_seg": 1958,
           "damage_taken": 20260,
-          "danio_recibido_pct": 12.9
+          "danio_recibido_pct": 12.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 6
         },
         {
           "fin_seg": 1786906903.177,
@@ -1773,7 +1845,10 @@
           "cs": 235,
           "duracion_seg": 1930,
           "damage_taken": 31458,
-          "danio_recibido_pct": 23.6
+          "danio_recibido_pct": 23.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 18
         },
         {
           "fin_seg": 1786903258.635,
@@ -1789,7 +1864,10 @@
           "cs": 224,
           "duracion_seg": 1631,
           "damage_taken": 23063,
-          "danio_recibido_pct": 23.8
+          "danio_recibido_pct": 23.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 22
         },
         {
           "fin_seg": 1786896231.109,
@@ -1805,7 +1883,10 @@
           "cs": 244,
           "duracion_seg": 2574,
           "damage_taken": 56819,
-          "danio_recibido_pct": 25.8
+          "danio_recibido_pct": 25.8,
+          "objetivos_robados": 2,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 37
         },
         {
           "fin_seg": 1786838822.376,
@@ -1823,7 +1904,10 @@
           "cs": 210,
           "duracion_seg": 2175,
           "damage_taken": 50159,
-          "danio_recibido_pct": 26.9
+          "danio_recibido_pct": 26.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 26
         },
         {
           "fin_seg": 1786833831.567,
@@ -1839,7 +1923,10 @@
           "cs": 137,
           "duracion_seg": 1754,
           "damage_taken": 38159,
-          "danio_recibido_pct": 27.1
+          "danio_recibido_pct": 27.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 54
         },
         {
           "fin_seg": 1786828554.09,
@@ -1857,7 +1944,10 @@
           "cs": 174,
           "duracion_seg": 1505,
           "damage_taken": 31302,
-          "danio_recibido_pct": 26.8
+          "danio_recibido_pct": 26.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 28
         },
         {
           "fin_seg": 1786819858.47,
@@ -1873,7 +1963,10 @@
           "cs": 258,
           "duracion_seg": 2636,
           "damage_taken": 79668,
-          "danio_recibido_pct": 28.3
+          "danio_recibido_pct": 28.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 64
         }
       ],
       "duo_semana": {
@@ -1890,11 +1983,21 @@
         "damage_taken": 43224,
         "campeon": "Lillia"
       },
-      "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 0,
-      "tiempo_cc_semana": 0,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "objetivos_robados_semana": 4,
+      "estructuras_destruidas_semana": 9,
+      "tiempo_cc_semana": 559,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787404442799,
+        "campeon": "Briar",
+        "kda": "1/8/12 (1.62)",
+        "equipo": "blue",
+        "duracion": "39:38",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
       "dia_referencia": 1787371200
     },
     {
@@ -5408,9 +5511,9 @@
       "detalle": "con Pinea (19 partidas juntos)"
     },
     "ladron": {
-      "jugador": "Ostia",
-      "valor": 2,
-      "detalle": "2 objetivos robados"
+      "jugador": "Galactic Shark",
+      "valor": 4,
+      "detalle": "4 objetivos robados"
     },
     "destructor": {
       "jugador": "Pinea",
@@ -5424,6 +5527,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-22T13:14:21Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1743013954",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "Briar dio el golpe final al Nexus"
+    },
+    {
+      "timestamp": "2026-08-22T13:14:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "ladron",
+      "categoria_label": "El Ladrón",
+      "icono": "🥷",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "Ostia",
+      "detalle": "4 objetivos robados"
+    },
     {
       "timestamp": "2026-08-22T08:02:25Z",
       "tipo": "logro_partida",
@@ -5791,24 +5914,6 @@
       "jugador_nuevo": "ゆうき まこと",
       "jugador_anterior": "Ostia",
       "detalle": "3.01 KDA"
-    },
-    {
-      "timestamp": "2026-08-21T06:18:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Silver I (21 LP)"
-    },
-    {
-      "timestamp": "2026-08-21T05:20:31Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Silver II (73 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -5822,7 +5927,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 0.347562
+    "ゆうき まこと": 0.34891
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
