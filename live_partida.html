@@ -316,10 +316,24 @@ window.addEventListener('load', () => {
     return posiciones.map(p => p !== null ? p : sinResolver[cursor++]);
   }
 
+  // FIX: comparar "Nombre#Tag" tal cual venía fallando en silencio para
+  // cualquier jugador que haya cambiado la mayúscula/minúscula de su Riot ID
+  // (p.ej. "El Buñuelito" -> "El buñuelito"). La partida EN VIVO (Spectator-v5,
+  // vía extraer_nombre_riot() en live_status.py) siempre trae el nombre tal
+  // como está AHORA en Riot, pero el "jugador" de la URL —y duoNames— salen
+  // del nombre fijo que tenemos guardado nosotros (JUGADORES en
+  // actualizar_datos.py), que no se entera solo de estos cambios. Con "==="
+  // ambos tenían que coincidir letra por letra, así que un jugador se quedaba
+  // sin su tarjeta dorada de "Tú" (o su "Dúo") apenas retocaba el casing de
+  // su nombre en el cliente de LoL, aunque siguiera siendo la misma cuenta.
+  // Comparar en minúsculas evita que un detalle cosmético así rompa el
+  // resaltado.
   function tarjetaJugador(participante, duoNames){
-    const esSelf = jugadorId && participante.nombre === jugadorId;
+    const nombreNorm = (participante.nombre || '').toLowerCase();
+    const esSelf = jugadorId && nombreNorm === jugadorId.toLowerCase();
     const nombreCorto = (participante.nombre || '').split('#')[0];
-    const esDuo = !esSelf && duoNames.includes(nombreCorto);
+    const nombreCortoNorm = nombreCorto.toLowerCase();
+    const esDuo = !esSelf && duoNames.some(n => n.toLowerCase() === nombreCortoNorm);
     const esJungla = (participante.hechizos || []).some(esHechizoSmite);
 
     const cardClass = esSelf ? 'self' : (esDuo ? 'duo' : '');
