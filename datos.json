@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-23T17:36:26.438852",
+  "ultimaActualizacion": "2026-08-23T17:38:34.489044",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3636,15 +3636,15 @@
       "kills_recientes": 74,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 40,
-      "kills_semana": 71,
+      "kills_semana": 65,
       "pentakills_semana": 0,
       "vision_promedio_semana": 41,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.29,
+      "kda_promedio_semana": 3.5,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 97,
-      "partidas_semana": 9,
+      "asistencias_semana": 89,
+      "partidas_semana": 8,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787478226.663,
@@ -3797,41 +3797,22 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 32
-        },
-        {
-          "fin_seg": 1786901812.072,
-          "kills": 6,
-          "muertes": 7,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 40,
-          "campeon": "Sion",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 266,
-          "duracion_seg": 2086,
-          "damage_taken": 64251,
-          "danio_recibido_pct": 34.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 45
         }
       ],
       "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 7.7,
-        "cs": 266,
-        "campeon": "Sion"
+        "cs_por_min": 6.9,
+        "cs": 236,
+        "campeon": "Poppy"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 34.2,
-        "damage_taken": 64251,
-        "campeon": "Sion"
+        "danio_recibido_pct": 28.1,
+        "damage_taken": 30717,
+        "campeon": "Poppy"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 25,
-      "tiempo_cc_semana": 485,
+      "estructuras_destruidas_semana": 23,
+      "tiempo_cc_semana": 440,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787473207117,
@@ -5721,8 +5702,8 @@
     },
     "kda_player": {
       "jugador": "ゆうき まこと",
-      "valor": 3.29,
-      "detalle": "3.29 KDA"
+      "valor": 3.5,
+      "detalle": "3.5 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -5740,9 +5721,9 @@
       "detalle": "8.2 CS/min con Lillia"
     },
     "defensor": {
-      "jugador": "ゆうき まこと",
-      "valor": 34.2,
-      "detalle": "34.2% del daño de su equipo (64,251) con Sion"
+      "jugador": "adrianNOOBYT",
+      "valor": 31.7,
+      "detalle": "31.7% del daño de su equipo (76,492) con Trundle"
     },
     "pentakills": null,
     "escalador": {
@@ -5752,8 +5733,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 9,
-      "detalle": "9 partidas esta semana"
+      "valor": 8,
+      "detalle": "8 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -5777,6 +5758,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-23T17:38:29Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "ゆうき まこと",
+      "detalle": "31.7% del daño de su equipo (76,492) con Trundle"
+    },
     {
       "timestamp": "2026-08-23T13:52:24Z",
       "tipo": "badge_semanal",
@@ -6150,16 +6141,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Poppy aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-08-22T06:22:21Z",
-      "tipo": "logro_partida",
-      "categoria": "terminador:LA1_1742983079",
-      "icono": "💣",
-      "categoria_label": "Terminador",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Poppy dio el golpe final al Nexus"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6173,7 +6154,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 1.487862
+    "ゆうき まこと": 1.489283
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
