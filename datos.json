@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-23T18:00:57.165628",
+  "ultimaActualizacion": "2026-08-23T18:02:25.872569",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1670,15 +1670,15 @@
       "kills_recientes": 33,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 50,
-      "kills_semana": 90,
+      "kills_semana": 81,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 47,
+      "vision_promedio_semana": 48,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.54,
+      "kda_promedio_semana": 2.39,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 187,
-      "partidas_semana": 17,
+      "asistencias_semana": 177,
+      "partidas_semana": 16,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787437476.613,
@@ -1987,25 +1987,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 18
-        },
-        {
-          "fin_seg": 1786903258.635,
-          "kills": 9,
-          "muertes": 1,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 33,
-          "campeon": "Lillia",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 224,
-          "duracion_seg": 1631,
-          "damage_taken": 23063,
-          "danio_recibido_pct": 23.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 22
         }
       ],
       "duo_semana": {
@@ -2013,8 +1994,8 @@
         "partidas": 2
       },
       "cs_min_semana": {
-        "cs_por_min": 8.2,
-        "cs": 224,
+        "cs_por_min": 7.3,
+        "cs": 235,
         "campeon": "Lillia"
       },
       "danio_recibido_semana": {
@@ -2024,7 +2005,7 @@
       },
       "objetivos_robados_semana": 3,
       "estructuras_destruidas_semana": 8,
-      "tiempo_cc_semana": 465,
+      "tiempo_cc_semana": 443,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787457600
@@ -5716,9 +5697,9 @@
       "detalle": "269 asistencias"
     },
     "farmeador": {
-      "jugador": "Galactic Shark",
-      "valor": 8.2,
-      "detalle": "8.2 CS/min con Lillia"
+      "jugador": "Pinea",
+      "valor": 7.9,
+      "detalle": "7.9 CS/min con Fiora"
     },
     "defensor": {
       "jugador": "adrianNOOBYT",
@@ -5758,6 +5739,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-23T18:02:23Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "7.9 CS/min con Fiora"
+    },
     {
       "timestamp": "2026-08-23T17:38:29Z",
       "tipo": "badge_semanal",
@@ -6131,16 +6122,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Silver IV (88 LP)"
-    },
-    {
-      "timestamp": "2026-08-22T06:22:21Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1742983079",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Poppy aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6154,7 +6135,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 1.504274
+    "ゆうき まこと": 1.505268
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
