@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-23T09:42:24.390272",
+  "ultimaActualizacion": "2026-08-23T09:44:27.876962",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3290,17 +3290,17 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold II",
-      "lp": 25,
-      "winrate": "59%",
-      "elo_score": 1425,
-      "record_lp_score": 1425,
-      "record_lp_label": "Gold II (25 LP)",
-      "escalador_semana": 20,
+      "lp": 85,
+      "winrate": "61%",
+      "elo_score": 1485,
+      "record_lp_score": 1485,
+      "record_lp_label": "Gold II (85 LP)",
+      "escalador_semana": 80,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
+          "cantidad": 8
         },
         {
           "rol": "Mid",
@@ -3313,11 +3313,11 @@
           "cantidad": 6
         },
         {
-          "campeon": "Teemo",
+          "campeon": "Lulu",
           "cantidad": 1
         },
         {
-          "campeon": "Sion",
+          "campeon": "Teemo",
           "cantidad": 1
         }
       ],
@@ -3472,9 +3472,32 @@
           "lp": 25,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-23T09:44:20Z",
+          "lp": 85,
+          "rango": "Gold",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743279775",
+          "campeon": "Lulu",
+          "kda": "1/3/13 (4.67)",
+          "resultado": "Victoria",
+          "duracion": "30min",
+          "lp_change": 60,
+          "hechizos": [
+            "SummonerExhaust",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8214,
+          "estilo_secundario": 8400,
+          "wards_control": 9,
+          "posible_egida": true
+        },
         {
           "match_id": "LA1_1743276474",
           "campeon": "Poppy",
@@ -3627,38 +3650,40 @@
           "estilo_secundario": 8000,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1741546609",
-          "campeon": "Nasus",
-          "kda": "7/9/5 (1.33)",
-          "resultado": "Victoria",
-          "duracion": "42min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerHaste",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8021,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 80,
+      "kills_recientes": 74,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 38,
-      "kills_semana": 80,
+      "vision_promedio_reciente": 40,
+      "kills_semana": 81,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 38,
+      "vision_promedio_semana": 41,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.89,
+      "kda_promedio_semana": 2.97,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 2,
-      "asistencias_semana": 105,
-      "partidas_semana": 10,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 118,
+      "partidas_semana": 11,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787478226.663,
+          "kills": 1,
+          "muertes": 3,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 66,
+          "campeon": "Lulu",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 26,
+          "duracion_seg": 1825,
+          "damage_taken": 15231,
+          "danio_recibido_pct": 10.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 34
+        },
         {
           "fin_seg": 1787475888.31,
           "kills": 9,
@@ -3863,8 +3888,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 29,
-      "tiempo_cc_semana": 541,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 575,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787473207117,
         "campeon": "Poppy",
@@ -5784,8 +5809,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 10,
-      "detalle": "10 partidas esta semana"
+      "valor": 11,
+      "detalle": "11 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -5809,6 +5834,24 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-23T09:44:20Z",
+      "tipo": "posible_egida",
+      "icono": "icons/egida-de-valor.svg",
+      "categoria_label": "Posible Égida de Valor",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Lulu · +60 LP"
+    },
+    {
+      "timestamp": "2026-08-23T09:44:20Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Gold II (85 LP)"
+    },
     {
       "timestamp": "2026-08-23T09:06:20Z",
       "tipo": "record_lp",
@@ -6173,26 +6216,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Silver IV (78 LP)"
-    },
-    {
-      "timestamp": "2026-08-22T06:22:21Z",
-      "tipo": "adelantamiento",
-      "icono": "⚔️",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Ostia",
-      "top_posicion": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-22T05:46:22Z",
-      "tipo": "logro_partida",
-      "categoria": "terminador:LA1_1742969132",
-      "icono": "💣",
-      "categoria_label": "Terminador",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Trundle dio el golpe final al Nexus"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6206,7 +6229,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 1.170151
+    "ゆうき まこと": 1.171499
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
