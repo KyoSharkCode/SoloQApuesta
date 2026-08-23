@@ -273,12 +273,12 @@
   .rank-row.streak-fire:hover{ border-color:rgba(251,146,60,.85); }
   .rank-row.streak-fire::before{ content:''; position:absolute; z-index:0; inset:0; pointer-events:none;
     background:
-      radial-gradient(circle at 12% 130%, rgba(251,146,60,.4), transparent 42%),
-      radial-gradient(circle at 22% 145%, rgba(250,204,21,.3), transparent 38%),
-      radial-gradient(circle at 5% 110%, rgba(239,68,68,.28), transparent 36%);
-    animation:emberRise 2.6s ease-in-out infinite; }
+      radial-gradient(circle at 12% 100%, rgba(251,146,60,.22), transparent 55%),
+      radial-gradient(circle at 22% 100%, rgba(250,204,21,.16), transparent 45%),
+      radial-gradient(circle at 5% 100%, rgba(239,68,68,.15), transparent 45%);
+    animation:emberGlow 2.6s ease-in-out infinite; }
   @keyframes streakFirePulse{ 0%,100%{ box-shadow:inset 0 0 14px rgba(251,146,60,.22); } 50%{ box-shadow:inset 0 0 22px rgba(251,146,60,.4); } }
-  @keyframes emberRise{ 0%{ opacity:.5; transform:translateY(0); } 50%{ opacity:1; transform:translateY(-5px); } 100%{ opacity:.5; transform:translateY(0); } }
+  @keyframes emberGlow{ 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
 
   .rank-row.streak-ice{ border-color:rgba(125,211,252,.45); background:linear-gradient(90deg, rgba(125,211,252,.09), var(--panel) 60%); box-shadow:inset 0 0 16px rgba(125,211,252,.22); }
   .rank-row.streak-ice:hover{ border-color:rgba(125,211,252,.8); }
@@ -336,6 +336,8 @@
   .lp-change{ font-size:11px; font-weight:800; }
   .lp-change.win{ color:var(--win); }
   .lp-change.loss{ color:var(--loss); }
+  .egida-tag{ font-size:10px; font-weight:700; color:var(--text-dim); background:rgba(255,255,255,.08); border:1px dashed rgba(255,255,255,.35); border-radius:99px; padding:2px 8px; white-space:nowrap; display:inline-flex; align-items:center; gap:4px; }
+  .egida-tag img{ width:12px; height:12px; object-fit:contain; }
   .empty-state{ color:var(--text-faint); font-size:13px; text-align:center; padding:30px 0; }
 
   .countdown-container { text-align:center; background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:40px 20px; }
@@ -718,7 +720,8 @@ window.addEventListener('load', () => {
             duoCon: Array.isArray(h.duo_con) ? h.duo_con : [],
             matchId: h.match_id || null,
             perkPrincipal: h.perk_principal || null,
-            estiloSecundario: h.estilo_secundario || null
+            estiloSecundario: h.estilo_secundario || null,
+            posibleEgida: !!h.posible_egida
           })),
           historialLP: p.progreso_lp || [],
           // Últimas 10 partidas — para los 3 tops superiores
@@ -1464,6 +1467,12 @@ window.addEventListener('load', () => {
         </span>` : '';
       const tag       = m.matchId ? 'a' : 'div';
       const hrefAttr  = m.matchId ? `href="partida.html?match_id=${encodeURIComponent(m.matchId)}&jugador=${encodeURIComponent(id)}"` : '';
+      // "~ Égida de Valor" — mismo indicio estimado que en perfil.html (ver
+      // marcar_posibles_egida() en actualizar_datos.py): esta victoria ganó
+      // bastante más LP que las otras victorias recientes del jugador.
+      const egidaHtml = m.posibleEgida
+        ? `<span class="egida-tag" title="Ganaste bastante más LP de lo normal en esta partida — probablemente te tocó Égida de Valor (LP doble por autocompletado). Riot no confirma esto directamente, es una estimación.">~ <img src="icons/egida-de-valor.svg" alt=""> Égida de Valor</span>`
+        : '';
       return `
       <${tag} class="match" ${hrefAttr}>
         <span class="match-icons">
@@ -1481,6 +1490,7 @@ window.addEventListener('load', () => {
           ${m.lpChange!==null
             ?`<span class="lp-change ${m.lpChange>=0?'win':'loss'}">${m.lpChange>=0?'+':''}${m.lpChange} LP</span>`
             :m.duracion?`<span class="lp-change" style="color:var(--text-faint);font-weight:600;">${m.duracion}</span>`:''}
+          ${egidaHtml}
         </span>
       </${tag}>`;
     }).join('');
