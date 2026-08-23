@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-23T13:50:35.326577",
+  "ultimaActualizacion": "2026-08-23T13:52:26.915332",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3655,15 +3655,15 @@
       "kills_recientes": 74,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 40,
-      "kills_semana": 81,
+      "kills_semana": 74,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 41,
+      "vision_promedio_semana": 40,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.97,
+      "kda_promedio_semana": 3.22,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 118,
-      "partidas_semana": 11,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 113,
+      "partidas_semana": 10,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787478226.663,
@@ -3854,25 +3854,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 67
-        },
-        {
-          "fin_seg": 1786888236.016,
-          "kills": 7,
-          "muertes": 9,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 47,
-          "campeon": "Nasus",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 231,
-          "duracion_seg": 2534,
-          "damage_taken": 78119,
-          "danio_recibido_pct": 35.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 23
         }
       ],
       "duo_semana": null,
@@ -3882,13 +3863,13 @@
         "campeon": "Sion"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 35.3,
-        "damage_taken": 78119,
-        "campeon": "Nasus"
+        "danio_recibido_pct": 34.2,
+        "damage_taken": 64251,
+        "campeon": "Sion"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 29,
-      "tiempo_cc_semana": 575,
+      "estructuras_destruidas_semana": 26,
+      "tiempo_cc_semana": 552,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787473207117,
@@ -5777,9 +5758,9 @@
       "detalle": "6 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Ostia",
-      "valor": 3.03,
-      "detalle": "3.03 KDA"
+      "jugador": "ゆうき まこと",
+      "valor": 3.22,
+      "detalle": "3.22 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -5798,8 +5779,8 @@
     },
     "defensor": {
       "jugador": "ゆうき まこと",
-      "valor": 35.3,
-      "detalle": "35.3% del daño de su equipo (78,119) con Nasus"
+      "valor": 34.2,
+      "detalle": "34.2% del daño de su equipo (64,251) con Sion"
     },
     "pentakills": null,
     "escalador": {
@@ -5809,8 +5790,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 11,
-      "detalle": "11 partidas esta semana"
+      "valor": 10,
+      "detalle": "10 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -5834,6 +5815,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-23T13:52:24Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Ostia",
+      "detalle": "3.22 KDA"
+    },
     {
       "timestamp": "2026-08-23T09:44:20Z",
       "tipo": "posible_egida",
@@ -6207,15 +6198,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Poppy dio el golpe final al Nexus"
-    },
-    {
-      "timestamp": "2026-08-22T06:22:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Silver IV (78 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6229,7 +6211,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 1.336601
+    "ゆうき まこと": 1.337861
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
