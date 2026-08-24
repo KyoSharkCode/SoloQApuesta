@@ -1,27 +1,27 @@
 {
-  "ultimaActualizacion": "2026-08-24T19:28:26.138030",
+  "ultimaActualizacion": "2026-08-24T19:30:58.099970",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold IV",
-      "lp": 30,
+      "lp": 12,
       "winrate": "54%",
-      "elo_score": 1230,
+      "elo_score": 1212,
       "record_lp_score": 1230,
       "record_lp_label": "Gold IV (30 LP)",
-      "escalador_semana": 242,
+      "escalador_semana": 224,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
+          "cantidad": 10
         }
       ],
       "top_recientes": [
         {
           "campeon": "Fiora",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "campeon": "Jayce",
@@ -549,9 +549,34 @@
           "lp": 30,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-24T19:30:46Z",
+          "lp": 12,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743604153",
+          "campeon": "Fiora",
+          "kda": "4/7/3 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "34min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 9923,
+          "estilo_secundario": 8000,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743524643",
           "campeon": "Fiora",
@@ -722,40 +747,42 @@
           "estilo_secundario": 8300,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743328765",
-          "campeon": "Fiora",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:18",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "Galactic Shark"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8300,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 82,
+      "kills_recientes": 86,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 29,
       "kills_semana": 228,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 29,
+      "vision_promedio_semana": 30,
       "primeras_sangre_semana": 9,
-      "kda_promedio_semana": 2.89,
+      "kda_promedio_semana": 2.85,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
       "asistencias_semana": 154,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787599831.299,
+          "kills": 4,
+          "muertes": 7,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 37,
+          "campeon": "Fiora",
+          "victoria": false,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 202,
+          "duracion_seg": 2080,
+          "damage_taken": 29149,
+          "danio_recibido_pct": 20.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 5
+        },
         {
           "fin_seg": 1787548251.972,
           "kills": 14,
@@ -1236,32 +1263,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 10
-        },
-        {
-          "fin_seg": 1787286710.41,
-          "kills": 4,
-          "muertes": 5,
-          "asistencias": 3,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 20,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 154,
-          "duracion_seg": 1541,
-          "damage_taken": 22314,
-          "danio_recibido_pct": 26.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 14
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 17
+        "partidas": 16
       },
       "cs_min_semana": {
         "cs_por_min": 7.9,
@@ -1274,9 +1280,9 @@
         "campeon": "Fiora"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 66,
-      "tiempo_cc_semana": 316,
-      "max_partidas_en_un_dia": 2,
+      "estructuras_destruidas_semana": 64,
+      "tiempo_cc_semana": 307,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787546141108,
         "campeon": "Fiora",
@@ -4919,12 +4925,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 16,
-      "winrate": "48%",
-      "elo_score": 816,
+      "lp": 0,
+      "winrate": "47%",
+      "elo_score": 800,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 273,
+      "escalador_semana": 257,
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -5179,9 +5185,34 @@
           "lp": 16,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-24T19:30:46Z",
+          "lp": 0,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743604153",
+          "campeon": "Swain",
+          "kda": "2/7/6 (1.14)",
+          "resultado": "Derrota",
+          "duracion": "34min",
+          "lp_change": -16,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Pinea"
+          ],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 4,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743568900",
           "campeon": "Swain",
@@ -5344,38 +5375,42 @@
           "estilo_secundario": 8000,
           "wards_control": 7,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743047954",
-          "campeon": "Swain",
-          "kda": "4/9/26 (3.33)",
-          "resultado": "Victoria",
-          "duracion": "49min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 7,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 23,
+      "kills_recientes": 21,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 64,
-      "kills_semana": 85,
+      "vision_promedio_reciente": 59,
+      "kills_semana": 86,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 66,
+      "vision_promedio_semana": 68,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.62,
+      "kda_promedio_semana": 2.63,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 263,
+      "asistencias_semana": 256,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787599831.299,
+          "kills": 2,
+          "muertes": 7,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 63,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 66,
+          "duracion_seg": 2080,
+          "damage_taken": 32130,
+          "danio_recibido_pct": 22.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 40
+        },
         {
           "fin_seg": 1787579022.667,
           "kills": 0,
@@ -5809,27 +5844,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 41
-        },
-        {
-          "fin_seg": 1787261181.691,
-          "kills": 1,
-          "muertes": 10,
-          "asistencias": 13,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 32,
-          "campeon": "Swain",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 21,
-          "duracion_seg": 1673,
-          "damage_taken": 30576,
-          "danio_recibido_pct": 22.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 40
         }
       ],
       "duo_semana": {
@@ -5849,7 +5863,7 @@
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 10,
       "tiempo_cc_semana": 937,
-      "max_partidas_en_un_dia": 3,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787544000
     }
@@ -5872,8 +5886,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 263,
-      "detalle": "263 asistencias"
+      "valor": 256,
+      "detalle": "256 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -5898,8 +5912,8 @@
     },
     "duo_dinamico": {
       "jugador": "Pinea",
-      "valor": 17,
-      "detalle": "con El Buñuelito (17 partidas juntos)"
+      "valor": 16,
+      "detalle": "con El Buñuelito (16 partidas juntos)"
     },
     "ladron": {
       "jugador": "Galactic Shark",
@@ -5908,8 +5922,8 @@
     },
     "destructor": {
       "jugador": "Pinea",
-      "valor": 66,
-      "detalle": "66 estructuras destruidas"
+      "valor": 64,
+      "detalle": "64 estructuras destruidas"
     },
     "stop": {
       "jugador": "Ostia",
@@ -6311,7 +6325,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.522731
+    "ゆうき まこと": 2.524357
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
