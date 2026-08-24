@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-24T20:38:27.501549",
+  "ultimaActualizacion": "2026-08-24T20:40:46.798364",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1279,12 +1279,12 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Gold IV",
-      "lp": 41,
-      "winrate": "48%",
-      "elo_score": 1241,
+      "lp": 65,
+      "winrate": "49%",
+      "elo_score": 1265,
       "record_lp_score": 1273,
       "record_lp_label": "Gold IV (73 LP)",
-      "escalador_semana": 94,
+      "escalador_semana": 118,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1299,14 +1299,14 @@
       "top_recientes": [
         {
           "campeon": "Briar",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
-          "campeon": "Lillia",
+          "campeon": "Shyvana",
           "cantidad": 1
         },
         {
-          "campeon": "Neeko",
+          "campeon": "Lillia",
           "cantidad": 1
         }
       ],
@@ -1543,9 +1543,32 @@
           "lp": 41,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-24T20:40:35Z",
+          "lp": 65,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743608919",
+          "campeon": "Shyvana",
+          "kda": "7/10/10 (1.7)",
+          "resultado": "Victoria",
+          "duracion": "43min",
+          "lp_change": 24,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 10,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743604707",
           "campeon": "Briar",
@@ -1708,38 +1731,40 @@
           "estilo_secundario": 8100,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743013954",
-          "campeon": "Briar",
-          "kda": "1/8/12 (1.62)",
-          "resultado": "Victoria",
-          "duracion": "39min",
-          "lp_change": 26,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [],
-          "perk_principal": 8005,
-          "estilo_secundario": 8100,
-          "wards_control": 11,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 47,
+      "kills_recientes": 53,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 43,
-      "kills_semana": 87,
+      "vision_promedio_reciente": 41,
+      "kills_semana": 94,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 44,
+      "vision_promedio_semana": 43,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.38,
+      "kda_promedio_semana": 2.32,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 156,
-      "partidas_semana": 17,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 166,
+      "partidas_semana": 18,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787604009.766,
+          "kills": 7,
+          "muertes": 10,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Shyvana",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 194,
+          "duracion_seg": 2617,
+          "damage_taken": 42337,
+          "danio_recibido_pct": 21.6,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 19
+        },
         {
           "fin_seg": 1787600936.174,
           "kills": 7,
@@ -2090,11 +2115,21 @@
         "damage_taken": 43224,
         "campeon": "Lillia"
       },
-      "objetivos_robados_semana": 3,
-      "estructuras_destruidas_semana": 8,
-      "tiempo_cc_semana": 460,
-      "max_partidas_en_un_dia": 1,
-      "primera_victoria_hoy": null,
+      "objetivos_robados_semana": 4,
+      "estructuras_destruidas_semana": 11,
+      "tiempo_cc_semana": 479,
+      "max_partidas_en_un_dia": 2,
+      "primera_victoria_hoy": {
+        "timestamp": 1787604009766,
+        "campeon": "Shyvana",
+        "kda": "7/10/10 (1.7)",
+        "equipo": "red",
+        "duracion": "43:37",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
       "dia_referencia": 1787544000
     },
     {
@@ -5863,7 +5898,7 @@
       "detalle": "3.75 KDA"
     },
     "champion_pool": {
-      "jugador": "El Buñuelito",
+      "jugador": "Galactic Shark",
       "valor": 4,
       "detalle": "4 campeones distintos ganados"
     },
@@ -5900,8 +5935,8 @@
     },
     "ladron": {
       "jugador": "Galactic Shark",
-      "valor": 3,
-      "detalle": "3 objetivos robados"
+      "valor": 4,
+      "detalle": "4 objetivos robados"
     },
     "destructor": {
       "jugador": "Pinea",
@@ -5915,6 +5950,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-24T20:40:35Z",
+      "tipo": "badge_semanal",
+      "categoria": "champion_pool",
+      "categoria_label": "Maestro del Champion Pool",
+      "icono": "🎭",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "El Buñuelito",
+      "detalle": "4 campeones distintos ganados"
+    },
+    {
+      "timestamp": "2026-08-24T20:40:35Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "El Buñuelito",
+      "top_posicion": 2,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-24T18:22:22Z",
       "tipo": "badge_semanal",
@@ -6275,40 +6330,20 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "Galactic Shark",
       "detalle": "7.9 CS/min con Fiora"
-    },
-    {
-      "timestamp": "2026-08-23T17:38:29Z",
-      "tipo": "badge_semanal",
-      "categoria": "defensor",
-      "categoria_label": "El Defensor",
-      "icono": "🛡️",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "ゆうき まこと",
-      "detalle": "31.7% del daño de su equipo (76,492) con Trundle"
-    },
-    {
-      "timestamp": "2026-08-23T13:52:24Z",
-      "tipo": "badge_semanal",
-      "categoria": "kda_player",
-      "categoria_label": "KDA Player",
-      "icono": "📊",
-      "jugador_nuevo": "ゆうき まこと",
-      "jugador_anterior": "Ostia",
-      "detalle": "3.22 KDA"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
   "dia_referencia_eventos": 1787544000,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "El Buñuelito#KyA": 2,
-    "Galactic Shark#AYK": 3,
+    "Galactic Shark#AYK": 2,
+    "El Buñuelito#KyA": 3,
     "Pinea#Pinea": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.569394
+    "ゆうき まこと": 2.570875
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
