@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-24T07:48:25.192192",
+  "ultimaActualizacion": "2026-08-24T07:50:36.739946",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3410,12 +3410,12 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold I",
-      "lp": 15,
-      "winrate": "63%",
-      "elo_score": 1515,
-      "record_lp_score": 1515,
-      "record_lp_label": "Gold I (15 LP)",
-      "escalador_semana": 230,
+      "lp": 45,
+      "winrate": "65%",
+      "elo_score": 1545,
+      "record_lp_score": 1545,
+      "record_lp_label": "Gold I (45 LP)",
+      "escalador_semana": 260,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -3430,7 +3430,7 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 6
+          "cantidad": 7
         },
         {
           "campeon": "Nasus",
@@ -3604,9 +3604,32 @@
           "lp": 15,
           "rango": "Gold",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-24T07:50:30Z",
+          "lp": 45,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743555759",
+          "campeon": "Poppy",
+          "kda": "5/2/10 (7.5)",
+          "resultado": "Victoria",
+          "duracion": "27min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8437,
+          "estilo_secundario": 8200,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743555482",
           "campeon": "Nasus",
@@ -3759,38 +3782,40 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1741570160",
-          "campeon": "Sion",
-          "kda": "6/7/8 (2.0)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerTeleport",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8300,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 71,
+      "kills_recientes": 70,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 37,
-      "kills_semana": 65,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 70,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 37,
+      "vision_promedio_semana": 36,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.5,
+      "kda_promedio_semana": 3.67,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 89,
-      "partidas_semana": 9,
+      "asistencias_semana": 99,
+      "partidas_semana": 10,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787557721.939,
+          "kills": 5,
+          "muertes": 2,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 26,
+          "campeon": "Poppy",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 184,
+          "duracion_seg": 1638,
+          "damage_taken": 28746,
+          "danio_recibido_pct": 29.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 42
+        },
         {
           "fin_seg": 1787555708.604,
           "kills": 0,
@@ -3970,14 +3995,14 @@
         "campeon": "Poppy"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 28.1,
-        "damage_taken": 30717,
+        "danio_recibido_pct": 29.6,
+        "damage_taken": 28746,
         "campeon": "Poppy"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 23,
-      "tiempo_cc_semana": 441,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 26,
+      "tiempo_cc_semana": 483,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787555708604,
         "campeon": "Nasus",
@@ -5891,8 +5916,8 @@
     },
     "kda_player": {
       "jugador": "ゆうき まこと",
-      "valor": 3.5,
-      "detalle": "3.5 KDA"
+      "valor": 3.67,
+      "detalle": "3.67 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -5922,8 +5947,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 9,
-      "detalle": "9 partidas esta semana"
+      "valor": 10,
+      "detalle": "10 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -5947,6 +5972,15 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-24T07:50:30Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Gold I (45 LP)"
+    },
     {
       "timestamp": "2026-08-24T07:16:24Z",
       "tipo": "record_lp",
@@ -6315,15 +6349,6 @@
       "jugador_nuevo": "ゆうき まこと",
       "jugador_anterior": null,
       "detalle": "Gold II (25 LP)"
-    },
-    {
-      "timestamp": "2026-08-23T08:20:30Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "ゆうき まこと",
-      "jugador_anterior": null,
-      "detalle": "Gold III (95 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6337,7 +6362,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.054475
+    "ゆうき まこと": 2.055925
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
