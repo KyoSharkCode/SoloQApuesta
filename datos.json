@@ -1,16 +1,16 @@
 {
-  "ultimaActualizacion": "2026-08-24T03:02:24.105465",
+  "ultimaActualizacion": "2026-08-24T03:04:40.740551",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Silver I",
-      "lp": 84,
+      "lp": 65,
       "winrate": "53%",
-      "elo_score": 1184,
+      "elo_score": 1165,
       "record_lp_score": 1184,
       "record_lp_label": "Silver I (84 LP)",
-      "escalador_semana": 260,
+      "escalador_semana": 241,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -27,8 +27,8 @@
       "maestrias": [
         {
           "campeon": "Fiora",
-          "nivel": 31,
-          "puntos": "317.193"
+          "nivel": 32,
+          "puntos": "318.298"
         },
         {
           "campeon": "Irelia",
@@ -521,9 +521,34 @@
           "lp": 84,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-24T03:04:26Z",
+          "lp": 65,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743472635",
+          "campeon": "Fiora",
+          "kda": "17/10/12 (2.9)",
+          "resultado": "Derrota",
+          "duracion": "41min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8300,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743386906",
           "campeon": "Fiora",
@@ -694,40 +719,42 @@
           "estilo_secundario": 8300,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743167946",
-          "campeon": "Fiora",
-          "kda": "17/10/11 (2.8)",
-          "resultado": "Derrota",
-          "duracion": "35min",
-          "lp_change": -19,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8300,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 88,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
-      "kills_semana": 217,
+      "vision_promedio_reciente": 31,
+      "kills_semana": 226,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
+      "vision_promedio_semana": 27,
       "primeras_sangre_semana": 8,
-      "kda_promedio_semana": 3.12,
+      "kda_promedio_semana": 3.16,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 135,
+      "asistencias_semana": 147,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787540615.277,
+          "kills": 17,
+          "muertes": 10,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 43,
+          "campeon": "Fiora",
+          "victoria": false,
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "cs": 218,
+          "duracion_seg": 2471,
+          "damage_taken": 51741,
+          "danio_recibido_pct": 25.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 21
+        },
         {
           "fin_seg": 1787526334.012,
           "kills": 11,
@@ -1208,27 +1235,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 8
-        },
-        {
-          "fin_seg": 1787278126.416,
-          "kills": 8,
-          "muertes": 5,
-          "asistencias": 0,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 15,
-          "campeon": "Nasus",
-          "victoria": false,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 132,
-          "duracion_seg": 1276,
-          "damage_taken": 25276,
-          "danio_recibido_pct": 31.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 10
         }
       ],
       "duo_semana": {
@@ -1246,9 +1252,9 @@
         "campeon": "Fiora"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 58,
-      "tiempo_cc_semana": 269,
-      "max_partidas_en_un_dia": 7,
+      "estructuras_destruidas_semana": 61,
+      "tiempo_cc_semana": 280,
+      "max_partidas_en_un_dia": 8,
       "primera_victoria_hoy": {
         "timestamp": 1787457680415,
         "campeon": "Fiora",
@@ -2132,12 +2138,12 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Gold IV",
-      "lp": 20,
+      "lp": 0,
       "winrate": "50%",
-      "elo_score": 1220,
+      "elo_score": 1200,
       "record_lp_score": 1240,
       "record_lp_label": "Gold IV (40 LP)",
-      "escalador_semana": 162,
+      "escalador_semana": 142,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2152,7 +2158,7 @@
       "top_recientes": [
         {
           "campeon": "Ahri",
-          "cantidad": 3
+          "cantidad": 4
         },
         {
           "campeon": "Xayah",
@@ -2654,9 +2660,34 @@
           "lp": 20,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-24T03:04:26Z",
+          "lp": 0,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743472635",
+          "campeon": "Ahri",
+          "kda": "9/9/18 (3.0)",
+          "resultado": "Derrota",
+          "duracion": "41min",
+          "lp_change": -20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [
+            "Pinea"
+          ],
+          "perk_principal": 8992,
+          "estilo_secundario": 8100,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743386906",
           "campeon": "Ahri",
@@ -2827,40 +2858,42 @@
           "estilo_secundario": 8200,
           "wards_control": 2,
           "posible_egida": false
-        },
+        }
+      ],
+      "kills_recientes": 52,
+      "pentakills_recientes": 0,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 163,
+      "pentakills_semana": 0,
+      "vision_promedio_semana": 23,
+      "primeras_sangre_semana": 3,
+      "kda_promedio_semana": 2.54,
+      "kda_perfecto_semana": false,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 177,
+      "partidas_semana": 23,
+      "partidas_semana_detalle": [
         {
-          "match_id": "LA1_1743167946",
-          "campeon": "Zoe",
-          "kda": "10/12/9 (1.58)",
-          "resultado": "Derrota",
-          "duracion": "35min",
-          "lp_change": -3,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
+          "fin_seg": 1787540615.277,
+          "kills": 9,
+          "muertes": 9,
+          "asistencias": 18,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 36,
+          "campeon": "Ahri",
+          "victoria": false,
           "duo_con": [
             "Pinea"
           ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 2,
-          "posible_egida": false
-        }
-      ],
-      "kills_recientes": 53,
-      "pentakills_recientes": 0,
-      "vision_promedio_reciente": 25,
-      "kills_semana": 162,
-      "pentakills_semana": 0,
-      "vision_promedio_semana": 22,
-      "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.52,
-      "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 168,
-      "partidas_semana": 23,
-      "partidas_semana_detalle": [
+          "cs": 192,
+          "duracion_seg": 2471,
+          "damage_taken": 36725,
+          "danio_recibido_pct": 17.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 45
+        },
         {
           "fin_seg": 1787526334.012,
           "kills": 13,
@@ -3306,30 +3339,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 18
-        },
-        {
-          "fin_seg": 1787292991.855,
-          "kills": 8,
-          "muertes": 6,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 20,
-          "campeon": "Ahri",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 231,
-          "duracion_seg": 2220,
-          "damage_taken": 36424,
-          "danio_recibido_pct": 17.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 34
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 11
+        "partidas": 12
       },
       "cs_min_semana": {
         "cs_por_min": 7.5,
@@ -3343,8 +3357,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 36,
-      "tiempo_cc_semana": 516,
-      "max_partidas_en_un_dia": 6,
+      "tiempo_cc_semana": 527,
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1787457680415,
         "campeon": "Ahri",
@@ -5814,8 +5828,8 @@
     },
     "destructor": {
       "jugador": "Pinea",
-      "valor": 58,
-      "detalle": "58 estructuras destruidas"
+      "valor": 61,
+      "detalle": "61 estructuras destruidas"
     },
     "stop": {
       "jugador": "Ostia",
@@ -6216,7 +6230,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 1.864509
+    "ゆうき まこと": 1.86592
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
