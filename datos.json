@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-24T13:02:25.428473",
+  "ultimaActualizacion": "2026-08-24T13:04:32.586572",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4958,7 +4958,7 @@
       "icono": 6205,
       "rango": "Silver IV",
       "lp": 36,
-      "winrate": "50%",
+      "winrate": "49%",
       "elo_score": 836,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
@@ -4993,7 +4993,7 @@
         {
           "campeon": "Swain",
           "nivel": 14,
-          "puntos": "125.477"
+          "puntos": "126.032"
         },
         {
           "campeon": "Kayn",
@@ -5215,6 +5215,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1743566825",
+          "campeon": "Swain",
+          "kda": "3/1/4 (7.0)",
+          "resultado": "Derrota",
+          "duracion": "22min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": 2,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1743565849",
           "campeon": "Veigar",
           "kda": "4/5/6 (2.0)",
@@ -5376,38 +5393,40 @@
           "estilo_secundario": 8000,
           "wards_control": 6,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1742850021",
-          "campeon": "Swain",
-          "kda": "6/8/18 (3.0)",
-          "resultado": "Derrota",
-          "duracion": "48min",
-          "lp_change": -19,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 32,
+      "kills_recientes": 29,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 81,
-      "kills_semana": 85,
+      "vision_promedio_reciente": 73,
+      "kills_semana": 87,
       "pentakills_semana": 0,
       "vision_promedio_semana": 69,
-      "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.78,
+      "primeras_sangre_semana": 3,
+      "kda_promedio_semana": 2.8,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
       "asistencias_semana": 274,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787576552.708,
+          "kills": 3,
+          "muertes": 1,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 42,
+          "campeon": "Swain",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 56,
+          "duracion_seg": 1332,
+          "damage_taken": 9363,
+          "danio_recibido_pct": 10.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 32
+        },
         {
           "fin_seg": 1787574708.88,
           "kills": 4,
@@ -5845,25 +5864,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 3,
           "tiempo_cc": 33
-        },
-        {
-          "fin_seg": 1787233524.354,
-          "kills": 1,
-          "muertes": 1,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 42,
-          "campeon": "Swain",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 31,
-          "duracion_seg": 1483,
-          "damage_taken": 13298,
-          "danio_recibido_pct": 13.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 38
         }
       ],
       "duo_semana": {
@@ -5882,8 +5882,8 @@
       },
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 13,
-      "tiempo_cc_semana": 963,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 957,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787544000
     }
@@ -5947,8 +5947,8 @@
     },
     "stop": {
       "jugador": "Ostia",
-      "valor": 963,
-      "detalle": "963s de CC aplicado"
+      "valor": 957,
+      "detalle": "957s de CC aplicado"
     }
   },
   "eventos": [
@@ -6342,7 +6342,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.264782
+    "ゆうき まこと": 2.266121
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
