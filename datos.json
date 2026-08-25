@@ -1,21 +1,21 @@
 {
-  "ultimaActualizacion": "2026-08-25T16:54:31.294312",
+  "ultimaActualizacion": "2026-08-25T16:56:35.020006",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold IV",
-      "lp": 81,
+      "lp": 62,
       "winrate": "54%",
-      "elo_score": 1281,
+      "elo_score": 1262,
       "record_lp_score": 1281,
       "record_lp_label": "Gold IV (81 LP)",
-      "escalador_semana": 288,
+      "escalador_semana": 269,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Support",
@@ -25,7 +25,7 @@
       "top_recientes": [
         {
           "campeon": "Fiora",
-          "cantidad": 4
+          "cantidad": 5
         },
         {
           "campeon": "Nasus",
@@ -617,9 +617,34 @@
           "lp": 81,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-25T16:56:23Z",
+          "lp": 62,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743809390",
+          "campeon": "Fiora",
+          "kda": "15/9/17 (3.56)",
+          "resultado": "Derrota",
+          "duracion": "42min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerHaste",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8300,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743808639",
           "campeon": "Nasus",
@@ -790,40 +815,42 @@
           "estilo_secundario": 8300,
           "wards_control": 0,
           "posible_egida": false
-        },
+        }
+      ],
+      "kills_recientes": 105,
+      "pentakills_recientes": 0,
+      "vision_promedio_reciente": 39,
+      "kills_semana": 229,
+      "pentakills_semana": 0,
+      "vision_promedio_semana": 34,
+      "primeras_sangre_semana": 10,
+      "kda_promedio_semana": 2.93,
+      "kda_perfecto_semana": false,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 175,
+      "partidas_semana": 22,
+      "partidas_semana_detalle": [
         {
-          "match_id": "LA1_1743610389",
-          "campeon": "Nasus",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:09",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerHaste",
-            "SummonerFlash"
-          ],
+          "fin_seg": 1787676863.575,
+          "kills": 15,
+          "muertes": 9,
+          "asistencias": 17,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 62,
+          "campeon": "Fiora",
+          "victoria": false,
           "duo_con": [
             "Ostia"
           ],
-          "perk_principal": 8214,
-          "estilo_secundario": 8300,
-          "wards_control": null,
-          "posible_egida": false
-        }
-      ],
-      "kills_recientes": 90,
-      "pentakills_recientes": 0,
-      "vision_promedio_reciente": 37,
-      "kills_semana": 231,
-      "pentakills_semana": 0,
-      "vision_promedio_semana": 33,
-      "primeras_sangre_semana": 10,
-      "kda_promedio_semana": 2.88,
-      "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 169,
-      "partidas_semana": 22,
-      "partidas_semana_detalle": [
+          "cs": 254,
+          "duracion_seg": 2561,
+          "damage_taken": 61802,
+          "danio_recibido_pct": 24.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 13
+        },
         {
           "fin_seg": 1787634652.36,
           "kills": 16,
@@ -1264,32 +1291,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 3,
           "tiempo_cc": 16
-        },
-        {
-          "fin_seg": 1787452789.571,
-          "kills": 17,
-          "muertes": 10,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 30,
-          "campeon": "Fiora",
-          "victoria": false,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 232,
-          "duracion_seg": 2111,
-          "damage_taken": 56800,
-          "danio_recibido_pct": 27.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 16
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 16
+        "partidas": 15
       },
       "cs_min_semana": {
         "cs_por_min": 7.6,
@@ -1303,8 +1309,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 58,
-      "tiempo_cc_semana": 424,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 421,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787634652360,
         "campeon": "Nasus",
@@ -4997,7 +5003,7 @@
       "icono": 6205,
       "rango": "Silver IV",
       "lp": 0,
-      "winrate": "47%",
+      "winrate": "46%",
       "elo_score": 800,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
@@ -5949,7 +5955,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Pinea",
-      "valor": 288,
+      "valor": 269,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5979,6 +5985,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-25T16:56:23Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1743809390",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": null,
+      "detalle": "Fiora aniquiló al equipo rival sin bajas propias"
+    },
     {
       "timestamp": "2026-08-25T16:54:23Z",
       "tipo": "logro_partida",
@@ -6352,16 +6368,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Silver III (81 LP)"
-    },
-    {
-      "timestamp": "2026-08-24T05:30:45Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1743529382",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Poppy aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6375,7 +6381,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 3.379138
+    "ゆうき まこと": 3.380438
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
