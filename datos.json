@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-25T01:24:28.905504",
+  "ultimaActualizacion": "2026-08-25T01:26:25.887960",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4020,7 +4020,7 @@
       "elo_score": 981,
       "record_lp_score": 981,
       "record_lp_label": "Silver III (81 LP)",
-      "escalador_semana": 226,
+      "escalador_semana": 196,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4466,15 +4466,15 @@
       "kills_recientes": 85,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 36,
-      "kills_semana": 196,
+      "kills_semana": 188,
       "pentakills_semana": 0,
       "vision_promedio_semana": 28,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 1.85,
+      "kda_promedio_semana": 1.88,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 161,
-      "partidas_semana": 23,
+      "asistencias_semana": 150,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787552324.23,
@@ -4893,25 +4893,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1787016297.111,
-          "kills": 8,
-          "muertes": 13,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 33,
-          "campeon": "Trundle",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 276,
-          "duracion_seg": 2496,
-          "damage_taken": 76492,
-          "danio_recibido_pct": 31.7,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 29
         }
       ],
       "duo_semana": null,
@@ -4921,13 +4902,13 @@
         "campeon": "Yone"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 31.7,
-        "damage_taken": 76492,
+        "danio_recibido_pct": 30.5,
+        "damage_taken": 40278,
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 37,
-      "tiempo_cc_semana": 248,
+      "estructuras_destruidas_semana": 36,
+      "tiempo_cc_semana": 219,
       "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787549414794,
@@ -5913,9 +5894,9 @@
       "detalle": "7.6 CS/min con Fiora"
     },
     "defensor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 31.7,
-      "detalle": "31.7% del daño de su equipo (76,492) con Trundle"
+      "jugador": "Pinea",
+      "valor": 31.6,
+      "detalle": "31.6% del daño de su equipo (13,143) con Fiora"
     },
     "pentakills": null,
     "escalador": {
@@ -5950,6 +5931,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-25T01:26:22Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "31.6% del daño de su equipo (13,143) con Fiora"
+    },
     {
       "timestamp": "2026-08-24T23:22:23Z",
       "tipo": "badge_semanal",
@@ -6320,16 +6311,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": "Silver IV (93 LP)"
-    },
-    {
-      "timestamp": "2026-08-23T18:32:24Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1743318853",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Swain aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6343,7 +6324,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.759689
+    "ゆうき まこと": 2.761007
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
