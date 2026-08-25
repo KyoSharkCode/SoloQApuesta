@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-25T04:34:26.576303",
+  "ultimaActualizacion": "2026-08-25T04:36:32.719674",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -10,7 +10,7 @@
       "elo_score": 1260,
       "record_lp_score": 1279,
       "record_lp_label": "Gold IV (79 LP)",
-      "escalador_semana": 303,
+      "escalador_semana": 267,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -4506,15 +4506,15 @@
       "kills_recientes": 85,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 36,
-      "kills_semana": 176,
+      "kills_semana": 163,
       "pentakills_semana": 0,
       "vision_promedio_semana": 29,
-      "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 1.96,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 1.93,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 137,
-      "partidas_semana": 20,
+      "asistencias_semana": 130,
+      "partidas_semana": 19,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787552324.23,
@@ -4876,25 +4876,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 3
-        },
-        {
-          "fin_seg": 1787027691.792,
-          "kills": 13,
-          "muertes": 8,
-          "asistencias": 7,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 24,
-          "campeon": "Akali",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 170,
-          "duracion_seg": 2033,
-          "damage_taken": 36244,
-          "danio_recibido_pct": 23.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 6
         }
       ],
       "duo_semana": null,
@@ -4910,7 +4891,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 33,
-      "tiempo_cc_semana": 185,
+      "tiempo_cc_semana": 179,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787630400
@@ -5882,8 +5863,8 @@
     },
     "pentakills": null,
     "escalador": {
-      "jugador": "Pinea",
-      "valor": 303,
+      "jugador": "Ostia",
+      "valor": 272,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5913,6 +5894,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-25T04:36:26Z",
+      "tipo": "badge_semanal",
+      "categoria": "escalador",
+      "categoria_label": "El Escalador",
+      "icono": "📈",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Pinea",
+      "detalle": "Mejor jugador de la semana"
+    },
     {
       "timestamp": "2026-08-25T04:30:43Z",
       "tipo": "adelantamiento",
@@ -6282,15 +6273,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Silver I (82 LP)"
-    },
-    {
-      "timestamp": "2026-08-23T20:26:19Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Galactic Shark",
-      "jugador_anterior": null,
-      "detalle": "Gold IV (73 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -6304,7 +6286,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 2.88563
+    "ゆうき まこと": 2.887023
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
