@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-25T22:22:26.513169",
+  "ultimaActualizacion": "2026-08-25T22:24:28.850969",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1327,22 +1327,18 @@
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
-      "rango": "Gold III",
-      "lp": 13,
-      "winrate": "50%",
-      "elo_score": 1313,
+      "rango": "Gold IV",
+      "lp": 96,
+      "winrate": "49%",
+      "elo_score": 1296,
       "record_lp_score": 1313,
       "record_lp_label": "Gold III (13 LP)",
-      "escalador_semana": 166,
+      "escalador_semana": 149,
       "rol_principal": "Jungla",
       "top_roles": [
         {
           "rol": "Jungla",
-          "cantidad": 8
-        },
-        {
-          "rol": "Support",
-          "cantidad": 1
+          "cantidad": 9
         }
       ],
       "top_recientes": [
@@ -1352,7 +1348,7 @@
         },
         {
           "campeon": "Shyvana",
-          "cantidad": 2
+          "cantidad": 3
         },
         {
           "campeon": "Lillia",
@@ -1604,9 +1600,32 @@
           "lp": 13,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-25T22:24:22Z",
+          "lp": 96,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743857938",
+          "campeon": "Shyvana",
+          "kda": "6/9/12 (2.0)",
+          "resultado": "Derrota",
+          "duracion": "29min",
+          "lp_change": -17,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 8,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743789316",
           "campeon": "Shyvana",
@@ -1624,7 +1643,7 @@
           "perk_principal": 8005,
           "estilo_secundario": 8400,
           "wards_control": 9,
-          "posible_egida": true
+          "posible_egida": false
         },
         {
           "match_id": "LA1_1743608919",
@@ -1771,38 +1790,40 @@
           "estilo_secundario": 8300,
           "wards_control": 9,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743022023",
-          "campeon": "Neeko",
-          "kda": "3/10/19 (2.2)",
-          "resultado": "Victoria",
-          "duracion": "45min",
-          "lp_change": 52,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8229,
-          "estilo_secundario": 8300,
-          "wards_control": 27,
-          "posible_egida": true
         }
       ],
-      "kills_recientes": 59,
+      "kills_recientes": 62,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 41,
-      "kills_semana": 83,
+      "vision_promedio_reciente": 29,
+      "kills_semana": 89,
       "pentakills_semana": 0,
       "vision_promedio_semana": 41,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.14,
+      "kda_promedio_semana": 2.13,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 146,
-      "partidas_semana": 17,
+      "asistencias_semana": 158,
+      "partidas_semana": 18,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787696649.705,
+          "kills": 6,
+          "muertes": 9,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Shyvana",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 128,
+          "duracion_seg": 1774,
+          "damage_taken": 34297,
+          "danio_recibido_pct": 22.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 12
+        },
         {
           "fin_seg": 1787647584.055,
           "kills": 7,
@@ -2157,8 +2178,8 @@
       },
       "objetivos_robados_semana": 3,
       "estructuras_destruidas_semana": 14,
-      "tiempo_cc_semana": 429,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 441,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1787647584055,
         "campeon": "Shyvana",
@@ -6347,7 +6368,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 3.597247
+    "ゆうき まこと": 3.598589
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
