@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-25T20:01:01.320711",
+  "ultimaActualizacion": "2026-08-25T20:02:32.395963",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2195,21 +2195,21 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Gold III",
-      "lp": 22,
+      "lp": 2,
       "winrate": "50%",
-      "elo_score": 1322,
+      "elo_score": 1302,
       "record_lp_score": 1322,
       "record_lp_label": "Gold III (22 LP)",
-      "escalador_semana": 229,
+      "escalador_semana": 209,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "rol": "ADC",
-          "cantidad": 2
+          "cantidad": 3
         }
       ],
       "top_recientes": [
@@ -2218,11 +2218,11 @@
           "cantidad": 3
         },
         {
-          "campeon": "Ahri",
-          "cantidad": 3
+          "campeon": "Caitlyn",
+          "cantidad": 2
         },
         {
-          "campeon": "Caitlyn",
+          "campeon": "Lux",
           "cantidad": 2
         }
       ],
@@ -2789,9 +2789,32 @@
           "lp": 22,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-25T20:02:21Z",
+          "lp": 2,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743838006",
+          "campeon": "Xayah",
+          "kda": "13/5/8 (4.2)",
+          "resultado": "Derrota",
+          "duracion": "35min",
+          "lp_change": -20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerHaste"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8300,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743750330",
           "campeon": "Veigar",
@@ -2962,40 +2985,40 @@
           "estilo_secundario": 8200,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743502021",
-          "campeon": "Ahri",
-          "kda": "3/2/6 (4.5)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8300,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 69,
+      "kills_recientes": 79,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 28,
-      "kills_semana": 156,
+      "kills_semana": 160,
       "pentakills_semana": 0,
       "vision_promedio_semana": 27,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.56,
+      "kda_promedio_semana": 2.6,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 184,
+      "asistencias_semana": 188,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787688089.585,
+          "kills": 13,
+          "muertes": 5,
+          "asistencias": 8,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 26,
+          "campeon": "Xayah",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 223,
+          "duracion_seg": 2143,
+          "damage_taken": 32284,
+          "danio_recibido_pct": 15.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 29
+        },
         {
           "fin_seg": 1787634652.36,
           "kills": 13,
@@ -3453,25 +3476,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 19
-        },
-        {
-          "fin_seg": 1787431154.546,
-          "kills": 9,
-          "muertes": 4,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 38,
-          "campeon": "Ahri",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 220,
-          "duracion_seg": 2185,
-          "damage_taken": 34194,
-          "danio_recibido_pct": 19.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 27
         }
       ],
       "duo_semana": {
@@ -3489,9 +3493,9 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 38,
-      "tiempo_cc_semana": 632,
-      "max_partidas_en_un_dia": 2,
+      "estructuras_destruidas_semana": 39,
+      "tiempo_cc_semana": 634,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787634652360,
         "campeon": "Veigar",
@@ -5961,6 +5965,16 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-25T20:02:21Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "El Buñuelito",
+      "top_posicion": 2,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-08-25T19:02:21Z",
       "tipo": "logro_partida",
       "categoria": "ace:LA1_1743824577",
@@ -6335,29 +6349,20 @@
       "jugador_nuevo": "ゆうき まこと",
       "jugador_anterior": null,
       "detalle": "Gold I (45 LP)"
-    },
-    {
-      "timestamp": "2026-08-24T07:16:24Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "ゆうき まこと",
-      "jugador_anterior": null,
-      "detalle": "Gold I (15 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
   "dia_referencia_eventos": 1787630400,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "El Buñuelito#KyA": 2,
-    "Galactic Shark#AYK": 3,
+    "Galactic Shark#AYK": 2,
+    "El Buñuelito#KyA": 3,
     "Pinea#Pinea": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 3.503242
+    "ゆうき まこと": 3.504174
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
