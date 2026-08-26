@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-26T20:42:25.745553",
+  "ultimaActualizacion": "2026-08-26T20:44:29.398901",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5225,6 +5225,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1744077435",
+          "campeon": "Taric",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:23",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8351,
+          "estilo_secundario": 8000,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1744054882",
           "campeon": "Taric",
           "kda": "4/6/13 (2.83)",
@@ -5378,39 +5395,20 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743808639",
-          "campeon": "Taric",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:12",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 32,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 74,
-      "kills_semana": 70,
+      "kills_semana": 64,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 72,
-      "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.72,
+      "vision_promedio_semana": 71,
+      "primeras_sangre_semana": 2,
+      "kda_promedio_semana": 2.82,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 246,
-      "partidas_semana": 20,
+      "asistencias_semana": 238,
+      "partidas_semana": 19,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1787771740.115,
@@ -5784,25 +5782,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 45
-        },
-        {
-          "fin_seg": 1787357359.088,
-          "kills": 6,
-          "muertes": 9,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 102,
-          "campeon": "Swain",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 58,
-          "duracion_seg": 2224,
-          "damage_taken": 45577,
-          "danio_recibido_pct": 17.0,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 43
         }
       ],
       "duo_semana": {
@@ -5821,7 +5800,7 @@
       },
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 12,
-      "tiempo_cc_semana": 763,
+      "tiempo_cc_semana": 720,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1787750940374,
@@ -5855,8 +5834,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 246,
-      "detalle": "246 asistencias"
+      "valor": 238,
+      "detalle": "238 asistencias"
     },
     "farmeador": {
       "jugador": "El Buñuelito",
@@ -5895,12 +5874,22 @@
       "detalle": "54 estructuras destruidas"
     },
     "stop": {
-      "jugador": "Ostia",
-      "valor": 763,
-      "detalle": "763s de CC aplicado"
+      "jugador": "El Buñuelito",
+      "valor": 730,
+      "detalle": "730s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-26T20:44:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "stop",
+      "categoria_label": "Stop",
+      "icono": "🛑",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "730s de CC aplicado"
+    },
     {
       "timestamp": "2026-08-26T19:24:21Z",
       "tipo": "record_lp",
@@ -6276,16 +6265,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "Gold III (22 LP)"
-    },
-    {
-      "timestamp": "2026-08-25T03:46:21Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "Galactic Shark",
-      "top_posicion": 3,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6299,7 +6278,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.495189
+    "ゆうき まこと": 4.496531
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
