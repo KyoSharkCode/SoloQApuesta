@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-26T01:26:25.021943",
+  "ultimaActualizacion": "2026-08-26T01:28:31.109988",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -10,7 +10,7 @@
       "elo_score": 1262,
       "record_lp_score": 1281,
       "record_lp_label": "Gold IV (81 LP)",
-      "escalador_semana": 231,
+      "escalador_semana": 252,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -2196,36 +2196,36 @@
     {
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
-      "rango": "Gold IV",
-      "lp": 82,
+      "rango": "Gold III",
+      "lp": 1,
       "winrate": "50%",
-      "elo_score": 1282,
+      "elo_score": 1301,
       "record_lp_score": 1322,
       "record_lp_label": "Gold III (22 LP)",
-      "escalador_semana": 197,
+      "escalador_semana": 239,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "rol": "ADC",
-          "cantidad": 3
+          "cantidad": 2
         }
       ],
       "top_recientes": [
+        {
+          "campeon": "Ahri",
+          "cantidad": 3
+        },
         {
           "campeon": "Veigar",
           "cantidad": 3
         },
         {
-          "campeon": "Caitlyn",
-          "cantidad": 2
-        },
-        {
-          "campeon": "Ahri",
-          "cantidad": 2
+          "campeon": "Seraphine",
+          "cantidad": 1
         }
       ],
       "maestrias": [
@@ -2803,9 +2803,32 @@
           "lp": 82,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-26T01:28:21Z",
+          "lp": 1,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1743901356",
+          "campeon": "Ahri",
+          "kda": "10/2/9 (9.5)",
+          "resultado": "Victoria",
+          "duracion": "30min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8300,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743855659",
           "campeon": "Seraphine",
@@ -2972,40 +2995,40 @@
           "estilo_secundario": 8100,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743524643",
-          "campeon": "Caitlyn",
-          "kda": "3/2/5 (4.0)",
-          "resultado": "Victoria",
-          "duracion": "26min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8369,
-          "estilo_secundario": 8200,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 78,
+      "kills_recientes": 85,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 36,
-      "kills_semana": 156,
+      "vision_promedio_reciente": 37,
+      "kills_semana": 164,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 30,
+      "vision_promedio_semana": 31,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.53,
+      "kda_promedio_semana": 2.58,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 203,
+      "asistencias_semana": 208,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787707633.532,
+          "kills": 10,
+          "muertes": 2,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 33,
+          "campeon": "Ahri",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 227,
+          "duracion_seg": 1831,
+          "damage_taken": 23028,
+          "danio_recibido_pct": 15.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 21
+        },
         {
           "fin_seg": 1787695984.717,
           "kills": 6,
@@ -3463,25 +3486,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 19
-        },
-        {
-          "fin_seg": 1787446659.582,
-          "kills": 2,
-          "muertes": 0,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 17,
-          "campeon": "Ahri",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 226,
-          "duracion_seg": 1808,
-          "damage_taken": 19832,
-          "danio_recibido_pct": 16.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 18
         }
       ],
       "duo_semana": {
@@ -3499,9 +3503,9 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 37,
-      "tiempo_cc_semana": 675,
-      "max_partidas_en_un_dia": 4,
+      "estructuras_destruidas_semana": 36,
+      "tiempo_cc_semana": 678,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787634652360,
         "campeon": "Veigar",
@@ -5939,7 +5943,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Pinea",
-      "valor": 231,
+      "valor": 252,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5969,6 +5973,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-26T01:28:21Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Galactic Shark",
+      "top_posicion": 2,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-26T00:52:21Z",
       "tipo": "badge_semanal",
@@ -6345,30 +6359,20 @@
       "jugador_anterior": "El Buñuelito",
       "top_posicion": 2,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-08-24T18:22:22Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Pinea",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
   "dia_referencia_eventos": 1787630400,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "Galactic Shark#AYK": 2,
-    "El Buñuelito#KyA": 3,
+    "El Buñuelito#KyA": 2,
+    "Galactic Shark#AYK": 3,
     "Pinea#Pinea": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 3.720043
+    "ゆうき まこと": 3.721386
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
