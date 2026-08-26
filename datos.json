@@ -1,27 +1,27 @@
 {
-  "ultimaActualizacion": "2026-08-26T22:24:37.898828",
+  "ultimaActualizacion": "2026-08-26T22:26:33.040048",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold III",
-      "lp": 29,
+      "lp": 50,
       "winrate": "54%",
-      "elo_score": 1329,
-      "record_lp_score": 1329,
-      "record_lp_label": "Gold III (29 LP)",
-      "escalador_semana": 309,
+      "elo_score": 1350,
+      "record_lp_score": 1350,
+      "record_lp_label": "Gold III (50 LP)",
+      "escalador_semana": 330,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 9
         }
       ],
       "top_recientes": [
         {
           "campeon": "Fiora",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Nasus",
@@ -32,7 +32,7 @@
         {
           "campeon": "Fiora",
           "nivel": 33,
-          "puntos": "337.287"
+          "puntos": "338.231"
         },
         {
           "campeon": "Irelia",
@@ -657,9 +657,32 @@
           "lp": 29,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-26T22:26:24Z",
+          "lp": 50,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744096220",
+          "campeon": "Fiora",
+          "kda": "7/2/1 (4.0)",
+          "resultado": "Victoria",
+          "duracion": "15min",
+          "lp_change": 21,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8300,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744085615",
           "campeon": "Fiora",
@@ -822,40 +845,40 @@
           "estilo_secundario": 8300,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743808639",
-          "campeon": "Nasus",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:12",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerHaste",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "Ostia"
-          ],
-          "perk_principal": 8214,
-          "estilo_secundario": 8300,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 86,
+      "kills_recientes": 93,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 35,
-      "kills_semana": 240,
+      "vision_promedio_reciente": 32,
+      "kills_semana": 236,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 35,
+      "vision_promedio_semana": 34,
       "primeras_sangre_semana": 9,
       "kda_promedio_semana": 2.94,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 195,
+      "asistencias_semana": 191,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787783134.155,
+          "kills": 7,
+          "muertes": 2,
+          "asistencias": 1,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 10,
+          "campeon": "Fiora",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 112,
+          "duracion_seg": 917,
+          "damage_taken": 14720,
+          "danio_recibido_pct": 34.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 9
+        },
         {
           "fin_seg": 1787780906.476,
           "kills": 11,
@@ -1290,47 +1313,26 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 3,
           "tiempo_cc": 21
-        },
-        {
-          "fin_seg": 1787526334.012,
-          "kills": 11,
-          "muertes": 5,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 29,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 164,
-          "duracion_seg": 1711,
-          "damage_taken": 27542,
-          "danio_recibido_pct": 26.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 4,
-          "tiempo_cc": 11
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 15
+        "partidas": 14
       },
       "cs_min_semana": {
-        "cs_por_min": 7.1,
-        "cs": 206,
+        "cs_por_min": 7.3,
+        "cs": 112,
         "campeon": "Fiora"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 31.3,
-        "damage_taken": 41717,
+        "danio_recibido_pct": 34.8,
+        "damage_taken": 14720,
         "campeon": "Fiora"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 59,
-      "tiempo_cc_semana": 474,
-      "max_partidas_en_un_dia": 7,
+      "estructuras_destruidas_semana": 56,
+      "tiempo_cc_semana": 472,
+      "max_partidas_en_un_dia": 8,
       "primera_victoria_hoy": {
         "timestamp": 1787717411332,
         "campeon": "Nasus",
@@ -5890,9 +5892,9 @@
       "detalle": "7.8 CS/min con Veigar"
     },
     "defensor": {
-      "jugador": "ゆうき まこと",
-      "valor": 34.5,
-      "detalle": "34.5% del daño de su equipo (47,988) con Sion"
+      "jugador": "Pinea",
+      "valor": 34.8,
+      "detalle": "34.8% del daño de su equipo (14,720) con Fiora"
     },
     "pentakills": null,
     "escalador": {
@@ -5906,9 +5908,9 @@
       "detalle": "10 partidas esta semana"
     },
     "duo_dinamico": {
-      "jugador": "Pinea",
+      "jugador": "El Buñuelito",
       "valor": 15,
-      "detalle": "con El Buñuelito (15 partidas juntos)"
+      "detalle": "con Pinea (15 partidas juntos)"
     },
     "ladron": {
       "jugador": "Galactic Shark",
@@ -5917,8 +5919,8 @@
     },
     "destructor": {
       "jugador": "Pinea",
-      "valor": 59,
-      "detalle": "59 estructuras destruidas"
+      "valor": 56,
+      "detalle": "56 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -5927,6 +5929,35 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-26T22:26:24Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": null,
+      "detalle": "Gold III (50 LP)"
+    },
+    {
+      "timestamp": "2026-08-26T22:26:24Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "ゆうき まこと",
+      "detalle": "34.8% del daño de su equipo (14,720) con Fiora"
+    },
+    {
+      "timestamp": "2026-08-26T22:26:24Z",
+      "tipo": "badge_semanal",
+      "categoria": "duo_dinamico",
+      "categoria_label": "Dúo Dinámico",
+      "icono": "🎮",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Pinea",
+      "detalle": "con Pinea (15 partidas juntos)"
+    },
     {
       "timestamp": "2026-08-26T21:50:31Z",
       "tipo": "record_lp",
@@ -6283,35 +6314,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": "Pinea",
       "detalle": "7.8 CS/min con Veigar"
-    },
-    {
-      "timestamp": "2026-08-25T05:12:23Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "Ostia",
-      "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-08-25T05:12:23Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "Galactic Shark",
-      "top_posicion": 3,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-25T05:12:23Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6325,7 +6327,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.562796
+    "ゆうき まこと": 4.564034
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
