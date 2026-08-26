@@ -1,16 +1,16 @@
 {
-  "ultimaActualizacion": "2026-08-26T14:58:26.377880",
+  "ultimaActualizacion": "2026-08-26T15:58:53.124557",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold IV",
-      "lp": 85,
+      "lp": 66,
       "winrate": "54%",
-      "elo_score": 1285,
+      "elo_score": 1266,
       "record_lp_score": 1285,
       "record_lp_label": "Gold IV (85 LP)",
-      "escalador_semana": 321,
+      "escalador_semana": 302,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -24,11 +24,11 @@
       ],
       "top_recientes": [
         {
-          "campeon": "Fiora",
+          "campeon": "Nasus",
           "cantidad": 4
         },
         {
-          "campeon": "Nasus",
+          "campeon": "Fiora",
           "cantidad": 4
         },
         {
@@ -50,7 +50,7 @@
         {
           "campeon": "Nasus",
           "nivel": 15,
-          "puntos": "132.950"
+          "puntos": "133.665"
         }
       ],
       "progreso_lp": [
@@ -641,9 +641,32 @@
           "lp": 85,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-26T15:58:41Z",
+          "lp": 66,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744026809",
+          "campeon": "Nasus",
+          "kda": "3/11/14 (1.55)",
+          "resultado": "Derrota",
+          "duracion": "33min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8214,
+          "estilo_secundario": 8300,
+          "wards_control": 3,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743976754",
           "campeon": "Fiora",
@@ -814,40 +837,40 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743695333",
-          "campeon": "Nasus",
-          "kda": "10/3/10 (6.67)",
-          "resultado": "Victoria",
-          "duracion": "28min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerHaste",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "perk_principal": 8214,
-          "estilo_secundario": 8300,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 86,
+      "kills_recientes": 79,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 35,
-      "kills_semana": 216,
+      "vision_promedio_reciente": 38,
+      "kills_semana": 219,
       "pentakills_semana": 0,
       "vision_promedio_semana": 34,
       "primeras_sangre_semana": 9,
-      "kda_promedio_semana": 2.83,
+      "kda_promedio_semana": 2.73,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 174,
-      "partidas_semana": 22,
+      "asistencias_semana": 188,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787758185.491,
+          "kills": 3,
+          "muertes": 11,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 40,
+          "campeon": "Nasus",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 149,
+          "duracion_seg": 1992,
+          "damage_taken": 45037,
+          "danio_recibido_pct": 26.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 28
+        },
         {
           "fin_seg": 1787722686.14,
           "kills": 14,
@@ -1327,8 +1350,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 54,
-      "tiempo_cc_semana": 440,
-      "max_partidas_en_un_dia": 3,
+      "tiempo_cc_semana": 468,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787717411332,
         "campeon": "Nasus",
@@ -6292,7 +6315,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.259235
+    "ゆうき まこと": 4.301075
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
