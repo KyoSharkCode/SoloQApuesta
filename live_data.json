@@ -10,12 +10,12 @@
     },
     "ゆうき まこと#1411": {
         "en_partida": true,
-        "campeon": "Ahri",
+        "campeon": "Garen",
         "equipo": "red",
         "hechizos": [
             {
-                "nombre": "Prender",
-                "icono": "SummonerDot.png"
+                "nombre": "Marca",
+                "icono": "SummonerSnowball.png"
             },
             {
                 "nombre": "Destello",
@@ -27,8 +27,8 @@
             "secundario": 8300
         },
         "modo_juego": "Modo Destacado",
-        "game_start_time": 1787729997865,
-        "game_id": 1744004994
+        "game_start_time": 1787731240165,
+        "game_id": 1744007831
     },
     "adrianNOOBYT#LAN": {
         "en_partida": false
@@ -37,16 +37,16 @@
         "en_partida": false
     },
     "_partidas_activas": {
-        "1744004994": {
-            "game_start_time": 1787729997865,
+        "1744007831": {
+            "game_start_time": 1787731240165,
             "modo_juego": "Modo Destacado",
             "baneos": [],
             "participantes": [
                 {
-                    "nombre": "YoOoz#LAN",
-                    "campeon": "Lissandra",
+                    "nombre": "Gwen",
+                    "campeon": "Gwen",
                     "equipo": "blue",
-                    "icono_invocador": 546,
+                    "icono_invocador": 1630,
                     "hechizos": [
                         {
                             "nombre": "Marca",
@@ -58,16 +58,40 @@
                         }
                     ],
                     "runas": {
-                        "principal": 8008,
-                        "secundario": 8200
+                        "principal": 8369,
+                        "secundario": 8000
                     },
                     "tags": [
-                        "Mage"
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "YODA MARIHUANO#LAN",
+                    "campeon": "Zac",
+                    "equipo": "blue",
+                    "icono_invocador": 931,
+                    "hechizos": [
+                        {
+                            "nombre": "Marca",
+                            "icono": "SummonerSnowball.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8439,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Tank",
+                        "Fighter"
                     ]
                 },
                 {
                     "nombre": "La Princess#347",
-                    "campeon": "Smolder",
+                    "campeon": "Milio",
                     "equipo": "blue",
                     "icono_invocador": 6054,
                     "hechizos": [
@@ -85,36 +109,13 @@
                         "secundario": 8400
                     },
                     "tags": [
-                        "Marksman",
-                        "Mage"
-                    ]
-                },
-                {
-                    "nombre": "Alexis RoTu#Buzz",
-                    "campeon": "AurelionSol",
-                    "equipo": "blue",
-                    "icono_invocador": 3614,
-                    "hechizos": [
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        },
-                        {
-                            "nombre": "Barrera",
-                            "icono": "SummonerBarrier.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8992,
-                        "secundario": 8100
-                    },
-                    "tags": [
+                        "Support",
                         "Mage"
                     ]
                 },
                 {
                     "nombre": "Xxthe sylix#LAN",
-                    "campeon": "Volibear",
+                    "campeon": "Gangplank",
                     "equipo": "blue",
                     "icono_invocador": 5637,
                     "hechizos": [
@@ -128,6 +129,123 @@
                         }
                     ],
                     "runas": {
+                        "principal": 8128,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "CRYSHY#LAN",
+                    "campeon": "Shen",
+                    "equipo": "blue",
+                    "icono_invocador": 28,
+                    "hechizos": [
+                        {
+                            "nombre": "Marca",
+                            "icono": "SummonerSnowball.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8437,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "ゆうき まこと#1411",
+                    "campeon": "Garen",
+                    "equipo": "red",
+                    "icono_invocador": 5935,
+                    "hechizos": [
+                        {
+                            "nombre": "Marca",
+                            "icono": "SummonerSnowball.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8437,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Pantos1001#DOPA",
+                    "campeon": "Veigar",
+                    "equipo": "red",
+                    "icono_invocador": 1296,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Fantasmal",
+                            "icono": "SummonerHaste.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "kuromarvt#LAN",
+                    "campeon": "Rumble",
+                    "equipo": "red",
+                    "icono_invocador": 7143,
+                    "hechizos": [
+                        {
+                            "nombre": "Marca",
+                            "icono": "SummonerSnowball.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8128,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "MentonyDeYahel#31724",
+                    "campeon": "Illaoi",
+                    "equipo": "red",
+                    "icono_invocador": 5544,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Marca",
+                            "icono": "SummonerSnowball.png"
+                        }
+                    ],
+                    "runas": {
                         "principal": 8437,
                         "secundario": 8000
                     },
@@ -138,8 +256,8 @@
                 },
                 {
                     "nombre": "PatoLucaz#LAN",
-                    "campeon": "Karma",
-                    "equipo": "blue",
+                    "campeon": "Blitzcrank",
+                    "equipo": "red",
                     "icono_invocador": 7035,
                     "hechizos": [
                         {
@@ -156,127 +274,8 @@
                         "secundario": 8200
                     },
                     "tags": [
-                        "Mage",
+                        "Tank",
                         "Support"
-                    ]
-                },
-                {
-                    "nombre": "MentonyDeYahel#31724",
-                    "campeon": "KogMaw",
-                    "equipo": "red",
-                    "icono_invocador": 5544,
-                    "hechizos": [
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        },
-                        {
-                            "nombre": "Fantasmal",
-                            "icono": "SummonerHaste.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8005,
-                        "secundario": 8100
-                    },
-                    "tags": [
-                        "Marksman",
-                        "Mage"
-                    ]
-                },
-                {
-                    "nombre": "EST IanAxelRose#6969",
-                    "campeon": "Lulu",
-                    "equipo": "red",
-                    "icono_invocador": 6709,
-                    "hechizos": [
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        },
-                        {
-                            "nombre": "Curar",
-                            "icono": "SummonerHeal.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8214,
-                        "secundario": 8400
-                    },
-                    "tags": [
-                        "Support",
-                        "Mage"
-                    ]
-                },
-                {
-                    "nombre": "RoyerK#6969",
-                    "campeon": "Shaco",
-                    "equipo": "red",
-                    "icono_invocador": 3053,
-                    "hechizos": [
-                        {
-                            "nombre": "Marca",
-                            "icono": "SummonerSnowball.png"
-                        },
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8229,
-                        "secundario": 8000
-                    },
-                    "tags": [
-                        "Assassin"
-                    ]
-                },
-                {
-                    "nombre": "Haruren#Haru",
-                    "campeon": "Senna",
-                    "equipo": "red",
-                    "icono_invocador": 1297,
-                    "hechizos": [
-                        {
-                            "nombre": "Fantasmal",
-                            "icono": "SummonerHaste.png"
-                        },
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8021,
-                        "secundario": 8300
-                    },
-                    "tags": [
-                        "Support",
-                        "Marksman"
-                    ]
-                },
-                {
-                    "nombre": "ゆうき まこと#1411",
-                    "campeon": "Ahri",
-                    "equipo": "red",
-                    "icono_invocador": 5935,
-                    "hechizos": [
-                        {
-                            "nombre": "Prender",
-                            "icono": "SummonerDot.png"
-                        },
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8437,
-                        "secundario": 8300
-                    },
-                    "tags": [
-                        "Mage",
-                        "Assassin"
                     ]
                 }
             ]
