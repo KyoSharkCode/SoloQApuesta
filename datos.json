@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-26T21:26:25.339311",
+  "ultimaActualizacion": "2026-08-26T21:28:37.392428",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4897,12 +4897,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze I",
-      "lp": 62,
-      "winrate": "46%",
-      "elo_score": 762,
+      "lp": 40,
+      "winrate": "45%",
+      "elo_score": 740,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 94,
+      "escalador_semana": 72,
       "rol_principal": "Support",
       "top_roles": [
         {
@@ -5215,9 +5215,32 @@
           "lp": 62,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-26T21:28:24Z",
+          "lp": 40,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744077707",
+          "campeon": "Taric",
+          "kda": "0/7/11 (1.57)",
+          "resultado": "Derrota",
+          "duracion": "37min",
+          "lp_change": -22,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8351,
+          "estilo_secundario": 8000,
+          "wards_control": 5,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744077435",
           "campeon": "Taric",
@@ -5370,40 +5393,40 @@
           "estilo_secundario": 8000,
           "wards_control": 6,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743809390",
-          "campeon": "Taric",
-          "kda": "6/7/24 (4.29)",
-          "resultado": "Derrota",
-          "duracion": "42min",
-          "lp_change": -50,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 32,
+      "kills_recientes": 26,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 74,
-      "kills_semana": 64,
+      "kills_semana": 60,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 71,
+      "vision_promedio_semana": 70,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.82,
+      "kda_promedio_semana": 2.7,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 238,
+      "asistencias_semana": 223,
       "partidas_semana": 19,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787779638.45,
+          "kills": 0,
+          "muertes": 7,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 104,
+          "campeon": "Taric",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 58,
+          "duracion_seg": 2263,
+          "damage_taken": 31898,
+          "danio_recibido_pct": 18.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 37
+        },
         {
           "fin_seg": 1787771740.115,
           "kills": 4,
@@ -5757,25 +5780,6 @@
           "objetivos_robados": 1,
           "estructuras_destruidas": 1,
           "tiempo_cc": 43
-        },
-        {
-          "fin_seg": 1787425629.151,
-          "kills": 4,
-          "muertes": 9,
-          "asistencias": 26,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 105,
-          "campeon": "Swain",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 68,
-          "duracion_seg": 2961,
-          "damage_taken": 63611,
-          "danio_recibido_pct": 23.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 45
         }
       ],
       "duo_semana": {
@@ -5788,14 +5792,14 @@
         "campeon": "Veigar"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 23.9,
-        "damage_taken": 63611,
+        "danio_recibido_pct": 22.8,
+        "damage_taken": 32130,
         "campeon": "Swain"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 12,
-      "tiempo_cc_semana": 720,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 10,
+      "tiempo_cc_semana": 712,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787750940374,
         "campeon": "Taric",
@@ -5828,8 +5832,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 238,
-      "detalle": "238 asistencias"
+      "valor": 223,
+      "detalle": "223 asistencias"
     },
     "farmeador": {
       "jugador": "El Buñuelito",
@@ -6274,7 +6278,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.524385
+    "ゆうき まこと": 4.525762
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
