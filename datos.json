@@ -1,27 +1,31 @@
 {
-  "ultimaActualizacion": "2026-08-27T04:02:30.453746",
+  "ultimaActualizacion": "2026-08-27T04:04:32.775342",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold II",
-      "lp": 20,
+      "lp": 2,
       "winrate": "55%",
-      "elo_score": 1420,
+      "elo_score": 1402,
       "record_lp_score": 1438,
       "record_lp_label": "Gold II (38 LP)",
-      "escalador_semana": 402,
+      "escalador_semana": 384,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
+          "cantidad": 10
         }
       ],
       "top_recientes": [
         {
           "campeon": "Fiora",
           "cantidad": 9
+        },
+        {
+          "campeon": "Poppy",
+          "cantidad": 1
         }
       ],
       "maestrias": [
@@ -689,9 +693,34 @@
           "lp": 20,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-27T04:04:23Z",
+          "lp": 2,
+          "rango": "Gold",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744192010",
+          "campeon": "Poppy",
+          "kda": "7/8/9 (2.0)",
+          "resultado": "Derrota",
+          "duracion": "28min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerExhaust",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "perk_principal": 8437,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744175688",
           "campeon": "Fiora",
@@ -856,38 +885,42 @@
           "estilo_secundario": 8300,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744054879",
-          "campeon": "Fiora",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:23",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8005,
-          "estilo_secundario": 8300,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 101,
+      "kills_recientes": 108,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 29,
-      "kills_semana": 234,
+      "vision_promedio_reciente": 28,
+      "kills_semana": 241,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 34,
+      "vision_promedio_semana": 33,
       "primeras_sangre_semana": 7,
-      "kda_promedio_semana": 2.87,
+      "kda_promedio_semana": 2.83,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 194,
-      "partidas_semana": 22,
+      "asistencias_semana": 203,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787803340.121,
+          "kills": 7,
+          "muertes": 8,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 22,
+          "campeon": "Poppy",
+          "victoria": false,
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "cs": 136,
+          "duracion_seg": 1684,
+          "damage_taken": 33427,
+          "danio_recibido_pct": 27.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 56
+        },
         {
           "fin_seg": 1787801313.73,
           "kills": 5,
@@ -1345,7 +1378,7 @@
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 15
+        "partidas": 16
       },
       "cs_min_semana": {
         "cs_por_min": 7.3,
@@ -1359,8 +1392,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 59,
-      "tiempo_cc_semana": 466,
-      "max_partidas_en_un_dia": 0,
+      "tiempo_cc_semana": 522,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787803200
     },
@@ -5909,6 +5942,16 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-27T04:04:23Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Pinea",
+      "top_posicion": 2,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-08-27T04:02:20Z",
       "tipo": "adelantamiento",
       "icono": "🔥",
@@ -6279,30 +6322,20 @@
       "jugador_nuevo": "ゆうき まこと",
       "jugador_anterior": "Pinea",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-08-25T22:04:24Z",
-      "tipo": "logro_partida",
-      "categoria": "terminador:LA1_1743855528",
-      "icono": "💣",
-      "categoria_label": "Terminador",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Taric dio el golpe final al Nexus"
     }
   ],
   "titular_primera_victoria_dia": null,
   "dia_referencia_eventos": 1787803200,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "Pinea#Pinea": 2,
-    "El Buñuelito#KyA": 3,
+    "El Buñuelito#KyA": 2,
+    "Pinea#Pinea": 3,
     "Galactic Shark#AYK": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.787384
+    "ゆうき まこと": 4.788693
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
