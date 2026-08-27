@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T08:10:40.986342",
+  "ultimaActualizacion": "2026-08-27T08:12:29.773689",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3698,12 +3698,12 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Gold I",
-      "lp": 65,
-      "winrate": "64%",
-      "elo_score": 1565,
-      "record_lp_score": 1565,
-      "record_lp_label": "Gold I (65 LP)",
-      "escalador_semana": 190,
+      "lp": 95,
+      "winrate": "65%",
+      "elo_score": 1595,
+      "record_lp_score": 1595,
+      "record_lp_label": "Gold I (95 LP)",
+      "escalador_semana": 220,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -3718,14 +3718,14 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
-          "campeon": "Sion",
+          "campeon": "Teemo",
           "cantidad": 1
         },
         {
-          "campeon": "Nasus",
+          "campeon": "Sion",
           "cantidad": 1
         }
       ],
@@ -3910,9 +3910,32 @@
           "lp": 65,
           "rango": "Gold",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-27T08:12:22Z",
+          "lp": 95,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744256287",
+          "campeon": "Teemo",
+          "kda": "0/3/6 (2.0)",
+          "resultado": "Victoria",
+          "duracion": "31min",
+          "lp_change": 30,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8437,
+          "estilo_secundario": 8300,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743789316",
           "campeon": "Sion",
@@ -4067,38 +4090,40 @@
           "estilo_secundario": 8200,
           "wards_control": 6,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1742528490",
-          "campeon": "Poppy",
-          "kda": "4/5/12 (3.2)",
-          "resultado": "Victoria",
-          "duracion": "24min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerTeleport",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8200,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 61,
+      "kills_recientes": 57,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
+      "vision_promedio_reciente": 31,
       "kills_semana": 57,
       "pentakills_semana": 0,
       "vision_promedio_semana": 31,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.75,
+      "kda_promedio_semana": 3.62,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 78,
-      "partidas_semana": 9,
+      "campeones_ganados_semana": 5,
+      "asistencias_semana": 84,
+      "partidas_semana": 10,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787818258.878,
+          "kills": 0,
+          "muertes": 3,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 31,
+          "campeon": "Teemo",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 229,
+          "duracion_seg": 1880,
+          "damage_taken": 15897,
+          "danio_recibido_pct": 17.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 34
+        },
         {
           "fin_seg": 1787647584.055,
           "kills": 4,
@@ -4278,9 +4303,9 @@
         "partidas": 1
       },
       "cs_min_semana": {
-        "cs_por_min": 6.9,
-        "cs": 236,
-        "campeon": "Poppy"
+        "cs_por_min": 7.3,
+        "cs": 229,
+        "campeon": "Teemo"
       },
       "danio_recibido_semana": {
         "danio_recibido_pct": 34.5,
@@ -4288,10 +4313,20 @@
         "campeon": "Sion"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 22,
-      "tiempo_cc_semana": 390,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 25,
+      "tiempo_cc_semana": 424,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787818258878,
+        "campeon": "Teemo",
+        "kda": "0/3/6 (2.0)",
+        "equipo": "red",
+        "duracion": "31:20",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1787803200
     },
     {
@@ -5889,8 +5924,8 @@
     },
     "kda_player": {
       "jugador": "ゆうき まこと",
-      "valor": 3.75,
-      "detalle": "3.75 KDA"
+      "valor": 3.62,
+      "detalle": "3.62 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -5920,8 +5955,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 9,
-      "detalle": "9 partidas esta semana"
+      "valor": 10,
+      "detalle": "10 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "El Buñuelito",
@@ -5945,6 +5980,34 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-27T08:12:22Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1744256287",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Teemo aniquiló al equipo rival sin bajas propias"
+    },
+    {
+      "timestamp": "2026-08-27T08:12:22Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": "Gold I (95 LP)"
+    },
+    {
+      "timestamp": "2026-08-27T08:12:22Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-27T06:42:22Z",
       "tipo": "badge_semanal",
@@ -6296,39 +6359,9 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "El Buñuelito",
       "detalle": "con El Buñuelito (15 partidas juntos)"
-    },
-    {
-      "timestamp": "2026-08-26T02:34:20Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "Pinea",
-      "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-08-26T01:28:21Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "Galactic Shark",
-      "top_posicion": 2,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-26T00:52:21Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "ゆうき まこと",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "ゆうき まこと",
   "dia_referencia_eventos": 1787803200,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
@@ -6339,7 +6372,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.952949
+    "ゆうき まこと": 4.954127
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
