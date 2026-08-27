@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T13:26:25.324988",
+  "ultimaActualizacion": "2026-08-27T13:28:31.658627",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5028,7 +5028,7 @@
       "icono": 6205,
       "rango": "Bronze I",
       "lp": 37,
-      "winrate": "45%",
+      "winrate": "44%",
       "elo_score": 737,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
@@ -5037,21 +5037,21 @@
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
-          "rol": "Top",
-          "cantidad": 1
+          "rol": "Mid",
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "campeon": "Veigar",
-          "cantidad": 2
+          "cantidad": 3
         }
       ],
       "maestrias": [
@@ -5363,6 +5363,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1744266463",
+          "campeon": "Veigar",
+          "kda": "4/6/2 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "27min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8200,
+          "wards_control": 2,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1744266219",
           "campeon": "Veigar",
           "kda": "8/5/10 (3.6)",
@@ -5514,38 +5531,40 @@
           "estilo_secundario": 8000,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743850072",
-          "campeon": "Taric",
-          "kda": "2/5/19 (4.2)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": -22,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8000,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 29,
+      "kills_recientes": 31,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 74,
-      "kills_semana": 59,
+      "vision_promedio_reciente": 66,
+      "kills_semana": 63,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 67,
+      "vision_promedio_semana": 65,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.81,
+      "kda_promedio_semana": 2.71,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 230,
-      "partidas_semana": 19,
+      "asistencias_semana": 232,
+      "partidas_semana": 20,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787837193.713,
+          "kills": 4,
+          "muertes": 6,
+          "asistencias": 2,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 22,
+          "campeon": "Veigar",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 170,
+          "duracion_seg": 1625,
+          "damage_taken": 21688,
+          "danio_recibido_pct": 19.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 17
+        },
         {
           "fin_seg": 1787835080.834,
           "kills": 8,
@@ -5934,8 +5953,8 @@
       },
       "objetivos_robados_semana": 1,
       "estructuras_destruidas_semana": 7,
-      "tiempo_cc_semana": 719,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 736,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787803200
     }
@@ -6395,7 +6414,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 5.16417
+    "ゆうき まこと": 5.165553
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
