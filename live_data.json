@@ -1,6 +1,44 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Azir",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Huida",
+                "icono": "SummonerCherryHold.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerCherryFlash.png"
+            }
+        ],
+        "runas": {
+            "principal": null,
+            "secundario": null
+        },
+        "modo_juego": "Modo Destacado",
+        "game_start_time": 1787863516401,
+        "game_id": 1744320764,
+        "duo_con": [
+            "Ostia"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Ostia",
+                "campeon": "Trundle",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            }
+        ]
     },
     "Galactic Shark#AYK": {
         "en_partida": true,
@@ -53,9 +91,553 @@
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Trundle",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Huida",
+                "icono": "SummonerCherryHold.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerCherryFlash.png"
+            }
+        ],
+        "runas": {
+            "principal": 8230,
+            "secundario": 8100
+        },
+        "modo_juego": "Modo Destacado",
+        "game_start_time": 1787863516401,
+        "game_id": 1744320764,
+        "duo_con": [
+            "Pinea"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Pinea",
+                "campeon": "Azir",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            }
+        ]
     },
     "_partidas_activas": {
+        "1744320764": {
+            "game_start_time": 1787863516401,
+            "modo_juego": "Modo Destacado",
+            "baneos": [
+                {
+                    "campeon": "Sett",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Poppy",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Nasus",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Belveth",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Gnar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "AurelionSol",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Galio",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "MasterYi",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Veigar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Aatrox",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Jax",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Gwen",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Mordekaiser",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Amumu",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Singed",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "MasterYi",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": null,
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Nasus",
+                    "equipo": "blue"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "tuñañanoesgoodHD#soy",
+                    "campeon": "Kled",
+                    "equipo": "blue",
+                    "icono_invocador": 5488,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "Duki#LDEM",
+                    "campeon": "Vladimir",
+                    "equipo": "blue",
+                    "icono_invocador": 6084,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        },
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 9923,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Mage",
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "Lorena moonchild#Pia",
+                    "campeon": "Yunara",
+                    "equipo": "blue",
+                    "icono_invocador": 1381,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "randyboy#LAN",
+                    "campeon": "Illaoi",
+                    "equipo": "blue",
+                    "icono_invocador": 4280,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8437,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "E1matafurros#LAN",
+                    "campeon": "Leona",
+                    "equipo": "blue",
+                    "icono_invocador": 5768,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        },
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8214,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Tank",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Saferro el furro#LAN",
+                    "campeon": "Ashe",
+                    "equipo": "blue",
+                    "icono_invocador": 7120,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        },
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Ostia#LAN",
+                    "campeon": "Trundle",
+                    "equipo": "blue",
+                    "icono_invocador": 6205,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8230,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Daya0903#LAN",
+                    "campeon": "MissFortune",
+                    "equipo": "blue",
+                    "icono_invocador": 4655,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Pinea#Pinea",
+                    "campeon": "Azir",
+                    "equipo": "blue",
+                    "icono_invocador": 7126,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": null,
+                        "secundario": null
+                    },
+                    "tags": [
+                        "Mage",
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "MishIxc14#Meow",
+                    "campeon": "Xayah",
+                    "equipo": "blue",
+                    "icono_invocador": 4779,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8128,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "Rich0LoL#LAN",
+                    "campeon": "Heimerdinger",
+                    "equipo": "blue",
+                    "icono_invocador": 1154,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8214,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Alphajor#5327",
+                    "campeon": "Teemo",
+                    "equipo": "blue",
+                    "icono_invocador": 7084,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "JARVANSITOS#GGG",
+                    "campeon": "Ivern",
+                    "equipo": "blue",
+                    "icono_invocador": 6827,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8128,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Support",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "ImNotMainPatas#6666",
+                    "campeon": "Shen",
+                    "equipo": "blue",
+                    "icono_invocador": 6390,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8369,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "BROKENSTAR#4457",
+                    "campeon": "Warwick",
+                    "equipo": "blue",
+                    "icono_invocador": 7070,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "AREVIR#LAN",
+                    "campeon": "Ornn",
+                    "equipo": "blue",
+                    "icono_invocador": 7143,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8128,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Konfle#PRO",
+                    "campeon": "Zed",
+                    "equipo": "blue",
+                    "icono_invocador": 6894,
+                    "hechizos": [
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8369,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "PotatoKun456#LAN",
+                    "campeon": "Gragas",
+                    "equipo": "blue",
+                    "icono_invocador": 23,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerCherryFlash.png"
+                        },
+                        {
+                            "nombre": "Huida",
+                            "icono": "SummonerCherryHold.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Mage"
+                    ]
+                }
+            ]
+        },
         "1744321008": {
             "game_start_time": 1787862094650,
             "modo_juego": "Flex",
