@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T04:01:04.078993",
+  "ultimaActualizacion": "2026-08-27T04:02:30.453746",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2218,21 +2218,21 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Gold II",
-      "lp": 28,
+      "lp": 10,
       "winrate": "51%",
-      "elo_score": 1428,
+      "elo_score": 1410,
       "record_lp_score": 1446,
       "record_lp_label": "Gold II (46 LP)",
-      "escalador_semana": 442,
+      "escalador_semana": 424,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "rol": "ADC",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
@@ -2241,11 +2241,11 @@
           "cantidad": 5
         },
         {
-          "campeon": "Syndra",
+          "campeon": "Lux",
           "cantidad": 1
         },
         {
-          "campeon": "Annie",
+          "campeon": "Syndra",
           "cantidad": 1
         }
       ],
@@ -2890,9 +2890,34 @@
           "lp": 28,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-27T04:02:20Z",
+          "lp": 10,
+          "rango": "Gold",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744192010",
+          "campeon": "Lux",
+          "kda": "4/12/9 (1.08)",
+          "resultado": "Derrota",
+          "duracion": "28min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerBarrier"
+          ],
+          "duo_con": [
+            "Pinea"
+          ],
+          "perk_principal": 8128,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744175688",
           "campeon": "Syndra",
@@ -3061,38 +3086,42 @@
           "estilo_secundario": 8100,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743917258",
-          "campeon": "Caitlyn",
-          "kda": "14/8/13 (3.38)",
-          "resultado": "Victoria",
-          "duracion": "41min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 75,
+      "kills_recientes": 65,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 26,
-      "kills_semana": 195,
+      "vision_promedio_reciente": 23,
+      "kills_semana": 186,
       "pentakills_semana": 0,
       "vision_promedio_semana": 30,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.94,
+      "kda_promedio_semana": 2.73,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 228,
+      "asistencias_semana": 232,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787803340.121,
+          "kills": 4,
+          "muertes": 12,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 13,
+          "campeon": "Lux",
+          "victoria": false,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 133,
+          "duracion_seg": 1684,
+          "damage_taken": 23887,
+          "danio_recibido_pct": 19.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 45
+        },
         {
           "fin_seg": 1787801313.73,
           "kills": 3,
@@ -3586,27 +3615,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 45
-        },
-        {
-          "fin_seg": 1787526334.012,
-          "kills": 13,
-          "muertes": 3,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 16,
-          "campeon": "Ahri",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 178,
-          "duracion_seg": 1711,
-          "damage_taken": 21001,
-          "danio_recibido_pct": 20.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 35
         }
       ],
       "duo_semana": {
@@ -3624,9 +3632,9 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 38,
-      "tiempo_cc_semana": 799,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 36,
+      "tiempo_cc_semana": 809,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787803200
     },
@@ -5870,7 +5878,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "El Buñuelito",
-      "valor": 442,
+      "valor": 424,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -5895,11 +5903,21 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 799,
-      "detalle": "799s de CC aplicado"
+      "valor": 809,
+      "detalle": "809s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-27T04:02:20Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "El Buñuelito",
+      "top_posicion": 2,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-27T02:44:23Z",
       "tipo": "record_lp",
@@ -6271,30 +6289,20 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": "Taric dio el golpe final al Nexus"
-    },
-    {
-      "timestamp": "2026-08-25T20:02:21Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Galactic Shark",
-      "jugador_anterior": "El Buñuelito",
-      "top_posicion": 2,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": null,
   "dia_referencia_eventos": 1787803200,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "El Buñuelito#KyA": 2,
-    "Pinea#Pinea": 3,
+    "Pinea#Pinea": 2,
+    "El Buñuelito#KyA": 3,
     "Galactic Shark#AYK": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 4.786498
+    "ゆうき まこと": 4.787384
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
