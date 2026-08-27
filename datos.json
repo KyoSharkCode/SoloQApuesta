@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T11:12:24.637270",
+  "ultimaActualizacion": "2026-08-27T11:14:30.583980",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1400,13 +1400,13 @@
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
-      "rango": "Gold IV",
-      "lp": 97,
-      "winrate": "49%",
-      "elo_score": 1297,
-      "record_lp_score": 1319,
-      "record_lp_label": "Gold III (19 LP)",
-      "escalador_semana": 107,
+      "rango": "Gold III",
+      "lp": 20,
+      "winrate": "50%",
+      "elo_score": 1320,
+      "record_lp_score": 1320,
+      "record_lp_label": "Gold III (20 LP)",
+      "escalador_semana": 130,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1417,11 +1417,11 @@
       "top_recientes": [
         {
           "campeon": "Shyvana",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Briar",
-          "cantidad": 5
+          "cantidad": 4
         }
       ],
       "maestrias": [
@@ -1693,9 +1693,32 @@
           "lp": 97,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-27T11:14:22Z",
+          "lp": 20,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744264440",
+          "campeon": "Shyvana",
+          "kda": "6/2/3 (4.5)",
+          "resultado": "Victoria",
+          "duracion": "19min",
+          "lp_change": 23,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 3,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744243644",
           "campeon": "Shyvana",
@@ -1858,40 +1881,40 @@
           "estilo_secundario": 8100,
           "wards_control": 3,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743328986",
-          "campeon": "Briar",
-          "kda": "13/5/8 (4.2)",
-          "resultado": "Victoria",
-          "duracion": "33min",
-          "lp_change": 24,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8100,
-          "wards_control": 11,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 60,
+      "kills_recientes": 53,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 78,
+      "vision_promedio_reciente": 25,
+      "kills_semana": 84,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 39,
+      "vision_promedio_semana": 38,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.01,
+      "kda_promedio_semana": 2.05,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 151,
-      "partidas_semana": 18,
+      "asistencias_semana": 154,
+      "partidas_semana": 19,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787829182.757,
+          "kills": 6,
+          "muertes": 2,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 17,
+          "campeon": "Shyvana",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 112,
+          "duracion_seg": 1177,
+          "damage_taken": 12455,
+          "danio_recibido_pct": 17.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 8
+        },
         {
           "fin_seg": 1787813536.971,
           "kills": 1,
@@ -2265,9 +2288,19 @@
       },
       "objetivos_robados_semana": 3,
       "estructuras_destruidas_semana": 13,
-      "tiempo_cc_semana": 393,
-      "max_partidas_en_un_dia": 1,
-      "primera_victoria_hoy": null,
+      "tiempo_cc_semana": 401,
+      "max_partidas_en_un_dia": 2,
+      "primera_victoria_hoy": {
+        "timestamp": 1787829182757,
+        "campeon": "Shyvana",
+        "kda": "6/2/3 (4.5)",
+        "equipo": "red",
+        "duracion": "19:37",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerSmite"
+        ]
+      },
       "dia_referencia": 1787803200
     },
     {
@@ -5968,6 +6001,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-27T11:14:22Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": null,
+      "detalle": "Gold III (20 LP)"
+    },
+    {
       "timestamp": "2026-08-27T08:48:24Z",
       "tipo": "record_lp",
       "icono": "📈",
@@ -6336,15 +6378,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "Ahri aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-08-26T03:44:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Gold III (41 LP)"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6358,7 +6391,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 5.074437
+    "ゆうき まこと": 5.075798
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
