@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T17:02:25.440019",
+  "ultimaActualizacion": "2026-08-27T17:04:32.008832",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4356,13 +4356,13 @@
     {
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
-      "rango": "Silver III",
-      "lp": 81,
-      "winrate": "50%",
-      "elo_score": 981,
-      "record_lp_score": 981,
-      "record_lp_label": "Silver III (81 LP)",
-      "escalador_semana": 155,
+      "rango": "Silver II",
+      "lp": 5,
+      "winrate": "51%",
+      "elo_score": 1005,
+      "record_lp_score": 1005,
+      "record_lp_label": "Silver II (5 LP)",
+      "escalador_semana": 179,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4384,7 +4384,7 @@
           "cantidad": 2
         },
         {
-          "campeon": "Yone",
+          "campeon": "Trundle",
           "cantidad": 1
         }
       ],
@@ -4631,9 +4631,32 @@
           "lp": 81,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-27T17:04:22Z",
+          "lp": 5,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744282916",
+          "campeon": "Trundle",
+          "kda": "6/2/4 (5.0)",
+          "resultado": "Victoria",
+          "duracion": "24min",
+          "lp_change": 24,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1743539512",
           "campeon": "Akali",
@@ -4786,38 +4809,40 @@
           "estilo_secundario": 8300,
           "wards_control": 4,
           "posible_egida": true
-        },
-        {
-          "match_id": "LA1_1742969132",
-          "campeon": "Trundle",
-          "kda": "3/7/3 (0.86)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": 26,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 85,
+      "kills_recientes": 88,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 36,
-      "kills_semana": 85,
+      "vision_promedio_reciente": 35,
+      "kills_semana": 91,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 36,
-      "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.05,
+      "vision_promedio_semana": 35,
+      "primeras_sangre_semana": 2,
+      "kda_promedio_semana": 2.12,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 87,
-      "partidas_semana": 10,
+      "asistencias_semana": 91,
+      "partidas_semana": 11,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787850150.741,
+          "kills": 6,
+          "muertes": 2,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 28,
+          "campeon": "Trundle",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 156,
+          "duracion_seg": 1452,
+          "damage_taken": 18144,
+          "danio_recibido_pct": 18.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 5,
+          "tiempo_cc": 21
+        },
         {
           "fin_seg": 1787552324.23,
           "kills": 8,
@@ -5021,10 +5046,20 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 22,
-      "tiempo_cc_semana": 126,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 27,
+      "tiempo_cc_semana": 147,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787850150741,
+        "campeon": "Trundle",
+        "kda": "6/2/4 (5.0)",
+        "equipo": "blue",
+        "duracion": "24:12",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1787803200
     },
     {
@@ -6028,6 +6063,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-27T17:04:22Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Silver II (5 LP)"
+    },
+    {
       "timestamp": "2026-08-27T16:28:31Z",
       "tipo": "badge_semanal",
       "categoria": "escalador",
@@ -6396,16 +6440,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "Gold III (61 LP)"
-    },
-    {
-      "timestamp": "2026-08-26T04:10:35Z",
-      "tipo": "badge_semanal",
-      "categoria": "champion_pool",
-      "categoria_label": "Maestro del Champion Pool",
-      "icono": "🎭",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "Galactic Shark",
-      "detalle": "5 campeones distintos ganados"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6419,7 +6453,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 5.307975
+    "ゆうき まこと": 5.309332
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
