@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-27T12:50:37.862673",
+  "ultimaActualizacion": "2026-08-27T12:52:28.424930",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5027,31 +5027,31 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze I",
-      "lp": 58,
-      "winrate": "46%",
-      "elo_score": 758,
+      "lp": 37,
+      "winrate": "45%",
+      "elo_score": 737,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -42,
+      "escalador_semana": -63,
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
-          "rol": "Mid",
+          "rol": "Top",
           "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "campeon": "Veigar",
-          "cantidad": 1
+          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -5353,9 +5353,32 @@
           "lp": 58,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-27T12:52:20Z",
+          "lp": 37,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744266219",
+          "campeon": "Veigar",
+          "kda": "8/5/10 (3.6)",
+          "resultado": "Derrota",
+          "duracion": "36min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8200,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744094175",
           "campeon": "Taric",
@@ -5508,38 +5531,40 @@
           "estilo_secundario": 8000,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743824577",
-          "campeon": "Taric",
-          "kda": "2/5/17 (3.8)",
-          "resultado": "Derrota",
-          "duracion": "45min",
-          "lp_change": -50,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 23,
+      "kills_recientes": 29,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 80,
-      "kills_semana": 54,
+      "vision_promedio_reciente": 74,
+      "kills_semana": 59,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 72,
+      "vision_promedio_semana": 67,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.74,
+      "kda_promedio_semana": 2.81,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 234,
+      "asistencias_semana": 230,
       "partidas_semana": 19,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787835080.834,
+          "kills": 8,
+          "muertes": 5,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 53,
+          "campeon": "Veigar",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 210,
+          "duracion_seg": 2198,
+          "damage_taken": 20138,
+          "danio_recibido_pct": 12.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 31
+        },
         {
           "fin_seg": 1787782695.363,
           "kills": 0,
@@ -5891,27 +5916,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 33
-        },
-        {
-          "fin_seg": 1787512939.241,
-          "kills": 3,
-          "muertes": 7,
-          "asistencias": 14,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 133,
-          "campeon": "Swain",
-          "victoria": true,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 77,
-          "duracion_seg": 2486,
-          "damage_taken": 38463,
-          "danio_recibido_pct": 17.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 36
         }
       ],
       "duo_semana": {
@@ -5929,9 +5933,9 @@
         "campeon": "Swain"
       },
       "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 724,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 7,
+      "tiempo_cc_semana": 719,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1787803200
     }
@@ -5953,9 +5957,9 @@
       "detalle": "6 campeones distintos ganados"
     },
     "asistente": {
-      "jugador": "Ostia",
-      "valor": 234,
-      "detalle": "234 asistencias"
+      "jugador": "El Buñuelito",
+      "valor": 232,
+      "detalle": "232 asistencias"
     },
     "farmeador": {
       "jugador": "El Buñuelito",
@@ -6000,6 +6004,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-27T12:52:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "232 asistencias"
+    },
     {
       "timestamp": "2026-08-27T11:14:22Z",
       "tipo": "record_lp",
@@ -6368,16 +6382,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-08-26T03:44:21Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1743942068",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Ahri aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6391,7 +6395,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 5.14027
+    "ゆうき まこと": 5.141452
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
