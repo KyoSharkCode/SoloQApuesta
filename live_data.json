@@ -3,7 +3,26 @@
         "en_partida": false
     },
     "Galactic Shark#AYK": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Briar",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Aplastar",
+                "icono": "SummonerSmite.png"
+            }
+        ],
+        "runas": {
+            "principal": 8005,
+            "secundario": 8100
+        },
+        "modo_juego": "Flex",
+        "game_start_time": 1787862092103,
+        "game_id": 1744321008
     },
     "El Buñuelito#KyA": {
         "en_partida": false
@@ -37,6 +56,293 @@
         "en_partida": false
     },
     "_partidas_activas": {
+        "1744321008": {
+            "game_start_time": 1787862092103,
+            "modo_juego": "Flex",
+            "baneos": [
+                {
+                    "campeon": "Nasus",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Sylas",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Pyke",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Ahri",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Caitlyn",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": null,
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Samira",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Mel",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Katarina",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Malphite",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "steek2#5141",
+                    "campeon": "Nautilus",
+                    "equipo": "blue",
+                    "icono_invocador": 1149,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8465,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Tank",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "水 Cykes 水#leon1",
+                    "campeon": "Jhin",
+                    "equipo": "blue",
+                    "icono_invocador": 6222,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Barrera",
+                            "icono": "SummonerBarrier.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8021,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Jusst#CROW",
+                    "campeon": "Locke",
+                    "equipo": "blue",
+                    "icono_invocador": 5719,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Mr Heisen#idfc",
+                    "campeon": "Heimerdinger",
+                    "equipo": "blue",
+                    "icono_invocador": 1625,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Galactic Shark#AYK",
+                    "campeon": "Briar",
+                    "equipo": "blue",
+                    "icono_invocador": 6664,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "NiñoMoi#UIO",
+                    "campeon": "Leblanc",
+                    "equipo": "red",
+                    "icono_invocador": 3458,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "chinorexs#LAN",
+                    "campeon": "Mordekaiser",
+                    "equipo": "red",
+                    "icono_invocador": 6331,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Weedman260#LAN",
+                    "campeon": "Vayne",
+                    "equipo": "red",
+                    "icono_invocador": 3184,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Barrera",
+                            "icono": "SummonerBarrier.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8128,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "KDANIEL001#LAN",
+                    "campeon": "Graves",
+                    "equipo": "red",
+                    "icono_invocador": 4574,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8021,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "JJG7#LAN",
+                    "campeon": "Seraphine",
+                    "equipo": "red",
+                    "icono_invocador": 6300,
+                    "hechizos": [
+                        {
+                            "nombre": "Curar",
+                            "icono": "SummonerHeal.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8214,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Support",
+                        "Mage"
+                    ]
+                }
+            ]
+        },
         "1744318172": {
             "game_start_time": 1787861366315,
             "modo_juego": "Modo Destacado",
