@@ -1,50 +1,12 @@
 {
     "Pinea#Pinea": {
-        "en_partida": true,
-        "campeon": "Fiora",
-        "equipo": "blue",
-        "hechizos": [
-            {
-                "nombre": "Extenuación",
-                "icono": "SummonerExhaust.png"
-            },
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            }
-        ],
-        "runas": {
-            "principal": 8005,
-            "secundario": 8300
-        },
-        "modo_juego": "Modo Destacado",
-        "game_start_time": 1787803882748,
-        "game_id": 1744203480
+        "en_partida": false
     },
     "Galactic Shark#AYK": {
         "en_partida": false
     },
     "El Buñuelito#KyA": {
-        "en_partida": true,
-        "campeon": "Zoe",
-        "equipo": "red",
-        "hechizos": [
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            },
-            {
-                "nombre": "Prender",
-                "icono": "SummonerDot.png"
-            }
-        ],
-        "runas": {
-            "principal": 8112,
-            "secundario": 8200
-        },
-        "modo_juego": "Modo Destacado",
-        "game_start_time": 1787803882748,
-        "game_id": 1744203480
+        "en_partida": false
     },
     "ゆうき まこと#1411": {
         "en_partida": false
@@ -54,62 +16,6 @@
     },
     "Ostia#LAN": {
         "en_partida": false
-    },
-    "_partidas_activas": {
-        "1744203480": {
-            "game_start_time": 1787803882748,
-            "modo_juego": "Modo Destacado",
-            "baneos": [],
-            "participantes": [
-                {
-                    "nombre": "Pinea#Pinea",
-                    "campeon": "Fiora",
-                    "equipo": "blue",
-                    "icono_invocador": 7126,
-                    "hechizos": [
-                        {
-                            "nombre": "Extenuación",
-                            "icono": "SummonerExhaust.png"
-                        },
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8005,
-                        "secundario": 8300
-                    },
-                    "tags": [
-                        "Fighter",
-                        "Assassin"
-                    ]
-                },
-                {
-                    "nombre": "El buñuelito#KyA",
-                    "campeon": "Zoe",
-                    "equipo": "red",
-                    "icono_invocador": 5453,
-                    "hechizos": [
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        },
-                        {
-                            "nombre": "Prender",
-                            "icono": "SummonerDot.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8112,
-                        "secundario": 8200
-                    },
-                    "tags": [
-                        "Mage"
-                    ]
-                }
-            ]
-        }
     },
     "_eventos_vivo": [
         {
