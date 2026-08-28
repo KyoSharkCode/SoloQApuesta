@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-28T16:22:26.900599",
+  "ultimaActualizacion": "2026-08-28T16:24:33.612294",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4382,12 +4382,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver II",
-      "lp": 40,
-      "winrate": "52%",
-      "elo_score": 1040,
-      "record_lp_score": 1055,
-      "record_lp_label": "Silver II (55 LP)",
-      "escalador_semana": 214,
+      "lp": 65,
+      "winrate": "53%",
+      "elo_score": 1065,
+      "record_lp_score": 1065,
+      "record_lp_label": "Silver II (65 LP)",
+      "escalador_semana": 239,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4402,7 +4402,7 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "campeon": "Trundle",
@@ -4417,7 +4417,7 @@
         {
           "campeon": "Akali",
           "nivel": 40,
-          "puntos": "449.821"
+          "puntos": "451.104"
         },
         {
           "campeon": "Warwick",
@@ -4680,9 +4680,32 @@
           "lp": 40,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-28T16:24:25Z",
+          "lp": 65,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744522637",
+          "campeon": "Akali",
+          "kda": "4/2/3 (3.5)",
+          "resultado": "Victoria",
+          "duracion": "26min",
+          "lp_change": 25,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744399238",
           "campeon": "Akali",
@@ -4835,38 +4858,40 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743002996",
-          "campeon": "Yone",
-          "kda": "10/14/7 (1.21)",
-          "resultado": "Derrota",
-          "duracion": "44min",
-          "lp_change": -15,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 102,
+      "kills_recientes": 96,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
-      "kills_semana": 131,
+      "vision_promedio_reciente": 34,
+      "kills_semana": 135,
       "pentakills_semana": 0,
       "vision_promedio_semana": 34,
-      "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 2.28,
+      "primeras_sangre_semana": 5,
+      "kda_promedio_semana": 2.3,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 113,
-      "partidas_semana": 14,
+      "asistencias_semana": 116,
+      "partidas_semana": 15,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787934169.037,
+          "kills": 4,
+          "muertes": 2,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 27,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 178,
+          "duracion_seg": 1574,
+          "damage_taken": 17705,
+          "danio_recibido_pct": 21.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 2
+        },
         {
           "fin_seg": 1787883712.723,
           "kills": 14,
@@ -5146,10 +5171,20 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 31,
-      "tiempo_cc_semana": 161,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 32,
+      "tiempo_cc_semana": 163,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787934169037,
+        "campeon": "Akali",
+        "kda": "4/2/3 (3.5)",
+        "equipo": "red",
+        "duracion": "26:14",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1787889600
     },
     {
@@ -6140,6 +6175,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-08-28T16:24:25Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Silver II (65 LP)"
+    },
+    {
       "timestamp": "2026-08-28T16:16:26Z",
       "tipo": "logro_partida",
       "categoria": "perfecta:LA1_1744526155",
@@ -6507,15 +6551,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Fiora aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-08-26T21:18:22Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Gold III (8 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6529,7 +6564,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 6.242418
+    "ゆうき まこと": 6.243795
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
