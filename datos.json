@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-29T09:48:26.306913",
+  "ultimaActualizacion": "2026-08-29T09:50:47.455131",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5313,34 +5313,30 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze I",
-      "lp": 12,
-      "winrate": "43%",
-      "elo_score": 712,
+      "lp": 28,
+      "winrate": "44%",
+      "elo_score": 728,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -139,
+      "escalador_semana": -123,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
-          "rol": "Mid",
+          "rol": "Support",
           "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Illaoi",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "campeon": "Taric",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Veigar",
           "cantidad": 1
         }
       ],
@@ -5356,9 +5352,9 @@
           "puntos": "130.917"
         },
         {
-          "campeon": "Kayn",
-          "nivel": 9,
-          "puntos": "78.024"
+          "campeon": "Illaoi",
+          "nivel": 10,
+          "puntos": "78.098"
         }
       ],
       "progreso_lp": [
@@ -5691,9 +5687,32 @@
           "lp": 12,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-29T09:50:34Z",
+          "lp": 28,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744752005",
+          "campeon": "Illaoi",
+          "kda": "2/6/6 (1.33)",
+          "resultado": "Victoria",
+          "duracion": "32min",
+          "lp_change": 16,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8437,
+          "estilo_secundario": 8000,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744585475",
           "campeon": "Illaoi",
@@ -5846,38 +5865,40 @@
           "estilo_secundario": 8400,
           "wards_control": null,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744266463",
-          "campeon": "Veigar",
-          "kda": "4/6/2 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "27min",
-          "lp_change": -23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8200,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 46,
+      "kills_recientes": 44,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 32,
-      "kills_semana": 89,
+      "kills_semana": 88,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 56,
+      "vision_promedio_semana": 54,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.0,
+      "kda_promedio_semana": 3.08,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 232,
+      "asistencias_semana": 229,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1787996906.862,
+          "kills": 2,
+          "muertes": 6,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 25,
+          "campeon": "Illaoi",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 206,
+          "duracion_seg": 1921,
+          "damage_taken": 41531,
+          "danio_recibido_pct": 23.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 6,
+          "tiempo_cc": 8
+        },
         {
           "fin_seg": 1787958080.061,
           "kills": 3,
@@ -6259,25 +6280,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 49
-        },
-        {
-          "fin_seg": 1787669947.217,
-          "kills": 3,
-          "muertes": 10,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 70,
-          "campeon": "Swain",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 51,
-          "duracion_seg": 1923,
-          "damage_taken": 33897,
-          "danio_recibido_pct": 22.0,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 34
         }
       ],
       "duo_semana": {
@@ -6295,10 +6297,20 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 10,
-      "tiempo_cc_semana": 621,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 16,
+      "tiempo_cc_semana": 595,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1787996906862,
+        "campeon": "Illaoi",
+        "kda": "2/6/6 (1.33)",
+        "equipo": "blue",
+        "duracion": "32:01",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerTeleport"
+        ]
+      },
       "dia_referencia": 1787976000
     }
   ],
@@ -6310,8 +6322,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.0,
-      "detalle": "3.0 KDA"
+      "valor": 3.08,
+      "detalle": "3.08 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6320,8 +6332,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 232,
-      "detalle": "232 asistencias"
+      "valor": 229,
+      "detalle": "229 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6366,6 +6378,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-29T09:50:34Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1744752005",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Illaoi dio el golpe final al Nexus"
+    },
     {
       "timestamp": "2026-08-29T05:10:30Z",
       "tipo": "logro_partida",
@@ -6737,15 +6759,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Gold II (38 LP)"
-    },
-    {
-      "timestamp": "2026-08-27T02:44:23Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Gold II (46 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6759,7 +6772,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 6.938852
+    "ゆうき まこと": 6.940337
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
