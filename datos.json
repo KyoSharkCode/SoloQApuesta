@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-29T13:58:34.540167",
+  "ultimaActualizacion": "2026-08-29T14:02:50.995670",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5293,22 +5293,18 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Bronze II",
-      "lp": 99,
-      "winrate": "44%",
-      "elo_score": 699,
+      "rango": "Bronze I",
+      "lp": 16,
+      "winrate": "45%",
+      "elo_score": 716,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -152,
+      "escalador_semana": -135,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
-        },
-        {
-          "rol": "Support",
-          "cantidad": 1
+          "cantidad": 10
         }
       ],
       "top_recientes": [
@@ -5321,7 +5317,7 @@
           "cantidad": 3
         },
         {
-          "campeon": "Taric",
+          "campeon": "Garen",
           "cantidad": 1
         }
       ],
@@ -5696,9 +5692,32 @@
           "lp": 99,
           "rango": "Bronze",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-29T14:02:43Z",
+          "lp": 16,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744757506",
+          "campeon": "Garen",
+          "kda": "13/4/12 (6.25)",
+          "resultado": "Victoria",
+          "duracion": "38min",
+          "lp_change": 17,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744753350",
           "campeon": "Kayle",
@@ -5851,38 +5870,40 @@
           "estilo_secundario": 8400,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744532946",
-          "campeon": "Taric",
-          "kda": "6/4/26 (8.0)",
-          "resultado": "Victoria",
-          "duracion": "34min",
-          "lp_change": 34,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 47,
+      "kills_recientes": 54,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
-      "kills_semana": 91,
+      "vision_promedio_reciente": 29,
+      "kills_semana": 102,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 49,
-      "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.95,
+      "vision_promedio_semana": 47,
+      "primeras_sangre_semana": 3,
+      "kda_promedio_semana": 3.04,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 216,
+      "campeones_ganados_semana": 5,
+      "asistencias_semana": 211,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788011980.985,
+          "kills": 13,
+          "muertes": 4,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 43,
+          "campeon": "Garen",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 239,
+          "duracion_seg": 2330,
+          "damage_taken": 46157,
+          "danio_recibido_pct": 25.6,
+          "objetivos_robados": 1,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 56
+        },
         {
           "fin_seg": 1788005379.006,
           "kills": 2,
@@ -6281,25 +6302,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 36
-        },
-        {
-          "fin_seg": 1787684532.406,
-          "kills": 2,
-          "muertes": 5,
-          "asistencias": 17,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 101,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 96,
-          "duracion_seg": 2712,
-          "damage_taken": 35818,
-          "danio_recibido_pct": 15.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 33
         }
       ],
       "duo_semana": null,
@@ -6313,10 +6315,10 @@
         "damage_taken": 35638,
         "campeon": "Illaoi"
       },
-      "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 20,
-      "tiempo_cc_semana": 533,
-      "max_partidas_en_un_dia": 4,
+      "objetivos_robados_semana": 1,
+      "estructuras_destruidas_semana": 21,
+      "tiempo_cc_semana": 556,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787996906862,
         "campeon": "Illaoi",
@@ -6339,8 +6341,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.95,
-      "detalle": "2.95 KDA"
+      "valor": 3.04,
+      "detalle": "3.04 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6395,6 +6397,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-29T14:02:43Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1744757506",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Garen dio el golpe final al Nexus"
+    },
     {
       "timestamp": "2026-08-29T11:15:32Z",
       "tipo": "badge_semanal",
@@ -6767,16 +6779,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "El Buñuelito",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-08-27T04:04:23Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "Pinea",
-      "top_posicion": 2,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -6790,7 +6792,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 7.106154
+    "ゆうき まこと": 7.109038
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
