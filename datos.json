@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-29T12:08:25.491326",
+  "ultimaActualizacion": "2026-08-29T12:10:48.623149",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5312,13 +5312,13 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Bronze I",
-      "lp": 22,
+      "rango": "Bronze II",
+      "lp": 99,
       "winrate": "44%",
-      "elo_score": 722,
+      "elo_score": 699,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -129,
+      "escalador_semana": -152,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5333,11 +5333,11 @@
       "top_recientes": [
         {
           "campeon": "Illaoi",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "campeon": "Kayle",
-          "cantidad": 2
+          "cantidad": 3
         },
         {
           "campeon": "Taric",
@@ -5709,9 +5709,32 @@
           "lp": 22,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-29T12:10:33Z",
+          "lp": 99,
+          "rango": "Bronze",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1744753350",
+          "campeon": "Kayle",
+          "kda": "2/7/4 (0.86)",
+          "resultado": "Derrota",
+          "duracion": "35min",
+          "lp_change": -23,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744750930",
           "campeon": "Kayle",
@@ -5864,38 +5887,40 @@
           "estilo_secundario": 8400,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744526698",
-          "campeon": "Illaoi",
-          "kda": "7/8/0 (0.88)",
-          "resultado": "Derrota",
-          "duracion": "31min",
-          "lp_change": -23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 52,
+      "kills_recientes": 47,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 33,
-      "kills_semana": 92,
+      "kills_semana": 91,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 50,
+      "vision_promedio_semana": 49,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.03,
+      "kda_promedio_semana": 2.95,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 214,
+      "asistencias_semana": 216,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788005379.006,
+          "kills": 2,
+          "muertes": 7,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 23,
+          "campeon": "Kayle",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 222,
+          "duracion_seg": 2127,
+          "damage_taken": 27366,
+          "danio_recibido_pct": 16.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 4
+        },
         {
           "fin_seg": 1788001929.853,
           "kills": 4,
@@ -6294,25 +6319,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 33
-        },
-        {
-          "fin_seg": 1787681409.553,
-          "kills": 3,
-          "muertes": 4,
-          "asistencias": 2,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 34,
-          "campeon": "Swain",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 43,
-          "duracion_seg": 1200,
-          "damage_taken": 12786,
-          "danio_recibido_pct": 18.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 27
         }
       ],
       "duo_semana": null,
@@ -6328,8 +6334,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 20,
-      "tiempo_cc_semana": 556,
-      "max_partidas_en_un_dia": 3,
+      "tiempo_cc_semana": 533,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1787996906862,
         "campeon": "Illaoi",
@@ -6352,8 +6358,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.03,
-      "detalle": "3.03 KDA"
+      "valor": 2.95,
+      "detalle": "2.95 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6803,7 +6809,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 7.032569
+    "ゆうき まこと": 7.034053
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
