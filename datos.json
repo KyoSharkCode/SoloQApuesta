@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-29T14:14:52.246277",
+  "ultimaActualizacion": "2026-08-29T14:17:28.904186",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5285,13 +5285,13 @@
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 10
+          "cantidad": 9
         }
       ],
       "top_recientes": [
         {
           "campeon": "Illaoi",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "campeon": "Kayle",
@@ -5683,6 +5683,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1744762208",
+          "campeon": "Garen",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:12",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1744757506",
           "campeon": "Garen",
           "kda": "13/4/12 (6.25)",
@@ -5834,37 +5851,20 @@
           "estilo_secundario": 8000,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744543212",
-          "campeon": "Illaoi",
-          "kda": "12/4/7 (4.75)",
-          "resultado": "Victoria",
-          "duracion": "30min",
-          "lp_change": 17,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 54,
+      "kills_recientes": 42,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 29,
-      "kills_semana": 102,
+      "vision_promedio_reciente": 30,
+      "kills_semana": 100,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 47,
+      "vision_promedio_semana": 45,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 3.04,
+      "kda_promedio_semana": 2.98,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 211,
-      "partidas_semana": 22,
+      "asistencias_semana": 192,
+      "partidas_semana": 21,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1788011980.985,
@@ -6264,25 +6264,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 34
-        },
-        {
-          "fin_seg": 1787692589.686,
-          "kills": 2,
-          "muertes": 5,
-          "asistencias": 19,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 84,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 49,
-          "duracion_seg": 2089,
-          "damage_taken": 26416,
-          "danio_recibido_pct": 15.1,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 36
         }
       ],
       "duo_semana": null,
@@ -6297,8 +6278,8 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 21,
-      "tiempo_cc_semana": 556,
+      "estructuras_destruidas_semana": 20,
+      "tiempo_cc_semana": 520,
       "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1787996906862,
@@ -6322,8 +6303,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.04,
-      "detalle": "3.04 KDA"
+      "valor": 2.98,
+      "detalle": "2.98 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6773,7 +6754,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 7.117129
+    "ゆうき まこと": 7.118861
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
