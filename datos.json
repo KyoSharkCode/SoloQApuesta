@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-30T08:44:23.573443",
+  "ultimaActualizacion": "2026-08-30T08:46:25.971506",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3933,7 +3933,7 @@
       "icono": 5935,
       "rango": "Platinum IV",
       "lp": 25,
-      "winrate": "67%",
+      "winrate": "64%",
       "elo_score": 1625,
       "record_lp_score": 1625,
       "record_lp_label": "Platinum IV (25 LP)",
@@ -3952,14 +3952,14 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
-          "campeon": "Teemo",
+          "campeon": "Singed",
           "cantidad": 1
         },
         {
-          "campeon": "Sion",
+          "campeon": "Teemo",
           "cantidad": 1
         }
       ],
@@ -4160,6 +4160,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1745015096",
+          "campeon": "Singed",
+          "kda": "7/9/13 (2.22)",
+          "resultado": "Derrota",
+          "duracion": "32min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8200,
+          "wards_control": 7,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1744253939",
           "campeon": "Poppy",
           "kda": "3/4/6 (2.25)",
@@ -4313,38 +4330,40 @@
           "estilo_secundario": 8200,
           "wards_control": 3,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1742535112",
-          "campeon": "Poppy",
-          "kda": "22/5/18 (8.0)",
-          "resultado": "Derrota",
-          "duracion": "40min",
-          "lp_change": -10,
-          "hechizos": [
-            "SummonerTeleport",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8200,
-          "wards_control": 3,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 54,
+      "kills_recientes": 39,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 32,
-      "kills_semana": 23,
+      "vision_promedio_reciente": 30,
+      "kills_semana": 30,
       "pentakills_semana": 0,
       "vision_promedio_semana": 32,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.69,
+      "kda_promedio_semana": 2.58,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 55,
-      "partidas_semana": 8,
+      "asistencias_semana": 68,
+      "partidas_semana": 9,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788079497.079,
+          "kills": 7,
+          "muertes": 9,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 32,
+          "campeon": "Singed",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 248,
+          "duracion_seg": 1942,
+          "damage_taken": 42334,
+          "danio_recibido_pct": 23.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 50
+        },
         {
           "fin_seg": 1787820467.126,
           "kills": 3,
@@ -4505,9 +4524,9 @@
         "partidas": 1
       },
       "cs_min_semana": {
-        "cs_por_min": 7.3,
-        "cs": 229,
-        "campeon": "Teemo"
+        "cs_por_min": 7.7,
+        "cs": 248,
+        "campeon": "Singed"
       },
       "danio_recibido_semana": {
         "danio_recibido_pct": 34.5,
@@ -4515,9 +4534,9 @@
         "campeon": "Sion"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 16,
-      "tiempo_cc_semana": 288,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 17,
+      "tiempo_cc_semana": 338,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788062400
     },
@@ -6382,8 +6401,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 8,
-      "detalle": "8 partidas esta semana"
+      "valor": 9,
+      "detalle": "9 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "El Buñuelito",
@@ -6802,7 +6821,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 7.857143
+    "ゆうき まこと": 7.858508
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
