@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-30T23:24:25.745589",
+  "ultimaActualizacion": "2026-08-30T23:26:31.228486",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5268,18 +5268,22 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Bronze I",
-      "lp": 87,
-      "winrate": "47%",
-      "elo_score": 787,
+      "rango": "Silver IV",
+      "lp": 25,
+      "winrate": "48%",
+      "elo_score": 825,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -49,
+      "escalador_semana": -11,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
+          "cantidad": 8
+        },
+        {
+          "rol": "Support",
+          "cantidad": 1
         }
       ],
       "top_recientes": [
@@ -5288,11 +5292,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Garen",
+          "campeon": "Taric",
           "cantidad": 1
         },
         {
-          "campeon": "Illaoi",
+          "campeon": "Garen",
           "cantidad": 1
         }
       ],
@@ -5697,9 +5701,32 @@
           "lp": 87,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-30T23:26:20Z",
+          "lp": 25,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745135522",
+          "campeon": "Taric",
+          "kda": "3/4/22 (6.25)",
+          "resultado": "Victoria",
+          "duracion": "32min",
+          "lp_change": 38,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8351,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": true
+        },
         {
           "match_id": "LA1_1745117798",
           "campeon": "Kayle",
@@ -5852,38 +5879,40 @@
           "estilo_secundario": 8200,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744752005",
-          "campeon": "Illaoi",
-          "kda": "2/6/6 (1.33)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": 16,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8000,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 68,
+      "kills_recientes": 69,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 34,
-      "kills_semana": 126,
+      "vision_promedio_reciente": 41,
+      "kills_semana": 125,
       "pentakills_semana": 0,
       "vision_promedio_semana": 42,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.86,
+      "kda_promedio_semana": 2.99,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 192,
+      "asistencias_semana": 201,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788132364.131,
+          "kills": 3,
+          "muertes": 4,
+          "asistencias": 22,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 84,
+          "campeon": "Taric",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 35,
+          "duracion_seg": 1948,
+          "damage_taken": 21118,
+          "danio_recibido_pct": 16.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 50
+        },
         {
           "fin_seg": 1788130078.063,
           "kills": 10,
@@ -6282,25 +6311,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 37
-        },
-        {
-          "fin_seg": 1787771740.115,
-          "kills": 4,
-          "muertes": 6,
-          "asistencias": 13,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 90,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 55,
-          "duracion_seg": 1912,
-          "damage_taken": 28449,
-          "danio_recibido_pct": 19.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 55
         }
       ],
       "duo_semana": null,
@@ -6315,9 +6325,9 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 30,
-      "tiempo_cc_semana": 468,
-      "max_partidas_en_un_dia": 4,
+      "estructuras_destruidas_semana": 31,
+      "tiempo_cc_semana": 463,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1788098225394,
         "campeon": "Kayle",
@@ -6340,8 +6350,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.86,
-      "detalle": "2.86 KDA"
+      "valor": 2.99,
+      "detalle": "2.99 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6396,6 +6406,25 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-30T23:26:20Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1745135522",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Taric aniquiló al equipo rival sin bajas propias"
+    },
+    {
+      "timestamp": "2026-08-30T23:26:20Z",
+      "tipo": "posible_egida",
+      "icono": "icons/egida-de-valor.svg",
+      "categoria_label": "Posible Égida de Valor",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Taric · +38 LP"
+    },
     {
       "timestamp": "2026-08-30T22:48:20Z",
       "tipo": "logro_partida",
@@ -6761,25 +6790,6 @@
       "jugador_nuevo": "Galactic Shark",
       "jugador_anterior": null,
       "detalle": "Gold III (49 LP)"
-    },
-    {
-      "timestamp": "2026-08-28T16:16:26Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "El Buñuelito",
-      "top_posicion": 2,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-28T16:16:26Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6793,7 +6803,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 8.444677
+    "ゆうき まこと": 8.446003
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
