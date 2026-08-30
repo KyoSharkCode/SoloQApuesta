@@ -1,6 +1,44 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Nautilus",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Extenuación",
+                "icono": "SummonerExhaust.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            }
+        ],
+        "runas": {
+            "principal": 8351,
+            "secundario": 8400
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1788132819498,
+        "game_id": 1745143938,
+        "duo_con": [
+            "Ostia"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Ostia",
+                "campeon": "Kayle",
+                "hechizos": [
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    },
+                    {
+                        "nombre": "Extenuación",
+                        "icono": "SummonerExhaust.png"
+                    }
+                ]
+            }
+        ]
     },
     "Galactic Shark#AYK": {
         "en_partida": false
@@ -15,7 +53,334 @@
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Kayle",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Extenuación",
+                "icono": "SummonerExhaust.png"
+            }
+        ],
+        "runas": {
+            "principal": 8008,
+            "secundario": 8200
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1788132819498,
+        "game_id": 1745143938,
+        "duo_con": [
+            "Pinea"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Pinea",
+                "campeon": "Nautilus",
+                "hechizos": [
+                    {
+                        "nombre": "Extenuación",
+                        "icono": "SummonerExhaust.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    }
+                ]
+            }
+        ]
+    },
+    "_partidas_activas": {
+        "1745143938": {
+            "game_start_time": 1788132819498,
+            "modo_juego": "Solo/Duo",
+            "baneos": [
+                {
+                    "campeon": "Mordekaiser",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Zed",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Rammus",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Samira",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Swain",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Warwick",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Ashe",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Fizz",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Jinx",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Aatrox",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "Ostia#LAN",
+                    "campeon": "Kayle",
+                    "equipo": "blue",
+                    "icono_invocador": 6205,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage",
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "Pinea#Pinea",
+                    "campeon": "Nautilus",
+                    "equipo": "blue",
+                    "icono_invocador": 7126,
+                    "hechizos": [
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8351,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Tank",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "Sevin#LAN",
+                    "campeon": "MissFortune",
+                    "equipo": "blue",
+                    "icono_invocador": 3795,
+                    "hechizos": [
+                        {
+                            "nombre": "Barrera",
+                            "icono": "SummonerBarrier.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8369,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "DashinagamiYT#YTU",
+                    "campeon": "Katarina",
+                    "equipo": "blue",
+                    "icono_invocador": 7126,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "Malagix007#1101",
+                    "campeon": "MasterYi",
+                    "equipo": "blue",
+                    "icono_invocador": 6923,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 9923,
+                        "secundario": 8000
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "Manuelz#24029",
+                    "campeon": "Caitlyn",
+                    "equipo": "red",
+                    "icono_invocador": 7185,
+                    "hechizos": [
+                        {
+                            "nombre": "Barrera",
+                            "icono": "SummonerBarrier.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8021,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "Adrioxxx#LAN",
+                    "campeon": "Urgot",
+                    "equipo": "red",
+                    "icono_invocador": 6357,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Alpinito#Demon",
+                    "campeon": "Pantheon",
+                    "equipo": "red",
+                    "icono_invocador": 1588,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "Akzaheel#LAN",
+                    "campeon": "Fiddlesticks",
+                    "equipo": "red",
+                    "icono_invocador": 7131,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "harcdcore123#LAN",
+                    "campeon": "Lux",
+                    "equipo": "red",
+                    "icono_invocador": 4970,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                }
+            ]
+        }
     },
     "_eventos_vivo": [
         {
