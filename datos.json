@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-30T22:46:27.547736",
+  "ultimaActualizacion": "2026-08-30T22:48:33.943710",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5267,12 +5267,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Bronze I",
-      "lp": 69,
+      "lp": 87,
       "winrate": "47%",
-      "elo_score": 769,
+      "elo_score": 787,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": -67,
+      "escalador_semana": -49,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5283,14 +5283,14 @@
       "top_recientes": [
         {
           "campeon": "Kayle",
-          "cantidad": 6
-        },
-        {
-          "campeon": "Illaoi",
-          "cantidad": 2
+          "cantidad": 7
         },
         {
           "campeon": "Garen",
+          "cantidad": 1
+        },
+        {
+          "campeon": "Illaoi",
           "cantidad": 1
         }
       ],
@@ -5689,9 +5689,32 @@
           "lp": 69,
           "rango": "Bronze",
           "division": "I"
+        },
+        {
+          "fecha": "2026-08-30T22:48:20Z",
+          "lp": 87,
+          "rango": "Bronze",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745117798",
+          "campeon": "Kayle",
+          "kda": "10/7/16 (3.71)",
+          "resultado": "Victoria",
+          "duracion": "47min",
+          "lp_change": 18,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerExhaust"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745035328",
           "campeon": "Kayle",
@@ -5844,38 +5867,40 @@
           "estilo_secundario": 8000,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744585475",
-          "campeon": "Illaoi",
-          "kda": "3/7/4 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "36min",
-          "lp_change": -24,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8000,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 61,
+      "kills_recientes": 68,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
+      "vision_promedio_reciente": 34,
       "kills_semana": 126,
       "pentakills_semana": 0,
       "vision_promedio_semana": 42,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.85,
+      "kda_promedio_semana": 2.86,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 5,
-      "asistencias_semana": 190,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 192,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788130078.063,
+          "kills": 10,
+          "muertes": 7,
+          "asistencias": 16,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 40,
+          "campeon": "Kayle",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 322,
+          "duracion_seg": 2869,
+          "damage_taken": 52275,
+          "danio_recibido_pct": 21.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 5,
+          "tiempo_cc": 27
+        },
         {
           "fin_seg": 1788106992.404,
           "kills": 16,
@@ -6274,25 +6299,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 55
-        },
-        {
-          "fin_seg": 1787754005.637,
-          "kills": 10,
-          "muertes": 7,
-          "asistencias": 14,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 49,
-          "campeon": "Veigar",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 197,
-          "duracion_seg": 2556,
-          "damage_taken": 32839,
-          "danio_recibido_pct": 16.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 29
         }
       ],
       "duo_semana": null,
@@ -6307,9 +6313,9 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 26,
-      "tiempo_cc_semana": 470,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 30,
+      "tiempo_cc_semana": 468,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1788098225394,
         "campeon": "Kayle",
@@ -6332,8 +6338,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.85,
-      "detalle": "2.85 KDA"
+      "valor": 2.86,
+      "detalle": "2.86 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6388,6 +6394,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-30T22:48:20Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1745117798",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Kayle dio el golpe final al Nexus"
+    },
     {
       "timestamp": "2026-08-30T18:14:24Z",
       "tipo": "adelantamiento",
@@ -6762,15 +6778,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-08-28T01:38:20Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Silver II (55 LP)"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6784,7 +6791,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 8.419473
+    "ゆうき まこと": 8.420782
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
