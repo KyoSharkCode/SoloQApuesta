@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-30T18:12:25.660809",
+  "ultimaActualizacion": "2026-08-30T18:14:32.045944",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2461,18 +2461,18 @@
     {
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
-      "rango": "Gold II",
-      "lp": 17,
-      "winrate": "51%",
-      "elo_score": 1417,
+      "rango": "Gold III",
+      "lp": 97,
+      "winrate": "50%",
+      "elo_score": 1397,
       "record_lp_score": 1475,
       "record_lp_label": "Gold II (75 LP)",
-      "escalador_semana": 181,
+      "escalador_semana": 161,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 9
+          "cantidad": 8
         },
         {
           "rol": "ADC",
@@ -2485,11 +2485,11 @@
           "cantidad": 7
         },
         {
-          "campeon": "Caitlyn",
+          "campeon": "Nami",
           "cantidad": 1
         },
         {
-          "campeon": "Zoe",
+          "campeon": "Caitlyn",
           "cantidad": 1
         }
       ],
@@ -3188,9 +3188,32 @@
           "lp": 17,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-08-30T18:14:24Z",
+          "lp": 97,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745054639",
+          "campeon": "Nami",
+          "kda": "1/8/10 (1.38)",
+          "resultado": "Derrota",
+          "duracion": "30min",
+          "lp_change": -20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerExhaust"
+          ],
+          "duo_con": [],
+          "perk_principal": 8214,
+          "estilo_secundario": 8300,
+          "wards_control": 6,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1744935640",
           "campeon": "Caitlyn",
@@ -3359,40 +3382,40 @@
           "estilo_secundario": 8200,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744192010",
-          "campeon": "Lux",
-          "kda": "4/12/9 (1.08)",
-          "resultado": "Derrota",
-          "duracion": "28min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerBarrier"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8128,
-          "estilo_secundario": 8200,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 71,
+      "kills_recientes": 68,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 200,
+      "vision_promedio_reciente": 33,
+      "kills_semana": 189,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 30,
-      "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.68,
+      "vision_promedio_semana": 32,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 2.63,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 220,
+      "asistencias_semana": 221,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788113606.122,
+          "kills": 1,
+          "muertes": 8,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 70,
+          "campeon": "Nami",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 20,
+          "duracion_seg": 1816,
+          "damage_taken": 25802,
+          "danio_recibido_pct": 17.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 40
+        },
         {
           "fin_seg": 1788062923.43,
           "kills": 19,
@@ -3884,32 +3907,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 25
-        },
-        {
-          "fin_seg": 1787632132.489,
-          "kills": 12,
-          "muertes": 9,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 20,
-          "campeon": "Caitlyn",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 218,
-          "duracion_seg": 1876,
-          "damage_taken": 23443,
-          "danio_recibido_pct": 15.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 20
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 19
+        "partidas": 18
       },
       "cs_min_semana": {
         "cs_por_min": 7.8,
@@ -3922,9 +3924,9 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 32,
-      "tiempo_cc_semana": 704,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 31,
+      "tiempo_cc_semana": 724,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788062400
     },
@@ -6424,8 +6426,8 @@
     },
     "asistente": {
       "jugador": "El Buñuelito",
-      "valor": 220,
-      "detalle": "220 asistencias"
+      "valor": 221,
+      "detalle": "221 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6450,8 +6452,8 @@
     },
     "duo_dinamico": {
       "jugador": "El Buñuelito",
-      "valor": 19,
-      "detalle": "con Pinea (19 partidas juntos)"
+      "valor": 18,
+      "detalle": "con Pinea (18 partidas juntos)"
     },
     "ladron": {
       "jugador": "Galactic Shark",
@@ -6465,11 +6467,21 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 704,
-      "detalle": "704s de CC aplicado"
+      "valor": 724,
+      "detalle": "724s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-30T18:14:24Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "El Buñuelito",
+      "top_posicion": 2,
+      "detalle": null
+    },
     {
       "timestamp": "2026-08-30T16:24:23Z",
       "tipo": "logro_partida",
@@ -6843,30 +6855,20 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Silver II (55 LP)"
-    },
-    {
-      "timestamp": "2026-08-28T01:12:22Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
   "dia_referencia_eventos": 1788062400,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "El Buñuelito#KyA": 2,
-    "Pinea#Pinea": 3,
+    "Pinea#Pinea": 2,
+    "El Buñuelito#KyA": 3,
     "Galactic Shark#AYK": 4,
     "adrianNOOBYT#LAN": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 8.236472
+    "ゆうき まこと": 8.237845
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
