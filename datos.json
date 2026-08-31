@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-31T00:46:24.595150",
+  "ultimaActualizacion": "2026-08-31T00:48:40.345144",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2404,34 +2404,34 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Gold III",
-      "lp": 77,
+      "lp": 97,
       "winrate": "50%",
-      "elo_score": 1377,
+      "elo_score": 1397,
       "record_lp_score": 1475,
       "record_lp_label": "Gold II (75 LP)",
-      "escalador_semana": 177,
+      "escalador_semana": 197,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
           "rol": "ADC",
-          "cantidad": 1
+          "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Ahri",
-          "cantidad": 7
+          "cantidad": 6
+        },
+        {
+          "campeon": "Caitlyn",
+          "cantidad": 2
         },
         {
           "campeon": "Zoe",
-          "cantidad": 1
-        },
-        {
-          "campeon": "Nami",
           "cantidad": 1
         }
       ],
@@ -3142,9 +3142,34 @@
           "lp": 77,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-08-31T00:48:24Z",
+          "lp": 97,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745159785",
+          "campeon": "Caitlyn",
+          "kda": "13/5/9 (4.4)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerBarrier"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745127048",
           "campeon": "Zoe",
@@ -3309,30 +3334,11 @@
           "estilo_secundario": 8100,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744656590",
-          "campeon": "Ahri",
-          "kda": "2/6/4 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "25min",
-          "lp_change": -19,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8992,
-          "estilo_secundario": 8100,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 76,
+      "kills_recientes": 87,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 35,
+      "vision_promedio_reciente": 36,
       "kills_semana": 187,
       "pentakills_semana": 0,
       "vision_promedio_semana": 32,
@@ -3340,9 +3346,30 @@
       "kda_promedio_semana": 2.48,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 229,
+      "asistencias_semana": 230,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788137184.551,
+          "kills": 13,
+          "muertes": 5,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 20,
+          "campeon": "Caitlyn",
+          "victoria": true,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 196,
+          "duracion_seg": 1748,
+          "damage_taken": 19687,
+          "danio_recibido_pct": 14.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 4,
+          "tiempo_cc": 18
+        },
         {
           "fin_seg": 1788131195.168,
           "kills": 11,
@@ -3832,25 +3859,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 60
-        },
-        {
-          "fin_seg": 1787688089.585,
-          "kills": 13,
-          "muertes": 5,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 26,
-          "campeon": "Xayah",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 223,
-          "duracion_seg": 2143,
-          "damage_taken": 32284,
-          "danio_recibido_pct": 15.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 29
         }
       ],
       "duo_semana": {
@@ -3868,10 +3876,20 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 32,
-      "tiempo_cc_semana": 750,
-      "max_partidas_en_un_dia": 3,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 35,
+      "tiempo_cc_semana": 739,
+      "max_partidas_en_un_dia": 4,
+      "primera_victoria_hoy": {
+        "timestamp": 1788137184551,
+        "campeon": "Caitlyn",
+        "kda": "13/5/9 (4.4)",
+        "equipo": "red",
+        "duracion": "29:08",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerBarrier"
+        ]
+      },
       "dia_referencia": 1788062400
     },
     {
@@ -5295,12 +5313,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 44,
+      "lp": 63,
       "winrate": "49%",
-      "elo_score": 844,
+      "elo_score": 863,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 8,
+      "escalador_semana": 27,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5739,9 +5757,34 @@
           "lp": 44,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-31T00:48:24Z",
+          "lp": 63,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745159785",
+          "campeon": "Kayle",
+          "kda": "6/4/12 (4.5)",
+          "resultado": "Victoria",
+          "duracion": "29min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerExhaust"
+          ],
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200,
+          "wards_control": 4,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745143938",
           "campeon": "Kayle",
@@ -5896,38 +5939,42 @@
           "estilo_secundario": 8200,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744750930",
-          "campeon": "Kayle",
-          "kda": "4/2/3 (3.5)",
-          "resultado": "Derrota",
-          "duracion": "33min",
-          "lp_change": -23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 66,
+      "kills_recientes": 68,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 41,
-      "kills_semana": 128,
+      "vision_promedio_reciente": 43,
+      "kills_semana": 134,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 41,
+      "vision_promedio_semana": 39,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.93,
+      "kda_promedio_semana": 3.07,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 206,
+      "asistencias_semana": 207,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788137184.551,
+          "kills": 6,
+          "muertes": 4,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 46,
+          "campeon": "Kayle",
+          "victoria": true,
+          "duo_con": [
+            "El Buñuelito"
+          ],
+          "cs": 159,
+          "duracion_seg": 1748,
+          "damage_taken": 23974,
+          "danio_recibido_pct": 17.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 12
+        },
         {
           "fin_seg": 1788135015.448,
           "kills": 3,
@@ -6347,29 +6394,10 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 55
-        },
-        {
-          "fin_seg": 1787779638.45,
-          "kills": 0,
-          "muertes": 7,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 104,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 58,
-          "duracion_seg": 2263,
-          "damage_taken": 31898,
-          "danio_recibido_pct": 18.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 37
         }
       ],
       "duo_semana": {
-        "nombre": "Pinea",
+        "nombre": "El Buñuelito",
         "partidas": 1
       },
       "cs_min_semana": {
@@ -6383,9 +6411,9 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 36,
-      "tiempo_cc_semana": 471,
-      "max_partidas_en_un_dia": 6,
+      "estructuras_destruidas_semana": 37,
+      "tiempo_cc_semana": 446,
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1788098225394,
         "campeon": "Kayle",
@@ -6408,8 +6436,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.93,
-      "detalle": "2.93 KDA"
+      "valor": 3.07,
+      "detalle": "3.07 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6418,8 +6446,8 @@
     },
     "asistente": {
       "jugador": "El Buñuelito",
-      "valor": 229,
-      "detalle": "229 asistencias"
+      "valor": 230,
+      "detalle": "230 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6459,11 +6487,21 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 750,
-      "detalle": "750s de CC aplicado"
+      "valor": 739,
+      "detalle": "739s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-31T00:48:24Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1745159785",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Caitlyn dio el golpe final al Nexus"
+    },
     {
       "timestamp": "2026-08-30T23:26:20Z",
       "tipo": "logro_partida",
@@ -6839,15 +6877,6 @@
       "jugador_nuevo": "Galactic Shark",
       "jugador_anterior": null,
       "detalle": "Shyvana · 2/0/2 en 15:32"
-    },
-    {
-      "timestamp": "2026-08-28T16:16:26Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Galactic Shark",
-      "jugador_anterior": null,
-      "detalle": "Gold III (49 LP)"
     }
   ],
   "titular_primera_victoria_dia": "ゆうき まこと",
@@ -6861,7 +6890,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 8.499068
+    "ゆうき まこと": 8.500461
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
