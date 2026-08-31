@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-08-31T16:26:27.415461",
+  "ultimaActualizacion": "2026-08-31T16:28:40.278767",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5234,12 +5234,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 81,
-      "winrate": "50%",
-      "elo_score": 881,
+      "lp": 61,
+      "winrate": "49%",
+      "elo_score": 861,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 81,
+      "escalador_semana": 61,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5698,9 +5698,32 @@
           "lp": 81,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-08-31T16:28:26Z",
+          "lp": 61,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745316559",
+          "campeon": "Kayle",
+          "kda": "4/5/10 (2.8)",
+          "resultado": "Derrota",
+          "duracion": "33min",
+          "lp_change": -20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerExhaust"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8200,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745310933",
           "campeon": "Kayle",
@@ -5861,38 +5884,40 @@
           "estilo_secundario": 8200,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745027354",
-          "campeon": "Kayle",
-          "kda": "12/9/13 (2.78)",
-          "resultado": "Victoria",
-          "duracion": "45min",
-          "lp_change": 17,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 61,
+      "kills_recientes": 53,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 46,
-      "kills_semana": 130,
+      "kills_semana": 134,
       "pentakills_semana": 0,
       "vision_promedio_semana": 38,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.2,
+      "kda_promedio_semana": 3.19,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 200,
-      "partidas_semana": 23,
+      "asistencias_semana": 210,
+      "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788193622.239,
+          "kills": 4,
+          "muertes": 5,
+          "asistencias": 10,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 32,
+          "campeon": "Kayle",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 200,
+          "duracion_seg": 2038,
+          "damage_taken": 28542,
+          "danio_recibido_pct": 17.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 12
+        },
         {
           "fin_seg": 1788190708.905,
           "kills": 3,
@@ -6355,8 +6380,8 @@
       },
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 42,
-      "tiempo_cc_semana": 415,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 427,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1788190708905,
         "campeon": "Kayle",
@@ -6379,8 +6404,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.2,
-      "detalle": "3.2 KDA"
+      "valor": 3.19,
+      "detalle": "3.19 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6388,9 +6413,9 @@
       "detalle": "4 campeones distintos ganados"
     },
     "asistente": {
-      "jugador": "El Buñuelito",
-      "valor": 209,
-      "detalle": "209 asistencias"
+      "jugador": "Ostia",
+      "valor": 210,
+      "detalle": "210 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6435,6 +6460,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-08-31T16:28:26Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "El Buñuelito",
+      "detalle": "210 asistencias"
+    },
     {
       "timestamp": "2026-08-31T15:40:34Z",
       "tipo": "logro_partida",
@@ -6811,15 +6846,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Fiora dio el golpe final al Nexus"
-    },
-    {
-      "timestamp": "2026-08-28T21:14:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Gold II (54 LP)"
     }
   ],
   "titular_primera_victoria_dia": "Ostia",
@@ -6833,7 +6859,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 9.125903
+    "ゆうき まこと": 9.127285
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
