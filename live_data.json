@@ -6,7 +6,45 @@
         "en_partida": false
     },
     "El Buñuelito#KyA": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Caitlyn",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Barrera",
+                "icono": "SummonerBarrier.png"
+            }
+        ],
+        "runas": {
+            "principal": 8008,
+            "secundario": 8200
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1788201391732,
+        "game_id": 1745338393,
+        "duo_con": [
+            "Ostia"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Ostia",
+                "campeon": "Kayle",
+                "hechizos": [
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    },
+                    {
+                        "nombre": "Extenuación",
+                        "icono": "SummonerExhaust.png"
+                    }
+                ]
+            }
+        ]
     },
     "ゆうき まこと#1411": {
         "en_partida": false
@@ -33,12 +71,31 @@
             "secundario": 8200
         },
         "modo_juego": "Solo/Duo",
-        "game_start_time": 1788201387366,
-        "game_id": 1745338393
+        "game_start_time": 1788201391732,
+        "game_id": 1745338393,
+        "duo_con": [
+            "El Buñuelito"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "El Buñuelito",
+                "campeon": "Caitlyn",
+                "hechizos": [
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    },
+                    {
+                        "nombre": "Barrera",
+                        "icono": "SummonerBarrier.png"
+                    }
+                ]
+            }
+        ]
     },
     "_partidas_activas": {
         "1745338393": {
-            "game_start_time": 1788201387366,
+            "game_start_time": 1788201391732,
             "modo_juego": "Solo/Duo",
             "baneos": [
                 {
