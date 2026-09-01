@@ -345,13 +345,20 @@ Responde solo con el consejo, sin saludos ni introducciones ni markdown."""
         return None
 
 
-def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos, diccionario_campeones):
+def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos, diccionario_campeones, partidas_anteriores=None):
     """
     Arma el detalle completo de UNA partida (los 10 jugadores, ambos
     equipos, objetivos) a partir del match ya descargado (md) — no pide
     nada nuevo a Riot, reutiliza exactamente el mismo detalle que ya se
     bajó para el historial/agregados semanales. Esto alimenta
     datos_partidas.json, que consume partida.html.
+
+    partidas_anteriores es el datos_partidas.json de la corrida pasada
+    (dict match_id -> detalle) — se usa SOLO para reutilizar consejos_ia
+    ya generados: esta función se vuelve a llamar para partidas viejas
+    que siguen en la ventana de "últimas 10" de algún jugador (CASO B
+    reconstruye toda la ventana, no solo la partida nueva), y sin este
+    caché se le pediría a Gemini el mismo consejo una y otra vez.
     """
     info    = md.get("info", {})
     dur_seg = info.get("gameDuration", 0)
@@ -442,9 +449,17 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
 
     # ── Consejos de IA — solo jugadores del grupo, solo partidas reales ──
     # (un Remake dura <210s y no deja estadísticas con sentido para opinar).
+    # Primero se revisa si esta MISMA partida ya tenía consejo guardado de
+    # una corrida anterior (ver docstring) — así no se le vuelve a pedir a
+    # Gemini algo que ya se generó, aunque construir_detalle_partida() se
+    # vuelva a llamar para ella.
+    consejos_previos = ((partidas_anteriores or {}).get(match_id, {}) or {}).get("consejos_ia", {}) or {}
     consejos_ia = {}
     if dur_seg >= 210:
         for nombre_completo_gm, jd in grupo_participantes:
+            if nombre_completo_gm in consejos_previos:
+                consejos_ia[nombre_completo_gm] = consejos_previos[nombre_completo_gm]
+                continue
             consejo = generar_consejo_ia(jd, equipos_info, dur_seg)
             if consejo:
                 consejos_ia[nombre_completo_gm] = consejo
@@ -670,6 +685,22 @@ def obtener_datos():
                         ultima_actualizacion_ts = None
         except Exception as e:
             print(f"⚠️ No se pudo leer datos.json anterior: {e}")
+
+    # datos_partidas.json de la corrida anterior — se carga acá arriba (no
+    # solo al guardar, al final) para poder reutilizar los consejos_ia ya
+    # generados de partidas que siguen dentro de la ventana de últimas 10
+    # de algún jugador. Sin esto, cada vez que alguien juega una partida
+    # nueva, CASO B reconstruye TODAS sus últimas 10 (no solo la nueva) y
+    # generar_consejo_ia() se volvería a llamar de más para las que ya
+    # tenían consejo — gastando cuota de Gemini y regenerando texto que
+    # el usuario ya vio, sin necesidad.
+    partidas_anteriores = {}
+    if os.path.exists("datos_partidas.json"):
+        try:
+            with open("datos_partidas.json", "r", encoding="utf-8") as f:
+                partidas_anteriores = json.load(f) or {}
+        except Exception as e:
+            print(f"⚠️ No se pudo leer datos_partidas.json anterior: {e}")
 
     eventos_nuevos = []  # eventos que se generan en ESTA corrida (historial de logros)
     # Detalle completo de partidas (10 jugadores, objetivos) para
@@ -903,7 +934,7 @@ def obtener_datos():
                     md_r = detalles_por_id.get(match_id)
                     if md_r:
                         partidas_recolectadas[match_id] = construir_detalle_partida(
-                            match_id, md_r, nombre_por_puuid, diccionario_hechizos, diccionario_campeones
+                            match_id, md_r, nombre_por_puuid, diccionario_hechizos, diccionario_campeones, partidas_anteriores
                         )
 
                 # ── Historial visible (últimas 10) ──
@@ -1342,14 +1373,9 @@ def obtener_datos():
             if h.get("match_id"):
                 match_ids_vigentes.add(h["match_id"])
 
-    partidas_anteriores = {}
-    if os.path.exists("datos_partidas.json"):
-        try:
-            with open("datos_partidas.json", "r", encoding="utf-8") as f:
-                partidas_anteriores = json.load(f) or {}
-        except Exception as e:
-            print(f"⚠️ No se pudo leer datos_partidas.json anterior: {e}")
-
+    # partidas_anteriores ya se cargó arriba, al inicio de obtener_datos()
+    # (se reutiliza también para no regenerar consejos_ia de más — ver
+    # construir_detalle_partida). Acá solo se usa para el merge final.
     partidas_merged   = {**partidas_anteriores, **partidas_recolectadas}
     partidas_exportar = {mid: det for mid, det in partidas_merged.items() if mid in match_ids_vigentes}
 
