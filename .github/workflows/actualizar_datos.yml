@@ -32,6 +32,10 @@ jobs:
       - name: Actualizar datos de ranking
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+          # Consejos de IA por partida (partida.html) — opcional: si el
+          # Secret no existe, el script simplemente no genera consejos y
+          # el sitio no muestra el botón de IA. Ver generar_consejo_ia().
+          GEMINI_API_KEY: ${{ secrets.Gemini_Tips_API_Key }}
         run: python actualizar_datos.py
 
       - name: Actualizar estado en vivo
