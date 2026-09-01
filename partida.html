@@ -234,6 +234,65 @@
     padding:5px 10px; border-radius:8px; border:1px solid var(--border);
     white-space:nowrap; box-shadow:0 4px 16px rgba(0,0,0,.4);
   }
+
+  /* Botón de consejo de IA — esquina opuesta al menú de navegación, con
+     su propio pulso para que se note como una función especial. Se
+     mantiene oculto (hidden) hasta que se confirma que esta partida sí
+     tiene un consejo guardado para el jugador de la URL. */
+  .ai-fab{
+    position:fixed; left:28px; bottom:28px; z-index:999;
+    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+    background:linear-gradient(135deg, var(--accent-soft), var(--accent)); color:#fff; font-size:24px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 24px rgba(34,211,238,.5), 0 4px 24px rgba(168,85,247,.25);
+    transition:transform .25s ease, box-shadow .2s ease;
+    animation:aiFabPulse 2.8s ease-in-out infinite;
+  }
+  .ai-fab:hover{ transform:scale(1.08); box-shadow:0 6px 32px rgba(34,211,238,.7), 0 6px 32px rgba(168,85,247,.35); }
+  @keyframes aiFabPulse{
+    0%,100%{ box-shadow:0 4px 24px rgba(34,211,238,.5), 0 4px 24px rgba(168,85,247,.25); }
+    50%{ box-shadow:0 4px 30px rgba(34,211,238,.75), 0 4px 30px rgba(168,85,247,.4); }
+  }
+
+  .ai-panel-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,.55); backdrop-filter:blur(2px);
+    z-index:1000; opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .ai-panel-backdrop.open{ opacity:1; pointer-events:auto; }
+
+  .ai-panel{
+    position:fixed; top:0; right:0; height:100%; width:400px; max-width:88vw;
+    background:var(--panel-2); backdrop-filter:blur(18px); border-left:1px solid var(--border);
+    box-shadow:-10px 0 40px rgba(0,0,0,.5);
+    z-index:1001; transform:translateX(100%); transition:transform .35s cubic-bezier(.16,1,.3,1);
+    display:flex; flex-direction:column; padding:24px; box-sizing:border-box;
+  }
+  .ai-panel.open{ transform:translateX(0); }
+  .ai-panel-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-shrink:0; }
+  .ai-panel-title{
+    display:flex; align-items:center; gap:8px; font-family:'Rajdhani',sans-serif; font-weight:700;
+    font-size:18px; text-transform:uppercase; letter-spacing:.05em;
+    background:linear-gradient(90deg, var(--accent-soft), var(--accent));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .ai-panel-close{ background:none; border:none; color:var(--text-faint); font-size:22px; cursor:pointer; line-height:1; padding:4px; }
+  .ai-panel-close:hover{ color:var(--text); }
+  .ai-panel-body{ flex:1; overflow-y:auto; }
+
+  .ai-thinking{ display:flex; align-items:center; gap:10px; color:var(--text-faint); font-size:14px; padding:20px 2px; }
+  .ai-thinking-dot{ width:8px; height:8px; border-radius:50%; background:var(--accent-soft); animation:aiDotPulse 1.2s ease-in-out infinite; }
+  .ai-thinking-dot:nth-child(2){ animation-delay:.2s; }
+  .ai-thinking-dot:nth-child(3){ animation-delay:.4s; }
+  @keyframes aiDotPulse{ 0%,60%,100%{ opacity:.3; transform:scale(.8); } 30%{ opacity:1; transform:scale(1.15); } }
+
+  .ai-advice-text{
+    font-size:15px; line-height:1.6; color:var(--text); background:var(--panel);
+    border:1px solid var(--border); border-radius:var(--radius); padding:18px;
+    backdrop-filter:blur(10px); box-shadow:inset 0 0 20px rgba(34,211,238,.06);
+    white-space:pre-wrap;
+  }
+  .ai-advice-cursor{ display:inline-block; width:2px; height:1em; background:var(--accent-soft); margin-left:2px; vertical-align:middle; animation:aiCursorBlink .8s step-end infinite; }
+  @keyframes aiCursorBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 </style>
 </head>
 <body>
@@ -303,6 +362,26 @@
   </div>
   <button class="fab-main" id="fabMainBtn" type="button" aria-label="Menú de navegación" title="Menú">+</button>
 </div>
+
+<!-- Consejo de IA — botón flotante + panel lateral. Oculto por defecto;
+     initConsejoIA() lo revela solo si esta partida tiene un consejo
+     guardado para el jugador identificado en la URL (?jugador=). -->
+<button class="ai-fab" id="aiFab" type="button" aria-label="Consejo de IA" title="Consejo de IA" hidden>✨</button>
+<div class="ai-panel-backdrop" id="aiPanelBackdrop"></div>
+<div class="ai-panel" id="aiPanel" role="dialog" aria-label="Consejo de IA">
+  <div class="ai-panel-header">
+    <span class="ai-panel-title">✨ Consejo IA</span>
+    <button class="ai-panel-close" id="aiPanelClose" type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="ai-panel-body">
+    <div class="ai-thinking" id="aiThinking">
+      <span class="ai-thinking-dot"></span><span class="ai-thinking-dot"></span><span class="ai-thinking-dot"></span>
+      Analizando la partida…
+    </div>
+    <div class="ai-advice-text" id="aiAdviceText" style="display:none;"></div>
+  </div>
+</div>
+
 <script>
 (function(){
   var menu = document.getElementById('fabMenu');
@@ -850,6 +929,65 @@ window.addEventListener('load', () => {
   document.getElementById('btn-copiar').addEventListener('click', copiarAlPortapapeles);
   document.getElementById('btn-descargar').addEventListener('click', descargarTarjeta);
 
+  // ── Consejo de IA — botón flotante + panel lateral ──────────────────
+  // El consejo ya viene precalculado desde actualizar_datos.py (Camino A:
+  // se genera una sola vez, cuando la partida es nueva, y se guarda en
+  // datos_partidas.json — ver generar_consejo_ia() en el bot). Acá solo
+  // se decide si mostrar el botón, y se simula el efecto de "generándose
+  // ahora" con un instante de "pensando…" seguido de un typewriter.
+  let consejoIaTexto    = null;
+  let consejoIaMostrado = false; // no repetir el typewriter si se cierra y reabre el panel
+
+  function initConsejoIA(detalle){
+    const fab = document.getElementById('aiFab');
+    consejoIaTexto = (jugadorId && detalle.consejos_ia) ? (detalle.consejos_ia[jugadorId] || null) : null;
+    fab.hidden = !consejoIaTexto;
+  }
+
+  function escribirTexto(el, texto){
+    el.innerHTML = '';
+    const cursor = document.createElement('span');
+    cursor.className = 'ai-advice-cursor';
+    let i = 0;
+    (function paso(){
+      if (i <= texto.length){
+        el.textContent = texto.slice(0, i);
+        el.appendChild(cursor);
+        i++;
+        setTimeout(paso, 16);
+      } else {
+        cursor.remove();
+      }
+    })();
+  }
+
+  function openAiPanel(){
+    document.getElementById('aiPanel').classList.add('open');
+    document.getElementById('aiPanelBackdrop').classList.add('open');
+    if (consejoIaMostrado || !consejoIaTexto) return;
+    const thinking = document.getElementById('aiThinking');
+    const textEl   = document.getElementById('aiAdviceText');
+    thinking.style.display = 'flex';
+    textEl.style.display   = 'none';
+    textEl.textContent     = '';
+    setTimeout(() => {
+      thinking.style.display = 'none';
+      textEl.style.display   = 'block';
+      escribirTexto(textEl, consejoIaTexto);
+      consejoIaMostrado = true;
+    }, 900);
+  }
+
+  function closeAiPanel(){
+    document.getElementById('aiPanel').classList.remove('open');
+    document.getElementById('aiPanelBackdrop').classList.remove('open');
+  }
+
+  document.getElementById('aiFab').addEventListener('click', openAiPanel);
+  document.getElementById('aiPanelClose').addEventListener('click', closeAiPanel);
+  document.getElementById('aiPanelBackdrop').addEventListener('click', closeAiPanel);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAiPanel(); });
+
   if (!matchId) {
     showState('No se especificó ninguna partida.', true);
     return;
@@ -899,6 +1037,7 @@ window.addEventListener('load', () => {
         return;
       }
       render(detalle);
+      initConsejoIA(detalle);
       document.getElementById('state-msg').style.display = 'none';
       document.getElementById('partida-content').style.display = 'block';
     } catch (e) {
