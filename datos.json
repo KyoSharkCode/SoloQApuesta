@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-01T04:04:30.441003",
+  "ultimaActualizacion": "2026-09-01T04:06:32.957108",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4570,12 +4570,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver I",
-      "lp": 32,
-      "winrate": "53%",
-      "elo_score": 1132,
+      "lp": 16,
+      "winrate": "52%",
+      "elo_score": 1116,
       "record_lp_score": 1147,
       "record_lp_label": "Silver I (47 LP)",
-      "escalador_semana": 127,
+      "escalador_semana": 111,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4597,7 +4597,7 @@
         {
           "campeon": "Akali",
           "nivel": 40,
-          "puntos": "462.200"
+          "puntos": "463.107"
         },
         {
           "campeon": "Warwick",
@@ -4932,9 +4932,32 @@
           "lp": 32,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-09-01T04:06:21Z",
+          "lp": 16,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745466086",
+          "campeon": "Akali",
+          "kda": "11/11/7 (1.64)",
+          "resultado": "Derrota",
+          "duracion": "38min",
+          "lp_change": -16,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745453467",
           "campeon": "Akali",
@@ -5087,38 +5110,40 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744704718",
-          "campeon": "Akali",
-          "kda": "10/10/7 (1.7)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": -16,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 78,
+      "kills_recientes": 79,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 26,
-      "kills_semana": 160,
+      "vision_promedio_reciente": 24,
+      "kills_semana": 171,
       "pentakills_semana": 0,
       "vision_promedio_semana": 28,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 2.63,
+      "kda_promedio_semana": 2.53,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 116,
-      "partidas_semana": 16,
+      "asistencias_semana": 123,
+      "partidas_semana": 17,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788235502.955,
+          "kills": 11,
+          "muertes": 11,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 22,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 179,
+          "duracion_seg": 2314,
+          "damage_taken": 38340,
+          "danio_recibido_pct": 19.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 6
+        },
         {
           "fin_seg": 1788232891.031,
           "kills": 8,
@@ -5436,9 +5461,9 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 22,
-      "tiempo_cc_semana": 131,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 23,
+      "tiempo_cc_semana": 137,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788235200
     },
@@ -7125,7 +7150,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 9.590296
+    "ゆうき まこと": 9.591579
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
