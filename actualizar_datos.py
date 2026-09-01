@@ -283,6 +283,68 @@ def extraer_runas(pp):
     return perk_principal, estilo_secundario
 
 
+def generar_consejo_ia(jd, equipos_info, dur_seg):
+    """
+    Le pide a Gemini un consejo corto (2-3 frases, en español) sobre el
+    desempeño de UN jugador del grupo en UNA partida puntual, a partir
+    solo de las estadísticas ya descargadas — no hay replay ni video, así
+    que el consejo se queda a nivel de tendencias/números, no de mecánica
+    fina (posicionamiento, manejo de oleadas, etc.).
+
+    Se llama UNA sola vez por partida nueva, desde construir_detalle_partida
+    — el merge con partidas_anteriores en el guardado final de
+    datos_partidas.json (ver más abajo) evita que se vuelva a llamar en
+    corridas futuras para la misma partida, así que no gasta cuota de la
+    API de más.
+
+    Si no hay GEMINI_API_KEY configurada en los Secrets, o la llamada
+    falla por lo que sea (cuota, timeout, respuesta rara), regresa None
+    en silencio — partida.html simplemente no muestra el botón de IA para
+    esa partida, sin romper el resto del script.
+    """
+    api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        return None
+
+    equipo_propio = equipos_info.get(jd["equipo"], {}) or {}
+    resultado_txt = "ganó" if jd["victoria"] else "perdió"
+    minutos       = round(dur_seg / 60)
+
+    prompt = f"""Eres un asistente amistoso dentro de un tracker de estadísticas de League of Legends para un grupo pequeño de amigos que juega SoloQ/Dúo clasificatorio.
+
+Analiza el desempeño de este jugador en UNA partida y escribe un consejo corto (máximo 3 frases, en español, tono cercano y motivador — nada de tecnicismos exagerados ni inventar datos que no te doy). Si el desempeño fue bueno, felicítalo brevemente y da un consejo de refuerzo. Si fue malo, sé constructivo, nunca cruel. No puedes ver la partida en sí (video/replay), solo estos números, así que no inventes detalles de jugadas específicas.
+
+Datos de la partida:
+- Resultado: {resultado_txt} la partida ({minutos} minutos)
+- Campeón: {jd['campeon']} en el rol {jd['rol'] or 'N/A'}
+- KDA: {jd['kills']}/{jd['muertes']}/{jd['asistencias']}
+- CS por minuto: {jd['cs_por_min']}
+- Puntaje de visión: {jd['vision']} (wards colocadas: {jd['wards_colocadas']}, control wards: {jd['wards_control']})
+- Daño a campeones: {jd['danio_a_campeones']}
+- Oro obtenido: {jd['oro']}
+- Su equipo {'ganó' if equipo_propio.get('victoria') else 'perdió'} la partida
+
+Responde solo con el consejo, sin saludos ni introducciones ni markdown."""
+
+    try:
+        # Alias "-latest" (en vez de una versión fechada) para no depender
+        # de un modelo puntual que Google puede deprecar más adelante —
+        # siempre apunta al Flash-Lite recomendado vigente (nivel gratuito).
+        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent"
+        body = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"maxOutputTokens": 220, "temperature": 0.7},
+        }
+        resp = requests.post(url, params={"key": api_key}, json=body, timeout=25)
+        resp.raise_for_status()
+        data  = resp.json()
+        texto = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        return texto or None
+    except Exception as e:
+        print(f"  ⚠️ No se pudo generar consejo de IA: {e}")
+        return None
+
+
 def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechizos, diccionario_campeones):
     """
     Arma el detalle completo de UNA partida (los 10 jugadores, ambos
@@ -327,6 +389,12 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
         }
 
     jugadores_detalle = []
+    # (riot_id completo "Nombre#Tag", dict del jugador) — solo los del
+    # grupo, para generar su consejo de IA después del bucle sin volver
+    # a recorrer todo. nombre_grupo ya viene truncado (sin tag) en el
+    # dict de arriba, pero acá necesitamos el "Nombre#Tag" completo tal
+    # cual lo usa jugadorId en partida.html (mismo formato que JUGADORES).
+    grupo_participantes = []
     for pp in info.get("participants", []):
         lado         = "blue" if pp.get("teamId") == 100 else "red"
         cs           = pp.get("totalMinionsKilled", 0) + pp.get("neutralMinionsKilled", 0)
@@ -338,7 +406,7 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
         game_name = pp.get("riotIdGameName") or pp.get("summonerName") or "?"
         tag_line  = pp.get("riotIdTagline") or ""
 
-        jugadores_detalle.append({
+        jd = {
             "nombre_grupo":      nombre_grupo.split("#", 1)[0] if nombre_grupo else None,
             "riot_id":           f"{game_name}#{tag_line}" if tag_line else game_name,
             "equipo":            lado,
@@ -367,7 +435,19 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
             "wards_control":     pp.get("visionWardsBoughtInGame", 0),
             "rol":               pp.get("teamPosition", ""),
             "victoria":          bool(pp.get("win")),
-        })
+        }
+        jugadores_detalle.append(jd)
+        if nombre_grupo:
+            grupo_participantes.append((nombre_grupo, jd))
+
+    # ── Consejos de IA — solo jugadores del grupo, solo partidas reales ──
+    # (un Remake dura <210s y no deja estadísticas con sentido para opinar).
+    consejos_ia = {}
+    if dur_seg >= 210:
+        for nombre_completo_gm, jd in grupo_participantes:
+            consejo = generar_consejo_ia(jd, equipos_info, dur_seg)
+            if consejo:
+                consejos_ia[nombre_completo_gm] = consejo
 
     fin_ms = info.get("gameEndTimestamp") or (info.get("gameCreation", 0) + dur_seg * 1000)
     return {
@@ -378,6 +458,7 @@ def construir_detalle_partida(match_id, md, nombre_por_puuid, diccionario_hechiz
         "parche":       ".".join((info.get("gameVersion", "") or "").split(".")[:2]),
         "equipos":      equipos_info,
         "jugadores":    jugadores_detalle,
+        "consejos_ia":  consejos_ia,
     }
 
 
