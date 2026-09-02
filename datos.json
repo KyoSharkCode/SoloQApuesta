@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-02T02:10:36.399786",
+  "ultimaActualizacion": "2026-09-02T02:12:58.623583",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5550,17 +5550,17 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 56,
+      "lp": 75,
       "winrate": "49%",
-      "elo_score": 856,
+      "elo_score": 875,
       "record_lp_score": 893,
       "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 92,
+      "escalador_semana": 111,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "rol": "Support",
@@ -5570,15 +5570,15 @@
       "top_recientes": [
         {
           "campeon": "Kayle",
-          "cantidad": 5
+          "cantidad": 4
+        },
+        {
+          "campeon": "Veigar",
+          "cantidad": 2
         },
         {
           "campeon": "Taric",
           "cantidad": 2
-        },
-        {
-          "campeon": "Veigar",
-          "cantidad": 1
         }
       ],
       "maestrias": [
@@ -6072,9 +6072,32 @@
           "lp": 56,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-02T02:12:23Z",
+          "lp": 75,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745656483",
+          "campeon": "Veigar",
+          "kda": "4/11/14 (1.64)",
+          "resultado": "Victoria",
+          "duracion": "44min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8200,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745648155",
           "campeon": "Veigar",
@@ -6239,38 +6262,40 @@
           "estilo_secundario": 8000,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745316559",
-          "campeon": "Kayle",
-          "kda": "4/5/10 (2.8)",
-          "resultado": "Derrota",
-          "duracion": "33min",
-          "lp_change": -20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerExhaust"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8200,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 30,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 36,
-      "kills_semana": 116,
+      "kills_semana": 114,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 40,
+      "vision_promedio_semana": 39,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.48,
+      "kda_promedio_semana": 3.28,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 239,
+      "asistencias_semana": 247,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788315037.1,
+          "kills": 4,
+          "muertes": 11,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 27,
+          "campeon": "Veigar",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 178,
+          "duracion_seg": 2644,
+          "damage_taken": 41621,
+          "danio_recibido_pct": 15.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 37
+        },
         {
           "fin_seg": 1788311920.626,
           "kills": 5,
@@ -6727,25 +6752,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 3
-        },
-        {
-          "fin_seg": 1787999391.703,
-          "kills": 6,
-          "muertes": 3,
-          "asistencias": 6,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 31,
-          "campeon": "Kayle",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 210,
-          "duracion_seg": 1986,
-          "damage_taken": 23141,
-          "danio_recibido_pct": 14.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 7
         }
       ],
       "duo_semana": {
@@ -6763,9 +6769,9 @@
         "campeon": "Garen"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 40,
-      "tiempo_cc_semana": 439,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 37,
+      "tiempo_cc_semana": 469,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1788311920626,
         "campeon": "Veigar",
@@ -6788,8 +6794,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.48,
-      "detalle": "3.48 KDA"
+      "valor": 3.28,
+      "detalle": "3.28 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -6798,8 +6804,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 239,
-      "detalle": "239 asistencias"
+      "valor": 247,
+      "detalle": "247 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6844,6 +6850,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-02T02:12:23Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1745656483",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Veigar aniquiló al equipo rival sin bajas propias"
+    },
     {
       "timestamp": "2026-09-02T01:40:37Z",
       "tipo": "badge_semanal",
@@ -7225,16 +7241,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Gold II (95 LP)"
-    },
-    {
-      "timestamp": "2026-08-31T03:02:23Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1745207200",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Caitlyn aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7248,7 +7254,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 10.474744
+    "ゆうき まこと": 10.475985
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
