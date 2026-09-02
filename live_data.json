@@ -1,12 +1,88 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Nautilus",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Extenuación",
+                "icono": "SummonerExhaust.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            }
+        ],
+        "runas": {
+            "principal": 8351,
+            "secundario": 8400
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1788311062226,
+        "game_id": 1745647748,
+        "duo_con": [
+            "El Buñuelito"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "El Buñuelito",
+                "campeon": "Caitlyn",
+                "hechizos": [
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    },
+                    {
+                        "nombre": "Limpiar",
+                        "icono": "SummonerBoost.png"
+                    }
+                ]
+            }
+        ]
     },
     "Galactic Shark#AYK": {
         "en_partida": false
     },
     "El Buñuelito#KyA": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Caitlyn",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Limpiar",
+                "icono": "SummonerBoost.png"
+            }
+        ],
+        "runas": {
+            "principal": 8008,
+            "secundario": 8200
+        },
+        "modo_juego": "Solo/Duo",
+        "game_start_time": 1788311062226,
+        "game_id": 1745647748,
+        "duo_con": [
+            "Pinea"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "Pinea",
+                "campeon": "Nautilus",
+                "hechizos": [
+                    {
+                        "nombre": "Extenuación",
+                        "icono": "SummonerExhaust.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerFlash.png"
+                    }
+                ]
+            }
+        ]
     },
     "ゆうき まこと#1411": {
         "en_partida": false
@@ -37,6 +113,293 @@
         "game_id": 1745648155
     },
     "_partidas_activas": {
+        "1745647748": {
+            "game_start_time": 1788311062226,
+            "modo_juego": "Solo/Duo",
+            "baneos": [
+                {
+                    "campeon": "Malphite",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Jinx",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Malzahar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Lulu",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Briar",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "MissFortune",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Akali",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Shaco",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Swain",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Zed",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "Cold#942",
+                    "campeon": "Shyvana",
+                    "equipo": "blue",
+                    "icono_invocador": 3182,
+                    "hechizos": [
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "DevilSriker99#LAN21",
+                    "campeon": "Morgana",
+                    "equipo": "blue",
+                    "icono_invocador": 5089,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Support",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "joeamstrong#LAN",
+                    "campeon": "Kayn",
+                    "equipo": "blue",
+                    "icono_invocador": 6923,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "El Boris#0510",
+                    "campeon": "Kaisa",
+                    "equipo": "blue",
+                    "icono_invocador": 5414,
+                    "hechizos": [
+                        {
+                            "nombre": "Limpiar",
+                            "icono": "SummonerBoost.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "lachaladezed#8586",
+                    "campeon": "Locke",
+                    "equipo": "blue",
+                    "icono_invocador": 7084,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8230,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "TCG GenghisKhan#LBI",
+                    "campeon": "Urgot",
+                    "equipo": "red",
+                    "icono_invocador": 1625,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "SILVERT#LAN",
+                    "campeon": "Leblanc",
+                    "equipo": "red",
+                    "icono_invocador": 6594,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "El buñuelito#KyA",
+                    "campeon": "Caitlyn",
+                    "equipo": "red",
+                    "icono_invocador": 5453,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Limpiar",
+                            "icono": "SummonerBoost.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Marksman"
+                    ]
+                },
+                {
+                    "nombre": "Pinea#Pinea",
+                    "campeon": "Nautilus",
+                    "equipo": "red",
+                    "icono_invocador": 7126,
+                    "hechizos": [
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8351,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Tank",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "ebry05#6800",
+                    "campeon": "Volibear",
+                    "equipo": "red",
+                    "icono_invocador": 6016,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                }
+            ]
+        },
         "1745648155": {
             "game_start_time": 1788310365752,
             "modo_juego": "Solo/Duo",
