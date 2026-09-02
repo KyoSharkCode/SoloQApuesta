@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-02T13:08:24.215072",
+  "ultimaActualizacion": "2026-09-02T13:10:45.914623",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5594,12 +5594,12 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver IV",
-      "lp": 75,
-      "winrate": "49%",
-      "elo_score": 875,
-      "record_lp_score": 893,
-      "record_lp_label": "Silver IV (93 LP)",
-      "escalador_semana": 111,
+      "lp": 94,
+      "winrate": "50%",
+      "elo_score": 894,
+      "record_lp_score": 894,
+      "record_lp_label": "Silver IV (94 LP)",
+      "escalador_semana": 130,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5607,7 +5607,7 @@
           "cantidad": 5
         },
         {
-          "rol": "Support",
+          "rol": "Mid",
           "cantidad": 3
         }
       ],
@@ -6122,9 +6122,32 @@
           "lp": 75,
           "rango": "Silver",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-02T13:10:33Z",
+          "lp": 94,
+          "rango": "Silver",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1745766844",
+          "campeon": "Ziggs",
+          "kda": "3/1/19 (22.0)",
+          "resultado": "Victoria",
+          "duracion": "34min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8229,
+          "estilo_secundario": 8000,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1745656483",
           "campeon": "Veigar",
@@ -6287,40 +6310,40 @@
           "estilo_secundario": 8400,
           "wards_control": 7,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745323162",
-          "campeon": "Swain",
-          "kda": "1/10/13 (1.4)",
-          "resultado": "Derrota",
-          "duracion": "35min",
-          "lp_change": -20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8000,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 30,
+      "kills_recientes": 32,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 36,
-      "kills_semana": 114,
+      "vision_promedio_reciente": 29,
+      "kills_semana": 113,
       "pentakills_semana": 0,
       "vision_promedio_semana": 39,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.28,
+      "kda_promedio_semana": 3.45,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 247,
+      "campeones_ganados_semana": 5,
+      "asistencias_semana": 263,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788354503.934,
+          "kills": 3,
+          "muertes": 1,
+          "asistencias": 19,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 30,
+          "campeon": "Ziggs",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 245,
+          "duracion_seg": 2092,
+          "damage_taken": 13912,
+          "danio_recibido_pct": 9.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 12
+        },
         {
           "fin_seg": 1788315037.1,
           "kills": 4,
@@ -6777,25 +6800,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1788001929.853,
-          "kills": 4,
-          "muertes": 2,
-          "asistencias": 3,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 30,
-          "campeon": "Kayle",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 225,
-          "duracion_seg": 2009,
-          "damage_taken": 17627,
-          "danio_recibido_pct": 14.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 3
         }
       ],
       "duo_semana": {
@@ -6813,10 +6817,20 @@
         "campeon": "Garen"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 37,
-      "tiempo_cc_semana": 469,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 38,
+      "tiempo_cc_semana": 478,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1788354503934,
+        "campeon": "Ziggs",
+        "kda": "3/1/19 (22.0)",
+        "equipo": "red",
+        "duracion": "34:52",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerTeleport"
+        ]
+      },
       "dia_referencia": 1788321600
     }
   ],
@@ -6828,18 +6842,18 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.28,
-      "detalle": "3.28 KDA"
+      "valor": 3.45,
+      "detalle": "3.45 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
-      "valor": 4,
-      "detalle": "4 campeones distintos ganados"
+      "valor": 5,
+      "detalle": "5 campeones distintos ganados"
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 247,
-      "detalle": "247 asistencias"
+      "valor": 263,
+      "detalle": "263 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6884,6 +6898,44 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-02T13:10:33Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1745766844",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Ziggs aniquiló al equipo rival sin bajas propias"
+    },
+    {
+      "timestamp": "2026-09-02T13:10:33Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1745766844",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Ziggs dio el golpe final al Nexus"
+    },
+    {
+      "timestamp": "2026-09-02T13:10:33Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Silver IV (94 LP)"
+    },
+    {
+      "timestamp": "2026-09-02T13:10:33Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-09-02T07:44:21Z",
       "tipo": "badge_semanal",
@@ -7237,49 +7289,9 @@
       "jugador_nuevo": "Galactic Shark",
       "jugador_anterior": "Ostia",
       "detalle": "2 objetivos robados"
-    },
-    {
-      "timestamp": "2026-08-31T20:40:36Z",
-      "tipo": "badge_semanal",
-      "categoria": "ladron",
-      "categoria_label": "El Ladrón",
-      "icono": "🥷",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "Galactic Shark",
-      "detalle": "2 objetivos robados"
-    },
-    {
-      "timestamp": "2026-08-31T19:12:20Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Galactic Shark",
-      "jugador_anterior": "El Buñuelito",
-      "top_posicion": 3,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-08-31T17:48:20Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1745329033",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Fiora aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-08-31T17:48:20Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1745329033",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Taric aniquiló al equipo rival sin bajas propias"
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "Ostia",
   "dia_referencia_eventos": 1788321600,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
@@ -7290,7 +7302,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 10.912679
+    "ゆうき まこと": 10.914178
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
