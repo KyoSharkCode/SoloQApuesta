@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-04T16:14:24.870451",
+  "ultimaActualizacion": "2026-09-04T16:16:26.038760",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2213,15 +2213,15 @@
       "kills_recientes": 46,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 28,
-      "kills_semana": 39,
+      "kills_semana": 37,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
+      "vision_promedio_semana": 28,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.21,
+      "kda_promedio_semana": 3.09,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 70,
-      "partidas_semana": 8,
+      "asistencias_semana": 68,
+      "partidas_semana": 7,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1788356861.287,
@@ -2367,32 +2367,11 @@
           "objetivos_robados": 1,
           "estructuras_destruidas": 3,
           "tiempo_cc": 32
-        },
-        {
-          "fin_seg": 1787933713.997,
-          "kills": 2,
-          "muertes": 0,
-          "asistencias": 2,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 15,
-          "campeon": "Shyvana",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 105,
-          "duracion_seg": 932,
-          "damage_taken": 8871,
-          "danio_recibido_pct": 26.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 4
         }
       ],
       "duo_semana": {
-        "nombre": "Pinea",
-        "partidas": 4
+        "nombre": "Ostia",
+        "partidas": 3
       },
       "cs_min_semana": {
         "cs_por_min": 7.4,
@@ -2406,7 +2385,7 @@
       },
       "objetivos_robados_semana": 2,
       "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 105,
+      "tiempo_cc_semana": 101,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788494400
@@ -6959,9 +6938,9 @@
       "detalle": "5 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Galactic Shark",
-      "valor": 3.21,
-      "detalle": "3.21 KDA"
+      "jugador": "Ostia",
+      "valor": 3.16,
+      "detalle": "3.16 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -7016,6 +6995,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-04T16:16:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "3.16 KDA"
+    },
     {
       "timestamp": "2026-09-04T15:50:33Z",
       "tipo": "badge_semanal",
@@ -7397,15 +7386,6 @@
       "jugador_nuevo": "Galactic Shark",
       "jugador_anterior": null,
       "detalle": "Gold II (2 LP)"
-    },
-    {
-      "timestamp": "2026-09-02T13:48:28Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Silver III (14 LP)"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7419,7 +7399,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 12.94802
+    "ゆうき まこと": 12.94937
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
