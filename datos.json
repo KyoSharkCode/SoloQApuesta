@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-04T04:28:26.078313",
+  "ultimaActualizacion": "2026-09-04T04:30:59.370963",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4488,17 +4488,17 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver I",
-      "lp": 7,
-      "winrate": "49%",
-      "elo_score": 1107,
+      "lp": 29,
+      "winrate": "50%",
+      "elo_score": 1129,
       "record_lp_score": 1173,
       "record_lp_label": "Silver I (73 LP)",
-      "escalador_semana": 42,
+      "escalador_semana": 64,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "rol": "Top",
@@ -4508,14 +4508,14 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 8
+          "cantidad": 9
         }
       ],
       "maestrias": [
         {
           "campeon": "Akali",
           "nivel": 42,
-          "puntos": "484.622"
+          "puntos": "485.533"
         },
         {
           "campeon": "Warwick",
@@ -4970,9 +4970,32 @@
           "lp": 7,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-09-04T04:30:43Z",
+          "lp": 29,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746169572",
+          "campeon": "Akali",
+          "kda": "3/0/4 (Perfect)",
+          "resultado": "Victoria",
+          "duracion": "16min",
+          "lp_change": 22,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746158718",
           "campeon": "Akali",
@@ -5125,38 +5148,40 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745935931",
-          "campeon": "Akali",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:08",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 97,
+      "kills_recientes": 100,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 39,
-      "kills_semana": 258,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 245,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 35,
+      "vision_promedio_semana": 34,
       "primeras_sangre_semana": 5,
-      "kda_promedio_semana": 2.27,
+      "kda_promedio_semana": 2.26,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 2,
-      "asistencias_semana": 130,
+      "campeones_ganados_semana": 1,
+      "asistencias_semana": 124,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788496202.17,
+          "kills": 3,
+          "muertes": 0,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 19,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 101,
+          "duracion_seg": 998,
+          "damage_taken": 6916,
+          "danio_recibido_pct": 14.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 1
+        },
         {
           "fin_seg": 1788494908.393,
           "kills": 8,
@@ -5574,25 +5599,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 3
-        },
-        {
-          "fin_seg": 1788228813.182,
-          "kills": 16,
-          "muertes": 8,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 39,
-          "campeon": "Yone",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 233,
-          "duracion_seg": 2268,
-          "damage_taken": 43017,
-          "danio_recibido_pct": 24.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 26
         }
       ],
       "duo_semana": null,
@@ -5607,9 +5613,9 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 21,
-      "tiempo_cc_semana": 120,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 20,
+      "tiempo_cc_semana": 95,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1788494908393,
         "campeon": "Akali",
@@ -6980,6 +6986,16 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-09-04T04:30:43Z",
+      "tipo": "logro_partida",
+      "categoria": "perfecta:LA1_1746169572",
+      "icono": "🌟",
+      "categoria_label": "Partida Perfecta",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Akali · 3/0/4 en 16:38"
+    },
+    {
       "timestamp": "2026-09-04T04:10:35Z",
       "tipo": "primera_victoria_dia",
       "icono": "🌅",
@@ -7358,15 +7374,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": "Silver IV (94 LP)"
-    },
-    {
-      "timestamp": "2026-09-02T13:10:33Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7380,7 +7387,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 12.479057
+    "ゆうき まこと": 12.480648
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
