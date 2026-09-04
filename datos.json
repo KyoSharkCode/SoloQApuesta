@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-04T15:48:27.750050",
+  "ultimaActualizacion": "2026-09-04T15:50:46.752930",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5667,21 +5667,21 @@
       "record_lp_score": 986,
       "record_lp_label": "Silver III (86 LP)",
       "escalador_semana": 251,
-      "rol_principal": "Support",
+      "rol_principal": "Top",
       "top_roles": [
         {
-          "rol": "Support",
-          "cantidad": 4
+          "rol": "Top",
+          "cantidad": 3
         },
         {
-          "rol": "Top",
+          "rol": "Support",
           "cantidad": 3
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 4
+          "cantidad": 3
         },
         {
           "campeon": "Kayle",
@@ -6277,6 +6277,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1746240073",
+          "campeon": "Swain",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:14",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1746234575",
           "campeon": "Taric",
           "kda": "1/3/13 (4.67)",
@@ -6434,37 +6451,20 @@
           "estilo_secundario": 8200,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745996119",
-          "campeon": "Taric",
-          "kda": "1/5/26 (5.4)",
-          "resultado": "Victoria",
-          "duracion": "33min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 6,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 33,
+      "kills_recientes": 32,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 50,
-      "kills_semana": 85,
+      "vision_promedio_reciente": 45,
+      "kills_semana": 82,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 37,
+      "vision_promedio_semana": 36,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.29,
+      "kda_promedio_semana": 3.16,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 260,
-      "partidas_semana": 24,
+      "asistencias_semana": 240,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1788536437.418,
@@ -6918,32 +6918,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 6
-        },
-        {
-          "fin_seg": 1788198479.05,
-          "kills": 3,
-          "muertes": 3,
-          "asistencias": 20,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 54,
-          "campeon": "Taric",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 36,
-          "duracion_seg": 1585,
-          "damage_taken": 19967,
-          "danio_recibido_pct": 18.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 26
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 5
+        "partidas": 4
       },
       "cs_min_semana": {
         "cs_por_min": 8.7,
@@ -6956,8 +6935,8 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 28,
-      "tiempo_cc_semana": 463,
+      "estructuras_destruidas_semana": 27,
+      "tiempo_cc_semana": 437,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1788529680033,
@@ -6980,9 +6959,9 @@
       "detalle": "5 primeras sangre"
     },
     "kda_player": {
-      "jugador": "Ostia",
-      "valor": 3.29,
-      "detalle": "3.29 KDA"
+      "jugador": "Galactic Shark",
+      "valor": 3.21,
+      "detalle": "3.21 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -6991,8 +6970,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 260,
-      "detalle": "260 asistencias"
+      "valor": 240,
+      "detalle": "240 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -7037,6 +7016,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-04T15:50:33Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "Ostia",
+      "detalle": "3.21 KDA"
+    },
     {
       "timestamp": "2026-09-04T15:42:26Z",
       "tipo": "badge_semanal",
@@ -7417,16 +7406,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": "Silver III (14 LP)"
-    },
-    {
-      "timestamp": "2026-09-02T13:10:33Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1745766844",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Ziggs aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7440,7 +7419,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 12.930751
+    "ゆうき まこと": 12.932205
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
