@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-05T14:12:26.836359",
+  "ultimaActualizacion": "2026-09-05T14:14:31.621081",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1680,13 +1680,13 @@
       "top_roles": [
         {
           "rol": "Jungla",
-          "cantidad": 10
+          "cantidad": 9
         }
       ],
       "top_recientes": [
         {
           "campeon": "Shyvana",
-          "cantidad": 10
+          "cantidad": 9
         }
       ],
       "maestrias": [
@@ -2028,6 +2028,25 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1746463782",
+          "campeon": "Shyvana",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:10",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1746467378",
           "campeon": "Shyvana",
           "kda": "2/6/3 (0.83)",
@@ -2195,30 +2214,11 @@
           "estilo_secundario": 8400,
           "wards_control": 3,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744308919",
-          "campeon": "Shyvana",
-          "kda": "6/8/8 (1.75)",
-          "resultado": "Derrota",
-          "duracion": "32min",
-          "lp_change": -17,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8400,
-          "wards_control": 7,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 47,
+      "kills_recientes": 41,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 28,
+      "vision_promedio_reciente": 26,
       "kills_semana": 21,
       "pentakills_semana": 0,
       "vision_promedio_semana": 22,
@@ -6256,6 +6256,25 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1746463782",
+          "campeon": "Illaoi",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:10",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8437,
+          "estilo_secundario": 8000,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1746467378",
           "campeon": "Illaoi",
           "kda": "3/6/4 (1.17)",
@@ -6413,25 +6432,6 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746049006",
-          "campeon": "Taric",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:22",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 33,
@@ -6444,8 +6444,8 @@
       "kda_promedio_semana": 3.21,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 248,
-      "partidas_semana": 23,
+      "asistencias_semana": 245,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1788616971.485,
@@ -6874,32 +6874,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1788222786.514,
-          "kills": 0,
-          "muertes": 1,
-          "asistencias": 3,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 44,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 34,
-          "duracion_seg": 1326,
-          "damage_taken": 13948,
-          "danio_recibido_pct": 16.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 13
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 4
+        "partidas": 3
       },
       "cs_min_semana": {
         "cs_por_min": 8.7,
@@ -6913,7 +6892,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 24,
-      "tiempo_cc_semana": 528,
+      "tiempo_cc_semana": 515,
       "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1788613655257,
@@ -6947,8 +6926,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 248,
-      "detalle": "248 asistencias"
+      "valor": 245,
+      "detalle": "245 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -7393,7 +7372,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 13.826781
+    "ゆうき まこと": 13.828086
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
