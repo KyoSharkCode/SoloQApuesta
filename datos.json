@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-05T15:00:57.767312",
+  "ultimaActualizacion": "2026-09-05T15:02:33.868077",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1670,12 +1670,12 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Gold III",
-      "lp": 84,
-      "winrate": "51%",
-      "elo_score": 1384,
+      "lp": 66,
+      "winrate": "50%",
+      "elo_score": 1366,
       "record_lp_score": 1402,
       "record_lp_label": "Gold II (2 LP)",
-      "escalador_semana": 30,
+      "escalador_semana": 12,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -2024,9 +2024,34 @@
           "lp": 84,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-05T15:02:20Z",
+          "lp": 66,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746464960",
+          "campeon": "Shyvana",
+          "kda": "3/6/6 (1.5)",
+          "resultado": "Derrota",
+          "duracion": "31min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Ostia"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 7,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746463782",
           "campeon": "Shyvana",
@@ -2195,40 +2220,42 @@
           "estilo_secundario": 8400,
           "wards_control": 6,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744526155",
-          "campeon": "Shyvana",
-          "kda": "2/0/2 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "15min",
-          "lp_change": 23,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8400,
-          "wards_control": 3,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 41,
+      "kills_recientes": 42,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 26,
-      "kills_semana": 21,
+      "vision_promedio_reciente": 28,
+      "kills_semana": 24,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 22,
+      "vision_promedio_semana": 24,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.19,
+      "kda_promedio_semana": 2.06,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 38,
-      "partidas_semana": 6,
+      "asistencias_semana": 44,
+      "partidas_semana": 7,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788620521.227,
+          "kills": 3,
+          "muertes": 6,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 31,
+          "campeon": "Shyvana",
+          "victoria": false,
+          "duo_con": [
+            "Ostia"
+          ],
+          "cs": 196,
+          "duracion_seg": 1914,
+          "damage_taken": 30802,
+          "danio_recibido_pct": 21.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 13
+        },
         {
           "fin_seg": 1788616971.485,
           "kills": 2,
@@ -2356,7 +2383,7 @@
       ],
       "duo_semana": {
         "nombre": "Ostia",
-        "partidas": 4
+        "partidas": 5
       },
       "cs_min_semana": {
         "cs_por_min": 7.4,
@@ -2370,8 +2397,8 @@
       },
       "objetivos_robados_semana": 1,
       "estructuras_destruidas_semana": 6,
-      "tiempo_cc_semana": 61,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 74,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788580800
     },
@@ -5622,31 +5649,31 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver III",
-      "lp": 84,
+      "lp": 64,
       "winrate": "51%",
-      "elo_score": 984,
+      "elo_score": 964,
       "record_lp_score": 1004,
       "record_lp_label": "Silver II (4 LP)",
-      "escalador_semana": 251,
+      "escalador_semana": 231,
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 5
+          "cantidad": 4
         },
         {
-          "rol": "Mid",
+          "rol": "Top",
           "cantidad": 2
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 5
+          "cantidad": 4
         },
         {
           "campeon": "Illaoi",
-          "cantidad": 1
+          "cantidad": 2
         },
         {
           "campeon": "Lux",
@@ -6252,9 +6279,34 @@
           "lp": 84,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-05T15:02:20Z",
+          "lp": 64,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746464960",
+          "campeon": "Illaoi",
+          "kda": "6/7/0 (0.86)",
+          "resultado": "Derrota",
+          "duracion": "31min",
+          "lp_change": -20,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8437,
+          "estilo_secundario": 8000,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746463782",
           "campeon": "Illaoi",
@@ -6413,40 +6465,42 @@
           "estilo_secundario": 8200,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746053247",
-          "campeon": "Taric",
-          "kda": "6/2/16 (11.0)",
-          "resultado": "Victoria",
-          "duracion": "24min",
-          "lp_change": 38,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 33,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 58,
-      "kills_semana": 76,
+      "vision_promedio_reciente": 56,
+      "kills_semana": 82,
       "pentakills_semana": 0,
       "vision_promedio_semana": 41,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.21,
+      "kda_promedio_semana": 3.05,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 245,
+      "asistencias_semana": 244,
       "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788620521.227,
+          "kills": 6,
+          "muertes": 7,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 27,
+          "campeon": "Illaoi",
+          "victoria": false,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 198,
+          "duracion_seg": 1914,
+          "damage_taken": 38336,
+          "danio_recibido_pct": 27.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 8
+        },
         {
           "fin_seg": 1788616971.485,
           "kills": 3,
@@ -6855,29 +6909,10 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 23
-        },
-        {
-          "fin_seg": 1788307045.223,
-          "kills": 0,
-          "muertes": 0,
-          "asistencias": 1,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 7,
-          "campeon": "Kayle",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 58,
-          "duracion_seg": 727,
-          "damage_taken": 6053,
-          "danio_recibido_pct": 17.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 4
         }
       ],
       "duo_semana": {
-        "nombre": "Pinea",
+        "nombre": "Galactic Shark",
         "partidas": 3
       },
       "cs_min_semana": {
@@ -6892,8 +6927,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 24,
-      "tiempo_cc_semana": 515,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 519,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1788613655257,
         "campeon": "Taric",
@@ -6916,8 +6951,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.21,
-      "detalle": "3.21 KDA"
+      "valor": 3.05,
+      "detalle": "3.05 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -6926,8 +6961,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 245,
-      "detalle": "245 asistencias"
+      "valor": 244,
+      "detalle": "244 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6942,7 +6977,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Ostia",
-      "valor": 251,
+      "valor": 231,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7372,7 +7407,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 13.859161
+    "ゆうき まこと": 13.860113
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
