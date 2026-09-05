@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-05T17:10:36.727465",
+  "ultimaActualizacion": "2026-09-05T17:12:31.338823",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1670,12 +1670,12 @@
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Gold III",
-      "lp": 88,
-      "winrate": "51%",
-      "elo_score": 1388,
+      "lp": 70,
+      "winrate": "50%",
+      "elo_score": 1370,
       "record_lp_score": 1402,
       "record_lp_label": "Gold II (2 LP)",
-      "escalador_semana": 30,
+      "escalador_semana": 12,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -2036,9 +2036,34 @@
           "lp": 88,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-05T17:12:21Z",
+          "lp": 70,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746480949",
+          "campeon": "Shyvana",
+          "kda": "8/1/13 (21.0)",
+          "resultado": "Derrota",
+          "duracion": "29min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "ゆうき まこと"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 6,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746475107",
           "campeon": "Shyvana",
@@ -2207,40 +2232,42 @@
           "estilo_secundario": 8400,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744585369",
-          "campeon": "Shyvana",
-          "kda": "6/8/11 (2.12)",
-          "resultado": "Derrota",
-          "duracion": "35min",
-          "lp_change": -18,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8400,
-          "wards_control": 7,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 40,
+      "kills_recientes": 42,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 30,
-      "kills_semana": 29,
+      "kills_semana": 37,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 33,
+      "vision_promedio_semana": 34,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.47,
+      "kda_promedio_semana": 3.03,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 50,
-      "partidas_semana": 6,
+      "asistencias_semana": 63,
+      "partidas_semana": 7,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788628286.596,
+          "kills": 8,
+          "muertes": 1,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 39,
+          "campeon": "Shyvana",
+          "victoria": false,
+          "duo_con": [
+            "ゆうき まこと"
+          ],
+          "cs": 191,
+          "duracion_seg": 1786,
+          "damage_taken": 26263,
+          "danio_recibido_pct": 19.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 20
+        },
         {
           "fin_seg": 1788625654.093,
           "kills": 10,
@@ -2383,9 +2410,9 @@
         "campeon": "Shyvana"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 7,
-      "tiempo_cc_semana": 85,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 9,
+      "tiempo_cc_semana": 105,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1788625654093,
         "campeon": "Shyvana",
@@ -3985,21 +4012,17 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Platinum IV",
-      "lp": 83,
-      "winrate": "67%",
-      "elo_score": 1683,
+      "lp": 72,
+      "winrate": "64%",
+      "elo_score": 1672,
       "record_lp_score": 1683,
       "record_lp_label": "Platinum IV (83 LP)",
-      "escalador_semana": 29,
+      "escalador_semana": 18,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 9
-        },
-        {
-          "rol": "Support",
-          "cantidad": 1
+          "cantidad": 10
         }
       ],
       "top_recientes": [
@@ -4009,7 +4032,7 @@
         },
         {
           "campeon": "Singed",
-          "cantidad": 1
+          "cantidad": 2
         },
         {
           "campeon": "Teemo",
@@ -4221,9 +4244,34 @@
           "lp": 83,
           "rango": "Platinum",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-05T17:12:21Z",
+          "lp": 72,
+          "rango": "Platinum",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746480949",
+          "campeon": "Singed",
+          "kda": "4/6/2 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "29min",
+          "lp_change": -11,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8010,
+          "estilo_secundario": 8200,
+          "wards_control": 7,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746475107",
           "campeon": "Poppy",
@@ -4380,38 +4428,42 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743279775",
-          "campeon": "Lulu",
-          "kda": "1/3/13 (4.67)",
-          "resultado": "Victoria",
-          "duracion": "30min",
-          "lp_change": 60,
-          "hechizos": [
-            "SummonerExhaust",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8214,
-          "estilo_secundario": 8400,
-          "wards_control": 9,
-          "posible_egida": true
         }
       ],
-      "kills_recientes": 30,
+      "kills_recientes": 33,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 34,
-      "kills_semana": 16,
+      "vision_promedio_reciente": 31,
+      "kills_semana": 20,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 44,
+      "vision_promedio_semana": 42,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.25,
+      "kda_promedio_semana": 1.96,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 29,
-      "partidas_semana": 3,
+      "asistencias_semana": 31,
+      "partidas_semana": 4,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788628286.596,
+          "kills": 4,
+          "muertes": 6,
+          "asistencias": 2,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 35,
+          "campeon": "Singed",
+          "victoria": false,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 264,
+          "duracion_seg": 1786,
+          "damage_taken": 30709,
+          "danio_recibido_pct": 22.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 41
+        },
         {
           "fin_seg": 1788625654.093,
           "kills": 5,
@@ -4474,11 +4526,11 @@
       ],
       "duo_semana": {
         "nombre": "Galactic Shark",
-        "partidas": 1
+        "partidas": 2
       },
       "cs_min_semana": {
-        "cs_por_min": 7.7,
-        "cs": 248,
+        "cs_por_min": 8.9,
+        "cs": 264,
         "campeon": "Singed"
       },
       "danio_recibido_semana": {
@@ -4487,9 +4539,9 @@
         "campeon": "Poppy"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 136,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 12,
+      "tiempo_cc_semana": 177,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1788625654093,
         "campeon": "Poppy",
@@ -7004,9 +7056,9 @@
       "detalle": "244 asistencias"
     },
     "farmeador": {
-      "jugador": "Ostia",
-      "valor": 8.7,
-      "detalle": "8.7 CS/min con Kayle"
+      "jugador": "ゆうき まこと",
+      "valor": 8.9,
+      "detalle": "8.9 CS/min con Singed"
     },
     "defensor": {
       "jugador": "Pinea",
@@ -7021,8 +7073,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 3,
-      "detalle": "3 partidas esta semana"
+      "valor": 4,
+      "detalle": "4 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -7046,6 +7098,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-05T17:12:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Ostia",
+      "detalle": "8.9 CS/min con Singed"
+    },
     {
       "timestamp": "2026-09-05T16:28:20Z",
       "tipo": "logro_partida",
@@ -7423,15 +7485,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Akali aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-03T02:06:26Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Silver I (73 LP)"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7445,7 +7498,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 13.945552
+    "ゆうき まこと": 13.946767
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
