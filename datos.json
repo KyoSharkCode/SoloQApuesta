@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-05T01:44:26.261533",
+  "ultimaActualizacion": "2026-09-05T01:46:30.485486",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2362,7 +2362,7 @@
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "rol": "ADC",
@@ -2371,11 +2371,11 @@
       ],
       "top_recientes": [
         {
-          "campeon": "Ahri",
-          "cantidad": 3
+          "campeon": "Zoe",
+          "cantidad": 2
         },
         {
-          "campeon": "Zoe",
+          "campeon": "Ahri",
           "cantidad": 2
         },
         {
@@ -3238,6 +3238,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1746343107",
+          "campeon": "Zoe",
+          "kda": "—",
+          "resultado": "Remake",
+          "duracion": "1:15",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8000,
+          "wards_control": null,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1746176465",
           "campeon": "Zoe",
           "kda": "10/4/5 (3.75)",
@@ -3397,39 +3414,20 @@
           "estilo_secundario": 8200,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745689149",
-          "campeon": "Ahri",
-          "kda": "4/7/12 (2.29)",
-          "resultado": "Derrota",
-          "duracion": "38min",
-          "lp_change": -21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8300,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 53,
+      "kills_recientes": 49,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 173,
+      "vision_promedio_reciente": 26,
+      "kills_semana": 162,
       "pentakills_semana": 0,
       "vision_promedio_semana": 31,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.03,
+      "kda_promedio_semana": 2.08,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 190,
-      "partidas_semana": 24,
+      "asistencias_semana": 177,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1788497781.15,
@@ -3905,25 +3903,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 4,
           "tiempo_cc": 18
-        },
-        {
-          "fin_seg": 1788131195.168,
-          "kills": 11,
-          "muertes": 16,
-          "asistencias": 13,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 40,
-          "campeon": "Zoe",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 191,
-          "duracion_seg": 2811,
-          "damage_taken": 47405,
-          "danio_recibido_pct": 14.1,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 51
         }
       ],
       "duo_semana": {
@@ -3941,8 +3920,8 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 40,
-      "tiempo_cc_semana": 622,
+      "estructuras_destruidas_semana": 37,
+      "tiempo_cc_semana": 571,
       "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788494400
@@ -6952,8 +6931,8 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 622,
-      "detalle": "622s de CC aplicado"
+      "valor": 571,
+      "detalle": "571s de CC aplicado"
     }
   },
   "eventos": [
@@ -7362,7 +7341,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 13.327759
+    "ゆうき まこと": 13.329075
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
