@@ -1,16 +1,16 @@
 {
-  "ultimaActualizacion": "2026-09-05T23:32:26.933219",
+  "ultimaActualizacion": "2026-09-05T23:34:34.399974",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
       "rango": "Gold II",
-      "lp": 8,
-      "winrate": "53%",
-      "elo_score": 1408,
+      "lp": 28,
+      "winrate": "54%",
+      "elo_score": 1428,
       "record_lp_score": 1495,
       "record_lp_label": "Gold II (95 LP)",
-      "escalador_semana": -66,
+      "escalador_semana": -46,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -939,9 +939,34 @@
           "lp": 8,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-05T23:34:23Z",
+          "lp": 28,
+          "rango": "Gold",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746562479",
+          "campeon": "Fiora",
+          "kda": "4/2/3 (3.5)",
+          "resultado": "Victoria",
+          "duracion": "22min",
+          "lp_change": 20,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8300,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746520775",
           "campeon": "Fiora",
@@ -1112,40 +1137,42 @@
           "estilo_secundario": 8300,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745689149",
-          "campeon": "Fiora",
-          "kda": "11/8/7 (2.25)",
-          "resultado": "Derrota",
-          "duracion": "38min",
-          "lp_change": -20,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8300,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 77,
+      "kills_recientes": 70,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
-      "kills_semana": 190,
+      "vision_promedio_reciente": 30,
+      "kills_semana": 184,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 36,
+      "vision_promedio_semana": 35,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.03,
+      "kda_promedio_semana": 2.01,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 159,
+      "asistencias_semana": 153,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788651207.068,
+          "kills": 4,
+          "muertes": 2,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 20,
+          "campeon": "Fiora",
+          "victoria": true,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 162,
+          "duracion_seg": 1352,
+          "damage_taken": 16486,
+          "danio_recibido_pct": 21.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 5
+        },
         {
           "fin_seg": 1788641108.378,
           "kills": 6,
@@ -1628,27 +1655,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 4,
           "tiempo_cc": 23
-        },
-        {
-          "fin_seg": 1788142352.204,
-          "kills": 10,
-          "muertes": 6,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 43,
-          "campeon": "Fiora",
-          "victoria": true,
-          "duo_con": [
-            "Ostia"
-          ],
-          "cs": 199,
-          "duracion_seg": 1956,
-          "damage_taken": 36677,
-          "danio_recibido_pct": 24.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 22
         }
       ],
       "duo_semana": {
@@ -1666,22 +1672,32 @@
         "campeon": "Nasus"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 63,
-      "tiempo_cc_semana": 433,
-      "max_partidas_en_un_dia": 1,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 64,
+      "tiempo_cc_semana": 416,
+      "max_partidas_en_un_dia": 2,
+      "primera_victoria_hoy": {
+        "timestamp": 1788651207068,
+        "campeon": "Fiora",
+        "kda": "4/2/3 (3.5)",
+        "equipo": "red",
+        "duracion": "22:32",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1788580800
     },
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
       "rango": "Gold III",
-      "lp": 70,
-      "winrate": "50%",
-      "elo_score": 1370,
+      "lp": 92,
+      "winrate": "51%",
+      "elo_score": 1392,
       "record_lp_score": 1402,
       "record_lp_label": "Gold II (2 LP)",
-      "escalador_semana": 12,
+      "escalador_semana": 34,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1692,7 +1708,11 @@
       "top_recientes": [
         {
           "campeon": "Shyvana",
-          "cantidad": 9
+          "cantidad": 8
+        },
+        {
+          "campeon": "Lillia",
+          "cantidad": 1
         }
       ],
       "maestrias": [
@@ -1709,7 +1729,7 @@
         {
           "campeon": "Lillia",
           "nivel": 17,
-          "puntos": "154.241"
+          "puntos": "155.358"
         }
       ],
       "progreso_lp": [
@@ -2048,9 +2068,34 @@
           "lp": 70,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-05T23:34:23Z",
+          "lp": 92,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746562479",
+          "campeon": "Lillia",
+          "kda": "2/3/5 (2.33)",
+          "resultado": "Victoria",
+          "duracion": "22min",
+          "lp_change": 22,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "Pinea"
+          ],
+          "perk_principal": 8010,
+          "estilo_secundario": 8300,
+          "wards_control": 6,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746480949",
           "campeon": "Shyvana",
@@ -2221,38 +2266,42 @@
           "estilo_secundario": 8400,
           "wards_control": 6,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1744768066",
-          "campeon": "Shyvana",
-          "kda": "3/2/3 (3.0)",
-          "resultado": "Derrota",
-          "duracion": "15min",
-          "lp_change": -18,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [],
-          "perk_principal": 8005,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 42,
+      "kills_recientes": 41,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
-      "kills_semana": 37,
+      "vision_promedio_reciente": 31,
+      "kills_semana": 39,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 34,
+      "vision_promedio_semana": 33,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.03,
+      "kda_promedio_semana": 2.97,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 1,
-      "asistencias_semana": 63,
-      "partidas_semana": 7,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 68,
+      "partidas_semana": 8,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788651207.068,
+          "kills": 2,
+          "muertes": 3,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 26,
+          "campeon": "Lillia",
+          "victoria": true,
+          "duo_con": [
+            "Pinea"
+          ],
+          "cs": 149,
+          "duracion_seg": 1352,
+          "damage_taken": 18857,
+          "danio_recibido_pct": 24.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 14
+        },
         {
           "fin_seg": 1788628286.596,
           "kills": 8,
@@ -2416,9 +2465,9 @@
         "campeon": "Shyvana"
       },
       "objetivos_robados_semana": 2,
-      "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 105,
-      "max_partidas_en_un_dia": 4,
+      "estructuras_destruidas_semana": 10,
+      "tiempo_cc_semana": 119,
+      "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1788625654093,
         "campeon": "Shyvana",
@@ -7116,8 +7165,8 @@
     },
     "destructor": {
       "jugador": "Pinea",
-      "valor": 63,
-      "detalle": "63 estructuras destruidas"
+      "valor": 64,
+      "detalle": "64 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7525,7 +7574,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 14.200399
+    "ゆうき まこと": 14.201752
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
