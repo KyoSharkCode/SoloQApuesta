@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-05T04:18:27.828936",
+  "ultimaActualizacion": "2026-09-05T04:20:50.868043",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4414,23 +4414,23 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Silver I",
-      "lp": 77,
-      "winrate": "51%",
-      "elo_score": 1177,
-      "record_lp_score": 1177,
-      "record_lp_label": "Silver I (77 LP)",
-      "escalador_semana": 103,
+      "lp": 99,
+      "winrate": "52%",
+      "elo_score": 1199,
+      "record_lp_score": 1199,
+      "record_lp_label": "Silver I (99 LP)",
+      "escalador_semana": 125,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 9
+          "cantidad": 10
         }
       ],
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 7
+          "cantidad": 8
         },
         {
           "campeon": "Yone",
@@ -4926,9 +4926,32 @@
           "lp": 77,
           "rango": "Silver",
           "division": "I"
+        },
+        {
+          "fecha": "2026-09-05T04:20:29Z",
+          "lp": 99,
+          "rango": "Silver",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746388074",
+          "campeon": "Akali",
+          "kda": "15/4/4 (4.75)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 22,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746371378",
           "campeon": "Yone",
@@ -5081,38 +5104,40 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745983618",
-          "campeon": "Poppy",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:11",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8439,
-          "estilo_secundario": 8300,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 83,
+      "kills_recientes": 98,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
-      "kills_semana": 240,
+      "vision_promedio_reciente": 31,
+      "kills_semana": 243,
       "pentakills_semana": 0,
       "vision_promedio_semana": 36,
-      "primeras_sangre_semana": 6,
-      "kda_promedio_semana": 2.22,
+      "primeras_sangre_semana": 5,
+      "kda_promedio_semana": 2.26,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 136,
+      "asistencias_semana": 132,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788582018.526,
+          "kills": 15,
+          "muertes": 4,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 39,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 227,
+          "duracion_seg": 2028,
+          "damage_taken": 32274,
+          "danio_recibido_pct": 22.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 6
+        },
         {
           "fin_seg": 1788579638.232,
           "kills": 6,
@@ -5530,25 +5555,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1788240006.326,
-          "kills": 12,
-          "muertes": 7,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 45,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 139,
-          "duracion_seg": 1835,
-          "damage_taken": 34030,
-          "danio_recibido_pct": 22.7,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 6
         }
       ],
       "duo_semana": null,
@@ -5563,10 +5569,20 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 18,
+      "estructuras_destruidas_semana": 17,
       "tiempo_cc_semana": 156,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1788582018526,
+        "campeon": "Akali",
+        "kda": "15/4/4 (4.75)",
+        "equipo": "blue",
+        "duracion": "33:48",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1788580800
     },
     {
@@ -6861,8 +6877,8 @@
   "titulares": {
     "agresivo": {
       "jugador": "adrianNOOBYT",
-      "valor": 6,
-      "detalle": "6 primeras sangre"
+      "valor": 5,
+      "detalle": "5 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
@@ -6922,6 +6938,24 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-05T04:20:29Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Silver I (99 LP)"
+    },
+    {
+      "timestamp": "2026-09-05T04:20:29Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-09-05T03:42:21Z",
       "tipo": "logro_partida",
@@ -7293,29 +7327,9 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": "Pinea",
       "detalle": "con Pinea (19 partidas juntos)"
-    },
-    {
-      "timestamp": "2026-09-02T16:40:31Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Ostia",
-      "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-02T16:01:01Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "Pinea",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "adrianNOOBYT",
   "dia_referencia_eventos": 1788580800,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
@@ -7326,7 +7340,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 13.430332
+    "ゆうき まこと": 13.431743
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
