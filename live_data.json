@@ -41,7 +41,26 @@
         ]
     },
     "Galactic Shark#AYK": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Shyvana",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash.png"
+            },
+            {
+                "nombre": "Aplastar",
+                "icono": "SummonerSmite.png"
+            }
+        ],
+        "runas": {
+            "principal": 8005,
+            "secundario": 8300
+        },
+        "modo_juego": "Flex",
+        "game_start_time": 1788724765564,
+        "game_id": 1746786243
     },
     "El Buñuelito#KyA": {
         "en_partida": false
@@ -377,6 +396,293 @@
                     "tags": [
                         "Assassin",
                         "Mage"
+                    ]
+                }
+            ]
+        },
+        "1746786243": {
+            "game_start_time": 1788724765564,
+            "modo_juego": "Flex",
+            "baneos": [
+                {
+                    "campeon": "Lissandra",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Senna",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Teemo",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Sylas",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Morgana",
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Vayne",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Leona",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Briar",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Yorick",
+                    "equipo": "red"
+                },
+                {
+                    "campeon": "Vex",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "messi VS TFT#LAN",
+                    "campeon": "Ahri",
+                    "equipo": "blue",
+                    "icono_invocador": 7015,
+                    "hechizos": [
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8112,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "nestorsegovia#LAN",
+                    "campeon": "Naafiri",
+                    "equipo": "blue",
+                    "icono_invocador": 7167,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Assassin",
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "Galactic Shark#AYK",
+                    "campeon": "Shyvana",
+                    "equipo": "blue",
+                    "icono_invocador": 6664,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "Akbal28#LAN",
+                    "campeon": "Soraka",
+                    "equipo": "blue",
+                    "icono_invocador": 6541,
+                    "hechizos": [
+                        {
+                            "nombre": "Curar",
+                            "icono": "SummonerHeal.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8214,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Support",
+                        "Mage"
+                    ]
+                },
+                {
+                    "nombre": "yuzong#drago",
+                    "campeon": "Sett",
+                    "equipo": "blue",
+                    "icono_invocador": 6383,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8005,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Fighter",
+                        "Tank"
+                    ]
+                },
+                {
+                    "nombre": "LaFlame#mari",
+                    "campeon": "Jax",
+                    "equipo": "red",
+                    "icono_invocador": 7,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Aplastar",
+                            "icono": "SummonerSmite.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Fighter"
+                    ]
+                },
+                {
+                    "nombre": "Heimerdinger",
+                    "campeon": "Heimerdinger",
+                    "equipo": "red",
+                    "icono_invocador": 3591,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8010,
+                        "secundario": 8200
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "1800 EternalDIVE#1800",
+                    "campeon": "Neeko",
+                    "equipo": "red",
+                    "icono_invocador": 6053,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8229,
+                        "secundario": 8300
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
+                    ]
+                },
+                {
+                    "nombre": "WhySoSerius#3538",
+                    "campeon": "Twitch",
+                    "equipo": "red",
+                    "icono_invocador": 3006,
+                    "hechizos": [
+                        {
+                            "nombre": "Extenuación",
+                            "icono": "SummonerExhaust.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8008,
+                        "secundario": 8100
+                    },
+                    "tags": [
+                        "Marksman",
+                        "Assassin"
+                    ]
+                },
+                {
+                    "nombre": "SrSiete#LAN",
+                    "campeon": "Swain",
+                    "equipo": "red",
+                    "icono_invocador": 3368,
+                    "hechizos": [
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash.png"
+                        },
+                        {
+                            "nombre": "Teleportar",
+                            "icono": "SummonerTeleport.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": 8992,
+                        "secundario": 8400
+                    },
+                    "tags": [
+                        "Mage",
+                        "Support"
                     ]
                 }
             ]
