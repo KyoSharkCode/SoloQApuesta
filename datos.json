@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-06T16:08:26.538923",
+  "ultimaActualizacion": "2026-09-06T16:10:42.241626",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5801,34 +5801,34 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver II",
-      "lp": 86,
+      "lp": 67,
       "winrate": "53%",
-      "elo_score": 1086,
+      "elo_score": 1067,
       "record_lp_score": 1086,
       "record_lp_label": "Silver II (86 LP)",
-      "escalador_semana": 317,
+      "escalador_semana": 298,
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "rol": "Top",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 4
-        },
-        {
-          "campeon": "Illaoi",
-          "cantidad": 2
+          "cantidad": 5
         },
         {
           "campeon": "Lux",
+          "cantidad": 1
+        },
+        {
+          "campeon": "Swain",
           "cantidad": 1
         }
       ],
@@ -6473,9 +6473,32 @@
           "lp": 86,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-06T16:10:31Z",
+          "lp": 67,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746734754",
+          "campeon": "Taric",
+          "kda": "0/7/24 (3.43)",
+          "resultado": "Derrota",
+          "duracion": "30min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8351,
+          "estilo_secundario": 8400,
+          "wards_control": 3,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746735060",
           "campeon": "Taric",
@@ -6642,40 +6665,40 @@
           "estilo_secundario": 8000,
           "wards_control": null,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746467378",
-          "campeon": "Illaoi",
-          "kda": "3/6/4 (1.17)",
-          "resultado": "Derrota",
-          "duracion": "25min",
-          "lp_change": -20,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Galactic Shark"
-          ],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 25,
+      "kills_recientes": 22,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 47,
-      "kills_semana": 74,
+      "vision_promedio_reciente": 53,
+      "kills_semana": 71,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 52,
+      "vision_promedio_semana": 53,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.66,
+      "kda_promedio_semana": 3.68,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 6,
-      "asistencias_semana": 274,
+      "asistencias_semana": 282,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788711009.779,
+          "kills": 0,
+          "muertes": 7,
+          "asistencias": 24,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 62,
+          "campeon": "Taric",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 42,
+          "duracion_seg": 1846,
+          "damage_taken": 27998,
+          "danio_recibido_pct": 16.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 49
+        },
         {
           "fin_seg": 1788708531.972,
           "kills": 2,
@@ -7073,32 +7096,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 5,
           "tiempo_cc": 8
-        },
-        {
-          "fin_seg": 1788380705.92,
-          "kills": 3,
-          "muertes": 6,
-          "asistencias": 16,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 48,
-          "campeon": "Taric",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 31,
-          "duracion_seg": 1611,
-          "damage_taken": 20798,
-          "danio_recibido_pct": 14.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 50
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 8
+        "partidas": 7
       },
       "cs_min_semana": {
         "cs_por_min": 8.7,
@@ -7111,9 +7113,9 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 23,
-      "tiempo_cc_semana": 619,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 24,
+      "tiempo_cc_semana": 618,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1788708531972,
         "campeon": "Taric",
@@ -7136,8 +7138,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.66,
-      "detalle": "3.66 KDA"
+      "valor": 3.68,
+      "detalle": "3.68 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -7146,8 +7148,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 274,
-      "detalle": "274 asistencias"
+      "valor": 282,
+      "detalle": "282 asistencias"
     },
     "farmeador": {
       "jugador": "ゆうき まこと",
@@ -7162,7 +7164,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "Ostia",
-      "valor": 317,
+      "valor": 298,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7590,7 +7592,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 14.865024
+    "ゆうき まこと": 14.866467
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
