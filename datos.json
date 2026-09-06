@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-06T05:22:25.203417",
+  "ultimaActualizacion": "2026-09-06T05:24:30.659366",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2491,12 +2491,12 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
       "rango": "Gold IV",
-      "lp": 70,
+      "lp": 89,
       "winrate": "50%",
-      "elo_score": 1270,
+      "elo_score": 1289,
       "record_lp_score": 1475,
       "record_lp_label": "Gold II (75 LP)",
-      "escalador_semana": -127,
+      "escalador_semana": -108,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -2526,7 +2526,7 @@
         {
           "campeon": "Zoe",
           "nivel": 25,
-          "puntos": "243.484"
+          "puntos": "245.317"
         },
         {
           "campeon": "Caitlyn",
@@ -3421,9 +3421,32 @@
           "lp": 70,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-06T05:24:18Z",
+          "lp": 89,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1746668269",
+          "campeon": "Zoe",
+          "kda": "19/9/11 (3.33)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746659424",
           "campeon": "Ahri",
@@ -3578,40 +3601,40 @@
           "estilo_secundario": 8000,
           "wards_control": null,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746176465",
-          "campeon": "Zoe",
-          "kda": "10/4/5 (3.75)",
-          "resultado": "Derrota",
-          "duracion": "26min",
-          "lp_change": -21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [
-            "Pinea"
-          ],
-          "perk_principal": 8112,
-          "estilo_secundario": 8200,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 63,
+      "kills_recientes": 72,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 27,
-      "kills_semana": 142,
+      "kills_semana": 158,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 31,
-      "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 2.35,
+      "vision_promedio_semana": 29,
+      "primeras_sangre_semana": 5,
+      "kda_promedio_semana": 2.43,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 182,
+      "asistencias_semana": 185,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788672167.833,
+          "kills": 19,
+          "muertes": 9,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 23,
+          "campeon": "Zoe",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 200,
+          "duracion_seg": 1989,
+          "damage_taken": 27744,
+          "danio_recibido_pct": 18.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 53
+        },
         {
           "fin_seg": 1788669567.413,
           "kills": 5,
@@ -4051,32 +4074,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 13
-        },
-        {
-          "fin_seg": 1788228996.715,
-          "kills": 3,
-          "muertes": 6,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 50,
-          "campeon": "Ahri",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 299,
-          "duracion_seg": 2759,
-          "damage_taken": 42949,
-          "danio_recibido_pct": 18.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 6,
-          "tiempo_cc": 25
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 12
+        "partidas": 11
       },
       "cs_min_semana": {
         "cs_por_min": 7.8,
@@ -4089,9 +4091,9 @@
         "campeon": "Ahri"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 32,
-      "tiempo_cc_semana": 640,
-      "max_partidas_en_un_dia": 2,
+      "estructuras_destruidas_semana": 26,
+      "tiempo_cc_semana": 668,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1788668206451,
         "campeon": "Zoe",
@@ -7147,8 +7149,8 @@
   "titulares": {
     "agresivo": {
       "jugador": "El Buñuelito",
-      "valor": 4,
-      "detalle": "4 primeras sangre"
+      "valor": 5,
+      "detalle": "5 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
@@ -7203,11 +7205,21 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 640,
-      "detalle": "640s de CC aplicado"
+      "valor": 668,
+      "detalle": "668s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-06T05:24:18Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1746668269",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Zoe dio el golpe final al Nexus"
+    },
     {
       "timestamp": "2026-09-06T04:40:29Z",
       "tipo": "logro_partida",
@@ -7583,16 +7595,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "El Buñuelito",
       "detalle": "con El Buñuelito (16 partidas juntos)"
-    },
-    {
-      "timestamp": "2026-09-03T21:54:21Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1746056383",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Fiora aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "El Buñuelito",
@@ -7606,7 +7608,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 14.433081
+    "ゆうき まこと": 14.434397
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
