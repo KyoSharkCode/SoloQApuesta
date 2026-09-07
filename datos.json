@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-07T21:42:27.823604",
+  "ultimaActualizacion": "2026-09-07T21:44:31.787692",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4690,12 +4690,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Gold IV",
-      "lp": 27,
-      "winrate": "52%",
-      "elo_score": 1227,
+      "lp": 9,
+      "winrate": "51%",
+      "elo_score": 1209,
       "record_lp_score": 1227,
       "record_lp_label": "Gold IV (27 LP)",
-      "escalador_semana": 113,
+      "escalador_semana": 95,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -5230,16 +5230,39 @@
           "lp": 27,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-07T21:44:21Z",
+          "lp": 9,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1747055299",
+          "campeon": "Akali",
+          "kda": "9/11/4 (1.18)",
+          "resultado": "Derrota",
+          "duracion": "30min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 3,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747052409",
           "campeon": "Akali",
           "kda": "0/0/0 (Perfect)",
           "resultado": "Derrota",
           "duracion": "4min",
-          "lp_change": null,
+          "lp_change": -18,
           "hechizos": [
             "SummonerDot",
             "SummonerFlash"
@@ -5385,38 +5408,40 @@
           "estilo_secundario": 8400,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746169572",
-          "campeon": "Akali",
-          "kda": "3/0/4 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "16min",
-          "lp_change": 22,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 86,
+      "kills_recientes": 92,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
-      "kills_semana": 251,
+      "vision_promedio_reciente": 34,
+      "kills_semana": 245,
       "pentakills_semana": 0,
       "vision_promedio_semana": 35,
-      "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.39,
+      "primeras_sangre_semana": 2,
+      "kda_promedio_semana": 2.28,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 132,
+      "asistencias_semana": 131,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788817427.063,
+          "kills": 9,
+          "muertes": 11,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 34,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 160,
+          "duracion_seg": 1840,
+          "damage_taken": 34824,
+          "danio_recibido_pct": 22.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 3
+        },
         {
           "fin_seg": 1788815295.057,
           "kills": 0,
@@ -5834,25 +5859,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1788369480.362,
-          "kills": 15,
-          "muertes": 6,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 45,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 173,
-          "duracion_seg": 1837,
-          "damage_taken": 33324,
-          "danio_recibido_pct": 26.1,
-          "objetivos_robados": 1,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 4
         }
       ],
       "duo_semana": null,
@@ -5866,10 +5872,10 @@
         "damage_taken": 39950,
         "campeon": "Akali"
       },
-      "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 17,
-      "tiempo_cc_semana": 158,
-      "max_partidas_en_un_dia": 1,
+      "objetivos_robados_semana": 0,
+      "estructuras_destruidas_semana": 16,
+      "tiempo_cc_semana": 157,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788753600
     },
@@ -7690,7 +7696,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 16.047601
+    "ゆうき まこと": 16.048911
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
