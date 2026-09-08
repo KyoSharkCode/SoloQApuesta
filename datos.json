@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-08T20:58:26.042618",
+  "ultimaActualizacion": "2026-09-08T21:01:06.762933",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -6118,23 +6118,31 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver II",
-      "lp": 55,
+      "lp": 34,
       "winrate": "52%",
-      "elo_score": 1055,
+      "elo_score": 1034,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": 218,
+      "escalador_semana": 197,
       "rol_principal": "Support",
       "top_roles": [
         {
           "rol": "Support",
-          "cantidad": 9
+          "cantidad": 8
+        },
+        {
+          "rol": "Mid",
+          "cantidad": 1
         }
       ],
       "top_recientes": [
         {
           "campeon": "Taric",
-          "cantidad": 8
+          "cantidad": 7
+        },
+        {
+          "campeon": "Ziggs",
+          "cantidad": 1
         },
         {
           "campeon": "Lux",
@@ -6830,9 +6838,32 @@
           "lp": 55,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-08T21:00:52Z",
+          "lp": 34,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1747270506",
+          "campeon": "Ziggs",
+          "kda": "8/8/9 (2.12)",
+          "resultado": "Derrota",
+          "duracion": "39min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8229,
+          "estilo_secundario": 8000,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747036354",
           "campeon": "Taric",
@@ -6995,38 +7026,40 @@
           "estilo_secundario": 8400,
           "wards_control": 4,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746734754",
-          "campeon": "Taric",
-          "kda": "0/7/24 (3.43)",
-          "resultado": "Derrota",
-          "duracion": "30min",
-          "lp_change": -19,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 3,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 15,
+      "kills_recientes": 23,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 67,
-      "kills_semana": 60,
+      "vision_promedio_reciente": 64,
+      "kills_semana": 57,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 61,
+      "vision_promedio_semana": 60,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 3.93,
+      "kda_promedio_semana": 3.78,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 313,
+      "asistencias_semana": 298,
       "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788901137.837,
+          "kills": 8,
+          "muertes": 8,
+          "asistencias": 9,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 32,
+          "campeon": "Ziggs",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 197,
+          "duracion_seg": 2388,
+          "damage_taken": 27811,
+          "danio_recibido_pct": 13.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 18
+        },
         {
           "fin_seg": 1788811129.431,
           "kills": 4,
@@ -7430,25 +7463,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 32
-        },
-        {
-          "fin_seg": 1788529680.033,
-          "kills": 11,
-          "muertes": 9,
-          "asistencias": 24,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 46,
-          "campeon": "Lux",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 226,
-          "duracion_seg": 2737,
-          "damage_taken": 32708,
-          "danio_recibido_pct": 13.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 41
         }
       ],
       "duo_semana": {
@@ -7467,8 +7481,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 11,
-      "tiempo_cc_semana": 735,
-      "max_partidas_en_un_dia": 0,
+      "tiempo_cc_semana": 712,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1788840000
     }
@@ -7481,8 +7495,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.93,
-      "detalle": "3.93 KDA"
+      "valor": 3.78,
+      "detalle": "3.78 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -7491,8 +7505,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 313,
-      "detalle": "313 asistencias"
+      "valor": 298,
+      "detalle": "298 asistencias"
     },
     "farmeador": {
       "jugador": "ゆうき まこと",
@@ -7506,8 +7520,8 @@
     },
     "pentakills": null,
     "escalador": {
-      "jugador": "Ostia",
-      "valor": 218,
+      "jugador": "Pinea",
+      "valor": 217,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7537,6 +7551,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-08T21:00:52Z",
+      "tipo": "badge_semanal",
+      "categoria": "escalador",
+      "categoria_label": "El Escalador",
+      "icono": "📈",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "Ostia",
+      "detalle": "Mejor jugador de la semana"
+    },
     {
       "timestamp": "2026-09-08T20:44:25Z",
       "tipo": "logro_partida",
@@ -7906,15 +7930,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": "Silver II (90 LP)"
-    },
-    {
-      "timestamp": "2026-09-06T19:52:19Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Gold I (49 LP)"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7928,7 +7943,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 16.977548
+    "ゆうき まこと": 16.979243
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
