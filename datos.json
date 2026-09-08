@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-08T03:18:25.305127",
+  "ultimaActualizacion": "2026-09-08T03:20:41.893994",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2579,36 +2579,36 @@
     {
       "nombre": "El Buñuelito#KyA",
       "icono": 5453,
-      "rango": "Gold II",
-      "lp": 84,
+      "rango": "Gold I",
+      "lp": 5,
       "winrate": "51%",
-      "elo_score": 1484,
-      "record_lp_score": 1501,
-      "record_lp_label": "Gold I (1 LP)",
-      "escalador_semana": 178,
+      "elo_score": 1505,
+      "record_lp_score": 1505,
+      "record_lp_label": "Gold I (5 LP)",
+      "escalador_semana": 199,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "rol": "ADC",
-          "cantidad": 2
+          "cantidad": 3
         }
       ],
       "top_recientes": [
         {
-          "campeon": "Zoe",
-          "cantidad": 3
+          "campeon": "Caitlyn",
+          "cantidad": 2
         },
         {
           "campeon": "Ahri",
           "cantidad": 2
         },
         {
-          "campeon": "MissFortune",
-          "cantidad": 1
+          "campeon": "Zoe",
+          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -3600,9 +3600,32 @@
           "lp": 84,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-08T03:20:32Z",
+          "lp": 5,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1747145082",
+          "campeon": "Caitlyn",
+          "kda": "13/2/14 (13.5)",
+          "resultado": "Victoria",
+          "duracion": "26min",
+          "lp_change": 21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerBarrier"
+          ],
+          "duo_con": [],
+          "perk_principal": 8369,
+          "estilo_secundario": 8200,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747131697",
           "campeon": "MissFortune",
@@ -3773,38 +3796,40 @@
           "estilo_secundario": 8200,
           "wards_control": null,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746838778",
-          "campeon": "Zoe",
-          "kda": "26/12/15 (3.42)",
-          "resultado": "Victoria",
-          "duracion": "43min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8200,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 57,
+      "kills_recientes": 44,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 31,
-      "kills_semana": 207,
+      "vision_promedio_reciente": 30,
+      "kills_semana": 220,
       "pentakills_semana": 0,
       "vision_promedio_semana": 29,
       "primeras_sangre_semana": 6,
-      "kda_promedio_semana": 3.41,
+      "kda_promedio_semana": 3.58,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 7,
-      "asistencias_semana": 178,
-      "partidas_semana": 23,
+      "asistencias_semana": 192,
+      "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1788837620.537,
+          "kills": 13,
+          "muertes": 2,
+          "asistencias": 14,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 24,
+          "campeon": "Caitlyn",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 156,
+          "duracion_seg": 1563,
+          "damage_taken": 13833,
+          "danio_recibido_pct": 12.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 7,
+          "tiempo_cc": 27
+        },
         {
           "fin_seg": 1788835706.826,
           "kills": 10,
@@ -4276,9 +4301,9 @@
         "campeon": "Lux"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 33,
-      "tiempo_cc_semana": 772,
-      "max_partidas_en_un_dia": 6,
+      "estructuras_destruidas_semana": 40,
+      "tiempo_cc_semana": 799,
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1788753617954,
         "campeon": "Caitlyn",
@@ -7432,11 +7457,20 @@
     },
     "stop": {
       "jugador": "El Buñuelito",
-      "valor": 772,
-      "detalle": "772s de CC aplicado"
+      "valor": 799,
+      "detalle": "799s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-08T03:20:32Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": null,
+      "detalle": "Gold I (5 LP)"
+    },
     {
       "timestamp": "2026-09-08T03:02:21Z",
       "tipo": "badge_semanal",
@@ -7809,16 +7843,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": null,
       "detalle": "Zoe dio el golpe final al Nexus"
-    },
-    {
-      "timestamp": "2026-09-06T04:40:29Z",
-      "tipo": "logro_partida",
-      "categoria": "perfecta:LA1_1746659424",
-      "icono": "🌟",
-      "categoria_label": "Partida Perfecta",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": null,
-      "detalle": "Ahri · 5/0/3 en 16:15"
     }
   ],
   "titular_primera_victoria_dia": "Pinea",
@@ -7832,7 +7856,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 16.269938
+    "ゆうき まこと": 16.271408
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
