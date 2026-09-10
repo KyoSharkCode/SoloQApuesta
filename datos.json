@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-10T06:28:34.823978",
+  "ultimaActualizacion": "2026-09-10T06:31:08.685165",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4839,12 +4839,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Gold IV",
-      "lp": 32,
+      "lp": 52,
       "winrate": "51%",
-      "elo_score": 1232,
+      "elo_score": 1252,
       "record_lp_score": 1290,
       "record_lp_label": "Gold IV (90 LP)",
-      "escalador_semana": 130,
+      "escalador_semana": 150,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4874,7 +4874,7 @@
         {
           "campeon": "Akali",
           "nivel": 43,
-          "puntos": "504.279"
+          "puntos": "506.111"
         },
         {
           "campeon": "Warwick",
@@ -5473,9 +5473,32 @@
           "lp": 32,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-10T06:30:53Z",
+          "lp": 52,
+          "rango": "Gold",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1747637596",
+          "campeon": "Akali",
+          "kda": "19/4/4 (5.75)",
+          "resultado": "Victoria",
+          "duracion": "34min",
+          "lp_change": 20,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747628648",
           "campeon": "Trundle",
@@ -5628,38 +5651,40 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1747196778",
-          "campeon": "Akali",
-          "kda": "8/2/7 (7.5)",
-          "resultado": "Victoria",
-          "duracion": "29min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 80,
+      "kills_recientes": 91,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 38,
-      "kills_semana": 229,
+      "vision_promedio_reciente": 39,
+      "kills_semana": 245,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 38,
+      "vision_promedio_semana": 39,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.1,
+      "kda_promedio_semana": 2.14,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
       "asistencias_semana": 158,
       "partidas_semana": 25,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789021827.197,
+          "kills": 19,
+          "muertes": 4,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 45,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 217,
+          "duracion_seg": 2047,
+          "damage_taken": 31583,
+          "danio_recibido_pct": 18.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 5
+        },
         {
           "fin_seg": 1789019204.725,
           "kills": 2,
@@ -6115,25 +6140,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 5
-        },
-        {
-          "fin_seg": 1788496202.17,
-          "kills": 3,
-          "muertes": 0,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 19,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 101,
-          "duracion_seg": 998,
-          "damage_taken": 6916,
-          "danio_recibido_pct": 14.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 1
         }
       ],
       "duo_semana": null,
@@ -6148,10 +6154,20 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 29,
-      "tiempo_cc_semana": 284,
-      "max_partidas_en_un_dia": 3,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 28,
+      "tiempo_cc_semana": 288,
+      "max_partidas_en_un_dia": 4,
+      "primera_victoria_hoy": {
+        "timestamp": 1789021827197,
+        "campeon": "Akali",
+        "kda": "19/4/4 (5.75)",
+        "equipo": "red",
+        "duracion": "34:07",
+        "hechizos": [
+          "SummonerDot",
+          "SummonerFlash"
+        ]
+      },
       "dia_referencia": 1789012800
     },
     {
@@ -7619,6 +7635,15 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-09-10T06:30:53Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-09-10T01:28:23Z",
       "tipo": "badge_semanal",
       "categoria": "kda_player",
@@ -7992,18 +8017,9 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": null,
       "detalle": "Fiora aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-07T04:00:49Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Platinum IV (16 LP)"
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "adrianNOOBYT",
   "dia_referencia_eventos": 1789012800,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
@@ -8014,7 +8030,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 18.320044
+    "ゆうき まこと": 18.321645
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
