@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-11T22:18:27.117851",
+  "ultimaActualizacion": "2026-09-11T22:20:49.911628",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -6159,18 +6159,18 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Silver II",
-      "lp": 8,
+      "rango": "Silver III",
+      "lp": 87,
       "winrate": "51%",
-      "elo_score": 1008,
+      "elo_score": 987,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": 4,
+      "escalador_semana": -17,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 4
+          "cantidad": 5
         },
         {
           "rol": "Support",
@@ -6188,7 +6188,7 @@
         },
         {
           "campeon": "Illaoi",
-          "cantidad": 1
+          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -6205,7 +6205,7 @@
         {
           "campeon": "Illaoi",
           "nivel": 10,
-          "puntos": "82.794"
+          "puntos": "83.706"
         }
       ],
       "progreso_lp": [
@@ -6916,9 +6916,32 @@
           "lp": 8,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-11T22:20:32Z",
+          "lp": 87,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1747942427",
+          "campeon": "Illaoi",
+          "kda": "3/9/12 (1.67)",
+          "resultado": "Derrota",
+          "duracion": "41min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747933436",
           "campeon": "Illaoi",
@@ -7071,38 +7094,40 @@
           "estilo_secundario": 8400,
           "wards_control": 5,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1746994174",
-          "campeon": "Taric",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:10",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 23,
+      "kills_recientes": 26,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 45,
-      "kills_semana": 56,
+      "kills_semana": 59,
       "pentakills_semana": 0,
       "vision_promedio_semana": 55,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.47,
+      "kda_promedio_semana": 3.32,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 5,
-      "asistencias_semana": 291,
-      "partidas_semana": 22,
+      "asistencias_semana": 303,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789165156.071,
+          "kills": 3,
+          "muertes": 9,
+          "asistencias": 12,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 47,
+          "campeon": "Illaoi",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 227,
+          "duracion_seg": 2471,
+          "damage_taken": 57901,
+          "danio_recibido_pct": 24.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 17
+        },
         {
           "fin_seg": 1789162316.366,
           "kills": 3,
@@ -7560,8 +7585,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 15,
-      "tiempo_cc_semana": 668,
-      "max_partidas_en_un_dia": 1,
+      "tiempo_cc_semana": 685,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1789162316366,
         "campeon": "Illaoi",
@@ -7594,8 +7619,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 291,
-      "detalle": "291 asistencias"
+      "valor": 303,
+      "detalle": "303 asistencias"
     },
     "farmeador": {
       "jugador": "ゆうき まこと",
@@ -8041,7 +8066,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 19.918058
+    "ゆうき まこと": 19.919503
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
