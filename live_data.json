@@ -1,6 +1,59 @@
 {
     "Pinea#Pinea": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Hecarim",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Huida",
+                "icono": "SummonerCherryHold.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerCherryFlash.png"
+            }
+        ],
+        "runas": {
+            "principal": 9923,
+            "secundario": 8000
+        },
+        "modo_juego": "Modo Destacado",
+        "game_start_time": 1789244958749,
+        "game_id": 1748175046,
+        "duo_con": [
+            "ゆうき まこと",
+            "Ostia"
+        ],
+        "duo_detalle": [
+            {
+                "nombre": "ゆうき まこと",
+                "campeon": "Malzahar",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            },
+            {
+                "nombre": "Ostia",
+                "campeon": "Kled",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            }
+        ]
     },
     "Galactic Shark#AYK": {
         "en_partida": false
@@ -27,12 +80,27 @@
             "secundario": 8000
         },
         "modo_juego": "Modo Destacado",
-        "game_start_time": 1789244902527,
+        "game_start_time": 1789244958749,
         "game_id": 1748175046,
         "duo_con": [
+            "Pinea",
             "Ostia"
         ],
         "duo_detalle": [
+            {
+                "nombre": "Pinea",
+                "campeon": "Hecarim",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            },
             {
                 "nombre": "Ostia",
                 "campeon": "Kled",
@@ -71,12 +139,27 @@
             "secundario": 8000
         },
         "modo_juego": "Modo Destacado",
-        "game_start_time": 1789244902527,
+        "game_start_time": 1789244958749,
         "game_id": 1748175046,
         "duo_con": [
+            "Pinea",
             "ゆうき まこと"
         ],
         "duo_detalle": [
+            {
+                "nombre": "Pinea",
+                "campeon": "Hecarim",
+                "hechizos": [
+                    {
+                        "nombre": "Huida",
+                        "icono": "SummonerCherryHold.png"
+                    },
+                    {
+                        "nombre": "Destello",
+                        "icono": "SummonerCherryFlash.png"
+                    }
+                ]
+            },
             {
                 "nombre": "ゆうき まこと",
                 "campeon": "Malzahar",
@@ -95,7 +178,7 @@
     },
     "_partidas_activas": {
         "1748175046": {
-            "game_start_time": 1789244902527,
+            "game_start_time": 1789244958749,
             "modo_juego": "Modo Destacado",
             "baneos": [
                 {
