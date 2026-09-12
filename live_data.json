@@ -9,15 +9,122 @@
         "en_partida": false
     },
     "ゆうき まこと#1411": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Desconocido",
+        "equipo": "blue",
+        "hechizos": [
+            {
+                "nombre": "Prender",
+                "icono": "SummonerDot_Jade.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash_Jade.png"
+            }
+        ],
+        "runas": {
+            "principal": null,
+            "secundario": null
+        },
+        "modo_juego": "Modo Destacado",
+        "game_start_time": 1789235630860,
+        "game_id": 1748142935
     },
     "adrianNOOBYT#LAN": {
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": false
+        "en_partida": true,
+        "campeon": "Desconocido",
+        "equipo": "red",
+        "hechizos": [
+            {
+                "nombre": "Prender",
+                "icono": "SummonerDot_Jade.png"
+            },
+            {
+                "nombre": "Destello",
+                "icono": "SummonerFlash_Jade.png"
+            }
+        ],
+        "runas": {
+            "principal": null,
+            "secundario": null
+        },
+        "modo_juego": "Modo Destacado",
+        "game_start_time": 1789235630860,
+        "game_id": 1748142935
+    },
+    "_partidas_activas": {
+        "1748142935": {
+            "game_start_time": 1789235630860,
+            "modo_juego": "Modo Destacado",
+            "baneos": [
+                {
+                    "campeon": null,
+                    "equipo": "blue"
+                },
+                {
+                    "campeon": "Desconocido",
+                    "equipo": "red"
+                }
+            ],
+            "participantes": [
+                {
+                    "nombre": "ゆうき まこと#1411",
+                    "campeon": "Desconocido",
+                    "equipo": "blue",
+                    "icono_invocador": 5935,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot_Jade.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash_Jade.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": null,
+                        "secundario": null
+                    },
+                    "tags": []
+                },
+                {
+                    "nombre": "Ostia#LAN",
+                    "campeon": "Desconocido",
+                    "equipo": "red",
+                    "icono_invocador": 6205,
+                    "hechizos": [
+                        {
+                            "nombre": "Prender",
+                            "icono": "SummonerDot_Jade.png"
+                        },
+                        {
+                            "nombre": "Destello",
+                            "icono": "SummonerFlash_Jade.png"
+                        }
+                    ],
+                    "runas": {
+                        "principal": null,
+                        "secundario": null
+                    },
+                    "tags": []
+                }
+            ]
+        }
     },
     "_eventos_vivo": [
+        {
+            "timestamp": "2026-09-12T17:54:32Z",
+            "tipo": "rivalidad",
+            "icono": "🆚",
+            "categoria_label": "Equipos rivales",
+            "jugador_nuevo": "ゆうき まこと",
+            "jugador_anterior": "Ostia",
+            "detalle": null
+        },
         {
             "timestamp": "2026-09-12T17:50:43Z",
             "tipo": "rivalidad",
