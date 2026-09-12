@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-12T11:54:23.849480",
+  "ultimaActualizacion": "2026-09-12T11:56:33.079135",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1859,13 +1859,13 @@
     {
       "nombre": "Galactic Shark#AYK",
       "icono": 6664,
-      "rango": "Gold II",
-      "lp": 14,
-      "winrate": "52%",
-      "elo_score": 1414,
+      "rango": "Gold III",
+      "lp": 96,
+      "winrate": "51%",
+      "elo_score": 1396,
       "record_lp_score": 1414,
       "record_lp_label": "Gold II (14 LP)",
-      "escalador_semana": 30,
+      "escalador_semana": 12,
       "rol_principal": "Jungla",
       "top_roles": [
         {
@@ -1876,7 +1876,11 @@
       "top_recientes": [
         {
           "campeon": "Shyvana",
-          "cantidad": 8
+          "cantidad": 7
+        },
+        {
+          "campeon": "Briar",
+          "cantidad": 1
         },
         {
           "campeon": "Lillia",
@@ -2248,9 +2252,34 @@
           "lp": 14,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-12T11:56:23Z",
+          "lp": 96,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1748109653",
+          "campeon": "Briar",
+          "kda": "8/10/3 (1.1)",
+          "resultado": "Derrota",
+          "duracion": "31min",
+          "lp_change": -18,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerSmite"
+          ],
+          "duo_con": [
+            "ゆうき まこと"
+          ],
+          "perk_principal": 8005,
+          "estilo_secundario": 8100,
+          "wards_control": 8,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1747061110",
           "campeon": "Shyvana",
@@ -2421,40 +2450,42 @@
           "estilo_secundario": 8400,
           "wards_control": 9,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1745362094",
-          "campeon": "Shyvana",
-          "kda": "6/5/16 (4.4)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": 22,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerSmite"
-          ],
-          "duo_con": [
-            "Ostia"
-          ],
-          "perk_principal": 8005,
-          "estilo_secundario": 8400,
-          "wards_control": 6,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 48,
+      "kills_recientes": 50,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 33,
-      "kills_semana": 34,
+      "vision_promedio_reciente": 35,
+      "kills_semana": 42,
       "pentakills_semana": 0,
       "vision_promedio_semana": 38,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 3.04,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 2.53,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 51,
-      "partidas_semana": 6,
+      "asistencias_semana": 54,
+      "partidas_semana": 7,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789214097.098,
+          "kills": 8,
+          "muertes": 10,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 40,
+          "campeon": "Briar",
+          "victoria": false,
+          "duo_con": [
+            "ゆうき まこと"
+          ],
+          "cs": 168,
+          "duracion_seg": 1905,
+          "damage_taken": 35910,
+          "danio_recibido_pct": 24.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 17
+        },
         {
           "fin_seg": 1788819552.255,
           "kills": 9,
@@ -2583,8 +2614,8 @@
         }
       ],
       "duo_semana": {
-        "nombre": "Pinea",
-        "partidas": 2
+        "nombre": "ゆうき まこと",
+        "partidas": 3
       },
       "cs_min_semana": {
         "cs_por_min": 6.6,
@@ -2597,9 +2628,9 @@
         "campeon": "Lillia"
       },
       "objetivos_robados_semana": 1,
-      "estructuras_destruidas_semana": 7,
-      "tiempo_cc_semana": 112,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 8,
+      "tiempo_cc_semana": 129,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789185600
     },
@@ -4434,12 +4465,12 @@
       "nombre": "ゆうき まこと#1411",
       "icono": 5935,
       "rango": "Platinum IV",
-      "lp": 72,
-      "winrate": "64%",
-      "elo_score": 1672,
+      "lp": 60,
+      "winrate": "62%",
+      "elo_score": 1660,
       "record_lp_score": 1683,
       "record_lp_label": "Platinum IV (83 LP)",
-      "escalador_semana": -11,
+      "escalador_semana": -23,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -4450,7 +4481,7 @@
       "top_recientes": [
         {
           "campeon": "Poppy",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Singed",
@@ -4465,7 +4496,7 @@
         {
           "campeon": "Poppy",
           "nivel": 82,
-          "puntos": "874.323"
+          "puntos": "875.027"
         },
         {
           "campeon": "Teemo",
@@ -4672,9 +4703,34 @@
           "lp": 72,
           "rango": "Platinum",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-12T11:56:23Z",
+          "lp": 60,
+          "rango": "Platinum",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1748109653",
+          "campeon": "Poppy",
+          "kda": "1/9/5 (0.67)",
+          "resultado": "Derrota",
+          "duracion": "31min",
+          "lp_change": -12,
+          "hechizos": [
+            "SummonerTeleport",
+            "SummonerFlash"
+          ],
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "perk_principal": 8437,
+          "estilo_secundario": 8200,
+          "wards_control": 6,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1746480949",
           "campeon": "Singed",
@@ -4833,38 +4889,42 @@
           "estilo_secundario": 8200,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1743555482",
-          "campeon": "Nasus",
-          "kda": "0/0/0 (Perfect)",
-          "resultado": "Victoria",
-          "duracion": "7min",
-          "lp_change": 30,
-          "hechizos": [
-            "SummonerHaste",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8021,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 33,
+      "kills_recientes": 34,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 31,
-      "kills_semana": 9,
+      "vision_promedio_reciente": 34,
+      "kills_semana": 10,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 48,
+      "vision_promedio_semana": 41,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 1.64,
+      "kda_promedio_semana": 1.26,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 14,
-      "partidas_semana": 2,
+      "asistencias_semana": 19,
+      "partidas_semana": 3,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789214097.098,
+          "kills": 1,
+          "muertes": 9,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 27,
+          "campeon": "Poppy",
+          "victoria": false,
+          "duo_con": [
+            "Galactic Shark"
+          ],
+          "cs": 175,
+          "duracion_seg": 1905,
+          "damage_taken": 32543,
+          "danio_recibido_pct": 21.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 41
+        },
         {
           "fin_seg": 1788628286.596,
           "kills": 4,
@@ -4910,7 +4970,7 @@
       ],
       "duo_semana": {
         "nombre": "Galactic Shark",
-        "partidas": 2
+        "partidas": 3
       },
       "cs_min_semana": {
         "cs_por_min": 8.9,
@@ -4924,8 +4984,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 7,
-      "tiempo_cc_semana": 91,
-      "max_partidas_en_un_dia": 0,
+      "tiempo_cc_semana": 132,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789185600
     },
@@ -7643,8 +7703,8 @@
     },
     "tortuga": {
       "jugador": "ゆうき まこと",
-      "valor": 2,
-      "detalle": "2 partidas esta semana"
+      "valor": 3,
+      "detalle": "3 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -8068,7 +8128,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 20.463461
+    "ゆうき まこと": 20.464841
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
