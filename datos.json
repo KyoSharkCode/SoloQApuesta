@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-13T20:36:29.798224",
+  "ultimaActualizacion": "2026-09-13T20:38:25.404673",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -7223,15 +7223,15 @@
       "kills_recientes": 30,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 47,
-      "kills_semana": 40,
+      "kills_semana": 36,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 58,
+      "vision_promedio_semana": 56,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.04,
+      "kda_promedio_semana": 3.0,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 203,
-      "partidas_semana": 15,
+      "asistencias_semana": 183,
+      "partidas_semana": 14,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789168353.556,
@@ -7504,32 +7504,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 47
-        },
-        {
-          "fin_seg": 1788727051.249,
-          "kills": 4,
-          "muertes": 7,
-          "asistencias": 20,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 86,
-          "campeon": "Lux",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 136,
-          "duracion_seg": 2405,
-          "damage_taken": 22466,
-          "danio_recibido_pct": 11.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 40
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 4
+        "partidas": 3
       },
       "cs_min_semana": {
         "cs_por_min": 6.8,
@@ -7542,8 +7521,8 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 432,
+      "estructuras_destruidas_semana": 8,
+      "tiempo_cc_semana": 392,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789272000
@@ -7557,8 +7536,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.04,
-      "detalle": "3.04 KDA"
+      "valor": 3.0,
+      "detalle": "3.0 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -7566,9 +7545,9 @@
       "detalle": "6 campeones distintos ganados"
     },
     "asistente": {
-      "jugador": "Ostia",
-      "valor": 203,
-      "detalle": "203 asistencias"
+      "jugador": "El Buñuelito",
+      "valor": 196,
+      "detalle": "196 asistencias"
     },
     "farmeador": {
       "jugador": "ゆうき まこと",
@@ -7613,6 +7592,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-13T20:38:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "196 asistencias"
+    },
     {
       "timestamp": "2026-09-13T08:18:22Z",
       "tipo": "badge_semanal",
@@ -7994,16 +7983,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "Ostia",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-08T20:44:25Z",
-      "tipo": "logro_partida",
-      "categoria": "terminador:LA1_1747271124",
-      "icono": "💣",
-      "categoria_label": "Terminador",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": null,
-      "detalle": "Fiora dio el golpe final al Nexus"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -8017,7 +7996,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 21.777203
+    "ゆうき まこと": 21.778488
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
