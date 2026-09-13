@@ -1,25 +1,6 @@
 {
     "Pinea#Pinea": {
-        "en_partida": true,
-        "campeon": "Fiora",
-        "equipo": "red",
-        "hechizos": [
-            {
-                "nombre": "Extenuación",
-                "icono": "SummonerExhaust.png"
-            },
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            }
-        ],
-        "runas": {
-            "principal": 8005,
-            "secundario": 8300
-        },
-        "modo_juego": "Modo Destacado",
-        "game_start_time": 1789338146268,
-        "game_id": 1748472527
+        "en_partida": false
     },
     "Galactic Shark#AYK": {
         "en_partida": false
@@ -34,82 +15,7 @@
         "en_partida": false
     },
     "Ostia#LAN": {
-        "en_partida": true,
-        "campeon": "Kled",
-        "equipo": "blue",
-        "hechizos": [
-            {
-                "nombre": "Destello",
-                "icono": "SummonerFlash.png"
-            },
-            {
-                "nombre": "Prender",
-                "icono": "SummonerDot.png"
-            }
-        ],
-        "runas": {
-            "principal": 8010,
-            "secundario": 8400
-        },
-        "modo_juego": "Modo Destacado",
-        "game_start_time": 1789338146268,
-        "game_id": 1748472527
-    },
-    "_partidas_activas": {
-        "1748472527": {
-            "game_start_time": 1789338146268,
-            "modo_juego": "Modo Destacado",
-            "baneos": [],
-            "participantes": [
-                {
-                    "nombre": "Ostia#LAN",
-                    "campeon": "Kled",
-                    "equipo": "blue",
-                    "icono_invocador": 6205,
-                    "hechizos": [
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        },
-                        {
-                            "nombre": "Prender",
-                            "icono": "SummonerDot.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8010,
-                        "secundario": 8400
-                    },
-                    "tags": [
-                        "Fighter"
-                    ]
-                },
-                {
-                    "nombre": "Pinea#Pinea",
-                    "campeon": "Fiora",
-                    "equipo": "red",
-                    "icono_invocador": 7126,
-                    "hechizos": [
-                        {
-                            "nombre": "Extenuación",
-                            "icono": "SummonerExhaust.png"
-                        },
-                        {
-                            "nombre": "Destello",
-                            "icono": "SummonerFlash.png"
-                        }
-                    ],
-                    "runas": {
-                        "principal": 8005,
-                        "secundario": 8300
-                    },
-                    "tags": [
-                        "Fighter",
-                        "Assassin"
-                    ]
-                }
-            ]
-        }
+        "en_partida": false
     },
     "_eventos_vivo": [
         {
