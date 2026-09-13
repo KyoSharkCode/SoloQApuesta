@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-13T22:50:36.657389",
+  "ultimaActualizacion": "2026-09-13T22:52:26.636003",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -10,7 +10,7 @@
       "elo_score": 1600,
       "record_lp_score": 1658,
       "record_lp_label": "Platinum IV (58 LP)",
-      "escalador_semana": 47,
+      "escalador_semana": 26,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -1320,15 +1320,15 @@
       "kills_recientes": 60,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 30,
-      "kills_semana": 149,
+      "kills_semana": 145,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 32,
-      "primeras_sangre_semana": 9,
-      "kda_promedio_semana": 1.83,
+      "vision_promedio_semana": 31,
+      "primeras_sangre_semana": 8,
+      "kda_promedio_semana": 1.92,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 100,
-      "partidas_semana": 22,
+      "asistencias_semana": 93,
+      "partidas_semana": 21,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789185272.122,
@@ -1770,27 +1770,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 5,
           "tiempo_cc": 12
-        },
-        {
-          "fin_seg": 1788735134.55,
-          "kills": 4,
-          "muertes": 12,
-          "asistencias": 7,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 49,
-          "campeon": "Fiora",
-          "victoria": false,
-          "duo_con": [
-            "Ostia"
-          ],
-          "cs": 166,
-          "duracion_seg": 2254,
-          "damage_taken": 46272,
-          "danio_recibido_pct": 20.7,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 15
         }
       ],
       "duo_semana": {
@@ -1808,8 +1787,8 @@
         "campeon": "Fiora"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 36,
-      "tiempo_cc_semana": 280,
+      "estructuras_destruidas_semana": 35,
+      "tiempo_cc_semana": 265,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789272000
@@ -6241,7 +6220,7 @@
       "elo_score": 1041,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -53,
+      "escalador_semana": -34,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -7187,15 +7166,15 @@
       "kills_recientes": 33,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 50,
-      "kills_semana": 37,
+      "kills_semana": 33,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 51,
+      "vision_promedio_semana": 48,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.7,
+      "kda_promedio_semana": 2.75,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 160,
-      "partidas_semana": 13,
+      "asistencias_semana": 140,
+      "partidas_semana": 12,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789335176.005,
@@ -7424,33 +7403,9 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 40
-        },
-        {
-          "fin_seg": 1788735134.55,
-          "kills": 4,
-          "muertes": 10,
-          "asistencias": 20,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 90,
-          "campeon": "Taric",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 60,
-          "duracion_seg": 2254,
-          "damage_taken": 38095,
-          "danio_recibido_pct": 17.0,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 50
         }
       ],
-      "duo_semana": {
-        "nombre": "Pinea",
-        "partidas": 1
-      },
+      "duo_semana": null,
       "cs_min_semana": {
         "cs_por_min": 6.8,
         "cs": 242,
@@ -7463,7 +7418,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 10,
-      "tiempo_cc_semana": 336,
+      "tiempo_cc_semana": 286,
       "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": {
         "timestamp": 1789335176005,
@@ -7482,13 +7437,13 @@
   "titulares": {
     "agresivo": {
       "jugador": "Pinea",
-      "valor": 9,
-      "detalle": "9 primeras sangre"
+      "valor": 8,
+      "detalle": "8 primeras sangre"
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 2.7,
-      "detalle": "2.7 KDA"
+      "valor": 2.75,
+      "detalle": "2.75 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -7532,7 +7487,7 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "Pinea",
+      "jugador": "El Buñuelito",
       "valor": 36,
       "detalle": "36 estructuras destruidas"
     },
@@ -7543,6 +7498,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-13T22:52:22Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Pinea",
+      "detalle": "36 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-13T22:22:20Z",
       "tipo": "badge_semanal",
@@ -7924,16 +7889,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "El Buñuelito",
       "detalle": "47 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-09T02:20:32Z",
-      "tipo": "badge_semanal",
-      "categoria": "kda_player",
-      "categoria_label": "KDA Player",
-      "icono": "📊",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "Ostia",
-      "detalle": "3.79 KDA"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7947,7 +7902,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 21.866711
+    "ゆうき まこと": 21.867939
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
