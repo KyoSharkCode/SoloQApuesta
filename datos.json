@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-13T01:46:29.287924",
+  "ultimaActualizacion": "2026-09-13T01:48:25.342532",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -7105,15 +7105,15 @@
       "kills_recientes": 30,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 47,
-      "kills_semana": 52,
+      "kills_semana": 50,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 56,
+      "vision_promedio_semana": 57,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.55,
+      "kda_promedio_semana": 3.54,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 5,
-      "asistencias_semana": 299,
-      "partidas_semana": 21,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 293,
+      "partidas_semana": 20,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789168353.556,
@@ -7508,32 +7508,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 3,
           "tiempo_cc": 45
-        },
-        {
-          "fin_seg": 1788659257.575,
-          "kills": 2,
-          "muertes": 2,
-          "asistencias": 6,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 40,
-          "campeon": "Swain",
-          "victoria": true,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 39,
-          "duracion_seg": 1252,
-          "damage_taken": 11845,
-          "danio_recibido_pct": 13.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 26
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 8
+        "partidas": 7
       },
       "cs_min_semana": {
         "cs_por_min": 6.8,
@@ -7546,8 +7525,8 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 16,
-      "tiempo_cc_semana": 651,
+      "estructuras_destruidas_semana": 15,
+      "tiempo_cc_semana": 625,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789185600
@@ -7561,8 +7540,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.55,
-      "detalle": "3.55 KDA"
+      "valor": 3.54,
+      "detalle": "3.54 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -7571,8 +7550,8 @@
     },
     "asistente": {
       "jugador": "Ostia",
-      "valor": 299,
-      "detalle": "299 asistencias"
+      "valor": 293,
+      "detalle": "293 asistencias"
     },
     "farmeador": {
       "jugador": "ゆうき まこと",
@@ -7611,12 +7590,22 @@
       "detalle": "39 estructuras destruidas"
     },
     "stop": {
-      "jugador": "Ostia",
-      "valor": 651,
-      "detalle": "651s de CC aplicado"
+      "jugador": "El Buñuelito",
+      "valor": 627,
+      "detalle": "627s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-13T01:48:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "stop",
+      "categoria_label": "Stop",
+      "icono": "🛑",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "627s de CC aplicado"
+    },
     {
       "timestamp": "2026-09-12T21:20:32Z",
       "tipo": "badge_semanal",
@@ -7997,15 +7986,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold IV (65 LP)"
-    },
-    {
-      "timestamp": "2026-09-08T06:16:21Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold IV (44 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -8019,7 +7999,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 21.019915
+    "ゆうき まこと": 21.021201
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
