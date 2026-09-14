@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-14T07:24:24.765806",
+  "ultimaActualizacion": "2026-09-14T07:26:31.184029",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4884,12 +4884,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
       "rango": "Gold III",
-      "lp": 17,
+      "lp": 59,
       "winrate": "53%",
-      "elo_score": 1317,
-      "record_lp_score": 1317,
-      "record_lp_label": "Gold III (17 LP)",
-      "escalador_semana": 108,
+      "elo_score": 1359,
+      "record_lp_score": 1359,
+      "record_lp_label": "Gold III (59 LP)",
+      "escalador_semana": 150,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4897,7 +4897,7 @@
           "cantidad": 7
         },
         {
-          "rol": "Top",
+          "rol": "ADC",
           "cantidad": 2
         }
       ],
@@ -4907,7 +4907,7 @@
           "cantidad": 6
         },
         {
-          "campeon": "Trundle",
+          "campeon": "Caitlyn",
           "cantidad": 2
         },
         {
@@ -5554,9 +5554,32 @@
           "lp": 17,
           "rango": "Gold",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-14T07:26:20Z",
+          "lp": 59,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1748625670",
+          "campeon": "Caitlyn",
+          "kda": "7/8/20 (3.38)",
+          "resultado": "Victoria",
+          "duracion": "41min",
+          "lp_change": 42,
+          "hechizos": [
+            "SummonerBarrier",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8005,
+          "estilo_secundario": 8400,
+          "wards_control": 4,
+          "posible_egida": true
+        },
         {
           "match_id": "LA1_1748611675",
           "campeon": "Yone",
@@ -5709,38 +5732,40 @@
           "estilo_secundario": 8200,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1747408959",
-          "campeon": "Trundle",
-          "kda": "7/5/13 (4.0)",
-          "resultado": "Victoria",
-          "duracion": "32min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8008,
-          "estilo_secundario": 8400,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
       "kills_recientes": 100,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 40,
-      "kills_semana": 219,
+      "vision_promedio_reciente": 43,
+      "kills_semana": 226,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 40,
+      "vision_promedio_semana": 41,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.27,
+      "kda_promedio_semana": 2.32,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 155,
-      "partidas_semana": 22,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 175,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789370706.491,
+          "kills": 7,
+          "muertes": 8,
+          "asistencias": 20,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 61,
+          "campeon": "Caitlyn",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 234,
+          "duracion_seg": 2490,
+          "damage_taken": 30921,
+          "danio_recibido_pct": 16.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 18
+        },
         {
           "fin_seg": 1789367386.739,
           "kills": 19,
@@ -6173,8 +6198,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 28,
-      "tiempo_cc_semana": 260,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 278,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1789363563571,
         "campeon": "Akali",
@@ -7418,9 +7443,9 @@
       "detalle": "6 campeones distintos ganados"
     },
     "asistente": {
-      "jugador": "El Buñuelito",
-      "valor": 165,
-      "detalle": "165 asistencias"
+      "jugador": "adrianNOOBYT",
+      "valor": 175,
+      "detalle": "175 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7435,7 +7460,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 108,
+      "valor": 150,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7465,6 +7490,54 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-14T07:26:20Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1748625670",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Caitlyn aniquiló al equipo rival sin bajas propias"
+    },
+    {
+      "timestamp": "2026-09-14T07:26:20Z",
+      "tipo": "posible_egida",
+      "icono": "icons/egida-de-valor.svg",
+      "categoria_label": "Posible Égida de Valor",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Caitlyn · +42 LP"
+    },
+    {
+      "timestamp": "2026-09-14T07:26:20Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Gold III (59 LP)"
+    },
+    {
+      "timestamp": "2026-09-14T07:26:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "asistente",
+      "categoria_label": "El Asistente",
+      "icono": "🤝",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "El Buñuelito",
+      "detalle": "175 asistencias"
+    },
+    {
+      "timestamp": "2026-09-14T07:26:20Z",
+      "tipo": "adelantamiento",
+      "icono": "⚔️",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Galactic Shark",
+      "top_posicion": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-09-14T06:30:47Z",
       "tipo": "logro_partida",
@@ -7807,55 +7880,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "adrianNOOBYT",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-10T07:20:34Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Pinea",
-      "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-10T06:30:53Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-09-10T01:28:23Z",
-      "tipo": "badge_semanal",
-      "categoria": "kda_player",
-      "categoria_label": "KDA Player",
-      "icono": "📊",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "3.74 KDA"
-    },
-    {
-      "timestamp": "2026-09-10T01:28:23Z",
-      "tipo": "badge_semanal",
-      "categoria": "stop",
-      "categoria_label": "Stop",
-      "icono": "🛑",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "751s de CC aplicado"
-    },
-    {
-      "timestamp": "2026-09-10T00:50:32Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "adrianNOOBYT",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7864,12 +7888,12 @@
     "ゆうき まこと#1411": 1,
     "Pinea#Pinea": 2,
     "El Buñuelito#KyA": 3,
-    "Galactic Shark#AYK": 4,
-    "adrianNOOBYT#LAN": 5,
+    "adrianNOOBYT#LAN": 4,
+    "Galactic Shark#AYK": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 22.209767
+    "ゆうき まこと": 22.211107
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
