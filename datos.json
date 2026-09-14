@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-14T06:28:30.164443",
+  "ultimaActualizacion": "2026-09-14T06:30:59.683025",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4883,13 +4883,13 @@
     {
       "nombre": "adrianNOOBYT#LAN",
       "icono": 5913,
-      "rango": "Gold IV",
-      "lp": 96,
-      "winrate": "52%",
-      "elo_score": 1296,
-      "record_lp_score": 1296,
-      "record_lp_label": "Gold IV (96 LP)",
-      "escalador_semana": 87,
+      "rango": "Gold III",
+      "lp": 17,
+      "winrate": "53%",
+      "elo_score": 1317,
+      "record_lp_score": 1317,
+      "record_lp_label": "Gold III (17 LP)",
+      "escalador_semana": 108,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4904,14 +4904,14 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 7
+          "cantidad": 6
         },
         {
           "campeon": "Trundle",
           "cantidad": 2
         },
         {
-          "campeon": "Caitlyn",
+          "campeon": "Yone",
           "cantidad": 1
         }
       ],
@@ -5548,9 +5548,32 @@
           "lp": 96,
           "rango": "Gold",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-14T06:30:47Z",
+          "lp": 17,
+          "rango": "Gold",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1748611675",
+          "campeon": "Yone",
+          "kda": "19/13/23 (3.23)",
+          "resultado": "Victoria",
+          "duracion": "57min",
+          "lp_change": 21,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8008,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1748600895",
           "campeon": "Akali",
@@ -5703,38 +5726,40 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1747403430",
-          "campeon": "Akali",
-          "kda": "9/2/5 (7.0)",
-          "resultado": "Victoria",
-          "duracion": "24min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 90,
+      "kills_recientes": 100,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 38,
-      "kills_semana": 200,
+      "vision_promedio_reciente": 40,
+      "kills_semana": 219,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 39,
+      "vision_promedio_semana": 40,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.18,
+      "kda_promedio_semana": 2.27,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 132,
-      "partidas_semana": 21,
+      "asistencias_semana": 155,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789367386.739,
+          "kills": 19,
+          "muertes": 13,
+          "asistencias": 23,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 46,
+          "campeon": "Yone",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 410,
+          "duracion_seg": 3443,
+          "damage_taken": 74237,
+          "danio_recibido_pct": 19.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 4,
+          "tiempo_cc": 54
+        },
         {
           "fin_seg": 1789363563.571,
           "kills": 8,
@@ -6147,9 +6172,9 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 24,
-      "tiempo_cc_semana": 206,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 28,
+      "tiempo_cc_semana": 260,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1789363563571,
         "campeon": "Akali",
@@ -7410,7 +7435,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 87,
+      "valor": 108,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7440,6 +7465,25 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-14T06:30:47Z",
+      "tipo": "logro_partida",
+      "categoria": "terminador:LA1_1748611675",
+      "icono": "💣",
+      "categoria_label": "Terminador",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Yone dio el golpe final al Nexus"
+    },
+    {
+      "timestamp": "2026-09-14T06:30:47Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Gold III (17 LP)"
+    },
     {
       "timestamp": "2026-09-14T05:26:19Z",
       "tipo": "logro_partida",
@@ -7812,26 +7856,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "adrianNOOBYT",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-10T00:00:57Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Pinea",
-      "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-09T08:22:26Z",
-      "tipo": "badge_semanal",
-      "categoria": "escalador",
-      "categoria_label": "El Escalador",
-      "icono": "📈",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "adrianNOOBYT",
-      "detalle": "Mejor jugador de la semana"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7845,7 +7869,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 22.172417
+    "ゆうき まこと": 22.174006
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
