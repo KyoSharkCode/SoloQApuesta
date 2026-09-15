@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-15T07:10:41.339196",
+  "ultimaActualizacion": "2026-09-15T07:12:25.288103",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4660,7 +4660,7 @@
       "elo_score": 1363,
       "record_lp_score": 1382,
       "record_lp_label": "Gold III (82 LP)",
-      "escalador_semana": 98,
+      "escalador_semana": 117,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -5532,15 +5532,15 @@
       "kills_recientes": 89,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 36,
-      "kills_semana": 180,
+      "kills_semana": 161,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 37,
+      "vision_promedio_semana": 36,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.24,
+      "kda_promedio_semana": 2.28,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 152,
-      "partidas_semana": 20,
+      "asistencias_semana": 147,
+      "partidas_semana": 19,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789450141.638,
@@ -5902,25 +5902,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 14
-        },
-        {
-          "fin_seg": 1788851466.667,
-          "kills": 19,
-          "muertes": 13,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 51,
-          "campeon": "Yone",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 298,
-          "duracion_seg": 3026,
-          "damage_taken": 66474,
-          "danio_recibido_pct": 21.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 29
         }
       ],
       "duo_semana": null,
@@ -5935,8 +5916,8 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 21,
-      "tiempo_cc_semana": 285,
+      "estructuras_destruidas_semana": 20,
+      "tiempo_cc_semana": 256,
       "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1789445317315,
@@ -7125,8 +7106,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 152,
-      "detalle": "152 asistencias"
+      "valor": 147,
+      "detalle": "147 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7141,7 +7122,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 98,
+      "valor": 117,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7160,9 +7141,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 21,
-      "detalle": "21 estructuras destruidas"
+      "jugador": "Pinea",
+      "valor": 20,
+      "detalle": "20 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7171,6 +7152,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-15T07:12:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "20 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-15T04:50:32Z",
       "tipo": "record_lp",
@@ -7549,16 +7540,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": "El Buñuelito",
       "detalle": "721s de CC aplicado"
-    },
-    {
-      "timestamp": "2026-09-11T23:14:20Z",
-      "tipo": "badge_semanal",
-      "categoria": "kda_player",
-      "categoria_label": "KDA Player",
-      "icono": "📊",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "3.65 KDA"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7572,7 +7553,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 23.163465
+    "ゆうき まこと": 23.164623
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
