@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-15T19:48:24.940343",
+  "ultimaActualizacion": "2026-09-15T19:50:42.482765",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4660,7 +4660,7 @@
       "elo_score": 1405,
       "record_lp_score": 1405,
       "record_lp_label": "Gold II (5 LP)",
-      "escalador_semana": 157,
+      "escalador_semana": 136,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -5544,15 +5544,15 @@
       "kills_recientes": 87,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 170,
+      "kills_semana": 162,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 36,
+      "vision_promedio_semana": 37,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.44,
+      "kda_promedio_semana": 2.59,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 154,
-      "partidas_semana": 19,
+      "asistencias_semana": 149,
+      "partidas_semana": 18,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789496319.29,
@@ -5895,31 +5895,12 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 3,
           "tiempo_cc": 2
-        },
-        {
-          "fin_seg": 1788896962.521,
-          "kills": 8,
-          "muertes": 13,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 29,
-          "campeon": "Yone",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 267,
-          "duracion_seg": 2227,
-          "damage_taken": 41537,
-          "danio_recibido_pct": 19.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 28
         }
       ],
       "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 7.2,
-        "cs": 267,
+        "cs_por_min": 7.1,
+        "cs": 410,
         "campeon": "Yone"
       },
       "danio_recibido_semana": {
@@ -5928,8 +5909,8 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 21,
-      "tiempo_cc_semana": 244,
+      "estructuras_destruidas_semana": 20,
+      "tiempo_cc_semana": 216,
       "max_partidas_en_un_dia": 5,
       "primera_victoria_hoy": {
         "timestamp": 1789445317315,
@@ -7118,8 +7099,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 154,
-      "detalle": "154 asistencias"
+      "valor": 149,
+      "detalle": "149 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7134,7 +7115,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 157,
+      "valor": 136,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -7153,9 +7134,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 21,
-      "detalle": "21 estructuras destruidas"
+      "jugador": "Pinea",
+      "valor": 20,
+      "detalle": "20 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7164,6 +7145,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-15T19:50:39Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "20 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-15T18:20:31Z",
       "tipo": "record_lp",
@@ -7541,16 +7532,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": "Ostia",
       "detalle": "627s de CC aplicado"
-    },
-    {
-      "timestamp": "2026-09-12T21:20:32Z",
-      "tipo": "badge_semanal",
-      "categoria": "farmeador",
-      "categoria_label": "El Farmeador",
-      "icono": "🌾",
-      "jugador_nuevo": "ゆうき まこと",
-      "jugador_anterior": "adrianNOOBYT",
-      "detalle": "7.6 CS/min con Singed"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7564,7 +7545,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 23.670164
+    "ゆうき まこと": 23.671716
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
