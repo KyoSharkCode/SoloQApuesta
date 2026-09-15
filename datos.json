@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-15T17:56:27.171691",
+  "ultimaActualizacion": "2026-09-15T17:58:26.341316",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5538,15 +5538,15 @@
       "kills_recientes": 82,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 35,
-      "kills_semana": 168,
+      "kills_semana": 158,
       "pentakills_semana": 0,
       "vision_promedio_semana": 36,
       "primeras_sangre_semana": 1,
       "kda_promedio_semana": 2.39,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 157,
-      "partidas_semana": 19,
+      "asistencias_semana": 146,
+      "partidas_semana": 18,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789494022.944,
@@ -5889,25 +5889,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 28
-        },
-        {
-          "fin_seg": 1788890288.871,
-          "kills": 10,
-          "muertes": 9,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 42,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 170,
-          "duracion_seg": 2049,
-          "damage_taken": 34585,
-          "danio_recibido_pct": 21.0,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 6
         }
       ],
       "duo_semana": null,
@@ -5922,8 +5903,8 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 21,
-      "tiempo_cc_semana": 247,
+      "estructuras_destruidas_semana": 20,
+      "tiempo_cc_semana": 241,
       "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1789445317315,
@@ -7112,8 +7093,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 157,
-      "detalle": "157 asistencias"
+      "valor": 146,
+      "detalle": "146 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7147,9 +7128,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 21,
-      "detalle": "21 estructuras destruidas"
+      "jugador": "Pinea",
+      "valor": 20,
+      "detalle": "20 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7158,6 +7139,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-15T17:58:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "20 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-15T17:40:32Z",
       "tipo": "logro_partida",
@@ -7536,16 +7527,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": "Pinea",
       "detalle": "Mejor jugador de la semana"
-    },
-    {
-      "timestamp": "2026-09-12T02:38:22Z",
-      "tipo": "badge_semanal",
-      "categoria": "destructor",
-      "categoria_label": "El Destructor",
-      "icono": "💥",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "42 estructuras destruidas"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7559,7 +7540,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 23.595401
+    "ゆうき まこと": 23.596713
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
