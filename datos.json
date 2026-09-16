@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-15T23:58:25.019670",
+  "ultimaActualizacion": "2026-09-16T00:01:03.991715",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5845,24 +5845,28 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver II",
-      "lp": 79,
+      "lp": 58,
       "winrate": "52%",
-      "elo_score": 1079,
+      "elo_score": 1058,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": 66,
+      "escalador_semana": 45,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 9
         },
         {
           "rol": "Support",
-          "cantidad": 2
+          "cantidad": 1
         }
       ],
       "top_recientes": [
+        {
+          "campeon": "Kled",
+          "cantidad": 3
+        },
         {
           "campeon": "Illaoi",
           "cantidad": 3
@@ -5870,10 +5874,6 @@
         {
           "campeon": "Kayle",
           "cantidad": 3
-        },
-        {
-          "campeon": "Kled",
-          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -6631,9 +6631,32 @@
           "lp": 79,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-16T00:00:54Z",
+          "lp": 58,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1748958624",
+          "campeon": "Kled",
+          "kda": "2/2/0 (1.0)",
+          "resultado": "Derrota",
+          "duracion": "19min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1748953097",
           "campeon": "Kled",
@@ -6786,38 +6809,40 @@
           "estilo_secundario": 8200,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1747468074",
-          "campeon": "Taric",
-          "kda": "1/7/17 (2.57)",
-          "resultado": "Derrota",
-          "duracion": "39min",
-          "lp_change": -21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8351,
-          "estilo_secundario": 8400,
-          "wards_control": 10,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 26,
+      "kills_recientes": 27,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 43,
-      "kills_semana": 26,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 28,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 43,
+      "vision_promedio_semana": 40,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 3.07,
+      "kda_promedio_semana": 2.98,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
       "asistencias_semana": 106,
-      "partidas_semana": 10,
+      "partidas_semana": 11,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789516784.575,
+          "kills": 2,
+          "muertes": 2,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 13,
+          "campeon": "Kled",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 78,
+          "duracion_seg": 1148,
+          "damage_taken": 16227,
+          "danio_recibido_pct": 21.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 11
+        },
         {
           "fin_seg": 1789514958.004,
           "kills": 3,
@@ -7022,8 +7047,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 13,
-      "tiempo_cc_semana": 176,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 187,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1789513204190,
         "campeon": "Kled",
@@ -7046,8 +7071,8 @@
     },
     "kda_player": {
       "jugador": "Ostia",
-      "valor": 3.07,
-      "detalle": "3.07 KDA"
+      "valor": 2.98,
+      "detalle": "2.98 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -7503,7 +7528,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 23.835914
+    "ゆうき まこと": 23.837641
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
