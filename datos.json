@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-16T05:46:27.081634",
+  "ultimaActualizacion": "2026-09-16T05:48:26.410009",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5436,15 +5436,15 @@
       "kills_recientes": 87,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 153,
+      "kills_semana": 146,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 37,
+      "vision_promedio_semana": 38,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.52,
+      "kda_promedio_semana": 2.45,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 144,
-      "partidas_semana": 17,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 131,
+      "partidas_semana": 16,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789496319.29,
@@ -5749,25 +5749,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 15
-        },
-        {
-          "fin_seg": 1788932883.423,
-          "kills": 7,
-          "muertes": 5,
-          "asistencias": 13,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 32,
-          "campeon": "Trundle",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 228,
-          "duracion_seg": 1949,
-          "damage_taken": 46903,
-          "danio_recibido_pct": 32.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 6,
-          "tiempo_cc": 34
         }
       ],
       "duo_semana": null,
@@ -5777,13 +5758,13 @@
         "campeon": "Yone"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 32.4,
-        "damage_taken": 46903,
+        "danio_recibido_pct": 30.3,
+        "damage_taken": 36806,
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 17,
-      "tiempo_cc_semana": 214,
+      "estructuras_destruidas_semana": 11,
+      "tiempo_cc_semana": 180,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789531200
@@ -7018,8 +6999,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 144,
-      "detalle": "144 asistencias"
+      "valor": 131,
+      "detalle": "131 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7053,9 +7034,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 17,
-      "detalle": "17 estructuras destruidas"
+      "jugador": "Pinea",
+      "valor": 13,
+      "detalle": "13 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7064,6 +7045,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-16T05:48:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "13 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-15T23:00:53Z",
       "tipo": "logro_partida",
@@ -7443,15 +7434,6 @@
       "jugador_nuevo": "Galactic Shark",
       "jugador_anterior": "ゆうき まこと",
       "detalle": "4 partidas esta semana"
-    },
-    {
-      "timestamp": "2026-09-13T04:30:44Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold IV (94 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7465,7 +7447,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 24.062357
+    "ゆうき まこと": 24.063681
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
