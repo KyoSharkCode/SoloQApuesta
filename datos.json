@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-17T05:46:33.893920",
+  "ultimaActualizacion": "2026-09-17T05:48:24.640835",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5364,15 +5364,15 @@
       "kills_recientes": 91,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 150,
+      "kills_semana": 148,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 36,
+      "vision_promedio_semana": 37,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.67,
+      "kda_promedio_semana": 2.79,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 125,
-      "partidas_semana": 16,
+      "asistencias_semana": 120,
+      "partidas_semana": 15,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789620199.671,
@@ -5658,25 +5658,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 5
-        },
-        {
-          "fin_seg": 1789019204.725,
-          "kills": 2,
-          "muertes": 7,
-          "asistencias": 5,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 34,
-          "campeon": "Trundle",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 161,
-          "duracion_seg": 1721,
-          "damage_taken": 36806,
-          "danio_recibido_pct": 30.3,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 27
         }
       ],
       "duo_semana": null,
@@ -5686,13 +5667,13 @@
         "campeon": "Yone"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 30.3,
-        "damage_taken": 36806,
-        "campeon": "Trundle"
+        "danio_recibido_pct": 25.4,
+        "damage_taken": 5136,
+        "campeon": "Akali"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 12,
-      "tiempo_cc_semana": 167,
+      "estructuras_destruidas_semana": 11,
+      "tiempo_cc_semana": 140,
       "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1789618354877,
@@ -6964,8 +6945,8 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.67,
-      "detalle": "2.67 KDA"
+      "valor": 2.79,
+      "detalle": "2.79 KDA"
     },
     "champion_pool": {
       "jugador": "El Buñuelito",
@@ -6974,8 +6955,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 125,
-      "detalle": "125 asistencias"
+      "valor": 120,
+      "detalle": "120 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -7009,9 +6990,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 12,
-      "detalle": "12 estructuras destruidas"
+      "jugador": "Pinea",
+      "valor": 11,
+      "detalle": "11 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7020,6 +7001,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-17T05:48:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "11 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-17T04:44:20Z",
       "tipo": "logro_partida",
@@ -7397,15 +7388,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Akali aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-14T05:26:19Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold IV (96 LP)"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7419,7 +7401,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 25.024912
+    "ゆうき まこと": 25.026158
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
