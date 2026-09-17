@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-17T23:04:26.658643",
+  "ultimaActualizacion": "2026-09-17T23:06:31.602824",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5676,13 +5676,13 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Silver III",
-      "lp": 93,
+      "rango": "Silver II",
+      "lp": 12,
       "winrate": "51%",
-      "elo_score": 993,
+      "elo_score": 1012,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -15,
+      "escalador_semana": 4,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5697,11 +5697,11 @@
       "top_recientes": [
         {
           "campeon": "Kled",
-          "cantidad": 6
+          "cantidad": 5
         },
         {
           "campeon": "Darius",
-          "cantidad": 1
+          "cantidad": 2
         },
         {
           "campeon": "Taric",
@@ -6499,9 +6499,32 @@
           "lp": 93,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-17T23:06:24Z",
+          "lp": 12,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1749399738",
+          "campeon": "Darius",
+          "kda": "4/5/3 (1.4)",
+          "resultado": "Victoria",
+          "duracion": "30min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1749392697",
           "campeon": "Darius",
@@ -6654,38 +6677,40 @@
           "estilo_secundario": 8400,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1748941830",
-          "campeon": "Kled",
-          "kda": "2/2/9 (5.5)",
-          "resultado": "Victoria",
-          "duracion": "29min",
-          "lp_change": 19,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8437,
-          "estilo_secundario": 8000,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 22,
+      "kills_recientes": 24,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 26,
-      "kills_semana": 35,
+      "vision_promedio_reciente": 25,
+      "kills_semana": 39,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 34,
+      "vision_promedio_semana": 33,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.08,
+      "kda_promedio_semana": 2.03,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 90,
-      "partidas_semana": 12,
+      "campeones_ganados_semana": 4,
+      "asistencias_semana": 93,
+      "partidas_semana": 13,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789686285.382,
+          "kills": 4,
+          "muertes": 5,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 23,
+          "campeon": "Darius",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 173,
+          "duracion_seg": 1830,
+          "damage_taken": 23978,
+          "danio_recibido_pct": 18.8,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 23
+        },
         {
           "fin_seg": 1789684091.06,
           "kills": 7,
@@ -6927,10 +6952,20 @@
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 9,
-      "tiempo_cc_semana": 181,
-      "max_partidas_en_un_dia": 2,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 12,
+      "tiempo_cc_semana": 204,
+      "max_partidas_en_un_dia": 3,
+      "primera_victoria_hoy": {
+        "timestamp": 1789686285382,
+        "campeon": "Darius",
+        "kda": "4/5/3 (1.4)",
+        "equipo": "red",
+        "duracion": "30:30",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerDot"
+        ]
+      },
       "dia_referencia": 1789617600
     }
   ],
@@ -6987,9 +7022,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "Pinea",
-      "valor": 11,
-      "detalle": "11 estructuras destruidas"
+      "jugador": "Ostia",
+      "valor": 12,
+      "detalle": "12 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -6998,6 +7033,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-17T23:06:24Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Pinea",
+      "detalle": "12 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-17T05:48:21Z",
       "tipo": "badge_semanal",
@@ -7375,16 +7420,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold III (17 LP)"
-    },
-    {
-      "timestamp": "2026-09-14T05:26:19Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1748600895",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Akali aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7398,7 +7433,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 25.718599
+    "ゆうき まこと": 25.719968
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
