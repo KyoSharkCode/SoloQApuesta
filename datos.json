@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-17T20:58:24.446776",
+  "ultimaActualizacion": "2026-09-17T21:01:24.704869",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5677,21 +5677,21 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver II",
-      "lp": 35,
+      "lp": 14,
       "winrate": "51%",
-      "elo_score": 1035,
+      "elo_score": 1014,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": 24,
+      "escalador_semana": 3,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 7
         },
         {
           "rol": "Support",
-          "cantidad": 1
+          "cantidad": 2
         }
       ],
       "top_recientes": [
@@ -5700,11 +5700,11 @@
           "cantidad": 6
         },
         {
-          "campeon": "Illaoi",
+          "campeon": "Taric",
           "cantidad": 2
         },
         {
-          "campeon": "Taric",
+          "campeon": "Illaoi",
           "cantidad": 1
         }
       ],
@@ -6487,9 +6487,32 @@
           "lp": 35,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-17T21:01:16Z",
+          "lp": 14,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1749379731",
+          "campeon": "Taric",
+          "kda": "2/4/5 (1.75)",
+          "resultado": "Derrota",
+          "duracion": "23min",
+          "lp_change": -21,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8351,
+          "estilo_secundario": 8400,
+          "wards_control": 4,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1749186965",
           "campeon": "Kled",
@@ -6642,38 +6665,40 @@
           "estilo_secundario": 8400,
           "wards_control": 8,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1747942427",
-          "campeon": "Illaoi",
-          "kda": "3/9/12 (1.67)",
-          "resultado": "Derrota",
-          "duracion": "41min",
-          "lp_change": -21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 23,
+      "kills_recientes": 22,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 35,
-      "kills_semana": 31,
+      "kills_semana": 33,
       "pentakills_semana": 0,
       "vision_promedio_semana": 35,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.19,
+      "kda_promedio_semana": 2.16,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 98,
-      "partidas_semana": 12,
+      "asistencias_semana": 103,
+      "partidas_semana": 13,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789678871.533,
+          "kills": 2,
+          "muertes": 4,
+          "asistencias": 5,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 45,
+          "campeon": "Taric",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 31,
+          "duracion_seg": 1389,
+          "damage_taken": 16731,
+          "danio_recibido_pct": 16.1,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 60
+        },
         {
           "fin_seg": 1789604710.943,
           "kills": 2,
@@ -6916,8 +6941,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 10,
-      "tiempo_cc_semana": 130,
-      "max_partidas_en_un_dia": 0,
+      "tiempo_cc_semana": 190,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789617600
     }
@@ -7386,7 +7411,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 25.634509
+    "ゆうき まこと": 25.6365
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
