@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-18T22:42:25.034279",
+  "ultimaActualizacion": "2026-09-18T22:44:28.923034",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5667,13 +5667,13 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Silver II",
-      "lp": 8,
-      "winrate": "51%",
-      "elo_score": 1008,
+      "rango": "Silver III",
+      "lp": 86,
+      "winrate": "50%",
+      "elo_score": 986,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -15,
+      "escalador_semana": -37,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -5691,12 +5691,12 @@
           "cantidad": 3
         },
         {
-          "campeon": "Kled",
-          "cantidad": 3
+          "campeon": "Illaoi",
+          "cantidad": 2
         },
         {
-          "campeon": "Illaoi",
-          "cantidad": 1
+          "campeon": "Kled",
+          "cantidad": 2
         }
       ],
       "maestrias": [
@@ -6508,9 +6508,32 @@
           "lp": 8,
           "rango": "Silver",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-18T22:44:19Z",
+          "lp": 86,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1749616201",
+          "campeon": "Illaoi",
+          "kda": "7/5/3 (2.0)",
+          "resultado": "Derrota",
+          "duracion": "33min",
+          "lp_change": -22,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1749613562",
           "campeon": "Ziggs",
@@ -6663,38 +6686,40 @@
           "estilo_secundario": 8400,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1749182422",
-          "campeon": "Kled",
-          "kda": "3/5/5 (1.6)",
-          "resultado": "Derrota",
-          "duracion": "26min",
-          "lp_change": -21,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 29,
+      "kills_recientes": 33,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 25,
-      "kills_semana": 44,
+      "kills_semana": 51,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 30,
+      "vision_promedio_semana": 29,
       "primeras_sangre_semana": 0,
       "kda_promedio_semana": 2.06,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 88,
-      "partidas_semana": 14,
+      "asistencias_semana": 91,
+      "partidas_semana": 15,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789771403.717,
+          "kills": 7,
+          "muertes": 5,
+          "asistencias": 3,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 23,
+          "campeon": "Illaoi",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 258,
+          "duracion_seg": 1993,
+          "damage_taken": 40849,
+          "danio_recibido_pct": 24.5,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 6
+        },
         {
           "fin_seg": 1789768490.164,
           "kills": 3,
@@ -6964,8 +6989,8 @@
       ],
       "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 5.8,
-        "cs": 168,
+        "cs_por_min": 7.8,
+        "cs": 258,
         "campeon": "Illaoi"
       },
       "danio_recibido_semana": {
@@ -6974,9 +6999,9 @@
         "campeon": "Kled"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 15,
-      "tiempo_cc_semana": 222,
-      "max_partidas_en_un_dia": 3,
+      "estructuras_destruidas_semana": 16,
+      "tiempo_cc_semana": 228,
+      "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1789768490164,
         "campeon": "Illaoi",
@@ -7044,9 +7069,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "adrianNOOBYT",
-      "valor": 15,
-      "detalle": "15 estructuras destruidas"
+      "jugador": "Ostia",
+      "valor": 16,
+      "detalle": "16 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7055,6 +7080,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-18T22:44:19Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "16 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-18T06:06:20Z",
       "tipo": "logro_partida",
@@ -7434,16 +7469,6 @@
       "jugador_anterior": "adrianNOOBYT",
       "top_posicion": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-09-14T07:26:20Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1748625670",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Caitlyn aniquiló al equipo rival sin bajas propias"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7457,7 +7482,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 26.665485
+    "ゆうき まこと": 26.666811
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
