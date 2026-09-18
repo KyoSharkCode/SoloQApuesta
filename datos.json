@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-18T23:12:27.256906",
+  "ultimaActualizacion": "2026-09-18T23:14:30.735575",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5673,7 +5673,7 @@
       "elo_score": 986,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -37,
+      "escalador_semana": -55,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -6691,15 +6691,15 @@
       "kills_recientes": 33,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 25,
-      "kills_semana": 51,
+      "kills_semana": 47,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 29,
+      "vision_promedio_semana": 25,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.06,
+      "kda_promedio_semana": 1.71,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 4,
-      "asistencias_semana": 91,
-      "partidas_semana": 15,
+      "campeones_ganados_semana": 3,
+      "asistencias_semana": 64,
+      "partidas_semana": 14,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789771403.717,
@@ -6966,25 +6966,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 2
-        },
-        {
-          "fin_seg": 1789168353.556,
-          "kills": 4,
-          "muertes": 4,
-          "asistencias": 27,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 91,
-          "campeon": "Taric",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 50,
-          "duracion_seg": 2408,
-          "damage_taken": 31258,
-          "danio_recibido_pct": 17.7,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 44
         }
       ],
       "duo_semana": null,
@@ -6999,8 +6980,8 @@
         "campeon": "Kled"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 16,
-      "tiempo_cc_semana": 228,
+      "estructuras_destruidas_semana": 15,
+      "tiempo_cc_semana": 184,
       "max_partidas_en_un_dia": 4,
       "primera_victoria_hoy": {
         "timestamp": 1789768490164,
@@ -7028,9 +7009,9 @@
       "detalle": "2.37 KDA"
     },
     "champion_pool": {
-      "jugador": "Ostia",
-      "valor": 4,
-      "detalle": "4 campeones distintos ganados"
+      "jugador": "El Buñuelito",
+      "valor": 3,
+      "detalle": "3 campeones distintos ganados"
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
@@ -7069,9 +7050,9 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "Ostia",
-      "valor": 16,
-      "detalle": "16 estructuras destruidas"
+      "jugador": "adrianNOOBYT",
+      "valor": 15,
+      "detalle": "15 estructuras destruidas"
     },
     "stop": {
       "jugador": "El Buñuelito",
@@ -7080,6 +7061,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-18T23:14:26Z",
+      "tipo": "badge_semanal",
+      "categoria": "champion_pool",
+      "categoria_label": "Maestro del Champion Pool",
+      "icono": "🎭",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "3 campeones distintos ganados"
+    },
+    {
+      "timestamp": "2026-09-18T23:14:26Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Ostia",
+      "detalle": "15 estructuras destruidas"
+    },
     {
       "timestamp": "2026-09-18T22:44:19Z",
       "tipo": "badge_semanal",
@@ -7449,26 +7450,6 @@
       "jugador_nuevo": "El Buñuelito",
       "jugador_anterior": "Pinea",
       "detalle": "24 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-15T00:12:22Z",
-      "tipo": "badge_semanal",
-      "categoria": "asistente",
-      "categoria_label": "El Asistente",
-      "icono": "🤝",
-      "jugador_nuevo": "El Buñuelito",
-      "jugador_anterior": "adrianNOOBYT",
-      "detalle": "165 asistencias"
-    },
-    {
-      "timestamp": "2026-09-14T18:38:20Z",
-      "tipo": "adelantamiento",
-      "icono": "⚔️",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "Galactic Shark",
-      "jugador_anterior": "adrianNOOBYT",
-      "top_posicion": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7482,7 +7463,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 26.685507
+    "ゆうき まこと": 26.686882
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
