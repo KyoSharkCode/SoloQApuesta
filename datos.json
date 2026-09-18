@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-18T20:32:27.280459",
+  "ultimaActualizacion": "2026-09-18T20:34:33.248315",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -6500,6 +6500,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1749595849",
+          "campeon": "Kled",
+          "kda": "0/1/0 (0.0)",
+          "resultado": "Derrota",
+          "duracion": "5min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerDot"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 0,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1749399738",
           "campeon": "Darius",
           "kda": "4/5/3 (1.4)",
@@ -6651,38 +6668,40 @@
           "estilo_secundario": 8400,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1748953097",
-          "campeon": "Kled",
-          "kda": "3/1/3 (6.0)",
-          "resultado": "Victoria",
-          "duracion": "23min",
-          "lp_change": 19,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerDot"
-          ],
-          "duo_con": [],
-          "perk_principal": 8010,
-          "estilo_secundario": 8400,
-          "wards_control": 0,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 24,
+      "kills_recientes": 21,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 25,
+      "vision_promedio_reciente": 23,
       "kills_semana": 39,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 33,
+      "vision_promedio_semana": 31,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.03,
+      "kda_promedio_semana": 2.0,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
       "asistencias_semana": 93,
-      "partidas_semana": 13,
+      "partidas_semana": 14,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789763652.991,
+          "kills": 0,
+          "muertes": 1,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 4,
+          "campeon": "Kled",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 15,
+          "duracion_seg": 341,
+          "damage_taken": 2309,
+          "danio_recibido_pct": 19.4,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 0
+        },
         {
           "fin_seg": 1789686285.382,
           "kills": 4,
@@ -6945,7 +6964,7 @@
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 12,
       "tiempo_cc_semana": 204,
-      "max_partidas_en_un_dia": 0,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789704000
     }
@@ -7416,7 +7435,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 26.579256
+    "ゆうき まこと": 26.580625
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
