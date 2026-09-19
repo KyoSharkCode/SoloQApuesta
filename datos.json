@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-19T03:54:24.428371",
+  "ultimaActualizacion": "2026-09-19T03:56:23.864003",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -1350,15 +1350,15 @@
       "kills_recientes": 42,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 25,
-      "kills_semana": 9,
+      "kills_semana": 8,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 22,
-      "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 0.93,
+      "vision_promedio_semana": 20,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 0.84,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 17,
-      "partidas_semana": 5,
+      "asistencias_semana": 8,
+      "partidas_semana": 4,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789526132.827,
@@ -1443,32 +1443,11 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 4,
           "tiempo_cc": 7
-        },
-        {
-          "fin_seg": 1789185272.122,
-          "kills": 1,
-          "muertes": 9,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 27,
-          "campeon": "Nautilus",
-          "victoria": false,
-          "duo_con": [
-            "El Buñuelito"
-          ],
-          "cs": 22,
-          "duracion_seg": 1566,
-          "damage_taken": 25088,
-          "danio_recibido_pct": 21.1,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 68
         }
       ],
       "duo_semana": {
         "nombre": "El Buñuelito",
-        "partidas": 5
+        "partidas": 4
       },
       "cs_min_semana": {
         "cs_por_min": 8.3,
@@ -1482,7 +1461,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 5,
-      "tiempo_cc_semana": 83,
+      "tiempo_cc_semana": 15,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789704000
@@ -3524,15 +3503,15 @@
       "kills_recientes": 42,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 22,
-      "kills_semana": 19,
+      "kills_semana": 14,
       "pentakills_semana": 0,
       "vision_promedio_semana": 14,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 1.43,
+      "kda_promedio_semana": 1.24,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 31,
-      "partidas_semana": 6,
+      "asistencias_semana": 22,
+      "partidas_semana": 5,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789670500.662,
@@ -3636,37 +3615,16 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 2,
           "tiempo_cc": 54
-        },
-        {
-          "fin_seg": 1789185272.122,
-          "kills": 5,
-          "muertes": 6,
-          "asistencias": 9,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 18,
-          "campeon": "Veigar",
-          "victoria": false,
-          "duo_con": [
-            "Pinea"
-          ],
-          "cs": 170,
-          "duracion_seg": 1566,
-          "damage_taken": 20317,
-          "danio_recibido_pct": 17.1,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 21
         }
       ],
       "duo_semana": {
         "nombre": "Pinea",
-        "partidas": 5
+        "partidas": 4
       },
       "cs_min_semana": {
-        "cs_por_min": 6.5,
-        "cs": 170,
-        "campeon": "Veigar"
+        "cs_por_min": 6.3,
+        "cs": 100,
+        "campeon": "Ahri"
       },
       "danio_recibido_semana": {
         "danio_recibido_pct": 23.2,
@@ -3675,7 +3633,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 2,
-      "tiempo_cc_semana": 167,
+      "tiempo_cc_semana": 146,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789704000
@@ -6919,7 +6877,7 @@
   ],
   "titulares": {
     "agresivo": {
-      "jugador": "Pinea",
+      "jugador": "Galactic Shark",
       "valor": 2,
       "detalle": "2 primeras sangre"
     },
@@ -6961,8 +6919,8 @@
     },
     "duo_dinamico": {
       "jugador": "Pinea",
-      "valor": 5,
-      "detalle": "con El Buñuelito (5 partidas juntos)"
+      "valor": 4,
+      "detalle": "con El Buñuelito (4 partidas juntos)"
     },
     "ladron": {
       "jugador": "Galactic Shark",
@@ -6981,6 +6939,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-19T03:56:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "agresivo",
+      "categoria_label": "Agresivo",
+      "icono": "🩸",
+      "jugador_nuevo": "Galactic Shark",
+      "jugador_anterior": "Pinea",
+      "detalle": "2 primeras sangre"
+    },
     {
       "timestamp": "2026-09-19T02:38:19Z",
       "tipo": "badge_semanal",
@@ -7360,16 +7328,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-09-15T03:20:30Z",
-      "tipo": "badge_semanal",
-      "categoria": "destructor",
-      "categoria_label": "El Destructor",
-      "icono": "💥",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "21 estructuras destruidas"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7383,7 +7341,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 26.873727
+    "ゆうき まこと": 26.875074
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
