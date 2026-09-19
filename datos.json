@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-19T13:08:23.031261",
+  "ultimaActualizacion": "2026-09-19T13:10:34.855278",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -2081,55 +2081,22 @@
       "kills_recientes": 46,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 41,
-      "kills_semana": 3,
+      "kills_semana": 0,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 27,
-      "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 1.38,
+      "vision_promedio_semana": 0,
+      "primeras_sangre_semana": 0,
+      "kda_promedio_semana": 0,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 0,
-      "asistencias_semana": 8,
-      "partidas_semana": 1,
-      "partidas_semana_detalle": [
-        {
-          "fin_seg": 1789218592.123,
-          "kills": 3,
-          "muertes": 8,
-          "asistencias": 8,
-          "pentakills": 0,
-          "primera_sangre": true,
-          "vision": 27,
-          "campeon": "Shyvana",
-          "victoria": false,
-          "duo_con": [
-            "ゆうき まこと"
-          ],
-          "cs": 134,
-          "duracion_seg": 1470,
-          "damage_taken": 23514,
-          "danio_recibido_pct": 18.8,
-          "objetivos_robados": 1,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 10
-        }
-      ],
-      "duo_semana": {
-        "nombre": "ゆうき まこと",
-        "partidas": 1
-      },
-      "cs_min_semana": {
-        "cs_por_min": 5.5,
-        "cs": 134,
-        "campeon": "Shyvana"
-      },
-      "danio_recibido_semana": {
-        "danio_recibido_pct": 18.8,
-        "damage_taken": 23514,
-        "campeon": "Shyvana"
-      },
-      "objetivos_robados_semana": 1,
+      "asistencias_semana": 0,
+      "partidas_semana": 0,
+      "partidas_semana_detalle": [],
+      "duo_semana": null,
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
+      "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 0,
-      "tiempo_cc_semana": 10,
+      "tiempo_cc_semana": 0,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789790400
@@ -4055,15 +4022,15 @@
       "kills_recientes": 52,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 23,
+      "kills_semana": 17,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 29,
+      "vision_promedio_semana": 32,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.65,
+      "kda_promedio_semana": 4.22,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 22,
-      "partidas_semana": 3,
+      "asistencias_semana": 21,
+      "partidas_semana": 2,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789290141.714,
@@ -4102,37 +4069,13 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 5,
           "tiempo_cc": 17
-        },
-        {
-          "fin_seg": 1789218592.123,
-          "kills": 6,
-          "muertes": 8,
-          "asistencias": 1,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 24,
-          "campeon": "Singed",
-          "victoria": false,
-          "duo_con": [
-            "Galactic Shark"
-          ],
-          "cs": 185,
-          "duracion_seg": 1470,
-          "damage_taken": 30063,
-          "danio_recibido_pct": 24.0,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 43
         }
       ],
-      "duo_semana": {
-        "nombre": "Galactic Shark",
-        "partidas": 1
-      },
+      "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 7.6,
-        "cs": 185,
-        "campeon": "Singed"
+        "cs_por_min": 6.7,
+        "cs": 253,
+        "campeon": "Poppy"
       },
       "danio_recibido_semana": {
         "danio_recibido_pct": 32.4,
@@ -4141,7 +4084,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 5,
-      "tiempo_cc_semana": 115,
+      "tiempo_cc_semana": 72,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789790400
@@ -6819,8 +6762,8 @@
     },
     "kda_player": {
       "jugador": "ゆうき まこと",
-      "valor": 2.65,
-      "detalle": "2.65 KDA"
+      "valor": 4.22,
+      "detalle": "4.22 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6849,20 +6792,16 @@
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
-      "jugador": "Galactic Shark",
-      "valor": 1,
-      "detalle": "1 partida esta semana"
+      "jugador": "ゆうき まこと",
+      "valor": 2,
+      "detalle": "2 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
       "valor": 4,
       "detalle": "con El Buñuelito (4 partidas juntos)"
     },
-    "ladron": {
-      "jugador": "Galactic Shark",
-      "valor": 1,
-      "detalle": "1 objetivo robado"
-    },
+    "ladron": null,
     "destructor": {
       "jugador": "adrianNOOBYT",
       "valor": 16,
@@ -6875,6 +6814,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-19T13:10:32Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "ゆうき まこと",
+      "jugador_anterior": "Galactic Shark",
+      "detalle": "2 partidas esta semana"
+    },
     {
       "timestamp": "2026-09-19T11:56:19Z",
       "tipo": "badge_semanal",
@@ -7257,15 +7206,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "adrianNOOBYT",
       "detalle": "20 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-15T04:50:32Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold III (82 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7279,7 +7219,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 27.2444
+    "ゆうき まこと": 27.245895
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
