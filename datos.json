@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-19T05:46:26.009026",
+  "ultimaActualizacion": "2026-09-19T05:48:29.104398",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4234,12 +4234,12 @@
       "nombre": "adrianNOOBYT#LAN",
       "icono": 7213,
       "rango": "Gold II",
-      "lp": 32,
+      "lp": 13,
       "winrate": "54%",
-      "elo_score": 1432,
+      "elo_score": 1413,
       "record_lp_score": 1448,
       "record_lp_label": "Gold II (48 LP)",
-      "escalador_semana": 138,
+      "escalador_semana": 119,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4976,9 +4976,32 @@
           "lp": 32,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-19T05:48:19Z",
+          "lp": 13,
+          "rango": "Gold",
+          "division": "II"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1749736226",
+          "campeon": "Akali",
+          "kda": "13/7/6 (2.71)",
+          "resultado": "Derrota",
+          "duracion": "32min",
+          "lp_change": -19,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 3,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1749516886",
           "campeon": "Akali",
@@ -5131,38 +5154,40 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1748813237",
-          "campeon": "Akali",
-          "kda": "10/7/9 (2.71)",
-          "resultado": "Victoria",
-          "duracion": "35min",
-          "lp_change": 21,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 78,
+      "kills_recientes": 81,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 35,
-      "kills_semana": 140,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 153,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 35,
+      "vision_promedio_semana": 36,
       "primeras_sangre_semana": 1,
-      "kda_promedio_semana": 2.37,
+      "kda_promedio_semana": 2.39,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 123,
-      "partidas_semana": 16,
+      "asistencias_semana": 129,
+      "partidas_semana": 17,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1789796831.349,
+          "kills": 13,
+          "muertes": 7,
+          "asistencias": 6,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 50,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 204,
+          "duracion_seg": 1933,
+          "damage_taken": 32379,
+          "danio_recibido_pct": 20.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 5
+        },
         {
           "fin_seg": 1789711464.836,
           "kills": 17,
@@ -5480,9 +5505,9 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 15,
-      "tiempo_cc_semana": 173,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 16,
+      "tiempo_cc_semana": 178,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789790400
     },
@@ -6863,8 +6888,8 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.37,
-      "detalle": "2.37 KDA"
+      "valor": 2.39,
+      "detalle": "2.39 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6873,8 +6898,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 123,
-      "detalle": "123 asistencias"
+      "valor": 129,
+      "detalle": "129 asistencias"
     },
     "farmeador": {
       "jugador": "Pinea",
@@ -6889,7 +6914,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 138,
+      "valor": 119,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -6908,7 +6933,7 @@
       "detalle": "1 objetivo robado"
     },
     "destructor": {
-      "jugador": "Ostia",
+      "jugador": "adrianNOOBYT",
       "valor": 16,
       "detalle": "16 estructuras destruidas"
     },
@@ -6919,6 +6944,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-19T05:48:19Z",
+      "tipo": "badge_semanal",
+      "categoria": "destructor",
+      "categoria_label": "El Destructor",
+      "icono": "💥",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Ostia",
+      "detalle": "16 estructuras destruidas"
+    },
+    {
+      "timestamp": "2026-09-19T05:48:19Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "adrianNOOBYT",
+      "top_posicion": 3,
+      "detalle": null
+    },
     {
       "timestamp": "2026-09-19T03:56:20Z",
       "tipo": "badge_semanal",
@@ -7289,25 +7334,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold III (61 LP)"
-    },
-    {
-      "timestamp": "2026-09-15T04:10:30Z",
-      "tipo": "adelantamiento",
-      "icono": "⚔️",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Galactic Shark",
-      "top_posicion": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-09-15T04:10:30Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7315,13 +7341,13 @@
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
     "Pinea#Pinea": 2,
-    "adrianNOOBYT#LAN": 3,
-    "El Buñuelito#KyA": 4,
+    "El Buñuelito#KyA": 3,
+    "adrianNOOBYT#LAN": 4,
     "Galactic Shark#AYK": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 26.948546
+    "ゆうき まこと": 26.949858
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
