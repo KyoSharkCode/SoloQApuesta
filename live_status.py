@@ -30,7 +30,7 @@ except ImportError:
         "adrianNOOBYT#LAN",
     ]
 
-DDRAGON_VERSION = "16.16.1"
+DDRAGON_VERSION = "16.18.1"
 
 
 def cargar_diccionarios_ddragon():
@@ -233,12 +233,16 @@ def actualizar_estado_en_vivo(jugadores):
 
                 # Mapeo de queue IDs a nombres legibles — Alex pidió que en vez
                 # de mostrar "Modo <id>" para lo que no reconocíamos, se
-                # agrupe todo en 5 categorías: los 4 modos "normales" de
+                # agrupe todo en varias categorías: los 4 modos "normales" de
                 # Grieta del Invocador (cada uno con su propio nombre),
-                # LoL Classic, ARAM, Arena, y "Modo Destacado" como cajón de
-                # sastre para cualquier otro modo rotativo/especial (URF,
-                # Nexus Blitz, Clash, Modo Definitivo, personalizadas, etc.)
+                # LoL Classic, ARAM, Arena, Clash, y "Modo Destacado" como
+                # cajón de sastre para cualquier otro modo rotativo/especial
+                # (URF, Nexus Blitz, Modo Definitivo, personalizadas, etc.)
                 # — así nunca más se ve un id crudo sin traducir.
+                # FIX: Clash (700) caía en el cajón de sastre "Modo Destacado"
+                # por no estar en este diccionario — a diferencia de un modo
+                # rotativo de verdad, Clash es un torneo recurrente que vale
+                # la pena mostrar con su propio nombre.
                 QUEUE_NAMES = {
                     490:  "Partida Rápida",   # Quickplay
                     420:  "Solo/Duo",         # Ranked Solo/Duo
@@ -246,6 +250,7 @@ def actualizar_estado_en_vivo(jugadores):
                     440:  "Flex",             # Ranked Flex
                     430:  "LoL Classic",      # Normal Blind Pick (el modo "clásico" original)
                     450:  "ARAM",
+                    700:  "Clash",
                     1700: "Arena",
                     1710: "Arena",
                     1720: "Arena",
