@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-20T09:02:23.939478",
+  "ultimaActualizacion": "2026-09-20T09:04:23.849797",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3572,7 +3572,7 @@
       "elo_score": 1649,
       "record_lp_score": 1683,
       "record_lp_label": "Platinum IV (83 LP)",
-      "escalador_semana": 0,
+      "escalador_semana": null,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -4022,50 +4022,22 @@
       "kills_recientes": 52,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 9,
+      "kills_semana": 0,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 50,
+      "vision_promedio_semana": 0,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 2.5,
+      "kda_promedio_semana": 0,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 0,
-      "asistencias_semana": 11,
-      "partidas_semana": 1,
-      "partidas_semana_detalle": [
-        {
-          "fin_seg": 1789290141.714,
-          "kills": 9,
-          "muertes": 8,
-          "asistencias": 11,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 50,
-          "campeon": "Poppy",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 253,
-          "duracion_seg": 2253,
-          "damage_taken": 51623,
-          "danio_recibido_pct": 27.6,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 55
-        }
-      ],
+      "asistencias_semana": 0,
+      "partidas_semana": 0,
+      "partidas_semana_detalle": [],
       "duo_semana": null,
-      "cs_min_semana": {
-        "cs_por_min": 6.7,
-        "cs": 253,
-        "campeon": "Poppy"
-      },
-      "danio_recibido_semana": {
-        "danio_recibido_pct": 27.6,
-        "damage_taken": 51623,
-        "campeon": "Poppy"
-      },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 0,
-      "tiempo_cc_semana": 55,
+      "tiempo_cc_semana": 0,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789876800
@@ -6827,9 +6799,9 @@
       "detalle": "3 primeras sangre"
     },
     "kda_player": {
-      "jugador": "ゆうき まこと",
-      "valor": 2.5,
-      "detalle": "2.5 KDA"
+      "jugador": "adrianNOOBYT",
+      "valor": 2.11,
+      "detalle": "2.11 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6858,9 +6830,9 @@
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
-      "jugador": "ゆうき まこと",
-      "valor": 1,
-      "detalle": "1 partida esta semana"
+      "jugador": "Pinea",
+      "valor": 4,
+      "detalle": "4 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -6880,6 +6852,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-20T09:04:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "ゆうき まこと",
+      "detalle": "2.11 KDA"
+    },
+    {
+      "timestamp": "2026-09-20T09:04:21Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "ゆうき まこと",
+      "detalle": "4 partidas esta semana"
+    },
     {
       "timestamp": "2026-09-20T08:18:21Z",
       "tipo": "badge_semanal",
@@ -7251,26 +7243,6 @@
       "jugador_nuevo": "Pinea",
       "jugador_anterior": "adrianNOOBYT",
       "detalle": "13 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-15T23:00:53Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1748941830",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": null,
-      "detalle": "Kled aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-15T20:00:53Z",
-      "tipo": "badge_semanal",
-      "categoria": "destructor",
-      "categoria_label": "El Destructor",
-      "icono": "💥",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Pinea",
-      "detalle": "20 estructuras destruidas"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7284,7 +7256,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 28.042128
+    "ゆうき まこと": 28.043484
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
