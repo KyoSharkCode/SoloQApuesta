@@ -206,7 +206,7 @@
 
 <script>
 window.addEventListener('load', () => {
-  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${iconId||1}.png`; }
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/profileicon/${iconId||1}.png`; }
   // FIX: DDragon es sensible a mayúsculas/minúsculas en el nombre de archivo,
   // y en un puñado de campeones el "championName" que guarda la API de Riot
   // no coincide exactamente con el nombre real del archivo en DDragon. El
@@ -217,7 +217,7 @@ window.addEventListener('load', () => {
     const clean = (campeon||'').replace(/[^a-zA-Z0-9]/g,'');
     return CHAMPION_ID_OVERRIDES[clean] || clean;
   }
-  function getChampImg(campeon){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(campeon)}.png`; }
+  function getChampImg(campeon){ return `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(campeon)}.png`; }
 
   const kpiContainer   = document.getElementById('kpi-container');
   const barsContainer  = document.getElementById('bars-container');
