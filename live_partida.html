@@ -187,7 +187,7 @@ window.addEventListener('load', () => {
   const jugadorId = params.get('jugador'); // "Nombre#Tag" completo
 
   const CDN     = 'https://raw.githubusercontent.com/KyoSharkCode/SoloQApuesta/main';
-  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.18.1';
   const DDRAGON_IMG_BASE = 'https://ddragon.leagueoflegends.com/cdn/img';
 
   const backLink = document.getElementById('back-link');
@@ -369,7 +369,7 @@ window.addEventListener('load', () => {
         ${secundariaUrl ? `<img src="${secundariaUrl}" alt="árbol secundario" onerror="this.style.visibility='hidden'">` : ''}
       </div>` : '';
     const spellsHtml = (participante.hechizos || []).map(h => `
-      <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
+      <img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${h.icono}"
            title="${h.nombre || ''}" alt="${h.nombre || ''}"
            onerror="this.style.visibility='hidden'">
     `).join('');
