@@ -603,11 +603,11 @@ def obtener_datos():
 
     # ── DDragon — descargado UNA sola vez para todos los jugadores ──────────
     print("📚 Descargando diccionarios de campeones y hechizos...")
-    url_ddragon_champ = "https://ddragon.leagueoflegends.com/cdn/16.16.1/data/es_ES/champion.json"
+    url_ddragon_champ = "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/es_ES/champion.json"
     champ_data = requests.get(url_ddragon_champ).json()["data"]
     diccionario_campeones = {int(info["key"]): nombre for nombre, info in champ_data.items()}
 
-    url_ddragon_spell = "https://ddragon.leagueoflegends.com/cdn/16.16.1/data/es_ES/summoner.json"
+    url_ddragon_spell = "https://ddragon.leagueoflegends.com/cdn/16.18.1/data/es_ES/summoner.json"
     spell_data = requests.get(url_ddragon_spell).json()["data"]
     diccionario_hechizos = {int(info["key"]): info["id"] for _, info in spell_data.items()}
 
