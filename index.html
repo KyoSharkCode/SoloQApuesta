@@ -572,7 +572,7 @@ window.addEventListener('load', () => {
   // estilo_secundario) ya viene guardado en datos.json (historial de cada
   // jugador), pero el ÍCONO hay que resolverlo vía el catálogo de DDragon.
   // Se pide una sola vez (no en cada refresh de 15s) y se cachea en memoria.
-  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.18.1';
   // FIX: a diferencia de campeón/item/hechizo (que sí viven bajo la carpeta
   // versionada /cdn/<version>/img/...), los íconos de runas NO están
   // versionados en DDragon — viven en /cdn/img/... a secas (el mismo patrón
@@ -814,7 +814,12 @@ window.addEventListener('load', () => {
     return (ti*4+dn)*100 + Math.max(0, Math.min(100, lp||0));
   }
   function rankScore(p){ const s = eloScore(p.rango,p.division,p.lp); return s===null?-100000:s; }
-  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${iconId}.png`; }
+  function getAvatarUrl(iconId){ return `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/profileicon/${iconId}.png`; }
+  // Fallback cuando el ícono de perfil es tan nuevo que Data Dragon (fijado
+  // a esta versión) todavía no lo publicó — pasa cada vez que alguien
+  // cambia a un ícono recién salido. En vez del recuadro roto "Icon", cae a
+  // un ícono clásico que existe en cualquier versión de Data Dragon.
+  const AVATAR_ONERROR = `this.onerror=null;this.src='${getAvatarUrl(1)}';`;
 
   // ── Empates en highlights ──
   // El perfil (renderBadges en perfil.html) usa comparaciones INCLUSIVAS
@@ -825,9 +830,9 @@ window.addEventListener('load', () => {
   // state.players (que era la causa de inconsistencias como "Maestro del
   // Pool" mostrando a alguien distinto que en su perfil).
   function avatarStackHtml(players){
-    if(players.length<=1) return `<img class="highlight-avatar" src="${getAvatarUrl(players[0].icono)}" alt="">`;
+    if(players.length<=1) return `<img class="highlight-avatar" src="${getAvatarUrl(players[0].icono)}" alt="" onerror="${AVATAR_ONERROR}">`;
     return `<div class="highlight-avatars-multi">${players.slice(0,4).map((p,i)=>
-      `<img class="highlight-avatar" src="${getAvatarUrl(p.icono)}" alt="" style="z-index:${10-i};${i>0?'margin-left:-14px;':''}">`
+      `<img class="highlight-avatar" src="${getAvatarUrl(p.icono)}" alt="" onerror="${AVATAR_ONERROR}" style="z-index:${10-i};${i>0?'margin-left:-14px;':''}">`
     ).join('')}</div>`;
   }
   function namesJoined(players){ return players.map(p=>p.nombre.split('#')[0]).join(' & '); }
@@ -872,7 +877,7 @@ window.addEventListener('load', () => {
         <span class="podium-shine"></span>
         <span class="podium-badge">${badge[rank]}</span>
         <span class="podium-medal">${medal[rank]}</span>
-        <img class="podium-avatar" src="${getAvatarUrl(p.icono)}" alt="Avatar">
+        <img class="podium-avatar" src="${getAvatarUrl(p.icono)}" alt="Avatar" onerror="${AVATAR_ONERROR}">
         <h3><a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link" style="padding:0;">${p.nombre}</a></h3>
         <p class="podium-role">${p.rol}</p>
         <p class="podium-lp">${p.lp} LP</p>
@@ -905,15 +910,15 @@ window.addEventListener('load', () => {
       const hora      = new Date(pv.timestamp).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
       const champClean= champKey(pv.campeon);
       const spells    = (pv.hechizos||[]).map(h =>
-        `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+        `<img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
       const sideClass = pv.equipo === 'blue' ? 'blue' : 'red';
       const sideLabel = pv.equipo === 'blue' ? 'Lado Azul' : 'Lado Rojo';
       pvHtml = `
         <div class="first-win-card">
           <span class="first-win-badge">🌅 Primera Victoria del Día</span>
-          <img class="first-win-avatar" src="${getAvatarUrl(pvPlayer.icono)}" alt="Avatar" style="margin-top:12px;">
-          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
+          <img class="first-win-avatar" src="${getAvatarUrl(pvPlayer.icono)}" alt="Avatar" onerror="${AVATAR_ONERROR}" style="margin-top:12px;">
+          <img class="first-win-champ"  src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champClean}.png" alt="${pv.campeon}" onerror="this.style.display='none'" style="margin-top:12px;">
           <div class="first-win-info" style="margin-top:12px;">
             <span class="first-win-name">${pvPlayer.nombre.split('#')[0]}</span>
             <span class="first-win-kda">${pv.campeon} · ${pv.kda} KDA</span>
@@ -1113,7 +1118,7 @@ window.addEventListener('load', () => {
     if(!grinder)   grinder  =state.players[0];
     if(!otpChamp)  otpChamp ='Desconocido';
 
-    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(otpChamp)}.png`;
+    const otpChampImg=`https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(otpChamp)}.png`;
 
     // Sets de ganadores empatados (>= / <= inclusivo, igual que el perfil).
     const climbers        = maxClimb>0        ? climbData.filter(cd=>cd.d>=maxClimb).map(cd=>cd.p) : [];
@@ -1180,13 +1185,13 @@ window.addEventListener('load', () => {
       :`<div class="highlight-card"><div class="highlight-icon">🛑</div><div class="highlight-body"><p class="highlight-label">Stop</p><p class="highlight-empty">Nadie ha inmovilizado a un enemigo esta semana.</p></div></div>`;
 
     const duoHtml=(duoPlayer&&maxDuo>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(duoPlayer.icono)}" alt="">
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(duoPlayer.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body"><p class="highlight-label">🎮 Dúo Dinámico</p><p class="highlight-player">${duoPlayer.nombre.split('#')[0]} &amp; ${duoCompanero}</p><p class="highlight-value">${maxDuo} partida${maxDuo===1?'':'s'} juntos esta semana</p></div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🎮</div><div class="highlight-body"><p class="highlight-label">Dúo Dinámico</p><p class="highlight-empty">Nadie ha jugado en dúo esta semana.</p></div></div>`;
 
-    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(farmeadorChamp)}.png`;
+    const farmeadorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(farmeadorChamp)}.png`;
     const farmeadorHtml=(farmeador&&maxCsMin>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(farmeador.icono)}" alt="">
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(farmeador.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body"><p class="highlight-label">🌾 El Farmeador</p><p class="highlight-player">${farmeador.nombre}</p>
           <div class="otp-champ-info">
             <img class="champ-icon-small" src="${farmeadorChampImg}" onerror="this.style.display='none'">
@@ -1195,9 +1200,9 @@ window.addEventListener('load', () => {
         </div></div>`
       :`<div class="highlight-card"><div class="highlight-icon">🌾</div><div class="highlight-body"><p class="highlight-label">El Farmeador</p><p class="highlight-empty">Sin partidas suficientes esta semana.</p></div></div>`;
 
-    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(defensorChamp)}.png`;
+    const defensorChampImg=`https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(defensorChamp)}.png`;
     const defensorHtml=(defensor&&maxDanioPct>0)?`
-      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="">
+      <div class="highlight-card"><img class="highlight-avatar" src="${getAvatarUrl(defensor.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body"><p class="highlight-label">🛡️ El Defensor</p><p class="highlight-player">${defensor.nombre}</p>
           <div class="otp-champ-info">
             <img class="champ-icon-small" src="${defensorChampImg}" onerror="this.style.display='none'">
@@ -1213,13 +1218,13 @@ window.addEventListener('load', () => {
     const rey = state.reyTemporada;
     const reyPlayer = rey ? state.players.find(p => p.nombre.split('#')[0] === rey.jugador) : null;
     const reyHtml = (rey && reyPlayer) ? `
-      <div class="highlight-card rey-card"><img class="highlight-avatar" src="${getAvatarUrl(reyPlayer.icono)}" alt="">
+      <div class="highlight-card rey-card"><img class="highlight-avatar" src="${getAvatarUrl(reyPlayer.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body"><p class="highlight-label">👑 Rey de la Temporada</p><p class="highlight-player">${reyPlayer.nombre}</p><p class="highlight-value" style="color:#fbbf24;">${rey.dias} día${rey.dias===1?'':'s'} acumulados en el Top 1</p></div></div>`
       : `<div class="highlight-card rey-card"><div class="highlight-icon">👑</div><div class="highlight-body"><p class="highlight-label">Rey de la Temporada</p><p class="highlight-empty">Todavía no hay suficiente historial.</p></div></div>`;
 
     container.innerHTML = `
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="">
+        <img class="highlight-avatar" src="${getAvatarUrl(otpPlayer.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body">
           <p class="highlight-label">OTP del Torneo</p>
           <p class="highlight-player">${otpPlayer.nombre}</p>
@@ -1231,7 +1236,7 @@ window.addEventListener('load', () => {
       </div>
       ${climberHtml}
       <div class="highlight-card">
-        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="">
+        <img class="highlight-avatar" src="${getAvatarUrl(grinder.icono)}" alt="" onerror="${AVATAR_ONERROR}">
         <div class="highlight-body"><p class="highlight-label">Horas en la grieta</p><p class="highlight-player">${grinder.nombre}</p><p class="highlight-value" style="color:#fbbf24;">¿Le tienes miedo a la Pala?🪏</p></div>
       </div>
       ${agresivoHtml}${kdaHtml}${champPoolHtml}${tortugaHtml}${asistenteHtml}${pentakillsHtml}${duoHtml}${farmeadorHtml}${defensorHtml}${ladronHtml}${destructorHtml}${stopHtml}${reyHtml}`;
@@ -1430,7 +1435,7 @@ window.addEventListener('load', () => {
       row.innerHTML=`
         <span class="rank-pos ${posClass}">${posContent}</span>
         <span class="player-cell">
-          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon">
+          <img class="avatar" src="${getAvatarUrl(p.icono)}" alt="Icon" onerror="${AVATAR_ONERROR}">
           <a href="perfil.html?jugador=${encodeURIComponent(p.id)}" class="profile-link">${p.nombre} ${streakEmoji}</a>
         </span>
         <span class="status-cell">${statusHtml}</span>
@@ -1454,7 +1459,7 @@ window.addEventListener('load', () => {
     const player=state.players.find(p=>p.id===id);
     const matchesHtml=player.partidas.slice(0,5).map(m=>{
       const spellsHtml=(m.hechizos||[]).map(h=>
-        `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
+        `<img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${h}.png" title="${h}" onerror="this.style.display='none'">`
       ).join('');
       // Runas — mismo criterio que partida.html: keystone arriba, árbol
       // secundario abajo, se omiten en silencio si el catálogo no cargó.
@@ -1476,7 +1481,7 @@ window.addEventListener('load', () => {
       return `
       <${tag} class="match" ${hrefAttr}>
         <span class="match-icons">
-          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(m.campeon)}.png" onerror="this.style.visibility='hidden'">
+          <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(m.campeon)}.png" onerror="this.style.visibility='hidden'">
           ${spellsHtml?`<span class="match-spells">${spellsHtml}</span>`:''}
           ${runesHtml}
         </span>
