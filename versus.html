@@ -384,7 +384,7 @@
 </script>
 
 <script>
-const DDRAGON       = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+const DDRAGON       = 'https://ddragon.leagueoflegends.com/cdn/16.18.1';
 const MINI_CREST    = 'https://raw.communitydragon.org/14.10/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/';
 const VALID_TIERS   = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
 const TIER_ORDER    = ['IRON','BRONZE','SILVER','GOLD','PLATINUM','EMERALD','DIAMOND','MASTER','GRANDMASTER','CHALLENGER'];
@@ -490,7 +490,12 @@ function fillCard(side, p) {
   const rankDisplay = DIVISIONLESS.includes(p.rango.toUpperCase()) ? tierPretty : `${tierPretty} ${p.division}`;
 
   document.getElementById(`splash-${side}`).src     = topChamp ? champSplash(topChamp) : '';
-  document.getElementById(`avatar-${side}`).src     = avatarUrl(p.icono);
+  const avatarEl = document.getElementById(`avatar-${side}`);
+  // Si el ícono de perfil es tan nuevo que Data Dragon (fijado a esta
+  // versión) todavía no lo publicó, cae a un ícono clásico que existe en
+  // cualquier versión, en vez de dejar el avatar roto.
+  avatarEl.onerror = () => { avatarEl.onerror = null; avatarEl.src = avatarUrl(1); };
+  avatarEl.src     = avatarUrl(p.icono);
   document.getElementById(`name-${side}`).textContent  = p.nombre.split('#')[0];
   document.getElementById(`crest-${side}`).src      = crestUrl(p.rango);
   document.getElementById(`tier-${side}`).textContent  = rankDisplay;
