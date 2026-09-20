@@ -76,14 +76,21 @@
      el espacio se reparte a la mitad entre las dos zonas: badges arriba
      (con su propio scroll si son muchos, en vez de estirar la caja) y
      "en partida" abajo, con su tamaño ya definido. Si no hay badges, la
-     zona de badges desaparece (:empty) y "en partida" recupera todo el alto. */
+     zona de badges desaparece (:empty) y "en partida" recupera todo el alto.
+     FIX: el 50/50 era un reparto FIJO sin importar cuánto contenido tenía
+     cada zona — con 3+ del grupo en la misma partida (dúo), la caja "en
+     partida" necesita más de la mitad y el contenido se recortaba (ver
+     también el fix de alineación en .live-status-box.in-game más abajo).
+     Con flex-basis:auto cada zona pide primero el alto que su propio
+     contenido necesita, y solo el espacio sobrante se reparte 50/50 — así
+     una zona grande ya no le quita espacio a la otra. */
   .profile-side{ display:flex; flex-direction:column; gap:12px; }
   .badges-col{
     display:flex; flex-direction:column; gap:10px; margin-bottom:0;
-    flex:1 1 50%; min-height:0; overflow-y:auto; padding-right:2px;
+    flex:1 1 auto; min-height:0; overflow-y:auto; padding-right:2px;
   }
   .badges-col:empty{ display:none; }
-  .live-status-box{ margin-bottom:0; flex:1 1 50%; min-height:0; }
+  .live-status-box{ margin-bottom:0; flex:1 1 auto; min-height:0; }
 
   .portrait-card{
     position:relative; border-radius:18px; overflow:hidden;
@@ -136,6 +143,13 @@
     text-transform:uppercase; letter-spacing:0.1em; opacity:.65;
   }
   .live-status-box.in-game{
+    /* FIX: heredaba align-items:center/justify-content:center de la regla
+       base (pensada para el texto único "Offline"). Con contenido alto
+       (dúo de 2-3 compañeros) y overflow, centrar verticalmente recorta por
+       igual arriba y abajo y el scroll no alcanza a mostrar el principio —
+       por eso se veía "cortado". Alineado arriba, si el contenido no cabe
+       el scroll sí revela el resto sin perder nada. */
+    align-items:flex-start; justify-content:flex-start;
     border-color:#ef4444;
     box-shadow:0 0 26px rgba(239,68,68,.25), 0 0 0 1px rgba(239,68,68,.35) inset;
     animation:pulse-status-box 2s infinite;
@@ -485,7 +499,7 @@ window.addEventListener('load', () => {
   // en datos.json (historial de cada jugador), solo falta el catálogo de
   // DDragon para resolver el ícono. Se pide una sola vez, no en cada
   // refresh de 15s.
-  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1';
+  const DDRAGON = 'https://ddragon.leagueoflegends.com/cdn/16.18.1';
   // FIX: a diferencia de campeón/item/hechizo (que sí viven bajo la carpeta
   // versionada /cdn/<version>/img/...), los íconos de runas NO están
   // versionados en DDragon — viven en /cdn/img/... a secas (el mismo patrón
@@ -801,7 +815,7 @@ window.addEventListener('load', () => {
         const campeon    = liveStatus.campeon || 'Desconocido';
         const modoJuego  = liveStatus.modo_juego || 'Partida';
         const champUrl   = liveStatus.campeon
-          ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(liveStatus.campeon)}.png`
+          ? `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(liveStatus.campeon)}.png`
           : '';
 
         // Runas de la partida en vivo — mismo patrón que el historial
@@ -823,7 +837,7 @@ window.addEventListener('load', () => {
           ? liveStatus.game_start_time : null;
 
         const hechizosHtml = (liveStatus.hechizos || []).map(h => `
-          <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
+          <img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${h.icono}"
                title="${h.nombre}" alt="${h.nombre}"
                onerror="this.style.visibility='hidden'">
         `).join('');
@@ -840,10 +854,10 @@ window.addEventListener('load', () => {
             <span class="live-game-duo-label">🎮 Dúo con</span>
             ${duoDetalle.map(d => {
               const duoChampUrl = d.campeon
-                ? `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${champKey(d.campeon)}.png`
+                ? `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${champKey(d.campeon)}.png`
                 : '';
               const duoSpellsHtml = (d.hechizos || []).map(h => `
-                <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${h.icono}"
+                <img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${h.icono}"
                      title="${h.nombre}" alt="${h.nombre}"
                      onerror="this.style.visibility='hidden'">
               `).join('');
@@ -927,7 +941,12 @@ window.addEventListener('load', () => {
       const VALID_TIERS = ['iron','bronze','silver','gold','platinum','emerald','diamond','master','grandmaster','challenger'];
       const tierSlug = (p.rango || 'unranked').split(' ')[0].toLowerCase();
 
-      document.getElementById('p-avatar').src        = `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/profileicon/${p.icono || 1}.png`;
+      const pAvatarEl = document.getElementById('p-avatar');
+      // Si el ícono de perfil es tan nuevo que Data Dragon (fijado a esta
+      // versión) todavía no lo publicó, cae a un ícono clásico que existe
+      // en cualquier versión, en vez de dejar el avatar roto.
+      pAvatarEl.onerror = () => { pAvatarEl.onerror = null; pAvatarEl.src = `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/profileicon/1.png`; };
+      pAvatarEl.src = `https://ddragon.leagueoflegends.com/cdn/16.18.1/img/profileicon/${p.icono || 1}.png`;
       document.getElementById('p-name').innerText    = p.nombre.split('#')[0];
       document.getElementById('p-tier').innerText    = p.rango;
       document.getElementById('p-lp').innerText      = `${p.lp} LP`;
@@ -949,7 +968,7 @@ window.addEventListener('load', () => {
       boxMastery.innerHTML = (p.maestrias && p.maestrias.length)
         ? p.maestrias.map(m => `
             <div class="list-item">
-              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(m.campeon)}.png" onerror="this.style.visibility='hidden'">
+              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${fmt(m.campeon)}.png" onerror="this.style.visibility='hidden'">
               <div>
                 <div class="item-title">${m.campeon}</div>
                 <div class="item-sub">Nivel ${m.nivel} • ${m.puntos} pts</div>
@@ -962,7 +981,7 @@ window.addEventListener('load', () => {
       boxChamps.innerHTML = (p.top_recientes && p.top_recientes.length)
         ? p.top_recientes.map(c => `
             <div class="list-item">
-              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(c.campeon)}.png" onerror="this.style.visibility='hidden'">
+              <img class="champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${fmt(c.campeon)}.png" onerror="this.style.visibility='hidden'">
               <div>
                 <div class="item-title">${c.campeon}</div>
                 <div class="item-sub">${c.cantidad} partidas recientes</div>
@@ -1002,7 +1021,7 @@ window.addEventListener('load', () => {
               ? `<span class="egida-tag" title="Ganaste bastante más LP de lo normal en esta partida — probablemente te tocó Égida de Valor (LP doble por autocompletado). Riot no confirma esto directamente, es una estimación.">~ <img src="icons/egida-de-valor.svg" alt=""> Égida de Valor</span>`
               : '';
             const spellsHtml = (Array.isArray(h.hechizos) ? h.hechizos : []).map(s =>
-              `<img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
+              `<img src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/spell/${s}.png" title="${s}" onerror="this.style.display='none'">`
             ).join('');
             // Runas — mismo criterio que partida.html/index.html: keystone
             // arriba, árbol secundario abajo, se omiten en silencio si el
@@ -1020,7 +1039,7 @@ window.addEventListener('load', () => {
             return `
             <${tag} class="match" ${hrefAttr}>
               <span class="match-icons">
-                <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
+                <img class="match-champ-img" src="https://ddragon.leagueoflegends.com/cdn/16.18.1/img/champion/${fmt(h.campeon)}.png" onerror="this.style.visibility='hidden'">
                 ${spellsHtml ? `<span class="match-spells">${spellsHtml}</span>` : ''}
                 ${runesHtml}
               </span>
