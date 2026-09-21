@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-21T22:28:26.270651",
+  "ultimaActualizacion": "2026-09-21T22:30:56.898498",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3919,13 +3919,13 @@
     {
       "nombre": "adrianNOOBYT#LAN",
       "icono": 7213,
-      "rango": "Gold II",
-      "lp": 92,
+      "rango": "Gold I",
+      "lp": 11,
       "winrate": "54%",
-      "elo_score": 1492,
-      "record_lp_score": 1492,
-      "record_lp_label": "Gold II (92 LP)",
-      "escalador_semana": 131,
+      "elo_score": 1511,
+      "record_lp_score": 1511,
+      "record_lp_label": "Gold I (11 LP)",
+      "escalador_semana": 150,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -3955,7 +3955,7 @@
         {
           "campeon": "Akali",
           "nivel": 45,
-          "puntos": "533.006"
+          "puntos": "534.786"
         },
         {
           "campeon": "Warwick",
@@ -4722,9 +4722,32 @@
           "lp": 92,
           "rango": "Gold",
           "division": "II"
+        },
+        {
+          "fecha": "2026-09-21T22:30:44Z",
+          "lp": 11,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1750358177",
+          "campeon": "Akali",
+          "kda": "15/7/2 (2.43)",
+          "resultado": "Victoria",
+          "duracion": "33min",
+          "lp_change": 19,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 4,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1750348878",
           "campeon": "Lux",
@@ -4877,38 +4900,40 @@
           "estilo_secundario": 8300,
           "wards_control": 8,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1749793925",
-          "campeon": "Akali",
-          "kda": "12/8/8 (2.5)",
-          "resultado": "Victoria",
-          "duracion": "35min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 3,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 90,
+      "kills_recientes": 93,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 37,
-      "kills_semana": 191,
+      "kills_semana": 206,
       "pentakills_semana": 0,
       "vision_promedio_semana": 35,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.06,
+      "kda_promedio_semana": 2.07,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 142,
-      "partidas_semana": 22,
+      "asistencias_semana": 144,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790029723.349,
+          "kills": 15,
+          "muertes": 7,
+          "asistencias": 2,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 49,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 159,
+          "duracion_seg": 2020,
+          "damage_taken": 35853,
+          "danio_recibido_pct": 24.2,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 4,
+          "tiempo_cc": 4
+        },
         {
           "fin_seg": 1790027198.784,
           "kills": 8,
@@ -5340,9 +5365,9 @@
         "campeon": "Trundle"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 24,
-      "tiempo_cc_semana": 242,
-      "max_partidas_en_un_dia": 2,
+      "estructuras_destruidas_semana": 28,
+      "tiempo_cc_semana": 246,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1790027198784,
         "campeon": "Lux",
@@ -6714,8 +6739,8 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.06,
-      "detalle": "2.06 KDA"
+      "valor": 2.07,
+      "detalle": "2.07 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6724,8 +6749,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 142,
-      "detalle": "142 asistencias"
+      "valor": 144,
+      "detalle": "144 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6740,7 +6765,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 131,
+      "valor": 150,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -6756,16 +6781,25 @@
     "ladron": null,
     "destructor": {
       "jugador": "adrianNOOBYT",
-      "valor": 24,
-      "detalle": "24 estructuras destruidas"
+      "valor": 28,
+      "detalle": "28 estructuras destruidas"
     },
     "stop": {
       "jugador": "adrianNOOBYT",
-      "valor": 242,
-      "detalle": "242s de CC aplicado"
+      "valor": 246,
+      "detalle": "246s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-21T22:30:44Z",
+      "tipo": "record_lp",
+      "icono": "📈",
+      "categoria_label": "Récord de temporada",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": null,
+      "detalle": "Gold I (11 LP)"
+    },
     {
       "timestamp": "2026-09-21T21:48:28Z",
       "tipo": "posible_egida",
@@ -7147,16 +7181,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": "Ostia",
       "detalle": "12 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-18T03:42:18Z",
-      "tipo": "badge_semanal",
-      "categoria": "champion_pool",
-      "categoria_label": "Maestro del Champion Pool",
-      "icono": "🎭",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "4 campeones distintos ganados"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
@@ -7170,7 +7194,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 29.543269
+    "ゆうき まこと": 29.544866
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
