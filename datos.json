@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-21T20:58:29.378115",
+  "ultimaActualizacion": "2026-09-21T21:01:06.690725",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4714,6 +4714,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1750345168",
+          "campeon": "Akali",
+          "kda": "6/12/11 (1.42)",
+          "resultado": "Derrota",
+          "duracion": "38min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1750085191",
           "campeon": "Akali",
           "kda": "7/13/6 (1.0)",
@@ -4865,38 +4882,40 @@
           "estilo_secundario": 8400,
           "wards_control": null,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1749747166",
-          "campeon": "Akali",
-          "kda": "8/9/1 (1.0)",
-          "resultado": "Derrota",
-          "duracion": "29min",
-          "lp_change": 20,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 84,
+      "kills_recientes": 82,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 34,
-      "kills_semana": 177,
+      "vision_promedio_reciente": 36,
+      "kills_semana": 183,
       "pentakills_semana": 0,
       "vision_promedio_semana": 34,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.08,
+      "kda_promedio_semana": 2.03,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 2,
-      "asistencias_semana": 120,
-      "partidas_semana": 20,
+      "asistencias_semana": 131,
+      "partidas_semana": 21,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790024456.294,
+          "kills": 6,
+          "muertes": 12,
+          "asistencias": 11,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 30,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 164,
+          "duracion_seg": 2320,
+          "damage_taken": 46813,
+          "danio_recibido_pct": 19.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 8
+        },
         {
           "fin_seg": 1789934466.693,
           "kills": 7,
@@ -5291,8 +5310,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 22,
-      "tiempo_cc_semana": 188,
-      "max_partidas_en_un_dia": 0,
+      "tiempo_cc_semana": 196,
+      "max_partidas_en_un_dia": 1,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789963200
     },
@@ -6654,8 +6673,8 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.08,
-      "detalle": "2.08 KDA"
+      "valor": 2.03,
+      "detalle": "2.03 KDA"
     },
     "champion_pool": {
       "jugador": "Ostia",
@@ -6664,8 +6683,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 120,
-      "detalle": "120 asistencias"
+      "valor": 131,
+      "detalle": "131 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -7111,7 +7130,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 29.483559
+    "ゆうき まこと": 29.485261
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
