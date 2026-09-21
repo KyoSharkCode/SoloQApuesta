@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-21T07:24:34.441070",
+  "ultimaActualizacion": "2026-09-21T07:26:27.473002",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3925,7 +3925,7 @@
       "elo_score": 1472,
       "record_lp_score": 1492,
       "record_lp_label": "Gold II (92 LP)",
-      "escalador_semana": 113,
+      "escalador_semana": 132,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4887,15 +4887,15 @@
       "kills_recientes": 84,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 34,
-      "kills_semana": 196,
+      "kills_semana": 189,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 35,
+      "vision_promedio_semana": 33,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.18,
+      "kda_promedio_semana": 2.11,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 3,
-      "asistencias_semana": 148,
-      "partidas_semana": 22,
+      "campeones_ganados_semana": 2,
+      "asistencias_semana": 128,
+      "partidas_semana": 21,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789934466.693,
@@ -5295,25 +5295,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 4
-        },
-        {
-          "fin_seg": 1789370706.491,
-          "kills": 7,
-          "muertes": 8,
-          "asistencias": 20,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 61,
-          "campeon": "Caitlyn",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 234,
-          "duracion_seg": 2490,
-          "damage_taken": 30921,
-          "danio_recibido_pct": 16.1,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 18
         }
       ],
       "duo_semana": null,
@@ -5329,7 +5310,7 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 22,
-      "tiempo_cc_semana": 210,
+      "tiempo_cc_semana": 192,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1789963200
@@ -6692,18 +6673,18 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.18,
-      "detalle": "2.18 KDA"
+      "valor": 2.11,
+      "detalle": "2.11 KDA"
     },
     "champion_pool": {
-      "jugador": "adrianNOOBYT",
+      "jugador": "Ostia",
       "valor": 3,
       "detalle": "3 campeones distintos ganados"
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 148,
-      "detalle": "148 asistencias"
+      "valor": 128,
+      "detalle": "128 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6718,7 +6699,7 @@
     "pentakills": null,
     "escalador": {
       "jugador": "adrianNOOBYT",
-      "valor": 113,
+      "valor": 132,
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
@@ -6738,12 +6719,32 @@
       "detalle": "22 estructuras destruidas"
     },
     "stop": {
-      "jugador": "adrianNOOBYT",
-      "valor": 210,
-      "detalle": "210s de CC aplicado"
+      "jugador": "Ostia",
+      "valor": 206,
+      "detalle": "206s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-21T07:26:23Z",
+      "tipo": "badge_semanal",
+      "categoria": "champion_pool",
+      "categoria_label": "Maestro del Champion Pool",
+      "icono": "🎭",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "3 campeones distintos ganados"
+    },
+    {
+      "timestamp": "2026-09-21T07:26:23Z",
+      "tipo": "badge_semanal",
+      "categoria": "stop",
+      "categoria_label": "Stop",
+      "icono": "🛑",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "206s de CC aplicado"
+    },
     {
       "timestamp": "2026-09-21T02:40:32Z",
       "tipo": "badge_semanal",
@@ -7116,26 +7117,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold II (48 LP)"
-    },
-    {
-      "timestamp": "2026-09-17T04:44:20Z",
-      "tipo": "badge_semanal",
-      "categoria": "destructor",
-      "categoria_label": "El Destructor",
-      "icono": "💥",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Pinea",
-      "detalle": "12 estructuras destruidas"
-    },
-    {
-      "timestamp": "2026-09-17T04:44:20Z",
-      "tipo": "adelantamiento",
-      "icono": "🔥",
-      "categoria_label": "Cambio de posición",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "El Buñuelito",
-      "top_posicion": 3,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7149,7 +7130,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 28.939055
+    "ゆうき まこと": 28.940318
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
