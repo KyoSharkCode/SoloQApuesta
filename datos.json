@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-24T05:20:33.144616",
+  "ultimaActualizacion": "2026-09-24T05:22:39.374907",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4015,7 +4015,7 @@
         {
           "campeon": "Akali",
           "nivel": 46,
-          "puntos": "544.621"
+          "puntos": "545.277"
         },
         {
           "campeon": "Warwick",
@@ -4840,6 +4840,23 @@
       ],
       "historial": [
         {
+          "match_id": "LA1_1750897922",
+          "campeon": "Akali",
+          "kda": "4/8/1 (0.62)",
+          "resultado": "Derrota",
+          "duracion": "28min",
+          "lp_change": null,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
+        {
           "match_id": "LA1_1750893163",
           "campeon": "Akali",
           "kda": "7/3/2 (3.0)",
@@ -4991,38 +5008,40 @@
           "estilo_secundario": 8400,
           "wards_control": 3,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1750358177",
-          "campeon": "Akali",
-          "kda": "15/7/2 (2.43)",
-          "resultado": "Victoria",
-          "duracion": "33min",
-          "lp_change": 19,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 4,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 94,
+      "kills_recientes": 83,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 48,
-      "kills_semana": 222,
+      "vision_promedio_reciente": 45,
+      "kills_semana": 226,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 42,
+      "vision_promedio_semana": 41,
       "primeras_sangre_semana": 4,
-      "kda_promedio_semana": 2.51,
+      "kda_promedio_semana": 2.42,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 145,
-      "partidas_semana": 22,
+      "asistencias_semana": 146,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790227343.673,
+          "kills": 4,
+          "muertes": 8,
+          "asistencias": 1,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 17,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 208,
+          "duracion_seg": 1709,
+          "damage_taken": 29857,
+          "danio_recibido_pct": 17.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 2,
+          "tiempo_cc": 7
+        },
         {
           "fin_seg": 1790225357.285,
           "kills": 7,
@@ -5454,9 +5473,9 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 47,
-      "tiempo_cc_semana": 241,
-      "max_partidas_en_un_dia": 1,
+      "estructuras_destruidas_semana": 49,
+      "tiempo_cc_semana": 248,
+      "max_partidas_en_un_dia": 2,
       "primera_victoria_hoy": {
         "timestamp": 1790225357285,
         "campeon": "Akali",
@@ -6714,8 +6733,8 @@
     },
     "kda_player": {
       "jugador": "adrianNOOBYT",
-      "valor": 2.51,
-      "detalle": "2.51 KDA"
+      "valor": 2.42,
+      "detalle": "2.42 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6724,8 +6743,8 @@
     },
     "asistente": {
       "jugador": "adrianNOOBYT",
-      "valor": 145,
-      "detalle": "145 asistencias"
+      "valor": 146,
+      "detalle": "146 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -6756,13 +6775,13 @@
     "ladron": null,
     "destructor": {
       "jugador": "adrianNOOBYT",
-      "valor": 47,
-      "detalle": "47 estructuras destruidas"
+      "valor": 49,
+      "detalle": "49 estructuras destruidas"
     },
     "stop": {
       "jugador": "adrianNOOBYT",
-      "valor": 241,
-      "detalle": "241s de CC aplicado"
+      "valor": 248,
+      "detalle": "248s de CC aplicado"
     }
   },
   "eventos": [
@@ -7162,7 +7181,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 31.740242
+    "ゆうき まこと": 31.741574
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
