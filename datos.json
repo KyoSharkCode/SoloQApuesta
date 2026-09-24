@@ -1,16 +1,16 @@
 {
-  "ultimaActualizacion": "2026-09-24T02:44:31.828130",
+  "ultimaActualizacion": "2026-09-24T02:46:24.745903",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
       "icono": 7126,
-      "rango": "Platinum IV",
-      "lp": 0,
+      "rango": "Gold I",
+      "lp": 50,
       "winrate": "54%",
-      "elo_score": 1600,
+      "elo_score": 1550,
       "record_lp_score": 1658,
       "record_lp_label": "Platinum IV (58 LP)",
-      "escalador_semana": null,
+      "escalador_semana": 0,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -1157,6 +1157,12 @@
           "lp": 0,
           "rango": "Platinum",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-24T02:46:20Z",
+          "lp": 50,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
@@ -2067,12 +2073,12 @@
       "nombre": "El Buñuelito#KyA",
       "icono": 7216,
       "rango": "Gold III",
-      "lp": 93,
+      "lp": 72,
       "winrate": "50%",
-      "elo_score": 1393,
+      "elo_score": 1372,
       "record_lp_score": 1507,
       "record_lp_label": "Gold I (7 LP)",
-      "escalador_semana": -20,
+      "escalador_semana": -41,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -3199,6 +3205,12 @@
         {
           "fecha": "2026-09-23T02:10:44Z",
           "lp": 93,
+          "rango": "Gold",
+          "division": "III"
+        },
+        {
+          "fecha": "2026-09-24T02:46:20Z",
+          "lp": 72,
           "rango": "Gold",
           "division": "III"
         }
@@ -6749,6 +6761,16 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-09-24T02:46:20Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Pinea",
+      "top_posicion": 2,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-09-24T00:04:20Z",
       "tipo": "record_lp",
       "icono": "📈",
@@ -7123,30 +7145,20 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": "El Buñuelito",
       "detalle": "3 campeones distintos ganados"
-    },
-    {
-      "timestamp": "2026-09-19T00:06:24Z",
-      "tipo": "badge_semanal",
-      "categoria": "destructor",
-      "categoria_label": "El Destructor",
-      "icono": "💥",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "adrianNOOBYT",
-      "detalle": "16 estructuras destruidas"
     }
   ],
   "titular_primera_victoria_dia": "adrianNOOBYT",
   "dia_referencia_eventos": 1790136000,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "Pinea#Pinea": 2,
-    "adrianNOOBYT#LAN": 3,
+    "adrianNOOBYT#LAN": 2,
+    "Pinea#Pinea": 3,
     "El Buñuelito#KyA": 4,
     "Galactic Shark#AYK": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 31.635905
+    "ゆうき まこと": 31.63716
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
