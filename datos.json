@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-25T22:42:23.636554",
+  "ultimaActualizacion": "2026-09-25T22:44:31.350837",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5516,7 +5516,7 @@
       "elo_score": 980,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -6,
+      "escalador_semana": 17,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -6542,15 +6542,15 @@
       "kills_recientes": 37,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 15,
+      "kills_semana": 8,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 28,
+      "vision_promedio_semana": 30,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 1.62,
+      "kda_promedio_semana": 1.5,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 19,
-      "partidas_semana": 3,
+      "asistencias_semana": 16,
+      "partidas_semana": 2,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789776297.395,
@@ -6589,41 +6589,22 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 10
-        },
-        {
-          "fin_seg": 1789771403.717,
-          "kills": 7,
-          "muertes": 5,
-          "asistencias": 3,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 23,
-          "campeon": "Illaoi",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 258,
-          "duracion_seg": 1993,
-          "damage_taken": 40849,
-          "danio_recibido_pct": 24.5,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 6
         }
       ],
       "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 7.8,
-        "cs": 258,
+        "cs_por_min": 6.5,
+        "cs": 221,
         "campeon": "Illaoi"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 24.5,
-        "damage_taken": 40849,
+        "danio_recibido_pct": 19.8,
+        "damage_taken": 51104,
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 2,
-      "tiempo_cc_semana": 30,
+      "estructuras_destruidas_semana": 1,
+      "tiempo_cc_semana": 24,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1790308800
@@ -6651,14 +6632,14 @@
       "detalle": "154 asistencias"
     },
     "farmeador": {
-      "jugador": "Ostia",
-      "valor": 7.8,
-      "detalle": "7.8 CS/min con Illaoi"
+      "jugador": "adrianNOOBYT",
+      "valor": 7.7,
+      "detalle": "7.7 CS/min con Akali"
     },
     "defensor": {
-      "jugador": "Ostia",
-      "valor": 24.5,
-      "detalle": "24.5% del daño de su equipo (40,849) con Illaoi"
+      "jugador": "El Buñuelito",
+      "valor": 24.4,
+      "detalle": "24.4% del daño de su equipo (45,704) con Anivia"
     },
     "pentakills": null,
     "escalador": {
@@ -6689,6 +6670,26 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-25T22:44:28Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "adrianNOOBYT",
+      "jugador_anterior": "Ostia",
+      "detalle": "7.7 CS/min con Akali"
+    },
+    {
+      "timestamp": "2026-09-25T22:44:28Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "El Buñuelito",
+      "jugador_anterior": "Ostia",
+      "detalle": "24.4% del daño de su equipo (45,704) con Anivia"
+    },
     {
       "timestamp": "2026-09-25T03:34:24Z",
       "tipo": "logro_partida",
@@ -7050,26 +7051,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold II (52 LP)"
-    },
-    {
-      "timestamp": "2026-09-19T20:56:20Z",
-      "tipo": "badge_semanal",
-      "categoria": "stop",
-      "categoria_label": "Stop",
-      "icono": "🛑",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "Ostia",
-      "detalle": "216s de CC aplicado"
-    },
-    {
-      "timestamp": "2026-09-19T16:46:20Z",
-      "tipo": "logro_partida",
-      "categoria": "terminador:LA1_1749793925",
-      "icono": "💣",
-      "categoria_label": "Terminador",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Akali dio el golpe final al Nexus"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7084,7 +7065,7 @@
   },
   "tiempo_top1": {
     "ゆうき まこと": 32.632584,
-    "adrianNOOBYT": 0.768888
+    "adrianNOOBYT": 0.770332
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
