@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-25T23:24:22.162812",
+  "ultimaActualizacion": "2026-09-25T23:26:22.367870",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -6542,15 +6542,15 @@
       "kills_recientes": 37,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 8,
+      "kills_semana": 3,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 30,
+      "vision_promedio_semana": 26,
       "primeras_sangre_semana": 0,
       "kda_promedio_semana": 1.5,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 1,
-      "asistencias_semana": 16,
-      "partidas_semana": 2,
+      "asistencias_semana": 6,
+      "partidas_semana": 1,
       "partidas_semana_detalle": [
         {
           "fin_seg": 1789776297.395,
@@ -6570,25 +6570,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 14
-        },
-        {
-          "fin_seg": 1789773960.819,
-          "kills": 5,
-          "muertes": 10,
-          "asistencias": 10,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 35,
-          "campeon": "Illaoi",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 225,
-          "duracion_seg": 2264,
-          "damage_taken": 51104,
-          "danio_recibido_pct": 19.8,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 0,
-          "tiempo_cc": 10
         }
       ],
       "duo_semana": null,
@@ -6598,13 +6579,13 @@
         "campeon": "Illaoi"
       },
       "danio_recibido_semana": {
-        "danio_recibido_pct": 19.8,
-        "damage_taken": 51104,
+        "danio_recibido_pct": 19.2,
+        "damage_taken": 34822,
         "campeon": "Illaoi"
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 1,
-      "tiempo_cc_semana": 24,
+      "tiempo_cc_semana": 14,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1790308800
@@ -6648,9 +6629,9 @@
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
-      "jugador": "Pinea",
-      "valor": 2,
-      "detalle": "2 partidas esta semana"
+      "jugador": "Ostia",
+      "valor": 1,
+      "detalle": "1 partida esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -6670,6 +6651,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-25T23:26:18Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Pinea",
+      "detalle": "1 partida esta semana"
+    },
     {
       "timestamp": "2026-09-25T22:44:28Z",
       "tipo": "badge_semanal",
@@ -7042,15 +7033,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold II (72 LP)"
-    },
-    {
-      "timestamp": "2026-09-19T20:56:20Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold II (52 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7065,7 +7047,7 @@
   },
   "tiempo_top1": {
     "ゆうき まこと": 32.632584,
-    "adrianNOOBYT": 0.797017
+    "adrianNOOBYT": 0.798359
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
