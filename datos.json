@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-26T00:04:24.487501",
+  "ultimaActualizacion": "2026-09-26T00:06:27.243210",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -6542,50 +6542,22 @@
       "kills_recientes": 37,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 3,
+      "kills_semana": 0,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 26,
+      "vision_promedio_semana": 0,
       "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 1.5,
+      "kda_promedio_semana": 0,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 1,
-      "asistencias_semana": 6,
-      "partidas_semana": 1,
-      "partidas_semana_detalle": [
-        {
-          "fin_seg": 1789776297.395,
-          "kills": 3,
-          "muertes": 6,
-          "asistencias": 6,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 26,
-          "campeon": "Illaoi",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 221,
-          "duracion_seg": 2041,
-          "damage_taken": 34822,
-          "danio_recibido_pct": 19.2,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 1,
-          "tiempo_cc": 14
-        }
-      ],
+      "campeones_ganados_semana": 0,
+      "asistencias_semana": 0,
+      "partidas_semana": 0,
+      "partidas_semana_detalle": [],
       "duo_semana": null,
-      "cs_min_semana": {
-        "cs_por_min": 6.5,
-        "cs": 221,
-        "campeon": "Illaoi"
-      },
-      "danio_recibido_semana": {
-        "danio_recibido_pct": 19.2,
-        "damage_taken": 34822,
-        "campeon": "Illaoi"
-      },
+      "cs_min_semana": null,
+      "danio_recibido_semana": null,
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 1,
-      "tiempo_cc_semana": 14,
+      "estructuras_destruidas_semana": 0,
+      "tiempo_cc_semana": 0,
       "max_partidas_en_un_dia": 0,
       "primera_victoria_hoy": null,
       "dia_referencia": 1790308800
@@ -6629,9 +6601,9 @@
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
-      "jugador": "Ostia",
-      "valor": 1,
-      "detalle": "1 partida esta semana"
+      "jugador": "Pinea",
+      "valor": 2,
+      "detalle": "2 partidas esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -6651,6 +6623,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-26T00:06:23Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "Ostia",
+      "detalle": "2 partidas esta semana"
+    },
     {
       "timestamp": "2026-09-25T23:26:18Z",
       "tipo": "badge_semanal",
@@ -7024,15 +7006,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Akali aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-19T21:42:20Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Gold II (72 LP)"
     }
   ],
   "titular_primera_victoria_dia": null,
@@ -7047,7 +7020,7 @@
   },
   "tiempo_top1": {
     "ゆうき まこと": 32.632584,
-    "adrianNOOBYT": 0.823838
+    "adrianNOOBYT": 0.825211
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
