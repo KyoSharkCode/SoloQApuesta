@@ -14,7 +14,7 @@ JUGADORES = [
     {"name": "Galactic Shark", "tag": "AYK"},
     {"name": "El Buñuelito",   "tag": "KyA"},
     {"name": "ゆうき まこと",     "tag": "1411"},
-    {"name": "adrianNOOBYT",   "tag": "LAN"},
+    {"name": "ADR14NCHO",   "tag": "TYA"},
     {"name": "Ostia",          "tag": "LAN"},
 ]
 
