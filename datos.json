@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-28T22:52:23.192005",
+  "ultimaActualizacion": "2026-09-28T22:54:28.975508",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3965,34 +3965,34 @@
       "nombre": "ADR14NCHO#TYA",
       "icono": 7213,
       "rango": "Platinum IV",
-      "lp": 4,
+      "lp": 0,
       "winrate": "54%",
-      "elo_score": 1604,
+      "elo_score": 1600,
       "record_lp_score": 1604,
       "record_lp_label": "Platinum IV (4 LP)",
-      "escalador_semana": 0,
+      "escalador_semana": -4,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 5
+          "cantidad": 4
         },
         {
           "rol": "Support",
-          "cantidad": 3
+          "cantidad": 4
         }
       ],
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 5
+          "cantidad": 4
         },
         {
           "campeon": "Lux",
           "cantidad": 3
         },
         {
-          "campeon": "Ahri",
+          "campeon": "Blitzcrank",
           "cantidad": 1
         }
       ],
@@ -4019,9 +4019,32 @@
           "lp": 4,
           "rango": "Platinum",
           "division": "IV"
+        },
+        {
+          "fecha": "2026-09-28T22:54:21Z",
+          "lp": 0,
+          "rango": "Platinum",
+          "division": "IV"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1751951525",
+          "campeon": "Blitzcrank",
+          "kda": "2/10/13 (1.5)",
+          "resultado": "Derrota",
+          "duracion": "33min",
+          "lp_change": -4,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8439,
+          "estilo_secundario": 8300,
+          "wards_control": 5,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1751945199",
           "campeon": "Akali",
@@ -4174,38 +4197,40 @@
           "estilo_secundario": 8100,
           "wards_control": 10,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1751084083",
-          "campeon": "Akali",
-          "kda": "10/3/4 (4.67)",
-          "resultado": "Victoria",
-          "duracion": "25min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 3,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 57,
+      "kills_recientes": 49,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 41,
-      "kills_semana": 155,
+      "vision_promedio_reciente": 44,
+      "kills_semana": 157,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 41,
+      "vision_promedio_semana": 42,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.39,
+      "kda_promedio_semana": 2.33,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 149,
-      "partidas_semana": 21,
+      "asistencias_semana": 162,
+      "partidas_semana": 22,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790636042.52,
+          "kills": 2,
+          "muertes": 10,
+          "asistencias": 13,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 61,
+          "campeon": "Blitzcrank",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 29,
+          "duracion_seg": 2033,
+          "damage_taken": 37892,
+          "danio_recibido_pct": 17.7,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 44
+        },
         {
           "fin_seg": 1790633772.365,
           "kills": 9,
@@ -4619,8 +4644,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 43,
-      "tiempo_cc_semana": 281,
-      "max_partidas_en_un_dia": 8,
+      "tiempo_cc_semana": 325,
+      "max_partidas_en_un_dia": 9,
       "primera_victoria_hoy": {
         "timestamp": 1790568206606,
         "campeon": "Lux",
@@ -5767,8 +5792,8 @@
     },
     "kda_player": {
       "jugador": "ADR14NCHO",
-      "valor": 2.39,
-      "detalle": "2.39 KDA"
+      "valor": 2.33,
+      "detalle": "2.33 KDA"
     },
     "champion_pool": {
       "jugador": "ADR14NCHO",
@@ -5777,8 +5802,8 @@
     },
     "asistente": {
       "jugador": "ADR14NCHO",
-      "valor": 149,
-      "detalle": "149 asistencias"
+      "valor": 162,
+      "detalle": "162 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -5810,8 +5835,8 @@
     },
     "stop": {
       "jugador": "ADR14NCHO",
-      "valor": 281,
-      "detalle": "281s de CC aplicado"
+      "valor": 325,
+      "detalle": "325s de CC aplicado"
     }
   },
   "eventos": [
@@ -6216,7 +6241,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 32.656206,
+    "ゆうき まこと": 32.657571,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
