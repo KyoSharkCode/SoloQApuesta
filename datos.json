@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-28T20:58:27.403960",
+  "ultimaActualizacion": "2026-09-28T21:01:18.855707",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -5359,23 +5359,23 @@
       "nombre": "Ostia#LAN",
       "icono": 6205,
       "rango": "Silver III",
-      "lp": 80,
-      "winrate": "50%",
-      "elo_score": 980,
+      "lp": 98,
+      "winrate": "51%",
+      "elo_score": 998,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": null,
+      "escalador_semana": 0,
       "rol_principal": "Top",
       "top_roles": [
         {
           "rol": "Top",
-          "cantidad": 8
+          "cantidad": 9
         }
       ],
       "top_recientes": [
         {
           "campeon": "Illaoi",
-          "cantidad": 4
+          "cantidad": 5
         },
         {
           "campeon": "Darius",
@@ -5400,7 +5400,7 @@
         {
           "campeon": "Illaoi",
           "nivel": 11,
-          "puntos": "89.876"
+          "puntos": "91.405"
         }
       ],
       "progreso_lp": [
@@ -6213,9 +6213,32 @@
           "lp": 80,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-09-28T21:00:52Z",
+          "lp": 98,
+          "rango": "Silver",
+          "division": "III"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1751932633",
+          "campeon": "Illaoi",
+          "kda": "11/3/7 (6.0)",
+          "resultado": "Victoria",
+          "duracion": "27min",
+          "lp_change": 18,
+          "hechizos": [
+            "SummonerFlash",
+            "SummonerTeleport"
+          ],
+          "duo_con": [],
+          "perk_principal": 8010,
+          "estilo_secundario": 8400,
+          "wards_control": 1,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1749629740",
           "campeon": "Illaoi",
@@ -6368,46 +6391,67 @@
           "estilo_secundario": 8400,
           "wards_control": 1,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1749390984",
-          "campeon": "Lux",
-          "kda": "—",
-          "resultado": "Remake",
-          "duracion": "1:12",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerFlash",
-            "SummonerTeleport"
-          ],
-          "duo_con": [],
-          "perk_principal": 8229,
-          "estilo_secundario": 8100,
-          "wards_control": null,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 37,
+      "kills_recientes": 48,
       "pentakills_recientes": 0,
       "vision_promedio_reciente": 24,
-      "kills_semana": 0,
+      "kills_semana": 11,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 0,
-      "primeras_sangre_semana": 0,
-      "kda_promedio_semana": 0,
+      "vision_promedio_semana": 32,
+      "primeras_sangre_semana": 1,
+      "kda_promedio_semana": 6.0,
       "kda_perfecto_semana": false,
-      "campeones_ganados_semana": 0,
-      "asistencias_semana": 0,
-      "partidas_semana": 0,
-      "partidas_semana_detalle": [],
+      "campeones_ganados_semana": 1,
+      "asistencias_semana": 7,
+      "partidas_semana": 1,
+      "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790629150.719,
+          "kills": 11,
+          "muertes": 3,
+          "asistencias": 7,
+          "pentakills": 0,
+          "primera_sangre": true,
+          "vision": 32,
+          "campeon": "Illaoi",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 237,
+          "duracion_seg": 1671,
+          "damage_taken": 32050,
+          "danio_recibido_pct": 26.6,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 3,
+          "tiempo_cc": 10
+        }
+      ],
       "duo_semana": null,
-      "cs_min_semana": null,
-      "danio_recibido_semana": null,
+      "cs_min_semana": {
+        "cs_por_min": 8.5,
+        "cs": 237,
+        "campeon": "Illaoi"
+      },
+      "danio_recibido_semana": {
+        "danio_recibido_pct": 26.6,
+        "damage_taken": 32050,
+        "campeon": "Illaoi"
+      },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 0,
-      "tiempo_cc_semana": 0,
-      "max_partidas_en_un_dia": 0,
-      "primera_victoria_hoy": null,
+      "estructuras_destruidas_semana": 3,
+      "tiempo_cc_semana": 10,
+      "max_partidas_en_un_dia": 1,
+      "primera_victoria_hoy": {
+        "timestamp": 1790629150719,
+        "campeon": "Illaoi",
+        "kda": "11/3/7 (6.0)",
+        "equipo": "blue",
+        "duracion": "27:51",
+        "hechizos": [
+          "SummonerFlash",
+          "SummonerTeleport"
+        ]
+      },
       "dia_referencia": 1790568000
     }
   ],
@@ -6418,9 +6462,9 @@
       "detalle": "2 primeras sangre"
     },
     "kda_player": {
-      "jugador": "adrianNOOBYT",
-      "valor": 2.56,
-      "detalle": "2.56 KDA"
+      "jugador": "Ostia",
+      "valor": 6.0,
+      "detalle": "6.0 KDA"
     },
     "champion_pool": {
       "jugador": "adrianNOOBYT",
@@ -6433,14 +6477,14 @@
       "detalle": "96 asistencias"
     },
     "farmeador": {
-      "jugador": "adrianNOOBYT",
-      "valor": 7.7,
-      "detalle": "7.7 CS/min con Akali"
+      "jugador": "Ostia",
+      "valor": 8.5,
+      "detalle": "8.5 CS/min con Illaoi"
     },
     "defensor": {
-      "jugador": "El Buñuelito",
-      "valor": 24.4,
-      "detalle": "24.4% del daño de su equipo (45,704) con Anivia"
+      "jugador": "Ostia",
+      "valor": 26.6,
+      "detalle": "26.6% del daño de su equipo (32,050) con Illaoi"
     },
     "pentakills": null,
     "escalador": {
@@ -6449,9 +6493,9 @@
       "detalle": "Mejor jugador de la semana"
     },
     "tortuga": {
-      "jugador": "Pinea",
-      "valor": 2,
-      "detalle": "2 partidas esta semana"
+      "jugador": "Ostia",
+      "valor": 1,
+      "detalle": "1 partida esta semana"
     },
     "duo_dinamico": {
       "jugador": "Pinea",
@@ -6471,6 +6515,55 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-28T21:00:52Z",
+      "tipo": "badge_semanal",
+      "categoria": "farmeador",
+      "categoria_label": "El Farmeador",
+      "icono": "🌾",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "8.5 CS/min con Illaoi"
+    },
+    {
+      "timestamp": "2026-09-28T21:00:52Z",
+      "tipo": "badge_semanal",
+      "categoria": "defensor",
+      "categoria_label": "El Defensor",
+      "icono": "🛡️",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "El Buñuelito",
+      "detalle": "26.6% del daño de su equipo (32,050) con Illaoi"
+    },
+    {
+      "timestamp": "2026-09-28T21:00:52Z",
+      "tipo": "badge_semanal",
+      "categoria": "kda_player",
+      "categoria_label": "KDA Player",
+      "icono": "📊",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "adrianNOOBYT",
+      "detalle": "6.0 KDA"
+    },
+    {
+      "timestamp": "2026-09-28T21:00:52Z",
+      "tipo": "badge_semanal",
+      "categoria": "tortuga",
+      "categoria_label": "El Tortuga",
+      "icono": "🐢",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": "Pinea",
+      "detalle": "1 partida esta semana"
+    },
+    {
+      "timestamp": "2026-09-28T21:00:52Z",
+      "tipo": "primera_victoria_dia",
+      "icono": "🌅",
+      "categoria_label": "Primera Victoria del Día",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": null
+    },
     {
       "timestamp": "2026-09-26T00:06:23Z",
       "tipo": "badge_semanal",
@@ -6805,58 +6898,9 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Akali dio el golpe final al Nexus"
-    },
-    {
-      "timestamp": "2026-09-20T18:14:19Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
-    },
-    {
-      "timestamp": "2026-09-20T09:04:21Z",
-      "tipo": "badge_semanal",
-      "categoria": "kda_player",
-      "categoria_label": "KDA Player",
-      "icono": "📊",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "ゆうき まこと",
-      "detalle": "2.11 KDA"
-    },
-    {
-      "timestamp": "2026-09-20T09:04:21Z",
-      "tipo": "badge_semanal",
-      "categoria": "tortuga",
-      "categoria_label": "El Tortuga",
-      "icono": "🐢",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "ゆうき まこと",
-      "detalle": "4 partidas esta semana"
-    },
-    {
-      "timestamp": "2026-09-20T08:18:21Z",
-      "tipo": "badge_semanal",
-      "categoria": "defensor",
-      "categoria_label": "El Defensor",
-      "icono": "🛡️",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": "ゆうき まこと",
-      "detalle": "30.2% del daño de su equipo (39,120) con Trundle"
-    },
-    {
-      "timestamp": "2026-09-19T22:34:22Z",
-      "tipo": "logro_partida",
-      "categoria": "ace:LA1_1749857683",
-      "icono": "⚔️",
-      "categoria_label": "Ace Perfecto",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Akali aniquiló al equipo rival sin bajas propias"
     }
   ],
-  "titular_primera_victoria_dia": null,
+  "titular_primera_victoria_dia": "Ostia",
   "dia_referencia_eventos": 1790568000,
   "ranking_posiciones": {
     "adrianNOOBYT#LAN": 1,
@@ -6868,7 +6912,7 @@
   },
   "tiempo_top1": {
     "ゆうき まこと": 32.632584,
-    "adrianNOOBYT": 3.594684
+    "adrianNOOBYT": 3.596359
   },
   "rey_temporada": {
     "jugador": "ゆうき まこと",
