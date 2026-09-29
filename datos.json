@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-09-29T00:50:34.261481",
+  "ultimaActualizacion": "2026-09-29T00:52:38.050690",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3965,12 +3965,12 @@
       "nombre": "ADR14NCHO#TYA",
       "icono": 7213,
       "rango": "Gold I",
-      "lp": 25,
-      "winrate": "53%",
-      "elo_score": 1525,
+      "lp": 43,
+      "winrate": "54%",
+      "elo_score": 1543,
       "record_lp_score": 1604,
       "record_lp_label": "Platinum IV (4 LP)",
-      "escalador_semana": -79,
+      "escalador_semana": -61,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -3985,7 +3985,7 @@
       "top_recientes": [
         {
           "campeon": "Akali",
-          "cantidad": 5
+          "cantidad": 6
         },
         {
           "campeon": "Lux",
@@ -4031,9 +4031,32 @@
           "lp": 25,
           "rango": "Gold",
           "division": "I"
+        },
+        {
+          "fecha": "2026-09-29T00:52:19Z",
+          "lp": 43,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1751979235",
+          "campeon": "Akali",
+          "kda": "13/5/2 (3.0)",
+          "resultado": "Victoria",
+          "duracion": "24min",
+          "lp_change": 18,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 0,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1751967363",
           "campeon": "Akali",
@@ -4186,38 +4209,40 @@
           "estilo_secundario": 8400,
           "wards_control": 2,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1751837512",
-          "campeon": "Ahri",
-          "kda": "6/12/7 (1.08)",
-          "resultado": "Derrota",
-          "duracion": "34min",
-          "lp_change": null,
-          "hechizos": [
-            "SummonerBarrier",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8200,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 63,
+      "kills_recientes": 70,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 43,
+      "vision_promedio_reciente": 42,
       "kills_semana": 171,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 42,
+      "vision_promedio_semana": 40,
       "primeras_sangre_semana": 3,
-      "kda_promedio_semana": 2.33,
+      "kda_promedio_semana": 2.29,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 172,
+      "asistencias_semana": 170,
       "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790643031.149,
+          "kills": 13,
+          "muertes": 5,
+          "asistencias": 2,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 17,
+          "campeon": "Akali",
+          "victoria": true,
+          "duo_con": [],
+          "cs": 161,
+          "duracion_seg": 1443,
+          "damage_taken": 23288,
+          "danio_recibido_pct": 25.9,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 1,
+          "tiempo_cc": 2
+        },
         {
           "fin_seg": 1790640752.85,
           "kills": 14,
@@ -4635,31 +4660,12 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 0,
           "tiempo_cc": 2
-        },
-        {
-          "fin_seg": 1790108469.602,
-          "kills": 13,
-          "muertes": 3,
-          "asistencias": 4,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 78,
-          "campeon": "Akali",
-          "victoria": true,
-          "duo_con": [],
-          "cs": 278,
-          "duracion_seg": 2153,
-          "damage_taken": 32371,
-          "danio_recibido_pct": 21.4,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 3,
-          "tiempo_cc": 5
         }
       ],
       "duo_semana": null,
       "cs_min_semana": {
-        "cs_por_min": 7.7,
-        "cs": 278,
+        "cs_por_min": 7.3,
+        "cs": 208,
         "campeon": "Akali"
       },
       "danio_recibido_semana": {
@@ -4668,9 +4674,9 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 43,
-      "tiempo_cc_semana": 329,
-      "max_partidas_en_un_dia": 10,
+      "estructuras_destruidas_semana": 41,
+      "tiempo_cc_semana": 326,
+      "max_partidas_en_un_dia": 11,
       "primera_victoria_hoy": {
         "timestamp": 1790568206606,
         "campeon": "Lux",
@@ -5817,8 +5823,8 @@
     },
     "kda_player": {
       "jugador": "ADR14NCHO",
-      "valor": 2.33,
-      "detalle": "2.33 KDA"
+      "valor": 2.29,
+      "detalle": "2.29 KDA"
     },
     "champion_pool": {
       "jugador": "ADR14NCHO",
@@ -5827,8 +5833,8 @@
     },
     "asistente": {
       "jugador": "ADR14NCHO",
-      "valor": 172,
-      "detalle": "172 asistencias"
+      "valor": 170,
+      "detalle": "170 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -5855,16 +5861,26 @@
     "ladron": null,
     "destructor": {
       "jugador": "ADR14NCHO",
-      "valor": 43,
-      "detalle": "43 estructuras destruidas"
+      "valor": 41,
+      "detalle": "41 estructuras destruidas"
     },
     "stop": {
       "jugador": "ADR14NCHO",
-      "valor": 329,
-      "detalle": "329s de CC aplicado"
+      "valor": 326,
+      "detalle": "326s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-09-29T00:52:19Z",
+      "tipo": "logro_partida",
+      "categoria": "ace:LA1_1751979235",
+      "icono": "⚔️",
+      "categoria_label": "Ace Perfecto",
+      "jugador_nuevo": "ADR14NCHO",
+      "jugador_anterior": null,
+      "detalle": "Akali aniquiló al equipo rival sin bajas propias"
+    },
     {
       "timestamp": "2026-09-29T00:14:18Z",
       "tipo": "adelantamiento",
@@ -6244,15 +6260,6 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Gold I (51 LP)"
-    },
-    {
-      "timestamp": "2026-09-23T22:28:21Z",
-      "tipo": "primera_victoria_dia",
-      "icono": "🌅",
-      "categoria_label": "Primera Victoria del Día",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": null
     }
   ],
   "titular_primera_victoria_dia": "ADR14NCHO",
@@ -6266,7 +6273,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 32.734857,
+    "ゆうき まこと": 32.736071,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
