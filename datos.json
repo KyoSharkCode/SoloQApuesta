@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-10-01T22:50:37.246136",
+  "ultimaActualizacion": "2026-10-01T22:52:25.618919",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -4744,13 +4744,13 @@
     {
       "nombre": "Ostia#LAN",
       "icono": 6205,
-      "rango": "Silver III",
-      "lp": 94,
+      "rango": "Silver II",
+      "lp": 13,
       "winrate": "51%",
-      "elo_score": 994,
+      "elo_score": 1013,
       "record_lp_score": 1112,
       "record_lp_label": "Silver I (12 LP)",
-      "escalador_semana": -4,
+      "escalador_semana": 15,
       "rol_principal": "Top",
       "top_roles": [
         {
@@ -4786,7 +4786,7 @@
         {
           "campeon": "Illaoi",
           "nivel": 11,
-          "puntos": "93.331"
+          "puntos": "95.316"
         }
       ],
       "progreso_lp": [
@@ -5617,6 +5617,12 @@
           "lp": 94,
           "rango": "Silver",
           "division": "III"
+        },
+        {
+          "fecha": "2026-10-01T22:52:20Z",
+          "lp": 13,
+          "rango": "Silver",
+          "division": "II"
         }
       ],
       "historial": [
@@ -5942,7 +5948,11 @@
       "detalle": "29.6% del daño de su equipo (31,841) con Fiora"
     },
     "pentakills": null,
-    "escalador": null,
+    "escalador": {
+      "jugador": "Ostia",
+      "valor": 15,
+      "detalle": "Mejor jugador de la semana"
+    },
     "tortuga": {
       "jugador": "Pinea",
       "valor": 1,
@@ -5966,6 +5976,16 @@
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-10-01T22:52:20Z",
+      "tipo": "badge_semanal",
+      "categoria": "escalador",
+      "categoria_label": "El Escalador",
+      "icono": "📈",
+      "jugador_nuevo": "Ostia",
+      "jugador_anterior": null,
+      "detalle": "Mejor jugador de la semana"
+    },
     {
       "timestamp": "2026-10-01T21:58:19Z",
       "tipo": "badge_semanal",
@@ -6350,16 +6370,6 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": null,
       "detalle": null
-    },
-    {
-      "timestamp": "2026-09-26T00:06:23Z",
-      "tipo": "badge_semanal",
-      "categoria": "tortuga",
-      "categoria_label": "El Tortuga",
-      "icono": "🐢",
-      "jugador_nuevo": "Pinea",
-      "jugador_anterior": "Ostia",
-      "detalle": "2 partidas esta semana"
     }
   ],
   "titular_primera_victoria_dia": "ADR14NCHO",
@@ -6373,7 +6383,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 35.544087,
+    "ゆうき まこと": 35.545288,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
