@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-10-01T01:48:22.987338",
+  "ultimaActualizacion": "2026-10-01T01:50:40.832175",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3998,12 +3998,12 @@
       "nombre": "ADR14NCHO#TYA",
       "icono": 7213,
       "rango": "Gold I",
-      "lp": 49,
+      "lp": 27,
       "winrate": "53%",
-      "elo_score": 1549,
+      "elo_score": 1527,
       "record_lp_score": 1604,
       "record_lp_label": "Platinum IV (4 LP)",
-      "escalador_semana": -55,
+      "escalador_semana": -77,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4118,9 +4118,32 @@
           "lp": 49,
           "rango": "Gold",
           "division": "I"
+        },
+        {
+          "fecha": "2026-10-01T01:50:29Z",
+          "lp": 27,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1752419889",
+          "campeon": "Akali",
+          "kda": "3/6/0 (0.5)",
+          "resultado": "Derrota",
+          "duracion": "23min",
+          "lp_change": -22,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1752371301",
           "campeon": "Kayn",
@@ -4273,38 +4296,40 @@
           "estilo_secundario": 8400,
           "wards_control": 0,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1751967363",
-          "campeon": "Akali",
-          "kda": "14/10/10 (2.4)",
-          "resultado": "Derrota",
-          "duracion": "36min",
-          "lp_change": -75,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 1,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 86,
+      "kills_recientes": 75,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 27,
-      "kills_semana": 164,
+      "vision_promedio_reciente": 25,
+      "kills_semana": 163,
       "pentakills_semana": 0,
       "vision_promedio_semana": 34,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.05,
+      "kda_promedio_semana": 2.07,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 4,
-      "asistencias_semana": 175,
+      "asistencias_semana": 174,
       "partidas_semana": 24,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790819383.919,
+          "kills": 3,
+          "muertes": 6,
+          "asistencias": 0,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 21,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 128,
+          "duracion_seg": 1393,
+          "damage_taken": 19721,
+          "danio_recibido_pct": 24.3,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 2
+        },
         {
           "fin_seg": 1790805125.559,
           "kills": 8,
@@ -4741,25 +4766,6 @@
           "objetivos_robados": 0,
           "estructuras_destruidas": 1,
           "tiempo_cc": 1
-        },
-        {
-          "fin_seg": 1790227343.673,
-          "kills": 4,
-          "muertes": 8,
-          "asistencias": 1,
-          "pentakills": 0,
-          "primera_sangre": false,
-          "vision": 17,
-          "campeon": "Akali",
-          "victoria": false,
-          "duo_con": [],
-          "cs": 208,
-          "duracion_seg": 1709,
-          "damage_taken": 29857,
-          "danio_recibido_pct": 17.9,
-          "objetivos_robados": 0,
-          "estructuras_destruidas": 2,
-          "tiempo_cc": 7
         }
       ],
       "duo_semana": null,
@@ -4774,9 +4780,9 @@
         "campeon": "Akali"
       },
       "objetivos_robados_semana": 0,
-      "estructuras_destruidas_semana": 24,
-      "tiempo_cc_semana": 326,
-      "max_partidas_en_un_dia": 0,
+      "estructuras_destruidas_semana": 22,
+      "tiempo_cc_semana": 321,
+      "max_partidas_en_un_dia": 7,
       "primera_victoria_hoy": {
         "timestamp": 1790787170921,
         "campeon": "Akali",
@@ -5913,8 +5919,8 @@
     },
     "kda_player": {
       "jugador": "ADR14NCHO",
-      "valor": 2.05,
-      "detalle": "2.05 KDA"
+      "valor": 2.07,
+      "detalle": "2.07 KDA"
     },
     "champion_pool": {
       "jugador": "ADR14NCHO",
@@ -5923,8 +5929,8 @@
     },
     "asistente": {
       "jugador": "ADR14NCHO",
-      "valor": 175,
-      "detalle": "175 asistencias"
+      "valor": 174,
+      "detalle": "174 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -5951,16 +5957,26 @@
     "ladron": null,
     "destructor": {
       "jugador": "ADR14NCHO",
-      "valor": 24,
-      "detalle": "24 estructuras destruidas"
+      "valor": 22,
+      "detalle": "22 estructuras destruidas"
     },
     "stop": {
       "jugador": "ADR14NCHO",
-      "valor": 326,
-      "detalle": "326s de CC aplicado"
+      "valor": 321,
+      "detalle": "321s de CC aplicado"
     }
   },
   "eventos": [
+    {
+      "timestamp": "2026-10-01T01:50:29Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "ADR14NCHO",
+      "top_posicion": 2,
+      "detalle": null
+    },
     {
       "timestamp": "2026-10-01T00:00:50Z",
       "tipo": "primera_victoria_dia",
@@ -6346,29 +6362,20 @@
       "jugador_nuevo": "adrianNOOBYT",
       "jugador_anterior": null,
       "detalle": "Akali aniquiló al equipo rival sin bajas propias"
-    },
-    {
-      "timestamp": "2026-09-25T03:34:24Z",
-      "tipo": "record_lp",
-      "icono": "📈",
-      "categoria_label": "Récord de temporada",
-      "jugador_nuevo": "adrianNOOBYT",
-      "jugador_anterior": null,
-      "detalle": "Platinum IV (56 LP)"
     }
   ],
   "titular_primera_victoria_dia": "ADR14NCHO",
   "dia_referencia_eventos": 1790744400,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "ADR14NCHO#TYA": 2,
-    "Pinea#Pinea": 3,
+    "Pinea#Pinea": 2,
+    "ADR14NCHO#TYA": 3,
     "Galactic Shark#AYK": 4,
     "El Buñuelito#KyA": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 34.700021,
+    "ゆうき まこと": 34.701488,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
