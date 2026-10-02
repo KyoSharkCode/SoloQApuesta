@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-10-02T03:36:21.741754",
+  "ultimaActualizacion": "2026-10-02T03:38:30.689330",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3956,20 +3956,20 @@
       "nombre": "ADR14NCHO#TYA",
       "icono": 7213,
       "rango": "Gold I",
-      "lp": 63,
-      "winrate": "54%",
-      "elo_score": 1563,
+      "lp": 41,
+      "winrate": "53%",
+      "elo_score": 1541,
       "record_lp_score": 1604,
       "record_lp_label": "Platinum IV (4 LP)",
-      "escalador_semana": -41,
+      "escalador_semana": -63,
       "rol_principal": "Mid",
       "top_roles": [
         {
           "rol": "Mid",
-          "cantidad": 9
+          "cantidad": 8
         },
         {
-          "rol": "Jungla",
+          "rol": "Top",
           "cantidad": 1
         }
       ],
@@ -4090,9 +4090,32 @@
           "lp": 63,
           "rango": "Gold",
           "division": "I"
+        },
+        {
+          "fecha": "2026-10-02T03:38:23Z",
+          "lp": 41,
+          "rango": "Gold",
+          "division": "I"
         }
       ],
       "historial": [
+        {
+          "match_id": "LA1_1752652665",
+          "campeon": "Akali",
+          "kda": "10/4/4 (3.5)",
+          "resultado": "Derrota",
+          "duracion": "37min",
+          "lp_change": -22,
+          "hechizos": [
+            "SummonerDot",
+            "SummonerFlash"
+          ],
+          "duo_con": [],
+          "perk_principal": 8112,
+          "estilo_secundario": 8400,
+          "wards_control": 2,
+          "posible_egida": false
+        },
         {
           "match_id": "LA1_1752640306",
           "campeon": "Akali",
@@ -4245,38 +4268,40 @@
           "estilo_secundario": 8400,
           "wards_control": 3,
           "posible_egida": false
-        },
-        {
-          "match_id": "LA1_1752004608",
-          "campeon": "Akali",
-          "kda": "12/7/10 (3.14)",
-          "resultado": "Derrota",
-          "duracion": "30min",
-          "lp_change": -22,
-          "hechizos": [
-            "SummonerDot",
-            "SummonerFlash"
-          ],
-          "duo_con": [],
-          "perk_principal": 8112,
-          "estilo_secundario": 8400,
-          "wards_control": 2,
-          "posible_egida": false
         }
       ],
-      "kills_recientes": 83,
+      "kills_recientes": 81,
       "pentakills_recientes": 0,
-      "vision_promedio_reciente": 30,
-      "kills_semana": 165,
+      "vision_promedio_reciente": 32,
+      "kills_semana": 175,
       "pentakills_semana": 0,
-      "vision_promedio_semana": 35,
+      "vision_promedio_semana": 36,
       "primeras_sangre_semana": 2,
-      "kda_promedio_semana": 2.25,
+      "kda_promedio_semana": 2.28,
       "kda_perfecto_semana": false,
       "campeones_ganados_semana": 3,
-      "asistencias_semana": 175,
-      "partidas_semana": 22,
+      "asistencias_semana": 179,
+      "partidas_semana": 23,
       "partidas_semana_detalle": [
+        {
+          "fin_seg": 1790912249.496,
+          "kills": 10,
+          "muertes": 4,
+          "asistencias": 4,
+          "pentakills": 0,
+          "primera_sangre": false,
+          "vision": 55,
+          "campeon": "Akali",
+          "victoria": false,
+          "duo_con": [],
+          "cs": 250,
+          "duracion_seg": 2245,
+          "damage_taken": 34827,
+          "danio_recibido_pct": 21.0,
+          "objetivos_robados": 0,
+          "estructuras_destruidas": 0,
+          "tiempo_cc": 4
+        },
         {
           "fin_seg": 1790909036.864,
           "kills": 18,
@@ -4709,8 +4734,8 @@
       },
       "objetivos_robados_semana": 0,
       "estructuras_destruidas_semana": 17,
-      "tiempo_cc_semana": 303,
-      "max_partidas_en_un_dia": 2,
+      "tiempo_cc_semana": 307,
+      "max_partidas_en_un_dia": 3,
       "primera_victoria_hoy": {
         "timestamp": 1790887999905,
         "campeon": "Akali",
@@ -5917,8 +5942,8 @@
     },
     "asistente": {
       "jugador": "ADR14NCHO",
-      "valor": 175,
-      "detalle": "175 asistencias"
+      "valor": 179,
+      "detalle": "179 asistencias"
     },
     "farmeador": {
       "jugador": "Ostia",
@@ -5954,8 +5979,8 @@
     },
     "stop": {
       "jugador": "ADR14NCHO",
-      "valor": 303,
-      "detalle": "303s de CC aplicado"
+      "valor": 307,
+      "detalle": "307s de CC aplicado"
     }
   },
   "eventos": [
@@ -6366,7 +6391,7 @@
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 35.735334,
+    "ゆうき まこと": 35.736741,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
