@@ -1,5 +1,5 @@
 {
-  "ultimaActualizacion": "2026-10-02T05:46:30.038629",
+  "ultimaActualizacion": "2026-10-02T05:48:26.702613",
   "jugadores": [
     {
       "nombre": "Pinea#Pinea",
@@ -3956,12 +3956,12 @@
       "nombre": "ADR14NCHO#TYA",
       "icono": 7213,
       "rango": "Gold I",
-      "lp": 37,
+      "lp": 15,
       "winrate": "53%",
-      "elo_score": 1537,
+      "elo_score": 1515,
       "record_lp_score": 1604,
       "record_lp_label": "Platinum IV (4 LP)",
-      "escalador_semana": -67,
+      "escalador_semana": -89,
       "rol_principal": "Mid",
       "top_roles": [
         {
@@ -4106,6 +4106,12 @@
         {
           "fecha": "2026-10-02T05:04:19Z",
           "lp": 37,
+          "rango": "Gold",
+          "division": "I"
+        },
+        {
+          "fecha": "2026-10-02T05:48:22Z",
+          "lp": 15,
           "rango": "Gold",
           "division": "I"
         }
@@ -6006,6 +6012,16 @@
   },
   "eventos": [
     {
+      "timestamp": "2026-10-02T05:48:22Z",
+      "tipo": "adelantamiento",
+      "icono": "🔥",
+      "categoria_label": "Cambio de posición",
+      "jugador_nuevo": "Pinea",
+      "jugador_anterior": "ADR14NCHO",
+      "top_posicion": 2,
+      "detalle": null
+    },
+    {
       "timestamp": "2026-10-02T05:04:19Z",
       "tipo": "adelantamiento",
       "icono": "🔥",
@@ -6389,30 +6405,20 @@
       "jugador_nuevo": "Ostia",
       "jugador_anterior": "adrianNOOBYT",
       "detalle": "8.5 CS/min con Illaoi"
-    },
-    {
-      "timestamp": "2026-09-28T21:00:52Z",
-      "tipo": "badge_semanal",
-      "categoria": "defensor",
-      "categoria_label": "El Defensor",
-      "icono": "🛡️",
-      "jugador_nuevo": "Ostia",
-      "jugador_anterior": "El Buñuelito",
-      "detalle": "26.6% del daño de su equipo (32,050) con Illaoi"
     }
   ],
   "titular_primera_victoria_dia": "ADR14NCHO",
   "dia_referencia_eventos": 1790917200,
   "ranking_posiciones": {
     "ゆうき まこと#1411": 1,
-    "ADR14NCHO#TYA": 2,
-    "Pinea#Pinea": 3,
+    "Pinea#Pinea": 2,
+    "ADR14NCHO#TYA": 3,
     "Galactic Shark#AYK": 4,
     "El Buñuelito#KyA": 5,
     "Ostia#LAN": 6
   },
   "tiempo_top1": {
-    "ゆうき まこと": 35.822306,
+    "ゆうき まこと": 35.823603,
     "adrianNOOBYT": 3.646843
   },
   "rey_temporada": {
